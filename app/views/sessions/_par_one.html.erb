@@ -1,0 +1,71 @@
+<div class="partOne">
+	<div class="partOne_Lfet">
+		<!-- banner -->
+		<%= render 'banner' %>
+		<!-- banner end -->
+		<div class="clear"></div>
+		<div class="bannet_Photo">
+			<div class="bannet_PhotoM">
+				<dl>
+					<dt>
+						<a href="javascript:void(0);" target="_blank">
+							<img src="/upload/20131224233941FBL.jpg.thumb.jpg" width="180" height="120"></a>
+					</dt>
+					<dd>
+						<p class="height_18">
+							<a href="javascript:void(0);" target="_blank">12月25日快拍图选(上午版)</a>
+						</p>
+						<a href="javascript:void(0);">更多每日精选&gt;&gt;</a>
+					</dd>
+				</dl>
+				<dl style="margin-top:12px">
+					<dt>
+						<a href="javascript:void(0);" target="_blank">
+							<img src="/upload/20325_1387900368bbQo.jpg.thumb.jpg" width="180" height="120"></a>
+					</dt>
+					<dd>
+						<p class="height_18">
+							<a href="javascript:void(0);" target="_blank">12月24日快拍之星：赖东</a>
+						</p>
+						<a href="javascript:void(0);">更多每日之星&gt;&gt;</a>
+					</dd>
+				</dl>
+				<dl>
+					<dt>
+						<a href="javascript:void(0);" target="_blank">
+							<img src="/upload/20325_1384751014iUIQ.jpg.thumb.jpg" width="180" height="120"></a>
+					</dt>
+					<dd>
+						<p class="height_18">
+							<a href="javascript:void(0);" target="_blank">＃娌娌专访＃摄影学者陈建中</a>
+						</p>
+						<a href="javascript:void(0);">更多快拍访谈&gt;&gt;</a>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+
+	<div class="partOne_Right">
+		<h3>
+			<a href="javascript:void(0);">浏览更多&gt;&gt;</a>
+			每日重点
+		</h3>
+		<dl>
+			<% ["快头条：快上传你的十大手机照片", "上传你的2013十大年度照片和专题", "推荐康华阳的年度十大照片", "12月25日快拍图选(上午版)", "12月24日快拍之星：赖东", "祝贺小友淡泊铭志照片头版见报", "快拍印度春节开团，一起去吧~", "元旦组团快拍厦门，抓紧报名咯", "暖阳的第一本手工书", "推荐大头的年度十大照片", "lizehao2008：我要这样拍总统", "推荐赖东的《尼泊尔老人院》"].each do |name| %>
+			<dt>
+				<%= link_to name, 'javascript:void(0);', target: '_blank' %>
+			</dt>
+			<% end %>
+		</dl>
+		<ul>
+			<% ["2013我的年度十大照片和年度专题", "十大手机照片传这里", "阮义忠摄影工作坊招生", "快拍新杭州人正在进行中~", "快拍城市照片传这里！", "第二届西湖摄影奖"].each do |name| %>
+			<li>
+				<%= link_to name, 'javascript:void(0);', target: '_blank' %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<div class="clear"></div>
+</div>
+<div class="clear"></div>

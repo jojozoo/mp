@@ -1,0 +1,26 @@
+/*body{background:#CFDFEF;font:12px/150% "Lucida Grande", Arial, Verdana, Helvetica, sans-serif;}*/
+
+#uboxstyle .select_box{width:107px;height:27px; float:left;margin-top:2px}
+#uboxstyle div.tag_select,#uboxstyle div.tag_select_hover,#uboxstyle div.tag_select_open,#uboxstyle ul.tag_options,#uboxstyle ul.tag_options li,#uboxstyle ul.tag_options li.open_hover,#uboxstyle ul.tag_options li.open_selected{
+	background: url(/images/ubox_select.gif) no-repeat;
+}
+#uboxstyle div.tag_select,#uboxstyle div.tag_select_hover,#uboxstyle div.tag_select_open,#uboxstyle ul.tag_options li{
+	height:27px;
+	line-height:25px;
+	outline: none; 
+	padding:0 10px;
+	display:block;
+	color:#79A2BD;
+	width:87px;
+	font-size: 13px;
+}
+#uboxstyle div.tag_select{background-position:0 0;cursor: pointer;}
+/*#uboxstyle div.tag_select_hover{background-position: 0 -27px; }*/
+#uboxstyle div.tag_select_open{background-position: 0 -27px;cursor: pointer;}
+
+
+#uboxstyle ul.tag_options{position:absolute;padding:0;margin:0;list-style:none;background-position: right bottom;width:107px;padding:0 0 1px;margin:0;}
+#uboxstyle ul.tag_options li{background-position: -107px 0;text-decoration:none;}
+
+#uboxstyle ul.tag_options li.open_hover{background-position: 0 -81px;color:#fff}
+#uboxstyle ul.tag_options li.open_selected{background-position: 0 -54px;color:#fff}

@@ -1,0 +1,107 @@
+@charset "utf-8";
+/* CSS Document */
+body,html{ color:#555;font-family:Microsoft YaHei; margin:0px; padding:0px; font-size:13px;}
+p,form,img,ul,ol,li,dl,dt,dd{margin:0;padding:0;border:0;}
+input,select,h2,object{margin:0;padding:0;}
+input[type=text],input[type=password] {padding-left:10px; height:32px;line-height:32px}
+input[type=file]{padding:10px; border:none !important}
+textarea{padding:5px; line-height:22px}
+select{font-size:14px; padding:5px 0; vertical-align:middle;}
+ul,li{list-style-type:none}
+td{line-height:22px}
+a { color: #333; text-decoration: none; }
+a:visited { color: #333; text-decoration: none; }
+a:hover { color: #ba2636; text-decoration: underline; }
+a:active { color: #ba2636; }
+
+a.blue{color:#336699}
+a:hover.blue{color:#336699; text-decoration: underline;}
+a:active.blue { color: #336699; }
+a:visited.blue { color: #336699; }
+
+a.yellow{color:#ba2636}
+a:hover.yellow{color:#ba2636; text-decoration: underline;}
+a:active.yellow { color: #ba2636; }
+a:visited.yellow { color: #ba2636; }
+
+.Fl{float:left;}
+.Fr{float:right;}
+img{ border-width:0;}
+.MarginAuto{ margin:0 auto;}
+.clearfix:after{content:".";display:block;height:0;clear:both;visibility:hidden;}
+.clearfix{zoom:1;}
+.clear{ clear:both; overflow:hidden; height:0; font-size:0; line-height:0}
+h1 { font-size:48px; font-weight: normal;  margin:0; padding:0;}
+h2 { font-size:36px; font-weight: normal;  margin:0; padding:0;}
+h3 { font-size:24px; font-weight: normal; margin:0; padding:0;color:#000}
+h4 { font-size:18px; font-weight: normal;  margin:0; padding:0;}
+h5 { font-size:16px; font-weight: normal;  margin:0; padding:0;}
+h6 { font-size:14px; font-family: tahoma,arial,\5b8b\4f53; font-weight:800; }
+
+blockquote{margin:0;padding:15px;background:#eee}
+.margin_0{margin-top:0 !important}
+.margin_10{margin-top:10px}
+.margin_20{margin-top:20px}
+.margin_26{margin-top:26px}
+.margin_30{margin-top:30px}
+.margin_40{margin-top:40px}
+.margin_50{margin-top:50px}
+.margin_55{margin-top:55px}
+.margin_60{margin-top:60px}
+.bottom_25{margin-bottom:25px}
+
+.width_300{width:300px !important}
+.width_140{margin: 0 -1px; width: 138px;}
+.height_18{height:18px; line-height:18px; overflow:hidden}
+.height_30{height:30px; line-height:30px; overflow:hidden}
+.small { color:#888; font-size:12px; font-family: tahoma,arial,\5b8b\4f53; }
+.small a{ color:#888 }
+.small a:hover{ color:#333 }
+
+.dllinput{ line-height:30px; height:30px; vertical-align:middle; font-size:14px; text-indent:10px;}
+
+.greybackground {background:#000;display:block;z-index:100;width:100%;position:absolute;top:0;left:0;}
+.showbig{ position: absolute; left: 50%;top:50px;z-index:101;margin-left:-450px;background:#FFF;width: 900px}
+.small img{cursor: url("../images/small.cur"), auto;}
+.pic_close {position: absolute;top:10px;right:10px;}
+
+
+.selectsearch {
+	border: 0 none;
+    font-size: 12px;
+    height: 26px;
+    margin-left: 25px;
+    position: relative;
+    right: 1px;
+    width: 70px;
+	text-align: center;
+}
+/*动态消息*/
+.notice{cursor: pointer;right:8px;position: absolute;top: 9px;z-index: 210;}
+.notice span {background-color: #FE6600;
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: Tahoma;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    height: 13px;
+    line-height: 13px;
+    padding: 1px 0;}
+.notice span b{ height: 11px;padding: 0 3px;}
+#login,#no_login{  
+      filter:alpha(opacity=0);  
+      -moz-opacity:0;  
+      -khtml-opacity: 0;  
+      opacity: 0;  
+}
+.activity_share{margin-top:60px}
+#tbox{width:47px; height:73px; float:right; position:fixed;
+_position:absolute;
+_bottom:auto;
+_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+_margin-bottom:10px;
+}/*解决IE6下不兼容 position:fixed 的问题*/
+#gotop{ width:47px; height:47px; background:url(/images/top01.png) no-repeat; position:absolute; top:0px; display:none; cursor:pointer} 
+#gotop:hover{ background:url(../images/top02.png) no-repeat;}
+
