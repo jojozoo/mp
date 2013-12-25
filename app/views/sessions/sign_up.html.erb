@@ -2,12 +2,11 @@
 	<form id="registerform" name="registerform" action="do.php?ac=reg1314&amp;&amp;ref&amp;next=1" method="post" class="c_form">
 		<div class="log_text">
 			<dl>
-				<dt>昵称:</dt>
+				<dt>账号:</dt>
 				<dd>
-					<input name="username" type="text" id="username" class="width_300 input02">
+					<input name="username" id="username" type="text" class="width_300 input02">
 					&nbsp;
 					<span style="color:red;">*</span>
-					<p class="des">起个响亮的名字吧！据快拍统计82%的小友喜欢中文名！</p>
 				</dd>
 			</dl>
 			<div class="clear"></div>
@@ -20,7 +19,6 @@
 				</dd>
 			</dl>
 			<div class="clear"></div>
-
 			<dl>
 				<dt>确认密码:</dt>
 				<dd>
@@ -30,7 +28,16 @@
 				</dd>
 			</dl>
 			<div class="clear"></div>
-
+			<dl>
+				<dt>昵称:</dt>
+				<dd>
+					<input name="nickname" type="text" id="nickname" class="width_300 input02">
+					&nbsp;
+					<span style="color:red;">*</span>
+					<p class="des">起个响亮的名字吧！据快拍统计82%的小友喜欢中文名！</p>
+				</dd>
+			</dl>
+			<div class="clear"></div>
 			<dl>
 				<dt>手机:</dt>
 				<dd>
@@ -48,6 +55,7 @@
 					<input name="email" id="email" type="text" class="width_300 input02">
 					&nbsp;
 					<span style="color:red;">*</span>
+					<p class="des">请准确填入您的邮箱，便于密码找回和接受网站通知。</p>
 				</dd>
 			</dl>
 			<div class="clear"></div>
@@ -67,7 +75,9 @@
 			<input type="hidden" name="refer" value="space.php">
 			<input type="hidden" name="formhash" value="39e56806">
 			<p>
-				<input name="registersubmit" type="submit" value="提交" id="reg01" class="log_bottom"></p>
+				<input name="registersubmit" type="submit" value="提交" id="reg01" class="log_bottom">
+				<a class="blue" href="/sign_in">去登陆</a>
+			</p>
 		</div>
 	</form>
 </div>

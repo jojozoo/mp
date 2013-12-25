@@ -864,7 +864,7 @@ dd .Down_Tag01 a{ background:#e3e3e3;padding:4px 8px; color:#666; -webkit-border
 .log_text dd .textarea02{ width:425px; height:135px; border:1px solid #aaaaaa; -webkit-border-radius:5px; -moz-border-radius:5px; -o-border-radius:5px; border-radius:5px; float:left;}
 .log_text dd a:hover{ text-decoration:underline;}
 .log_text dd span{ color:#0098ff;}
-.log_bottom{ background:#ff9933; color:#fff; padding:5px 17px; margin:20px 0 0 260px; font-weight:bold; font-size:14px; -webkit-border-radius:2px; -moz-border-radius:2px; -o-border-radius:2px; border-radius:2px; border:none;}
+.log_bottom{ background:#ff9933; color:#fff; padding:5px 17px; margin:20px 20px 0 260px; font-weight:bold; font-size:14px; -webkit-border-radius:2px; -moz-border-radius:2px; -o-border-radius:2px; border-radius:2px; border:none;}
 .log_text .lod_dd a{ color:#336699; font-size:14px; font-weight:bold;}
 .log_text .lod_dd .log_botton{ cursor:pointer;background:#bbbbbb; border:1px solid #e0dddd; font-size:18px; font-family:Microsoft YaHei; height:35px; -webkit-border-radius:5px; -moz-border-radius:5px; -o-border-radius:5px; border-radius:5px; color:#333;padding:0 10px; font-weight:900}
 .log_text .span01{ background:url(/images/Down_icon.jpg) 0 0; width:14px; height:11px; display:block; float:left; margin:10px 0 0 10px;}
