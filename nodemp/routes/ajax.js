@@ -1,7 +1,8 @@
 module.exports = function(app){
 
-    app.get('/check/:key', function(req, res){
-        console.log(req.params.key);
+    app.get('/check/:name', function(req, res){
+        console.log(req.query.key);
+        console.log(req.params.name);
         res.send('success');
     });
 }

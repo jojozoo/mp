@@ -12,8 +12,6 @@ module.exports = function(app){
     // global admin filter
     app.use(function (req, res, next) {
         console.log(req.url);
-        console.log(req.method);
-        console.log(next);
         next();
         
     });
