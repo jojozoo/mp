@@ -20,6 +20,9 @@ class SessionsController < ApplicationController
 
   end
 
+  def validate
+  end
+
   # DELETE /sign_out 退出
   def destroy
 

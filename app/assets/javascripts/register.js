@@ -8,7 +8,7 @@ $(function() {
 			$(this).after('<output>&nbsp;<img src="/images/icon_28.jpg">'+ msg +'</output>');
 			return false;
 		}
-		$.get('http://node.manpai.com/check/username',{key:userName},function(e){
+		$.get('/register/username',{key:userName},function(e){
 			 $("#username").parent().find('output').remove();
 			 if (e!='success'){
 				 $("#username").after('<output>&nbsp;<img src="/images/icon_28.jpg">'+ e +'</output>');
@@ -24,10 +24,10 @@ $(function() {
 			$(this).after('<output>&nbsp;<img src="/images/icon_28.jpg">'+ msg +'</output>');
 			return false;
 		}
-		$.get('http://node.manpai.com/check/nickname',{key:nickName},function(e){
+		$.get('/register/nickname',{key:nickName},function(e){
 			 $("#nickname").parent().find('output').remove();
 			 if (e!='success'){
-				 $("#nickname").after('<output>&nbsp;<img src="/images/icon_28.jpg">'+ e +'</output>');
+				$("#nickname").after('<output>&nbsp;<img src="/images/icon_28.jpg">'+ e +'</output>');
 			 }
 		})
 	})
@@ -46,75 +46,42 @@ $(function() {
 			$("#password2").after('<output>&nbsp;<img src="/images/icon_28.jpg">二次输入的密码不一致</output>');
 		}
 	})
-	$('#moblie').blur(function(){
-		var value=($.trim($('#moblie').val()));
+	$('#mobile').blur(function(){
+		var value=($.trim($('#mobile').val()));
 		var length = value.length;  
-	    var moblie =  /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
-	    $("#moblie").parent().find('output').remove();
-		if(length == 11 && moblie.test(value)){
-			 $.get(url,{phone:value,ajax:true,type:'checkphone'},function(e){
+	    var mobile =  /(^0{0,1}1[3|4|5|6|7|8|9][0-9]{9}$)/;
+	    $("#mobile").parent().find('output').remove();
+		if(length == 11 && mobile.test(value)){
+			 $.get('/register/mobile',{key:mobile},function(e){
 				 if(e>0){
-					 $("#moblie").after('<output>&nbsp;<img src="/images/icon_28.jpg">手机已经注册,请换个手机号码再试。</output>');
+					 $("#mobile").after('<output>&nbsp;<img src="/images/icon_28.jpg">手机已经注册,请换个手机号码再试。</output>');
 					 return false;
 				 }
 			 })
 		 }else{
-			 $("#moblie").after('<output>&nbsp;<img src="/images/icon_28.jpg">手机格式错误</output>');
+			 $("#mobile").after('<output>&nbsp;<img src="/images/icon_28.jpg">手机格式错误</output>');
 		 }
 	})
 	$('#email').blur(function(){
 		var value=($.trim($('#email').val()));
-		 $.get('http://node.manpai.com/check/email',{email:value,ajax:true,type:'checkemail'},function(e){
-			 $("#email").parent().find('output').remove();
-			 if(e==1){
-			 }else if (e==-4){
-				 $("#email").after('<output>&nbsp;<img src="/images/icon_28.jpg">邮箱格式有误</output>');
-				 return false;
-			 }else if (e==-5){
-				 $("#email").after('<output>&nbsp;<img src="/images/icon_28.jpg">邮箱不允许注册</output>');
-				 return false;
-			 }else if (e==-6){
-				 $("#email").after('<output>&nbsp;<img src="/images/icon_28.jpg">邮箱已经被注册</output>');
-				 return false;
-			 }else{
-				 $("#email").after('<output>&nbsp;<img src="/images/icon_28.jpg">此项为必填</output>');
-				
-			 }
-		 })
-	})
-	$('#seccode').blur(function(){
-		var value=($.trim($('#seccode').val()));
-	    $("#seccode").parent().find('output').remove();
-	    if(value == '') {
-			return;
-		} else {
-			lastSecCode = value;
+		if(value == ""){
+			$("#email").after('<output>&nbsp;<img src="/images/icon_28.jpg">此项为必填</output>');
+			return false;
 		}
-		$.get(url,{seccode:value,inajax:1,op:'checkseccode'},function(e){
-			s = $(e).find("root").text();
-			if(s.indexOf('success') > -1) {
-				//
-			}else{
-				$("#seccode").after('<output>&nbsp;<img src="/images/icon_28.jpg">验证码错误。</output>');
+		if(!(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/).test(value)){
+			$("#email").after('<output>&nbsp;<img src="/images/icon_28.jpg">邮箱格式有误</output>');
+			return false;
+		}
+
+		$.get('/register/email',{key:value},function(e){
+			$("#email").parent().find('output').remove();
+			if (e==-5){
+				$("#email").after('<output>&nbsp;<img src="/images/icon_28.jpg">邮箱不允许注册</output>');
+				return false;
+			} else if (e==-6){
+				$("#email").after('<output>&nbsp;<img src="/images/icon_28.jpg">邮箱已经被注册</output>');
+				return false;
 			}
-		 })
-	})
+		})
+	});
 });
-function mailServer(s) {
-    var domain = s.split('@')[1]
-    switch (domain) {
-        case 'xx.com':
-            return 'mail.' + domain + ':8111';
-            break;
-        case 'xx.xx':
-            return 'mail.xx' + domain;
-            break;
-        case 'xx.xx.com':
-            return 'xx.mail' + domain;
-            break;
-        default :
-            return 'mail.' + domain;
-            break;
-    }
-}
-mailServer('abd@qq.com'); 
