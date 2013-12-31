@@ -6,6 +6,15 @@ Mp::Application.routes.draw do
   get    '/validate'      => 'sessions#validate'
 
   get    '/register/:tag'     => 'check#register'
+
+  scope "/admin", :module => "admin", :as => 'admin' do
+    get    '/'              => 'sessions#index'
+    get    '/sign_in'       => 'sessions#new'
+    post   '/sign_in'       => 'sessions#create'
+    get    '/sign_out'      => 'sessions#destroy'
+    # resources :products do
+    # end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
