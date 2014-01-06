@@ -22,7 +22,25 @@
 	<div class="container">
 		<div class="row">
 			<%= render 'admin/shared/left_bar' %>
-			<%= yield %>
+			<div class="col-md-10">
+				<div class="alert alert-warning alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <strong>Warning!</strong>
+					Best check yo self, you're not looking too good.
+				</div>
+				<div class="navbar-inner">
+					<ol class="breadcrumb">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+						<li>
+							<a href="#">Home</a>
+						</li>
+						<li>
+							<a href="#">Library</a>
+						</li>
+						<li class="active">Data</li>
+					</ol>
+				</div>
+				<%= yield %>
+			</div>
 		</div>
 		
 	</div>
