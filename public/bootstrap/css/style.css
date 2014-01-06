@@ -68,8 +68,8 @@ body {
 	border-top: none;
 }
 
-.navbar-inner .header-div {
-	padding-top: 10px;
+.navbar-inner > div {
+	padding-top: 8px;
 }
 .block-content{
 	padding: 10px;
