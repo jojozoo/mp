@@ -1,13 +1,39 @@
+body{
+	background: transparent url("/images/body01.jpg");
+}
+.col-md-9{
+	background: white;
+}
+.header{
+	height: 50px;
+}
 img.avatar{
 	width: 50px;
 	height: 50px;
 	float: left;
 	margin: -15px 24px 0 0;
-	border-radius: 25px;
-	-webkit-border-radius: 25px;
-	-moz-border-radius: 25px;
-	-khtml-border-radius: 25px;
 }
 .header > .navbar{
 	padding: 0 20px;
+}
+
+.navbar-default{
+	background: #26292e;
+}
+.navbar-default .navbar-nav > li > a{
+	color: #fff;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+	background: #3a3f46;
+	color: #f78927;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #f78927;
+  /*background-color: transparent;*/
+  background: #3a3f46;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	background: #3a3f46;
+	color: #f78927;
 }

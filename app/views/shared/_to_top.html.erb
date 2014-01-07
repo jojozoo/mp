@@ -1,0 +1,58 @@
+<a href="javascript:void(0);" class="float_to" id="toTop"><i class="icon-angle-up"></i></a>
+<a href="javascript:void(0);" class="float_to" id="feedBack"><i class="icon-edit"></i></a>
+<style type="text/css">
+.float_to{
+	position: fixed;
+	z-index: 50;
+	right: 20px;
+	display: none;
+	width: 45px;
+	height: 41px;
+	background: #a1aab3;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	font-size: 0;
+	color: transparent;
+}
+#feedBack{
+	bottom: 25px;
+	display: inline;
+}
+#toTop {
+	bottom: 75px;
+}
+.float_to i:before {
+	color: #fff !important;
+	font-size: 28px;
+	top: 5px;
+	left: 13px;
+	position: relative;
+}
+#feedBack i:before {
+	top: 8px;
+	left: 10px;
+}
+.float_to:hover {
+	background: #405b7f;
+	text-decoration: none;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+  $(window).scroll(function () {
+        // if($.browser.msie && $.browser.version == '6.0'){
+        //   $('#toTop').css('top', $(this).scrollTop() + $(this).height() - 170);
+        // }
+        if($(window).scrollTop()=="0") {
+            $("#toTop").fadeOut();
+        }else {
+            $("#toTop").fadeIn();
+        }
+    });
+    $("#toTop").on("click", function(){
+        $("html,body").animate({scrollTop:0},300);
+        return false;
+    });
+});
+</script>

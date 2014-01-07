@@ -83,7 +83,7 @@
 					<input type="text" class="form-control" placeholder="动态/图库/用户">
 					<span class="input-group-btn">
 						<button type="button" class="btn btn-default">
-							<span class="glyphicon glyphicon-search"></span>
+							<i class="icon-search"></i>
 						</button>
 					</span>
 				</div>
@@ -100,7 +100,7 @@
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<%= image_tag("/images/avatar.jpg", class: 'avatar') %>
+						<%= image_tag("/images/avatar.jpg", class: 'avatar img-circle') %>
 						朱晓武
 						<b class="caret"></b>
 					</a>
@@ -109,7 +109,12 @@
 							<a href="#">设置</a>
 						</li>
 						<li>
-							<a href="#">漫信</a>
+							<a href="#">
+								漫信
+								<div class="pull-right">
+									<span class="label label-success">752</span>
+								</div>
+							</a>
 						</li>
 						<li>
 							<a href="#">通知</a>
@@ -124,5 +129,4 @@
 		</div>
 		<!-- /.navbar-collapse -->
 	</nav>
-	<div class="clearfix"></div>
 </div>
