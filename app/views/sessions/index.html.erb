@@ -14,56 +14,6 @@
 		<div class="social">
 			<h3 class="std pull-left">分享</h3>
 			<a href="icon-facebook"></a>
-			<style type="text/css">
-			.social:before, .social:after {
-				display: table;
-				content: "";
-				line-height: 0;
-				clear: both;
-			}
-			.social{
-				background: #405b7f;
-			}
-			.social h3 {
-				color: #fff;
-				padding:25px 10px 0 20px;
-				margin: 0;
-				font-size: 16px;
-				line-height: 16px;
-			}
-			.smallSocials{
-				margin: 0;
-				list-style: none;
-			}
-			.smallSocials li {
-				display: block;
-				float: left;
-				margin: 0;
-			}
-			.smallSocials li a:before {
-				color: #fff;
-				font-size: 27px;
-				line-height: 27px;
-				position: relative;
-				top: 19px;
-				left: 1px;
-			}
-			.smallSocials li a {
-				display: block;
-				width: 62px;
-				height: 62px;
-				font-size: 0;
-				color: transparent;
-				background: transparent;
-				border-left: 1px solid #506889;
-				border-left: 1px solid rgba(255,255,255,0.15);
-				text-align: center;
-			}
-			.smallSocials li a:hover{
-				background: #f78927;
-				text-decoration: none;
-			}
-			</style>
 			<ul class="smallSocials pull-right">
 				<li>
 					<a href="javascript:void(0);" target="_blank" class="icon-facebook" data-toggle="tooltip" data-original-title="Facebook">Facebook</a>
@@ -145,63 +95,99 @@
 		</div>
 		<hr>
 		<div class="comments">
-			<h4>评论</h4>
-			<ul class="commentList">
-
-				<li class="comment byuser comment-author-admin bypostauthor even thread-even depth-1" id="li-comment-8">
-					<div class="oneComment">
-						<div class="avatIcon pull-left">
-							<img alt="" src="/images/avatar.jpg" class="avatar img-circle">
-						</div>
-						<span class="author">admin</span>
-						<span class="date">February 21, 2013 at 10:36 am</span>
-						<span class="pull-right">
-							<a class="comment-reply-link" href="/post-standard-two/?replytocom=8#respond" onclick="return addComment.moveForm(&quot;comment-8&quot;, &quot;8&quot;, &quot;respond&quot;, &quot;397&quot;)">Reply</a>
-						</span>
-						<p>
-							raesent ac nunc pharetra risus congue bibendum sit amet ac mi. In egestas, massa scelerisque laoreet cursus, turpis libero gravida nunc, non semper lacus dui quis er
-						</p>
-					</div>
+			<h4 class="light">所有评论</h4>
+			<ul class="comment-list">
+<style>
+.comment-list{
+	padding: 0;
+}
+.comment-list li{
+	list-style: none;
+	margin: 0 0 15px 0;
+}
+.comment-list li p{
+	
+}
+ul.comment-list .user-link{
+	margin-right: 10px;
+	width: 50px;
+	height: 50px;
+}
+ul.comment-list ul.comment-list{
+	margin-left: 60px;
+}
+ul.comment-list .author {
+	font-size: 14px;
+	line-height: 19px;
+	font-weight: 700;
+	margin-right: 10px;
+}
+ul.comment-list .date {
+color: #959da6;
+font-size: 11px;
+line-height: 15px;
+display: inline-block;
+margin-bottom: 10px;
+}
+ul.comment-list p {
+	font-size: 13px;
+	line-height: 21px;
+	margin: 0 0 15px 60px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e8ecf0;
+}
+/**最后一条*/
+.comments > .comment-list > li:last-child p{
+	border-bottom: 0;
+}
+</style>
+				<li class="comment" id="li-comment-1">
+					<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
+					<a href="/" class="author">朱晓武</a>
+					<span class="date">2013-08-19 10:37</span>
+					<span class="pull-right">
+						<a class="reply-link" href="/">回复TA</a>
+					</span>
+					<p>
+						这个照片真得很漂亮唉
+					</p>
+					<ul class="comment-list">
+						<li class="comment">
+							<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
+							<a href="/" class="author">朱晓武</a>
+							<span class="date">2013-08-19 10:37</span>
+							<span class="pull-right">
+								<a class="reply-link" href="/">回复TA</a>
+							</span>
+							<p>
+								这个照片真得很漂亮唉
+							</p>	
+						</li>
+					</ul>
 				</li>
 
-				<li class="comment byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1" id="li-comment-7">
-					<div class="oneComment">
-						<div class="avatIcon pull-left">
-							<img alt="" src="/images/avatar.jpg" class="avatar img-circle">
-						</div>
-						<span class="author">admin</span>
-						<span class="date">February 21, 2013 at 10:35 am</span>
-						<span class="pull-right">
-							<a class="comment-reply-link" href="/post-standard-two/?replytocom=7#respond" onclick="return addComment.moveForm(&quot;comment-7&quot;, &quot;7&quot;, &quot;respond&quot;, &quot;397&quot;)">Reply</a>
-						</span>
-						<p>
-							Quisque eu sem nisi, nec commodo odio. Integer elementum, mauris ac feugiat tincidunt, tortor tellus tempor mi, et scelerisque lorem massa eu nunc.
-						</p>
-					</div>
+				<li class="comment" id="li-comment-2">
+					<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
+					<a href="/" class="author">朱晓武</a>
+					<span class="date">2013-08-19 10:37</span>
+					<span class="pull-right">
+						<a class="reply-link" href="/">回复TA</a>
+					</span>
+					<p>
+						这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉
+					</p>
 				</li>
 			</ul>
 		</div>
-		<div class="respond"></div>
+		<hr>
+		<div class="respond">
+			<h3 class="light">回复:</h3>
+			<form role="form">
+				<textarea class="form-control" rows="3"></textarea>
+				<input type="submit" class="btn btn-default" value="提交">
+			</form>
+		</div>
 	</div>
 	<div class="col-md-3">.col-md-3</div>
 </div>
-<style type="text/css">
-	hr{
-		margin: 10px auto;
-	}
-	.pic{
-		width: 100%;
-		height: 100%;
-		background: #f1f1f1;
-	}
-	.opt-b {
-		display: inline-block;
-		position: relative;
-		margin: 0 30px 0 0;
-		font-size: 14px;
-		line-height: 17px;
-		color: #959da6;
-		font-weight: 700;
-		text-transform: uppercase;
-	}
-</style>
+

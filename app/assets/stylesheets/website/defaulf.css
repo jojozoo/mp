@@ -7,11 +7,13 @@ body{
 .header{
 	height: 50px;
 }
-img.avatar{
+.header .avatar{
+	margin: -15px 24px 0 0;
+}
+.avatar{
 	width: 50px;
 	height: 50px;
 	float: left;
-	margin: -15px 24px 0 0;
 }
 .header > .navbar{
 	padding: 0 20px;
@@ -37,3 +39,144 @@ img.avatar{
 	background: #3a3f46;
 	color: #f78927;
 }
+hr{
+	margin: 10px auto;
+}
+.pic{
+	width: 100%;
+	height: 100%;
+	background: #f1f1f1;
+}
+.opt-b {
+	display: inline-block;
+	position: relative;
+	margin: 0 30px 0 0;
+	font-size: 14px;
+	line-height: 17px;
+	color: #959da6;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.social:before, .social:after {
+	display: table;
+	content: "";
+	line-height: 0;
+	clear: both;
+}
+.social{
+	background: #405b7f;
+}
+.social h3 {
+	color: #fff;
+	padding:25px 10px 0 20px;
+	margin: 0;
+	font-size: 16px;
+	line-height: 16px;
+}
+.smallSocials{
+	margin: 0;
+	list-style: none;
+}
+.smallSocials li {
+	display: block;
+	float: left;
+	margin: 0;
+}
+.smallSocials li a:before {
+	color: #fff;
+	font-size: 27px;
+	line-height: 27px;
+	position: relative;
+	top: 19px;
+	left: 1px;
+}
+.smallSocials li a {
+	display: block;
+	width: 62px;
+	height: 62px;
+	font-size: 0;
+	color: transparent;
+	background: transparent;
+	border-left: 1px solid #506889;
+	border-left: 1px solid rgba(255,255,255,0.15);
+	text-align: center;
+}
+.smallSocials li a:hover{
+	background: #f78927;
+	text-decoration: none;
+}
+.light {
+	color: #959da6;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+
+
+#footer_bg {
+    margin-top: 20px; 
+    background: #43403F;
+    padding: 5px 0px;
+    border-top: 1px solid #5B5958;
+    font-size: 12px;
+    color: #999999;
+}
+#footer {
+    width: 700px;
+    text-align: center;
+    margin: 15px auto;
+    line-height: 30px;
+    color: #999999;
+    position: relative;
+    _margin-bottom: 0px;
+}
+#footer a, #footer a:visited {
+    color: #CCCCCC;
+    padding: 0px 7px;
+}
+#footer .footer_icon {
+    width: 34px;
+    height: 42px;
+    position: absolute;
+    right: 89px;
+    top: 40px;
+    _right: 100px;
+}
+.float_to{
+	position: fixed;
+	z-index: 50;
+	right: 20px;
+	display: none;
+	width: 45px;
+	height: 41px;
+	background: #a1aab3;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	font-size: 0;
+	color: transparent;
+}
+#feedBack{
+	bottom: 25px;
+	display: inline;
+}
+#toTop {
+	bottom: 75px;
+}
+.float_to i:before {
+	color: #fff !important;
+	font-size: 28px;
+	top: 5px;
+	left: 13px;
+	position: relative;
+}
+#feedBack i:before {
+	top: 8px;
+	left: 10px;
+}
+.float_to:hover {
+	background: #405b7f;
+	text-decoration: none;
+}
+
+
