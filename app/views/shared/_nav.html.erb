@@ -1,1 +1,128 @@
-nav
+<div class="header">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="navbar-header">
+			<%= link_to image_tag("/images/logo.png"), '/', class: 'navbar-brand', style: 'padding:0' %></div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="active">
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">动态</a>
+				</li>
+				<li>
+					<a href="#">图库</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						活动 <b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">每日一拍</a>
+						</li>
+						<li>
+							<a href="#">快拍城市</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#">我的同城</a>
+						</li>
+						<li>
+							<a href="#">发现同城</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#">正在进行的活动</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#">已经结束的活动</a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						作品 <b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">编辑推荐</a>
+						</li>
+						<li>
+							<a href="#">每日精选</a>
+						</li>
+						<li>
+							<a href="#">最新上传</a>
+						</li>
+						<li>
+							<a href="#">热门作品</a>
+						</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						圈子
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">我的圈子</a>
+						</li>
+						<li>
+							<a href="#">发现圈子</a>
+						</li>
+						<li>
+							<a href="#">发现话题</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<form class="navbar-form navbar-left" style="width:300px">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="动态/图库/用户">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</span>
+				</div>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#">个人主页</a>
+				</li>
+				<li>
+					<a href="#">登录</a>
+				</li>
+				<li>
+					<a href="#">注册</a>
+				</li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+						<%= image_tag("/images/avatar.jpg", class: 'avatar') %>
+						朱晓武
+						<b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="#">设置</a>
+						</li>
+						<li>
+							<a href="#">漫信</a>
+						</li>
+						<li>
+							<a href="#">通知</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="#">积分</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</nav>
+	<div class="clearfix"></div>
+</div>
