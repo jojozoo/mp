@@ -2,15 +2,9 @@
 <html>
 <head>
 	<title>漫拍管理页面</title>
-	<!-- Bootstrap -->
-	<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-	<link href="/bootstrap/css/style.css" rel="stylesheet" media="screen">
-	
-	<!-- <link href="assets/styles.css" rel="stylesheet" media="screen"> -->
-	<script src="/bootstrap/js/jquery.min.js"></script>
-	<script src="/bootstrap/js/bootstrap.min.js"></script>
-	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<%= stylesheet_link_tag    "admin", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
 	<!--[if lt IE 9]>
 		<script src="/bootstrap/js/html5.js"></script>
 		<script src="/bootstrap/js/html5shiv.min.js"></script>
@@ -24,25 +18,12 @@
 			<%= render 'admin/shared/left_bar' %>
 			<div class="col-md-10">
 				<div class="alert alert-warning alert-dismissable">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <strong>Warning!</strong>
-					Best check yo self, you're not looking too good.
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <strong>Warning!</strong>这只是一个普通的提示.
 				</div>
-				<div class="navbar-inner">
-					<ol class="breadcrumb">
-						<span class="glyphicon glyphicon-chevron-left"></span>
-						<li>
-							<a href="#">Home</a>
-						</li>
-						<li>
-							<a href="#">Library</a>
-						</li>
-						<li class="active">Data</li>
-					</ol>
-				</div>
+				<%= render 'admin/shared/breadcrumb' %>
 				<%= yield %>
 			</div>
 		</div>
-		
 	</div>
 </body>
 </html>
