@@ -1,58 +1,42 @@
-<div class="row main">
+<div class="row">
 	<div class="col-md-9">
 		<div class="title">
 			<h3>郭雍脑海中刷刷刷的出现三个问句</h3>
 		</div>
+		<style type="text/css">
+		.pic{
+			position: relative;
+		}
+		.pic > div{
+			width: 40%;
+			height: 40%;
+			position: absolute;
+			cursor: pointer;
+		}
+		.pic .pic-top{
+			left: 0;
+			top: 0;
+		}
+		.pic .pic-right{
+			top:0;
+			right: 0;
+		}
+		.pic .pic-bottom{
+			right: 0;
+			bottom: 0;
+		}
+		.pic .pic-left{
+			left: 0;
+			bottom: 0;
+		}
+		</style>
 		<div class="pic">
-			<img src="/images/photo.jpg">
-			<div class="pic_top"></div>
-			<div class="pic_bottom"></div>
-			<div class="pic_left"></div>
-			<div class="pic_right"></div>
+			<a href=""><img src="/images/photo.jpg"></a>
+			<div class="pic-top"></div>
+			<div class="pic-right"></div>
+			<div class="pic-bottom"></div>
+			<div class="pic-left"></div>
 		</div>
-		<hr>
-		<div class="social">
-			<h4 class="std pull-left">分享</h4>
-			<ul class="smallSocials pull-right">
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-facebook" data-toggle="tooltip" data-original-title="Facebook">Facebook</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-twitter" data-toggle="tooltip" data-original-title="Twitter">Twitter</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-google-plus" data-toggle="tooltip" data-original-title="Google+">Google+</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-linkedin" data-toggle="tooltip" data-original-title="LinkedIn">LinkedIn</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-pinterest" data-toggle="tooltip" data-original-title="Pinterest">Pinterest</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-instagram" data-toggle="tooltip" data-original-title="Instagram">Instagram</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-youtube-sign" data-toggle="tooltip" data-original-title="Youtube">Youtube</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-video" data-toggle="tooltip" data-original-title="Vimeo">Vimeo</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-phone" data-toggle="tooltip" data-original-title="Phone">Phone</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-skype" data-toggle="tooltip" data-original-title="Skype">Skype</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-envelope" data-toggle="tooltip" data-original-title="Email">Email</a>
-				</li>
-				<li>
-					<a href="javascript:void(0);" target="_blank" class="icon-rss" data-toggle="tooltip" data-original-title="RSS">RSS</a>
-				</li>
-			</ul>
-		</div>
-		<div class="clearfix"></div>
 		<hr>
 		<div class="position">
 			<span class="opt-b">
@@ -92,6 +76,15 @@
 				“我主动配合不好吗？”郭雍满脸惊奇：“要不我先退回去，您重新再喊一遍，然后我骂您几声奸贼什么的，您再打我一顿，最后把昏死过去的我抬过去见您家夫人？”
 			</p>
 		</div>
+		<hr>
+		<ul class="pager">
+			<li class="previous">
+				<a href="#">&larr; 上一篇</a>
+			</li>
+			<li class="next">
+				<a href="#">下一篇 &rarr;</a>
+			</li>
+		</ul>
 		<hr>
 		<div class="comments">
 			<h4 class="light">所有评论</h4>
@@ -161,12 +154,70 @@
 		.box_con{
 			padding: 10px;
 		}
+		.radbox ul{
+			list-style: none;
+			padding-left: 0;
+		}
+		.radbox ul li{
+			margin-bottom: 10px;
+		}
+		a.tag:before{
+			content: "";
+			float: left;
+			position: absolute;
+			top: 0;
+			left: -12px;
+			width: 0;
+			height: 0;
+			border-color: transparent #e1e1e6 transparent transparent;
+			border-style: solid;
+			border-width: 12px 12px 12px 0;
+		}
+		a.tag:after {
+			content: "";
+			position: absolute;
+			top: 10px;
+			left: 0;
+			float: left;
+			width: 4px;
+			height: 4px;
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			-ms-border-radius: 2px;
+			-o-border-radius: 2px;
+			border-radius: 2px;
+			background: #fff;
+			-webkit-box-shadow: -1px -1px 2px #bbbbc5;
+			-moz-box-shadow: -1px -1px 2px #bbbbc5;
+			box-shadow: -1px -1px 2px #bbbbc5;
+		}
+		a.tag:hover {
+			background-color: #567189;
+			color: white;
+			text-shadow: none;
+		}
+		a.tag:hover:before {
+			border-color: transparent #567189 transparent transparent;
+		}
+		a.tag{
+			margin: 0 0 10px 20px;
+			padding: 0 10px 0 12px;
+			background: #e1e1e6;
+			text-decoration: none;
+			text-shadow: 1px 1px 0px #fff;
+			box-shadow: 1px 1px 1px rgba(119, 119, 119, 0.5);
+			display: inline-block;
+			height: 24px;
+			line-height: 24px;
+			position: relative;
+			font-size: 11px;
+		}
 		</style>
-		<aside class="radbox">
-			<header class="box_top">
+		<div class="radbox">
+			<div class="box_top">
 				<span class="title light">每日重点</span>
 				<a href="" class="pull-right">更多</a>
-			</header>
+			</div>
 			<div class="box_con">
 				<ul>
 					<li><a href="/">Ruby</a></li>
@@ -178,22 +229,59 @@
 					<li><a href="/">Titanium</a></li>
 				</ul>
 			</div>
-		</aside>
-		<aside class="radbox">
-			<header class="box_top">
-				<span class="title light">每日重点</span>
-				<a href="" class="pull-right">更多</a>
-			</header>
-			<div class="list-group">
-				<a href="/" class="list-group-item">Ruby</a>
-				<a href="/" class="list-group-item">Mysql</a>
-				<a href="/" class="list-group-item">MongoDB</a>
-				<a href="/" class="list-group-item">JavaScript</a>
-				<a href="/" class="list-group-item">JQuery</a>
-				<a href="/" class="list-group-item">Phonegap</a>
-				<a href="/" class="list-group-item">Titanium</a>
+		</div>
+		<div class="radbox">
+			<div class="box_top">
+				<span class="title light">新注用户</span>
 			</div>
-		</aside>
+			<div class="box_con">
+				<ul>
+					<li>
+						<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
+						<h5><a href="/" class="author">zhuxiaowu</a></h5>
+						<span class="date">2010-01-01 10:10</span>
+					</li>
+					<li>
+						<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
+						<h4><a href="/" class="author">zhuxiaowu</a></h4>
+						<span class="date">2010-01-01 10:10</span>
+					</li>
+					<li>
+						<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
+						<h4><a href="/" class="author">zhuxiaowu</a></h4>
+						<span class="date">2010-01-01 10:10</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="radbox">
+			<div class="box_top">
+				<span class="title light">网站标签</span>
+			</div>
+			<div class="box_con">
+				<a href="/?tag=Ruby" class="tag">Ruby</a>
+				<a href="/?tag=Mysql" class="tag">Mysql</a>
+				<a href="/?tag=MongoDB" class="tag">MongoDB</a>
+				<a href="/?tag=JavaScript" class="tag">JavaScript</a>
+				<a href="/?tag=JQuery" class="tag">JQuery</a>
+				<a href="/?tag=Phonegap" class="tag">Phonegap</a>
+				<a href="/?tag=Titanium" class="tag">Titanium</a>
+				<a href="/?tag=Lua" class="tag">Lua</a>
+				<a href="/?tag=Android" class="tag">Android</a>
+				<a href="/?tag=Redis" class="tag">Redis</a>
+				<a href="/?tag=Rails" class="tag">Rails</a>
+				<a href="/?tag=Nginx" class="tag">Nginx</a>
+				<a href="/?tag=Resque" class="tag">Resque</a>
+				<a href="/?tag=Ubuntu" class="tag">Ubuntu</a>
+				<a href="/?tag=JQueryMobile" class="tag">JQueryMobile</a>
+				<a href="/?tag=node" class="tag">node</a>
+				<a href="/?tag=nodejs" class="tag">nodejs</a>
+				<a href="/?tag=express" class="tag">express</a>
+				<a href="/?tag=socket.io" class="tag">socket.io</a>
+				<a href="/?tag=forever" class="tag">forever</a>
+				<a href="/?tag=%E7%94%9F%E6%B4%BB" class="tag">生活</a>
+			</div>
+		</div>
 	</div>
 </div>
 

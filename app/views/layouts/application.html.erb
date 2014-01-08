@@ -11,10 +11,14 @@
 </head>
 <body>
 	<%= render 'shared/nav' %>
-	<div class="container">
+	<div class="container main-tip">
+		<div class="alert alert-warning">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			 <strong>通知通知:</strong> 漫拍网V2版本即将发布!
+		</div>
 		<%= render 'shared/breadcrumb' %>
 	</div>
-	<div class="container">
+	<div class="container main">
 		<%= yield %>
 	</div>
 	<%= render 'shared/to_top' %>

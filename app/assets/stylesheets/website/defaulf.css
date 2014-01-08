@@ -1,16 +1,16 @@
 body{
 	background: transparent url("/images/body01.jpg");
 }
-.main > .col-md-9{
+.main-tip{
+	margin: 10px auto;
+}
+.main > .row > .col-md-9{
 	background: white;
 }
-.main > .col-md-3{
+.main > .row > .col-md-3{
 	padding-right: 0;
 }
 .breadcrumb {
-	padding: 8px 15px;
-	margin: 10px 0;
-	list-style: none;
 	background-color: white;
 	border-radius: 0;
 }
@@ -70,54 +70,6 @@ hr{
 	font-weight: 700;
 	text-transform: uppercase;
 }
-.social:before, .social:after {
-	display: table;
-	content: "";
-	line-height: 0;
-	clear: both;
-}
-.social{
-	background: #405b7f;
-}
-.social .std {
-	color: #fff;
-	/*padding:25px 10px 0 20px;
-	margin: 0;
-	font-size: 16px;
-	line-height: 16px;*/
-}
-.smallSocials{
-	margin: 0;
-	list-style: none;
-}
-.smallSocials li {
-	display: block;
-	float: left;
-	margin: 0;
-}
-.smallSocials li a:before {
-	color: #fff;
-	font-size: 27px;
-	line-height: 27px;
-	position: relative;
-	top: 19px;
-	left: 1px;
-}
-.smallSocials li a {
-	display: block;
-	width: 62px;
-	height: 62px;
-	font-size: 0;
-	color: transparent;
-	background: transparent;
-	border-left: 1px solid #506889;
-	border-left: 1px solid rgba(255,255,255,0.15);
-	text-align: center;
-}
-.smallSocials li a:hover{
-	background: #f78927;
-	text-decoration: none;
-}
 .light {
 	color: #959da6;
 	font-size: 16px;
@@ -130,7 +82,7 @@ hr{
 	list-style: none;
 	margin: 0 0 15px 0;
 }
-ul.comment-list .user-link{
+.user-link{
 	margin-right: 10px;
 	width: 50px;
 	height: 50px;
@@ -138,7 +90,7 @@ ul.comment-list .user-link{
 ul.comment-list ul.comment-list{
 	margin-left: 60px;
 }
-ul.comment-list .author {
+.author {
 	font-size: 14px;
 	line-height: 19px;
 	font-weight: 700;
