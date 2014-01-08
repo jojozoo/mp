@@ -1,0 +1,69 @@
+<div class="galleries-title">
+    <a href="" class="btn btn-default"> <i class="icon-align-justify"></i>
+        全部
+    </a>
+    <a href="" class="btn btn-default"> <i class="icon-thumbs-up"></i>
+        推荐
+    </a>
+    <a href="" class="btn btn-default">
+        <i class="icon-user"></i>
+        用户
+    </a>
+</div>
+<style>
+    .thumbnail{
+        padding: 0;
+        width: 236px;
+    }
+    .thumbnail > img{
+        margin: 0;
+    }
+    .gallery{
+        background: white;
+        margin: 4px 4px 4px 0;
+        float: left;
+    }
+    .gallery, .actions{
+        width: 236px;
+    }
+    .actions{
+        position: absolute;
+    }
+    .galleries .btn{
+        border-radius: 0px;
+    }
+    .item img{
+        width: 236px;
+    }
+    .description, .author-gallery{
+        margin: 10px 0;
+        padding: 0 10px;
+        position: relative;
+    }
+    .reply-icon{
+        position: absolute;
+        right: 0px;
+        bottom: -10px;
+        opacity: 0.3;
+        width: 26px;
+        background: black;
+        height: 16px;
+        padding: 0 0 0 6px;
+        border-radius: 2px;
+    }
+</style>
+<div class="galleries" id="container">
+    <%= render partial: 'row', collection: [1,9,2,9,3,4,5,7,8,9, 4,5,7,8,1,2,9,3], as: :ga %>
+</div>
+<script>
+$(function(){  
+  $('#container').masonry({  
+    // options  
+    itemSelector : '.gallery',  
+    columnWidth : 246
+  });  
+});    
+</script>
+
+
+

@@ -6,6 +6,9 @@ Mp::Application.routes.draw do
   get    '/validate'      => 'sessions#validate'
 
   get    '/register/:tag'     => 'check#register'
+  get    '/search'        => 'search#index'
+
+  resources :galleries
 
   scope "/admin", :module => "admin", :as => 'admin' do
     get    '/'              => 'sessions#index'

@@ -13,6 +13,7 @@ body{
 .breadcrumb {
 	background-color: white;
 	border-radius: 0;
+    margin-bottom: 0;
 }
 .row{
 	margin: 0;
@@ -22,6 +23,10 @@ body{
 }
 .header .avatar{
 	margin: -15px 24px 0 0;
+}
+.avatar-mini{
+    width: 34px;
+    height: 34px;
 }
 .avatar{
 	width: 50px;
@@ -81,6 +86,11 @@ hr{
 .comment-list li{
 	list-style: none;
 	margin: 0 0 15px 0;
+}
+.user-link-mini{
+    margin-right: 6px;
+    width: 34px;
+    height: 34px;
 }
 .user-link{
 	margin-right: 10px;
@@ -184,6 +194,106 @@ ul.comment-list p {
 .float_to:hover {
 	background: #405b7f;
 	text-decoration: none;
+}
+
+.pic{
+    position: relative;
+}
+.pic > div{
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    cursor: pointer;
+}
+.pic .pic-top{
+    left: 0;
+    top: 0;
+}
+.pic .pic-right{
+    top:0;
+    right: 0;
+}
+.pic .pic-bottom{
+    right: 0;
+    bottom: 0;
+}
+.pic .pic-left{
+    left: 0;
+    bottom: 0;
+}
+.radbox{
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+.box_top{
+    border-bottom: 1px solid #e2e2e2;
+    padding: 10px;
+}
+.radbox .title {
+    color: #acacac;
+    font-size: 14px;
+    font-weight: bold;
+}
+.box_con{
+    padding: 10px;
+}
+.radbox ul{
+    list-style: none;
+    padding-left: 0;
+}
+.radbox ul li{
+    margin-bottom: 10px;
+}
+a.tag:before{
+    content: "";
+    float: left;
+    position: absolute;
+    top: 0;
+    left: -12px;
+    width: 0;
+    height: 0;
+    border-color: transparent #e1e1e6 transparent transparent;
+    border-style: solid;
+    border-width: 12px 12px 12px 0;
+}
+a.tag:after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 0;
+    float: left;
+    width: 4px;
+    height: 4px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    background: #fff;
+    -webkit-box-shadow: -1px -1px 2px #bbbbc5;
+    -moz-box-shadow: -1px -1px 2px #bbbbc5;
+    box-shadow: -1px -1px 2px #bbbbc5;
+}
+a.tag:hover {
+    background-color: #567189;
+    color: white;
+    text-shadow: none;
+}
+a.tag:hover:before {
+    border-color: transparent #567189 transparent transparent;
+}
+a.tag{
+    margin: 0 0 10px 20px;
+    padding: 0 10px 0 12px;
+    background: #e1e1e6;
+    text-decoration: none;
+    text-shadow: 1px 1px 0px #fff;
+    box-shadow: 1px 1px 1px rgba(119, 119, 119, 0.5);
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+    font-size: 11px;
 }
 
 
