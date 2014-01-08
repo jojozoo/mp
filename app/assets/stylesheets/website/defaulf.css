@@ -1,8 +1,21 @@
 body{
 	background: transparent url("/images/body01.jpg");
 }
-.col-md-9{
+.main > .col-md-9{
 	background: white;
+}
+.main > .col-md-3{
+	padding-right: 0;
+}
+.breadcrumb {
+	padding: 8px 15px;
+	margin: 10px 0;
+	list-style: none;
+	background-color: white;
+	border-radius: 0;
+}
+.row{
+	margin: 0;
 }
 .header{
 	height: 50px;
@@ -66,12 +79,12 @@ hr{
 .social{
 	background: #405b7f;
 }
-.social h3 {
+.social .std {
 	color: #fff;
-	padding:25px 10px 0 20px;
+	/*padding:25px 10px 0 20px;
 	margin: 0;
 	font-size: 16px;
-	line-height: 16px;
+	line-height: 16px;*/
 }
 .smallSocials{
 	margin: 0;
@@ -110,7 +123,49 @@ hr{
 	font-size: 16px;
 	text-transform: uppercase;
 }
+.comment-list{
+	padding: 0;
+}
+.comment-list li{
+	list-style: none;
+	margin: 0 0 15px 0;
+}
+ul.comment-list .user-link{
+	margin-right: 10px;
+	width: 50px;
+	height: 50px;
+}
+ul.comment-list ul.comment-list{
+	margin-left: 60px;
+}
+ul.comment-list .author {
+	font-size: 14px;
+	line-height: 19px;
+	font-weight: 700;
+	margin-right: 10px;
+}
+ul.comment-list .date {
+	color: #959da6;
+	font-size: 11px;
+	line-height: 15px;
+	display: inline-block;
+	margin-bottom: 10px;
+}
+ul.comment-list p {
+	font-size: 13px;
+	line-height: 21px;
+	margin: 0 0 15px 60px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e8ecf0;
+}
+/**最后一条*/
+.comments > .comment-list > li:last-child p{
+	border-bottom: 0;
+}
 
+.respond{
+	margin: 20px 0;
+}
 
 
 #footer_bg {

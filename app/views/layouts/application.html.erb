@@ -11,16 +11,8 @@
 </head>
 <body>
 	<%= render 'shared/nav' %>
-	<div class="container" style="padding:0;">
-		<ul class="breadcrumb">
-			<li>
-				<a href="/">首页</a>
-			</li>
-			<li>
-				<a href="/pic/">图库</a>
-			</li>
-			<li class="active">图片</li>
-		</ul>
+	<div class="container">
+		<%= render 'shared/breadcrumb' %>
 	</div>
 	<div class="container">
 		<%= yield %>
