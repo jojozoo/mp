@@ -12,26 +12,90 @@
 <body style="background:url(/tmp/bg<%= [1,2,3,4,5].sort_by{rand}[0] %>.jpg) 0 0 no-repeat;">
 	<div class="container">
 		<span class="logo"></span>
-		<form role="form">
-			<h4>注册漫拍网，看精致图片</h4>
+		<!-- <form role="form">
+			<h4>登陆漫拍网，看精致图片</h4>
 			<hr>
-			<div class="form-group">
-				<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-				<p class="help-block">Example block-level help text here.</p>
+			<div class="form-group has-error">
+				<input type="text" class="form-control" id="username" name="username" placeholder="账号/邮箱/手机/昵称">
+				<p class="help-block">账号不存在!</p>
 			</div>
 			<div class="form-group">
-				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
 				<p class="help-block">Example block-level help text here.</p>
 			</div>
-			<input type="submit" value="登录漫拍" class="btn btn-default" style="width:100%;">
+			<input type="submit" value="登录漫拍" class="btn btn-info" style="width:100%;">
 			<hr>
 			<div class="checkbox">
-				<label>
-					<input type="checkbox">记住我
-				</label>
+				<input type="checkbox">记住我
+				<a href="/sign_up">忘记密码</a>
+				<a class="pull-right" href="/sign_up">去注册</a>
 			</div>
-			<a href="/sign_up">去注册</a>
-			<button type="submit" class="btn btn-default">Submit</button>
+			<hr>
+			<h5>合作网站帐号登录,未注册漫拍也可直接登录!</h5>
+			<table class="table">
+				<tr>
+					<td>
+						<a href="/oauth/weibo/instant_login/" class="weibo login-button">微博</a>
+					</td>
+					<td>
+						<a href="/oauth/douban/instant_login/" class="douban login-button pull-right">豆瓣</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="/oauth/renren/instant_login/" class="renren login-button">人人</a>
+					</td>
+					<td>
+						<a href="/oauth/qzone/instant_login/" class="qzone login-button pull-right">QQ</a>
+					</td>
+				</tr>
+			</table>
+		</form> -->
+		<form role="form">
+			<h4>注册漫拍网，分享精致图片</h4>
+			<hr>
+			<div class="form-group has-error">
+				<input type="text" class="form-control" id="username" name="username" placeholder="限字母和数字" value="bopro">
+				<p class="help-block">账号已存在!</p>
+			</div>
+			<div class="form-group">
+				<input type="email" class="form-control" id="email" name="email" placeholder="邮箱">
+				<p class="help-block"></p>
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" id="password" placeholder="密码">
+				<p class="help-block"></p>
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" id="co-password" placeholder="重复密码">
+				<p class="help-block"></p>
+			</div>
+			<input type="submit" value="注册为漫拍账户" class="btn btn-info" style="width:100%;">
+			<hr>
+			<div class="checkbox">
+				<input type="checkbox">同意<a href="">协议</a>
+				<a class="pull-right" href="/sign_up">去登陆</a>
+			</div>
+			<hr>
+			<h5>合作网站帐号登录,未注册漫拍也可直接登录!</h5>
+			<table class="table">
+				<tr>
+					<td>
+						<a href="/oauth/weibo/instant_login/" class="weibo login-button">微博</a>
+					</td>
+					<td>
+						<a href="/oauth/douban/instant_login/" class="douban login-button pull-right">豆瓣</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<a href="/oauth/renren/instant_login/" class="renren login-button">人人</a>
+					</td>
+					<td>
+						<a href="/oauth/qzone/instant_login/" class="qzone login-button pull-right">QQ</a>
+					</td>
+				</tr>
+			</table>
 		</form>
 	</div>
 	<style type="text/css">
@@ -51,6 +115,49 @@
 		}
 		form .form-control, form .btn{
 			border-radius: 0;
+		}
+		.login-button{
+			display: block;
+			width: 114px;
+			height: 36px;
+			background: url(/images/outh-login.png) left top no-repeat;
+			text-indent: -999999px;
+		}
+		.help-block {
+			margin-top: 0;
+			margin-bottom: 6px;
+			font-size: 12px;
+		}
+		.table{
+			margin-bottom: 0;
+		}
+		.table > tbody > tr > td{
+			padding: 0;
+			border-top: 0;
+		}
+		a.weibo:hover {
+			background-position: -456px -40px;
+		}
+		a.weibo {
+			background-position: -456px 0;
+		}
+		a.douban:hover {
+			background-position: -228px -40px;
+		}
+		a.douban {
+			background-position: -228px 0;
+		}
+		a.renren:hover {
+			background-position: 0 -40px;
+		}
+		a.renren {
+			background-position: 0 0;
+		}
+		a.qzone:hover {
+			background-position: -342px -40px;
+		}
+		a.qzone {
+			background-position: -342px 0;
 		}
 	</style>
 </body>

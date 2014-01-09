@@ -10,6 +10,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :city
       t.string :remember_me
       t.string :salt
+      t.string :resume
+      t.string :domain
 
       t.timestamps
     end
