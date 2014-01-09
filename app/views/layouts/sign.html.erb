@@ -9,7 +9,7 @@
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
 </head>
-<body>
+<body style="background:url(/tmp/bg<%= [1,2,3,4,5].sort_by{rand}[0] %>.jpg) 0 0 no-repeat;">
 	<div class="container">
 		<span class="logo"></span>
 		<form role="form">
