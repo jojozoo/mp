@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= @title %></title>
+	<meta name="keywords" content="<%= @keywords %>">
+	<meta name="description" content="<%= @description %>">
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div class="container">
+		<span class="logo"></span>
+		<form role="form">
+			<h4>注册漫拍网，看精致图片</h4>
+			<hr>
+			<div class="form-group">
+				<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+				<p class="help-block">Example block-level help text here.</p>
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+				<p class="help-block">Example block-level help text here.</p>
+			</div>
+			<input type="submit" value="登录漫拍" class="btn btn-default" style="width:100%;">
+			<hr>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox">记住我
+				</label>
+			</div>
+			<a href="/sign_up">去注册</a>
+			<button type="submit" class="btn btn-default">Submit</button>
+		</form>
+	</div>
+	<style type="text/css">
+		.logo{
+			width: 140px;
+			height: 50px;
+			float: left;
+			margin-top: 10px;
+			background: url(/images/logo.png) no-repeat;
+		}
+		form{
+			float: right;
+			margin: 90px 20px 0 0;
+			background: white;
+			padding: 10px;
+			min-width: 320px;
+		}
+		form .form-control, form .btn{
+			border-radius: 0;
+		}
+	</style>
+</body>
+</html>

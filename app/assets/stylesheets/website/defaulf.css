@@ -10,6 +10,12 @@ body{
 .main > .row > .col-md-3{
 	padding-right: 0;
 }
+.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5{
+    padding: 10px;
+}
+.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7{
+    padding: 10px;
+}
 .breadcrumb {
 	background-color: white;
 	border-radius: 0;
@@ -27,6 +33,10 @@ body{
 .avatar-mini{
     width: 34px;
     height: 34px;
+}
+.avatar-big{
+    width: 75px;
+    height: 75px;
 }
 .avatar{
 	width: 50px;
@@ -92,6 +102,12 @@ hr{
     width: 34px;
     height: 34px;
 }
+.user-link-big{
+    margin-right: 10px;
+    width: 75px;
+    height: 75px;
+}
+
 .user-link{
 	margin-right: 10px;
 	width: 50px;
@@ -295,5 +311,3 @@ a.tag{
     position: relative;
     font-size: 11px;
 }
-
-

@@ -9,6 +9,7 @@ Mp::Application.routes.draw do
   get    '/search'        => 'search#index'
 
   resources :galleries
+  resources :users
 
   scope "/admin", :module => "admin", :as => 'admin' do
     get    '/'              => 'sessions#index'

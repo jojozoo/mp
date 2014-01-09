@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  layout 'sign', only: [:new, :sign_up]
 
   def index
 
@@ -21,6 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def validate
+
   end
 
   # DELETE /sign_out 退出

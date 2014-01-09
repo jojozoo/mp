@@ -1,0 +1,24 @@
+<div class="galleries" id="container">
+    <%= render partial: 'row', collection: [1,9,2,9,3,4,5,7,8,9, 4,5,7,8,1,2,9,3], as: :ga %></div>
+<script>
+$(function(){
+  
+  var container = $('#container');
+  container.imagesLoaded(function(){
+    container.masonry({
+        itemSelector : '.gallery',  
+        columnWidth : 246,
+        isAnimated: true
+      });
+  });
+  
+
+  $(".gallery").on('mouseenter', function(){
+    $(this).find('.fade-row').show();
+  }).on('mouseleave', function(){
+    $(this).find('.fade-row').hide();
+  });
+
+});
+
+</script>
