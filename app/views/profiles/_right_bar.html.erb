@@ -1,0 +1,5 @@
+<div class="list-group">
+	<% %{个人设置 头像(在Dt下) 相册 作品 时间轴 粉丝 关注 日志 游记 圈子 活动 点赞 推荐 喜欢 收藏 同步其他网站}.split(/\s/).each_with_index do |row, index| %>
+		<a href="#" class="list-group-item <%= "active" if index.zero? %>"><%= row %></a>
+	<% end %>
+</div>

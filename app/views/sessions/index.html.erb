@@ -65,42 +65,47 @@
 		<hr>
 		<div class="comments">
 			<h4 class="light">所有回应</h4>
-			<ul class="comment-list">
-				<li class="comment" id="li-comment-1">
-					<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
-					<a href="/" class="author">朱晓武</a>
-					<span class="date">2013-08-19 10:37</span>
-					<span class="pull-right">
-						<a class="reply-link" href="/">回应TA</a>
-					</span>
-					<p>
-						这个照片真得很漂亮唉
-					</p>
-					<ul class="comment-list">
-						<li class="comment">
-							<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
-							<a href="/" class="author">朱晓武</a>
+			<ul class="media-list">
+				<li class="media">
+					<a class="pull-left" href="#">
+						<img class="img-circle avatar" src="/images/avatar.jpg">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading">
+							<a href="">朱晓武</a>
 							<span class="date">2013-08-19 10:37</span>
-							<span class="pull-right">
-								<a class="reply-link" href="/">回应TA</a>
-							</span>
-							<p>
-								这个照片真得很漂亮唉
-							</p>	
-						</li>
-					</ul>
+							<a class="reply-link pull-right" href="/">回应TA</a>
+						</h4>
+						<p class="reply-content">这个照片真得很漂亮唉</p>
+						<ul class="media-list">
+							<li class="media">
+								<a class="pull-left" href="#">
+									<img class="img-circle avatar" src="/images/avatar.jpg">
+								</a>
+								<div class="media-body">
+									<h4 class="media-heading">
+										<a href="">朱晓武</a>
+										<span class="date">2013-08-19 10:37</span>
+										<a class="reply-link pull-right" href="/">回应TA</a>
+									</h4>
+									<p class="reply-content">这个照片真得很漂亮唉</p>
+								</div>
+							</li>
+						</ul>
+					</div>
 				</li>
-
-				<li class="comment" id="li-comment-2">
-					<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
-					<a href="/" class="author">朱晓武</a>
-					<span class="date">2013-08-19 10:37</span>
-					<span class="pull-right">
-						<a class="reply-link" href="/">回应TA</a>
-					</span>
-					<p>
-						这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉
-					</p>
+				<li class="media">
+					<a class="pull-left" href="#">
+						<img class="img-circle avatar" src="/images/avatar.jpg">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading">
+							<a href="">朱晓武</a>
+							<span class="date">2013-08-19 10:37</span>
+							<a class="reply-link pull-right" href="/">回应TA</a>
+						</h4>
+						<p>这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉这个照片真得很漂亮唉</p>
+					</div>
 				</li>
 			</ul>
 		</div>
@@ -109,7 +114,7 @@
 			<h3 class="light">回应:</h3>
 			<form role="form">
 				<textarea class="form-control" rows="3"></textarea>
-				<input type="submit" class="btn btn-default" value="提交">
+				<input type="submit" class="btn btn-default pull-right" value="提交" style="margin: 10px 0;">
 			</form>
 		</div>
 	</div>
@@ -120,7 +125,7 @@
 				<a href="" class="pull-right">更多</a>
 			</div>
 			<div class="box_con">
-				<ul>
+				<ul class="list-unstyled">
 					<li><a href="/">Ruby</a></li>
 					<li><a href="/">Mysql</a></li>
 					<li><a href="/">MongoDB</a></li>
@@ -136,22 +141,22 @@
 				<span class="title light">新注用户</span>
 			</div>
 			<div class="box_con">
-				<ul>
-					<li>
-						<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
-						<h5><a href="/" class="author">zhuxiaowu</a></h5>
-						<span class="date">2010-01-01 10:10</span>
+				<ul class="media-list">
+					<% 5.times do %>
+					<li class="media">
+						<a class="pull-left" href="#">
+							<img class="img-circle avatar" src="/images/avatar.jpg">
+						</a>
+						<div class="media-body">
+							<h4 class="media-heading">
+								<a href="">朱晓武</a>
+							</h4>
+							<p>
+								<span class="date">2013-08-19 10:37</span>
+							</p>
+						</div>
 					</li>
-					<li>
-						<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
-						<h4><a href="/" class="author">zhuxiaowu</a></h4>
-						<span class="date">2010-01-01 10:10</span>
-					</li>
-					<li>
-						<a href="/" class="user-link pull-left"><img alt="" src="/images/avatar.jpg" class="avatar img-circle"></a>
-						<h4><a href="/" class="author">zhuxiaowu</a></h4>
-						<span class="date">2010-01-01 10:10</span>
-					</li>
+					<% end %>
 				</ul>
 			</div>
 		</div>
@@ -160,27 +165,9 @@
 				<span class="title light">网站标签</span>
 			</div>
 			<div class="box_con">
-				<a href="/?tag=Ruby" class="tag">Ruby</a>
-				<a href="/?tag=Mysql" class="tag">Mysql</a>
-				<a href="/?tag=MongoDB" class="tag">MongoDB</a>
-				<a href="/?tag=JavaScript" class="tag">JavaScript</a>
-				<a href="/?tag=JQuery" class="tag">JQuery</a>
-				<a href="/?tag=Phonegap" class="tag">Phonegap</a>
-				<a href="/?tag=Titanium" class="tag">Titanium</a>
-				<a href="/?tag=Lua" class="tag">Lua</a>
-				<a href="/?tag=Android" class="tag">Android</a>
-				<a href="/?tag=Redis" class="tag">Redis</a>
-				<a href="/?tag=Rails" class="tag">Rails</a>
-				<a href="/?tag=Nginx" class="tag">Nginx</a>
-				<a href="/?tag=Resque" class="tag">Resque</a>
-				<a href="/?tag=Ubuntu" class="tag">Ubuntu</a>
-				<a href="/?tag=JQueryMobile" class="tag">JQueryMobile</a>
-				<a href="/?tag=node" class="tag">node</a>
-				<a href="/?tag=nodejs" class="tag">nodejs</a>
-				<a href="/?tag=express" class="tag">express</a>
-				<a href="/?tag=socket.io" class="tag">socket.io</a>
-				<a href="/?tag=forever" class="tag">forever</a>
-				<a href="/?tag=%E7%94%9F%E6%B4%BB" class="tag">生活</a>
+				<% ["胶片", "奥林巴斯", "宾得", "索尼", "尼康", "佳能", "徕卡", "卡片机", "120", "数码", "手机", "iphone", "大光圈", "广角", "中画幅", "纪实", "风光", "人文", "人像", "公益", "一条路", "大海", "自拍", "静物", "旅行", "校园", "民俗", "自然", "儿童", "植物", "建筑", "生活", "城市", "光影", "西湖", "女生", "街拍", "彩色", "小品", "黑白", "印象", "现场", "创意", "复古", "小清新", "日系", "lomo", "观念", "微距", "抓拍", "长曝光", "HDR", "逆光", "情绪", "艺术"].each do |row| %>
+				<a href="/?tag=Ruby" class="tag"><%= row %></a>
+				<% end %>
 			</div>
 		</div>
 	</div>

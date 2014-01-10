@@ -9,12 +9,15 @@ Mp::Application.routes.draw do
   get    '/search'        => 'search#index'
 
   resources :galleries
-  resources :users
+  resources :users, :path => "u"
+  resources :works
+  resources :profiles
 
   scope "/admin", :module => "admin", :as => 'admin' do
     get    '/'              => 'sessions#index'
-    get    '/sign_in'       => 'sessions#new'
-    post   '/sign_in'       => 'sessions#create'
+    # 不需要
+    # get    '/sign_in'       => 'sessions#new'
+    # post   '/sign_in'       => 'sessions#create'
     get    '/sign_out'      => 'sessions#destroy'
     # resources :products do
     # end

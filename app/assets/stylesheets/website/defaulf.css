@@ -1,6 +1,14 @@
 body{
 	background: transparent url("/images/body01.jpg");
 }
+form .form-control, form .btn{
+    border-radius: 0;
+}
+.help-block {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 12px;
+}
 .main-tip{
 	margin: 10px auto;
 }
@@ -76,69 +84,36 @@ hr{
 	background: #f1f1f1;
 }
 .opt-b {
-	display: inline-block;
-	position: relative;
 	margin: 0 30px 0 0;
-	font-size: 14px;
-	line-height: 17px;
-	color: #959da6;
-	font-weight: 700;
-	text-transform: uppercase;
+    color: #959da6;
+    font-weight: bold;
 }
 .light {
 	color: #959da6;
 	font-size: 16px;
 	text-transform: uppercase;
 }
-.comment-list{
-	padding: 0;
+.media-heading{
+    font-size: 14px;
 }
-.comment-list li{
-	list-style: none;
-	margin: 0 0 15px 0;
-}
-.user-link-mini{
-    margin-right: 6px;
-    width: 34px;
-    height: 34px;
-}
-.user-link-big{
-    margin-right: 10px;
-    width: 75px;
-    height: 75px;
+.media .date {
+	color: #959da6;
+    font-size: 12px;
 }
 
-.user-link{
-	margin-right: 10px;
-	width: 50px;
-	height: 50px;
+.media .reply-link{
+    font-size: 12px;
 }
-ul.comment-list ul.comment-list{
-	margin-left: 60px;
+.media p{
+    font-size: 13px;
+    line-height: 21px;
+    padding-bottom: 10px;
 }
-.author {
-	font-size: 14px;
-	line-height: 19px;
-	font-weight: 700;
-	margin-right: 10px;
+.media .reply-content{
+    border-bottom: 1px solid #e8ecf0;
 }
-ul.comment-list .date {
-	color: #959da6;
-	font-size: 11px;
-	line-height: 15px;
-	display: inline-block;
-	margin-bottom: 10px;
-}
-ul.comment-list p {
-	font-size: 13px;
-	line-height: 21px;
-	margin: 0 0 15px 60px;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #e8ecf0;
-}
-/**最后一条*/
-.comments > .comment-list > li:last-child p{
-	border-bottom: 0;
+.box_con .media p{
+    padding-bottom: 0;
 }
 
 .respond{
@@ -252,13 +227,6 @@ ul.comment-list p {
 }
 .box_con{
     padding: 10px;
-}
-.radbox ul{
-    list-style: none;
-    padding-left: 0;
-}
-.radbox ul li{
-    margin-bottom: 10px;
 }
 a.tag:before{
     content: "";

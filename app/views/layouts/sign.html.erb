@@ -9,10 +9,11 @@
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
 </head>
+<!--缺少跳转landingpage-->
 <body style="background:url(/tmp/bg<%= [1,2,3,4,5].sort_by{rand}[0] %>.jpg) 0 0 no-repeat;">
 	<div class="container">
 		<span class="logo"></span>
-		<!-- <form role="form">
+		<form role="form">
 			<h4>登陆漫拍网，看精致图片</h4>
 			<hr>
 			<div class="form-group has-error">
@@ -50,8 +51,8 @@
 					</td>
 				</tr>
 			</table>
-		</form> -->
-		<form role="form">
+		</form>
+		<!-- <form role="form">
 			<h4>注册漫拍网，分享精致图片</h4>
 			<hr>
 			<div class="form-group has-error">
@@ -96,7 +97,7 @@
 					</td>
 				</tr>
 			</table>
-		</form>
+		</form> -->
 	</div>
 	<style type="text/css">
 		.logo{
@@ -113,20 +114,12 @@
 			padding: 10px;
 			min-width: 320px;
 		}
-		form .form-control, form .btn{
-			border-radius: 0;
-		}
 		.login-button{
 			display: block;
 			width: 114px;
 			height: 36px;
 			background: url(/images/outh-login.png) left top no-repeat;
 			text-indent: -999999px;
-		}
-		.help-block {
-			margin-top: 0;
-			margin-bottom: 6px;
-			font-size: 12px;
 		}
 		.table{
 			margin-bottom: 0;
