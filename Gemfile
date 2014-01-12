@@ -8,6 +8,12 @@ gem 'rails', '3.2.12'
 gem 'mysql2'
 gem 'will_paginate', '~> 3.0'
 
+gem 'simple_form'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+
+gem 'by_star', :git => 'git://github.com/radar/by_star'
+
 group :development do
 	gem 'awesome_print'
 end

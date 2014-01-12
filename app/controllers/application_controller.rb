@@ -7,7 +7,5 @@ class ApplicationController < ActionController::Base
     @title ||= $site_config[:title]
     @keywords ||= $site_config[:keywords]
     @description ||= $site_config[:description]
-    @duty = $site_config[:be_on_duty][Date.today.wday]
-    @is_duty = $site_config[:be_on_duty_show].eql?('1')
   end
 end
