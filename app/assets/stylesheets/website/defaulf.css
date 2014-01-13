@@ -1,12 +1,19 @@
 body{
 	background: transparent url("/images/body01.jpg");
 }
+textarea.form-control{
+    height: 80px;
+    margin-bottom: 10px;
+}
 form .form-control, form .btn{
     border-radius: 0;
 }
+.form-group{
+    margin-bottom: 0;
+    min-height: 60px;
+}
 .help-block {
-    margin-top: 0;
-    margin-bottom: 6px;
+    margin: 0;
     font-size: 12px;
 }
 .main-tip{

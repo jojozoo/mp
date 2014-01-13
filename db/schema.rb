@@ -17,22 +17,33 @@ ActiveRecord::Schema.define(:version => 20140110053017) do
     t.string   "name"
     t.string   "t"
     t.integer  "likes_count", :default => 0
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.boolean  "del",         :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "password"
-    t.string   "nickname"
-    t.string   "mobile"
     t.string   "email"
+    t.string   "username"
+    t.string   "nickname"
+    t.string   "realname"
+    t.string   "mobile"
+    t.string   "password"
+    t.string   "salt"
     t.string   "province"
     t.string   "city"
+    t.string   "site"
+    t.string   "resume"
+    t.string   "domain"
+    t.string   "profession"
+    t.date     "duty"
+    t.boolean  "gender"
+    t.string   "bg",          :default => "body01.jpg"
+    t.string   "bg_repeat",   :default => "repeat"
     t.string   "remember_me"
-    t.string   "salt"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "del",         :default => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
 end

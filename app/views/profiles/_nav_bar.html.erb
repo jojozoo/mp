@@ -1,0 +1,21 @@
+<% items = {
+		profiles_path => '基本资料', 
+		avatar_profiles_path => '头像设置',
+		security_profiles_path => '安全设置',
+		msg_profiles_path => '消息设置',
+		interactive_profiles_path => '互动设置',
+		bg_profiles_path => '模板设置' } %>
+<div class="page-header">
+	<h3>
+		<i class="icon-wrench"></i>
+		<%= items[request.path] %>
+		<small>Subtext for header</small>
+	</h3>
+</div>
+<ul class="nav nav-tabs">
+	<% items.each do |key, value| %>
+	<li class="<%= 'active' if request.path.eql?(key) %>">
+		<%= link_to value, key %>
+	</li>
+	<% end %>
+</ul>
