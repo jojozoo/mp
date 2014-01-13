@@ -14,7 +14,15 @@ class ProfilesController < ApplicationController
 		render 'index'
 	end
 
+	def privacy
+		render 'index'
+	end
+
 	def msg
+		render 'index'
+	end
+
+	def interactive
 		render 'index'
 	end
 

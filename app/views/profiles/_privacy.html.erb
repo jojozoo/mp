@@ -1,0 +1,19 @@
+<div class="pager">
+    <form class="form-horizontal">
+        <% 0.upto(4) do |i| %>
+        <div class="form-group">
+            <% (i * 2 + i).upto(i * 2 + i + 2) do |index| %>
+            <% k = User::PRIVACY.keys[index] %>
+            <% next unless k %>
+            <div class="col-sm-4">
+                <label class="col-sm-6 control-label <%= index %>" for="user_<%= k %>"><%= User::PRIVACYI18N[k] %></label>   
+                <div class="col-sm-6 input-text-add">
+                    <%= select_tag "privacy[#{k}]", options_for_select(User::PRIVACYVAL.invert, 0), include_blank: false, class: 'form-control' %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+        <% end %>
+        <input type="submit" value="保存" class="btn btn-default">
+    </form>
+</div>

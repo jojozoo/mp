@@ -18,6 +18,7 @@ Mp::Application.routes.draw do
       get 'security'
       get 'msg'
       get 'interactive'
+      get 'privacy'
       get 'bg'
     end
   end

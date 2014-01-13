@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20140110053017) do
     t.string   "profession"
     t.date     "duty"
     t.boolean  "gender"
+    t.integer  "warrant"
     t.string   "bg",          :default => "body01.jpg"
     t.string   "bg_repeat",   :default => "repeat"
     t.string   "remember_me"

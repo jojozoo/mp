@@ -29,6 +29,47 @@ class User < ActiveRecord::Base
     5 => '署名-相同方式共享'
   }
   
+  PRIVACY = {
+    mobile: 0,
+    email: 0,
+    realname: 0,
+    qq: 0,
+    weibo: 0,
+    msn: 0,
+    local: 0,
+    profession: 0,
+    commendations: 0, # 赞过的
+    recommendations: 0, # 推荐的
+    collect: 0, # 收藏的
+    likes: 0, # 喜欢的
+    posts: 0,
+    groups: 0
+  }
+
+  PRIVACYI18N = {
+    mobile: '手机',
+    email: '邮箱',
+    realname: '真实姓名',
+    qq: 'QQ',
+    weibo: '微博',
+    msn: 'MSN',
+    local: '所在地',
+    profession: '职业',
+    commendations: '赞过的',
+    recommendations: '推荐的',
+    collect: '收藏的',
+    likes: '喜欢的',
+    posts: '日志',
+    groups: '圈子'
+  }
+
+  PRIVACYVAL = {
+    0 => '所有人',
+    1 => '关注+粉丝+圈子',
+    2 => '我的关注',
+    3 => '我的粉丝',
+    
+  }
   # from 注册来源
   # profile页 基本资料 头像(在Dt下) 相册 作品 时间轴 粉丝 关注 日志 游记 圈子 活动 点赞 推荐 喜欢 收藏 同步其他网站
   # attr 
@@ -40,7 +81,8 @@ class User < ActiveRecord::Base
   ###权限相关(auth)
   # 邮件提醒: 被关注,加好友,被回应,被喜欢,被点赞,圈子通过,收到漫信
   # 站内通知: 被关注,加好友,被回应,被喜欢,被点赞,圈子通过,收到漫信
-  # 互动设置: 允许回应(所有,圈子,好友,粉丝)针对活动/other,允许漫信(所有,圈子,好友,粉丝)
+  # 站内漫信: 不接受非 圈子,粉丝,关注者的其他信息
+  
   # 公开信息: 电话/邮箱/真实姓名/QQ/weibo/douban/msn/城市/职业
   # 授权类型: 参考kpkpw的图片协议
   ###再考虑
@@ -50,6 +92,7 @@ class User < ActiveRecord::Base
   # friends表(user_id, friend_id, mark) has_many through 朋友关系表
   # feeds表(网站动态)
   # ad(visit, click, title) 暂时不做
+  # 站内互动: 允许回应(所有,圈子,好友,粉丝)针对活动/other,允许漫信(所有,圈子,好友,粉丝) 暂时不加
 
   # recommendations推荐表
   # profiles个人信息表
