@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
   :remember_me, 
   :del
 
+  has_one :de, as: :source
+  has_one :avatar, through: :de, source: :image
+
   WARRANT = {
     0 => '署名',
     1 => '署名-禁止演绎',
@@ -110,7 +113,7 @@ class User < ActiveRecord::Base
 
   # albums用户相册表(name, user_id, auth(only_self, group, follow, group_and_follow, all), page(封面) through:dy)
   # images 图片表(包括avatar)
-  # Dt 各种资源表(活动之类的)
+  # De 各种资源表(活动之类的)
   # tags 图片标签表(ok)
   # like_tags(user_id, tag_id) 感兴趣的标签
   # events(title, content, user_id活动发起类型(官方,用户), end_time, pic(关联image), partners_count(参加者),pics_count, state(未通过 进行中 已结束)) 活动表

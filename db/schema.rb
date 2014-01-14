@@ -11,7 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140110053017) do
+ActiveRecord::Schema.define(:version => 20140114070954) do
+
+  create_table "albums", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "desc"
+    t.integer  "open"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "des", :force => true do |t|
+    t.integer  "source_id"
+    t.string   "source_type"
+    t.integer  "image_id"
+    t.string   "desc"
+    t.boolean  "del",         :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "images", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.string   "name"
+    t.string   "exif"
+    t.boolean  "del",                  :default => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
 
   create_table "tags", :force => true do |t|
     t.string   "name"

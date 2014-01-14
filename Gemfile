@@ -14,6 +14,8 @@ gem 'client_side_validations-simple_form'
 
 gem 'by_star', :git => 'git://github.com/radar/by_star'
 
+gem "paperclip", "~> 3.0"
+
 group :development do
 	gem 'awesome_print'
 end
