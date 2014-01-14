@@ -17,14 +17,15 @@ class Image < ActiveRecord::Base
       s50: '50x50>',
       s30: '30x30>'
     },
-  	url: "/system/:class/:attachment/:id/:basename/:style.:extension",
-  	path: ":rails_root/public/system/:class/:attachment/:id/:basename/:style.:extension",
-  	default_url: "/images/defaults/:class.jpg"
+    url: "/system/:class/:attachment/:id/:basename/:style.:extension",
+    path: ":rails_root/public/system/:class/:attachment/:id/:basename/:style.:extension",
+    default_url: "/images/defaults/:class.jpg",
+    :whiny => false
 
-  validates_attachment :picture,
-    presence: true,
-    content_type: { content_type: ["image/jpg", "image/jpeg", "image/gif", "image/png"] },
-    size: { :in => 0..10.kilobytes }
+  # validates_attachment :picture,
+    # presence: { presence: true, message: 'presence'},
+    # content_type: { content_type: ["image/jpg", "image/jpeg", "image/gif", "image/png"], message: 'test' },
+    # size: { :in => （0..10).kilobytes }
 
   # 通过哪里上传,就是哪个type 暂时定为全部一种style(s10,s20,s60,s110...)
   # ['Bg', 'Album', 'Avatar', 'Work', 'Event'].each do |row|
