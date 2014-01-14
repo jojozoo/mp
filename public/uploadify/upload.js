@@ -20,17 +20,14 @@ $(function(){
     $field.uploadify({//配置uploadify
         'formData'  : {
                         'timestamp' : Math.random(),
-                        'token'     : Math.random()
+                        '<%= key = Rails.application.config.session_options[:key] %>' :'<%= cookies[key] %>',
+                        '<%= request_forgery_protection_token %>' : '<%= form_authenticity_token %>'
                     },
-        'scriptData': {
-                        "<%= key = Rails.application.config.session_options[:key] %>" :"<%= cookies[key] %>",
-                        "<%= request_forgery_protection_token %>" : "<%= form_authenticity_token %>"
-        },
         // xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
         'buttonText': '选择图片',  //选择按钮显示的字符
         'swf'       : '/uploadify/uploadify.swf', //swf文件的位置
         'uploader'  : $field.parents("form").attr("action"), //上传的接收者
-        'cancelImg' : '/uploadify/uploadify-cancel.png',
+        'cancelImg' : 'uploadify-cancel.png',
         'folder'    : '/upload',//上传图片的存放地址
         'auto'      : false,    //选择图片后是否自动上传
         'multi'     : false,   //是否允许同时选择多个(false一次只允许选中一张图片)
@@ -45,11 +42,14 @@ $(function(){
                 $field.uploadify('upload','*');//此处触发上传
                 return false;
             });
-            console.log(file.name);
+            console.log(file);
             // $wrap.find("p.picInfo span").text(file.name);//file.name为选中的图片名称
         },
      
         'onUploadSuccess' : function(file, data, response) {  //上传成功后的触发事件
+            console.log(file);
+            console.log(data);
+            console.log(response);
             $field.uploadify('disable', true);  //(上传成功后)'disable'禁止再选择图片
             data = JSON.parse(data);  //data为接收方(receivePic.php)返回的数据，稍后描述
      

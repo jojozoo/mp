@@ -34,13 +34,14 @@ ActiveRecord::Schema.define(:version => 20140114070954) do
   end
 
   create_table "images", :force => true do |t|
+    t.string   "name"
     t.integer  "user_id"
     t.integer  "album_id"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.string   "name"
+    t.string   "picture_meta"
     t.string   "exif"
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false

@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
   has_many :des
-  attr_accessible :album_id, :exif, :name, :user_id, :picture, :del
+  attr_accessible :album_id, :exif, :name, :user_id, :picture, :picture_meta, :del
   # type 头像, 背景模板, (相册, 作品, 活动)
   # 头像有原图,大图(100x100),中图(50x50),小图(30x30或者其他尺寸)
   # 模板只有原图
@@ -21,6 +21,14 @@ class Image < ActiveRecord::Base
     path: ":rails_root/public/system/:class/:attachment/:id/:basename/:style.:extension",
     default_url: "/images/defaults/:class.jpg",
     :whiny => false
+
+    # before_post_process
+    # after_post_process
+    # before_<attachment>_post_process
+    # after_<attachment>_post_process
+    # 官方说尽可能和activerecord的filter一样,但是返回false(特别是nil), 是不一样的,这个post process将停止
+
+
 
   # validates_attachment :picture,
     # presence: { presence: true, message: 'presence'},
