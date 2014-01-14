@@ -11,13 +11,13 @@ Mp::Application.routes.draw do
   resources :galleries
   resources :users, path: 'u'
   resources :works
-  resources :profiles, path: 'p' do
+  resources :sets, only: [:index, :create], path: 'set' do
     collection do
       get 'basic'
       get 'avatar'
       get 'security'
-      get 'msg'
-      get 'interactive'
+      get 'push'
+      get 'dy'
       get 'privacy'
       get 'bg'
     end
@@ -25,10 +25,6 @@ Mp::Application.routes.draw do
 
   scope '/admin', :module => 'admin', :as => 'admin' do
     get    '/'              => 'sessions#index'
-    # 不需要
-    # get    '/sign_in'       => 'sessions#new'
-    # post   '/sign_in'       => 'sessions#create'
-    get    '/sign_out'      => 'sessions#destroy'
     # resources :products do
     # end
   end

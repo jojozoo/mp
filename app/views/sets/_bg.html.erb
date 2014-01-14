@@ -1,0 +1,23 @@
+<div class="pager">
+	<div class="row">
+		<% 30.times do |i| %>
+			<div class="col-sm-6 col-md-2">
+				<div class="thumbnail">
+					<img src="/images/body0<%= (i % 5) + 1 %>.jpg" class="img-rounded">
+					<div class="caption">
+						<p>
+							<a href="javascript:void(0);" class="btn btn-primary choose-bg">选择</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".choose-bg").on('click', function(){
+		$('body').css('background', 'transparent url(' + $(this).parents('.thumbnail').find('img').attr('src') + ')');
+	})
+})
+</script>
