@@ -7,15 +7,11 @@
 	<script type="text/javascript" src="/uploadify/jquery.uploadify.js"></script>
 	<script type="text/javascript" src="/uploadify/upload.js"></script>
 	<link rel="stylesheet" type="text/css" href="/uploadify/uploadify.css">
-	<form style="margin: auto 100px;">
-		<div class="form-group">
-			<input type="file" id="upload-img">
-			<p class="help-block">仅支持JPG、GIF、PNG格式，文件小于5M。(使用高质量图片，可生成高清头像)</p>
-		</div>
-		<div class="form-group">
-			<input type="submit" value="上传头像" class="btn btn-default" id="upload-submit">
-		</div>
-	</form>
+	<%= simple_form_for Image::Avatar.new, url: upload_index_path do |f| %>
+		<%= f.input :picture, :label => false, :input_html => { :multiple => true, name: 'image_avatar[picture]' }, as: :file %>
+		<p class="help-block">仅支持JPG、GIF、PNG格式，文件小于5M。(使用高质量图片，可生成高清头像)</p>
+		<%= f.button :submit, "上传头像", class: 'btn-default btn' %>
+	<% end %>
 	<div class="row upload-row">
 		<div class="col-md-5" style="border-right: 1px solid #ccc;">
 			<img class="img-thumbnail" src="http://localhost:3030/images/user/1.png"></div>

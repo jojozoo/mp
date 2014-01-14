@@ -7,9 +7,11 @@ Mp::Application.routes.draw do
 
   get    '/register/:tag'     => 'check#register'
   get    '/search'        => 'search#index'
+  post   '/upload/:type' => 'upload#create', as: :upload # 图片上传
 
   resources :galleries
   resources :users, path: 'u'
+  
   resources :works
   resources :sets, only: [:index, :create], path: 'set' do
     collection do

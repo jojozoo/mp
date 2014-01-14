@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
 
   has_one :de, as: :source
   has_one :avatar, through: :de, source: :image
+  has_many :images
 
   WARRANT = {
     0 => '署名',

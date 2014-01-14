@@ -21,6 +21,7 @@ gem 'exifr'
 
 group :development do
 	gem 'awesome_print'
+    gem 'pry'
 end
 # Gems used only for assets and not required
 # in production environments by default.
