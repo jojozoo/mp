@@ -34,4 +34,6 @@ Mp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  #paperclip 日志
+  Paperclip.options[:log] = true
 end

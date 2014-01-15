@@ -7,7 +7,13 @@ Mp::Application.routes.draw do
 
   get    '/register/:tag'     => 'check#register'
   get    '/search'        => 'search#index'
-  post   '/upload/:type' => 'upload#create', as: :upload # 图片上传
+
+  resources :images do
+    collection do
+      post   ':type', action: :create # 图片上传
+      post   'cut', action: :cut # 图片上传
+    end
+  end
 
   resources :galleries
   resources :users, path: 'u'
