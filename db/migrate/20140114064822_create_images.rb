@@ -5,7 +5,7 @@ class CreateImages < ActiveRecord::Migration
       t.integer :user_id
       t.integer :album_id
       t.attachment :picture
-      t.string :picture_meta
+      t.text :picture_meta
       t.string :exif
       t.boolean :del, default: false
       # +----------------------+--------------+------+-----+---------+----------------+

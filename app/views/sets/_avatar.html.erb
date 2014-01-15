@@ -6,6 +6,10 @@
 	.upload-row > div{
 		text-align: center;
 	}
+	.s300m{
+		width: 310px;
+		height: 310px;
+	}
 	.s260m{
 		width: 270px;
 		height: 270px;
@@ -31,8 +35,8 @@
 		height: 260px;
 	}
 	.s200{
-		width: 190px;
-		height: 190px;
+		width: 200px;
+		height: 200px;
 	}
 	.s100{
 		width: 100px;
@@ -49,10 +53,6 @@
 	.review img{
 		position: relative;
 	}
-	.cut-margin{
-		border: 1px solid #ccc;
-		padding: 4px;
-	}
 	</style>
 	<link rel="stylesheet" type="text/css" href="/uploadify/uploadify.css">
 	<link rel="stylesheet" type="text/css" href="/uploadify/jquery.imgareaselect.css" />
@@ -61,8 +61,8 @@
 	<script type="text/javascript" src="/uploadify/custom-upload.js"></script>
 
 	<div class="row upload-row">
-		<div class="col-md-5" style="border-right: 1px solid #ccc;">
-			<div class="cut-margin">
+		<div class="col-md-5" style="border-right: 1px solid #ccc;height:300px;">
+			<div class="cut-margin s300m">
 				<img class="s300" id="cut-area" src="/images/defaults/avatar.jpg">
 			</div>
 		</div>

@@ -53,6 +53,12 @@ $(function(){
                 radio     = max_value > 300 ? (300 / max_value) : 1,
                 suo_value = parseInt(min_value * radio);
 
+
+                // orignH    = (data.width > data.height ? data.height : data.width) / min_value;
+                // orignW    = 
+                // radio     = , // 300框的压缩比
+                // x2y2      = parseInt(min_value * (max_value > 300 ? (300 / max_value) : 1)), // x2y2坐标值
+
             var imageArea = $('#cut-area');
             // 显示已上传的图片
             imageArea.attr('src', data.original);
@@ -73,29 +79,11 @@ $(function(){
                 y2: suo_value,
      
                 onSelectChange: function(img,selection){
-                    console.log(selection);
-                    var scaleX = 300 / (selection.width || 1);
-                    var scaleY = 300 / (selection.height || 1);
-                  
                     $('.s200').css({
-                        width: Math.round(scaleX * 300) + 'px',
-                        height: Math.round(scaleY * 300) + 'px',
-                        marginLeft: '-' + Math.round(scaleX * selection.x1) + 'px',
-                        marginTop: '-' + Math.round(scaleY * selection.y1) + 'px'
-                    });
-                /*selection包括x1,y1,x2,y2,width,height几个量，分别为选区的偏移和高宽。*/
-                    rangeX   = selection.width/300;  //依据选取高宽和画布高宽换算出缩放比例
-                    rangeY   = selection.height/300;
-                    prevImgW = prevFrameW/rangeX; //根据缩放比例和预览图容器高宽得出预览图的高宽
-                    prevImgH = prevFrameH/rangeY;
-     
-                    //实时调整预览图预览裁剪后效果，可参见http://odyniec.net/projects/imgareaselect/ 的Live Example
-                    $imgCut.css({
-                        'width' : Math.round(prevImgW)+"px",
-                        'height' : Math.round(prevImgH)+"px",
-                        'margin-left':"-"+Math.round((prevFrameW/selection.width)*selection.x1)+"px",
-                        'margin-top' :"-"+Math.round((prevFrameH/selection.height)*selection.y1)+"px"
-                     
+                        width: Math.round(data.width * radio * 200 / Math.abs(selection.x2 - selection.x1)) + 'px',
+                        height: Math.round(data.height * radio * 200 / Math.abs(selection.y2 - selection.y1)) + 'px',
+                        'margin-left': '-' + Math.round(selection.x1 * 200 / Math.abs(selection.x2 - selection.x1)) + 'px',
+                        'margin-top': '-' + Math.round(selection.y1 * 200 / Math.abs(selection.x2 - selection.x1)) + 'px'
                     });
                 },
                 onSelectEnd: function(img,selection){//放开选区后的触发事件

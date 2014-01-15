@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20140114070954) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.string   "picture_meta"
+    t.text     "picture_meta"
     t.string   "exif"
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false
