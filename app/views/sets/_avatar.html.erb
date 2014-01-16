@@ -6,26 +6,6 @@
 	.upload-row > div{
 		text-align: center;
 	}
-	.s300m{
-		width: 310px;
-		height: 310px;
-	}
-	.s260m{
-		width: 270px;
-		height: 270px;
-	}
-	.s200m{
-		width: 210px;
-		height: 210px;
-	}
-	.s100m{
-		width: 110px;
-		height: 110px;
-	}
-	.s50m{
-		width: 60px;
-		height: 60px;
-	}
 	.s300{
 		max-width: 300px;
 		max-height: 300px;
@@ -61,10 +41,8 @@
 	<script type="text/javascript" src="/uploadify/custom-upload.js"></script>
 
 	<div class="row upload-row">
-		<div class="col-md-5" style="border-right: 1px solid #ccc;height:300px;">
-			<div class="cut-margin s300m">
-				<img class="s300" id="cut-area" src="/images/defaults/avatar.jpg">
-			</div>
+		<div class="col-md-5" style="border-right: 1px solid #ccc;min-height:300px;">
+			<img class="s300" id="cut-area" src="/images/defaults/avatar.jpg">
 		</div>
 		<div class="col-md-7">
 			<div class="row">
@@ -73,18 +51,18 @@
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-					<div class="cut-margin review s200m">
+					<div class="review s200">
 						<img class="s200" src="/images/defaults/avatar.jpg">
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="row">
-						<div class="cut-margin review s100m">
+						<div class="review s100">
 							<img class="s100" src="/images/defaults/avatar.jpg">
 						</div>
 					</div>
 					<div class="row" style="margin-top: 40px">
-						<div class="cut-margin review s50m">
+						<div class="review s50">
 							<img class="s50" src="/images/defaults/avatar.jpg">
 						</div>
 					</div>

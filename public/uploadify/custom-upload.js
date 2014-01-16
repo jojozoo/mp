@@ -79,7 +79,7 @@ $(function(){
                 y2: suo_value,
      
                 onSelectChange: function(img,selection){
-                    $('.s200').css({
+                    $('.s200 img').css({
                         width: Math.round(data.width * radio * 200 / Math.abs(selection.x2 - selection.x1)) + 'px',
                         height: Math.round(data.height * radio * 200 / Math.abs(selection.y2 - selection.y1)) + 'px',
                         'margin-left': '-' + Math.round(selection.x1 * 200 / Math.abs(selection.x2 - selection.x1)) + 'px',
