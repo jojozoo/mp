@@ -9,6 +9,9 @@ class ImagesController < ApplicationController
     end
 
     def cut
+        @image = @current_user.images.find(params[:id])
+        # 再确定是头像照片
+        # 之后再裁剪
 
     end
 
