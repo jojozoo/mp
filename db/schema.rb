@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140114070954) do
+ActiveRecord::Schema.define(:version => 20140116093717) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id"
@@ -33,6 +33,21 @@ ActiveRecord::Schema.define(:version => 20140114070954) do
     t.datetime "updated_at",                     :null => false
   end
 
+  create_table "events", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "logo_id"
+    t.string   "title"
+    t.text     "content"
+    t.date     "end_time"
+    t.integer  "partners_count", :default => 0
+    t.integer  "images_count",   :default => 0
+    t.integer  "state",          :default => 0
+    t.boolean  "show",           :default => false
+    t.boolean  "del",            :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
   create_table "images", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -46,6 +61,15 @@ ActiveRecord::Schema.define(:version => 20140114070954) do
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
+  end
+
+  create_table "partners", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.boolean  "winner",     :default => false
+    t.integer  "level"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "tags", :force => true do |t|

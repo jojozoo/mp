@@ -47,50 +47,6 @@
         用户
     </a>
 </div>
-<style type="text/css">
-.share-i{
-    width: 18px;
-    height: 18px;
-    display: block;
-    background: url(/images/share_icon.png) 0 0 no-repeat;
-}
-.link-weibo:hover .share-i{
-    background-position: -40px 0;
-}
-.link-qzone:hover .share-i{
-    background-position: -40px -40px;
-}
-.link-qqmp:hover .share-i{
-    background-position: -40px -80px;
-}
-.link-qq:hover .share-i{
-    background-position: -40px -160px;
-}
-.link-douban:hover .share-i{
-    background-position: -40px -200px;
-}
-.link-rr:hover .share-i{
-    background-position: -40px -240px;
-}
-.link-weibo .share-i{
-    background-position: 0 0;
-}
-.link-qzone .share-i{
-    background-position: 0 -40px;
-}
-.link-qqmp .share-i{
-    background-position: 0 -80px;
-}
-.link-qq .share-i{
-    background-position: 0 -160px;
-}
-.link-douban .share-i{
-    background-position: 0 -200px;
-}
-.link-rr .share-i{
-    background-position: 0 -240px;
-}
-</style>
 <div class="btn-group share-group">
     <a href="" class="link-weibo btn btn-default">
         <i class="share-i share-weibo"></i>
@@ -131,36 +87,4 @@
         <i class="share-i share-rr"></i>
     </a>
 </div>
-<style>
-    .galleries{
-        margin: 10px -10px 0 0;
-    }
-    .gallery{
-        background: white;
-        margin: 0 10px 10px 0;
-        float: left;
-    }
-    .gallery, .actions{
-        width: 236px;
-    }
-    .fade-row{
-        display: none;
-    }
-    .actions{
-        position: absolute;
-    }
-    .galleries .btn{
-        border-radius: 0px;
-    }
-    .item img{
-        width: 236px;
-    }
-    .description, .author-gallery{
-        margin: 10px 0;
-        padding: 0 10px;
-    }
-    .gallery-icons{
-        min-height: 16px;
-    }
-</style>
 <%= render params[:tag] || 'pics' %>

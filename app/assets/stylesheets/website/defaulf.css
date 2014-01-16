@@ -286,3 +286,178 @@ a.tag{
     position: relative;
     font-size: 11px;
 }
+.page-header{
+    margin: 20px 0;
+}
+.header-tip{
+    font-size: 16px;
+    display: block;
+    margin-left: 20px;
+}
+.has-error .form-error-tip{
+    color: #a94442;
+}
+.form-error-tip{
+    margin: 8px 0 0 0;
+}
+.pager {
+    list-style: none;
+    text-align: left;
+}
+.share-i{
+    width: 18px;
+    height: 18px;
+    display: block;
+    background: url(/images/share_icon.png) 0 0 no-repeat;
+}
+.link-weibo:hover .share-i{
+    background-position: -40px 0;
+}
+.link-qzone:hover .share-i{
+    background-position: -40px -40px;
+}
+.link-qqmp:hover .share-i{
+    background-position: -40px -80px;
+}
+.link-qq:hover .share-i{
+    background-position: -40px -160px;
+}
+.link-douban:hover .share-i{
+    background-position: -40px -200px;
+}
+.link-rr:hover .share-i{
+    background-position: -40px -240px;
+}
+.link-weibo .share-i{
+    background-position: 0 0;
+}
+.link-qzone .share-i{
+    background-position: 0 -40px;
+}
+.link-qqmp .share-i{
+    background-position: 0 -80px;
+}
+.link-qq .share-i{
+    background-position: 0 -160px;
+}
+.link-douban .share-i{
+    background-position: 0 -200px;
+}
+.link-rr .share-i{
+    background-position: 0 -240px;
+}
+.logo{
+    width: 140px;
+    height: 50px;
+    float: left;
+    margin-top: 10px;
+    background: url(/images/logo.png) no-repeat;
+}
+form{
+    float: right;
+    margin: 90px 20px 0 0;
+    background: white;
+    padding: 10px;
+    min-width: 320px;
+}
+.login-button{
+    display: block;
+    width: 114px;
+    height: 36px;
+    background: url(/images/outh-login.png) left top no-repeat;
+    text-indent: -999999px;
+}
+.table{
+    margin-bottom: 0;
+}
+.table > tbody > tr > td{
+    padding: 0;
+    border-top: 0;
+}
+a.weibo:hover {
+    background-position: -456px -40px;
+}
+a.weibo {
+    background-position: -456px 0;
+}
+a.douban:hover {
+    background-position: -228px -40px;
+}
+a.douban {
+    background-position: -228px 0;
+}
+a.renren:hover {
+    background-position: 0 -40px;
+}
+a.renren {
+    background-position: 0 0;
+}
+a.qzone:hover {
+    background-position: -342px -40px;
+}
+a.qzone {
+    background-position: -342px 0;
+}
+.upload-row{
+    border-bottom: 1px solid #ccc;
+}
+.upload-row > div{
+    text-align: center;
+}
+.s300{
+    max-width: 300px;
+    max-height: 300px;
+}
+.s260{
+    width: 260px;
+    height: 260px;
+}
+.s200{
+    width: 200px;
+    height: 200px;
+}
+.s100{
+    width: 100px;
+    height: 100px;
+}
+.s50{
+    width: 50px;
+    height: 50px;
+}
+.review{
+    position: relative;
+    overflow: hidden;
+}
+.review img{
+    position: relative;
+}
+.galleries{
+    margin: 10px -10px 0 0;
+}
+.gallery{
+    background: white;
+    margin: 0 10px 10px 0;
+    float: left;
+}
+.gallery, .actions{
+    width: 236px;
+}
+.fade-row{
+    display: none;
+}
+.actions{
+    position: absolute;
+}
+.galleries .btn{
+    border-radius: 0px;
+}
+.item img{
+    width: 236px;
+}
+.description, .author-gallery{
+    margin: 10px 0;
+    padding: 0 10px;
+}
+.gallery-icons{
+    min-height: 16px;
+}

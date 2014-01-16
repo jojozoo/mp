@@ -117,8 +117,8 @@ class User < ActiveRecord::Base
   # De 各种资源表(活动之类的)
   # tags 图片标签表(ok)
   # like_tags(user_id, tag_id) 感兴趣的标签
-  # events(title, content, user_id活动发起类型(官方,用户), end_time, pic(关联image), partners_count(参加者),pics_count, state(未通过 进行中 已结束)) 活动表
-  # partners参加者(event_id,user_id,winner活动获奖用户, level(名次))
+  # events 活动表
+  # partners活动参加者表(如果不需要可以挪到des表中)
   # groups圈子表(name, desc, user_id, visits_count, events_count, members_count, permission(公开 被搜索))
   # group users(user_id, group_id, auth(创建 管理 成员)) 圈子用户中间表
   # account 第三方登陆用户表

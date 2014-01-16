@@ -16,6 +16,7 @@ Mp::Application.routes.draw do
   end
 
   resources :galleries
+  resources :events, path: 'e'
   resources :users, path: 'u'
   
   resources :works

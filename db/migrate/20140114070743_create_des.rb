@@ -4,6 +4,7 @@ class CreateDes < ActiveRecord::Migration
       t.integer :source_id
       t.string :source_type
       t.integer :image_id
+      t.integer :user_id
       t.string :desc
       t.boolean :del, default: false
 
