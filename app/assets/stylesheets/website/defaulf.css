@@ -17,27 +17,44 @@ form .form-control, form .btn{
     font-size: 12px;
 }
 .main-tip{
-	margin: 10px auto;
+	margin: 10px auto 0;
+}
+.alert{
+    margin-bottom: 10px;
 }
 .main > .row > .col-md-9{
 	background: white;
 }
-.main > .row > .col-md-3{
-	padding-right: 0;
+
+.profile-mini{
+    display: inline-block;
 }
-.col-xs-5, .col-sm-5, .col-md-5, .col-lg-5{
-    padding: 10px;
+.link-outs{
+    margin-top: 6px;
+    display: inline-block;
 }
-.col-xs-7, .col-sm-7, .col-md-7, .col-lg-7{
-    padding: 10px;
+.link-outs .pin-count{
+    padding-left: 0;
+    border-left: 0;
+}
+.link-outs > div{
+    display: inline-block;
+    padding: 0 10px;
+    border-left: 1px solid #E8E8E8;
+}
+.link-outs strong, .link-outs span{
+    display: block;
+}
+.desc{
+    background-color: #f5f5f5;
+    font-size: 12px;
+    color: #A7A7A7;
+    margin-top: 8px;
+    padding: 4px;
 }
 .breadcrumb {
-	background-color: white;
 	border-radius: 0;
     margin-bottom: 0;
-}
-.row{
-	margin: 0;
 }
 .header{
 	height: 50px;
@@ -99,9 +116,6 @@ hr{
 	color: #959da6;
 	font-size: 16px;
 	text-transform: uppercase;
-}
-.media-heading{
-    font-size: 14px;
 }
 .media .date {
 	color: #959da6;
@@ -288,6 +302,7 @@ a.tag{
 }
 .page-header{
     margin: 20px 0;
+    padding-bottom: 0;
 }
 .header-tip{
     font-size: 16px;
@@ -300,9 +315,9 @@ a.tag{
 .form-error-tip{
     margin: 8px 0 0 0;
 }
-.pager {
+.mp-page {
+    margin: 20px 0;
     list-style: none;
-    text-align: left;
 }
 .share-i{
     width: 18px;
@@ -353,7 +368,7 @@ a.tag{
     margin-top: 10px;
     background: url(/images/logo.png) no-repeat;
 }
-form{
+.sign-form{
     float: right;
     margin: 90px 20px 0 0;
     background: white;
@@ -460,4 +475,37 @@ a.qzone {
 }
 .gallery-icons{
     min-height: 16px;
+}
+.thumbnail {
+    display: block;
+    padding: 0;
+    margin-bottom: 10px;
+    line-height: 1.428571429;
+    background-color: #ffffff;
+    border: 0;
+    border-radius: 0;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.thumbnail .caption{
+    padding: 4px;
+}
+.thumbnail > img, .thumbnail a > img{
+    width: 100%;
+}
+.caption h5{
+    font-size: 15px;
+}
+.caption{
+    font-size: 12px;
+}
+.caption span{
+    color: #ccc;
+}
+.second-nav{
+    margin-bottom: 6px;
+    background-color: white;
+}
+.second-nav a{
+    text-decoration: none;
 }

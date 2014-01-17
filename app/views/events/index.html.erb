@@ -1,15 +1,50 @@
-<div class="body-title">
-    <a href="/e" class="btn btn-default">全部活动</a>
-    <a href="/e" class="btn btn-default">同城活动</a>
-    <a href="/e" class="btn btn-default">默认活动</a>
-    <a href="/e" class="btn btn-default">正在进行的活动</a>
-    <a href="/e" class="btn btn-default">已结束的活动</a>
-    <a href="/e" class="btn btn-success pull-right"><i class="icon-flag"></i>发起活动</a>
-</div>
+<ul class="breadcrumb second-nav">
+	<li>
+		<a href="/e" class="">
+			全部活动
+		</a>
+	</li>
+	<li>
+		<a href="/e" class="">
+			同城活动
+		</a>
+	</li>
+	<li>
+		<a href="/e" class="">
+			默认活动
+		</a>
+	</li>
+	<li>
+		<a href="/e" class="">
+			正在进行的活动
+		</a>
+	</li>
+	<li>
+		<a href="/e" class="">
+			已结束的活动
+		</a>
+	</li>
+	<a href="/e" class="btn btn-xs btn-success pull-right" style="margin-right: -10px;">
+		<i class="icon-flag"></i>
+		发起活动
+	</a>
+</ul>
 <div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="/e/1" class="thumbnail">
-      <img src="/images/avatar.jpg">
-    </a>
-  </div>
+	<% Event.limit(20).each do |event| %>
+		<div class="col-sm-6 col-md-3">
+			<div class="thumbnail">
+				<%= link_to image_tag("/tmp/p#{[1,2,3,4,5,7,8,9].sort_by{rand}[0]}.jpeg"), event_path(event), target: '_blank' %>
+				<div class="caption">
+					<%= link_to event_path(event), target: '_blank' do %>
+						<h5><%= event.title %></h5>
+					<% end %>
+					<p>
+						我们期望活动，我们盼望未来
+					</p>
+					<span>人数/照片:<%= 0 %>/190</span>
+					<span>结束时间:<%= event.end_time %></span>
+				</div>
+			</div>
+		</div>
+	<% end %>
 </div>

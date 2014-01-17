@@ -1,10 +1,93 @@
-<div class="page-header">
-	<h3>
-		<i class="icon-wrench"></i>
-		基本资料
-		<small>Subtext for header</small>
-	</h3>
-</div>
-<div class="pager">
-	
+<div class="row">
+	<style type="text/css">.row{background: white;margin: 0;}.page-header, .mp-page{padding: 0 15px;}</style>
+	<div class="page-header">
+		<h4>
+			2013我的年度十大照片和年度专题3
+			<small>
+				<a class="text-success">100</a>张照片&nbsp;&nbsp;
+				<a class="text-success">30</a>人参加
+			</small>
+			<a href="" class="btn btn-success btn-sm pull-right" style="margin-top:-4px;">上传到本活动</a>
+		</h4>
+	</div>
+	<div class="mp-page">
+		<div class="media">
+			<img class="media-object pull-left" src="/tmp/bg1.jpg" style="width:800px;height:300px;">
+			<div class="media-body">
+				<h4 class="media-heading">活动公告
+					<small>活动里的推荐</small>
+				</h4>
+				<hr>
+				<ul>
+					<% 5.times do %>
+					<li>
+						<a href="">活动里的推荐</a>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div class="event-content desc">
+			<p>
+				小伙伴们，你的手机里一定攒下了不少精彩的照片吧，快拍快拍网（kpkpw.com）首次独家推出“我的十大手机照片”征集活动，上传10张手机作品，便有机会赢中国首届十大手机摄影师大奖。
+			</p>
+			<p>
+				这“十大照片”，题材不限，可以是你的家人和同事，可以是旅行和生活，可以是工作和学习……照片请上传到快拍快拍网（www.kpkpw.com）·“我的十大手机照片（2013）”频道，上传的时候，请不要忘记给这十张照片取一个标题，每一张照片都要有说明，再顺便给告诉我们用什么手机拍的？
+			</p>
+			<p>
+				&nbsp; &nbsp; 我们将评出首届十佳手机摄影师，奖品高端智能手机一部。我们还将为中国首届十佳手机摄影师在杭州、台北、大理、平遥、丽水等摄影节上举办展览。
+			</p>
+			<p>&nbsp; &nbsp; 活动征集即日开始，到2014年2月16日截止。2014年3月揭晓。</p>
+			<p>&nbsp;</p>
+			<p>上传要求：</p>
+			<p>数量规定10张，需发在同一个相册（否则不予评选哦）</p>
+			<p></p>
+		</div>
+	</div>
+
+	<ul class="breadcrumb second-nav" style="margin-left:15px;margin-right:15px;background:#f5f5f5;">
+		<li>
+			<a href="javascript:void(0);" class="">最新上传</a>
+		</li>
+		<li>
+			<a href="javascript:void(0);" class="">人气最高</a>
+		</li>
+		<li>
+			<a href="javascript:void(0);" class="">评论最多</a>
+		</li>
+		<li>
+			<a href="javascript:void(0);" class="">每周热图</a>
+		</li>
+		<li>
+			<a href="javascript:void(0);" class="">只看自己</a>
+		</li>
+		<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
+			<i class="icon-th"></i>
+		</a>
+		<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
+			<i class="icon-th-list"></i>
+		</a>
+		<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
+			<i class="icon-th-large"></i>
+		</a>
+	</ul>
+	<div class="row">
+		<% Event.limit(20).each do |event| %>
+			<div class="col-sm-6 col-md-3">
+				<div class="thumbnail">
+					<%= link_to image_tag("/tmp/p#{[1,2,3,4,5,7,8,9].sort_by{rand}[0]}.jpeg"), event_path(event), target: '_blank' %>
+					<div class="caption">
+						<%= link_to event_path(event), target: '_blank' do %>
+							<h5><%= event.title %></h5>
+						<% end %>
+						<p>
+							我们期望活动，我们盼望未来
+						</p>
+						<span>人数/照片:<%= 0 %>/190</span>
+						<span>结束时间:<%= event.end_time %></span>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
 </div>

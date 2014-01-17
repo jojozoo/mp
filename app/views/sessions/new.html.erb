@@ -1,1 +1,40 @@
-sign in
+<form class="sign-form">
+	<h4>登陆漫拍网，看精致图片</h4>
+	<hr>
+	<div class="form-group has-error">
+		<input type="text" class="form-control" id="username" name="username" placeholder="账号/邮箱/手机/昵称">
+		<p class="help-block">账号不存在!</p>
+	</div>
+	<div class="form-group">
+		<input type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
+		<p class="help-block">Example block-level help text here.</p>
+	</div>
+	<input type="submit" value="登录漫拍" class="btn btn-info btn-block">
+	<hr>
+	<div class="checkbox">
+		<input type="checkbox">
+		记住我
+		<a href="/forgot_password">忘记密码</a>
+		<a class="pull-right" href="/sign_up">去注册</a>
+	</div>
+	<hr>
+	<h5>合作网站帐号登录,未注册漫拍也可直接登录!</h5>
+	<table class="table">
+		<tr>
+			<td>
+				<a href="/oauth/weibo/instant_login/" class="weibo login-button">微博</a>
+			</td>
+			<td>
+				<a href="/oauth/douban/instant_login/" class="douban login-button pull-right">豆瓣</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="/oauth/renren/instant_login/" class="renren login-button">人人</a>
+			</td>
+			<td>
+				<a href="/oauth/qzone/instant_login/" class="qzone login-button pull-right">QQ</a>
+			</td>
+		</tr>
+	</table>
+</form>
