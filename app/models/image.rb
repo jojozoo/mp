@@ -8,6 +8,7 @@ class Image < ActiveRecord::Base
   # 相册还有封面图(就是小图)
   # 相册,作品,活动就是原图,大图(400x600), 中图(200x300), 小图(50x60/ 50x50/ 60x60)
   # 需要设置访问权限
+  # 几种水印图, 原图无水印,原图水印,大图水印, 中图水印, 小图中间水印, 头像, 50x50无水印
 
   has_attached_file :picture,
     processors: [:watermark],

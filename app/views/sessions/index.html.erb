@@ -3,15 +3,14 @@
 	.row{margin-left: 0;}
 	</style>
 	<div class="col-md-9">
-		<div class="title">
-			<h3>郭雍脑海中刷刷刷的出现三个问句</h3>
+		<div class="page-header">
+			<h3>
+				郭雍脑海中刷刷刷的出现三个问句
+			</h3>
 		</div>
 		<div class="pic">
 			<a href=""><img src="/images/photo.jpg"></a>
-			<div class="pic-top"></div>
-			<div class="pic-right"></div>
-			<div class="pic-bottom"></div>
-			<div class="pic-left"></div>
+			<%= render "/shared/actions" %>
 		</div>
 		<hr>
 		<div class="position">
@@ -176,3 +175,23 @@
 	</div>
 </div>
 
+
+<script>
+	window._bd_share_config={
+		"common":{
+			"bdSnsKey":{},
+			"bdText":"这是分享内容",
+			"bdDesc":"这是分享摘要",
+			"bdUrl":"这是分享的url",
+			"bdPic":"分享的图片",
+			"bdMini":"1", // 下拉浮层中分享按钮的列数
+			"bdMiniList":false,
+			"bdStyle":"1",
+			"bdSize":"16"
+		},
+		"share":{
+			"bdSize":16
+		}
+	};
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>

@@ -102,11 +102,6 @@ form .form-control, form .btn{
 hr{
 	margin: 10px auto;
 }
-.pic{
-	width: 100%;
-	height: 100%;
-	background: #f1f1f1;
-}
 .opt-b {
 	margin: 0 30px 0 0;
     color: #959da6;
@@ -210,28 +205,9 @@ hr{
 
 .pic{
     position: relative;
-}
-.pic > div{
-    width: 40%;
-    height: 40%;
-    position: absolute;
-    cursor: pointer;
-}
-.pic .pic-top{
-    left: 0;
-    top: 0;
-}
-.pic .pic-right{
-    top:0;
-    right: 0;
-}
-.pic .pic-bottom{
-    right: 0;
-    bottom: 0;
-}
-.pic .pic-left{
-    left: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #f1f1f1;
 }
 .radbox{
     background-color: #fff;
@@ -445,12 +421,6 @@ a.qzone {
 }
 .review img{
     position: relative;
-}
-.fade-row{
-    display: none;
-}
-.actions{
-    position: absolute;
 }
 .item img{
     width: 236px;
