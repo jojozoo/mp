@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20140116093717) do
     t.integer  "source_id"
     t.string   "source_type"
     t.integer  "image_id"
+    t.integer  "user_id"
     t.string   "desc"
     t.boolean  "del",         :default => false
     t.datetime "created_at",                     :null => false
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20140116093717) do
     t.integer  "logo_id"
     t.string   "title"
     t.text     "content"
+    t.string   "tag"
     t.date     "end_time"
     t.integer  "partners_count", :default => 0
     t.integer  "images_count",   :default => 0

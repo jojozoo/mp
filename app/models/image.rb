@@ -10,11 +10,12 @@ class Image < ActiveRecord::Base
   # 需要设置访问权限
 
   has_attached_file :picture,
+    processors: [:watermark],
     styles: {
       original_water: {
         :geometry => '600x400>',
         :watermark_path => "#{Rails.root}/public/images/logo.png", # 水印图片所在位置
-        :position => 'Center' # 添加的水印在图片哪个位置
+        # :position => 'Center' # 添加的水印在图片哪个位置
       },
       big: "600x600>",
       thumbnail: '300x300>',
