@@ -62,7 +62,7 @@ form .form-control, form .btn{
 .header .avatar{
 	margin: -15px 24px 0 0;
 }
-.avatar-mini{
+.thumbnail a > img.avatar-mini{
     width: 34px;
     height: 34px;
 }
@@ -446,35 +446,14 @@ a.qzone {
 .review img{
     position: relative;
 }
-.galleries{
-    margin: 10px -10px 0 0;
-}
-.gallery{
-    background: white;
-    margin: 0 10px 10px 0;
-    float: left;
-}
-.gallery, .actions{
-    width: 236px;
-}
 .fade-row{
     display: none;
 }
 .actions{
     position: absolute;
 }
-.galleries .btn{
-    border-radius: 0px;
-}
 .item img{
     width: 236px;
-}
-.description, .author-gallery{
-    margin: 10px 0;
-    padding: 0 10px;
-}
-.gallery-icons{
-    min-height: 16px;
 }
 .thumbnail {
     display: block;

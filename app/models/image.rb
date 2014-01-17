@@ -1,3 +1,4 @@
+require 'paperclip_processors/watermark'
 class Image < ActiveRecord::Base
   has_many :des
   attr_accessible :album_id, :exif, :name, :user_id, :picture, :picture_meta, :del
@@ -10,6 +11,11 @@ class Image < ActiveRecord::Base
 
   has_attached_file :picture,
     styles: {
+      original_water: {
+        :geometry => '600x400>',
+        :watermark_path => "#{Rails.root}/public/images/logo.png", # 水印图片所在位置
+        :position => 'Center' # 添加的水印在图片哪个位置
+      },
       big: "600x600>",
       thumbnail: '300x300>',
       small: '100x100>',

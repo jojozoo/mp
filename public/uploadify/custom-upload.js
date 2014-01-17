@@ -1,12 +1,13 @@
 $(function(){
     $field = $("#upload-file");
+    var uploadify_form_data = {};
+    var csrf_token = $('meta[name=csrf-token]').attr('content');
+    var csrf_param = $('meta[name=csrf-param]').attr('content');
+    uploadify_form_data[csrf_param] = encodeURI(csrf_token);
+    uploadify_form_data['timestamp'] = Math.random();
     $field.uploadify({//配置uploadify
-        'formData'  : {
-                        'timestamp' : Math.random(),
-                        '<%= key = Rails.application.config.session_options[:key] %>' :'<%= cookies[key] %>',
-                        '<%= request_forgery_protection_token %>' : '<%= form_authenticity_token %>'
-                    },
-        // xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+        'formData'  : uploadify_form_data,
+        'scriptData' : uploadify_form_data,
         'buttonText': '选择图片',  //选择按钮显示的字符
         'preventCaching' : true,
         'swf'       : '/uploadify/uploadify.swf', //swf文件的位置

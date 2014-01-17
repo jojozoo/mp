@@ -1,54 +1,78 @@
-<div class="gallery">
+<div class="col-sm-6 col-md-3">
+  <div class="thumbnail">
     <div class="actions fade-row">
         <div class="pull-right">
-            <a href="javascript:void(0);" class="btn btn-default">
+            <a href="javascript:void(0);" class="btn btn-success btn-xs">
                 <i class="icon-thumbs-up"></i>
                 赞
             </a>
-            <a href="javascript:void(0);" class="btn btn-default">
+            <a href="javascript:void(0);" class="btn btn-success btn-xs">
                 <i class="icon-heart"></i>
                 喜欢
             </a>
         </div>
         <div class="pull-left">
-            <a class="btn btn-default">
+            <a class="btn btn-success btn-xs">
                 <i class="icon-eye-open"></i>
                 <span class="text">关注</span>
             </a>
         </div>
     </div>
-    <a href="/pins/132707308/">
-        <img src="/tmp/p<%= ga %>.jpeg">
-    </a>
-    <!-- <hr>
-    <div class="tags-gallery">
-        <a href="" class="tag">每日一拍</a>
-        <a href="" class="tag">编辑推荐</a>
-        <a href="" class="tag">编辑推荐</a>
-        <a href="" class="tag">编辑推荐</a>
-    </div>
-    <hr> -->
-    <p class="description">
+    <%= link_to image_tag("/tmp/p#{image}.jpeg"), '/', target: '_blank' %>
+    <div class="caption">
+      <p>
         苹果电脑30年产品收藏视频展示苹果电脑30年产
-    </p>
-    <hr>
-    <div class="media author-gallery">
-        <a class="pull-left" href="#">
-            <img class="img-circle avatar-mini" src="/images/avatar.jpg"></a>
-        <div class="media-body">
-            <h4 class="media-heading">
-                <a href="">朱晓武</a><span class="date">2013-08-19 10:37</span>
-            </h4>
-            <h4 class="media-heading gallery-icons">
-                <a href="javascript:void(0);" class="reply-icon fade-row"> 
+      </p>
+      <span>评论(10) 喜欢(12) 赞(8) 关注(20)</span>
+      <hr>
+      <div class="media author-gallery">
+          <a class="pull-left" href="#">
+              <img class="img-circle avatar-mini" src="/images/avatar.jpg"></a>
+          <div class="media-body">
+              <div class="media-heading">
+                  <a href="">朱晓武</a>
+                  <span class="date">2013-08-19 10:37</span>
+              </div>
+              <div class="media-heading">
+                  <a href="javascript:void(0);" class="reply-icon">
                     <i class="icon-comment-alt"></i>
-                </a>
-                <a href="javascript:void(0);" class="tags-icon fade-row"> 
+                  </a>
+                  <a href="javascript:void(0);" class="tags-icon">
                     <i class="icon-tags"></i>
-                </a>
-            </h4>
-        </div>
-        
+                  </a>
+              </div>
+          </div>
+      </div>
     </div>
-
+  </div>
 </div>
+
+<!-- <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_kaixin001" data-cmd="kaixin001" title="分享到开心网"></a>
+</div>
+<script>
+window._bd_share_config={
+    "common":{
+        "bdSnsKey":{},
+        "bdText":"",
+        "bdMini":"2",
+        "bdMiniList":false,
+        "bdPic":"",
+        "bdStyle":"1",
+        "bdSize":"16"
+    },
+    "share":{},
+    "image":{
+        "viewList":["tsina","tqq","sqq","qzone","renren","douban","kaixin001","t163","tqf","weixin"],
+        "viewText":"分享到：","viewSize":"16"},
+        "viewPos": "bottom"
+    };
+
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script> -->
