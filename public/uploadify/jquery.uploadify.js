@@ -962,7 +962,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 			// Call the default event handler
 			if ($.inArray('onUploadSuccess', settings.overrideEvents) < 0) {
-				$('#' + file.id).find('.data').html(' - Complete');
+				$('#' + file.id).find('.data').html(' - 上传成功');
 			}
 
 			// Call the user-defined event handler

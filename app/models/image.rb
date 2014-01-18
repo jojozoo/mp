@@ -1,14 +1,16 @@
 require 'paperclip_processors/watermark'
 class Image < ActiveRecord::Base
   has_many :des
-  attr_accessible :album_id, :exif, :name, :user_id, :picture, :picture_meta, :del
+  attr_accessible :album_id, :warrant, :exif, :name, :user_id, :picture, :picture_meta, :del
   # type 头像, 背景模板, (相册, 作品, 活动)
   # 头像有原图,大图(100x100),中图(50x50),小图(30x30或者其他尺寸)
   # 模板只有原图
   # 相册还有封面图(就是小图)
-  # 相册,作品,活动就是原图,大图(400x600), 中图(200x300), 小图(50x60/ 50x50/ 60x60)
+  # 相册,作品,活动就是原图,大图(400x600), 中图(300x300), 小图(50x60/ 50x50/ 60x60)
   # 需要设置访问权限
   # 几种水印图, 原图无水印,原图水印,大图水印, 中图水印, 小图中间水印, 头像, 50x50无水印
+  # cover 封面
+  # 活动上传完是消息，之后是回应
 
   has_attached_file :picture,
     processors: [:watermark],
@@ -20,6 +22,7 @@ class Image < ActiveRecord::Base
       },
       big: "600x600>",
       thumbnail: '300x300>',
+      cover: '260x180#',
       small: '100x100>',
       s60: '60x60>',
       s50: '50x50>',

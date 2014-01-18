@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
     
     def new
-
+        @event = Event.find_by_id(params[:eid])
     end
 
     def show
@@ -17,12 +17,12 @@ class ImagesController < ApplicationController
 
     def create
         @image = Image.create(picture: params[:Filedata], name: params[:Filename], user_id: User.first.id)
-        # binding.pry
+        
         json = {
             width: @image.picture.width, 
             height: @image.picture.height, 
             size: @image.picture.size,
-            original: @image.picture.url
+            original: @image.picture.url(:cover)
         }
         render json: json.to_json
     end

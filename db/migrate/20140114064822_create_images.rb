@@ -4,6 +4,7 @@ class CreateImages < ActiveRecord::Migration
       t.string :name
       t.integer :user_id
       t.integer :album_id
+      t.integer :warrant # 授权
       t.attachment :picture
       t.text :picture_meta
       t.string :exif
