@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116093717) do
+ActiveRecord::Schema.define(:version => 20140119075801) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(:version => 20140116093717) do
     t.string   "name"
     t.integer  "user_id"
     t.integer  "album_id"
+    t.integer  "state",                :default => 0
+    t.integer  "warrant"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
@@ -65,6 +67,25 @@ ActiveRecord::Schema.define(:version => 20140116093717) do
     t.datetime "updated_at",                              :null => false
   end
 
+  create_table "messages", :force => true do |t|
+    t.integer  "from_id"
+    t.integer  "to_id"
+    t.integer  "state"
+    t.string   "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "notices", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sends_id"
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "read"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "partners", :force => true do |t|
     t.integer  "event_id"
     t.integer  "user_id"
@@ -72,6 +93,15 @@ ActiveRecord::Schema.define(:version => 20140116093717) do
     t.integer  "level"
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "sends", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "tag"
+    t.boolean  "del"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tags", :force => true do |t|
@@ -100,12 +130,14 @@ ActiveRecord::Schema.define(:version => 20140116093717) do
     t.date     "duty"
     t.boolean  "gender"
     t.integer  "warrant"
-    t.string   "bg",          :default => "body01.jpg"
-    t.string   "bg_repeat",   :default => "repeat"
+    t.integer  "messages_count", :default => 0
+    t.integer  "notices_count",  :default => 0
+    t.string   "bg",             :default => "body01.jpg"
+    t.string   "bg_repeat",      :default => "repeat"
     t.string   "remember_me"
-    t.boolean  "del",         :default => false
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+    t.boolean  "del",            :default => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
   end
 
 end

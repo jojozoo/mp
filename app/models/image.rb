@@ -1,7 +1,7 @@
 require 'paperclip_processors/watermark'
 class Image < ActiveRecord::Base
   has_many :des
-  attr_accessible :album_id, :warrant, :exif, :name, :user_id, :picture, :picture_meta, :del
+  attr_accessible :album_id, :warrant, :state, :exif, :name, :user_id, :picture, :picture_meta, :del
   # type 头像, 背景模板, (相册, 作品, 活动)
   # 头像有原图,大图(100x100),中图(50x50),小图(30x30或者其他尺寸)
   # 模板只有原图
@@ -10,7 +10,7 @@ class Image < ActiveRecord::Base
   # 需要设置访问权限
   # 几种水印图, 原图无水印,原图水印,大图水印, 中图水印, 小图中间水印, 头像, 50x50无水印
   # cover 封面
-  # 活动上传完是消息，之后是回应
+  # 如果是图片后缀, 但不是图片, 那么图片会加载不起来, 要想办法统计到, 现在的方式是通过日志分析
 
   has_attached_file :picture,
     processors: [:watermark],

@@ -1,0 +1,5 @@
+<div class="list-group">
+    <% @datas.each do |key, value| %>
+        <%= link_to value[:name], "my_#{key}".to_sym, class: "list-group-item #{'active' if key.eql?(controller_name)}" %>
+    <% end %>
+</div>

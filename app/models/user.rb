@@ -17,12 +17,28 @@ class User < ActiveRecord::Base
   :warrant, # 授权
   :bg,
   :bg_repeat, 
-  :remember_me, 
+  :remember_me,
+  :messages_count,
+  :nocices_count,
   :del
 
   has_one :de, as: :source
   has_one :avatar, through: :de, source: :image
   has_many :images
+  
+  has_many :messages
+  has_many :notices
+  # 收件箱
+  has_many :iboxs, class_name: 'Message', conditions: {state: [nil, 0, 1], sdel: 0}, foreign_key: :to_id
+  # 未读
+  has_many :unreads, class_name: 'Message', conditions: {state: [nil, 0], sdel: 0}, foreign_key: :to_id
+  # 已读
+  has_many :reads, class_name: 'Message', conditions: {state: 1, sdel: 0}, foreign_key: :to_id
+  # 垃圾
+  has_many :trashs, class_name: 'Message', conditions: {state: 2, sdel: 0}, foreign_key: :to_id
+  # 发件箱
+  has_many :outboxs, class_name: 'Message', conditions: {fdel: 0}, foreign_key: :from_id
+  
 
   WARRANT = {
     0 => '署名',
@@ -74,6 +90,10 @@ class User < ActiveRecord::Base
     3 => '我的粉丝',
     
   }
+
+  def send_msg(to, content)
+    self.outboxs.create(content: content, to_id: to.id, state: 0)
+  end
   # from 注册来源
   # profile页 基本资料 头像(在Dt下) 相册 作品 时间轴 粉丝 关注 日志 游记 圈子 活动 点赞 推荐 喜欢 收藏 同步其他网站
   # attr 
@@ -104,9 +124,10 @@ class User < ActiveRecord::Base
   # visits(profile event image album group)最新访问表(user_id, visit_id, mark) 
   # works作品表image_id event_id user_id
   # timeline时间轴表(user_id)
-  # site_sends全站邮件/通知/漫信表(title/content/state/end_time) after_create(nodejs)
-  # state: 网站(网页显示),全部用户,xx圈子,特定用户(相册超过多少等等)
-  # notice网站通知表(user_id site_sends_id title content read(true/false))
+  # micro 动态表
+
+  # TODO 活动上传完是 send 消息/通知, 之后是回应, 之后是关注的人
+  # notice网站通知表(user_id sends_id title content read(true/false))
   # message 漫信消息表 from_id to_id state(已读/未读/垃圾) content after_create(创建发送)
   
   # posts 游记，日志表
@@ -114,6 +135,7 @@ class User < ActiveRecord::Base
 
   # albums用户相册表(name, user_id, auth(only_self, group, follow, group_and_follow, all), page(封面) through:dy)
   # images 图片表(包括avatar)
+  # image_groups图片组表(user_id,event_id,content(描述))
   # De 各种资源表(活动之类的)
   # tags 图片标签表(ok)
   # like_tags(user_id, tag_id) 感兴趣的标签

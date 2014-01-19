@@ -16,14 +16,23 @@ class ImagesController < ApplicationController
     end
 
     def create
+        # 如果没有类型就跳转到上传页,
+        redirect_to action: 'new' if params[:type].blank?
         @image = Image.create(picture: params[:Filedata], name: params[:Filename], user_id: User.first.id)
-        
-        json = {
-            width: @image.picture.width, 
-            height: @image.picture.height, 
-            size: @image.picture.size,
-            original: @image.picture.url(:cover)
-        }
-        render json: json.to_json
+
+        data = if params[:type].eql?('avatar')
+             {
+                width: @image.picture.width,
+                height: @image.picture.height,
+                size: @image.picture.size,
+                url: @image.picture.url(:original)
+            }
+        else
+            {
+                time: @image.created_at.to_s(:db),
+                url: @image.picture.url(:cover)
+            }
+        end
+        render json: data.to_json
     end
 end

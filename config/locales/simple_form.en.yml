@@ -26,6 +26,8 @@ en:
     labels:
       defaults:
         username: '帐号'
+      user:
+        username: '帐号'
         password: '密码'
         nickname: '昵称'
         mobile: '手机'
@@ -38,6 +40,9 @@ en:
         profession: '职业'
         duty: '生日'
         resume: '个人简介'
+      album:
+        name: '名称'
+        desc: '描述'
     hints:
       defaults:
         domain: '申请成功将不可修改!'

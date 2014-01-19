@@ -26,7 +26,7 @@ $(function(){
             var data = JSON.parse(data);
             var str  = '<div class="col-sm-6 col-md-3">'
                 str +=     '<div class="thumbnail">'
-                str +=         '<img alt="P9" src="' + data.original + '">'
+                str +=         '<img alt="P9" src="' + data.url + '">'
                 str +=         '<div class="caption">'
                 str +=             '<a href="javascript:void(0);" class="btn btn-default btn-xs front-cover">设为封面</a>'
                 str +=             '<a href="javascript:void(0);" class="btn btn-default btn-xs remove-self">删除本张</a>'
@@ -41,7 +41,7 @@ $(function(){
                 str +=                 '</a>'
                 str +=             '</div>'
                 str +=             '<textarea class="once-desc" placeholder="输入图片描述"></textarea>'
-                str +=             '<span>上传时间：2014-01-17 19:27:55</span>'
+                str +=             '<span>上传时间：' + data.time + '</span>'
                 str +=         '</div>'
                 str +=     '</div>'
                 str += '</div>'
@@ -50,6 +50,11 @@ $(function(){
     });
     $(".choose-album").on('click', function(){
         $("#album").val($(this).text());
+        $("#album-text").text($(this).text());
+    });
+    $(".choose-event").on('click', function(){
+        $("#event").val($(this).text());
+        $("#event-text").text($(this).text());
     });
     function remove_self(){
         $(this).parents(".col-md-3").fadeOut(function(){

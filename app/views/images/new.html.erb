@@ -23,7 +23,7 @@
             上传作品
             <% if @event %>
             <small>
-                活动: <%= link_to @event.title, event_path(@event), target: '_blank' %>
+                到活动: <%= link_to @event.title, event_path(@event), target: '_blank' %>
             </small>
             <% end %>
         </h4>
@@ -35,65 +35,78 @@
     <script type="text/javascript" src="/uploadify/uploadify-work.js"></script>
     <form action="" class="" style="padding:15px;">
         <input type="file" id="upload-file">
-        <div class="input-group" style="width: 600px;">
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    默认相册
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="javascript:void(0);" class="choose-album">我的那些事</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="choose-album">头像相册</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" class="choose-album">默认相册</a>
-                    </li>
-                </ul>
-            </div>
-            <input type="text" class="form-control" value="默认相册" id="album" name="album">
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#my-album">
-                    创建相册
-                </button>
+        <div class="form-group">
+            <div class="input-group" style="width: 600px;">
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="album-text">默认相册</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="javascript:void(0);" class="choose-album">我的那些事</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="choose-album">头像相册</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="choose-album">默认相册</a>
+                        </li>
+                    </ul>
+                </div>
+                <input type="text" class="form-control" value="默认相册" id="album" name="album" disabled>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#my-album">
+                        创建相册
+                    </button>
+                </div>
             </div>
         </div>
-        
-        <div class="input-group" style="width: 600px;">
-            <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    <%= @event.try(:title) || '选择活动' %>
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <% Event.limit(10).each do |e| %>
-                    <li>
-                        <%= link_to e.title, 'javascript:void(0);', class: 'choose-event' %>
-                    </li>
-                    <% end %>
-                </ul>
+        <div class="form-group">
+            <div class="input-group" style="width: 600px;">
+                <% unless @event %>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        <span id="event-text">选择活动</span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <% Event.limit(10).each do |e| %>
+                        <li>
+                            <%= link_to e.title, 'javascript:void(0);', class: 'choose-event' %>
+                        </li>
+                        <% end %>
+                    </ul>
+                </div>
+                <% end %>
+                <input type="text" class="form-control" disabled value="<%= @event.title if @event %>" id="event" name="event">
             </div>
-            <input type="text" class="form-control" value="<%= @event.title if @event %>" id="event" name="event">
         </div>
-            
+        <fiv class="form-group">
+            <input type="submit" class="btn btn-default" value="保存">
+        </fiv>
     </form>
 </div>
+
 <div class="modal fade" id="my-album">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Modal title</h4>
+        <h4 class="modal-title">创建相册</h4>
       </div>
       <div class="modal-body">
-        <p>One fine body&hellip;</p>
+        <%= simple_form_for Album.new, validate: true, remote: true do |f| %>
+            <%= f.input :name %>
+            <%= f.input :desc, as: :text, input_html:{rows: 3} %>
+            <%= f.submit '保存', class: 'btn btn-primary pull-right' %>
+        <% end %>
+        <div class="clearfix"></div>
       </div>
-      <div class="modal-footer">
+      <!-- <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

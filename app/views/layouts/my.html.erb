@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%= @title %></title>
+    <meta name="keywords" content="<%= @keywords %>">
+    <meta name="description" content="<%= @description %>">
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+</head>
+<body>
+    <%= render 'shared/nav' %>
+    <div class="container main-tip">
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <strong>通知通知:</strong> 漫拍网V2版本即将发布!
+        </div>
+    </div>
+    <div class="container main">
+        <div class="row" style="margin-left:0;">
+            <div class="col-md-9">
+                <%= render '/my/shared/top_bar' %>
+                <div class="mp-page">
+                    <%= yield %>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <%#= render '/my/shared/right_bar' %>
+                <div class="list-group">
+                    <% @datas.each do |key, value| %>
+                        <%= link_to value[:name], "my_#{key}".to_sym, class: "list-group-item #{'active' if key.eql?(controller_name)}" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%= render 'shared/to_top' %>
+    <%= render 'shared/footer' %>
+</body>
+</html>

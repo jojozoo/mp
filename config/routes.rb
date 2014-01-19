@@ -16,20 +16,39 @@ Mp::Application.routes.draw do
   end
 
   resources :galleries
+  resources :albums
   resources :events, path: 'e'
   resources :users, path: 'u'
   
   resources :works
-  resources :sets, only: [:index, :create], path: 'set' do
-    collection do
-      get 'basic'
-      get 'avatar'
-      get 'security'
-      get 'push'
-      get 'dy'
-      get 'privacy'
-      get 'bg'
+  scope '/my', module: 'my', as: 'my' do
+    get '/' => 'sets#index'
+    resources :sets, only: [:index, :create], path: 'set' do
+      collection do
+        get 'basic'
+        get 'avatar'
+        get 'security'
+        get 'push'
+        get 'dy'
+        get 'privacy'
+        get 'bg'
+      end
     end
+    resources :albums
+    resources :works
+    resources :msgs do
+      collection do
+        get 'read'
+        get 'unread'
+        get 'trash'
+      end
+    end
+    resources :timelines
+    resources :follows
+    resources :events
+    resources :groups
+    resources :inters
+    resources :other_sites
   end
 
   scope '/admin', :module => 'admin', :as => 'admin' do

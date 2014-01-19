@@ -22,11 +22,8 @@ $(function(){
         'fileTypeExts': '*.gif; *.jpg; *.png; *.jpeg', //允许的后缀
         'fileTypeDesc': 'Image Files', //允许的格式，详见文档
      
-        'onSelect': function(file) {//选择文件后的触发事件
-            // $(".gogo").show().click(function(){//自定义的按钮，显示点击执行上传
-            //     $field.uploadify('upload','*');//此处触发上传
-            //     return false;
-            // });
+        'onSelect': function(file) {
+            //选择文件后的触发事件
             console.log('selectend')
         },
      
@@ -46,9 +43,9 @@ $(function(){
             x2y2  = parseInt(min * radio); // 截图区域x2和y2的值
         var imageArea = $('#cut-area');
         // 显示已上传的图片
-        imageArea.attr('src', data.original);
+        imageArea.attr('src', data.url);
         // 裁剪结果替换
-        $(".review img").attr("src", data.original);
+        $(".review img").attr("src", data.url);
         
         var cutJson = {}; //实际坐标点
         //配置imgAreaSelect
