@@ -1,12 +1,10 @@
 class CreateMessages < ActiveRecord::Migration
   def change
     create_table :messages do |t|
-      t.integer :from_id
-      t.integer :to_id
-      t.integer :state, default: 0
-      t.boolean :fdel, default: 0
-      t.boolean :sdel, default: 0
-      t.string :content
+      t.integer :talk_id
+      t.integer :user_id
+      t.string :text
+      t.integer :del, default: 0
 
       t.timestamps
     end

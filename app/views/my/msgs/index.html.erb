@@ -7,57 +7,17 @@
         background: #fffced;
     }
 </style>
-<% @msgs.each do |msg| %>
-<div class="media <% 'unread' if msg.unread? %>">
-    <%= link_to image_tag('/images/avatar.jpg', class: 'avatar-big img-rounded'), users_path(msg.from_id), class: 'pull-left' %>
+<% @talks.each do |talk| %>
+<div class="media <%= 'unread' if talk.unread? %>">
+    <%= link_to image_tag('/images/avatar.jpg', class: 'avatar img-circle'), users_path(talk.sender_id), class: 'pull-left' %>
     <div class="media-body">
         <h5 class="media-heading">
             <a href="/qrfwwuw5pq/" class="author">朱晓武</a>
         </h5>
         <div style="font-size:12px;">
-            网页设计，爱玩爱学习，对新事物很感兴趣，通过花瓣不断充实自己，愿自己与花瓣共同成长。
+            <%= talk.text + '-----' + talk.id.to_s %>
         </div>
     </div>
 </div>
 <% end %>
-
-<div class="media">
-    <a class="pull-left" href="javascript:void(0);">
-        <img src="/images/avatar.jpg" class="avatar-big img-rounded">
-    </a>
-    <div class="media-body">
-        <h5 class="media-heading">
-            <a href="/qrfwwuw5pq/" class="author">朱晓武</a>
-        </h5>
-        <div style="font-size:12px;">
-            网页设计，爱玩爱学习，对新事物很感兴趣，通过花瓣不断充实自己，愿自己与花瓣共同成长。
-        </div>
-    </div>
-</div>
-<div class="media">
-    <a class="pull-left" href="javascript:void(0);">
-        <img src="/images/avatar.jpg" class="avatar-big img-rounded">
-    </a>
-    <div class="media-body">
-        <h5 class="media-heading">
-            <a href="/qrfwwuw5pq/" class="author">朱晓武</a>
-        </h5>
-        <div style="font-size:12px;">
-            网页设计，爱玩爱学习，对新事物很感兴趣，通过花瓣不断充实自己，愿自己与花瓣共同成长。
-        </div>
-    </div>
-</div>
-<div class="media">
-    <a class="pull-left" href="javascript:void(0);">
-        <img src="/images/avatar.jpg" class="avatar-big img-rounded">
-    </a>
-    <div class="media-body">
-        <h5 class="media-heading">
-            <a href="/qrfwwuw5pq/" class="author">朱晓武</a>
-        </h5>
-        <div style="font-size:12px;">
-            网页设计，爱玩爱学习，对新事物很感兴趣，通过花瓣不断充实自己，愿自己与花瓣共同成长。
-        </div>
-    </div>
-</div>
-<%= will_paginate @msgs %>
+<%= will_paginate @talks %>

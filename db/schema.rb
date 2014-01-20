@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140119075801) do
+ActiveRecord::Schema.define(:version => 20140120145855) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id"
@@ -68,14 +68,12 @@ ActiveRecord::Schema.define(:version => 20140119075801) do
   end
 
   create_table "messages", :force => true do |t|
-    t.integer  "from_id"
-    t.integer  "to_id"
-    t.integer  "state",      :default => 0
-    t.boolean  "fdel",       :default => false
-    t.boolean  "sdel",       :default => false
-    t.string   "content"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "talk_id"
+    t.integer  "user_id"
+    t.string   "text"
+    t.integer  "del",        :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "notices", :force => true do |t|
@@ -115,6 +113,17 @@ ActiveRecord::Schema.define(:version => 20140119075801) do
     t.datetime "updated_at",                     :null => false
   end
 
+  create_table "talks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sender_id"
+    t.string   "text"
+    t.integer  "state",          :default => 1
+    t.integer  "messages_count", :default => 0
+    t.boolean  "del",            :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "username"
@@ -132,14 +141,14 @@ ActiveRecord::Schema.define(:version => 20140119075801) do
     t.date     "duty"
     t.boolean  "gender"
     t.integer  "warrant"
-    t.integer  "messages_count", :default => 0
-    t.integer  "notices_count",  :default => 0
-    t.string   "bg",             :default => "body01.jpg"
-    t.string   "bg_repeat",      :default => "repeat"
+    t.integer  "talks_count",   :default => 0
+    t.integer  "notices_count", :default => 0
+    t.string   "bg",            :default => "body01.jpg"
+    t.string   "bg_repeat",     :default => "repeat"
     t.string   "remember_me"
-    t.boolean  "del",            :default => false
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.boolean  "del",           :default => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
 end

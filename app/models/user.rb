@@ -26,18 +26,15 @@ class User < ActiveRecord::Base
   has_one :avatar, through: :de, source: :image
   has_many :images
   
-  has_many :messages
   has_many :notices
-  # 收件箱
-  has_many :iboxs, class_name: 'Message', conditions: {state: [nil, 0, 1], sdel: 0}, foreign_key: :to_id
+  # 收件箱 & 发件箱 名义没有发件箱
+  has_many :iboxs, class_name: 'Talk', conditions: {del: false}
   # 未读
-  has_many :unreads, class_name: 'Message', conditions: {state: [nil, 0], sdel: 0}, foreign_key: :to_id
+  has_many :unreads, class_name: 'Talk', conditions: {state: 1, del: false}
   # 已读
-  has_many :reads, class_name: 'Message', conditions: {state: 1, sdel: 0}, foreign_key: :to_id
+  has_many :reads, class_name: 'Talk', conditions: {state: 0, del: false}
   # 垃圾
-  has_many :trashs, class_name: 'Message', conditions: {state: 2, sdel: 0}, foreign_key: :to_id
-  # 发件箱
-  has_many :outboxs, class_name: 'Message', conditions: {fdel: 0}, foreign_key: :from_id
+  has_many :trashs, class_name: 'Talk', conditions: 'state != 0 and state != 1 and del = 0'
   
 
   WARRANT = {
@@ -91,8 +88,16 @@ class User < ActiveRecord::Base
     
   }
 
-  def send_msg(to, content)
-    self.outboxs.create(content: content, to_id: to.id, state: 0)
+  def send_msg(to, text)
+    # 发送者发件箱一条
+    sendtalk = Talk.find_or_create_by_user_id_and_sender_id(self.id, to.id)
+    sendtalk.update_attributes(text: text, state: 0)
+    sendtalk.messages.create(text: text, user_id: sendtalk.user_id)
+
+    # 接受者收件箱一条
+    jointalk = Talk.find_or_create_by_user_id_and_sender_id(to.id, self.id)
+    jointalk.update_attributes(text: text, state: 1)
+    jointalk.messages.create(text: text, user_id: jointalk.user_id)
   end
   # from 注册来源
 

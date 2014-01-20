@@ -17,7 +17,7 @@ class CreateUsers < ActiveRecord::Migration
       t.date   :duty
       t.boolean :gender
       t.integer :warrant # 授权
-      t.integer :messages_count, default: 0
+      t.integer :talks_count, default: 0
       t.integer :notices_count, default: 0
       t.string :bg, default: 'body01.jpg'
       t.string :bg_repeat, default: 'repeat'

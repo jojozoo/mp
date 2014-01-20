@@ -1,18 +1,7 @@
 class Message < ActiveRecord::Base
-  attr_accessible :content, :from_id, :state, :to_id, :sdel, :fdel
-  # fdel 发件人删除
-  # sdel 收件人删除
-  # 发件人
-  belongs_to :sender, class_name: 'User', foreign_key: :from_id
-  # 收件人
-  belongs_to :iboxer, class_name: 'User', foreign_key: :to_id
-  # state(未读/已读/垃圾)
+  attr_accessible :text, :talk_id, :user_id, :del
 
-  def unread?
-  	state.zero?
-  end
+  belongs_to :talk, counter_cache: true
+  belongs_to :user
 
-  def read?
-  	state == 1
-  end
 end
