@@ -6,5 +6,13 @@ class Message < ActiveRecord::Base
   belongs_to :sender, class_name: 'User', foreign_key: :from_id
   # 收件人
   belongs_to :iboxer, class_name: 'User', foreign_key: :to_id
+  # state(未读/已读/垃圾)
 
+  def unread?
+  	state.zero?
+  end
+
+  def read?
+  	state == 1
+  end
 end

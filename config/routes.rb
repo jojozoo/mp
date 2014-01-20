@@ -41,6 +41,9 @@ Mp::Application.routes.draw do
         get 'read'
         get 'unread'
         get 'trash'
+        get 'notices'
+        get 'read_notices'
+        get 'unread_notices'
       end
     end
     resources :timelines

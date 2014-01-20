@@ -3,13 +3,13 @@
     <h3>
         <i class="icon-<%= @datas[controller_name][:icon] %>"></i>
         <%= @datas[controller_name][:name] %>
-        <small><%= actions[request.path] || actions[:childrens].try("[]", request.path) %></small>
+        <small><%= actions[request.path] || actions.find{|k,v| v.is_a?(Hash) and v[request.path]}[1][request.path] %></small>
     </h3>
 </div>
 <% if actions.present? %>
     <ul class="nav nav-tabs">
         <% actions.each do |key, value| %>
-            <% if key.eql?(:childrens)%>
+            <% if value.is_a?(Hash) %>
                 <li class="dropdown <%= 'active' if value.keys.member?(request.path) %>">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
                         <%= value[request.path] || value.values[0] %>

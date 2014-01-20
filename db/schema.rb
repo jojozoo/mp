@@ -70,10 +70,12 @@ ActiveRecord::Schema.define(:version => 20140119075801) do
   create_table "messages", :force => true do |t|
     t.integer  "from_id"
     t.integer  "to_id"
-    t.integer  "state"
+    t.integer  "state",      :default => 0
+    t.boolean  "fdel",       :default => false
+    t.boolean  "sdel",       :default => false
     t.string   "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "notices", :force => true do |t|

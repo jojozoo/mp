@@ -30,13 +30,18 @@ class My::ApplicationController < ApplicationController
                 name: '漫信&通知',
                 icon: '',
                 actions: {
-                    childrens: {
+                    mails: {
                         my_msgs_path => '全部漫信',
                         read_my_msgs_path => '已读漫信',
-                        unread_my_msgs_path => '未读漫信',
+                        unread_my_msgs_path => '未读漫信'
                     },
                     trash_my_msgs_path => '垃圾漫信',
-                    new_my_msg_path => '给关注着写信'
+                    new_my_msg_path => '给关注着写信',
+                    notices: {
+                        notices_my_msgs_path => '全部通知',
+                        read_notices_my_msgs_path => '已读通知',
+                        unread_notices_my_msgs_path => '未读通知'
+                    }
                 }
             },
             'timelines' => {
