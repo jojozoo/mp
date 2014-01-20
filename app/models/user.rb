@@ -95,8 +95,6 @@ class User < ActiveRecord::Base
     self.outboxs.create(content: content, to_id: to.id, state: 0)
   end
   # from 注册来源
-  # profile页 基本资料 头像(在Dt下) 相册 作品 时间轴 粉丝 关注 日志 游记 圈子 活动 点赞 推荐 喜欢 收藏 同步其他网站
-  # attr 
 
   # 注册用户默认创建相册(默认相册 头像相册),选择模板
   # 邮箱地址: 515856563@qq.com 修改邮箱 修改密码
@@ -117,6 +115,8 @@ class User < ActiveRecord::Base
   # feeds表(网站动态)
   # ad(visit, click, title) 暂时不做
   # 站内互动: 允许回应(所有,圈子,好友,粉丝)针对活动/other,允许漫信(所有,圈子,好友,粉丝) 暂时不加
+
+  # 消息, 通知, 设置相关所有
 
   # recommendations推荐表
   # profiles个人信息表
