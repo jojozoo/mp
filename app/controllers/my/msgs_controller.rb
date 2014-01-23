@@ -14,11 +14,16 @@ class My::MsgsController < My::ApplicationController
         render 'index'
     end
 
+    def new
+
+    end
+
     def show
         @talk = @current_user.iboxs.find(params[:id])
     end
 
     def notices
+        
     end
 
 end

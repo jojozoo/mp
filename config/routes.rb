@@ -40,10 +40,10 @@ Mp::Application.routes.draw do
       collection do
         get 'read'
         get 'unread'
-        get 'trash'
+        # get 'trash'
         get 'notices'
-        get 'read_notices'
-        get 'unread_notices'
+        # get 'read_notices'
+        # get 'unread_notices'
       end
     end
     resources :timelines
