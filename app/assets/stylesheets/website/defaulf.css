@@ -436,7 +436,10 @@ a.qzone {
 .thumbnail .caption{
     padding: 4px;
 }
-.thumbnail > img, .thumbnail a > img{
+/*.thumbnail > img, .thumbnail a > img{
+    width: 100%;
+}*/
+.thumbnail > a > img{
     width: 100%;
 }
 .caption h5{
