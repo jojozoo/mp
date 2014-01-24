@@ -4,7 +4,7 @@ class Talk < ActiveRecord::Base
   belongs_to :user
   belongs_to :sender, class_name: 'User'
   has_many :messages, order: 'id desc'
-  # state(未读/已读/垃圾) 暂时没有垃圾之说吧
+  # state(1未读/0已读/2垃圾) 暂时没有垃圾之说吧
 
   def read?
     state.zero?

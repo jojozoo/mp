@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
     # 接受者收件箱一条
     jointalk = Talk.find_or_create_by_user_id_and_sender_id(to.id, self.id)
     jointalk.update_attributes(text: text, state: 1)
-    jointalk.messages.create(text: text, user_id: jointalk.user_id)
+    jointalk.messages.create(text: text, user_id: jointalk.sender_id)
   end
   # from 注册来源
 
