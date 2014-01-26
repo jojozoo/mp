@@ -1,0 +1,35 @@
+<style type="text/css">
+.hide-cap{display: none;}
+</style>
+<div style="margin-bottom:10px;">
+	<a href="/my/albums">返回相册</a>
+	共500张照片
+	<div class="pull-right">
+		<a class="btn-default btn btn-sm" href='javascript:void(0);'>上传照片</a>
+		<a class="btn-default btn btn-sm" href='javascript:void(0);'>批量管理</a>
+		<a class="btn-default btn btn-sm" href='javascript:void(0);'>删除相册</a>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<div class="row">
+	<% @current_user.albums.limit(20).each do |album| %>
+		<div class="col-sm-6 col-md-3">
+			<div class="thumbnail">
+				<%= link_to image_tag("/tmp/p9.jpeg"), my_album_path(album) %>
+				<div class="caption caption-border">
+					<a href="javascript:void(0);" class="btn btn-default btn-xs front-cover">
+						设为封面
+					</a>
+					<a href="javascript:void(0);" class="btn btn-default btn-xs remove-self">
+						删除本张
+					</a>
+					<span class="pull-right hide-cap">
+						<input type="checkbox">
+					</span>
+					<textarea class="once-desc" placeholder="输入图片描述">我们期望活动，我们盼望未来</textarea>
+					<span>上传时间：2014-01-26 10:09:24</span>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>

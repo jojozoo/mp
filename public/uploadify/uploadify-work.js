@@ -27,7 +27,7 @@ $(function(){
             var str  = '<div class="col-sm-6 col-md-3">'
                 str +=     '<div class="thumbnail">'
                 str +=         '<img alt="P9" src="' + data.url + '">'
-                str +=         '<div class="caption">'
+                str +=         '<div class="caption caption-border">'
                 str +=             '<a href="javascript:void(0);" class="btn btn-default btn-xs front-cover">设为封面</a>'
                 str +=             '<a href="javascript:void(0);" class="btn btn-default btn-xs remove-self">删除本张</a>'
                 str +=             '<div class="pull-right">'

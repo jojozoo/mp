@@ -1,6 +1,12 @@
 <div class="row" id="container">
   <%= render partial: 'row', collection: [1,9,2,9,3,4,5,7,8,9,4,5,7,8,1,2,9,3], as: :image %>
 </div>
+<style type="text/css">
+.fade-row{
+  display: none;
+  position: absolute;
+}
+</style>
 <script>
 $(function(){
   

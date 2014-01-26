@@ -21,6 +21,7 @@ Mp::Application.routes.draw do
   resources :users, path: 'u'
   
   resources :works
+  ##### my star #####
   scope '/my', module: 'my', as: 'my' do
     get '/' => 'sets#index'
     resources :sets, only: [:index, :create], path: 'set' do
@@ -34,8 +35,7 @@ Mp::Application.routes.draw do
         get 'bg'
       end
     end
-    resources :albums
-    resources :works
+
     resources :msgs do
       collection do
         get 'read'
@@ -47,12 +47,15 @@ Mp::Application.routes.draw do
       end
     end
     resources :timelines
+    resources :albums
+    resources :works
     resources :follows
     resources :events
     resources :groups
     resources :inters
     resources :other_sites
   end
+  ##### my end #####
 
   scope '/admin', :module => 'admin', :as => 'admin' do
     get    '/'              => 'sessions#index'

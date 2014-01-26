@@ -1,0 +1,46 @@
+<style type="text/css">
+.hide-cap{display: none;}
+</style>
+<div style="margin-bottom:10px;">
+	您共6个相册，500张照片
+	<!-- 
+		把caption caption-border中内容套在div，批量管理之后显示，并且在上传照片前显示移动，全选之类的
+		浏览应该跳转到首页的那种形势
+		并且带有参数，决定是相册来的作品来的还是推荐来的，方便下一张去哪里
+	 -->
+	<div class="pull-right">
+		<a class="btn-default btn btn-sm" href='javascript:void(0);'>上传照片</a>
+		<a class="btn-default btn btn-sm" href='javascript:void(0);'>创建相册</a>
+	</div>
+	<div class="clearfix"></div>
+</div>
+<div class="row">
+	<% @current_user.albums.limit(20).each do |album| %>
+		<div class="col-sm-6 col-md-3">
+			<div class="thumbnail">
+				<%= link_to image_tag("/tmp/p9.jpeg"), my_album_path(album) %>
+				<div class="caption caption-border">
+					<%= link_to album.name, my_album_path(album) %>
+					<span class="pull-right">好友可见</span>
+					<p>
+						我们期望活动，我们盼望未来
+					</p>
+					<span>190张</span>
+					<span class="pull-right hide-cap">
+						<a href="javascript:void(0);">编辑</a>
+						<a href="javascript:void(0);">删除</a>
+					</span>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>
+<script type="text/javascript">
+$(function(){
+	$(".thumbnail").hover(function(){
+		$(this).find(".hide-cap").show();
+	}, function(){
+		$(this).find(".hide-cap").hide();
+	})
+})
+</script>

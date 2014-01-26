@@ -1,46 +1,56 @@
 <div class="col-sm-6 col-md-3">
   <div class="thumbnail">
     <div class="actions fade-row">
-        <div class="pull-right">
-            <a href="javascript:void(0);" class="btn btn-success btn-xs">
-                <i class="icon-thumbs-up"></i>
-                赞
-            </a>
-            <a href="javascript:void(0);" class="btn btn-success btn-xs">
-                <i class="icon-heart"></i>
-                喜欢
-            </a>
-        </div>
-        <div class="pull-left">
-            <a class="btn btn-success btn-xs">
-                <i class="icon-eye-open"></i>
-                <span class="text">关注TA</span>
-            </a>
-        </div>
+        <a class="btn btn-success btn-xs"> 
+          <i class="icon-eye-open"></i>
+          关注TA
+        </a>
+        <a href="javascript:void(0);" class="btn btn-success btn-xs"> 
+          <i class="icon-thumbs-up"></i>
+          赞
+        </a>
+        <a href="javascript:void(0);" class="btn btn-success btn-xs">
+          <i class="icon-heart"></i>
+          喜欢
+        </a>
     </div>
-    <%= link_to image_tag("/tmp/p#{image}.jpeg"), '/', target: '_blank' %>
+    <%= link_to image_tag("/tmp/p#{image}.jpeg"), '/', style: 'display:block', target: '_blank' %>
     <div class="caption">
       <p>
         苹果电脑30年产品收藏视频展示苹果电脑30年产
       </p>
-      <span>评论(10) 喜欢(12) 赞(8) 关注(20)</span>
+      <span>评论(10) 喜欢(12) 赞(8) 关注(20) 收藏(0)</span>
       <hr>
       <div class="media author-gallery">
           <a class="pull-left" href="#">
               <img class="img-circle avatar-mini" src="/images/avatar.jpg"></a>
           <div class="media-body">
               <div class="media-heading">
-                  <a href="">朱晓武</a>
+                  <div>
+                    <a href="">朱晓武</a>
+                    <div class="pull-right">
+                      <a href="javascript:void(0);" class="btn btn-default btn-xs">评论 1</a>
+                    </div>
+                  </div>
                   <span class="date">2013-08-19 10:37</span>
               </div>
-              <div class="media-heading">
+              <!-- <div class="popover right">
+                <div class="arrow"></div>
+                <h3 class="popover-title">Popover right</h3>
+                <div class="popover-content">
+                  <p>
+                    Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+                  </p>
+                </div>
+              </div> -->
+              <!-- <div class="media-heading">
                   <a href="javascript:void(0);" class="reply-icon">
                     <i class="icon-comment-alt"></i>
                   </a>
                   <a href="javascript:void(0);" class="tags-icon">
                     <i class="icon-tags"></i>
                   </a>
-              </div>
+              </div> -->
           </div>
       </div>
     </div>

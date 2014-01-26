@@ -1,1 +1,12 @@
-sendmsg.html.erb
+<div class="media">
+	<a class="pull-left" href="#">
+		<img src="/images/avatar.jpg" class="avatar img-circle">
+	</a>
+	<div class="media-body">
+		<h4 class="media-heading">给 摇滚花 写信</h4>
+		<%= simple_form_for Message.new, url: '/', validate: true do |f| %>
+		<textarea class="form-control" id="message_text" name="message[text]" data-validate="true"></textarea>
+		<%= f.submit '发送', class: 'btn btn-default pull-right' %>
+		<% end %>
+	</div>
+</div>

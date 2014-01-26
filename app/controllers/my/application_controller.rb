@@ -28,7 +28,7 @@ class My::ApplicationController < ApplicationController
             },
             'msgs' => {
                 name: '漫信&通知',
-                icon: '',
+                icon: 'envelope',
                 actions: {
                     mails: {
                         my_msgs_path => '全部漫信',
@@ -42,7 +42,7 @@ class My::ApplicationController < ApplicationController
             },
             'timelines' => {
                 name: '时间轴',
-                icon: '',
+                icon: 'time',
                 actions: {}
             },
             'follows' => {

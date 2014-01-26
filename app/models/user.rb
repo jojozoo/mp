@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_one :de, as: :source
   has_one :avatar, through: :de, source: :image
   has_many :images
+  has_many :albums
   
   has_many :notices
   # 收件箱 & 发件箱 名义没有发件箱

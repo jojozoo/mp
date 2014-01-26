@@ -3,8 +3,7 @@
     <h3>
         <i class="icon-<%= @datas[controller_name][:icon] %>"></i>
         <%= @datas[controller_name][:name] %>
-        <%#= actions[request.path] || actions.find{|k,v| v.is_a?(Hash) and v[request.path]}[1][request.path] %>
-        <small><%= actions[request.path] || actions.find{|k,v| v.is_a?(Hash) and v[request.path]}.try(:last).try('[]', request.path) %></small>
+        <small><%= actions[request.path] || actions.find{|k,v| v.is_a?(Hash) and v[request.path]}.try(:last).try('[]', request.path) || (@album.try(:name) if controller_name.eql?('albums') and action_name.eql?('show')) %></small>
     </h3>
 </div>
 <% if actions.present? %>
