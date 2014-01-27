@@ -17,6 +17,7 @@ Mp::Application.routes.draw do
 
   resources :galleries
   resources :albums
+  resources :groups, path: 'g'
   resources :events, path: 'e'
   resources :users, path: 'u'
   

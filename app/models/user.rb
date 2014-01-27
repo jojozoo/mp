@@ -130,14 +130,9 @@ class User < ActiveRecord::Base
   # follows关注表(user_id, follower_id, mark)
   # visits(profile event image album group)最新访问表(user_id, visit_id, mark) 
   # works作品表image_id event_id user_id
-  # timeline时间轴表(user_id)
   # micro 动态表
-
-  # TODO 活动上传完是 send 消息/通知, 之后是回应, 之后是关注的人
-  # notice网站通知表(user_id sends_id title content read(true/false))
-  # message 漫信消息表 from_id to_id state(已读/未读/垃圾) content after_create(创建发送)
   
-  # posts 游记，日志表
+  # topics 游记，日志表
   # comments 针对这些资源回应(post/events/image/Dt)
 
   # albums用户相册表(name, user_id, auth(only_self, group, follow, group_and_follow, all), page(封面) through:dy)

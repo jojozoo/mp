@@ -1,10 +1,6 @@
 <div class="col-sm-6 col-md-3">
   <div class="thumbnail">
     <div class="actions fade-row">
-        <a class="btn btn-success btn-xs"> 
-          <i class="icon-eye-open"></i>
-          关注TA
-        </a>
         <a href="javascript:void(0);" class="btn btn-success btn-xs"> 
           <i class="icon-thumbs-up"></i>
           赞
@@ -13,13 +9,24 @@
           <i class="icon-heart"></i>
           喜欢
         </a>
+        <a href="javascript:void(0);" class="btn btn-success btn-xs"> 
+          <i class="icon-pushpin"></i>
+          收藏
+        </a>
+        <a href="javascript:void(0);" class="btn btn-success btn-xs"> 
+          <i class="icon-ok-circle"></i>
+          推荐
+        </a>
     </div>
     <%= link_to image_tag("/tmp/p#{image}.jpeg"), '/', style: 'display:block', target: '_blank' %>
     <div class="caption">
-      <p>
+      <div>
         苹果电脑30年产品收藏视频展示苹果电脑30年产
-      </p>
-      <span>评论(10) 喜欢(12) 赞(8) 收藏(0) 推荐(198)</span>
+      </div>
+      <span class="push-thumbs-up">赞(8)</span>
+      <span class="push-heart">喜欢(12)</span>
+      <span class="push-pushpin">收藏(0)</span>
+      <span class="push-ok-circle">推荐(198)</span>
       <hr>
       <div class="media author-gallery">
           <a class="pull-left" href="#">
@@ -27,10 +34,11 @@
           <div class="media-body">
               <div class="media-heading">
                   <div>
-                    <a href="">朱晓武</a>
-                    <span>关注(20)</span>
+                    <a href="javascript:void(0);">朱晓武</a>
+                    <span style="margin-left:10px;">(20)</span>
+                    <a href="javascript:void(0);" class="follow">关注</a>
                     <div class="pull-right">
-                      <a href="javascript:void(0);" class="btn btn-default btn-xs">评论 1</a>
+                      <a href="javascript:void(0);" class="reply">评论(1)</a>
                     </div>
                   </div>
                   <span class="date">2013-08-19 10:37</span>
