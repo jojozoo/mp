@@ -13,7 +13,126 @@
 	<%= f.input :domain, disabled: !!@user.domain %>
 	<%= f.input :profession %>
 	<%= f.input :duty %>
-	<%= f.input :warrant, collection: User::WARRANT.invert, include_blank: false %>
+	<div class="form-group select optional user_warrant">
+		<label class="col-sm-2 control-label">默认版权声明</label>
+		<div class="col-sm-6 input-text-add">
+			<div class="agreement-nav">
+				<input type="checkbox" id="open-agreement">
+				<label for="open-agreement">开启知识共享协议</label>
+			</div>
+			<div class="hide" id="agreement">
+				<div class="warrant-row">
+					<input type="radio" id="warrant1" name="user[warrant]" value="0">
+					<label for="warrant1">
+						<span class="cc-1"></span>
+						<span class="cc-2"></span>
+						<span class="cc-3"></span>
+						<span class="cc-h">署名-非商业使用-禁止演绎</span>
+					</label>
+				</div>
+				<div class="warrant-row">
+					<input type="radio" id="warrant2" name="user[warrant]" value="1">
+					<label for="warrant2">
+						<span class="cc-1"></span>
+						<span class="cc-2"></span>
+						<span class="cc-4"></span>
+						<span class="cc-h">署名-非商业使用-相同方式共享</span>
+					</label>
+				</div>
+				<div class="warrant-row">
+					<input type="radio" id="warrant3" name="user[warrant]" value="2">
+					<label for="warrant3">
+						<span class="cc-1"></span>
+						<span class="cc-2"></span>
+						<span class="cc-2" style="visibility: hidden;"></span>
+						<span class="cc-h">署名-非商业使用</span>
+					</label>
+				</div>
+				<div class="warrant-row">
+					<input type="radio" id="warrant4" name="user[warrant]" value="3">
+					<label for="warrant4">
+						<span class="cc-1"></span>
+						<span class="cc-3"></span>
+						<span class="cc-2" style="visibility: hidden;"></span>
+						<span class="cc-h">署名-禁止演绎</span>
+					</label>
+				</div>
+				<div class="warrant-row">
+					<input type="radio" id="warrant5" name="user[warrant]" value="4">
+					<label for="warrant5">
+						<span class="cc-1"></span>
+						<span class="cc-4"></span>
+						<span class="cc-2" style="visibility: hidden;"></span>
+						<span class="cc-h">署名-相同方式共享</span>
+					</label>
+				</div>
+				<div class="warrant-row">
+					<input type="radio" id="warrant6" name="user[warrant]" value="5">
+					<label for="warrant6">
+						<span class="cc-1"></span>
+						<span class="cc-2" style="visibility: hidden;"></span>
+						<span class="cc-2" style="visibility: hidden;"></span>
+						<span class="cc-h">署名</span>
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<%#= f.input :warrant, collection: User::WARRANT.invert, include_blank: false %>
 	<%= f.input :resume, as: :text, input_html:{rows: 3} %>
 	<%= f.submit '保存', class: 'btn btn-default col-sm-offset-7' %>
 <% end %>
+
+<style type="text/css">
+.agreement-nav{
+	margin-top: 6px;
+}
+.warrant-row {
+	position: relative;
+	height: 28px;
+	line-height: 28px;
+	color: #8f8f8f;
+}
+.warrant-row input{
+	float: left;
+	display: inline;
+	margin-top: 8px;
+	margin-right: 8px;
+}
+.warrant-row span {
+	background: url(/images/warrant.png) no-repeat -3px 4px;
+	width: 16px;
+	height: 28px;
+	float: left;
+	display: inline;
+	margin-right: 3px;
+	font-size: 12px;
+}
+.warrant-row span.cc-1 {
+	background-position: -37px 4px;
+}
+.warrant-row span.cc-2 {
+	background-position: -20px 4px;
+}
+.warrant-row span.cc-3 {
+	background-position: -54px 4px;
+}
+.warrant-row span.cc-h {
+	width: auto;
+	height: auto;
+	background: none;
+	margin-left: 3px;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+	$("#open-agreement").click(function(){
+		if($(this).is(':checked')){
+			$("#agreement").removeClass('hide');
+		} else {
+			$("#agreement").addClass('hide');
+		}
+		
+	});
+})
+</script>

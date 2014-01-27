@@ -33,6 +33,7 @@ Mp::Application.routes.draw do
         get 'dy'
         get 'privacy'
         get 'bg'
+        get 'others'
       end
     end
 
@@ -40,7 +41,7 @@ Mp::Application.routes.draw do
       collection do
         get 'read'
         get 'unread'
-        # get 'trash'
+        get 'trash'
         get 'notices'
         # get 'read_notices'
         # get 'unread_notices'
@@ -49,11 +50,18 @@ Mp::Application.routes.draw do
     resources :timelines
     resources :albums
     resources :works
-    resources :follows
-    resources :events
-    resources :groups
-    resources :inters
-    resources :other_sites
+    resources :users do
+      collection do
+        get 'fans'
+        get 'follows'
+      end
+    end
+    resources :join_projects do
+      collection do
+        get 'events'
+        get 'groups'
+      end
+    end
   end
   ##### my end #####
 

@@ -30,4 +30,7 @@ class My::SetsController < My::ApplicationController
     def bg
         # render '/my/shared/template'
     end
+    
+    def others
+    end
 end

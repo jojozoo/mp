@@ -2,20 +2,35 @@
 	<% 30.times do |i| %>
 		<div class="col-sm-6 col-md-2">
 			<div class="thumbnail">
-				<img src="/images/body0<%= (i % 5) + 1 %>.jpg" class="img-rounded">
-				<div class="caption">
-					<p>
-						<a href="javascript:void(0);" class="btn btn-xs btn-primary choose-bg">选择</a>
-					</p>
-				</div>
+				<a href="javascript:void(0);" class="choose-bg">
+					<img src="/images/body0<%= (i % 5) + 1 %>.jpg" class="img-rounded">
+					<span class="choose-ok">
+						<i class="icon-ok"></i>
+					</span>
+				</a>
 			</div>
 		</div>
 	<% end %>
 </div>
+<style type="text/css">
+.choose-bg{
+	display: block;
+	position: relative;
+}
+.choose-ok{
+	position: absolute;
+	right: 0;
+	bottom: -4px;
+	display: none;
+	color: #000;
+}
+</style>
 <script type="text/javascript">
 $(function(){
 	$(".choose-bg").on('click', function(){
-		$('body').css('background', 'transparent url(' + $(this).parents('.thumbnail').find('img').attr('src') + ')');
+		$('.choose-ok').hide();
+		$(this).find('span').show();
+		$('body').css('background', 'transparent url(' + $(this).find('img').attr('src') + ')');
 	})
 })
 </script>

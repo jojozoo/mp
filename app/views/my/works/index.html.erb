@@ -1,0 +1,16 @@
+<div class="row">
+	<% @current_user.albums.limit(20).each do |album| %>
+		<div class="col-sm-6 col-md-3">
+			<div class="thumbnail">
+				<%= link_to image_tag("/tmp/p9.jpeg"), 'javascript:void(0);' %>
+				<div class="caption caption-border">
+					来自:<%= link_to "##{album.name}#", 'javascript:void(0);' %>
+					<br>
+					<span>
+						<%= album.created_at.to_date %>
+					</span>
+				</div>
+			</div>
+		</div>
+	<% end %>
+</div>

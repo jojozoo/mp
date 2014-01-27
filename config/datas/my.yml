@@ -1,0 +1,74 @@
+---
+sets:
+  name: 个人设置
+  icon: wrench
+  small:
+  navs:
+    /my/set/basic: 基本资料
+    /my/set/avatar: 头像设置
+    /my/set/security: 安全设置
+    /my/set/privacy: 隐私设置
+    /my/set/push: 推送设置
+    /my/set/dy: 动态设置
+    /my/set/bg: 模板设置
+    /my/set/others: 同步网站
+  icons: {}
+  smalls: {}
+albums:
+  name: 我的相册
+  icon: picture
+  small:
+  navs: {}
+  icons: {}
+  smalls: 
+    show: '%{name}'
+works:
+  name: 我的作品
+  icon: camera
+  small:
+  navs: {}
+  icons: {}
+  smalls: {}
+timelines:
+  name: 我的动态(点赞,推荐,喜欢,收藏,动态)
+  icon: time
+  small:
+  navs: {}
+  icons: {}
+  smalls: {}
+join_projects:
+  name: 我的参与
+  icon: 
+  small:
+  navs:
+    /my/join_projects/events: 活动管理
+    /my/join_projects/groups: 我的圈子
+  icons: 
+    groups: 'group'
+    events: 'flag'
+  smalls: {}
+msgs:
+  name: 漫信&通知
+  icon: envelope
+  small:
+  navs:
+    mails:
+      /my/msgs: 全部漫信
+      /my/msgs/read: 已读漫信
+      /my/msgs/unread: 未读漫信
+    #/my/msgs/trash: 垃圾漫信
+    /my/msgs/new: 给关注着写信
+    /my/msgs/notices: 网站通知
+  icons: 
+    new: edit
+    notices: bullhorn
+  smalls: {}
+users:
+  name: 粉丝&关注
+  icon: ''
+  small:
+  navs: 
+    /my/users/follows: 关注
+    /my/users/fans: 粉丝
+  icons: {}
+  smalls: {}

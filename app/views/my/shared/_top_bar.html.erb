@@ -1,14 +1,17 @@
-<% actions = @datas[controller_name][:actions] %>
+<% nav = $my_navs[controller_name] %>
+<% navs = nav['navs'] %>
+<% icons = nav['icons'] %>
+<% smalls = nav['smalls'] %>
 <div class="page-header">
     <h3>
-        <i class="icon-<%= @datas[controller_name][:icon] %>"></i>
-        <%= @datas[controller_name][:name] %>
-        <small><%= actions[request.path] || actions.find{|k,v| v.is_a?(Hash) and v[request.path]}.try(:last).try('[]', request.path) || (@album.try(:name) if controller_name.eql?('albums') and action_name.eql?('show')) %></small>
+        <i class="icon-<%= icons[action_name] || nav['icon'] %>"></i>
+        <%= nav['name'] %>
+        <small><%= smalls[action_name] || navs[request.path] || nav['small'] %></small>
     </h3>
 </div>
-<% if actions.present? %>
+<% if navs.present? %>
     <ul class="nav nav-tabs">
-        <% actions.each do |key, value| %>
+        <% navs.each do |key, value| %>
             <% if value.is_a?(Hash) %>
                 <li class="dropdown <%= 'active' if value.keys.member?(request.path) %>">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0);">
