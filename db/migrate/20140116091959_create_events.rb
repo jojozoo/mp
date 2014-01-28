@@ -2,13 +2,13 @@ class CreateEvents < ActiveRecord::Migration
   def change
     create_table :events do |t|
       t.integer :user_id
-      t.integer :logo_id
+      t.attachment :logo
       t.string :title
-      t.text :content
+      t.text :text
       t.string :tag # 类型暂定
       t.date :end_time
-      t.integer :partners_count, default: 0
-      t.integer :images_count, default: 0
+      t.integer :members_count, default: 0
+      t.integer :works_count, default: 0
       t.integer :state, default: 0
       t.boolean :show, default: 0
       t.boolean :del, default: false

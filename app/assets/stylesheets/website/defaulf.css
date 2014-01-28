@@ -453,11 +453,12 @@ a.qzone {
     height:40px;
     margin: 6px auto;
 }
-/*.thumbnail > img, .thumbnail a > img{
-    width: 100%;
-}*/
 .thumbnail > a > img{
     width: 100%;
+}
+.thumbnail a > img.avatar-mini{
+    height: 34px;
+    width: 34px;
 }
 .caption h5{
     font-size: 15px;

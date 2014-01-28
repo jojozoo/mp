@@ -11,43 +11,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140120145855) do
+ActiveRecord::Schema.define(:version => 20140128095530) do
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.string   "desc"
     t.integer  "open"
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "del",               :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
-  create_table "des", :force => true do |t|
-    t.integer  "source_id"
-    t.string   "source_type"
-    t.integer  "image_id"
+  create_table "bgs", :force => true do |t|
+    t.string   "name"
+    t.string   "repeat"
     t.integer  "user_id"
-    t.string   "desc"
-    t.boolean  "del",         :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "logo_id"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.string   "title"
-    t.text     "content"
+    t.text     "text"
     t.string   "tag"
     t.date     "end_time"
-    t.integer  "partners_count", :default => 0
-    t.integer  "images_count",   :default => 0
-    t.integer  "state",          :default => 0
-    t.boolean  "show",           :default => false
-    t.boolean  "del",            :default => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.integer  "members_count",     :default => 0
+    t.integer  "works_count",       :default => 0
+    t.integer  "state",             :default => 0
+    t.boolean  "show",              :default => false
+    t.boolean  "del",               :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "images", :force => true do |t|
@@ -76,6 +80,43 @@ ActiveRecord::Schema.define(:version => 20140120145855) do
     t.datetime "updated_at",                :null => false
   end
 
+  create_table "micros", :force => true do |t|
+    t.integer  "feeder_id"
+    t.string   "text"
+    t.integer  "source_id"
+    t.string   "source_type"
+    t.string   "source_name"
+    t.string   "source_title"
+    t.string   "source_text"
+    t.integer  "sourcer_id"
+    t.string   "sourcer_type"
+    t.string   "sourcer_name"
+    t.string   "sourcer_title"
+    t.string   "sourcer_text"
+    t.integer  "refer_id"
+    t.string   "refer_type"
+    t.string   "refer_name"
+    t.string   "refer_title"
+    t.string   "refer_text"
+    t.integer  "referer_id"
+    t.string   "referer_type"
+    t.string   "referer_name"
+    t.string   "referer_title"
+    t.string   "referer_text"
+    t.integer  "extra_id"
+    t.string   "extra_type"
+    t.string   "extra_name"
+    t.string   "extra_title"
+    t.string   "extra_text"
+    t.integer  "extraer_id"
+    t.string   "extraer_type"
+    t.string   "extraer_name"
+    t.string   "extraer_title"
+    t.string   "extraer_text"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "notices", :force => true do |t|
     t.integer  "user_id"
     t.integer  "sends_id"
@@ -86,13 +127,13 @@ ActiveRecord::Schema.define(:version => 20140120145855) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "partners", :force => true do |t|
-    t.integer  "event_id"
+  create_table "pushes", :force => true do |t|
+    t.integer  "sourcer_id"
+    t.string   "sourcer_type"
+    t.string   "type"
     t.integer  "user_id"
-    t.boolean  "winner",     :default => false
-    t.integer  "level"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "sends", :force => true do |t|
@@ -131,6 +172,10 @@ ActiveRecord::Schema.define(:version => 20140120145855) do
     t.string   "realname"
     t.string   "mobile"
     t.string   "password"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.string   "salt"
     t.string   "province"
     t.string   "city"
@@ -141,14 +186,27 @@ ActiveRecord::Schema.define(:version => 20140120145855) do
     t.date     "duty"
     t.boolean  "gender"
     t.integer  "warrant"
-    t.integer  "talks_count",   :default => 0
-    t.integer  "notices_count", :default => 0
-    t.string   "bg",            :default => "body01.jpg"
-    t.string   "bg_repeat",     :default => "repeat"
+    t.integer  "talks_count",         :default => 0
+    t.integer  "notices_count",       :default => 0
+    t.string   "bg",                  :default => "body01.jpg"
+    t.string   "repeat",              :default => "repeat"
     t.string   "remember_me"
-    t.boolean  "del",           :default => false
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.boolean  "del",                 :default => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+  end
+
+  create_table "works", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "image_id"
+    t.integer  "event_id"
+    t.integer  "warrant"
+    t.integer  "winner"
+    t.string   "title"
+    t.text     "text"
+    t.boolean  "del"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

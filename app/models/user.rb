@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessible :email, 
+  :avatar,
   :username, 
   :nickname, 
   :realname, 
@@ -21,6 +22,16 @@ class User < ActiveRecord::Base
   :messages_count,
   :nocices_count,
   :del
+
+  has_attached_file :avatar,
+    styles: {
+      thumb: '300x300',
+      small: '100x100',
+      s50: '50x50'
+    },
+    url: "/system/avatars/:attachment/:id/:basename/:style.:extension",
+    path: ":rails_root/public/system/avatars/:attachment/:id/:basename/:style.:extension",
+    default_url: "/images/defaults/avatar.jpg"
 
   has_one :de, as: :source
   has_one :avatar, through: :de, source: :image
@@ -131,12 +142,7 @@ class User < ActiveRecord::Base
   # ad(visit, click, title) 暂时不做
   # 站内互动: 允许回应(所有,圈子,好友,粉丝)针对活动/other,允许漫信(所有,圈子,好友,粉丝) 暂时不加
 
-  # TODO 找到paplace 如何转存照片
-  # user avatar
-  # event logo
-  # album page(封面)
-  # images user_id, album_id
-  # TODO 相册删除就del标识，作品里是不存在删除操作的,那么works任何时候都可以引用image
+  # TODO 找到 paperclip 如何转存照片
 
   # 消息, 通知, 设置相关所有
 
@@ -144,8 +150,9 @@ class User < ActiveRecord::Base
   # profiles个人信息表
   # follows关注表(user_id, follower_id, mark)
   # visits(profile event image album group)最新访问表(user_id, visit_id, mark) 
-  # works作品表image_id event_id user_id
+  
   # micro 动态表
+  # push 用户对图片/日志/作品等资源的各种操作 单继承表+多态表
   
   # topics 游记，日志表
   # comments 针对这些资源回应(post/events/image/Dt)
@@ -157,7 +164,7 @@ class User < ActiveRecord::Base
   # tags 图片标签表(ok)
   # like_tags(user_id, tag_id) 感兴趣的标签
   # events 活动表
-  # partners活动参加者表(如果不需要可以挪到des表中)
+  # works作品表image_id event_id user_id
   # groups圈子表(name, desc, user_id, visits_count, events_count, members_count, permission(公开 被搜索))
   # group users(user_id, group_id, auth(创建 管理 成员)) 圈子用户中间表
   # account 第三方登陆用户表
@@ -165,6 +172,4 @@ class User < ActiveRecord::Base
   # 其余设置，尽量redis banner 登陆注册页背景图template
   # logs统计
   # 其他
-
-
 end

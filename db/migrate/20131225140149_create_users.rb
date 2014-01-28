@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :realname
       t.string :mobile
       t.string :password
+      t.attachment :avatar
       t.string :salt
       t.string :province
       t.string :city
@@ -20,7 +21,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :talks_count, default: 0
       t.integer :notices_count, default: 0
       t.string :bg, default: 'body01.jpg'
-      t.string :bg_repeat, default: 'repeat'
+      t.string :repeat, default: 'repeat'
       t.string :remember_me
       t.boolean :del, default: false
 
