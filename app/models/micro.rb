@@ -1,6 +1,7 @@
 class Micro < ActiveRecord::Base
-  attr_accessible :feeder_id,
-  :feeder_type,
+  attr_accessible :user_id,
+  :name,
+  :title,
   :text,
   :source_id,
   :source_type,

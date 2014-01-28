@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar,
     styles: {
-      thumb: '300x300',
+      thumb: '200x200',
       small: '100x100',
       s50: '50x50'
     },
@@ -33,13 +33,12 @@ class User < ActiveRecord::Base
     path: ":rails_root/public/system/avatars/:attachment/:id/:basename/:style.:extension",
     default_url: "/images/defaults/avatar.jpg"
 
-  has_one :de, as: :source
-  has_one :avatar, through: :de, source: :image
   has_many :images
   has_many :albums
   has_many :events
-  
+  has_many :works
   has_many :notices
+  has_many :micros
   # 收件箱 & 发件箱 名义没有发件箱
   has_many :iboxs, class_name: 'Talk', conditions: {del: false}
   # 未读

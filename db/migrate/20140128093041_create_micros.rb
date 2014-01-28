@@ -1,7 +1,9 @@
 class CreateMicros < ActiveRecord::Migration
   def change
     create_table :micros do |t|
-      t.integer :feeder_id
+      t.integer :user_id
+      t.string :name
+      t.string :title
       t.string :text
       t.references :source, polymorphic: true
       t.string :source_name

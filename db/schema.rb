@@ -81,7 +81,9 @@ ActiveRecord::Schema.define(:version => 20140128095530) do
   end
 
   create_table "micros", :force => true do |t|
-    t.integer  "feeder_id"
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "title"
     t.string   "text"
     t.integer  "source_id"
     t.string   "source_type"
