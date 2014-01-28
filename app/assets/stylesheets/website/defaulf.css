@@ -1,3 +1,10 @@
+.modal-dialog{margin: 100px auto;}
+.modal-header {background:#e4e4e4;border-color:#d4d4d4;padding:5px 15px}
+.modal-header .close {margin-top:3px}
+.modal-footer {padding:7px 15px 8px}
+.modal-content {border:8px solid rgba(0, 0, 0, 0.5);-webkit-box-shadow: none;-moz-box-shadow: none;-ms-box-shadow: none;box-shadow: none}
+.modal-body{padding:20px 15px}
+.modal-backdrop, .modal-backdrop.fade.in {opacity:.1;background:#777}
 body{
 	background: transparent url("/images/body01.jpg");
 }

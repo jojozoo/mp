@@ -1,5 +1,3 @@
-<!-- <form class="form-horizontal">
-<legend>Form Horizontal</legend> -->
 <% @user = User.first %>
 <% @user.errors[:mobile] = '手机格式不正确!' %>
 <%= simple_form_for @user, validate: true do |f| %>
@@ -8,6 +6,19 @@
 	<%= f.input :mobile %>
 	<%= f.input :nickname %>
 	<%= f.input :realname %>
+	<%= f.input :province, as: :hidden %>
+	<%= f.input :city, as: :hidden %>
+	<div class="form-group string choose-point">
+		<label class="string optional col-sm-2 control-label" for="choose-point">常驻地</label>
+		<div class="col-sm-6 input-text-add">
+			<div class="input-group" id="choose-point">
+				<input class="form-control" type="text" readonly="">
+				<span class="input-group-addon">
+					<i class="icon-map-marker"></i>
+				</span>
+			</div>
+		</div>
+	</div>
 	<%#= f.input :gender, as: :radio_buttons, boolean_style: :inline %>
 	<div class="form-group radio_buttons optional user_gender">
 		<label class="radio_buttons optional col-sm-2 control-label">性别</label>
@@ -23,98 +34,7 @@
 	<%= f.input :site %>
 	<%= f.input :domain, disabled: !!@user.domain %>
 	<%= f.input :profession %>
-	<link href="/datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">	
-	<script type="text/javascript" src="/datetimepicker/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-	<script type="text/javascript" src="/datetimepicker/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-	<script type="text/javascript">
-      $(function(){
-        $('.form_date').datetimepicker({
-            language:  'zh-CN',
-            weekStart: 1,
-            todayBtn:  1,
-            autoclose: 1,
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
-        });
-      });
-      </script>
 	<%= f.input :duty, label_html: { for: :user_duty } %>
-	<!-- <div class="form-group date optional user_duty">
-		<label class="date optional col-sm-2 control-label" for="user_duty_1i">生日</label>
-		<div class="input-text-add">
-			<div class="col-xs-2">
-				<select class="date optional form-control" id="user_duty_1i" name="user[duty(1i)]" data-validate="true">
-					<option value="2009">2009</option>
-					<option value="2010">2010</option>
-					<option value="2011">2011</option>
-					<option value="2012">2012</option>
-					<option value="2013">2013</option>
-					<option selected="selected" value="2014">2014</option>
-					<option value="2015">2015</option>
-					<option value="2016">2016</option>
-					<option value="2017">2017</option>
-					<option value="2018">2018</option>
-					<option value="2019">2019</option>
-				</select>
-			</div>
-			<div class="col-xs-2">
-				<select class="date optional form-control" id="user_duty_2i" name="user[duty(2i)]" data-validate="true">
-					<option selected="selected" value="1">January</option>
-					<option value="2">February</option>
-					<option value="3">March</option>
-					<option value="4">April</option>
-					<option value="5">May</option>
-					<option value="6">June</option>
-					<option value="7">July</option>
-					<option value="8">August</option>
-					<option value="9">September</option>
-					<option value="10">October</option>
-					<option value="11">November</option>
-					<option value="12">December</option>
-				</select>
-			</div>
-			<div class="col-xs-2">
-				<select class="date optional form-control" id="user_duty_3i" name="user[duty(3i)]" data-validate="true">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
-					<option value="9">9</option>
-					<option value="10">10</option>
-					<option value="11">11</option>
-					<option value="12">12</option>
-					<option value="13">13</option>
-					<option value="14">14</option>
-					<option value="15">15</option>
-					<option value="16">16</option>
-					<option value="17">17</option>
-					<option value="18">18</option>
-					<option value="19">19</option>
-					<option value="20">20</option>
-					<option value="21">21</option>
-					<option value="22">22</option>
-					<option value="23">23</option>
-					<option value="24">24</option>
-					<option value="25">25</option>
-					<option value="26">26</option>
-					<option selected="selected" value="27">27</option>
-					<option value="28">28</option>
-					<option value="29">29</option>
-					<option value="30">30</option>
-					<option value="31">31</option>
-				</select>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div> -->
-
-
 	<div class="form-group string optional user_warrant">
 		<label class="col-sm-2 control-label">默认版权声明</label>
 		<div class="col-sm-6 input-text-add">
@@ -137,10 +57,23 @@
 			</div>
 		</div>
 	</div>
-	<%#= f.input :warrant, collection: User::WARRANT.invert, include_blank: false %>
 	<%= f.input :resume, as: :text, input_html:{rows: 3} %>
 	<%= f.submit '保存', class: 'btn btn-default col-sm-offset-7' %>
 <% end %>
+<div class="modal fade" id="my-city">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">常驻地选择</h4>
+			</div>
+			<div class="modal-body">
+				<div class="provinces"></div>
+				<div class="cities"></div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <style type="text/css">
 .agreement-nav{
@@ -185,16 +118,16 @@
 	background: none;
 	margin-left: 3px;
 }
+.city-row{
+	margin-right: 10px;
+}
+.cities{
+	border-top: 1px solid #ccc;
+	margin-top: 10px;
+	padding-top: 10px;
+}
 </style>
-<script type="text/javascript">
-$(function(){
-	$("#open-agreement").click(function(){
-		if($(this).is(':checked')){
-			$("#agreement").removeClass('hide');
-		} else {
-			$("#agreement").addClass('hide');
-		}
-		
-	});
-})
-</script>
+<link href="/datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">	
+<script type="text/javascript" src="/datetimepicker/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+<script type="text/javascript" src="/javascripts/profile.js"></script>

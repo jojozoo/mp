@@ -11,16 +11,16 @@ inputs = %w[
 class SimpleForm::Inputs::DateTimeInput
   def input
     %{
-      <div class="input-group date form_date" data-date="" data-date-format="yyyy MM dd" data-link-field="user_duty" data-link-format="yyyy-mm-dd">
-        <input class="form-control" size="16" type="text" readonly>
+      <div class="input-group date" data-link-field="user_duty" id="date-user-duty">
+        <input class="form-control" type="text" readonly>
         <span class="input-group-addon">
-          <span class="icon-remove"></span>
+          <i class="icon-remove"></i>
         </span>
         <span class="input-group-addon">
           <i class="icon-calendar"></i>
         </span>
       </div>
-      <input type="hidden" id="user_duty" name="user[duty]" value="" />
+      <input type="hidden" id="user_duty" name="user[duty]" value="">
 }.html_safe
   end
 end

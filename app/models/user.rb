@@ -131,6 +131,13 @@ class User < ActiveRecord::Base
   # ad(visit, click, title) 暂时不做
   # 站内互动: 允许回应(所有,圈子,好友,粉丝)针对活动/other,允许漫信(所有,圈子,好友,粉丝) 暂时不加
 
+  # TODO 找到paplace 如何转存照片
+  # user avatar
+  # event logo
+  # album page(封面)
+  # images user_id, album_id
+  # TODO 相册删除就del标识，作品里是不存在删除操作的,那么works任何时候都可以引用image
+
   # 消息, 通知, 设置相关所有
 
   # recommendations推荐表
