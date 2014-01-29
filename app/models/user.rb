@@ -121,7 +121,7 @@ class User < ActiveRecord::Base
   after_create :basic_build
 
   def basic_build
-    self.albums.create(logo:  File.open('public/images/defaults/album.jpg'), name: '默认相册', desc: '默认相册', open: 0)
+    self.albums.create(name: '默认相册', desc: '默认相册', open: 0)
   end
   # from 注册来源
 
@@ -146,6 +146,8 @@ class User < ActiveRecord::Base
   # 站内互动: 允许回应(所有,圈子,好友,粉丝)针对活动/other,允许漫信(所有,圈子,好友,粉丝) 暂时不加
 
   # TODO 找到 paperclip 如何转存照片
+  # TODO 参与活动的照片也瀑布流,全部图片上传解决，相册(logo,创建等)，活动创建解决，瀑布流也可以正常排列,列表排列
+  # TODO 其中列表排列时后面是详细的点赞，浏览，喜欢等等乱七八糟的
 
   # 消息, 通知, 设置相关所有
 

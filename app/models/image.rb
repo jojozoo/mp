@@ -15,7 +15,8 @@ class Image < ActiveRecord::Base
     # cover: '260x180#',
     small: '100x100>'
   }
-
+  # TODO 更新picture时自动获取exif信息 参考 paperclip.rb 文件
+  # avatar 时自动获取宽高 参考 paperclip.rb 文件
   has_attached_file :picture,
     processors: [:watermark],
     styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.jpg", quality: :better}]}]

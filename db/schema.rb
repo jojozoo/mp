@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(:version => 20140128095530) do
     t.datetime "name_updated_at"
     t.string   "repeat"
     t.integer  "user_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.boolean  "admin",             :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "events", :force => true do |t|

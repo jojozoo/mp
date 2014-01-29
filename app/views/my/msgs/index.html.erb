@@ -32,7 +32,7 @@
 <div class="list-group">
 <% @talks.each do |talk| %>
     <div class="list-group-item <%= 'unread' if talk.unread? %>">
-        <%= link_to image_tag('/images/avatar.jpg', class: 'avatar img-circle'), 'javascript:void(0);' %>
+        <%= link_to image_tag('/images/defaults/users.jpg', class: 'avatar img-circle'), 'javascript:void(0);' %>
         <div class="list-group-item-heading">
             <%= link_to talk.user.username, 'javascript:void(0);' %>
             <span class="pull-right">
