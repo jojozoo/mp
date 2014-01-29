@@ -5,7 +5,7 @@ class CreateAlbums < ActiveRecord::Migration
       t.string :name
       t.attachment :logo
       t.string :desc
-      t.integer :open
+      t.integer :open, default: 0
       t.boolean :del, default: false
 
       t.timestamps

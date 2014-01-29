@@ -21,18 +21,21 @@ ActiveRecord::Schema.define(:version => 20140128095530) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.string   "desc"
-    t.integer  "open"
+    t.integer  "open",              :default => 0
     t.boolean  "del",               :default => false
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
   end
 
   create_table "bgs", :force => true do |t|
-    t.string   "name"
+    t.string   "name_file_name"
+    t.string   "name_content_type"
+    t.integer  "name_file_size"
+    t.datetime "name_updated_at"
     t.string   "repeat"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "events", :force => true do |t|
@@ -190,12 +193,12 @@ ActiveRecord::Schema.define(:version => 20140128095530) do
     t.integer  "warrant"
     t.integer  "talks_count",         :default => 0
     t.integer  "notices_count",       :default => 0
-    t.string   "bg",                  :default => "body01.jpg"
+    t.string   "bg",                  :default => "/images/defaults/bg.jpg"
     t.string   "repeat",              :default => "repeat"
     t.string   "remember_me"
     t.boolean  "del",                 :default => false
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
+    t.datetime "created_at",                                                 :null => false
+    t.datetime "updated_at",                                                 :null => false
   end
 
   create_table "works", :force => true do |t|

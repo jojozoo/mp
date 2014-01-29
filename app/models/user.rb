@@ -119,6 +119,13 @@ class User < ActiveRecord::Base
     jointalk.update_attributes(text: text, state: 1)
     jointalk.messages.create(text: text, user_id: jointalk.sender_id)
   end
+
+  
+  after_create :basic_build
+
+  def basic_build
+    self.albums.create(logo: '/images/defaults/album.jpg' ,name: '默认相册', desc: '默认相册', open: 0)
+  end
   # from 注册来源
 
   # 注册用户默认创建相册(默认相册 头像相册),选择模板
