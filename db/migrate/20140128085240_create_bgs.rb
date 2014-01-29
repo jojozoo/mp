@@ -4,6 +4,7 @@ class CreateBgs < ActiveRecord::Migration
       t.attachment :name
       t.string :repeat
       t.integer :user_id
+      t.boolean :admin, default: false
 
       t.timestamps
     end

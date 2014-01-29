@@ -33,6 +33,13 @@ module Mp
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # paperclip
+    config.paperclip_defaults = {
+        url: "/system/:class/:updated_at/:id_partition/:style/:random.:extension",
+        path: ":rails_root/public/system/:class/:updated_at/:id_partition/:style/:random.:extension",
+        default_url: "/images/defaults/:class.jpg"
+    }
+
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 

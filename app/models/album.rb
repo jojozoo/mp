@@ -6,10 +6,7 @@ class Album < ActiveRecord::Base
     styles: {
       thumb: '200x200',
       small: '200x120'
-    },
-    url: "/system/albums/:attachment/:id/:basename/:style.:extension",
-    path: ":rails_root/public/system/albums/:attachment/:id/:basename/:style.:extension",
-    default_url: "/images/defaults/album.jpg"
+    }
 
   validates_presence_of :name, message: '不能为空'
 end

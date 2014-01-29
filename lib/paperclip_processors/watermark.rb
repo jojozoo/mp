@@ -3,8 +3,8 @@
 module Paperclip
   class Watermark < Thumbnail
     def initialize(file, options = {}, attachment = nil)
-      @watermark_path = options[:watermark_path]
-      @position       = options[:position].nil? ? "SouthEast" : options[:position]
+      @water_path = options[:water_path]
+      @position   = options[:position].nil? ? "SouthEast" : options[:position]
       super
     end
  
@@ -13,9 +13,9 @@ module Paperclip
       dst = Tempfile.new([@basename].compact.join("."))
       dst.binmode
  
-      return super unless @watermark_path
+      return super unless @water_path
  
-      params = ":source #{transformation_command.join(" ")} #{@watermark_path} -gravity #{@position} -composite :dest"
+      params = ":source #{transformation_command.join(" ")} #{@water_path} -gravity #{@position} -composite :dest"
  
       begin
         success = Paperclip.run("convert", params, :source => "#{File.expand_path(src.path)}[0]", :dest => File.expand_path(dst.path))

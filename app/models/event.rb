@@ -27,10 +27,7 @@ class Event < ActiveRecord::Base
     styles: {
       thumb: '200x200',
       small: '200x120'
-    },
-    url: "/system/events/:attachment/:id/:basename/:style.:extension",
-    path: ":rails_root/public/system/events/:attachment/:id/:basename/:style.:extension",
-    default_url: "/images/defaults/event.jpg"
+    }
 
 
   # 作品 参与活动的作品

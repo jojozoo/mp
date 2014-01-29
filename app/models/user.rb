@@ -28,10 +28,7 @@ class User < ActiveRecord::Base
       thumb: '200x200',
       small: '100x100',
       s50: '50x50'
-    },
-    url: "/system/avatars/:attachment/:id/:basename/:style.:extension",
-    path: ":rails_root/public/system/avatars/:attachment/:id/:basename/:style.:extension",
-    default_url: "/images/defaults/avatar.jpg"
+    }
 
   has_many :images
   has_many :albums
@@ -124,7 +121,7 @@ class User < ActiveRecord::Base
   after_create :basic_build
 
   def basic_build
-    self.albums.create(logo: '/images/defaults/album.jpg' ,name: '默认相册', desc: '默认相册', open: 0)
+    self.albums.create(logo:  File.open('public/images/defaults/album.jpg'), name: '默认相册', desc: '默认相册', open: 0)
   end
   # from 注册来源
 
