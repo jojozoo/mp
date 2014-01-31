@@ -19,6 +19,7 @@
     margin-right: 10px;
 }
 .opera a{
+    margin-right: 10px;
     font-size: 12px;
     color: #999;
     display: none;
@@ -34,7 +35,7 @@
     <div class="list-group-item <%= 'unread' if talk.unread? %>">
         <%= link_to image_tag('/images/defaults/users.jpg', class: 'avatar img-circle'), 'javascript:void(0);' %>
         <div class="list-group-item-heading">
-            <%= link_to talk.user.username, 'javascript:void(0);' %>
+            <%= link_to talk.user.username, "javascript:void(0);" %>
             <span class="pull-right">
                 <%= talk.updated_at.to_date %>
             </span>

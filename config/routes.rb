@@ -120,6 +120,8 @@ Mp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
+  # 图片原图访问权限
+  get "/system/:class/:id/:up/:one/:two/:three/:style/:random.:format" => 'system#show'
   root :to => 'sessions#index'
 
   # See how all your routes lay out with "rake routes"

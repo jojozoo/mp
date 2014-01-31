@@ -35,8 +35,10 @@ module Mp
 
     # paperclip
     config.paperclip_defaults = {
-        url: "/system/:class/:updated_at/:id_partition/:style/:random.:extension",
-        path: ":rails_root/public/system/:class/:updated_at/:id_partition/:style/:random.:extension",
+        # url: "/system/:class/:id/:updated_at/:id_partition/:style/:random.:extension",
+        # path: ":rails_root/public/system/:class/:id/:updated_at/:id_partition/:style/:random.:extension",
+        url: "/system/:class/:id/:updated_at/:id_partition/:style/:random.:extension",
+        path: ":rails_root/public/system/:class/:id/:style/:random.:extension",
         default_url: "/images/defaults/:class.jpg"
     }
 
