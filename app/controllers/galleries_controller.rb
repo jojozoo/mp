@@ -8,4 +8,8 @@ class GalleriesController < ApplicationController
     end
   end
 
+  def show
+    @obj = current_user.images.find_by_id(params[:id])
+  end
+
 end

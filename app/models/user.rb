@@ -135,7 +135,6 @@ class User < ActiveRecord::Base
   # 站内漫信: 不接受非 圈子,粉丝,关注者的其他信息
   
   # 公开信息: 电话/邮箱/真实姓名/QQ/weibo/douban/msn/城市/职业
-  # 授权类型: 参考kpkpw的图片协议
   ###再考虑
   # 自定义模块: 
   # 编辑器: 富文本编辑器  Markdown编辑器 (使用帮助)
@@ -166,14 +165,8 @@ class User < ActiveRecord::Base
   # topics 游记，日志表
   # comments 针对这些资源回应(post/events/image/Dt)
 
-  # albums用户相册表(name, user_id, auth(only_self, group, follow, group_and_follow, all), page(封面) through:dy)
-  # images 图片表(包括avatar)
-  # image_groups图片组表(user_id,event_id,content(描述))
-  # De 各种资源表(活动之类的)
   # tags 图片标签表(ok)
   # like_tags(user_id, tag_id) 感兴趣的标签
-  # events 活动表
-  # works作品表image_id event_id user_id
   # groups圈子表(name, desc, user_id, visits_count, events_count, members_count, permission(公开 被搜索))
   # group users(user_id, group_id, auth(创建 管理 成员)) 圈子用户中间表
   # account 第三方登陆用户表
