@@ -5,6 +5,8 @@ Mp::Application.routes.draw do
   get    '/sign_up'       => 'sessions#sign_up'
   post   '/sign_up'       => 'sessions#sign_up'
   get    '/validate'      => 'sessions#validate'
+  get    '/forgot_password'      => 'sessions#forgot_password'
+  post   '/forgot_password'      => 'sessions#forgot_password'
 
   get    '/register/:tag'     => 'check#register'
   get    '/search'        => 'search#index'

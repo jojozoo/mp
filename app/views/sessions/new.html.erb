@@ -67,8 +67,8 @@
 		// password blur
 		function passwordBlur(){
 			var value = $(this).val();
-			if(value.length < 6 || value.lenght > 32){
-				$(this).next().text("密码长度6..32位").parent().addClass('has-error');
+			if(value.length < 5 || value.lenght > 32){
+				$(this).next().text("密码长度5..32位").parent().addClass('has-error');
 				return false;
 			}
 			$(this).next().text('').parent().removeClass('has-error');

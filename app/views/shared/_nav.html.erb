@@ -120,16 +120,11 @@
 						上传作品
 					</a>
 				</li>
-				<li>
-					<a href="/sign_in">登录</a>
-				</li>
-				<li>
-					<a href="/sign_up">注册</a>
-				</li>
+				<% if @current_user %>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<%= image_tag("/images/defaults/users.jpg", class: 'avatar img-circle') %>
-						朱晓武
+						<%= image_tag(@current_user.avatar, class: 'avatar img-circle') %>
+						<%= @current_user.nickname || @current_user.username %>
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
@@ -174,13 +169,21 @@
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<%= link_to sign_out_path do %>
 								<i class="icon-off"></i>
 								退出
-							</a>
+							<% end %>
 						</li>
 					</ul>
 				</li>
+				<% else %>
+				<li>
+					<a href="/sign_in">登录</a>
+				</li>
+				<li>
+					<a href="/sign_up">注册</a>
+				</li>
+				<% end %>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

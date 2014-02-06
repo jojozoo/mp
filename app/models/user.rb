@@ -142,7 +142,7 @@ class User < ActiveRecord::Base
   validates_format_of       :mobile,
                             :with => /^1[3|4|5|8][0-9]\d{4,8}$/,
                             :allow_blank => true, 
-                            :message => '手机不能为空'
+                            :message => '手机格式不正确'
 
   def send_msg(to, text)
     # 发送者发件箱一条
