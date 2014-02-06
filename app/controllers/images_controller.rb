@@ -9,7 +9,8 @@ class ImagesController < ApplicationController
     end
 
     def cut
-        @image = @current_user.images.find(params[:id])
+        # @image = @current_user.images.find(params[:id])
+        # user.avatar = File.open(paperclip.run('-crop 200x100+0+0'))
         # 再确定是头像照片
         # 之后再裁剪
 

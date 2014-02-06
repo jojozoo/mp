@@ -1,7 +1,7 @@
 <% @user = User.first %>
-<% @user.errors[:mobile] = '手机格式不正确!' %>
 <%= simple_form_for @user, validate: true do |f| %>
-	<%= f.input :username, disabled: true, hint: '用户名不可修改!' %>
+	<%#= f.input :username, disabled: true, hint: '用户名不可修改!' %>
+	<%= f.input :username %>
 	<%= f.input :email, disabled: true %>
 	<%= f.input :mobile %>
 	<%= f.input :nickname %>

@@ -1,28 +1,24 @@
-<form class="sign-form">
+<%= form_for @user || User.new, url: '/sign_up', validate: true, html: {id: 'sign-up', class: 'sign-form'} do |f| %>
 	<h4>注册漫拍网，分享精致图片</h4>
 	<hr>
-	<div class="form-group has-error">
-		<input type="text" class="form-control" id="username" name="username" placeholder="限字母和数字" value="bopro">
-		<p class="help-block">账号已存在!</p>
+	<div class="form-group">
+		<%= f.text_field :username, class: 'form-control', placeholder: '用户' %>
 	</div>
 	<div class="form-group">
-		<input type="email" class="form-control" id="email" name="email" placeholder="邮箱">
-		<p class="help-block"></p>
+		<%= f.email_field :email, class: 'form-control', placeholder: '邮箱' %>
 	</div>
 	<div class="form-group">
-		<input type="password" class="form-control" id="password" placeholder="密码">
-		<p class="help-block"></p>
+		<%= f.password_field :password, class: 'form-control', placeholder: '密码' %>
 	</div>
 	<div class="form-group">
-		<input type="password" class="form-control" id="co-password" placeholder="重复密码">
-		<p class="help-block"></p>
+		<%= f.password_field :password_confirmation, class: 'form-control', placeholder: '重复密码' %>
 	</div>
 	<input type="submit" value="注册为漫拍账户" class="btn btn-info btn-block">
 	<hr>
 	<div class="checkbox">
-		<input type="checkbox">
-		同意
-		<a href="">协议</a>
+		<!-- <input type="checkbox" id="agree">
+		<label for="agree">同意</label>
+		<a href="">协议</a> -->
 		<a class="pull-right" href="/sign_in">去登陆</a>
 	</div>
 	<hr>
@@ -45,4 +41,4 @@
 			</td>
 		</tr>
 	</table>
-</form>
+<% end %>

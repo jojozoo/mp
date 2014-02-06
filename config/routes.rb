@@ -3,6 +3,7 @@ Mp::Application.routes.draw do
   post   '/sign_in'       => 'sessions#create'
   get    '/sign_out'      => 'sessions#destroy'
   get    '/sign_up'       => 'sessions#sign_up'
+  post   '/sign_up'       => 'sessions#sign_up'
   get    '/validate'      => 'sessions#validate'
 
   get    '/register/:tag'     => 'check#register'

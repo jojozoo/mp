@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  attr_reader :password#, :current_password
+  attr_accessor :password_confirmation
   attr_accessible :email, 
   :avatar,
   :username, 
@@ -6,6 +8,7 @@ class User < ActiveRecord::Base
   :realname, 
   :mobile, 
   :password, 
+  :password_confirmation,
   :salt, 
   :province, 
   :city, 
@@ -104,6 +107,42 @@ class User < ActiveRecord::Base
     3 => '我的粉丝',
     
   }
+  validates_presence_of     :email, 
+                            :message => '邮箱不能为空',
+                            :if => :email_changed?
+
+  validates_uniqueness_of   :email, 
+                            :message => '邮箱已存在'
+
+  validates_format_of       :email, 
+                            :with  => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,
+                            :message => '邮箱格式不正确'
+
+  validates_presence_of     :password,
+                            :message => '密码不能为空'
+
+  validates_length_of       :password, 
+                            :within => 5..32,
+                            :message => '长度5..32位'
+
+  validates_confirmation_of :password,
+                            :message => "密码不一致",
+                            :on => :create
+
+  validates_presence_of     :username,
+                            :message => '用户名不能为空'
+
+  validates_uniqueness_of   :username, 
+                            :message => '用户名已存在'
+
+  validates_format_of       :username,
+                            :with => /[\w]{5,20}/,
+                            :message => "5-20位字母或数字"
+
+  validates_format_of       :mobile,
+                            :with => /^1[3|4|5|8][0-9]\d{4,8}$/,
+                            :allow_blank => true, 
+                            :message => '手机不能为空'
 
   def send_msg(to, text)
     # 发送者发件箱一条
@@ -123,6 +162,16 @@ class User < ActiveRecord::Base
   def basic_build
     self.albums.create(name: '默认相册', desc: '默认相册', open: 0)
   end
+  # 加密
+  def password=(new_password)
+    @password = new_password
+    self.encrypted_password = Digest::MD5.hexdigest(@password) if @password.present?
+  end
+
+  def valid_password?(password)
+    self.encrypted_password == Digest::MD5.hexdigest(password)
+  end
+
   # from 注册来源
 
   # 注册用户默认创建相册(默认相册 头像相册),选择模板
@@ -151,6 +200,10 @@ class User < ActiveRecord::Base
   # TODO image/show 有evid,woid和currid来决定作品的浏览。 alid和currid来决定相册的浏览, else 一般浏览
   # TODO 怎么让照片成组,这样方便成组浏览,做为活动作品的一个属性想一下: 可以在work表添加group字段来标示某组, 内容用uid和eventid+随机串
   # TODO (如果参加某活动的所有图片都分为一组，那么不需要此字段, 直接活动where eventid group uid就可以了, 同时 相册和作品分开浏览,但原图必须跳转到一个地址)
+  # TODO 没有推荐话题,按照评论多少来显示
+  # TODO 推荐摄影师按照后台推荐和照片质量
+  # TODO 添加照片类型(风光、人文、静物、广告)
+  # TODO 相册添加移动功能,达到分组的效果,并且参加活动的时候可以从相册选择照片
 
   # 消息, 通知, 设置相关所有
 
