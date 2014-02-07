@@ -9,17 +9,16 @@ Mp::Application.routes.draw do
   post   '/forgot_password'      => 'sessions#forgot_password'
   get    '/profile'       => 'users#profile'
 
-  get    '/register/:tag'     => 'check#register'
   get    '/search'        => 'search#index'
 
-  resources :images do
+  # gallery
+  resources :images, path: 'gs' do
     collection do
       post   ':type', action: :create # 图片上传
       post   'cut', action: :cut # 图片上传
     end
   end
 
-  resources :galleries
   resources :albums
   resources :groups, path: 'g'
   resources :events, path: 'e'

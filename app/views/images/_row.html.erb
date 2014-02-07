@@ -18,7 +18,7 @@
           推荐
         </a>
     </div>
-    <%= link_to image_tag(image.picture.url(:thumb)), gallery_path(image), style: 'display:block', target: '_blank' %>
+    <%= link_to image_tag(image.picture.url(:thumb)), image_path(image), style: 'display:block', target: '_blank' %>
     <div class="caption">
       <div>
         苹果电脑30年产品收藏视频展示苹果电脑30年产
@@ -28,7 +28,7 @@
       <span class="push-pushpin">收藏(0)</span>
       <span class="push-ok-circle">推荐(198)</span>
       <hr>
-      <div class="media author-gallery">
+      <div class="media">
           <a class="pull-left" href="#">
               <img class="img-circle avatar-mini" src="/images/defaults/users.jpg"></a>
           <div class="media-body">
