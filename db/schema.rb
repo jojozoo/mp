@@ -188,7 +188,7 @@ ActiveRecord::Schema.define(:version => 20140207085415) do
     t.string   "nickname"
     t.string   "realname"
     t.string   "mobile"
-    t.string   "encrypted_password"
+    t.string   "password"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

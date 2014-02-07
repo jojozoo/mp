@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  attr_reader :password#, :current_password
   attr_accessor :password_confirmation
   attr_accessible :email, 
   :avatar,
@@ -24,14 +23,22 @@ class User < ActiveRecord::Base
   :remember_me,
   :messages_count,
   :nocices_count,
+  :x,
+  :y,
+  :w,
+  :h,
   :del
 
+  StyleRow = {
+    original: '500x500>',
+    thumb: '200x200',
+    small: '100x100',
+    s50: '50x50'
+  }
   has_attached_file :avatar,
-    styles: {
-      thumb: '200x200',
-      small: '100x100',
-      s50: '50x50'
-    }
+                    processors: [:cropper],
+                    styles: Hash[StyleRow.map{|k,v| [k, {geometry: v, quality: :better}]}]
+  attr_accessor :x, :y, :w, :h
 
   has_many :images
   has_many :albums
@@ -118,14 +125,11 @@ class User < ActiveRecord::Base
                             :with  => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,
                             :message => '邮箱格式不正确'
 
-  # validates_length_of       :email, 
-  #                           :within => 5..32,
-  #                           :message => '长度5..32位'
-
   validates_presence_of     :password,
-                            :message => '密码不能为空'
+                            :message => '密码不能为空',
+                            :if => :password_changed?
 
-  validates_length_of       :password, 
+  validates_length_of       :password,
                             :within => 5..32,
                             :message => '长度5..32位'
 
@@ -140,13 +144,26 @@ class User < ActiveRecord::Base
                             :message => '用户名已存在'
 
   validates_format_of       :username,
-                            :with => /[\u4e00-\u9fa5\w]{2,10}/,
+                            :with => /[\u4e00-\u9fa5\w]{2,10}$/,
                             :message => "2-10位汉字/字母/数字/_组成"
 
   validates_format_of       :mobile,
                             :with => /^1[3|4|5|8][0-9]\d{4,8}$/,
-                            :allow_blank => true, 
+                            :allow_blank => true,
                             :message => '手机格式不正确'
+  validates_uniqueness_of   :mobile, 
+                            :allow_blank => true,
+                            :message => '手机已存在'
+
+  validates_format_of       :realname,
+                            :with => /[\u4e00-\u9fa5]{2,10}$/,
+                            :allow_blank => true,
+                            :message => "2-10位汉字"
+  
+  validates_format_of       :domain,
+                            :with => /[\w-]{2,10}$/,
+                            :allow_blank => true,
+                            :message => "2-10位字母/数字/下划线/横线"
 
   def send_msg(to, text)
     # 发送者发件箱一条
@@ -166,14 +183,22 @@ class User < ActiveRecord::Base
   def basic_build
     self.albums.create(name: '默认相册', desc: '默认相册', open: 0)
   end
+
   # 加密
   def password=(new_password)
-    @password = new_password
-    self.encrypted_password = Digest::MD5.hexdigest(@password) if @password.present?
+    write_attribute(:password, Digest::MD5.hexdigest(new_password)) if new_password.present?
+  end
+  def password_confirmation=(new_password)
+    write_attribute(:password_confirmation, Digest::MD5.hexdigest(new_password)) if new_password.present?
   end
 
-  def valid_password?(password)
-    self.encrypted_password == Digest::MD5.hexdigest(password)
+  def valid_password?(new_password)
+    self.password == Digest::MD5.hexdigest(new_password)
+  end
+
+  # 常驻地
+  def addr
+    province.eql?(city) ? province : province + ' ' + city
   end
 
   # from 注册来源

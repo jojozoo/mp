@@ -34,17 +34,20 @@ $(function(){
 		// 如果选择了省
 		if(row && $.isArray(row)){
 			$(".cities").html('');
+			$("#user_province").val($(this).text());
+			$("#user_city").val('');
 			for(var i=0; i < row.length; i++){
 				$("<a href='#' class='city-row' p='"+name+"'>"+row[i]+"</a>").appendTo(".cities").click(city_row);
 			}
 		} else {
-			// $('#user_city').val(name);
-			// 选择了直辖市
 			if($(this).parent().hasClass('provinces')){
-				alert('直辖市');
+				$("#user_province").val($(this).text());
+				$("#user_city").val($(this).text());
+				$("#city-input").val($("#user_province").val());
 			// 选择了地级市
 			} else {
-				alert('地级市');
+				$("#user_city").val($(this).text());
+				$("#city-input").val($("#user_province").val() + ' ' + $(this).text());
 			}
 			$('#my-city').modal('hide');
 		}
@@ -52,8 +55,9 @@ $(function(){
 		return false;
 	}
 	$(".city-row").on('click', city_row);
-	// choose city open modal
+	// 点击弹出选择城市的modal
 	$('#choose-point').click(function(){
+		$(".cities").html('');
 		$('#my-city').modal({backdrop: 'static'});
 	});
 });

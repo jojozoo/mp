@@ -16,8 +16,6 @@ gem 'by_star', :git => 'git://github.com/radar/by_star'
 
 # 上传图片
 gem 'paperclip', '~> 3.0'
-# 存储图片宽高等信息
-gem 'paperclip-meta'
 # 获取EXIF信息
 gem 'exifr'
 

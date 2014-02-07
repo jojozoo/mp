@@ -11,7 +11,7 @@ $(function(){
         'buttonText': '上传头像',  //选择按钮显示的字符
         'preventCaching' : true,
         'swf'       : '/uploadify/uploadify.swf', //swf文件的位置
-        'uploader'  : '/images/avatar', //上传的接收者
+        'uploader'  : '/u/avatar', //上传的接收者
         'cancelImg' : 'uploadify-cancel.png',
         'folder'    : '/upload',//上传图片的存放地址
         'auto'      : true,    //选择图片后是否自动上传
@@ -23,13 +23,14 @@ $(function(){
         'fileTypeDesc': 'Image Files', //允许的格式，详见文档
      
         'onSelect': function(file) {
-            //选择文件后的触发事件
-            console.log('selectend')
+            // 选择文件后的触发事件
+            // console.log('selectend')
         },
      
         'onUploadSuccess' : function(file, data, response) {
             //上传成功后的触发事件
             // $field.uploadify('disable', true);  //(上传成功后)'disable'禁止再选择图片
+            $("#cutThis").removeClass('disabled');
             cutAvatar(data);
         }
     });
@@ -47,7 +48,11 @@ $(function(){
         // 裁剪结果替换
         $(".review img").attr("src", data.url);
         
-        var cutJson = {}; //实际坐标点
+        var cutJson = {x: 0, y:0, w: x2y2,h: x2y2}; //实际坐标点
+        $('input#c_x').val(0);
+        $('input#c_y').val(0);
+        $('input#c_w').val(parseInt(x2y2 / radio));
+        $('input#c_h').val(parseInt(x2y2 / radio));
         //配置imgAreaSelect
         var imgArea = imageArea.imgAreaSelect({
             aspectRatio: '1:1',
@@ -69,15 +74,18 @@ $(function(){
                 });
             },
             onSelectEnd: function(img,selection){
-                //计算实际对于原图的裁剪坐标
+                // 计算实际对于原图的裁剪坐标
                 // 这些值计算的不精确
                 // 754x835 => 宽高最大 751
                 // 204x244 => 正常
                 cutJson.x = parseInt(data.width * selection.x1 / 300);
                 cutJson.y = parseInt(data.height * selection.y1 / 300);
-                cutJson.width  = parseInt(selection.width / radio);
-                cutJson.height = parseInt(selection.height / radio);
-                console.log(cutJson);
+                cutJson.w = parseInt(selection.width / radio);
+                cutJson.h = parseInt(selection.height / radio);
+                $('input#c_x').val(cutJson.x);
+                $('input#c_y').val(cutJson.y);
+                $('input#c_w').val(cutJson.w);
+                $('input#c_h').val(cutJson.h);
             }
         });
     };

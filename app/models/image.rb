@@ -1,6 +1,6 @@
 # require 'paperclip_processors/watermark'
 class Image < ActiveRecord::Base
-  attr_accessible :album_id, :warrant, :state, :exif, :name, :user_id, :picture, :picture_meta, :del
+  attr_accessible :album_id, :warrant, :state, :exif, :name, :user_id, :picture, :del
   # 模板只有原图
   # 需要设置访问权限
   # 几种水印图, 原图无水印,原图水印,大图水印, 中图水印, 小图中间水印, 头像, 50x50无水印
@@ -19,6 +19,30 @@ class Image < ActiveRecord::Base
   has_attached_file :picture,
     processors: [:watermark],
     styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.jpg", quality: :better}]}]
+
+  after_picture_post_process :load_exif
+
+
+  def load_exif
+    original_filename = picture.original_filename
+    attachment        = picture.queued_for_write[:original].path # picture.path
+    self.exif = begin
+        hash = case original_filename
+        when /\.(jpg|jpeg)$/i
+            EXIFR::JPEG.new(attachment).to_hash
+        when /\.(tif|tiff)$/i
+            tiff = EXIFR::TIFF.new(attachment)
+            tiff.to_hash.merge(:width => tiff.width, :height => tiff.height)
+        else
+            {}
+        end
+
+        hash.each {|k,v| hash[k] = case v when Rational then v.to_f when EXIFR::TIFF::Orientation then v.to_i else v end }
+        hash
+    rescue
+        {}
+    end.to_json
+  end
 
     # before_post_process
     # after_post_process

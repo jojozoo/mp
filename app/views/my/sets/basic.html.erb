@@ -1,5 +1,4 @@
-<% @user = User.first %>
-<%= simple_form_for @user, validate: true do |f| %>
+<%= simple_form_for current_user, validate: true do |f| %>
 	<%#= f.input :username, disabled: true, hint: '用户名不可修改!' %>
 	<%= f.input :username %>
 	<%= f.input :email, disabled: true %>
@@ -11,7 +10,7 @@
 		<label class="string optional col-sm-2 control-label" for="choose-point">常驻地</label>
 		<div class="col-sm-6 input-text-add">
 			<div class="input-group" id="choose-point">
-				<input class="form-control" type="text" readonly="">
+				<input class="form-control" type="text" readonly="" id="city-input" value="<%= current_user.addr %>">
 				<span class="input-group-addon">
 					<i class="icon-map-marker"></i>
 				</span>
@@ -22,15 +21,15 @@
 		<label class="radio_buttons optional col-sm-2 control-label">性别</label>
 		<div class="col-sm-6 input-text-add">
 			<label class="radio-inline" for="user_gender_true">
-				<input type="radio" id="user_gender_true" value="true" name="user[gender]">男
+				<input type="radio" id="user_gender_true" value="true" name="user[gender]" <%= 'checked=""' if current_user.gender == true %>>男
 			</label>
 			<label class="radio-inline" for="user_gender_false" style="padding-left:40px;">
-				<input type="radio" id="user_gender_false" value="false" name="user[gender]">女
+				<input type="radio" id="user_gender_false" value="false" name="user[gender]" <%= 'checked=""' if current_user.gender == false %>>女
 			</label>
 		</div>
 	</div>
 	<%= f.input :site %>
-	<%= f.input :domain, disabled: !!@user.domain %>
+	<%= f.input :domain, disabled: !!current_user.domain %>
 	<%= f.input :profession %>
 	<%= f.input :duty, label_html: { for: :user_duty } %>
 	<div class="form-group string optional user_warrant">
@@ -43,7 +42,7 @@
 			<div class="hide" id="agreement">
 				<% User::WARRANT.each do |k, v| %>
 				<div class="warrant-row">
-					<input type="radio" id="warrant<%= k %>" name="user[warrant]" value="<%= k %>">
+					<input type="radio" id="warrant<%= k %>" name="user[warrant]" value="<%= k %>" <%= 'checked=""' if current_user.warrant.eql?(k) %>>
 					<label for="warrant<%= k %>">
 						<% User::WARRANTVAL[k].each do |row| %>
 							<span class="cc-<%= row %>"></span>
@@ -62,7 +61,6 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 class="modal-title">常驻地选择</h4>
 			</div>
 			<div class="modal-body">

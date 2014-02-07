@@ -11,7 +11,7 @@ $(function(){
         'buttonText': '选择图片',  //选择按钮显示的字符
         'preventCaching' : true,
         'swf'       : '/uploadify/uploadify.swf', //swf文件的位置
-        'uploader'  : '/images/works', //上传的接收者
+        'uploader'  : '/gs', //上传的接收者
         'cancelImg' : 'uploadify-cancel.png',
         'folder'    : '/upload',//上传图片的存放地址
         'auto'      : true,    //选择图片后是否自动上传

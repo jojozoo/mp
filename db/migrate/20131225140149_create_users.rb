@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :nickname
       t.string :realname
       t.string :mobile
-      t.string :encrypted_password
+      t.string :password
       t.string :salt
       t.attachment :avatar
       t.string :province

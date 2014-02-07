@@ -79,8 +79,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    paperclip-meta (0.4.3)
-      paperclip
     polyglot (0.3.3)
     pry (0.9.12.4)
       coderay (~> 1.0)
@@ -149,7 +147,6 @@ DEPENDENCIES
   jquery-rails
   mysql2
   paperclip (~> 3.0)
-  paperclip-meta
   pry
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)

@@ -45,5 +45,5 @@ en:
         desc: '描述'
     hints:
       defaults:
-        domain: '申请成功将不可修改!'
+        domain: '申请成功将不可修改,成为摄影师才可以拥有二级域名'
 

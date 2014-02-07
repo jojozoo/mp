@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
   # POST /sign_in 登录
   def create
-    @user = User.where(["username = ? or email = ? or mobile = ?", params[:username], params[:username], params[:username]]).first
+    @user = User.where(["username = ? or email = ?", params[:username], params[:username]]).first
     @errors = {}
     if @user.blank?
       @errors[:username] = "请输入正确的账号/邮箱/手机"
@@ -52,7 +52,7 @@ class SessionsController < ApplicationController
   def forgot
     redirect_to root_path if @current_user
     if request.post?
-      if @user = User.where(["username = ? or email = ? or mobile = ?", params[:login], params[:login], params[:login]]).first
+      if @user = User.where(["username = ? or email = ?", params[:login], params[:login]]).first
         redirect_to action: :validate and return
       else
         @error = "找不到对应账号"
