@@ -15,22 +15,11 @@ Mp::Application.routes.draw do
   get    '/search'        => 'search#index'
 
   # gallery
-  resources :images, path: 'gs' do
-    collection do
-      post   'cut' # 图片上传
-    end
-  end
-  
-
+  resources :images, path: 'gs'
   resources :albums
   resources :groups, path: 'g'
   resources :events, path: 'e'
-  resources :users, path: 'u' do
-    collection do
-      post :avatar
-      post :cut
-    end
-  end
+  resources :users, path: 'u'
   resources :micros, path: 'ms'
   resources :works
   resources :rs
@@ -43,16 +32,18 @@ Mp::Application.routes.draw do
   ##### my star #####
   scope '/my', module: 'my', as: 'my' do
     get '/' => 'sets#index'
-    resources :sets, only: [:index, :create], path: 'set' do
+    resources :sets, only: [:index, :update], path: 'set' do
       collection do
-        get 'basic'
-        get 'avatar'
-        get 'security'
-        get 'push'
-        get 'dy'
-        get 'privacy'
-        get 'bg'
-        get 'others'
+        post 'avatar'
+        post 'cut'
+        get  'basic'
+        get  'avatar'
+        get  'security'
+        get  'push'
+        get  'dy'
+        get  'privacy'
+        get  'bg'
+        get  'others'
       end
     end
 

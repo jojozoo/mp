@@ -1,6 +1,5 @@
-<%= simple_form_for current_user, validate: true do |f| %>
-	<%#= f.input :username, disabled: true, hint: '用户名不可修改!' %>
-	<%= f.input :username %>
+<%= simple_form_for current_user, url: my_set_path('update'), validate: true do |f| %>
+	<%= f.input :username, disabled: true %>
 	<%= f.input :email, disabled: true %>
 	<%= f.input :mobile %>
 	<%= f.input :realname %>
@@ -29,7 +28,7 @@
 		</div>
 	</div>
 	<%= f.input :site %>
-	<%= f.input :domain, disabled: !!current_user.domain %>
+	<%= f.input :domain, disabled: current_user.domain.present? %>
 	<%= f.input :profession %>
 	<%= f.input :duty, label_html: { for: :user_duty } %>
 	<div class="form-group string optional user_warrant">

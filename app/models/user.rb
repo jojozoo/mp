@@ -23,22 +23,16 @@ class User < ActiveRecord::Base
   :remember_me,
   :messages_count,
   :nocices_count,
-  :x,
-  :y,
-  :w,
-  :h,
   :del
 
   StyleRow = {
     original: '500x500>',
-    thumb: '200x200',
-    small: '100x100',
-    s50: '50x50'
+    thumb: '200x200#',
+    small: '100x100#',
+    s50: '50x50#'
   }
   has_attached_file :avatar,
-                    processors: [:cropper],
                     styles: Hash[StyleRow.map{|k,v| [k, {geometry: v, quality: :better}]}]
-  attr_accessor :x, :y, :w, :h
 
   has_many :images
   has_many :albums
