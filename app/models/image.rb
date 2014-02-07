@@ -9,7 +9,6 @@ class Image < ActiveRecord::Base
 
   # 必须要在 public/images/water/目录存在相对应key的水印图
   Water = {
-    # original: '',
     big: "960x600#",
     thumb: '260x180>',
     cover: '260x180#',

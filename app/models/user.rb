@@ -118,6 +118,10 @@ class User < ActiveRecord::Base
                             :with  => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,
                             :message => '邮箱格式不正确'
 
+  validates_length_of       :email, 
+                            :within => 5..32,
+                            :message => '长度5..32位'
+
   validates_presence_of     :password,
                             :message => '密码不能为空'
 
@@ -136,8 +140,8 @@ class User < ActiveRecord::Base
                             :message => '用户名已存在'
 
   validates_format_of       :username,
-                            :with => /[\w]{5,20}/,
-                            :message => "5-20位字母或数字"
+                            :with => /[\u4e00-\u9fa5\w]{2,10}/,
+                            :message => "2-10位汉字/字母/数字/_组成"
 
   validates_format_of       :mobile,
                             :with => /^1[3|4|5|8][0-9]\d{4,8}$/,

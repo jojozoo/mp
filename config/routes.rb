@@ -7,6 +7,7 @@ Mp::Application.routes.draw do
   get    '/validate'      => 'sessions#validate'
   get    '/forgot_password'      => 'sessions#forgot_password'
   post   '/forgot_password'      => 'sessions#forgot_password'
+  get    '/profile'       => 'users#profile'
 
   get    '/register/:tag'     => 'check#register'
   get    '/search'        => 'search#index'
@@ -23,6 +24,8 @@ Mp::Application.routes.draw do
   resources :groups, path: 'g'
   resources :events, path: 'e'
   resources :users, path: 'u'
+  resources :micros, path: 'ms'
+  resources :rs
   
   resources :works
   ##### my star #####

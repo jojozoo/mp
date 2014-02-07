@@ -54,12 +54,13 @@
 		// username blur
 		function usernameBlur(){
 			var value = $(this).val();
-			if(!(/[\w\.\@]{5,}/.test(value))){
+			var reg = /[\w\.\@\u4e00-\u9fa5]{2,}/;
+			if(!(reg.test(value))){
 				$(this).next().text("请输入正确的账号/邮箱/手机").parent().addClass('has-error');
 				return false
 			}
 			if(value.length > 32){
-				$(this).next().text("请输入正确的账号/邮箱/手机").parent().addClass('has-error');
+				$(this).next().text("长度小于32位").parent().addClass('has-error');
 				return false	
 			}
 			$(this).next().text('').parent().removeClass('has-error');
