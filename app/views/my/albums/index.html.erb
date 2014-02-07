@@ -15,7 +15,7 @@
 	<div class="clearfix"></div>
 </div>
 <div class="row">
-	<% @current_user.albums.limit(20).each do |album| %>
+	<% current_user.albums.limit(20).each do |album| %>
 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
 				<%= link_to image_tag("/tmp/p9.jpeg"), my_album_path(album) %>

@@ -26,11 +26,11 @@
 <% end %>
 <ul class="media-list">
 	<% @msgs.each do |msg| %>
-	<li class="media all-<%= "#{@current_user.id.eql?(msg.user_id) ? 'left' : 'right'}" %>">
-		<%= link_to image_tag('/images/defaults/users.jpg', class: 'avatar img-circle'), user_path(msg.user_id), class: "pull-#{@current_user.id.eql?(msg.user_id) ? 'left' : 'right'}" %>
+	<li class="media all-<%= "#{current_user.id.eql?(msg.user_id) ? 'left' : 'right'}" %>">
+		<%= link_to image_tag('/images/defaults/users.jpg', class: 'avatar img-circle'), user_path(msg.user_id), class: "pull-#{current_user.id.eql?(msg.user_id) ? 'left' : 'right'}" %>
 		<div class="media-body">
 			<div class="media-heading">
-				<div class="userinfo pull-<%= "#{@current_user.id.eql?(msg.user_id) ? 'left' : 'right'}" %>">
+				<div class="userinfo pull-<%= "#{current_user.id.eql?(msg.user_id) ? 'left' : 'right'}" %>">
 					<%= link_to msg.user.username, user_path(msg.user_id) %>
 					<%= msg.created_at.strftime("%m-%d %H:%M") %>
 					<%= link_to '删除', my_msg_path(@talk.id, mid: msg.id), method: :delete, class: 'del' %>

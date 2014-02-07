@@ -49,7 +49,7 @@ class SessionsController < ApplicationController
   end
 
   # 忘记密码
-  def forgot_password
+  def forgot
     redirect_to root_path if @current_user
     if request.post?
       if @user = User.where(["username = ? or email = ? or mobile = ?", params[:login], params[:login], params[:login]]).first

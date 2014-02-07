@@ -1,12 +1,15 @@
 Mp::Application.routes.draw do
+  get    '/'              => 'sessions#index', as: :sessions
   get    '/sign_in'       => 'sessions#new'
   post   '/sign_in'       => 'sessions#create'
   get    '/sign_out'      => 'sessions#destroy'
   get    '/sign_up'       => 'sessions#sign_up'
   post   '/sign_up'       => 'sessions#sign_up'
   get    '/validate'      => 'sessions#validate'
-  get    '/forgot_password'      => 'sessions#forgot_password'
-  post   '/forgot_password'      => 'sessions#forgot_password'
+  get    '/forgot'        => 'sessions#forgot'
+  post   '/forgot'        => 'sessions#forgot'
+
+
   get    '/profile'       => 'users#profile'
 
   get    '/search'        => 'search#index'
@@ -14,19 +17,24 @@ Mp::Application.routes.draw do
   # gallery
   resources :images, path: 'gs' do
     collection do
-      post   ':type', action: :create # 图片上传
-      post   'cut', action: :cut # 图片上传
+      post   'cut' # 图片上传
     end
   end
+  
 
   resources :albums
   resources :groups, path: 'g'
   resources :events, path: 'e'
   resources :users, path: 'u'
   resources :micros, path: 'ms'
-  resources :rs
-  
   resources :works
+  resources :rs
+  resources :sites, only: :create do
+    collection do
+      match ':action'
+    end
+  end
+  
   ##### my star #####
   scope '/my', module: 'my', as: 'my' do
     get '/' => 'sets#index'
@@ -49,8 +57,6 @@ Mp::Application.routes.draw do
         get 'unread'
         get 'trash'
         get 'notices'
-        # get 'read_notices'
-        # get 'unread_notices'
       end
     end
     resources :timelines
@@ -125,8 +131,8 @@ Mp::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # 图片原图访问权限
-  get "/system/:class/:id/:up/:one/:two/:three/:style/:random.:format" => 'system#show'
+  # 图片访问权限
+  get "/system/:class/:id/:up/:one/:two/:three/:style/:random.:format" => 'images#browse'
   root :to => 'sessions#index'
 
   # See how all your routes lay out with "rake routes"

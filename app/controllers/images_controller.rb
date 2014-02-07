@@ -8,7 +8,17 @@ class ImagesController < ApplicationController
     end
 
     def show
-        @obj = current_user.images.find_by_id(params[:id])
+        @obj = Image.find_by_id(params[:id])
+    end
+
+    # 图片访问权限控制
+    def browse
+        # sleep(1)
+        send_path = "public/system/#{params[:class]}/#{params[:id]}/#{params[:style]}/#{params[:random]}.#{params[:format]}"
+        if params[:class].eql?('images') and params[:style] and params[:style].eql?('original')
+            redirect_to '/404' and return
+        end
+        send_file send_path, disposition: 'inline'
     end
     
     def new

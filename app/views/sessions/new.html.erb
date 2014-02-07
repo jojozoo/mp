@@ -59,10 +59,6 @@
 				$(this).next().text("请输入正确的账号/邮箱/手机").parent().addClass('has-error');
 				return false
 			}
-			if(value.length > 32){
-				$(this).next().text("长度小于32位").parent().addClass('has-error');
-				return false	
-			}
 			$(this).next().text('').parent().removeClass('has-error');
 		}
 		// password blur

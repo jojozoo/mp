@@ -18,6 +18,8 @@ class CreateUsers < ActiveRecord::Migration
       t.date   :duty
       t.boolean :gender
       t.integer :warrant # 授权
+      t.boolean :admin, default: 0 # 管理员
+      t.boolean :photographer, default: 0 # 摄影师
       t.integer :talks_count, default: 0
       t.integer :notices_count, default: 0
       t.string :bg, default: '/images/defaults/bg.jpg'

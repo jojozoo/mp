@@ -118,9 +118,9 @@ class User < ActiveRecord::Base
                             :with  => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,
                             :message => '邮箱格式不正确'
 
-  validates_length_of       :email, 
-                            :within => 5..32,
-                            :message => '长度5..32位'
+  # validates_length_of       :email, 
+  #                           :within => 5..32,
+  #                           :message => '长度5..32位'
 
   validates_presence_of     :password,
                             :message => '密码不能为空'

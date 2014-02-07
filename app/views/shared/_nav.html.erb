@@ -1,101 +1,29 @@
 <div class="header">
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
 		<div class="navbar-header">
-			<%= link_to image_tag("/images/logo.png"), '/', class: 'navbar-brand', style: 'padding:0' %></div>
+			<%= link_to image_tag("/images/logo.png"), root_path, class: 'navbar-brand', style: 'padding:0' %></div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li class="active">
-					<%= link_to '首页', root_path %>
-				</li>
-				<li>
-					<%= link_to '动态', micros_path %>
-				</li>
-				<li>
-					<%= link_to '图库', images_path %>
-				</li>
-				<li class="dropdown">
-					<a href="/e">
-						活动 <b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="/e">每日一拍</a>
-						</li>
-						<li>
-							<a href="/e">快拍城市</a>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<a href="/e">我的同城</a>
-						</li>
-						<li>
-							<a href="/e">发现同城</a>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<a href="/e">正在进行的活动</a>
-						</li>
-						<li class="divider"></li>
-						<li>
-							<a href="/e">已经结束的活动</a>
-						</li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="/works">
-						作品 <b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="#">编辑推荐</a>
-						</li>
-						<li>
-							<a href="#">每日精选</a>
-						</li>
-						<li>
-							<a href="#">最新上传</a>
-						</li>
-						<li>
-							<a href="#">热门作品</a>
-						</li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="/rs">
-						推荐 <b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="#">每天看世界最好的照片</a>
-						</li>
-						<li>
-							<a href="#">月月评</a>
-						</li>
-						<li>
-							<a href="#">影展</a>
-						</li>
-						<li>
-							<a href="#">摄影师</a>
-						</li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="/g">
-						圈子
-						<b class="caret"></b>
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<a href="/g/me">我的圈子</a>
-						</li>
-						<li>
-							<a href="/g/explore">发现圈子</a>
-						</li>
-						<!-- <li>
-							<a href="/g/topics">发现话题</a>
-						</li> -->
-					</ul>
-				</li>
+				<% $navs.each do |key, val| %>
+					<li class="<%= 'dropdown' if val.is_a?(Hash) %> <%= 'active' if controller_name.eql?(key) %>">
+						<% if val.is_a?(Hash) %>
+							<%= link_to key.to_sym do %>
+								<%= val['name'] %> <b class="caret"></b>
+							<% end %>
+							<ul class="dropdown-menu">
+								<% val['second'].each do |k,v| %>
+									<% if v.eql?('divider') %>
+										<li class="divider"></li>
+									<% else %>
+										<li><%= link_to k, v.to_sym %></li>
+									<% end %>
+								<% end %>
+							</ul>
+						<% else %>
+							<%= link_to val, key.to_sym %>
+						<% end %>
+					</li>
+				<% end %>
 			</ul>
 			<form class="navbar-form navbar-left" style="width:300px">
 				<div class="input-group">
@@ -109,16 +37,16 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="#">
+					<a href="/gs/new">
 						<i class="icon-camera"></i>
 						上传作品
 					</a>
 				</li>
-				<% if @current_user %>
+				<% if sign_in? %>
 				<li class="dropdown">
 					<a href="/profile">
-						<%= image_tag(@current_user.avatar, class: 'avatar img-circle') %>
-						<%= @current_user.nickname || @current_user.username %>
+						<%= image_tag(current_user.avatar, class: 'avatar img-circle') %>
+						<%= current_user.username %>
 						<b class="caret"></b>
 					</a>
 					<ul class="dropdown-menu">
@@ -138,20 +66,20 @@
 							</a>
 						</li>
 						<li>
-							<a href="#">
+							<a href="/my/msgs/notices">
 								<i class="icon-bullhorn"></i>
 								通知
 							</a>
 						</li>
 						<li class="disabled">
-							<a href="#">
+							<a href="javascript:void(0);">
 								<i class="icon-truck"></i>
 								积分(暂未开通)
 							</a>
 						</li>
 						<li class="divider"></li>
 						<li>
-							<a href="#">
+							<a href="/admin">
 								<i class="icon-signin"></i>
 								后台管理
 							</a>
