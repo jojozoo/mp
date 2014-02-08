@@ -21,11 +21,14 @@ gem 'exifr'
 
 # oauth
 gem 'oauth2'
-gem 'oauth_china', path: 'vendor/oauth_china'
+# gem 'oauth_china', path: 'vendor/oauth_china'
 
 group :development do
 	gem 'awesome_print'
     gem 'pry'
+    gem 'pry-remote'
+    gem 'pry-stack_explorer'
+    gem 'pry-debugger'
 end
 # Gems used only for assets and not required
 # in production environments by default.

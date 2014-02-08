@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140207085415) do
+ActiveRecord::Schema.define(:version => 20140208085729) do
+
+  create_table "accounts", :force => true do |t|
+    t.string   "uid"
+    t.integer  "user_id"
+    t.string   "site"
+    t.string   "token"
+    t.string   "refresh_token"
+    t.string   "expires_in"
+    t.string   "expires_at"
+    t.text     "other"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "albums", :force => true do |t|
     t.integer  "user_id"
@@ -80,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20140207085415) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.text     "picture_meta"
-    t.string   "exif"
+    t.text     "exif"
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false

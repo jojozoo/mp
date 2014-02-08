@@ -30,11 +30,11 @@ Mp::Application.routes.draw do
   end
 
   scope '/oauth', module: 'oauth' do
+    get 'sign_in/:id' => 'application#index', as: :oauth_sign_in
     [:weibo, :qq, :qqmp, :qzone, :douban, :renren].each do |row|
       resources row, only: [:index] do
         collection do
           get  'callback'
-          post 'callback'
         end
       end
     end

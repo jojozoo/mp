@@ -4,6 +4,8 @@ class Oauth::QqController < Oauth::ApplicationController
     end
 
     def callback
+        redirect_to '/sign_in' and return if params[:code].blank?
+        
         token = client.auth_code.get_token(params[:code], :redirect_uri => oauth['callback'])
         user = token.get("/oauth2.0/me")
         render text: user.body

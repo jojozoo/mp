@@ -32,12 +32,22 @@ class SessionsController < ApplicationController
   # 真正注册在node方面(因为涉及发邮件)
   def sign_up
     if request.post?
-      param = params[:user].slice(:username, :email, :password, :password_confirmation) rescue {}
+      # 为oauth 登陆添加部分
+      param = params[:user].slice(:username, :email, :password, :password_confirmation, :province, :city, :resume, :domain, :gender, :site, :realname, :duty)
       @user = User.new(param)
+
+      @user.avatar = open(URI.parse(params[:avatar])) rescue nil if params[:avatar].present?
       if @user.save
         set_sign_in_flag(@user.id)
-        redirect_to '/validate'
+        # 如果第三方登陆
+        if params[:uid].present? and account = Account.find_by_id_and_uid(params[:a_id], params[:uid])
+          account.update_attributes!(user_id: @user.id)
+          redirect_to root_path
+        else
+          redirect_to '/validate'
+        end
       else
+        # TODO 如果oauth登陆, 应该添加remote valid 这是个bug
         render action: :sign_up
       end
     end
