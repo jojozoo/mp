@@ -1,9 +1,10 @@
 <div class="images-second-nav">
     <ul class="breadcrumb second-nav">
         <li>
-            <a href="/images"> <i class="icon-align-justify"></i>
+            <%= link_to images_path do %>
+                <i class="icon-align-justify"></i>
                 全部
-            </a>
+            <% end %>
         </li>
         <li>
             <a href="javascript:void(0);"> 
@@ -54,10 +55,10 @@
             </a>
         </li>
         <li>
-            <a href="/images?tag=users">
+            <%= link_to images_path(tag: :users) do %>
                 <i class="icon-user"></i>
                 用户
-            </a>
+            <% end %>
         </li>
     </ul>
 </div>
