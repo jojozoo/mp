@@ -33,7 +33,7 @@
     .sync-other a:hover i.douban{
         background-position: -40px -200px;
     }
-    .sync-other a:hover i.rr{
+    .sync-other a:hover i.renren{
         background-position: -40px -240px;
     }
     .sync-other i.weibo{
@@ -51,7 +51,7 @@
     .sync-other i.douban{
         background-position: 0 -200px;
     }
-    .sync-other i.rr{
+    .sync-other i.renren{
         background-position: 0 -240px;
     }
 </style>
@@ -61,7 +61,23 @@
     </div>
     <div class="col-md-8">
       <ul class="sync-other list-unstyled">
+        <% 
+            accounts = current_user.accounts
+            all = {'qzone' => 'QQ空间', 'weibo' => '新浪微博', 'renren' => '人人网', 'douban' => '豆瓣网', 'qqmp' => '腾讯微博', 'qq' => '腾讯QQ'}
+         %>
+        <% ["qzone", "weibo", "renren", "douban", "qqmp", "qq"].each do |site| %>
         <li>
+            <a href="javascript:void(0);"><i class="sync-logo <%= site %>"></i></a>
+            <span class="sync-tip"><%= accounts.map(&:site).member?(site) ? '已绑定到' : '同步到' %><%= all[site] %></span>
+            <span class="sync-name">
+                <% if row = accounts.find{|a| a.site == site} %>
+                (<%= row.name %>)
+                <% end %>
+            </span>
+            <a href="javascript:void(0);" id="sync-bind-sinaweibo" class=""><%= accounts.map(&:site).member?(site) ? '取消' : '设置' %></a>
+        </li>
+        <% end %>
+        <!-- <li>
             <a href="javascript:void(0);"><i class="sync-logo weibo"></i></a>
             <span class="sync-tip">已绑定到新浪微博</span>
             <span class="sync-name">(噼里啪啦小五哥)</span>
@@ -92,11 +108,11 @@
             <a href="javascript:void(0);" id="sync-bind-douban" class="">设置</a>
         </li>
         <li>
-            <a href="javascript:void(0);"><i class="sync-logo rr"></i></a>
+            <a href="javascript:void(0);"><i class="sync-logo renren"></i></a>
             <span class="sync-tip">同步到人人</span>
             <span class="sync-name"></span>
-            <a href="javascript:void(0);" id="sync-bind-rr" class="">设置</a>
-        </li>
+            <a href="javascript:void(0);" id="sync-bind-renren" class="">设置</a>
+        </li> -->
     </ul>  
     </div>
 </div>

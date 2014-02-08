@@ -27,6 +27,7 @@ class Oauth::RenrenController < Oauth::ApplicationController
 
         account               = Account.find_or_create_by_uid_and_site(other[:uid], controller_name)
         account.user_id       = current_user.id if sign_in?
+        account.name          = other['name']
         account.token         = token.token
         account.refresh_token = token.refresh_token
         account.expires_in    = token.expires_in

@@ -4,6 +4,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :uid
       t.integer :user_id
       t.string :site
+      t.string :name
       t.string :token
       t.string :refresh_token
       t.string :expires_in

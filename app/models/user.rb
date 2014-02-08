@@ -48,6 +48,9 @@ class User < ActiveRecord::Base
   has_many :reads, class_name: 'Talk', conditions: {state: 0, del: false}
   # 垃圾
   has_many :trashs, class_name: 'Talk', conditions: 'state != 0 and state != 1 and del = 0'
+
+  # 授权其他网站
+  has_many :accounts
   
 
   WARRANT = {

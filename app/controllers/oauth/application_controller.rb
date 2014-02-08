@@ -4,7 +4,7 @@ class Oauth::ApplicationController < ApplicationController
     before_filter :oauth
 
     def oauth
-        @oauthsite = {'qzone' => '腾讯QQ', 'weibo' => '新浪微博', 'renren' => '人人网', 'douban' => '豆瓣网'}
+        @oauthsite = {'qzone' => 'QQ空间', 'weibo' => '新浪微博', 'renren' => '人人网', 'douban' => '豆瓣网', 'qqmp' => '腾讯微博', 'qq' => '腾讯QQ'}
         YAML.load_file('config/oauth.yml')[controller_name]
     end
 
@@ -15,7 +15,7 @@ class Oauth::ApplicationController < ApplicationController
         # 如果绑定就跳转
         if @account.user_id.present?
             set_sign_in_flag(@account.user_id)
-            redirect_to root_path and return
+            redirect_to '/my/set/others' and return
         end
 
         # 如果登陆就跳转
