@@ -8,6 +8,7 @@
 	<%= stylesheet_link_tag    "application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
+	<meta property="qc:admins" content="551071253160276375" />
 </head>
 <body>
 	<%= render 'shared/nav' %>
@@ -18,7 +19,7 @@
 		</div>
 		<%#= render 'shared/breadcrumb' %>
 	</div>
-	<div class="container main">
+	<div class="container main" style='min-height:420px;'>
 		<%= yield %>
 	</div>
 	<%= render 'shared/to_top' %>

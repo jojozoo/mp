@@ -17,7 +17,7 @@ $(function(){
         'auto'      : true,    //选择图片后是否自动上传
         'multi'     : false,   //是否允许同时选择多个(false一次只允许选中一张图片)
         'method'    : 'post',
-        'debug'     : true,
+        // 'debug'     : true,
         'queueSizeLimit' : 1,//最多能选择加入的文件数量
         'fileTypeExts': '*.gif; *.jpg; *.png; *.jpeg', //允许的后缀
         'fileTypeDesc': 'Image Files', //允许的格式，详见文档

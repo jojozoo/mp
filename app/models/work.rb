@@ -3,6 +3,8 @@ class Work < ActiveRecord::Base
 
   belongs_to :image
   belongs_to :user
-  belongs_to :user
+  belongs_to :event
+
+  # title: SecureRandom.hex(3), text:SecureRandom.hex(30), user_id: 116, image_id: Image.limit(1).order('rand()').first.id
   
 end

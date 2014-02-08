@@ -37,10 +37,10 @@
 			</form>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="/gs/new">
+					<%= link_to new_work_path do %>
 						<i class="icon-camera"></i>
-						上传作品
-					</a>
+							上传作品
+					<% end %>
 				</li>
 				<% if sign_in? %>
 				<li class="dropdown">

@@ -11,12 +11,7 @@
     </style>
     <div class="page-header">
         <h4>
-            上传作品
-            <% if @event %>
-            <small>
-                到活动: <%= link_to @event.title, event_path(@event), target: '_blank' %>
-            </small>
-            <% end %>
+            上传到相册
         </h4>
     </div>
     <div class="uploads row">
@@ -24,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="/uploadify/uploadify.css">
     <script type="text/javascript" src="/uploadify/jquery.uploadify.js"></script>
     <script type="text/javascript" src="/uploadify/uploadify-work.js"></script>
-    <form action="" class="" style="padding:15px;">
+    <%= form_tag '/images', method: :get, style: 'padding:15px;' %>
         <input type="file" id="upload-file">
         <div class="form-group">
             <div class="input-group" style="width: 600px;">

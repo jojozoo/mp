@@ -1,8 +1,6 @@
 # require 'paperclip_processors/watermark'
 class Image < ActiveRecord::Base
-  attr_accessible :album_id, :warrant, :state, :exif, :name, :user_id, :picture, :del
-  # 模板只有原图
-  # 需要设置访问权限
+  attr_accessible :album_id, :event_id, :warrant, :state, :exif, :name, :title, :text, :user_id, :picture, :del
   # 几种水印图, 原图无水印,原图水印,大图水印, 中图水印, 小图中间水印, 头像, 50x50无水印
   # cover 封面
   # 如果是图片后缀, 但不是图片, 那么图片会加载不起来, 要想办法统计到, 现在的方式是通过日志分析
@@ -20,8 +18,9 @@ class Image < ActiveRecord::Base
     processors: [:watermark],
     styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.jpg", quality: :better}]}]
 
-  after_picture_post_process :load_exif
+  has_many :works
 
+  after_picture_post_process :load_exif
 
   def load_exif
     original_filename = picture.original_filename

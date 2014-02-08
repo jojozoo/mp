@@ -63,15 +63,17 @@ $(function(){
     <div class="ondown on-left-top">
         <div class="bgdown bgfade-left-top"></div>
         <div class="fadedown bgfade-left-top">
-            <p>作者:朱晓武</p>
-            <p>个人主页:http://www.baidu.com</p>
+            <p>作者:<%= current_user.username %></p>
+            <% if current_user.photographer == true %>
+                <p>个人主页:<%= current_user.site %></p>
+            <% end %>
         </div>
     </div>
     <div class="ondown on-right-top">
         <div class="bgdown bgfade-right-top"></div>
         <div class="fadedown bgfade-right-top">
             <p>
-                来自快拍365天栏目的一幅作品，一对散步的情侣，各自玩着手机，相互沉浸在自己的世界里。过了一会儿，女孩子走不动了，男朋友背靠背，顶着她向前走，好有爱的一瞬。有时候，两个人在一起，相互依靠才是永远，祝福他们。
+                <%= @obj.text %>
             </p>
         </div>
     </div>
@@ -79,22 +81,11 @@ $(function(){
         <div class="bgdown bgfade-left-bottom"></div>
         <div class="fadedown bgfade-left-bottom">
             <p>
-                品牌：Nokia
-                <br>
-                型号：N95 8GB
-                <br>
-                焦距：56/10mm
-                <br>
-                光圈：2970854/1000000
-                <br>
-                快门速度：678136/100000
-                <br>
-                ISO：125
-                <br>
-                曝光补偿：EV
-                <br>
-                拍摄时间：2011:09:10 11:21:37
-                <br></p>
+                <% (JSON.parse(@obj.exif).slice('make', 'model', 'date_time') rescue {}).each do |k, v| %>
+                    <%= k %>：<%= v %>
+                    <br>
+                <% end %>
+            </p>
         </div>
     </div>
     <div class="ondown on-right-bottom">

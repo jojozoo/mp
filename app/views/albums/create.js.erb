@@ -1,0 +1,2 @@
+$('#my-album').modal('hide');
+$("<li><a href='<%= @album.id %>' class='choose-album'><%= @album.name %></a></li>").appendTo('#albums').find('a').click(choose_album).click();

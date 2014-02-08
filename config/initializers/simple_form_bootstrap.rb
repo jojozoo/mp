@@ -10,8 +10,9 @@ inputs = %w[
 ]
 class SimpleForm::Inputs::DateTimeInput
   def input
+    mname = lookup_model_names[0]
     %{
-      <div class="input-group date" data-link-field="user_duty" id="date-user-duty">
+      <div class="input-group date" data-link-field="#{mname}_#{attribute_name}" id="date-#{mname}-#{attribute_name}">
         <input class="form-control" type="text" readonly>
         <span class="input-group-addon">
           <i class="icon-remove"></i>
@@ -20,7 +21,7 @@ class SimpleForm::Inputs::DateTimeInput
           <i class="icon-calendar"></i>
         </span>
       </div>
-      <input type="hidden" id="user_duty" name="user[duty]" value="">
+      <input type="hidden" id="#{mname}_#{attribute_name}" name="#{mname}[#{attribute_name}]" value="">
 }.html_safe
   end
 end

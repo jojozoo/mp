@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   attr_accessible :text,
+   :name,
    :logo, 
    :tag, 
    :end_time, 
@@ -29,7 +30,33 @@ class Event < ActiveRecord::Base
       small: '200x120'
     }
 
+  validates_presence_of     :name, 
+                            :message => '名称不能为空'
 
+  validates_uniqueness_of   :name, 
+                            :message => '名称已经被占用'
+
+  validates_length_of       :name,
+                            :within => 3..10,
+                            :message => '长度3..10字'
+
+  validates_presence_of     :title, 
+                            :message => '标题不能为空'
+  
+  validates_length_of       :title,
+                            :within => 3..20,
+                            :message => '长度3..20字'
+
+  validates_presence_of     :text, 
+                            :message => '名称不能为空'
+  
+  validates_length_of       :text,
+                            :within => 10..1000,
+                            :message => '长度10..1000字'
+
+  validates_presence_of     :end_time,
+                            :message => '此项不能为空'
+                            
   # 作品 参与活动的作品
   has_many :works
   # 参与活动的照片
@@ -40,6 +67,20 @@ class Event < ActiveRecord::Base
   has_many :members, through: :work, source: :user
   # 活动获奖的人 大于0 asc排序: 0参与 1等奖 2等奖
   has_many :winners, :class_name => 'User', :conditions => '`works`.`winner` > 0'
+
+  State = {
+    audit:   0, # 审核中
+    not_by:  1, # 未通过
+    ongoing: 2, # 进行中
+    closed:  3  # 已结束
+  }
+  State.each do |key, val|
+    scope key, -> {where(state: val)}
+    # %{def #{key}?
+    #     state.eql?(#{val})
+    #   end}
+  end
+  # Event.limit(20).order('rand()').each{|u|u.update_attributes!(name: SecureRandom.hex(3),text:SecureRandom.hex(30), state:2,end_time: 1.years.from_now.to_date.to_s, title: SecureRandom.hex(4))}
 
   
 end

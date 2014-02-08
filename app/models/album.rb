@@ -4,7 +4,7 @@ class Album < ActiveRecord::Base
   has_many :images
   has_attached_file :logo,
     styles: {
-      thumb: '200x200',
+      thumb: '260x180#',
       small: '200x120'
     }
 
@@ -12,9 +12,9 @@ class Album < ActiveRecord::Base
 
   validates_uniqueness_of :name, 
                           :scope => :user_id,
-                          :message => '邮箱已存在'
+                          :message => '相册已存在'
 
   validates_length_of     :name, 
-                          :within => 1..8,
-                          :message => '长度1..8位'
+                          :within => 1..20,
+                          :message => '长度1..20位'
 end

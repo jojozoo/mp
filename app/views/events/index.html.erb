@@ -11,11 +11,6 @@
 	</li>
 	<li>
 		<a href="/e" class="">
-			默认活动
-		</a>
-	</li>
-	<li>
-		<a href="/e" class="">
 			正在进行的活动
 		</a>
 	</li>
@@ -24,13 +19,13 @@
 			已结束的活动
 		</a>
 	</li>
-	<a href="/e" class="btn btn-xs btn-success pull-right" style="margin-right: -10px;">
+	<%= link_to new_event_path, class: 'btn btn-xs btn-success pull-right', style: 'margin-right: -10px;' do %>
 		<i class="icon-flag"></i>
 		发起活动
-	</a>
+	<% end %>
 </ul>
 <div class="row">
-	<% Event.limit(20).each do |event| %>
+	<% @events.each do |event| %>
 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
 				<%= link_to image_tag(event.logo.url), event_path(event), target: '_blank' %>
@@ -39,7 +34,7 @@
 						<h5><%= event.title %></h5>
 					<% end %>
 					<p>
-						我们期望活动，我们盼望未来
+						<%= event.title %>
 					</p>
 					<span>人数/照片:<%= 0 %>/190</span>
 					<span>结束时间:<%= event.end_time %></span>
@@ -48,3 +43,4 @@
 		</div>
 	<% end %>
 </div>
+<%= will_paginate @events %>

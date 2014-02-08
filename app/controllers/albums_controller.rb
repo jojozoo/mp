@@ -2,6 +2,6 @@ class AlbumsController < ApplicationController
 
 
     def create
-        render status: 200
+        @album = current_user.albums.create!(params[:album])
     end
 end

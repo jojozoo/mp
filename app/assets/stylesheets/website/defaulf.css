@@ -58,6 +58,7 @@ form .form-control, form .btn{
     color: #A7A7A7;
     margin-top: 10px;
     padding: 4px;
+    border: 0;
 }
 .breadcrumb {
 	border-radius: 0;

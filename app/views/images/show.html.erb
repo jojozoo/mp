@@ -5,7 +5,7 @@
     <div class="col-md-9">
         <div class="page-header">
             <h3>
-                郭雍脑海中刷刷刷的出现三个问句
+                <%= @obj.title || '暂无标题'%>
                 <div class="pull-right">
                     <a href="" class="btn btn-default btn-xs">
                         <i class="icon-arrow-left"></i>
@@ -20,8 +20,9 @@
             
         </div>
         <div class="pic">
-            <a href=""><img src="/images/photo.jpg"></a>
-            <%= render "/shared/actions" %>
+            <%= link_to image_tag(@obj.picture(:big), style: 'max-width:100%;') %>
+            <!-- <a href=""><img src="/images/photo.jpg"></a> -->
+            <%= render "/shared/actions" if sign_in? %>
         </div>
         <hr>
         <div class="position">
@@ -49,19 +50,19 @@
             </span>
             <span class="opt-b">
                 <i class="icon-time"></i>
-                2013-08-15 12:23:56
+                <%= @obj.created_at.to_s(:db) %>
             </span>
         </div>
         <hr>
-        <div class="content">
-            <p>
-                郭雍脑海中刷刷刷的出现三个问句，最终却一言不发，老老实实的站起身来，走到了林之然身旁，笑道：前辈，现在就去吗？那赶紧走吧！
-            </p>
-            <p>
-                有意思，我还真么见过你这么主动的！林之然笑道："你小子确实有些不同寻常，来到这里的别管是什么人，最初都会反抗一阵，哪怕最后老老实实的练功了，也都是被逼无奈之下的选择，倒是你小子与众不同，我不知道是不是自己的错觉，总之我觉得你不但不排斥这里，反倒是还有点急不可耐的意思，也不知道究竟是怎么想的。
-                “我主动配合不好吗？”郭雍满脸惊奇：“要不我先退回去，您重新再喊一遍，然后我骂您几声奸贼什么的，您再打我一顿，最后把昏死过去的我抬过去见您家夫人？”
-            </p>
-        </div>
+        <style>
+        .content{
+            font-size: 14px;
+            border: 0;
+            background: #fff;
+            padding: 0;
+        }
+        </style>
+        <pre class="content"><code><%= @obj.text || '暂无描述' %></code></pre>
         <hr>
         <div class="respond">
             <h5>回应: 朱晓武</h5>

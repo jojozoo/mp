@@ -17,7 +17,7 @@ $(function(){
         'auto'      : true,    //选择图片后是否自动上传
         'multi'     : true,   //是否允许同时选择多个(false一次只允许选中一张图片)
         'method'    : 'post',
-        'debug'     : true,
+        // 'debug'     : true,
         'queueSizeLimit' : 30,//最多能选择加入的文件数量
         'fileTypeExts': '*.gif; *.jpg; *.png; *.jpeg', //允许的后缀
         'fileTypeDesc': 'Image Files', //允许的格式，详见文档
@@ -28,19 +28,20 @@ $(function(){
                 str +=     '<div class="thumbnail">'
                 str +=         '<img alt="P9" src="' + data.url + '">'
                 str +=         '<div class="caption caption-border">'
-                str +=             '<a href="javascript:void(0);" class="btn btn-default btn-xs front-cover">设为封面</a>'
-                str +=             '<a href="javascript:void(0);" class="btn btn-default btn-xs remove-self">删除本张</a>'
-                str +=             '<div class="pull-right">'
-                str +=                 '<a href="javascript:void(0);" class="btn btn-default btn-xs">'
-                str +=                     '<i class="icon-arrow-left"></i>'
-                str +=                      '左移'
-                str +=                 '</a>'
-                str +=                 '<a href="javascript:void(0);" class="btn btn-default btn-xs">'
-                str +=                     '右移'
-                str +=                     '<i class="icon-arrow-right"></i>'
-                str +=                 '</a>'
-                str +=             '</div>'
-                str +=             '<textarea class="once-desc" placeholder="输入图片描述"></textarea>'
+                str +=             '<a href="' + data.id + '" class="btn btn-default btn-xs front-cover">设为封面</a>'
+                str +=             '<a href="/gs/' + data.id + '" class="btn btn-default btn-xs remove-self">删除本张</a>'
+                // str +=             '<div class="pull-right">'
+                // str +=                 '<a href="javascript:void(0);" class="btn btn-default btn-xs">'
+                // str +=                     '<i class="icon-arrow-left"></i>'
+                // str +=                      '左移'
+                // str +=                 '</a>'
+                // str +=                 '<a href="javascript:void(0);" class="btn btn-default btn-xs">'
+                // str +=                     '右移'
+                // str +=                     '<i class="icon-arrow-right"></i>'
+                // str +=                 '</a>'
+                // str +=             '</div>'
+                str +=             '<input type="text" class="form-control input-sm" style="margin-top:4px;" name="title[' + data.id + ']" placeholder="图片的标题">'
+                str +=             '<textarea class="once-desc form-control" placeholder="输入图片描述" name="desc[' + data.id + ']"></textarea>'
                 str +=             '<span>上传时间：' + data.time + '</span>'
                 str +=         '</div>'
                 str +=     '</div>'
@@ -48,23 +49,63 @@ $(function(){
             $(str).appendTo(".uploads").find('.remove-self').click(remove_self).end().find('.front-cover').click(front_cover);
         }
     });
-    $(".choose-album").on('click', function(){
-        $("#album").val($(this).text());
-        $("#album-text").text($(this).text());
-    });
-    $(".choose-event").on('click', function(){
-        $("#event").val($(this).text());
-        $("#event-text").text($(this).text());
-    });
+    
+    $(".choose-album").on('click', choose_album);
+    $(".choose-event").on('click', choose_event);
+    $(".remove-self").on('click', remove_self);
+    $(".front-cover").on('click', front_cover);
     function remove_self(){
+        var url = $(this).attr('href');
         $(this).parents(".col-md-3").fadeOut(function(){
             $(this).remove();
+            $.ajax({
+              url: url,
+              type: 'delete',
+              dataType: 'script'
+            });
         })
         return false;
     };
     function front_cover(){
         $('.front-cover').removeAttr('style');
         $(this).css({background: 'orange', color: '#fff'});
+        $('input#p-cover').val($(this).attr('href'));
         return false;
     };
+
+    // 提交
+    $("#push-work").click(function(){
+        // 检查图片是否上传
+        if ($(".uploads > .col-md-3").length < 1){
+            $("#upload-tip").remove();
+            $("#upload-file").css('width', 300);
+            $("#upload-file-button").css('float', 'left');
+            $("#upload-file").append('<span id="upload-tip" style="margin-left: 20px;line-height: 30px;color: red;">请先上传图片</span>');
+            return false;
+        }
+        // 检查相册是否已选
+        if($("input#album").val() == false){
+            $('.form-group-album').addClass('has-error').append('<span class="form-error-tip col-sm-4">请选择相册</span>')
+            return false;
+        }
+        // 检查活动是否已选
+        if($("input#event").val() == false){
+            $('.form-group-event').addClass('has-error').append('<span class="form-error-tip col-sm-4">请选择活动</span>')
+            return false;
+        }
+        // 检查其他
+    });
 });
+
+function choose_album(){
+    $("#album").val($(this).text());
+    $("#p-album").val($(this).attr('href'));
+    return false;
+}
+function choose_event(){
+    $("#event").val($(this).text());
+    $("#p-event").val($(this).attr('href'));
+    return false;
+}
+
+

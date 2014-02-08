@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
     def index
-        @objs = Image.paginate(:page => params[:page], per_page: 10).order('rand()')
+        @objs = Image.where(del: false, state: true).paginate(:page => params[:page], per_page: 10).order('rand()')
         if request.xhr?
             render partial: 'row', collection: @objs, as: :image
             return
@@ -8,7 +8,8 @@ class ImagesController < ApplicationController
     end
 
     def show
-        @obj = Image.find_by_id(params[:id])
+        @obj = Image.find_by_id_and_del_and_state(params[:id], false, true)
+        redirect_to action: :index unless @obj
     end
 
     # 图片访问权限控制
@@ -22,7 +23,6 @@ class ImagesController < ApplicationController
     end
     
     def new
-        @event = Event.find_by_id(params[:eid])
     end
 
     def create
@@ -31,8 +31,16 @@ class ImagesController < ApplicationController
         @image = current_user.images.create(picture: params[:Filedata], name: params[:Filename])
         data = {
                 time: @image.created_at.to_s(:db),
-                url: @image.picture.url(:cover)
+                url: @image.picture.url(:cover),
+                id: @image.id
             }
         render json: data.to_json
+    end
+
+    def destroy
+        if image = Image.find_by_id(params[:id])
+            image.update_attributes(del: true)
+        end
+        render text: 'ok'
     end
 end
