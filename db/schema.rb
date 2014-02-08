@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.string   "desc"
+    t.string   "text"
     t.integer  "open",              :default => 0
     t.boolean  "del",               :default => false
     t.datetime "created_at",                           :null => false
