@@ -15,17 +15,15 @@
 	<div class="clearfix"></div>
 </div>
 <div class="row">
-	<% current_user.albums.limit(20).each do |album| %>
+	<% @albums.each do |album| %>
 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<%= link_to image_tag("/tmp/p9.jpeg"), my_album_path(album) %>
+				<%= link_to image_tag(album.logo(:small)), my_album_path(album) %>
 				<div class="caption caption-border">
 					<%= link_to album.name, my_album_path(album) %>
 					<span class="pull-right">好友可见</span>
-					<p>
-						我们期望活动，我们盼望未来
-					</p>
-					<span>190张</span>
+					<p><%= album.text %></p>
+					<span>共190张</span>
 					<span class="pull-right hide-cap">
 						<a href="javascript:void(0);">编辑</a>
 						<a href="javascript:void(0);">删除</a>

@@ -20,6 +20,16 @@ class My::MsgsController < My::ApplicationController
         end
     end
 
+    def create
+        if iboxer = User.find_by_id(params[:to_id])
+            msg = current_user.send_msg(iboxer, params[:message][:text])
+            redirect_to my_msg_path(msg.talk_id)
+        else
+            redirect_to root_path
+        end
+        
+    end
+
     def show
         @talk = @current_user.iboxs.find_by_id(params[:id])
         redirect_to my_msgs_path unless @talk

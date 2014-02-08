@@ -21,39 +21,18 @@
         <%= render 'shared/flexslider' %>
 
         <div class="row">
+            <% Image.limit(3).each do |image| %>
             <div class="col-md-4">
                 <div class="thumbnail">
-                    <a href="/images/60" style="display:block" target="_blank">
-                        <img alt="072b030ba1" src="/system/images/60/1391196600/000/000/060/thumb/072b030ba1.jpg?1391196600"></a>
+                    <%= link_to image_tag(image.picture(:cover)), image_path(image), style: 'display:block', target: '_blank' %>
                     <div class="caption">
-                        <a href="">02月03日快拍图选(上午版)</a>
+                        <a href="">活动1</a>
                         <br>
-                        <a href="">更多每日精选>></a>
+                        <a href="">更多活动1>></a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <a href="/images/60" style="display:block" target="_blank">
-                        <img alt="072b030ba1" src="/system/images/8/1391189111/000/000/008/thumb/c9f0f895fb.jpeg"></a>
-                    <div class="caption">
-                        <a href="">2月2日快拍之星：余智龙</a>
-                        <br>
-                        <a href="">更多每日之星>></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <a href="/images/60" style="display:block" target="_blank">
-                        <img alt="072b030ba1" src="/system/images/60/1391196600/000/000/060/thumb/072b030ba1.jpg?1391196600"></a>
-                    <div class="caption">
-                        <a href="">听阮义忠讲课——第二节《时间的秘密 》</a>
-                        <br>
-                        <a href="">更多快拍访谈>></a>
-                    </div>
-                </div>
-            </div>
+            <% end %>
         </div>
     </div>
     <div class="col-md-3">
@@ -100,11 +79,11 @@
         
     </div>
     <div class="col-md-3">
-        <span>推荐话题</span>
+        <!-- <span>推荐话题</span>
         <hr>
         <ul>
             <li>aaa</li>
-        </ul>
+        </ul> -->
     </div>
 </div>
 <div class="row">
@@ -121,8 +100,8 @@
         
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     推荐网站
     <hr>
     <a href="">朱晓武</a>
-</div>
+</div> -->

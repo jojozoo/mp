@@ -12,10 +12,10 @@
 	<div class="clearfix"></div>
 </div>
 <div class="row">
-	<% current_user.albums.limit(20).each do |album| %>
+	<% @images.each do |image| %>
 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<%= link_to image_tag("/tmp/p9.jpeg"), my_album_path(album) %>
+				<%= link_to image_tag(image.picture(:cover)), image_path(image) %>
 				<div class="caption caption-border">
 					<a href="javascript:void(0);" class="btn btn-default btn-xs front-cover">
 						设为封面
@@ -26,8 +26,8 @@
 					<span class="pull-right hide-cap">
 						<input type="checkbox">
 					</span>
-					<textarea class="once-desc" placeholder="输入图片描述">我们期望活动，我们盼望未来</textarea>
-					<span>上传时间：2014-01-26 10:09:24</span>
+					<textarea class="once-desc" placeholder="输入图片描述"><%= image.text %></textarea>
+					<span>上传时间：<%= image.created_at.to_s(:db) %></span>
 				</div>
 			</div>
 		</div>

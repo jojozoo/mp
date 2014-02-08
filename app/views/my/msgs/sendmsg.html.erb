@@ -3,9 +3,10 @@
 		<img src="/images/defaults/users.jpg" class="avatar img-circle">
 	</a>
 	<div class="media-body">
-		<h4 class="media-heading">给 摇滚花 写信</h4>
-		<%= simple_form_for Message.new, url: '/', validate: true do |f| %>
-		<textarea class="form-control" id="message_text" name="message[text]" data-validate="true"></textarea>
+		<h4 class="media-heading">给 <%= @to.username %> 写信</h4>
+		<%= form_for Message.new, url: my_msgs_path, validate: true do |f| %>
+		<input type="hidden" name='to_id' value='<%= @to.id %>'>
+		<%= f.text_area :text, class: 'form-control' %>
 		<%= f.submit '发送', class: 'btn btn-default pull-right' %>
 		<% end %>
 	</div>

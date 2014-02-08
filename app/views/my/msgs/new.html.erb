@@ -1,10 +1,10 @@
 <div class="row">
-    <% User.all.each do |u| %>
+    <% User.where(['id != ?', current_user.id]).each do |u| %>
     <div class="col-sm-3 col-md-2">
         <div class="thumbnail">
-            <%= link_to image_tag('/images/defaults/users.jpg', style: 'width:100px;height:100px;'), new_my_msg_path(to: u.id), class: 'write-mail' %>
+            <%= link_to image_tag(u.avatar(:small), style: 'width:100px;height:100px;'), new_my_msg_path(to: u.id), class: 'write-mail' %>
             <div class="caption text-center">
-                <a href="/">朱晓武</a>
+                <%= link_to u.username, user_path(u) %>
             </div>
         </div>
     </div>

@@ -8,11 +8,11 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.new(params[:event].slice(:logo, :title, :end_time, :tag, :text))
-		if @event.save
-			redirect_to @event
+		@event = Event.new(params[:event].slice(:name, :logo, :title, :end_time, :tag, :text))
+		if @event.save!
+			redirect_to events_path
 		else
-			render action: :new
+			render 'new'
 		end
 	end
 
@@ -27,6 +27,7 @@ class EventsController < ApplicationController
 	end
 
 	def update
+
 	end
 
 	def destroy

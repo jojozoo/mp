@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "uid"
     t.integer  "user_id"
     t.string   "site"
+    t.string   "name"
     t.string   "token"
     t.string   "refresh_token"
     t.string   "expires_in"
@@ -53,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
   end
 
   create_table "events", :force => true do |t|
+    t.string   "name"
     t.integer  "user_id"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
@@ -86,13 +88,15 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "name"
     t.integer  "user_id"
     t.integer  "album_id"
+    t.integer  "event_id"
     t.integer  "state",                :default => 0
     t.integer  "warrant"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.text     "picture_meta"
+    t.string   "title"
+    t.text     "text"
     t.text     "exif"
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false
@@ -202,11 +206,11 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "realname"
     t.string   "mobile"
     t.string   "password"
+    t.string   "salt"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "salt"
     t.string   "province"
     t.string   "city"
     t.string   "site"
@@ -216,6 +220,8 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.date     "duty"
     t.boolean  "gender"
     t.integer  "warrant"
+    t.boolean  "admin",               :default => false
+    t.boolean  "photographer",        :default => false
     t.integer  "talks_count",         :default => 0
     t.integer  "notices_count",       :default => 0
     t.string   "bg",                  :default => "/images/defaults/bg.jpg"
