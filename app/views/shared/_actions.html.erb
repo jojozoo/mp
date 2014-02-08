@@ -73,20 +73,23 @@ $(function(){
         <div class="bgdown bgfade-right-top"></div>
         <div class="fadedown bgfade-right-top">
             <p>
-                <%= @obj.text %>
+                <%= @obj.text.blank? ? '暂无描述' : @obj.text %>
             </p>
         </div>
     </div>
     <div class="ondown on-left-bottom">
+        <% json = JSON.parse(@obj.exif).slice('make', 'model', 'date_time') rescue {} %>
+        <% if json.present? %>
         <div class="bgdown bgfade-left-bottom"></div>
         <div class="fadedown bgfade-left-bottom">
             <p>
-                <% (JSON.parse(@obj.exif).slice('make', 'model', 'date_time') rescue {}).each do |k, v| %>
+                <% json.each do |k, v| %>
                     <%= k %>：<%= v %>
                     <br>
                 <% end %>
             </p>
         </div>
+        <% end %>
     </div>
     <div class="ondown on-right-bottom">
         <div class="bgdown bgfade-right-bottom"></div>
