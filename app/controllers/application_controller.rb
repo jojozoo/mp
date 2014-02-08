@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def must_login
+    redirect_to '/sign_in' unless sign_in?
+  end
+
   def current_user
   	@current_user ||= sign_in_from_session
   end

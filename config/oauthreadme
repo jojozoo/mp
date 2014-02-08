@@ -1,0 +1,8 @@
+weibo : http://open.weibo.com/webmaster/build?siteid=3167481927 http://open.weibo.com/webmaster/console?siteid=3167481927
+qq    : http://op.open.qq.com/index.php?mod=appinfo&act=main&appid=1101192136
+qqmp  : http://dev.t.qq.com/development/appinfo?appid=1101192136&comefrom=1
+qzone : http://connect.qq.com/manage/appManager?appid=101016368&platform=web&category=site_info_logo
+douban: http://developers.douban.com/apikey/apply
+renren: http://app.renren.com/developers/newapp/264179/audit/appHome
+
+qq 和 qqmp不行

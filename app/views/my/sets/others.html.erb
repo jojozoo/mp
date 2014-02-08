@@ -1,1 +1,102 @@
-others.html.erb
+<style>
+    .sync-other li{
+        line-height: 28px;
+    }
+    .sync-tip, .sync-name{
+        min-width: 120px;
+        display: inline-block;
+    }
+    .sync-logo{
+        min-width: 20px;
+        display: inline-block;
+    }
+    .sync-other li i{
+        width: 18px;
+        height: 18px;
+        position: relative;
+        top: 3px;
+        background: url(/images/share_icon.png) 0 0 no-repeat;
+    }
+    .sync-other a:hover i.weibo{
+        background-position: -40px 0;
+    }
+    .sync-other a:hover i.qzone{
+        background-position: -40px -40px;
+    }
+    .sync-other a:hover i.qqmp{
+        background-position: -40px -80px;
+    }
+    .sync-other a:hover i.qq{
+        background-position: -40px -160px;
+    }
+
+    .sync-other a:hover i.douban{
+        background-position: -40px -200px;
+    }
+    .sync-other a:hover i.rr{
+        background-position: -40px -240px;
+    }
+    .sync-other i.weibo{
+        background-position: 0 0;
+    }
+    .sync-other i.qzone{
+        background-position: 0 -40px;
+    }
+    .sync-other i.qqmp{
+        background-position: 0 -80px;
+    }
+    .sync-other i.qq{
+        background-position: 0 -160px;
+    }
+    .sync-other i.douban{
+        background-position: 0 -200px;
+    }
+    .sync-other i.rr{
+        background-position: 0 -240px;
+    }
+</style>
+<div class="row">
+    <div class="col-md-4">
+        <h4 class="text-right">同步到其他网站：</h4>
+    </div>
+    <div class="col-md-8">
+      <ul class="sync-other list-unstyled">
+        <li>
+            <a href="javascript:void(0);"><i class="sync-logo weibo"></i></a>
+            <span class="sync-tip">已绑定到新浪微博</span>
+            <span class="sync-name">(噼里啪啦小五哥)</span>
+            <a href="javascript:void(0);" id="sync-bind-sinaweibo" class="">取消</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);"><i class="sync-logo qzone"></i></a>
+            <span class="sync-tip">同步到QQ空间</span>
+            <span class="sync-name"></span>
+            <a href="javascript:void(0);" id="sync-bind-qzone" class="">设置</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);"><i class="sync-logo qqmp"></i></a>
+            <span class="sync-tip">同步到腾讯微博</span>
+            <span class="sync-name"></span>
+            <a href="javascript:void(0);" id="sync-bind-qqmp" class="">设置</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);"><i class="sync-logo qq"></i></a>
+            <span class="sync-tip">同步到腾讯QQ</span>
+            <span class="sync-name"></span>
+            <a href="javascript:void(0);" id="sync-bind-qq" class="">设置</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);"><i class="sync-logo douban"></i></a>
+            <span class="sync-tip">同步到豆瓣</span>
+            <span class="sync-name"></span>
+            <a href="javascript:void(0);" id="sync-bind-douban" class="">设置</a>
+        </li>
+        <li>
+            <a href="javascript:void(0);"><i class="sync-logo rr"></i></a>
+            <span class="sync-tip">同步到人人</span>
+            <span class="sync-name"></span>
+            <a href="javascript:void(0);" id="sync-bind-rr" class="">设置</a>
+        </li>
+    </ul>  
+    </div>
+</div>

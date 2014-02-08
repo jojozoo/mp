@@ -28,6 +28,18 @@ Mp::Application.routes.draw do
       match ':action'
     end
   end
+
+  scope '/oauth', module: 'oauth' do
+    [:weibo, :qq, :qqmp, :qzone, :douban, :renren].each do |row|
+      resources row, only: [:index] do
+        collection do
+          get  'callback'
+          post 'callback'
+        end
+      end
+    end
+    
+  end
   
   ##### my star #####
   scope '/my', module: 'my', as: 'my' do

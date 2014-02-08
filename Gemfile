@@ -19,6 +19,10 @@ gem 'paperclip', '~> 3.0'
 # 获取EXIF信息
 gem 'exifr'
 
+# oauth
+gem 'oauth2'
+gem 'oauth_china', path: 'vendor/oauth_china'
+
 group :development do
 	gem 'awesome_print'
     gem 'pry'
