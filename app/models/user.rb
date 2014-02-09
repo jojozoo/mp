@@ -233,6 +233,7 @@ class User < ActiveRecord::Base
   # TODO 创建相册有bug
 
   # TODO 第三方登陆, 个人设置, 图片上传和作品上传, 分享图片的文字
+  # TODO 表单远程验证 datetime验证 TODO TODO TODO
 
   # 消息, 通知, 设置相关所有
 
