@@ -24,14 +24,19 @@ form .form-control, form .btn{
     margin: 0;
     font-size: 12px;
 }
-.main-tip{
+.main{
 	margin: 10px auto 0;
+    min-height: 420px;
+}
+.col-md-9{
+    padding-right: 0;
+}
+.white-col-md{
+    background: #fff;
+    padding: 1px 15px;
 }
 .alert{
     margin-bottom: 10px;
-}
-.main > .row > .col-md-9{
-	background: white;
 }
 
 .profile-mini{

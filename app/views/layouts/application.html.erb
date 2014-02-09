@@ -6,20 +6,29 @@
 	<meta name="keywords" content="<%= @keywords %>">
 	<meta name="description" content="<%= @description %>">
 	<%= stylesheet_link_tag    "application", :media => "all" %>
-	<%= javascript_include_tag :application %>
+	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
 	<meta property="qc:admins" content="551071253160276375" />
 </head>
 <body>
 	<%= render 'shared/nav' %>
-	<div class="container main-tip">
+	<!-- <div class="container main-tip">
 		<div class="alert alert-warning">
 			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 			 <strong>通知通知:</strong> 漫拍网V2版本即将发布!
 		</div>
 		<%#= render 'shared/breadcrumb' %>
-	</div>
-	<div class="container main" style='min-height:420px;'>
+	</div> -->
+	<div class="container main">
+		<div class="row main-tip">
+			<div class="col-md-12">
+				<div class="alert alert-warning">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					 <strong>通知通知:</strong> 漫拍网V2版本即将发布!
+				</div>	
+			</div>
+		</div>
+		
 		<%= yield %>
 	</div>
 	<%= render 'shared/to_top' %>
