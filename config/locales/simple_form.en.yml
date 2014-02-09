@@ -42,7 +42,7 @@ en:
         resume: '个人简介'
       album:
         name: '名称'
-        desc: '描述'
+        text: '描述'
       event:
         logo: LOGO
         name: 活动名称
