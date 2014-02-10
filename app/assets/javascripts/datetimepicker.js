@@ -1,29 +1,9 @@
 ﻿/* =========================================================
  * bootstrap-datetimepicker.js
  * =========================================================
- * Copyright 2012 Stefan Petre
- * Improvements by Andrew Rowls
- * Improvements by Sébastien Malot
- * Improvements by Yun Lai
  * Project URL : http://www.malot.fr/bootstrap-datetimepicker
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * ========================================================= */
-
-/*
- * Improvement by CuGBabyBeaR @ 2013-09-12
- * 
- * Make it work in bootstrap v3
+/* 
+ * only bootstrap v3
  */
 
 !function ($) {
@@ -53,10 +33,14 @@
 		this.isVisible = false;
 		this.isInput = this.element.is('input');
 
-		this.bootcssVer = this.isInput ? (this.element.is('.form-control') ? 3 : 2) : ( this.bootcssVer = this.element.is('.input-group') ? 3 : 2 );
+		// 需要删除判断
+		// this.bootcssVer = this.isInput ? (this.element.is('.form-control') ? 3 : 2) : ( this.bootcssVer = this.element.is('.input-group') ? 3 : 2 );
+		this.bootcssVer = 3;
 
-		this.component = this.element.is('.date') ? ( this.bootcssVer == 3 ? this.element.find('.input-group-addon .icon-th, .input-group-addon .icon-time, .input-group-addon .icon-calendar').parent() : this.element.find('.add-on .icon-th, .add-on .icon-time, .add-on .icon-calendar').parent()) : false;
-		this.componentReset = this.element.is('.date') ? ( this.bootcssVer == 3 ? this.element.find('.input-group-addon .icon-remove').parent() : this.element.find('.add-on .icon-remove').parent()) : false;
+		// this.component = this.element.is('.date') ? ( this.bootcssVer == 3 ? this.element.find('.input-group-addon .icon-th, .input-group-addon .icon-time, .input-group-addon .icon-calendar').parent() : this.element.find('.add-on .icon-th, .add-on .icon-time, .add-on .icon-calendar').parent()) : false;
+		this.component = this.element.is('.date') ? this.element.find('.input-group-addon .icon-th, .input-group-addon .icon-time, .input-group-addon .icon-calendar').parent() : false;
+		// this.componentReset = this.element.is('.date') ? ( this.bootcssVer == 3 ? this.element.find('.input-group-addon .icon-remove').parent() : this.element.find('.add-on .icon-remove').parent()) : false;
+		this.componentReset = this.element.is('.date') ? this.element.find('.input-group-addon .icon-remove').parent() : false;
 		this.hasInput = this.component && this.element.find('input').length;
 		if (this.component && this.component.length === 0) {
 			this.component = false;
@@ -1469,7 +1453,7 @@
 			}
 			return date;
 		},
-		formatDate:       function (date, format, language, type) {
+		formatDate: function (date, format, language, type) {
 			if (date == null) {
 				return '';
 			}
@@ -1585,22 +1569,22 @@
 
 			return viewMode;
 		},
-		headTemplate:     '<thead>' +
-							  '<tr>' +
-							  '<th class="prev"><i class="icon-arrow-left"/></th>' +
-							  '<th colspan="5" class="switch"></th>' +
-							  '<th class="next"><i class="icon-arrow-right"/></th>' +
-							  '</tr>' +
-			'</thead>',
-		headTemplateV3:   '<thead>' +
-							  '<tr>' +
-							  '<th class="prev"><i class="icon-arrow-left"></i> </th>' +
-							  '<th colspan="5" class="switch"></th>' +
-							  '<th class="next"><i class="icon-arrow-right"></i> </th>' +
-							  '</tr>' +
-			'</thead>',
-		contTemplate:     '<tbody><tr><td colspan="7"></td></tr></tbody>',
-		footTemplate:     '<tfoot><tr><th colspan="7" class="today"></th></tr></tfoot>'
+		headTemplate:   '<thead>'  +
+							'<tr>' +
+								'<th class="prev"><i class="icon-arrow-left"/></th>' +
+								'<th colspan="5" class="switch"></th>' +
+								'<th class="next"><i class="icon-arrow-right"/></th>' +
+							'</tr>' +
+						'</thead>',
+		headTemplateV3: '<thead>'  +
+							'<tr>' +
+								'<th class="prev"><i class="icon-arrow-left"></i> </th>' +
+								'<th colspan="5" class="switch"></th>' +
+								'<th class="next"><i class="icon-arrow-right"></i> </th>' +
+							'</tr>' +
+						'</thead>',
+		contTemplate:   '<tbody><tr><td colspan="7"></td></tr></tbody>',
+		footTemplate:   '<tfoot><tr><th colspan="7" class="today"></th></tr></tfoot>'
 	};
 	DPGlobal.template = '<div class="datetimepicker">' +
 		'<div class="datetimepicker-minutes">' +
