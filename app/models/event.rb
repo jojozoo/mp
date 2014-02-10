@@ -68,19 +68,20 @@ class Event < ActiveRecord::Base
   # 活动获奖的人 大于0 asc排序: 0参与 1等奖 2等奖
   has_many :winners, :class_name => 'User', :conditions => '`works`.`winner` > 0'
 
-  State = {
+  {
     audit:   0, # 审核中
     not_by:  1, # 未通过
     ongoing: 2, # 进行中
     closed:  3  # 已结束
-  }
-  State.each do |key, val|
+  }.each do |key, val|
     scope key, -> {where(state: val)}
-    # %{def #{key}?
-    #     state.eql?(#{val})
-    #   end}
+    # instance_eval
+    class_eval <<-STATE_METHOD
+      def #{key}?
+        state.eql?(#{val})
+      end
+    STATE_METHOD
   end
-  # Event.limit(20).order('rand()').each{|u|u.update_attributes!(name: SecureRandom.hex(3),text:SecureRandom.hex(30), state:2,end_time: 1.years.from_now.to_date.to_s, title: SecureRandom.hex(4))}
 
   
 end
