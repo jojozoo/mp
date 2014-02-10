@@ -10,6 +10,7 @@ class EventsController < ApplicationController
 	def create
 		@event = Event.new(params[:event].slice(:name, :logo, :title, :end_time, :tag, :text))
 		if @event.save!
+			flash[:notice] = "活动创建成功,等待管理员审核"
 			redirect_to events_path
 		else
 			render 'new'

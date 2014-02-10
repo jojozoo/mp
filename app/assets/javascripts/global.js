@@ -6,6 +6,11 @@ $(function(){
         $(this).find('.dropdown-menu').hide();
     });
 
+    // 全局 modal
+    $(".custom-modal").on('click', function(){
+        $('#custom-modal').modal('show');
+    });
+
     // 生日
 	$('#datepicker').datetimepicker({
 		linkFormat: 'yyyy-mm-dd',

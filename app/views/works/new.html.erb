@@ -55,7 +55,7 @@
                             </div>
                             <input type="text" class="form-control" id="album" disabled>
                             <div class="input-group-btn">
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#my-album">
+                                <button type="button" class="btn btn-default custom-modal">
                                     创建相册
                                 </button>
                             </div>
@@ -95,7 +95,7 @@
     
 </div>
 
-<div class="modal fade" id="my-album">
+<div class="modal fade" id="custom-modal">
     <div class="modal-dialog">
         <%= simple_form_for Album.new, validate: true, remote: true do |f| %>
             <div class="modal-content">

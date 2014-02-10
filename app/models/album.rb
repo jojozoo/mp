@@ -8,7 +8,8 @@ class Album < ActiveRecord::Base
       small: '200x120#'
     }
 
-  validates_presence_of   :name, message: '不能为空'
+  validates_presence_of   :name, 
+                          message: '不能为空'
 
   validates_uniqueness_of :name, 
                           :scope => :user_id,

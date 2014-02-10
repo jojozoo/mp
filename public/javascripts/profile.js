@@ -36,7 +36,7 @@ $(function(){
 				$("#user_city").val($(this).text());
 				$("#city-input").val($("#user_province").val() + ' ' + $(this).text());
 			}
-			$('#my-city').modal('hide');
+			$('#custom-modal').modal('hide');
 		}
 
 		return false;
@@ -45,6 +45,5 @@ $(function(){
 	// 点击弹出选择城市的modal
 	$('#choose-point').click(function(){
 		$(".cities").html('');
-		$('#my-city').modal({backdrop: 'static'});
 	});
 });
