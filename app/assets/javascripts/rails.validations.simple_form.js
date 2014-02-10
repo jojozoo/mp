@@ -95,8 +95,8 @@
               text: message
             });
             // wrapper_tag_element.append(errorElement);
-            wrapper_tag_element.parent().find('.form-error-tip').remove();
-            wrapper_tag_element.parent().append(errorElement);
+            wrapper_tag_element.parents('.form-group').find('.form-error-tip').remove();
+            wrapper_tag_element.parents('.form-group').append(errorElement);
           }
           wrapper_class_element = element.closest("." + settings.wrapper_class);
           wrapper_class_element.addClass(settings.wrapper_error_class);
@@ -108,7 +108,7 @@
           wrapper_class_element = element.closest("." + settings.wrapper_class + "." + settings.wrapper_error_class);
           wrapper_tag_element = element.closest(settings.wrapper_tag);
           wrapper_class_element.removeClass(settings.wrapper_error_class);
-          errorElement = wrapper_tag_element.parent().find("" + settings.error_tag + "." + settings.error_class.split(' ').join('.'));
+          errorElement = wrapper_tag_element.parents('.form-group').find("" + settings.error_tag + "." + settings.error_class.split(' ').join('.'));
           return errorElement.remove();
         }
       }

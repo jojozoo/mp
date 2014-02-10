@@ -9,19 +9,6 @@ $(function(){
 		}
 		
 	});
-	// 生日
-	$('#date-user-duty').datetimepicker({
-		linkFormat: 'yyyy-mm-dd',
-		format: 'yyyy-mm-dd',
-		language:  'zh-CN',
-		weekStart: 1,
-		todayBtn:  1,
-		autoclose: 1,
-		todayHighlight: 1,
-		startView: 2,
-		minView: 2,
-		forceParse: 0
-	});
 
 	// 插入所有省份
 	for(var p in CITY){

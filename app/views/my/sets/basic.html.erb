@@ -1,3 +1,4 @@
+<script type="text/javascript" src="/javascripts/profile.js"></script>
 <%= simple_form_for current_user, url: my_set_path('update'), validate: true do |f| %>
 	<%= f.input :username, disabled: true %>
 	<%= f.input :email, disabled: true %>
@@ -30,7 +31,7 @@
 	<%= f.input :site %>
 	<%= f.input :domain, disabled: current_user.domain.present? %>
 	<%= f.input :profession %>
-	<%= f.input :duty, label_html: { for: :user_duty } %>
+	<%= f.input :duty, :as => :datepicker %>
 	<div class="form-group string optional user_warrant">
 		<label class="col-sm-2 control-label">默认版权声明</label>
 		<div class="col-sm-6 input-text-add">
@@ -122,7 +123,3 @@
 	padding-top: 10px;
 }
 </style>
-<link href="/datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">	
-<script type="text/javascript" src="/datetimepicker/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
-<script type="text/javascript" src="/javascripts/profile.js"></script>

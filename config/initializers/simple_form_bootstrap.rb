@@ -8,23 +8,6 @@ inputs = %w[
   StringInput
   TextInput
 ]
-class SimpleForm::Inputs::DateTimeInput
-  def input
-    mname = lookup_model_names[0]
-    %{
-      <div class="input-group date" data-link-field="#{mname}_#{attribute_name}" id="date-#{mname}-#{attribute_name}">
-        <input class="form-control" type="text" readonly>
-        <span class="input-group-addon">
-          <i class="icon-remove"></i>
-        </span>
-        <span class="input-group-addon">
-          <i class="icon-calendar"></i>
-        </span>
-      </div>
-      <input type="hidden" id="#{mname}_#{attribute_name}" name="#{mname}[#{attribute_name}]" value="">
-}.html_safe
-  end
-end
 # DateTimeInput
 inputs.each do |input_type|
   superclass = "SimpleForm::Inputs::#{input_type}".constantize
@@ -82,4 +65,64 @@ SimpleForm.setup do |config|
   # to learn about the different styles for forms and inputs,
   # buttons and other elements.
   config.default_wrapper = :bootstrap
+end
+
+
+
+# datepicker
+class DatepickerInput < SimpleForm::Inputs::StringInput
+  def input
+    # datetimepicker http://eonasdan.github.io/bootstrap-datetimepicker/ 
+    # 也可以          http://www.bootcss.com/p/bootstrap-datetimepicker/
+    # icon           http://www.bootcss.com/p/font-awesome/
+    value  = object.send(attribute_name) if object.respond_to? attribute_name
+    # 默认格式
+    picker = {
+      type: :date,
+      ddformat: I18n.t('datepicker.dformat', :default => '%Y-%m-%d'),
+      dtformat: I18n.t('timepicker.dformat', :default => '%R'),
+      pdformat: I18n.t('datepicker.pformat', :default => 'dd/MM/yyyy'),
+      ptformat: I18n.t('timepicker.pformat', :default => 'hh:mm'),
+      icon: 'calendar',
+      isremove: true,
+      language: I18n.locale.to_s
+    }.merge(input_options.delete(:picker) || {})
+
+    ddformat = picker.delete(:ddformat)
+    dtformat = picker.delete(:dtformat)
+    pdformat = picker.delete(:pdformat)
+    ptformat = picker.delete(:ptformat)
+
+    dp, pp, icon = case picker.delete(:type)
+    when :date
+      [ddformat, pdformat, 'calendar']
+    when :time
+      [dtformat, ptformat, 'time']
+    else
+      [ddformat + ' ' + dtformat, pdformat + ' ' + ptformat, 'calendar']
+    end
+
+    icon            = picker.delete(:icon)
+    isremove        = picker.delete(:isremove)
+    picker[:format] = pp
+    
+    input_html_options[:value] ||= I18n.localize(value, :format => dp) if value.present?
+    input_html_options[:type] = 'text'
+    input_html_options[:class].push('form-control')
+    input_html_options[:readonly] ||= true
+
+    template.content_tag :div, class: 'input-group date', id: 'datepicker', data: picker do
+      input = super
+
+      input += template.content_tag :span, class: 'input-group-addon' do
+        template.content_tag :i, '', class: 'icon-remove'
+      end if isremove
+
+      input += template.content_tag :span, class: 'input-group-addon' do
+        template.content_tag :i, '', class: 'icon-' + icon
+      end
+
+      input
+    end
+  end
 end

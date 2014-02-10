@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+  datepicker:
+    dformat: '%Y-%m-%d'
+    pformat: 'dd/MM/yyyy'
+  timepicker:
+    dformat: '%R'
+    pformat: 'hh:mm'
+

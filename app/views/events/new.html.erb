@@ -1,51 +1,25 @@
 <div class="row">
-    <style type="text/css">
-    .row{
-        background: white;
-        margin: 0;
-    }
-    .page-header{
-        padding: 0 15px;
-    }
-    form{padding: 0 15px 15px 15px;}
-    </style>
-    <div class="page-header">
-        <h4>
-            发布活动
-            <small>
-                申请成功后需要管理员审核
-            </small>
-        </h4>
+    <div class="col-md-12">
+        <div class="white-col-md">
+            <div class="page-header">
+                <h4>
+                    发布活动
+                    <small>
+                        申请成功后需要管理员审核
+                    </small>
+                </h4>
+            </div>
+            <%= simple_form_for Event.new, validate: true do |f| %>
+                <%= f.input :logo %>
+                <%= f.input :name %>
+                <%= f.input :title %>
+                <%= f.input :end_time, as: :datepicker, picker: {
+                    'date-startdate' => Date.today, 
+                    'date-enddate' => 2.years.from_now.to_date.to_s} %>
+                <%= f.input :tag %>
+                <%= f.input :text, as: :text, input_html:{rows: 3} %>
+                <%= f.submit '保存', class: 'btn btn-default btn-primary col-sm-offset-2', style: 'margin-bottom:20px' %>
+            <% end %>
+        </div>
     </div>
-    <%= simple_form_for Event.new, validate: true do |f| %>
-        <%= f.input :logo %>
-        <%= f.input :name %>
-        <%= f.input :title %>
-        <%= f.input :end_time, label_html: { for: :event_end_time } %>
-        <%= f.input :tag %>
-        <%= f.input :text, as: :text, input_html:{rows: 3} %>
-        <%= f.submit '保存', class: 'btn btn-default btn-primary col-sm-offset-2' %>
-    <% end %>
 </div>
-<link href="/datetimepicker/bootstrap-datetimepicker.css" rel="stylesheet" media="screen">  
-<script type="text/javascript" src="/datetimepicker/bootstrap-datetimepicker.js"></script>
-<script type="text/javascript" src="/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
-<script type="text/javascript">
-    $(function(){
-        // 结束时间
-        $('#date-event-end_time').datetimepicker({
-            linkFormat: 'yyyy-mm-dd',
-            format: 'yyyy-mm-dd',
-            language:  'zh-CN',
-            weekStart: 1,
-            todayBtn:  1,
-            autoclose: 1,
-            startDate: '<%= Date.today.to_s %>',
-            endDate: '<%= 2.years.from_now.to_date.to_s %>',
-            todayHighlight: 1,
-            startView: 2,
-            minView: 2,
-            forceParse: 0
-        });
-    })
-</script>
