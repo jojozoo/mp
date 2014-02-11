@@ -8,7 +8,11 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.new(params[:event].slice(:name, :logo, :title, :end_time, :tag, :text))
+		unless sign_in?
+			flash[:notice] = "登录用户才可以创建活动"
+			redirect_to action: :index and return
+		end
+		@event = Event.new(params[:event].slice(:name, :logo, :title, :end_time, :tag, :text).merge(user_id: current_user.id))
 		if @event.save!
 			flash[:notice] = "活动创建成功,等待管理员审核"
 			redirect_to events_path

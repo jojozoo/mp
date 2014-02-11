@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
-    t.string   "text"
+    t.string   "desc"
     t.integer  "open",              :default => 0
     t.boolean  "del",               :default => false
     t.datetime "created_at",                           :null => false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
     t.string   "title"
-    t.text     "text"
+    t.text     "desc"
     t.string   "tag"
     t.date     "end_time"
     t.integer  "members_count",     :default => 0
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "email"
     t.string   "subject"
     t.integer  "ip"
-    t.text     "text"
+    t.text     "desc"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -95,8 +95,7 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.string   "title"
-    t.text     "text"
+    t.string   "desc"
     t.text     "exif"
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false
@@ -106,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
   create_table "messages", :force => true do |t|
     t.integer  "talk_id"
     t.integer  "user_id"
-    t.string   "text"
+    t.string   "content"
     t.integer  "del",        :default => 0
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
@@ -191,7 +190,7 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
   create_table "talks", :force => true do |t|
     t.integer  "user_id"
     t.integer  "sender_id"
-    t.string   "text"
+    t.string   "content"
     t.integer  "state",          :default => 1
     t.integer  "messages_count", :default => 0
     t.boolean  "del",            :default => false
@@ -238,8 +237,7 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.integer  "event_id"
     t.integer  "warrant"
     t.integer  "winner"
-    t.string   "title"
-    t.text     "text"
+    t.string   "desc"
     t.boolean  "del"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

@@ -64,7 +64,7 @@ CREATE TABLE `albums` (
   `logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `logo_file_size` int(11) DEFAULT NULL,
   `logo_updated_at` datetime DEFAULT NULL,
-  `text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `desc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `open` int(11) DEFAULT '0',
   `del` tinyint(1) DEFAULT '0',
   `created_at` datetime NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE `events` (
   `logo_file_size` int(11) DEFAULT NULL,
   `logo_updated_at` datetime DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `text` text COLLATE utf8_unicode_ci,
+  `desc` text COLLATE utf8_unicode_ci,
   `tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `end_time` date DEFAULT NULL,
   `members_count` int(11) DEFAULT '0',
@@ -150,7 +150,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'第一个活动',NULL,NULL,NULL,NULL,NULL,'这个活动必不可少','你除了可以用单反相机、卡片机，把拍到的照片上传到快拍快拍网各个频道外，还特别推出——手机快拍（IPhone快拍）频道\r\n\r\n我们会从“手机快拍”频道挑选优秀照片，见报即奖200元——1000元。\r\n每周评选手机快拍之星，投票以快拍快拍网为准（选取有效投票数，一个ID多投、新注册刷票马甲且相册为空者，投票均无效）。每周手机快拍之星直接晋级当月四进二大奖角逐，每月评出手机摄影月度冠军和人气奖，月度冠军奖金500元，人气奖奖金300元。月度冠军由专业评委评选产生，人气奖以快拍快拍网和微博@三个好友参与投票相结合的方式产生。谢谢大家支持。\r\n\r\n为了让大家更简便地使用IPhone手机拍照上传，快拍快拍网（www.manpai.com）开发的\r\niphone手机客户端体验版，大家不用再连接数据线，将手机的照片导入电脑了，只要一点，照片就可以上传到快拍快拍网·手机快拍频道，与大家一起分享那时的人、景、故事和心情，建立属于你自己的iphone照片相册。\r\n还等什么，一起快拍吧。','未知','2016-02-04',0,0,2,0,0,'2014-02-08 20:36:32','2014-02-08 20:36:58');
+INSERT INTO `events` VALUES (1,'第一个活动',1,NULL,NULL,NULL,NULL,'这个活动必不可少','你除了可以用单反相机、卡片机，把拍到的照片上传到快拍快拍网各个频道外，还特别推出——手机快拍（IPhone快拍）频道\r\n\r\n我们会从“手机快拍”频道挑选优秀照片，见报即奖200元——1000元。\r\n每周评选手机快拍之星，投票以快拍快拍网为准（选取有效投票数，一个ID多投、新注册刷票马甲且相册为空者，投票均无效）。每周手机快拍之星直接晋级当月四进二大奖角逐，每月评出手机摄影月度冠军和人气奖，月度冠军奖金500元，人气奖奖金300元。月度冠军由专业评委评选产生，人气奖以快拍快拍网和微博@三个好友参与投票相结合的方式产生。谢谢大家支持。\r\n\r\n为了让大家更简便地使用IPhone手机拍照上传，快拍快拍网（www.manpai.com）开发的\r\niphone手机客户端体验版，大家不用再连接数据线，将手机的照片导入电脑了，只要一点，照片就可以上传到快拍快拍网·手机快拍频道，与大家一起分享那时的人、景、故事和心情，建立属于你自己的iphone照片相册。\r\n还等什么，一起快拍吧。','未知','2016-02-04',0,0,2,0,0,'2014-02-08 20:36:32','2014-02-08 20:36:58');
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,7 +168,7 @@ CREATE TABLE `feedbacks` (
   `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `subject` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ip` int(11) DEFAULT NULL,
-  `text` text COLLATE utf8_unicode_ci,
+  `desc` text COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
@@ -203,8 +203,7 @@ CREATE TABLE `images` (
   `picture_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `picture_file_size` int(11) DEFAULT NULL,
   `picture_updated_at` datetime DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `text` text COLLATE utf8_unicode_ci,
+  `desc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `exif` text COLLATE utf8_unicode_ci,
   `del` tinyint(1) DEFAULT '0',
   `created_at` datetime NOT NULL,
@@ -219,7 +218,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'p.jpg',1,1,1,1,NULL,'p.jpg','application/octet-stream',2562102,'2014-02-08 20:25:48','这是第一个图片','图片描述的不怎么好\r\n\r\n不过凑活看吧','{\"width\":3264,\"height\":2448,\"bits\":8,\"comment\":null,\"make\":\"Apple\",\"model\":\"iPhone 4S\",\"orientation\":6,\"x_resolution\":72.0,\"y_resolution\":72.0,\"resolution_unit\":2,\"software\":\"5.1.1\",\"date_time\":\"2012-09-29T21:09:57+08:00\",\"ycb_cr_positioning\":1,\"exposure_time\":0.05,\"f_number\":2.4,\"exposure_program\":2,\"iso_speed_ratings\":400,\"date_time_original\":\"2012-09-29T21:09:57+08:00\",\"date_time_digitized\":\"2012-09-29T21:09:57+08:00\",\"shutter_speed_value\":0.05,\"aperture_value\":2.4,\"brightness_value\":0.3018793273986152,\"metering_mode\":5,\"flash\":24,\"focal_length\":4.28,\"subject_area\":[1631,1223,881,881],\"color_space\":1,\"pixel_x_dimension\":3264,\"pixel_y_dimension\":2448,\"sensing_method\":2,\"exposure_mode\":0,\"white_balance\":0,\"focal_length_in_35mm_film\":35,\"scene_capture_type\":0,\"sharpness\":0}',0,'2014-02-08 20:25:52','2014-02-08 20:37:51'),(2,'1122184996.jpg',3,4,1,1,NULL,'1122184996.jpg','application/octet-stream',51213,'2014-02-09 11:04:25','','','{\"width\":640,\"height\":434,\"bits\":8,\"comment\":null,\"orientation\":1,\"software\":\"ACD Systems Digital Imaging\",\"date_time\":\"2006-04-19T13:34:08+04:00\",\"ycb_cr_positioning\":1,\"subsec_time\":\"171\",\"pixel_x_dimension\":640,\"pixel_y_dimension\":434}',0,'2014-02-09 11:04:36','2014-02-09 11:05:00');
+INSERT INTO `images` VALUES (1,'p.jpg',1,1,1,1,NULL,'p.jpg','application/octet-stream',2562102,'2014-02-08 20:25:48','图片描述的不怎么好\r\n\r\n不过凑活看吧','{\"width\":3264,\"height\":2448,\"bits\":8,\"comment\":null,\"make\":\"Apple\",\"model\":\"iPhone 4S\",\"orientation\":6,\"x_resolution\":72.0,\"y_resolution\":72.0,\"resolution_unit\":2,\"software\":\"5.1.1\",\"date_time\":\"2012-09-29T21:09:57+08:00\",\"ycb_cr_positioning\":1,\"exposure_time\":0.05,\"f_number\":2.4,\"exposure_program\":2,\"iso_speed_ratings\":400,\"date_time_original\":\"2012-09-29T21:09:57+08:00\",\"date_time_digitized\":\"2012-09-29T21:09:57+08:00\",\"shutter_speed_value\":0.05,\"aperture_value\":2.4,\"brightness_value\":0.3018793273986152,\"metering_mode\":5,\"flash\":24,\"focal_length\":4.28,\"subject_area\":[1631,1223,881,881],\"color_space\":1,\"pixel_x_dimension\":3264,\"pixel_y_dimension\":2448,\"sensing_method\":2,\"exposure_mode\":0,\"white_balance\":0,\"focal_length_in_35mm_film\":35,\"scene_capture_type\":0,\"sharpness\":0}',0,'2014-02-08 20:25:52','2014-02-08 20:37:51'),(2,'1122184996.jpg',3,4,1,1,NULL,'1122184996.jpg','application/octet-stream',51213,'2014-02-09 11:04:25','','{\"width\":640,\"height\":434,\"bits\":8,\"comment\":null,\"orientation\":1,\"software\":\"ACD Systems Digital Imaging\",\"date_time\":\"2006-04-19T13:34:08+04:00\",\"ycb_cr_positioning\":1,\"subsec_time\":\"171\",\"pixel_x_dimension\":640,\"pixel_y_dimension\":434}',0,'2014-02-09 11:04:36','2014-02-09 11:05:00');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -234,7 +233,7 @@ CREATE TABLE `messages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `talk_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `del` int(11) DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -457,7 +456,7 @@ CREATE TABLE `talks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `sender_id` int(11) DEFAULT NULL,
-  `text` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `state` int(11) DEFAULT '1',
   `messages_count` int(11) DEFAULT '0',
   `del` tinyint(1) DEFAULT '0',
@@ -544,8 +543,7 @@ CREATE TABLE `works` (
   `event_id` int(11) DEFAULT NULL,
   `warrant` int(11) DEFAULT NULL,
   `winner` int(11) DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `text` text COLLATE utf8_unicode_ci,
+  `desc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `del` tinyint(1) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -559,7 +557,7 @@ CREATE TABLE `works` (
 
 LOCK TABLES `works` WRITE;
 /*!40000 ALTER TABLE `works` DISABLE KEYS */;
-INSERT INTO `works` VALUES (1,1,1,1,NULL,NULL,'这是第一个图片','图片描述的不怎么好\r\n\r\n不过凑活看吧',NULL,'2014-02-08 20:37:51','2014-02-08 20:37:51'),(2,3,2,1,NULL,NULL,'','',NULL,'2014-02-09 11:05:00','2014-02-09 11:05:00');
+INSERT INTO `works` VALUES (1,1,1,1,NULL,NULL,'图片描述的不怎么好\r\n\r\n不过凑活看吧',NULL,'2014-02-08 20:37:51','2014-02-08 20:37:51'),(2,3,2,1,NULL,NULL,'',NULL,'2014-02-09 11:05:00','2014-02-09 11:05:00');
 /*!40000 ALTER TABLE `works` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
