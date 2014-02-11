@@ -63,9 +63,9 @@ $(function(){
     <div class="ondown on-left-top">
         <div class="bgdown bgfade-left-top"></div>
         <div class="fadedown bgfade-left-top">
-            <p>作者:<%= current_user.username %></p>
-            <% if current_user.photographer == true %>
-                <p>个人主页:<%= current_user.site %></p>
+            <p>作者:<%= @obj.user.username %></p>
+            <% if @obj.user.photographer == true %>
+                <p>个人主页:<%= @obj.user.site %></p>
             <% end %>
         </div>
     </div>
