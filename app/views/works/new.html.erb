@@ -23,7 +23,6 @@
                             <div class="caption caption-border">
                                 <%= link_to '设为封面', "#{image.id}", class: 'btn btn-default btn-xs front-cover' %>
                                 <%= link_to '删除本张', image, class: 'btn btn-default btn-xs remove-self' %>
-                                <input type="text" class='form-control input-sm' style="margin-top:4px;" name="title[<%= image.id %>]" placeholder="图片的标题">
                                 <textarea class="once-desc form-control" placeholder="输入图片描述" name="desc[<%= image.id %>]"></textarea>
                                 <span>上传时间：2014-02-08 17:17:00</span>
                             </div>

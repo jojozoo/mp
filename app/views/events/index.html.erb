@@ -31,10 +31,10 @@
 				<%= link_to image_tag(event.logo.url), event_path(event), target: '_blank' %>
 				<div class="caption">
 					<%= link_to event_path(event), target: '_blank' do %>
-						<h5><%= event.title %></h5>
+						<h5>#<%= event.title %>#</h5>
 					<% end %>
 					<p>
-						<%= event.title %>
+						<%= truncate(event.desc, length: 50) %>
 					</p>
 					<span>人数/照片:<%= 0 %>/190</span>
 					<span>结束时间:<%= event.end_time %></span>

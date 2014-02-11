@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 
   # GET /sign_in 登录
   def new
-    redirect_to root_path if @current_user
+    redirect_to root_path if sign_in?
     @user = User.new
     @errors = {}
   end
@@ -72,7 +72,7 @@ class SessionsController < ApplicationController
 
   # 忘记密码
   def forgot
-    redirect_to root_path if @current_user
+    redirect_to root_path if sign_in?
     if request.post?
       if @user = User.where(["username = ? or email = ?", params[:login], params[:login]]).first
         redirect_to action: :validate and return

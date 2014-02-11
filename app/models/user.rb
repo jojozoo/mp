@@ -234,7 +234,7 @@ class User < ActiveRecord::Base
   # TODO
   # 默认del查询，相册创建，datepicker简化以及focus
   # 瀑布流加载
-  # 删除image的text
+  # 删除image的desc
   # work标题显示活动，相册再议
   # 相册创建的问题 其中有个micros相册不可删除
   # 头像的文字

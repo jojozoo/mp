@@ -63,11 +63,8 @@
 							<div class="thumbnail">
 								<%= link_to image_tag(work.image.picture(:thumb)), image_path(work.image_id), target: '_blank' %>
 								<div class="caption caption-border">
-									<%= link_to image_path(work.image_id), target: '_blank' do %>
-										<h5><%= work.title %></h5>
-									<% end %>
-									<div class="">
-										<%= work.desc %>
+									<div style="margin: 6px 0;">
+										<%= work.desc.present? ? work.desc : "暂无描述" %>
 									</div>
 									<span class="push-thumbs-up">赞(8)</span>
 									<span class="push-heart">喜欢(12)</span>

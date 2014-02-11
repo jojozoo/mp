@@ -5,9 +5,9 @@ class My::JoinProjectsController < My::ApplicationController
 	end
 
 	def events
-		@events = @current_user.events.limit(10)
+		@events = current_user.events.limit(10)
 	end
 	def groups
-		@events = @current_user.events.limit(10)
+		@events = current_user.events.limit(10)
 	end
 end

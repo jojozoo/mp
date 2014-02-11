@@ -20,7 +20,8 @@
 }
 </style>
 <%= simple_form_for Message.new, url: '/', validate: true do |f| %>
-	<textarea class="form-control" id="message_text" name="message[content]" data-validate="true"></textarea>
+	<input type="hidden" name="to_id" value="<%= @talk.sender_id %>">
+	<textarea class="form-control" id="message_content" name="message[content]" data-validate="true"></textarea>
 	<%= f.submit '发送', class: 'btn btn-default pull-right' %>
 	<div class="clearfix"></div>
 <% end %>

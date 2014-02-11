@@ -19,7 +19,7 @@ class Image < ActiveRecord::Base
     styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.jpg", quality: :better}]}]
 
   has_many :works
-  belongs :user
+  belongs_to :user
 
   after_picture_post_process :load_exif
 
