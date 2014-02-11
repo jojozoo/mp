@@ -219,8 +219,6 @@ class User < ActiveRecord::Base
   # ad(visit, click, title) 暂时不做
   # 站内互动: 允许回应(所有,圈子,好友,粉丝)针对活动/other,允许漫信(所有,圈子,好友,粉丝) 暂时不加
 
-  # TODO 找到 paperclip 如何转存照片
-  # TODO paperclip cut
   # TODO 参与活动的照片也瀑布流,全部图片上传解决，相册(logo,创建等)，活动创建解决，瀑布流也可以正常排列,列表排列
   # TODO 其中列表排列时后面是详细的点赞，浏览，喜欢等等乱七八糟的
   # TODO image/show 有evid,woid和currid来决定作品的浏览。 alid和currid来决定相册的浏览, else 一般浏览
@@ -230,10 +228,16 @@ class User < ActiveRecord::Base
   # TODO 推荐摄影师按照后台推荐和照片质量
   # TODO 添加照片类型(风光、人文、静物、广告)
   # TODO 相册添加移动功能,达到分组的效果,并且参加活动的时候可以从相册选择照片
-  # TODO 创建相册有bug
 
-  # TODO 第三方登陆, 个人设置, 图片上传和作品上传, 分享图片的文字
-  # TODO 表单远程验证 datetime验证 TODO TODO TODO
+  # TODO 分享图片的文字 datetime验证
+
+  # TODO
+  # 默认del查询，相册创建，datepicker简化以及focus
+  # 瀑布流加载
+  # 删除image的text
+  # work标题显示活动，相册再议
+  # 相册创建的问题 其中有个micros相册不可删除
+  # 头像的文字
 
   # 消息, 通知, 设置相关所有
 
