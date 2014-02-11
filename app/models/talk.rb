@@ -1,5 +1,5 @@
 class Talk < ActiveRecord::Base
-  attr_accessible :del, :state, :text, :user_id, :sender_id, :messages_count
+  attr_accessible :del, :state, :content, :user_id, :sender_id, :messages_count
 
   belongs_to :user
   belongs_to :sender, class_name: 'User'

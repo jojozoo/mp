@@ -5,7 +5,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :user_id
       t.attachment :logo
       t.string :title
-      t.text :text
+      t.text :desc
       t.string :tag # 类型暂定
       t.date :end_time
       t.integer :members_count, default: 0

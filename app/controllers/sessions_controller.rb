@@ -36,7 +36,19 @@ class SessionsController < ApplicationController
       param = params[:user].slice(:username, :email, :password, :password_confirmation, :province, :city, :resume, :domain, :gender, :site, :realname, :duty)
       @user = User.new(param)
 
-      @user.avatar = open(URI.parse(params[:avatar])) rescue nil if params[:avatar].present?
+      
+      @user.avatar = begin if params[:avatar].present?
+        open(URI.parse(params[:avatar])) rescue nil
+      else
+        avatar_path = "/tmp/#{SecureRandom.hex(20)}.jpg"
+        avatar_name = params[:user][:username].last
+        system("convert -size 300x300 -background '#269abc' -fill '#fff' -font public/fonts/zh.ttf -pointsize 300 -gravity center label:'#{avatar_name}' #{avatar_path}")
+        @user.avatar = File.open(avatar_path)
+      end
+      rescue => e
+        logger.info("user create avatar error: #{e.to_s}")
+        nil
+      end
       if @user.save
         set_sign_in_flag(@user.id)
         # 如果第三方登陆

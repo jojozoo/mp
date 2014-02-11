@@ -162,23 +162,23 @@ class User < ActiveRecord::Base
                             :allow_blank => true,
                             :message => "2-10位字母/数字/下划线/横线"
 
-  def send_msg(to, text)
+  def send_msg(to, content)
     # 接受者收件箱一条
     jointalk = Talk.find_or_create_by_user_id_and_sender_id(to.id, self.id)
-    jointalk.update_attributes(text: text, state: 1)
-    jointalk.messages.create(text: text, user_id: jointalk.sender_id)
+    jointalk.update_attributes(content: content, state: 1)
+    jointalk.messages.create(content: content, user_id: jointalk.sender_id)
 
     # 发送者发件箱一条
     sendtalk = Talk.find_or_create_by_user_id_and_sender_id(self.id, to.id)
-    sendtalk.update_attributes(text: text, state: 0)
-    sendtalk.messages.create(text: text, user_id: sendtalk.user_id)
+    sendtalk.update_attributes(content: content, state: 0)
+    sendtalk.messages.create(content: content, user_id: sendtalk.user_id)
   end
 
   
   after_create :basic_build
 
   def basic_build
-    self.albums.create(name: '默认相册', text: '默认相册', open: 0)
+    self.albums.create(name: '默认相册', desc: '默认相册', open: 0)
   end
 
   # 加密

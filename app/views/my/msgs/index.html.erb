@@ -41,7 +41,7 @@
             </span>
         </div>
         <div class="list-group-item-text">
-            <%= link_to talk.text, my_msg_path(talk.id), class: 'text-desc' %>
+            <%= link_to talk.content, my_msg_path(talk.id), class: 'text-desc' %>
             <div class="pull-right opera">
                 <a class="transh" href="javascript:void(0);" title="真的要标记为垃圾漫信？">垃圾漫信</a>
                 <%= link_to '删除', my_msg_path(talk.id), method: :delete, data: { confirm: "将删除整个对话, 是否确定?" } %>

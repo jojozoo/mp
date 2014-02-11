@@ -38,9 +38,10 @@
 		this.bootcssVer = 3;
 
 		// this.component = this.element.is('.date') ? ( this.bootcssVer == 3 ? this.element.find('.input-group-addon .icon-th, .input-group-addon .icon-time, .input-group-addon .icon-calendar').parent() : this.element.find('.add-on .icon-th, .add-on .icon-time, .add-on .icon-calendar').parent()) : false;
-		this.component = this.element.is('.date') ? this.element.find('.input-group-addon .icon-th, .input-group-addon .icon-time, .input-group-addon .icon-calendar').parent() : false;
+		// 独自添加了样式
+		this.component = this.element.is('.date') ? this.element.find('.ttc').parent() : false;
 		// this.componentReset = this.element.is('.date') ? ( this.bootcssVer == 3 ? this.element.find('.input-group-addon .icon-remove').parent() : this.element.find('.add-on .icon-remove').parent()) : false;
-		this.componentReset = this.element.is('.date') ? this.element.find('.input-group-addon .icon-remove').parent() : false;
+		this.componentReset = this.element.is('.date') ? this.element.find('.isremove').parent() : false;
 		this.hasInput = this.component && this.element.find('input').length;
 		if (this.component && this.component.length === 0) {
 			this.component = false;

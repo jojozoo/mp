@@ -6,8 +6,7 @@ class CreateWorks < ActiveRecord::Migration
       t.integer :event_id
       t.integer :warrant
       t.integer :winner
-      t.string :title
-      t.text :text
+      t.string :desc
       t.boolean :del
 
       t.timestamps

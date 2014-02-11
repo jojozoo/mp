@@ -40,7 +40,6 @@ $(function(){
                 // str +=                     '<i class="icon-arrow-right"></i>'
                 // str +=                 '</a>'
                 // str +=             '</div>'
-                str +=             '<input type="text" class="form-control input-sm" style="margin-top:4px;" name="title[' + data.id + ']" placeholder="图片的标题">'
                 str +=             '<textarea class="once-desc form-control" placeholder="输入图片描述" name="desc[' + data.id + ']"></textarea>'
                 str +=             '<span>上传时间：' + data.time + '</span>'
                 str +=         '</div>'

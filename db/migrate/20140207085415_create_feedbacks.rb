@@ -6,7 +6,7 @@ class CreateFeedbacks < ActiveRecord::Migration
       t.string :email
       t.string :subject
       t.integer :ip
-      t.text :text
+      t.text :desc
 
       t.timestamps
     end

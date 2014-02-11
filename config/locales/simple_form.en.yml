@@ -42,12 +42,12 @@ en:
         resume: '个人简介'
       album:
         name: '名称'
-        text: '描述'
+        desc: '描述'
       event:
         logo: LOGO
         name: 活动名称
         title: 活动标题
-        text: 活动描述
+        desc: 活动描述
         end_time: 结束时间
         tag: 活动类型
     hints:

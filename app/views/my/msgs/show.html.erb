@@ -20,7 +20,7 @@
 }
 </style>
 <%= simple_form_for Message.new, url: '/', validate: true do |f| %>
-	<textarea class="form-control" id="message_text" name="message[text]" data-validate="true"></textarea>
+	<textarea class="form-control" id="message_text" name="message[content]" data-validate="true"></textarea>
 	<%= f.submit '发送', class: 'btn btn-default pull-right' %>
 	<div class="clearfix"></div>
 <% end %>
@@ -38,8 +38,8 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="text">
-				<%= msg.text %>
-				<%#= auto_link(msg.text, html: { target: '_blank' }) rescue msg.text %>
+				<%= msg.content %>
+				<%#= auto_link(msg.content, html: { target: '_blank' }) rescue msg.content %>
 			</div>
 		</div>
 	</li>

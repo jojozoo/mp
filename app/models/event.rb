@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  attr_accessible :text,
+  attr_accessible :desc,
    :name,
    :logo, 
    :tag, 
@@ -47,10 +47,10 @@ class Event < ActiveRecord::Base
                             :within => 3..20,
                             :message => '长度3..20字'
 
-  validates_presence_of     :text, 
-                            :message => '名称不能为空'
+  validates_presence_of     :desc, 
+                            :message => '描述不能为空'
   
-  validates_length_of       :text,
+  validates_length_of       :desc,
                             :within => 10..1000,
                             :message => '长度10..1000字'
 

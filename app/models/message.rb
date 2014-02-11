@@ -1,10 +1,10 @@
 class Message < ActiveRecord::Base
-  attr_accessible :text, :talk_id, :user_id, :del
+  attr_accessible :content, :talk_id, :user_id, :del
 
-  validates_presence_of   :text, message: '不能为空'
-  validates_length_of     :text, 
+  validates_presence_of   :content, message: '内容不能为空'
+  validates_length_of     :content, 
                           :within => 5..200,
-                          :message => '长度5..200字'
+                          :message => '内容长度5..200字'
 
   belongs_to :talk, counter_cache: true
   belongs_to :user

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.15, for osx10.7 (x86_64)
+-- MySQL dump 10.13  Distrib 5.1.63, for debian-linux-gnu (i686)
 --
 -- Host: localhost    Database: mp_dev
 -- ------------------------------------------------------
--- Server version	5.6.15
+-- Server version	5.1.63-0ubuntu0.11.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,7 +36,7 @@ CREATE TABLE `accounts` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `accounts` (
 
 LOCK TABLES `accounts` WRITE;
 /*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
-INSERT INTO `accounts` VALUES (1,'1798097447',1,'weibo',NULL,'2.00jRdgxBLk739Dc9a72567197p_CkC',NULL,'157679999','1549570764','{\"uid\":1798097447,\"name\":\"\\u567c\\u91cc\\u556a\\u5566\\u5c0f\\u4e94\\u54e5\",\"province\":\"\\u5317\\u4eac\",\"city\":\"\\u4e1c\\u57ce\\u533a\",\"resume\":\"\\u7cbe\\u795e\\u751f\\u6d3b\\u5f88\\u91cd\\u8981\",\"domain\":\"zhu404\",\"gender\":true,\"site\":\"http://www.zhuxiaowu.com\",\"avatar\":\"http://tp4.sinaimg.cn/1798097447/50/5627521723/1\",\"other\":{\"id\":1798097447,\"idstr\":\"1798097447\",\"class\":1,\"screen_name\":\"\\u567c\\u91cc\\u556a\\u5566\\u5c0f\\u4e94\\u54e5\",\"name\":\"\\u567c\\u91cc\\u556a\\u5566\\u5c0f\\u4e94\\u54e5\",\"province\":\"11\",\"city\":\"1\",\"location\":\"\\u5317\\u4eac \\u4e1c\\u57ce\\u533a\",\"description\":\"\\u7cbe\\u795e\\u751f\\u6d3b\\u5f88\\u91cd\\u8981\",\"url\":\"http://www.zhuxiaowu.com\",\"profile_image_url\":\"http://tp4.sinaimg.cn/1798097447/50/5627521723/1\",\"profile_url\":\"zhu404\",\"domain\":\"zhu404\",\"weihao\":\"\",\"gender\":\"m\",\"followers_count\":327,\"friends_count\":238,\"statuses_count\":1419,\"favourites_count\":16,\"created_at\":\"Thu Aug 19 11:16:55 +0800 2010\",\"following\":false,\"allow_all_act_msg\":false,\"geo_enabled\":true,\"verified\":true,\"verified_type\":0,\"remark\":\"\",\"status\":{\"created_at\":\"Fri Jul 19 18:28:04 +0800 2013\",\"id\":3601842711703284,\"mid\":\"3601842711703284\",\"idstr\":\"3601842711703284\",\"text\":\"...//@\\u738b\\u82e5\\u611a_MaxWong: ......//@\\u6f58\\u5c0f\\u5b87\\u540c\\u5b66: @\\u6d77\\u9614and\\u5929\\u7a7a\\u7a7a \\u5f15\\u4ee5\\u4e3a\\u6212\\u554a\\uff5e\",\"source\":\"<a href=\\\"http://weibo.com/\\\" rel=\\\"nofollow\\\">\\u65b0\\u6d6a\\u5fae\\u535a</a>\",\"favorited\":false,\"truncated\":false,\"in_reply_to_status_id\":\"\",\"in_reply_to_user_id\":\"\",\"in_reply_to_screen_name\":\"\",\"pic_urls\":[],\"geo\":null,\"reposts_count\":0,\"comments_count\":0,\"attitudes_count\":0,\"mlevel\":0,\"visible\":{\"type\":0,\"list_id\":0}},\"ptype\":0,\"allow_all_comment\":true,\"avatar_large\":\"http://tp4.sinaimg.cn/1798097447/180/5627521723/1\",\"avatar_hd\":\"http://tp4.sinaimg.cn/1798097447/180/5627521723/1\",\"verified_reason\":\"\\u5929\\u9645\\u7f51Ruby\\u5de5\\u7a0b\\u5e08\\u6731\\u6653\\u6b66\",\"follow_me\":false,\"online_status\":0,\"bi_followers_count\":134,\"lang\":\"zh-cn\",\"star\":0,\"mbtype\":0,\"mbrank\":0,\"block_word\":0}}','2014-02-08 20:19:25','2014-02-08 20:19:37');
+INSERT INTO `accounts` VALUES (1,'1798097447',1,'weibo',NULL,'2.00jRdgxBLk739Dc9a72567197p_CkC',NULL,'157679999','1549781610','{\"uid\":1798097447,\"name\":\"\\u567c\\u91cc\\u556a\\u5566\\u5c0f\\u4e94\\u54e5\",\"province\":\"\\u5317\\u4eac\",\"city\":\"\\u4e1c\\u57ce\\u533a\",\"resume\":\"\\u7cbe\\u795e\\u751f\\u6d3b\\u5f88\\u91cd\\u8981\",\"domain\":\"zhu404\",\"gender\":true,\"site\":\"http://www.zhuxiaowu.com\",\"avatar\":\"http://tp4.sinaimg.cn/1798097447/50/5627521723/1\",\"other\":{\"id\":1798097447,\"idstr\":\"1798097447\",\"class\":1,\"screen_name\":\"\\u567c\\u91cc\\u556a\\u5566\\u5c0f\\u4e94\\u54e5\",\"name\":\"\\u567c\\u91cc\\u556a\\u5566\\u5c0f\\u4e94\\u54e5\",\"province\":\"11\",\"city\":\"1\",\"location\":\"\\u5317\\u4eac \\u4e1c\\u57ce\\u533a\",\"description\":\"\\u7cbe\\u795e\\u751f\\u6d3b\\u5f88\\u91cd\\u8981\",\"url\":\"http://www.zhuxiaowu.com\",\"profile_image_url\":\"http://tp4.sinaimg.cn/1798097447/50/5627521723/1\",\"profile_url\":\"zhu404\",\"domain\":\"zhu404\",\"weihao\":\"\",\"gender\":\"m\",\"followers_count\":327,\"friends_count\":238,\"statuses_count\":1419,\"favourites_count\":16,\"created_at\":\"Thu Aug 19 11:16:55 +0800 2010\",\"following\":false,\"allow_all_act_msg\":false,\"geo_enabled\":true,\"verified\":true,\"verified_type\":0,\"remark\":\"\",\"status\":{\"created_at\":\"Fri Jul 19 18:28:04 +0800 2013\",\"id\":3601842711703284,\"mid\":\"3601842711703284\",\"idstr\":\"3601842711703284\",\"text\":\"...//@\\u738b\\u82e5\\u611a_MaxWong: ......//@\\u6f58\\u5c0f\\u5b87\\u540c\\u5b66: @\\u6d77\\u9614and\\u5929\\u7a7a\\u7a7a \\u5f15\\u4ee5\\u4e3a\\u6212\\u554a\\uff5e\",\"source\":\"<a href=\\\"http://weibo.com/\\\" rel=\\\"nofollow\\\">\\u65b0\\u6d6a\\u5fae\\u535a</a>\",\"favorited\":false,\"truncated\":false,\"in_reply_to_status_id\":\"\",\"in_reply_to_user_id\":\"\",\"in_reply_to_screen_name\":\"\",\"pic_urls\":[],\"geo\":null,\"reposts_count\":0,\"comments_count\":0,\"attitudes_count\":0,\"mlevel\":0,\"visible\":{\"type\":0,\"list_id\":0}},\"ptype\":0,\"allow_all_comment\":true,\"avatar_large\":\"http://tp4.sinaimg.cn/1798097447/180/5627521723/1\",\"avatar_hd\":\"http://tp4.sinaimg.cn/1798097447/180/5627521723/1\",\"verified_reason\":\"\\u5929\\u9645\\u7f51Ruby\\u5de5\\u7a0b\\u5e08\\u6731\\u6653\\u6b66\",\"follow_me\":false,\"online_status\":0,\"bi_followers_count\":134,\"lang\":\"zh-cn\",\"star\":0,\"mbtype\":0,\"mbrank\":0,\"block_word\":0}}','2014-02-08 20:19:25','2014-02-11 06:53:32');
 /*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -70,7 +70,7 @@ CREATE TABLE `albums` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +79,7 @@ CREATE TABLE `albums` (
 
 LOCK TABLES `albums` WRITE;
 /*!40000 ALTER TABLE `albums` DISABLE KEYS */;
-INSERT INTO `albums` VALUES (1,1,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-08 20:19:37','2014-02-08 20:19:37'),(2,2,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-08 21:02:50','2014-02-08 21:02:50');
+INSERT INTO `albums` VALUES (1,1,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-08 20:19:37','2014-02-08 20:19:37'),(2,2,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-08 21:02:50','2014-02-08 21:02:50'),(3,3,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-09 10:57:59','2014-02-09 10:57:59'),(4,3,'图片１',NULL,NULL,NULL,NULL,'图片１',0,0,'2014-02-09 11:04:47','2014-02-09 11:04:47'),(5,4,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-10 13:17:07','2014-02-10 13:17:07'),(6,4,'2014扫街',NULL,NULL,NULL,NULL,'街头是一个不落幕的舞台，你我都是演员，也都是导演，我还是这部舞台剧的摄影。',0,0,'2014-02-10 13:19:52','2014-02-10 13:19:52');
 /*!40000 ALTER TABLE `albums` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,7 +141,7 @@ CREATE TABLE `events` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -210,7 +210,7 @@ CREATE TABLE `images` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,7 +219,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'p.jpg',1,1,1,1,NULL,'p.jpg','application/octet-stream',2562102,'2014-02-08 20:25:48','这是第一个图片','图片描述的不怎么好\r\n\r\n不过凑活看吧','{\"width\":3264,\"height\":2448,\"bits\":8,\"comment\":null,\"make\":\"Apple\",\"model\":\"iPhone 4S\",\"orientation\":6,\"x_resolution\":72.0,\"y_resolution\":72.0,\"resolution_unit\":2,\"software\":\"5.1.1\",\"date_time\":\"2012-09-29T21:09:57+08:00\",\"ycb_cr_positioning\":1,\"exposure_time\":0.05,\"f_number\":2.4,\"exposure_program\":2,\"iso_speed_ratings\":400,\"date_time_original\":\"2012-09-29T21:09:57+08:00\",\"date_time_digitized\":\"2012-09-29T21:09:57+08:00\",\"shutter_speed_value\":0.05,\"aperture_value\":2.4,\"brightness_value\":0.3018793273986152,\"metering_mode\":5,\"flash\":24,\"focal_length\":4.28,\"subject_area\":[1631,1223,881,881],\"color_space\":1,\"pixel_x_dimension\":3264,\"pixel_y_dimension\":2448,\"sensing_method\":2,\"exposure_mode\":0,\"white_balance\":0,\"focal_length_in_35mm_film\":35,\"scene_capture_type\":0,\"sharpness\":0}',0,'2014-02-08 20:25:52','2014-02-08 20:37:51');
+INSERT INTO `images` VALUES (1,'p.jpg',1,1,1,1,NULL,'p.jpg','application/octet-stream',2562102,'2014-02-08 20:25:48','这是第一个图片','图片描述的不怎么好\r\n\r\n不过凑活看吧','{\"width\":3264,\"height\":2448,\"bits\":8,\"comment\":null,\"make\":\"Apple\",\"model\":\"iPhone 4S\",\"orientation\":6,\"x_resolution\":72.0,\"y_resolution\":72.0,\"resolution_unit\":2,\"software\":\"5.1.1\",\"date_time\":\"2012-09-29T21:09:57+08:00\",\"ycb_cr_positioning\":1,\"exposure_time\":0.05,\"f_number\":2.4,\"exposure_program\":2,\"iso_speed_ratings\":400,\"date_time_original\":\"2012-09-29T21:09:57+08:00\",\"date_time_digitized\":\"2012-09-29T21:09:57+08:00\",\"shutter_speed_value\":0.05,\"aperture_value\":2.4,\"brightness_value\":0.3018793273986152,\"metering_mode\":5,\"flash\":24,\"focal_length\":4.28,\"subject_area\":[1631,1223,881,881],\"color_space\":1,\"pixel_x_dimension\":3264,\"pixel_y_dimension\":2448,\"sensing_method\":2,\"exposure_mode\":0,\"white_balance\":0,\"focal_length_in_35mm_film\":35,\"scene_capture_type\":0,\"sharpness\":0}',0,'2014-02-08 20:25:52','2014-02-08 20:37:51'),(2,'1122184996.jpg',3,4,1,1,NULL,'1122184996.jpg','application/octet-stream',51213,'2014-02-09 11:04:25','','','{\"width\":640,\"height\":434,\"bits\":8,\"comment\":null,\"orientation\":1,\"software\":\"ACD Systems Digital Imaging\",\"date_time\":\"2006-04-19T13:34:08+04:00\",\"ycb_cr_positioning\":1,\"subsec_time\":\"171\",\"pixel_x_dimension\":640,\"pixel_y_dimension\":434}',0,'2014-02-09 11:04:36','2014-02-09 11:05:00');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -239,7 +239,7 @@ CREATE TABLE `messages` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -464,7 +464,7 @@ CREATE TABLE `talks` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -517,7 +517,7 @@ CREATE TABLE `users` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -526,7 +526,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'1@qq.com','噼里啪啦小五哥',NULL,'','','9574be986128d15270f02ee203ffce18',NULL,'stringio.txt','image/jpeg',2527,'2014-02-08 20:19:37','北京','北京','http://www.zhuxiaowu.com','精神生活很重要','zhu404','',NULL,1,5,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-08 20:19:37','2014-02-08 20:38:41'),(2,'2@q.com','bopro',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-08 21:02:50','2014-02-08 21:02:50');
+INSERT INTO `users` VALUES (1,'1@qq.com','噼里啪啦小五哥',NULL,'','','9574be986128d15270f02ee203ffce18',NULL,'stringio.txt','image/jpeg',2527,'2014-02-08 20:19:37','北京','北京','http://www.zhuxiaowu.com','精神生活很重要','zhu404','',NULL,1,5,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-08 20:19:37','2014-02-08 20:38:41'),(2,'2@q.com','bopro',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-08 21:02:50','2014-02-08 21:02:50'),(3,'xingcj@126.com','xingcj',NULL,NULL,NULL,'e10655cb0a445d47de4f4148954c4e11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-09 10:57:59','2014-02-09 10:57:59'),(4,'13626361516@163.com','王宁wangning1980_',NULL,NULL,NULL,'cc3f1fc5fc56962817466d0a78c1b756',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-10 13:17:07','2014-02-10 13:17:07');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -550,7 +550,7 @@ CREATE TABLE `works` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -559,7 +559,7 @@ CREATE TABLE `works` (
 
 LOCK TABLES `works` WRITE;
 /*!40000 ALTER TABLE `works` DISABLE KEYS */;
-INSERT INTO `works` VALUES (1,1,1,1,NULL,NULL,'这是第一个图片','图片描述的不怎么好\r\n\r\n不过凑活看吧',NULL,'2014-02-08 20:37:51','2014-02-08 20:37:51');
+INSERT INTO `works` VALUES (1,1,1,1,NULL,NULL,'这是第一个图片','图片描述的不怎么好\r\n\r\n不过凑活看吧',NULL,'2014-02-08 20:37:51','2014-02-08 20:37:51'),(2,3,2,1,NULL,NULL,'','',NULL,'2014-02-09 11:05:00','2014-02-09 11:05:00');
 /*!40000 ALTER TABLE `works` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -572,4 +572,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-09  5:21:57
+-- Dump completed on 2014-02-11 10:24:36

@@ -115,11 +115,11 @@ class DatepickerInput < SimpleForm::Inputs::StringInput
       input = super
 
       input += template.content_tag :span, class: 'input-group-addon' do
-        template.content_tag :i, '', class: 'icon-remove'
+        template.content_tag :i, '', class: 'icon-remove isremove'
       end if isremove
 
       input += template.content_tag :span, class: 'input-group-addon' do
-        template.content_tag :i, '', class: 'icon-' + icon
+        template.content_tag :i, '', class: 'ttc icon-' + icon
       end
 
       input
