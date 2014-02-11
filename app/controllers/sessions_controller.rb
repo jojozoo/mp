@@ -49,7 +49,7 @@ class SessionsController < ApplicationController
         logger.info("user create avatar error: #{e.to_s}")
         nil
       end
-      if @user.save
+      if @user.save!
         set_sign_in_flag(@user.id)
         # 如果第三方登陆
         if params[:uid].present? and account = Account.find_by_id_and_uid(params[:a_id], params[:uid])
