@@ -45,7 +45,7 @@
 				<% if sign_in? %>
 				<li class="dropdown">
 					<a href="/profile">
-						<%= image_tag(current_user.avatar, class: 'avatar img-circle') %>
+						<%= image_tag(current_user.avatar(:small), class: 'avatar img-circle') %>
 						<%= current_user.username %>
 						<b class="caret"></b>
 					</a>
