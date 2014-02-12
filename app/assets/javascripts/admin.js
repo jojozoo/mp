@@ -13,4 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 //= require_directory ./all
-//= require_directory ./website
+//= require_directory ./admin

@@ -9,6 +9,16 @@
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
 	<meta property="qc:admins" content="551071253160276375" />
+	<link rel="shortcut icon" href="favicon.ico">
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="/ie/ie.css" />
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+	<script src="/ie/html5.js"></script>
+	<script src="/ie/respond.min.js"></script>
+	<script src="/ie/excanvas.min.js"></script>
+	<![endif]-->
 </head>
 <body>
 	<%= render 'shared/nav' %>

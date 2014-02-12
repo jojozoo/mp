@@ -1,0 +1,1917 @@
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>漫拍-管理页面</title>
+	<%= stylesheet_link_tag    "admin", :media => "all" %>
+	<link href="http://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet" type="text/css">
+	<%= javascript_include_tag "admin" %>
+	<%= csrf_meta_tags %>
+	<!-- favicon -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="css/ie.css" />
+	<![endif]-->
+
+	<!--[if lt IE 9]>
+	<script src="js/ie/html5.js"></script>
+	<script src="js/ie/respond.min.js"></script>
+	<script src="lib/flot/excanvas.min.js"></script>
+	<![endif]-->
+
+</head>
+<body class="full_width" style="">
+	<div class="style_switcher">
+		<div class="sepH_c">
+			<p>Colors:</p>
+			<div class="clearfix">
+				<a href="javascript:void(0)" class="style_item jQclr blue_theme style_active" title="blue">blue</a>
+				<a href="javascript:void(0)" class="style_item jQclr dark_theme" title="dark">dark</a>
+				<a href="javascript:void(0)" class="style_item jQclr green_theme" title="green">green</a>
+				<a href="javascript:void(0)" class="style_item jQclr brown_theme" title="brown">brown</a>
+				<a href="javascript:void(0)" class="style_item jQclr eastern_blue_theme" title="eastern_blue">eastern blue</a>
+				<a href="javascript:void(0)" class="style_item jQclr tamarillo_theme" title="tamarillo">tamarillo</a>
+			</div>
+		</div>
+		<div class="sepH_c">
+			<p>Backgrounds:</p>
+			<div class="clearfix">
+				<span class="style_item jQptrn style_active ptrn_def" title=""></span>
+				<span class="ssw_ptrn_a style_item jQptrn" title="ptrn_a"></span>
+				<span class="ssw_ptrn_b style_item jQptrn" title="ptrn_b"></span>
+				<span class="ssw_ptrn_c style_item jQptrn" title="ptrn_c"></span>
+				<span class="ssw_ptrn_d style_item jQptrn" title="ptrn_d"></span>
+				<span class="ssw_ptrn_e style_item jQptrn" title="ptrn_e"></span>
+			</div>
+		</div>
+		<div class="sepH_c">
+			<p>Layout:</p>
+			<div class="clearfix">
+				<label class="radio-inline">
+					<input name="ssw_layout" id="ssw_layout_fluid" value="" checked="checked" type="radio">Fluid</label>
+				<label class="radio-inline">
+					<input name="ssw_layout" id="ssw_layout_fixed" value="gebo-fixed" type="radio">Fixed</label>
+			</div>
+		</div>
+		<div class="sepH_c">
+			<p>Sidebar position:</p>
+			<div class="clearfix">
+				<label class="radio-inline">
+					<input name="ssw_sidebar" id="ssw_sidebar_left" value="" checked="checked" type="radio">Left</label>
+				<label class="radio-inline">
+					<input name="ssw_sidebar" id="ssw_sidebar_right" value="sidebar_right" type="radio">Right</label>
+			</div>
+		</div>
+		<div class="sepH_c">
+			<p>Show top menu on:</p>
+			<div class="clearfix">
+				<label class="radio-inline">
+					<input name="ssw_menu" id="ssw_menu_click" value="" checked="checked" type="radio">Click</label>
+				<label class="radio-inline">
+					<input name="ssw_menu" id="ssw_menu_hover" value="menu_hover" type="radio">Hover</label>
+			</div>
+		</div>
+
+		<div class="gh_button-group">
+			<a href="#" id="showCss" class="btn btn-primary btn-sm">Show CSS</a>
+			<a href="#" id="resetDefault" class="btn btn-default btn-sm">Reset</a>
+		</div>
+		<div class="hide">
+			<ul id="ssw_styles">
+				<li class="small ssw_mbColor sepH_a" style="display:none">
+					body {
+					<span class="ssw_mColor sepH_a" style="display:none">
+						color: #
+						<span></span>
+						;
+					</span>
+					<span class="ssw_bColor" style="display:none">
+						background-color: #
+						<span></span>
+					</span>
+					}
+				</li>
+				<li class="small ssw_lColor sepH_a" style="display:none">
+					a { color: #
+					<span></span>
+					}
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="maincontainer" class="clearfix">
+		<header>
+			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="brand pull-left" href="dashboard.html">
+							Gebo Admin
+							<span class="sml_t">3</span>
+						</a>
+						<ul class="nav navbar-nav" id="mobile-nav">
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+									<span class="glyphicon glyphicon-list-alt"></span>
+									Forms <b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="form_elements.html">Form elements</a>
+									</li>
+									<li>
+										<a href="form_extended.html">Extended form elements</a>
+									</li>
+									<li>
+										<a href="form_validation.html">Form Validation</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+									<span class="glyphicon glyphicon-th"></span>
+									Components <b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="alerts_btns.html">Alerts &amp; Buttons</a>
+									</li>
+									<li>
+										<a href="icons.html">Icons</a>
+									</li>
+									<li>
+										<a href="notifications.html">Notifications</a>
+									</li>
+									<li>
+										<a href="tables.html">Tables</a>
+									</li>
+									<li>
+										<a href="tables_more.html">Tables (more examples)</a>
+									</li>
+									<li>
+										<a href="tabs_accordion.html">Tabs &amp; Accordion</a>
+									</li>
+									<li>
+										<a href="tooltips.html">Tooltips, Popovers</a>
+									</li>
+									<li>
+										<a href="typography.html">Typography</a>
+									</li>
+									<li>
+										<a href="widgets.html">Widget boxes</a>
+									</li>
+									<li class="dropdown sub-dropdown">
+										<a href="#">
+											Sub menu
+											<b class="caret-right"></b>
+										</a>
+										<ul class="dropdown-menu sub-menu">
+											<li>
+												<a href="#">Sub menu 1.1</a>
+											</li>
+											<li>
+												<a href="#">Sub menu 1.2</a>
+											</li>
+											<li>
+												<a href="#">Sub menu 1.3</a>
+											</li>
+											<li class="sub-dropdown">
+												<a href="#">
+													Sub menu 1.4
+													<b class="caret-right"></b>
+												</a>
+												<ul class="dropdown-menu sub-menu">
+													<li>
+														<a href="#">Sub menu 1.4.1</a>
+													</li>
+													<li>
+														<a href="#">Sub menu 1.4.2</a>
+													</li>
+													<li>
+														<a href="#">Sub menu 1.4.3</a>
+													</li>
+												</ul>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+									<span class="glyphicon glyphicon-wrench"></span>
+									Plugins
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="charts.html">Charts</a>
+									</li>
+									<li>
+										<a href="calendar.html">Calendar</a>
+									</li>
+									<li>
+										<a href="datatable.html">Datatable</a>
+									</li>
+									<li>
+										<a href="dynamic_tree.html">Dynamic tree</a>
+									</li>
+									<li>
+										<a href="editable_elements.html">Editable elements</a>
+									</li>
+									<li>
+										<a href="file_manager.html">File Manager</a>
+									</li>
+									<li>
+										<a href="floating_header.html">Floating List Header</a>
+									</li>
+									<li>
+										<a href="google_maps.html">Google Maps</a>
+									</li>
+									<li>
+										<a href="gallery.html">Gallery Grid</a>
+									</li>
+									<li>
+										<a href="wizard.html">Wizard</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+									<span class="glyphicon glyphicon-file"></span>
+									Pages
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="blank.html">Blank</a>
+									</li>
+									<li>
+										<a href="blog_page.html">Blog Page</a>
+									</li>
+									<li>
+										<a href="chat.html">Chat</a>
+									</li>
+									<li>
+										<a href="error_404.html">Error 404</a>
+									</li>
+									<li>
+										<a href="invoice.html">Invoice</a>
+									</li>
+									<li>
+										<a href="mailbox.html">Mailbox</a>
+									</li>
+									<li>
+										<a href="search_page.html">Search page</a>
+									</li>
+									<li>
+										<a href="user_profile.html">User profile</a>
+									</li>
+									<li>
+										<a href="user_static.html">User profile (static)</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<select class="selectnav" id="selectnav1">
+							<option value="">- Navigation -</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">Forms</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/form_elements.html">- Form elements</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/form_extended.html">- Extended form elements</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/form_validation.html">- Form Validation</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">Components</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/alerts_btns.html">- Alerts &amp; Buttons</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/icons.html">- Icons</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/notifications.html">- Notifications</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/tables.html">- Tables</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/tables_more.html">- Tables (more examples)</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/tabs_accordion.html">- Tabs &amp; Accordion</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/tooltips.html">- Tooltips, Popovers</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/typography.html">- Typography</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/widgets.html">- Widget boxes</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">- Sub menu</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">-- Sub menu 1.1</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">-- Sub menu 1.2</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">-- Sub menu 1.3</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">-- Sub menu 1.4</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">--- Sub menu 1.4.1</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">--- Sub menu 1.4.2</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">--- Sub menu 1.4.3</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">Plugins</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/charts.html">- Charts</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/calendar.html">- Calendar</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/datatable.html">- Datatable</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dynamic_tree.html">- Dynamic tree</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/editable_elements.html">- Editable elements</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/file_manager.html">- File Manager</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/floating_header.html">- Floating List Header</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/google_maps.html">- Google Maps</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/gallery.html">- Gallery Grid</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/wizard.html">- Wizard</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/dashboard.html#">Pages</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/blank.html">-  Blank</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/blog_page.html">-  Blog Page</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/chat.html">-  Chat</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/error_404.html">-  Error 404</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/invoice.html">-  Invoice</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/mailbox.html">- Mailbox</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/search_page.html">- Search page</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/user_profile.html">- User profile</option>
+							<option value="file:///home/zhu/work/%E5%90%8E%E5%8F%B0%E6%A8%A1%E6%9D%BFc/user_static.html">- User profile (static)</option>
+						</select>
+						<ul class="nav navbar-nav user_menu pull-right">
+							<li class="hidden-phone hidden-tablet">
+								<div class="nb_boxes clearfix">
+									<a data-toggle="modal" data-backdrop="static" href="#myMail" class="label ttip_b" oldtitle="New messages" title="">
+										25 <i class="splashy-mail_light"></i>
+									</a>
+									<a data-toggle="modal" data-backdrop="static" href="#myTasks" class="label ttip_b" oldtitle="New tasks" title="">
+										10 <i class="splashy-calendar_week"></i>
+									</a>
+								</div>
+							</li>
+							<li class="divider-vertical hidden-sm hidden-xs"></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle nav_condensed" data-toggle="dropdown">
+									<i class="flag-gb"></i>
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="javascript:void(0)">
+											<i class="flag-de"></i>
+											Deutsch
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0)">
+											<i class="flag-fr"></i>
+											Français
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0)">
+											<i class="flag-es"></i>
+											Español
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0)">
+											<i class="flag-ru"></i>
+											Pусский
+										</a>
+									</li>
+								</ul>
+							</li>
+							<li class="divider-vertical hidden-sm hidden-xs"></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<img src="img/user_avatar.png" alt="" class="user_avatar">
+									Johny Smith
+									<b class="caret"></b>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a href=".html">My Profile</a>
+									</li>
+									<li>
+										<a href="javascrip:void(0)">Another action</a>
+									</li>
+									<li class="divider"></li>
+									<li>
+										<a href="login.html">Log Out</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			<div class="modal fade" id="myMail">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 class="modal-title">New Messages</h3>
+						</div>
+						<div class="modal-body">
+							<div class="alert alert-info">
+								In this table jquery plugin turns a table row into a clickable link.
+							</div>
+							<table class="table table-condensed table-striped" data-provides="rowlink">
+								<thead>
+									<tr>
+										<th>Sender</th>
+										<th>Subject</th>
+										<th>Date</th>
+										<th>Size</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="rowlink">
+										<td>Declan Pamphlett</td>
+										<td>Lorem ipsum dolor sit amet</td>
+										<td>23/05/2012</td>
+										<td>25KB</td>
+									</tr>
+									<tr class="rowlink">
+										<td>Erin Church</td>
+										<td>Lorem ipsum dolor sit amet</td>
+										<td>24/05/2012</td>
+										<td>15KB</td>
+									</tr>
+									<tr class="rowlink">
+										<td>Koby Auld</td>
+										<td>Lorem ipsum dolor sit amet</td>
+										<td>25/05/2012</td>
+										<td>28KB</td>
+									</tr>
+									<tr class="rowlink">
+										<td>Anthony Pound</td>
+										<td>Lorem ipsum dolor sit amet</td>
+										<td>25/05/2012</td>
+										<td>33KB</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default">Go to mailbox</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade" id="myTasks">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+							<h3 class="modal-title">New Tasks</h3>
+						</div>
+						<div class="modal-body">
+							<div class="alert alert-info">
+								In this table jquery plugin turns a table row into a clickable link.
+							</div>
+							<table class="table table-condensed table-striped" data-provides="rowlink">
+								<thead>
+									<tr>
+										<th>id</th>
+										<th>Summary</th>
+										<th>Updated</th>
+										<th>Priority</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="rowlink">
+										<td>P-23</td>
+										<td>Admin should not break if URL…</td>
+										<td>23/05/2012</td>
+										<td>
+											<span class="label label-danger">High</span>
+										</td>
+										<td>Open</td>
+									</tr>
+									<tr class="rowlink">
+										<td>P-18</td>
+										<td>Displaying submenus in custom…</td>
+										<td>22/05/2012</td>
+										<td>
+											<span class="label label-warning">Medium</span>
+										</td>
+										<td>Reopen</td>
+									</tr>
+									<tr class="rowlink">
+										<td>P-25</td>
+										<td>Featured image on post types…</td>
+										<td>22/05/2012</td>
+										<td>
+											<span class="label label-success">Low</span>
+										</td>
+										<td>Updated</td>
+									</tr>
+									<tr class="rowlink">
+										<td>P-10</td>
+										<td>Multiple feed fixes and…</td>
+										<td>17/05/2012</td>
+										<td>
+											<span class="label label-warning">Medium</span>
+										</td>
+										<td>Open</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default">Go to task manager</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</header>
+
+		<div id="contentwrapper">
+			<div class="main_content">
+
+				<div class="row">
+					<div class="col-sm-12 tac">
+						<ul class="ov_boxes">
+							<li>
+								<div class="p_bar_up p_canvas">
+									<span style="display: none;">2,4,9,7,12,8,16</span>
+									<canvas class="peity" style="height: 32px; width: 50px;" height="32" width="50"></canvas>
+								</div>
+								<div class="ov_text"> <strong>$3 458,00</strong>
+									Weekly Sale
+								</div>
+							</li>
+							<li>
+								<div class="p_bar_down p_canvas">
+									<span style="display: none;">20,15,18,14,10,13,9,7</span>
+									<canvas class="peity" style="height: 32px; width: 50px;" height="32" width="50"></canvas>
+								</div>
+								<div class="ov_text"> <strong>$43 567,43</strong>
+									Monthly Sale
+								</div>
+							</li>
+							<li>
+								<div class="p_line_up p_canvas">
+									<span style="display: none;">3,5,9,7,12,8,16</span>
+									<canvas class="peity" style="height: 32px; width: 50px;" height="32" width="50"></canvas>
+								</div>
+								<div class="ov_text">
+									<strong>2304</strong>
+									Unique visitors (last 24h)
+								</div>
+							</li>
+							<li>
+								<div class="p_line_down p_canvas">
+									<span style="display: none;">20,16,14,18,15,14,14,13,12,10,10,8</span>
+									<canvas class="peity" style="height: 32px; width: 50px;" height="32" width="50"></canvas>
+								</div>
+								<div class="ov_text">
+									<strong>30240</strong>
+									Unique visitors (last week)
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-12">
+						<ul class="dshb_icoNav clearfix">
+							<li>
+								<a href="javascript:void(0)" style="background-image: url(img/gCons/multi-agents.png)">
+									<span class="label label-info">+10</span>
+									Users
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" style="background-image: url(img/gCons/world.png)">Map</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" style="background-image: url(img/gCons/configuration.png)">Settings</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" style="background-image: url(img/gCons/lab.png)">Lab</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" style="background-image: url(img/gCons/van.png)">
+									<span class="label label-success">$2851</span>
+									Delivery
+								</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" style="background-image: url(img/gCons/pie-chart.png)">Charts</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" style="background-image: url(img/gCons/edit.png)">Add New Article</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" style="background-image: url(img/gCons/add-item.png)">Add New Page</a>
+							</li>
+							<li>
+								<a href="javascript:void(0)" style="background-image: url(img/gCons/chat-.png)">
+									<span class="label label-danger">26</span>
+									Comments
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-5">
+						<h3 class="heading">
+							Visitors by Country
+							<small>last week</small>
+						</h3>
+						<div id="fl_2" style="height: 200px; width: 80%; margin: 50px auto 0px; padding: 0px; position: relative;" aria-describedby="ui-tooltip-5">
+							<canvas class="base" width="339" height="200"></canvas>
+							<canvas class="overlay" width="339" height="200" style="position: absolute; left: 0px; top: 0px;"></canvas>
+							<div class="legend">
+								<div style="position: absolute; width: 91px; height: 100px; top: 5px; right: 5px; background-color: rgb(255, 255, 255); opacity: 0.85;"></div>
+								<table style="position:absolute;top:5px;right:5px;;font-size:smaller;color:#545454">
+									<tbody>
+										<tr>
+											<td class="legendColorBox">
+												<div style="border:1px solid #ccc;padding:1px">
+													<div style="width:4px;height:0;border:5px solid rgb(180,219,235);overflow:hidden"></div>
+												</div>
+											</td>
+											<td class="legendLabel">United States</td>
+										</tr>
+										<tr>
+											<td class="legendColorBox">
+												<div style="border:1px solid #ccc;padding:1px">
+													<div style="width:4px;height:0;border:5px solid rgb(140,199,224);overflow:hidden"></div>
+												</div>
+											</td>
+											<td class="legendLabel">Brazil</td>
+										</tr>
+										<tr>
+											<td class="legendColorBox">
+												<div style="border:1px solid #ccc;padding:1px">
+													<div style="width:4px;height:0;border:5px solid rgb(100,180,213);overflow:hidden"></div>
+												</div>
+											</td>
+											<td class="legendLabel">France</td>
+										</tr>
+										<tr>
+											<td class="legendColorBox">
+												<div style="border:1px solid #ccc;padding:1px">
+													<div style="width:4px;height:0;border:5px solid rgb(60,160,202);overflow:hidden"></div>
+												</div>
+											</td>
+											<td class="legendLabel">Turkey</td>
+										</tr>
+										<tr>
+											<td class="legendColorBox">
+												<div style="border:1px solid #ccc;padding:1px">
+													<div style="width:4px;height:0;border:5px solid rgb(45,131,166);overflow:hidden"></div>
+												</div>
+											</td>
+											<td class="legendLabel">India</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-7">
+						<div class="heading clearfix">
+							<h3 class="pull-left">Another Chart</h3>
+							<span class="pull-right label label-info ttip_t" oldtitle="Here is a sample info tooltip" title="">Info</span>
+						</div>
+						<div id="fl_1" style="height: 270px; width: 100%; margin: 15px auto 0px; padding: 0px; position: relative;" aria-describedby="ui-tooltip-4">
+							<canvas class="base" width="605" height="270"></canvas>
+							<canvas class="overlay" width="605" height="270" style="position: absolute; left: 0px; top: 0px;"></canvas>
+							<div class="tickLabels" style="font-size:smaller">
+								<div class="xAxis x1Axis" style="color:#545454">
+									<div class="tickLabel" style="position:absolute;text-align:center;left:-10px;top:252px;width:75px">0</div>
+									<div class="tickLabel" style="position:absolute;text-align:center;left:75px;top:252px;width:75px">2</div>
+									<div class="tickLabel" style="position:absolute;text-align:center;left:160px;top:252px;width:75px">4</div>
+									<div class="tickLabel" style="position:absolute;text-align:center;left:245px;top:252px;width:75px">6</div>
+									<div class="tickLabel" style="position:absolute;text-align:center;left:330px;top:252px;width:75px">8</div>
+									<div class="tickLabel" style="position:absolute;text-align:center;left:415px;top:252px;width:75px">10</div>
+									<div class="tickLabel" style="position:absolute;text-align:center;left:500px;top:252px;width:75px">12</div>
+								</div>
+								<div class="yAxis y1Axis" style="color:#545454">
+									<div class="tickLabel" style="position:absolute;text-align:right;top:217px;right:584px;width:21px">-1.0</div>
+									<div class="tickLabel" style="position:absolute;text-align:right;top:166px;right:584px;width:21px">-0.5</div>
+									<div class="tickLabel" style="position:absolute;text-align:right;top:116px;right:584px;width:21px">0.0</div>
+									<div class="tickLabel" style="position:absolute;text-align:right;top:66px;right:584px;width:21px">0.5</div>
+									<div class="tickLabel" style="position:absolute;text-align:right;top:15px;right:584px;width:21px">1.0</div>
+								</div>
+							</div>
+							<div class="legend">
+								<div style="position: absolute; width: 51px; height: 40px; top: 9px; right: 9px; background-color: rgb(255, 255, 255); opacity: 0.85;"></div>
+								<table style="position:absolute;top:9px;right:9px;;font-size:smaller;color:#545454">
+									<tbody>
+										<tr>
+											<td class="legendColorBox">
+												<div style="border:1px solid #ccc;padding:1px">
+													<div style="width:4px;height:0;border:5px solid rgb(140,199,224);overflow:hidden"></div>
+												</div>
+											</td>
+											<td class="legendLabel">sin(x)</td>
+										</tr>
+										<tr>
+											<td class="legendColorBox">
+												<div style="border:1px solid #ccc;padding:1px">
+													<div style="width:4px;height:0;border:5px solid rgb(45,131,166);overflow:hidden"></div>
+												</div>
+											</td>
+											<td class="legendLabel">cos(x)</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-6 col-lg-6">
+						<div class="heading clearfix">
+							<h3 class="pull-left">Latest Orders</h3>
+							<span class="pull-right label label-danger">5 Orders</span>
+						</div>
+						<div class="mediaTableWrapper mediaTableWrapperWithMenu">
+							<div class="btn-group mediaTableMenu mediaTableMenuClosed">
+								<a class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" href="#">
+									Columns
+									<span class="caret"></span>
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<label for="toggle-col-MediaTable-0-0" class="checkbox">
+											<input type="checkbox" name="toggle-cols" id="toggle-col-MediaTable-0-0" value="MediaTable-0-mediaTableCol-0" checked="checked">id</label>
+									</li>
+									<li>
+										<label for="toggle-col-MediaTable-0-2" class="checkbox">
+											<input type="checkbox" name="toggle-cols" id="toggle-col-MediaTable-0-2" value="MediaTable-0-mediaTableCol-2" checked="checked">Status</label>
+									</li>
+									<li>
+										<label for="toggle-col-MediaTable-0-3" class="checkbox">
+											<input type="checkbox" name="toggle-cols" id="toggle-col-MediaTable-0-3" value="MediaTable-0-mediaTableCol-3" checked="checked">Date Added</label>
+									</li>
+									<li>
+										<label for="toggle-col-MediaTable-0-4" class="checkbox">
+											<input type="checkbox" name="toggle-cols" id="toggle-col-MediaTable-0-4" value="MediaTable-0-mediaTableCol-4" checked="checked">Total</label>
+									</li>
+									<li>
+										<label for="toggle-col-MediaTable-0-5" class="checkbox">
+											<input type="checkbox" name="toggle-cols" id="toggle-col-MediaTable-0-5" value="MediaTable-0-mediaTableCol-5" checked="checked">Action</label>
+									</li>
+								</ul>
+							</div>
+							<table class="table table-striped table-bordered mediaTable activeMediaTable" id="MediaTable-0">
+								<thead>
+									<tr>
+										<th class="optional" id="MediaTable-0-mediaTableCol-0">id</th>
+										<th class="essential persist" id="MediaTable-0-mediaTableCol-1">Customer</th>
+										<th class="optional" id="MediaTable-0-mediaTableCol-2">Status</th>
+										<th class="optional" id="MediaTable-0-mediaTableCol-3">Date Added</th>
+										<th class="essential" id="MediaTable-0-mediaTableCol-4">Total</th>
+										<th class="essential" id="MediaTable-0-mediaTableCol-5">Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td headers="MediaTable-0-mediaTableCol-0" class="optional">134</td>
+										<td headers="MediaTable-0-mediaTableCol-1" class="essential persist">Summer Throssell</td>
+										<td headers="MediaTable-0-mediaTableCol-2" class="optional">Pending</td>
+										<td headers="MediaTable-0-mediaTableCol-3" class="optional">24/04/2012</td>
+										<td headers="MediaTable-0-mediaTableCol-4" class="essential">$120.23</td>
+										<td headers="MediaTable-0-mediaTableCol-5" class="essential">
+											<a href="#" title="Edit">
+												<i class="splashy-document_letter_edit"></i>
+											</a>
+											<a href="#" title="Accept">
+												<i class="splashy-document_letter_okay"></i>
+											</a>
+											<a href="#" title="Remove">
+												<i class="splashy-document_letter_remove"></i>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td headers="MediaTable-0-mediaTableCol-0" class="optional">133</td>
+										<td headers="MediaTable-0-mediaTableCol-1" class="essential persist">Declan Pamphlett</td>
+										<td headers="MediaTable-0-mediaTableCol-2" class="optional">Pending</td>
+										<td headers="MediaTable-0-mediaTableCol-3" class="optional">23/04/2012</td>
+										<td headers="MediaTable-0-mediaTableCol-4" class="essential">$320.00</td>
+										<td headers="MediaTable-0-mediaTableCol-5" class="essential">
+											<a href="#" title="Edit">
+												<i class="splashy-document_letter_edit"></i>
+											</a>
+											<a href="#" title="Accept">
+												<i class="splashy-document_letter_okay"></i>
+											</a>
+											<a href="#" title="Remove">
+												<i class="splashy-document_letter_remove"></i>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td headers="MediaTable-0-mediaTableCol-0" class="optional">132</td>
+										<td headers="MediaTable-0-mediaTableCol-1" class="essential persist">Erin Church</td>
+										<td headers="MediaTable-0-mediaTableCol-2" class="optional">Pending</td>
+										<td headers="MediaTable-0-mediaTableCol-3" class="optional">23/04/2012</td>
+										<td headers="MediaTable-0-mediaTableCol-4" class="essential">$44.00</td>
+										<td headers="MediaTable-0-mediaTableCol-5" class="essential">
+											<a href="#" title="Edit">
+												<i class="splashy-document_letter_edit"></i>
+											</a>
+											<a href="#" title="Accept">
+												<i class="splashy-document_letter_okay"></i>
+											</a>
+											<a href="#" title="Remove">
+												<i class="splashy-document_letter_remove"></i>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td headers="MediaTable-0-mediaTableCol-0" class="optional">131</td>
+										<td headers="MediaTable-0-mediaTableCol-1" class="essential persist">Koby Auld</td>
+										<td headers="MediaTable-0-mediaTableCol-2" class="optional">Pending</td>
+										<td headers="MediaTable-0-mediaTableCol-3" class="optional">22/04/2012</td>
+										<td headers="MediaTable-0-mediaTableCol-4" class="essential">$180.20</td>
+										<td headers="MediaTable-0-mediaTableCol-5" class="essential">
+											<a href="#" title="Edit">
+												<i class="splashy-document_letter_edit"></i>
+											</a>
+											<a href="#" title="Accept">
+												<i class="splashy-document_letter_okay"></i>
+											</a>
+											<a href="#" title="Remove">
+												<i class="splashy-document_letter_remove"></i>
+											</a>
+										</td>
+									</tr>
+									<tr>
+										<td headers="MediaTable-0-mediaTableCol-0" class="optional">130</td>
+										<td headers="MediaTable-0-mediaTableCol-1" class="essential persist">Anthony Pound</td>
+										<td headers="MediaTable-0-mediaTableCol-2" class="optional">Pending</td>
+										<td headers="MediaTable-0-mediaTableCol-3" class="optional">20/04/2012</td>
+										<td headers="MediaTable-0-mediaTableCol-4" class="essential">$610.42</td>
+										<td headers="MediaTable-0-mediaTableCol-5" class="essential">
+											<a href="#" title="Edit">
+												<i class="splashy-document_letter_edit"></i>
+											</a>
+											<a href="#" title="Accept">
+												<i class="splashy-document_letter_okay"></i>
+											</a>
+											<a href="#" title="Remove">
+												<i class="splashy-document_letter_remove"></i>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="col-sm-6 col-lg-6">
+						<div class="heading clearfix">
+							<h3 class="pull-left">
+								Latest Images
+								<small>(gallery grid)</small>
+							</h3>
+							<span class="pull-right label label-success">10</span>
+						</div>
+						<div id="small_grid" class="wmk_grid" style="height: 481px;">
+							<ul>
+								<li class="thumbnail" style="position: absolute; top: 0px; left: 9px; display: list-item;">
+									<a href="gallery/Image04.jpg" title="Image_4 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image04_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											163KB
+											<br>17/06/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 0px; left: 135px; display: list-item;">
+									<a href="gallery/Image05.jpg" title="Image_5 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image05_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											136KB
+											<br>12/06/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 0px; left: 261px; display: list-item;">
+									<a href="gallery/Image06.jpg" title="Image_6 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image06_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											372KB
+											<br>17/05/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 0px; left: 387px; display: list-item;">
+									<a href="gallery/Image07.jpg" title="Image_7 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image07_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											209KB
+											<br>20/06/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 129px; left: 387px; display: list-item;">
+									<a href="gallery/Image08.jpg" title="Image_8 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image08_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											263KB
+											<br>20/06/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 139px; left: 261px; display: list-item;">
+									<a href="gallery/Image09.jpg" title="Image_9 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image09_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											287KB
+											<br>22/05/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 203px; left: 9px; display: list-item;">
+									<a href="gallery/Image10.jpg" title="Image_10 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image10_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											176KB
+											<br>15/06/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 203px; left: 135px; display: list-item;">
+									<a href="gallery/Image11.jpg" title="Image_11 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image11_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											167KB
+											<br>10/06/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 261px; left: 387px; display: list-item;">
+									<a href="gallery/Image12.jpg" title="Image_12 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image12_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											358KB
+											<br>15/05/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 268px; left: 261px; display: list-item;">
+									<a href="gallery/Image13.jpg" title="Image_13 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image13_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											121KB
+											<br>14/05/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 342px; left: 9px; display: list-item;">
+									<a href="gallery/Image14.jpg" title="Image_14 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image14_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											327KB
+											<br>18/06/2012</span>
+									</p>
+								</li>
+								<li class="thumbnail" style="position: absolute; top: 342px; left: 135px; display: list-item;">
+									<a href="gallery/Image15.jpg" title="Image_15 title long title long title long" rel="gallery" class="cboxElement">
+										<img src="gallery/Image15_tn.jpg" alt=""></a>
+									<p>
+										<span>
+											271KB
+											<br>20/06/2012</span>
+									</p>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-8 col-lg-8">
+						<h3 class="heading">Calendar</h3>
+						<div id="calendar" class="fc">
+							<div class="fc-header" style="width:100%">
+								<div>
+									<div class="fc-header-left">
+										<span class="fc-btn fc-button-prev fc-corner-left">
+											<i class="icon-chevron-left cal_prev"></i>
+										</span>
+										<span class="fc-btn fc-button-next fc-corner-right">
+											<i class="icon-chevron-right cal_next"></i>
+										</span>
+									</div>
+									<div class="fc-header-center">
+										<span class="fc-header-title">
+											<h2>February 2014</h2>
+										</span>
+										<span class="fc-btn fc-button-today fc-corner-left fc-corner-right fc-state-disabled">today</span>
+									</div>
+									<div class="fc-header-right">
+										<span class="fc-btn fc-button-month fc-corner-left fc-state-active">month</span>
+										<span class="fc-btn fc-button-agendaWeek">week</span>
+										<span class="fc-btn fc-button-agendaDay fc-corner-right">day</span>
+									</div>
+								</div>
+							</div>
+							<div class="fc-content" style="position: relative; min-height: 1px;">
+								<div class="fc-view fc-view-month fc-grid" style="position: relative;" unselectable="on">
+									<table class="fc-border-separate" style="width:100%" cellspacing="0">
+										<thead>
+											<tr class="fc-first fc-last">
+												<th class="fc-sun fc-widget-header fc-first" style="width: 99px;">Sun</th>
+												<th class="fc-mon fc-widget-header" style="width: 99px;">Mon</th>
+												<th class="fc-tue fc-widget-header" style="width: 99px;">Tue</th>
+												<th class="fc-wed fc-widget-header" style="width: 99px;">Wed</th>
+												<th class="fc-thu fc-widget-header" style="width: 99px;">Thu</th>
+												<th class="fc-fri fc-widget-header" style="width: 99px;">Fri</th>
+												<th class="fc-sat fc-widget-header fc-last">Sat</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="fc-week0 fc-first">
+												<td class="fc-sun fc-widget-content fc-day0 fc-first fc-other-month">
+													<div style="min-height: 70px;">
+														<div class="fc-day-number">26</div>
+														<div class="fc-day-content">
+															<div style="position: relative; height: 21px;">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-mon fc-widget-content fc-day1 fc-other-month">
+													<div>
+														<div class="fc-day-number">27</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-tue fc-widget-content fc-day2 fc-other-month">
+													<div>
+														<div class="fc-day-number">28</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-wed fc-widget-content fc-day3 fc-other-month">
+													<div>
+														<div class="fc-day-number">29</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-thu fc-widget-content fc-day4 fc-other-month">
+													<div>
+														<div class="fc-day-number">30</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-fri fc-widget-content fc-day5 fc-other-month">
+													<div>
+														<div class="fc-day-number">31</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-sat fc-widget-content fc-day6 fc-last">
+													<div>
+														<div class="fc-day-number">1</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr class="fc-week1">
+												<td class="fc-sun fc-widget-content fc-day7 fc-first">
+													<div style="min-height: 69px;">
+														<div class="fc-day-number">2</div>
+														<div class="fc-day-content">
+															<div style="position: relative; height: 21px;">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-mon fc-widget-content fc-day8">
+													<div>
+														<div class="fc-day-number">3</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-tue fc-widget-content fc-day9">
+													<div>
+														<div class="fc-day-number">4</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-wed fc-widget-content fc-day10">
+													<div>
+														<div class="fc-day-number">5</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-thu fc-widget-content fc-day11">
+													<div>
+														<div class="fc-day-number">6</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-fri fc-widget-content fc-day12">
+													<div>
+														<div class="fc-day-number">7</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-sat fc-widget-content fc-day13 fc-last">
+													<div>
+														<div class="fc-day-number">8</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr class="fc-week2">
+												<td class="fc-sun fc-widget-content fc-day14 fc-first">
+													<div style="min-height: 69px;">
+														<div class="fc-day-number">9</div>
+														<div class="fc-day-content">
+															<div style="position: relative; height: 39px;">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-mon fc-widget-content fc-day15">
+													<div>
+														<div class="fc-day-number">10</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-tue fc-widget-content fc-day16">
+													<div>
+														<div class="fc-day-number">11</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-wed fc-widget-content fc-day17 fc-state-highlight fc-today">
+													<div>
+														<div class="fc-day-number">12</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-thu fc-widget-content fc-day18">
+													<div>
+														<div class="fc-day-number">13</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-fri fc-widget-content fc-day19">
+													<div>
+														<div class="fc-day-number">14</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-sat fc-widget-content fc-day20 fc-last">
+													<div>
+														<div class="fc-day-number">15</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr class="fc-week3">
+												<td class="fc-sun fc-widget-content fc-day21 fc-first">
+													<div style="min-height: 69px;">
+														<div class="fc-day-number">16</div>
+														<div class="fc-day-content">
+															<div style="position: relative; height: 39px;">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-mon fc-widget-content fc-day22">
+													<div>
+														<div class="fc-day-number">17</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-tue fc-widget-content fc-day23">
+													<div>
+														<div class="fc-day-number">18</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-wed fc-widget-content fc-day24">
+													<div>
+														<div class="fc-day-number">19</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-thu fc-widget-content fc-day25">
+													<div>
+														<div class="fc-day-number">20</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-fri fc-widget-content fc-day26">
+													<div>
+														<div class="fc-day-number">21</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-sat fc-widget-content fc-day27 fc-last">
+													<div>
+														<div class="fc-day-number">22</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr class="fc-week4">
+												<td class="fc-sun fc-widget-content fc-day28 fc-first">
+													<div style="min-height: 69px;">
+														<div class="fc-day-number">23</div>
+														<div class="fc-day-content">
+															<div style="position: relative; height: 39px;">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-mon fc-widget-content fc-day29">
+													<div>
+														<div class="fc-day-number">24</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-tue fc-widget-content fc-day30">
+													<div>
+														<div class="fc-day-number">25</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-wed fc-widget-content fc-day31">
+													<div>
+														<div class="fc-day-number">26</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-thu fc-widget-content fc-day32">
+													<div>
+														<div class="fc-day-number">27</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-fri fc-widget-content fc-day33">
+													<div>
+														<div class="fc-day-number">28</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-sat fc-widget-content fc-day34 fc-last fc-other-month">
+													<div>
+														<div class="fc-day-number">1</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr class="fc-week5 fc-last">
+												<td class="fc-sun fc-widget-content fc-day35 fc-first fc-other-month">
+													<div style="min-height: 72px;">
+														<div class="fc-day-number">2</div>
+														<div class="fc-day-content">
+															<div style="position: relative; height: 0px;">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-mon fc-widget-content fc-day36 fc-other-month">
+													<div>
+														<div class="fc-day-number">3</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-tue fc-widget-content fc-day37 fc-other-month">
+													<div>
+														<div class="fc-day-number">4</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-wed fc-widget-content fc-day38 fc-other-month">
+													<div>
+														<div class="fc-day-number">5</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-thu fc-widget-content fc-day39 fc-other-month">
+													<div>
+														<div class="fc-day-number">6</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-fri fc-widget-content fc-day40 fc-other-month">
+													<div>
+														<div class="fc-day-number">7</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+												<td class="fc-sat fc-widget-content fc-day41 fc-last fc-other-month">
+													<div>
+														<div class="fc-day-number">8</div>
+														<div class="fc-day-content">
+															<div style="position:relative">&nbsp;</div>
+														</div>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div style="position:absolute;z-index:8;top:0;left:0">
+										<div class="fc-event fc-event-skin fc-event-hori fc-event-draggable fc-corner-left fc-corner-right" style="position: absolute; z-index: 8; left: 597px; background-color: rgb(174, 219, 151); border-color: rgb(174, 219, 151); color: rgb(61, 100, 27); width: 94px; top: 60px;">
+											<div class="fc-event-inner fc-event-skin" style="background-color:#aedb97;border-color:#aedb97;color:#3d641b">
+												<span class="fc-event-title">All Day Event</span>
+											</div>
+											<div class="ui-resizable-handle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>
+										</div>
+										<div class="fc-event fc-event-skin fc-event-hori fc-event-draggable fc-corner-left" style="position: absolute; z-index: 8; left: 498px; background-color: rgb(188, 222, 238); border-color: rgb(188, 222, 238); width: 197px; top: 131px;">
+											<div class="fc-event-inner fc-event-skin" style="background-color:#bcdeee;border-color:#bcdeee">
+												<span class="fc-event-title">Long Event</span>
+											</div>
+										</div>
+										<div class="fc-event fc-event-skin fc-event-hori fc-event-draggable fc-corner-right" style="position: absolute; z-index: 8; left: 0px; background-color: rgb(188, 222, 238); border-color: rgb(188, 222, 238); width: 195px; top: 201px;">
+											<div class="fc-event-inner fc-event-skin" style="background-color:#bcdeee;border-color:#bcdeee">
+												<span class="fc-event-title">Long Event</span>
+											</div>
+											<div class="ui-resizable-handle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>
+										</div>
+										<div class="fc-event fc-event-skin fc-event-hori fc-event-draggable fc-corner-left fc-corner-right" style="position: absolute; z-index: 8; left: 300px; background-color: rgb(188, 222, 238); border-color: rgb(188, 222, 238); width: 92px; top: 201px;">
+											<div class="fc-event-inner fc-event-skin" style="background-color:#bcdeee;border-color:#bcdeee">
+												<span class="fc-event-time">12p</span>
+												<span class="fc-event-title">Lunch</span>
+											</div>
+											<div class="ui-resizable-handle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>
+										</div>
+										<div class="fc-event fc-event-skin fc-event-hori fc-event-draggable fc-corner-left fc-corner-right" style="position: absolute; z-index: 8; left: 399px; background-color: rgb(206, 169, 126); border-color: rgb(206, 169, 126); color: rgb(94, 66, 35); width: 92px; top: 201px;">
+											<div class="fc-event-inner fc-event-skin" style="background-color:#cea97e;border-color:#cea97e;color:#5e4223">
+												<span class="fc-event-time">7p</span>
+												<span class="fc-event-title">Birthday Party</span>
+											</div>
+											<div class="ui-resizable-handle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>
+										</div>
+										<div class="fc-event fc-event-skin fc-event-hori fc-event-draggable fc-corner-left fc-corner-right" style="position: absolute; z-index: 8; left: 399px; background-color: rgb(188, 222, 238); border-color: rgb(188, 222, 238); width: 92px; top: 271px;">
+											<div class="fc-event-inner fc-event-skin" style="background-color:#bcdeee;border-color:#bcdeee">
+												<span class="fc-event-time">4p</span>
+												<span class="fc-event-title">Repeating Event</span>
+											</div>
+											<div class="ui-resizable-handle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>
+										</div>
+										<a href="http://google.com/" class="fc-event fc-event-skin fc-event-hori fc-event-draggable fc-corner-left fc-corner-right" style="position: absolute; z-index: 8; left: 498px; background-color: rgb(188, 222, 238); border-color: rgb(188, 222, 238); width: 193px; top: 341px;">
+											<div class="fc-event-inner fc-event-skin" style="background-color:#bcdeee;border-color:#bcdeee">
+												<span class="fc-event-title">Click for Google</span>
+											</div>
+											<div class="ui-resizable-handle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>
+										</a>
+										<div class="fc-event fc-event-skin fc-event-hori fc-event-draggable fc-corner-left fc-corner-right" style="position: absolute; z-index: 8; left: 102px; background-color: rgb(174, 219, 151); border-color: rgb(174, 219, 151); color: rgb(61, 100, 27); width: 92px; top: 341px;">
+											<div class="fc-event-inner fc-event-skin" style="background-color:#aedb97;border-color:#aedb97;color:#3d641b">
+												<span class="fc-event-time">3p</span>
+												<span class="fc-event-title">Meeting</span>
+											</div>
+											<div class="ui-resizable-handle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>
+										</div>
+										<div class="fc-event fc-event-skin fc-event-hori fc-event-draggable fc-corner-left fc-corner-right" style="position: absolute; z-index: 8; left: 399px; background-color: rgb(188, 222, 238); border-color: rgb(188, 222, 238); width: 92px; top: 341px;">
+											<div class="fc-event-inner fc-event-skin" style="background-color:#bcdeee;border-color:#bcdeee">
+												<span class="fc-event-time">4p</span>
+												<span class="fc-event-title">Repeating Event</span>
+											</div>
+											<div class="ui-resizable-handle ui-resizable-e">&nbsp;&nbsp;&nbsp;</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-4 col-lg-4" id="user-list">
+						<h3 class="heading">
+							Users
+							<small>last 24 hours</small>
+						</h3>
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="input-group input-group-sm sepH_b">
+									<span class="input-group-addon">
+										<i class="glyphicon glyphicon-user"></i>
+									</span>
+									<span class="twitter-typeahead" style="position: relative; display: inline-block;">
+										<input class="tt-hint" type="text" autocomplete="off" spellcheck="off" disabled="" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background-attachment: scroll; background-clip: border-box; background-color: rgb(255, 255, 255); background-image: none; background-origin: padding-box; background-size: auto; background-position: 0% 0%; background-repeat: repeat repeat;">
+										<input class="user-list-search search form-control input-sm tt-query" placeholder="Search user" type="text" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;">
+										<span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></span>
+										<span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"></span>
+									</span>
+								</div>
+								<ul class="nav nav-pills line_sep">
+									<li class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+											Sort by
+											<b class="caret"></b>
+										</a>
+										<ul class="dropdown-menu sort-by">
+											<li>
+												<a href="javascript:void(0)" class="sort" data-sort="sl_name">by name</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)" class="sort" data-sort="sl_status">by status</a>
+											</li>
+										</ul>
+									</li>
+									<li class="dropdown">
+										<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+											Show
+											<b class="caret"></b>
+										</a>
+										<ul class="dropdown-menu filter">
+											<li class="active">
+												<a href="javascript:void(0)" id="filter-none">All</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)" id="filter-online">Online</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)" id="filter-offline">Offline</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<ul class="list user_list">
+							<li>
+								<span class="label label-success pull-right sl_status">online</span>
+								<a href="#" class="sl_name">John Doe</a>
+								<br>
+								<small class="s_color sl_email">johnd@example1.com</small>
+							</li>
+							<li>
+								<span class="label label-success pull-right sl_status">online</span>
+								<a href="#" class="sl_name">Kate Miller</a>
+								<br>
+								<small class="s_color sl_email">kmiller@example1.com</small>
+							</li>
+							<li>
+								<span class="label label-danger pull-right sl_status">offline</span>
+								<a href="#" class="sl_name">James Vandenberg</a>
+								<br>
+								<small class="s_color sl_email">jamesv@example2.com</small>
+							</li>
+							<li>
+								<span class="label label-danger pull-right sl_status">offline</span>
+								<a href="#" class="sl_name">Donna Doerr</a>
+								<br>
+								<small class="s_color sl_email">donnad@example3.com</small>
+							</li>
+							<li>
+								<span class="label label-danger pull-right sl_status">offline</span>
+								<a href="#" class="sl_name">Perry Weitzel</a>
+								<br>
+								<small class="s_color sl_email">perryw@example2.com</small>
+							</li>
+							<li>
+								<span class="label label-success pull-right sl_status">online</span>
+								<a href="#" class="sl_name">Charles Bledsoe</a>
+								<br>
+								<small class="s_color sl_email">charlesb@example3.com</small>
+							</li>
+							<li>
+								<span class="label label-danger pull-right sl_status">offline</span>
+								<a href="#" class="sl_name">Wendy Proto</a>
+								<br>
+								<small class="s_color sl_email">wnedyp@example1.com</small>
+							</li>
+							<li>
+								<span class="label label-success pull-right sl_status">online</span>
+								<a href="#" class="sl_name">Nancy Ibrahim</a>
+								<br>
+								<small class="s_color sl_email">nancyi@example2.com</small>
+							</li>
+							<li>
+								<span class="label label-danger pull-right sl_status">offline</span>
+								<a href="#" class="sl_name">Eric Cantrell</a>
+								<br>
+								<small class="s_color sl_email">ericc@example4.com</small>
+							</li>
+							<li>
+								<span class="label label-success pull-right sl_status">online</span>
+								<a href="#" class="sl_name">Andre Hill</a>
+								<br>
+								<small class="s_color sl_email">andreh@example2.com</small>
+							</li>
+						</ul>
+						<ul class="pagination paging bottomPaging">
+							<li id="">
+								<div class="page">
+									<a class="active" href='javascript:function Z(){Z=""}Z()'>1</a>
+								</div>
+							</li>
+							<li id="">
+								<div class="page">
+									<a class="" href='javascript:function Z(){Z=""}Z()'>2</a>
+								</div>
+							</li>
+							<li id="">
+								<div class="page">
+									<a class="" href='javascript:function Z(){Z=""}Z()'>3</a>
+								</div>
+							</li>
+							<li id="">
+								<div class="page">
+									<a class="" href='javascript:function Z(){Z=""}Z()'>4</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a href="javascript:void(0)" class="sidebar_switch on_switch ttip_r" oldtitle="Hide Sidebar" title="">Sidebar switch</a>
+		<div class="sidebar">
+
+			<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 363px;">
+				<div class="sidebar_inner_scroll" style="overflow: hidden; width: auto; height: 363px;">
+					<div class="sidebar_inner" style="margin-bottom: -92px; min-height: 100%;">
+						<form action="search_page.html" class="input-group input-group-sm" method="post">
+							<span class="twitter-typeahead" style="position: relative; display: inline-block;">
+								<input class="tt-hint" type="text" autocomplete="off" spellcheck="off" disabled="" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background-attachment: scroll; background-clip: border-box; background-color: rgb(255, 255, 255); background-image: none; background-origin: padding-box; background-size: auto; background-position: 0% 0%; background-repeat: repeat repeat;">
+								<input autocomplete="off" name="query" class="search_query form-control input-sm tt-query" size="16" placeholder="Search..." type="text" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;">
+								<span style="position: absolute; left: -9999px; visibility: hidden; white-space: nowrap; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></span>
+								<span class="tt-dropdown-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"></span>
+							</span>
+							<span class="input-group-btn">
+								<button type="submit" class="btn btn-default">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</span>
+						</form>
+						<div id="side_accordion" class="panel-group">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<a href="#collapseOne" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+										<i class="glyphicon glyphicon-folder-close"></i>
+										Content
+									</a>
+								</div>
+								<div class="accordion-body collapse" id="collapseOne">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked">
+											<li>
+												<a href="javascript:void(0)">Articles</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">News</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Newsletters</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Comments</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<a href="#collapseTwo" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+										<i class="glyphicon glyphicon-th"></i>
+										Modules
+									</a>
+								</div>
+								<div class="accordion-body collapse" id="collapseTwo">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked">
+											<li>
+												<a href="javascript:void(0)">Content blocks</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Tags</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Blog</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">FAQ</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Formbuilder</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Location</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Profiles</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<a href="#collapseThree" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+										<i class="glyphicon glyphicon-user"></i>
+										Account manager
+									</a>
+								</div>
+								<div class="accordion-body collapse" id="collapseThree">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked">
+											<li>
+												<a href="javascript:void(0)">Members</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Members groups</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Users</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Users groups</a>
+											</li>
+										</ul>
+
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<a href="#collapseFour" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+										<i class="glyphicon glyphicon-cog"></i>
+										Configuration
+									</a>
+								</div>
+								<div class="accordion-body collapse in" id="collapseFour">
+									<div class="panel-body">
+										<ul class="nav nav-pills nav-stacked">
+											<li class="nav-header">People</li>
+											<li class="active">
+												<a href="javascript:void(0)">Account Settings</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">IP Adress Blocking</a>
+											</li>
+											<li class="nav-header">System</li>
+											<li>
+												<a href="javascript:void(0)">Site information</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Actions</a>
+											</li>
+											<li>
+												<a href="javascript:void(0)">Cron</a>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<a href="javascript:void(0)">Help</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<a href="#collapseLong" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+										<i class="glyphicon glyphicon-leaf"></i>
+										Long content (scrollbar)
+									</a>
+								</div>
+								<div class="accordion-body collapse" id="collapseLong">
+									<div class="panel-body">
+										Some text to show sidebar scroll bar
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rhoncus, orci ac fermentum imperdiet, purus sapien pharetra diam, at varius nibh tellus tristique sem. Nulla congue odio ut augue volutpat congue. Nullam id nisl ut augue posuere ullamcorper vitae eget nunc. Quisque justo turpis, tristique non fermentum ac, feugiat quis lorem. Ut pellentesque, turpis quis auctor laoreet, nibh erat volutpat est, id mattis mi elit non massa. Suspendisse diam dui, fringilla id pretium non, dapibus eget enim. Duis fermentum quam a leo luctus tincidunt euismod sit amet arcu. Duis bibendum ultricies libero sed feugiat. Duis ut sapien risus. Morbi non nulla sit amet eros fringilla blandit id vel augue. Nam placerat ligula lacinia tellus molestie molestie vestibulum leo tincidunt.
+							Duis auctor varius risus vitae commodo. Fusce nec odio massa, ut dapibus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dapibus, mauris sit amet feugiat tempor, nulla diam gravida magna, in facilisis sapien tellus non ligula. Mauris sapien turpis, sodales ac lacinia sit amet, porttitor in lacus. Pellentesque tincidunt malesuada magna, in egestas augue sodales vel. Praesent iaculis sapien at ante sodales facilisis.
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<a href="#collapse7" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+										<i class="glyphicon glyphicon-th"></i>
+										Calculator
+									</a>
+								</div>
+								<div class="accordion-body collapse" id="collapse7">
+									<div class="panel-body">
+										<form name="Calc" id="calc">
+											<div class="formSep input-group input-group-sm">
+												<input class="form-control" name="Input" type="text">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-default" name="clear" value="c" onclick="Calc.Input.value = ''">
+														<i class="glyphicon glyphicon-remove"></i>
+													</button>
+												</span>
+											</div>
+											<div class="form-group">
+												<input class="btn form-control btn-default input-sm" name="seven" value="7" onclick="Calc.Input.value += '7'" type="button">
+												<input class="btn form-control btn-default input-sm" name="eight" value="8" onclick="Calc.Input.value += '8'" type="button">
+												<input class="btn form-control btn-default input-sm" name="nine" value="9" onclick="Calc.Input.value += '9'" type="button">
+												<input class="btn form-control btn-default input-sm" name="div" value="/" onclick="Calc.Input.value += ' / '" type="button"></div>
+											<div class="form-group">
+												<input class="btn form-control btn-default input-sm" name="four" value="4" onclick="Calc.Input.value += '4'" type="button">
+												<input class="btn form-control btn-default input-sm" name="five" value="5" onclick="Calc.Input.value += '5'" type="button">
+												<input class="btn form-control btn-default input-sm" name="six" value="6" onclick="Calc.Input.value += '6'" type="button">
+												<input class="btn form-control btn-default input-sm" name="times" value="x" onclick="Calc.Input.value += ' * '" type="button"></div>
+											<div class="form-group">
+												<input class="btn form-control btn-default input-sm" name="one" value="1" onclick="Calc.Input.value += '1'" type="button">
+												<input class="btn form-control btn-default input-sm" name="two" value="2" onclick="Calc.Input.value += '2'" type="button">
+												<input class="btn form-control btn-default input-sm" name="three" value="3" onclick="Calc.Input.value += '3'" type="button">
+												<input class="btn form-control btn-default input-sm" name="minus" value="-" onclick="Calc.Input.value += ' - '" type="button"></div>
+											<div class="formSep form-group">
+												<input class="btn form-control btn-default input-sm" name="dot" value="." onclick="Calc.Input.value += '.'" type="button">
+												<input class="btn form-control btn-default input-sm" name="zero" value="0" onclick="Calc.Input.value += '0'" type="button">
+												<input class="btn form-control btn-default input-sm" name="DoIt" value="=" onclick="Calc.Input.value = Math.round( eval(Calc.Input.value) * 1000)/1000" type="button">
+												<input class="btn form-control btn-default input-sm" name="plus" value="+" onclick="Calc.Input.value += ' + '" type="button"></div>
+											Contributed by
+											<a href="http://themeforest.net/user/maumao" target="_blank" class="external_link">maumao</a>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="push" style="height: 92px;"></div>
+					</div>
+
+					<div class="sidebar_info" style="height: 92px;">
+						<ul class="list-unstyled">
+							<li>
+								<span class="act act-warning">65</span>
+								<strong>New comments</strong>
+							</li>
+							<li>
+								<span class="act act-success">10</span>
+								<strong>New articles</strong>
+							</li>
+							<li>
+								<span class="act act-danger">85</span>
+								<strong>New registrations</strong>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="slimScrollBar" style="background-color: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.2; display: block; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; z-index: 99; left: 1px; height: 204.9284603421462px; background-position: initial initial; background-repeat: initial initial;"></div>
+				<div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-top-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; border-bottom-left-radius: 7px; background-color: rgb(51, 51, 51); opacity: 0.2; z-index: 90; left: 1px; background-position: initial initial; background-repeat: initial initial;"></div>
+			</div>
+
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-migrate.min.js"></script>
+		<script src="lib/jquery-ui/jquery-ui-1.10.0.custom.min.js"></script>
+		<!-- touch events for jquery ui-->
+		<script src="js/forms/jquery.ui.touch-punch.min.js"></script>
+		<!-- easing plugin -->
+		<script src="js/jquery.easing.1.3.min.js"></script>
+		<!-- smart resize event -->
+		<script src="js/jquery.debouncedresize.min.js"></script>
+		<!-- js cookie plugin -->
+		<script src="js/jquery_cookie_min.js"></script>
+		<!-- main bootstrap js -->
+		<script src="bootstrap/js/bootstrap.min.js"></script>
+		<!-- bootstrap plugins -->
+		<script src="js/bootstrap.plugins.min.js"></script>
+		<!-- typeahead -->
+		<script src="lib/typeahead/typeahead.min.js"></script>
+		<!-- code prettifier -->
+		<script src="lib/google-code-prettify/prettify.min.js"></script>
+		<!-- sticky messages -->
+		<script src="lib/sticky/sticky.min.js"></script>
+		<!-- tooltips -->
+		<script src="lib/qtip2/jquery.qtip.min.js"></script>
+		<!-- lightbox -->
+		<script src="lib/colorbox/jquery.colorbox.min.js"></script>
+		<!-- jBreadcrumbs -->
+		<script src="lib/jBreadcrumbs/js/jquery.jBreadCrumb.1.1.min.js"></script>
+		<!-- hidden elements width/height -->
+		<script src="js/jquery.actual.min.js"></script>
+		<!-- custom scrollbar -->
+		<script src="lib/slimScroll/jquery.slimscroll.js"></script>
+		<!-- fix for ios orientation change -->
+		<script src="js/ios-orientationchange-fix.js"></script>
+		<!-- to top -->
+		<script src="lib/UItoTop/jquery.ui.totop.min.js"></script>
+		<!-- mobile nav -->
+		<script src="js/selectNav.js"></script>
+
+		<!-- common functions -->
+		<script src="js/gebo_common.js"></script>
+
+		<!-- multi-column layout -->
+		<script src="js/jquery.imagesloaded.min.js"></script>
+		<script src="js/jquery.wookmark.js"></script>
+		<!-- responsive table -->
+		<script src="js/jquery.mediaTable.min.js"></script>
+		<!-- small charts -->
+		<script src="js/jquery.peity.min.js"></script>
+		<!-- charts -->
+		<script src="lib/flot/jquery.flot.min.js"></script>
+		<script src="lib/flot/jquery.flot.resize.min.js"></script>
+		<script src="lib/flot/jquery.flot.pie.min.js"></script>
+		<!-- calendar -->
+		<script src="lib/fullcalendar/fullcalendar.min.js"></script>
+		<!-- sortable/filterable list -->
+		<script src="lib/list_js/list.min.js"></script>
+		<script src="lib/list_js/plugins/paging/list.paging.min.js"></script>
+		<!-- dashboard functions -->
+		<script src="js/gebo_dashboard.js"></script>
+
+	</div>
+
+	<div id="qtip-rcontainer"></div>
+	<div id="cboxOverlay" style="display: none;"></div>
+	<div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;">
+		<div id="cboxWrapper">
+			<div>
+				<div id="cboxTopLeft" style="float: left;"></div>
+				<div id="cboxTopCenter" style="float: left;"></div>
+				<div id="cboxTopRight" style="float: left;"></div>
+			</div>
+			<div style="clear: left;">
+				<div id="cboxMiddleLeft" style="float: left;"></div>
+				<div id="cboxContent" style="float: left;">
+					<div id="cboxTitle" style="float: left;"></div>
+					<div id="cboxCurrent" style="float: left;"></div>
+					<button type="button" id="cboxPrevious"></button>
+					<button type="button" id="cboxNext"></button>
+					<button id="cboxSlideshow"></button>
+					<div id="cboxLoadingOverlay" style="float: left;"></div>
+					<div id="cboxLoadingGraphic" style="float: left;"></div>
+				</div>
+				<div id="cboxMiddleRight" style="float: left;"></div>
+			</div>
+			<div style="clear: left;">
+				<div id="cboxBottomLeft" style="float: left;"></div>
+				<div id="cboxBottomCenter" style="float: left;"></div>
+				<div id="cboxBottomRight" style="float: left;"></div>
+			</div>
+		</div>
+		<div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div>
+	</div>
+	<a class="ssw_trigger" href="javascript:void(0)">
+		<i class="glyphicon glyphicon-cog"></i>
+	</a>
+	<a href="#" id="toTop" style="display: inline;">
+		<span id="toTopHover"></span>
+		To Top
+	</a>
+	<div id="ui-tooltip-4" class="ui-tooltip qtip ui-tooltip-default ui-tooltip-shadow ui-tooltip-tipsy ui-tooltip-pos-tl" tracking="true" role="alert" aria-live="polite" aria-atomic="false" aria-describedby="ui-tooltip-4-content" aria-hidden="true" style="width: 73px;">
+		<div class="ui-tooltip-content" id="ui-tooltip-4-content" aria-atomic="true">Loading...</div>
+	</div>
+	<div id="ui-tooltip-5" class="ui-tooltip qtip ui-tooltip-default ui-tooltip-shadow ui-tooltip-tipsy ui-tooltip-pos-tl" tracking="true" role="alert" aria-live="polite" aria-atomic="false" aria-describedby="ui-tooltip-5-content" aria-hidden="true" style="z-index: 15002; width: 111px;">
+		<div class="ui-tooltip-content" id="ui-tooltip-5-content" aria-atomic="true">Brazil ( 21.43% )</div>
+	</div>
+</body>
+</html>

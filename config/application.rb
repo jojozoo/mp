@@ -65,6 +65,9 @@ module Mp
     # Enable the asset pipeline
     config.assets.enabled = true
 
+    # 不设置会有个警告, 暂时不知道什么用处
+    config.i18n.enforce_available_locales = true
+
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     

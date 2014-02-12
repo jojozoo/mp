@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>漫拍管理页面</title>
+	<title>漫拍-管理页面</title>
 	<%= stylesheet_link_tag    "admin", :media => "all" %>
-	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "admin" %>
 	<%= csrf_meta_tags %>
+	<link rel="shortcut icon" href="favicon.ico">
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="/ie/ie.css" />
+	<![endif]-->
+
 	<!--[if lt IE 9]>
-		<script src="/bootstrap/js/html5.js"></script>
-		<script src="/bootstrap/js/html5shiv.min.js"></script>
-		<script src="/bootstrap/js/respond.min.js"></script>
+	<script src="/ie/html5.js"></script>
+	<script src="/ie/respond.min.js"></script>
+	<script src="/ie/excanvas.min.js"></script>
 	<![endif]-->
 </head>
 <body>
