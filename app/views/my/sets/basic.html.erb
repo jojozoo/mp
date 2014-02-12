@@ -40,14 +40,14 @@
 				<label for="open-agreement">开启知识共享协议</label>
 			</div>
 			<div class="hide" id="agreement">
-				<% User::WARRANT.each do |k, v| %>
+				<% $warrant.each do |k, v| %>
 				<div class="warrant-row">
 					<input type="radio" id="warrant<%= k %>" name="user[warrant]" value="<%= k %>" <%= 'checked=""' if current_user.warrant.eql?(k) %>>
 					<label for="warrant<%= k %>">
-						<% User::WARRANTVAL[k].each do |row| %>
+						<% v[:style].each do |row| %>
 							<span class="cc-<%= row %>"></span>
 						<% end %>
-						<span class="cc-h"><%= v %></span>
+						<span class="cc-h"><%= v[:name] %></span>
 					</label>
 				</div>
 				<% end %>

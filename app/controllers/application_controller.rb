@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
     @title ||= $site_config[:title]
     @keywords ||= $site_config[:keywords]
     @description ||= $site_config[:description]
-    $navs = YAML.load_file("config/datas/global_nav.yml")
   end
 
   def sign_in?
