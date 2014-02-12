@@ -970,6 +970,8 @@
 				type: 'changeDate',
 				date: this.date
 			});
+			// 针对验证的回调
+			element.focusout();
 		},
 
 		moveMinute: function (date, dir) {

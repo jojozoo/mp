@@ -22,8 +22,7 @@ $(function(){
 		todayHighlight: 1,
 		startView: 2,
 		minView: 2,
-		forceParse: 0,
-		onClose: function(dateText, inst) { $(inst.input).change().focusout();}
+		forceParse: 0
 	})
 	// .on('changeDate', function(ev){
 	// 	$(ev.target).find('input').change().focusout();

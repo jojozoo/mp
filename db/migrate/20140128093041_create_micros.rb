@@ -29,6 +29,7 @@ class CreateMicros < ActiveRecord::Migration
       t.string :extraer_name
       t.string :extraer_title
       t.string :extraer_text
+      t.boolean :del, default: false
 
       t.timestamps
     end

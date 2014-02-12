@@ -6,6 +6,7 @@ class CreateNotices < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.boolean :read
+      t.boolean :del, default: false
 
       t.timestamps
     end

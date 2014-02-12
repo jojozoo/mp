@@ -10,6 +10,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.string :expires_in
       t.string :expires_at
       t.text :other
+      t.boolean :del, default: false
 
       t.timestamps
     end

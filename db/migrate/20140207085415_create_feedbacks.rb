@@ -7,6 +7,7 @@ class CreateFeedbacks < ActiveRecord::Migration
       t.string :subject
       t.integer :ip
       t.text :desc
+      t.boolean :del, default: false
 
       t.timestamps
     end

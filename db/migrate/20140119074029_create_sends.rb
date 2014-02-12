@@ -4,7 +4,7 @@ class CreateSends < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.string :tag
-      t.boolean :del
+      t.boolean :del, default: false
 
       t.timestamps
     end

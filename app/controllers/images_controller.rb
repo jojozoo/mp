@@ -16,13 +16,18 @@ class ImagesController < ApplicationController
     def browse
         # sleep(1)
         send_path = "public/system/#{params[:class]}/#{params[:id]}/#{params[:style]}/#{params[:random]}.#{params[:format]}"
-        if params[:class].eql?('images') and params[:style] and params[:style].eql?('original')
-            redirect_to '/404' and return
+        if params[:class].eql?('images') and params[:style] and params[:style].eql?('original') and sign_in?
+            if image = current_user.images.find_by_id(params[:id])
+                send_path = image.picture.path
+            else
+                redirect_to '/404' and return
+            end
         end
         send_file send_path, disposition: 'inline'
     end
     
     def new
+        
     end
 
     def create

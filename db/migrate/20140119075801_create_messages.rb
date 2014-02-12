@@ -4,7 +4,7 @@ class CreateMessages < ActiveRecord::Migration
       t.integer :talk_id
       t.integer :user_id
       t.string :content
-      t.integer :del, default: 0
+      t.integer :del, default: false
 
       t.timestamps
     end

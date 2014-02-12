@@ -7,7 +7,7 @@ class CreateWorks < ActiveRecord::Migration
       t.integer :warrant
       t.integer :winner
       t.string :desc
-      t.boolean :del
+      t.boolean :del, default: false
 
       t.timestamps
     end

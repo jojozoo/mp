@@ -5,6 +5,7 @@ class CreateBgs < ActiveRecord::Migration
       t.string :repeat
       t.integer :user_id
       t.boolean :admin, default: false
+      t.boolean :del, default: false
 
       t.timestamps
     end

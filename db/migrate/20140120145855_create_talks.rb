@@ -6,7 +6,7 @@ class CreateTalks < ActiveRecord::Migration
       t.string :content
       t.integer :state, default: 1
       t.integer :messages_count, default: 0
-      t.boolean :del, default: 0
+      t.boolean :del, default: false
 
       t.timestamps
     end
