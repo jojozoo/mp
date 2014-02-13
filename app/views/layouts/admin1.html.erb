@@ -92,7 +92,7 @@
 		<![endif]-->
 
 	</head>
-	<body class="full_width menu_hover ptrn_c">
+	<body class="full_width menu_hover">
 		<%= render 'admin/shared/style_switcher' %>
 
 		<div id="maincontainer" class="clearfix">
@@ -104,51 +104,10 @@
 			<div id="contentwrapper">
 				<div class="main_content">
 					<%= render 'admin/shared/breadcrumb' %>
-					<!-- <div class="row">
-						<div class="col-sm-12 tac">
-							<ul class="ov_boxes">
-								<li>
-									<div class="p_bar_up p_canvas">
-										<span>2,4,9,7,12,8,16</span>
-									</div>
-									<div class="ov_text"> <strong>$3 458,00</strong>
-										Weekly Sale
-									</div>
-								</li>
-								<li>
-									<div class="p_bar_down p_canvas">
-										<span>20,15,18,14,10,13,9,7</span>
-									</div>
-									<div class="ov_text"> <strong>$43 567,43</strong>
-										Monthly Sale
-									</div>
-								</li>
-								<li>
-									<div class="p_line_up p_canvas">
-										<span>3,5,9,7,12,8,16</span>
-									</div>
-									<div class="ov_text">
-										<strong>2304</strong>
-										Unique visitors (last 24h)
-									</div>
-								</li>
-								<li>
-									<div class="p_line_down p_canvas">
-										<span>20,16,14,18,15,14,14,13,12,10,10,8</span>
-									</div>
-									<div class="ov_text">
-										<strong>30240</strong>
-										Unique visitors (last week)
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div> -->
 					<div class="row">
 						<div class="col-sm-12">
 							<h3 class="heading">
 								快速导航
-								<small>2012-12-28</small>
 							</h3>
 							<ul class="dshb_icoNav clearfix">
 								<li>
@@ -189,28 +148,25 @@
 					</div>
 
 					<div class="row">
-						<div class="col-sm-5">
-							<h3 class="heading">
-								日志信息
-								<small>2012-12-28</small>
-							</h3>
-							<div id="fl_2" style="height:200px;width:80%;margin:50px auto 0"></div>
-						</div>
-						<div class="col-sm-7">
+						<div class="col-sm-12">
 							<div class="heading clearfix">
-								<h3 class="pull-left">新数据</h3>
-								<span class="pull-right label label-info ttip_t" title="Here is a sample info tooltip">Info</span>
+								<h3 class="pull-left">
+									今日数据
+									<small><%= Date.today %></small>
+								</h3>
 							</div>
 							<div id="fl_1" style="height:270px;width:100%;margin:15px auto 0"></div>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col-sm-6 col-lg-6">
-							<%= render 'admin/shared/table' %>
-						</div>
-						<div class="col-sm-6 col-lg-6">
+						<div class="col-sm-12 col-lg-12">
 							<%= render 'admin/shared/gallery' %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12 col-lg-12">
+							<%= render 'admin/shared/table' %>
 						</div>
 					</div>
 				</div>

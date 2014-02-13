@@ -5,7 +5,7 @@
 		gebo_peity.init();
 		//* charts
 		gebo_charts.fl_1();
-		gebo_charts.fl_2();
+		// gebo_charts.fl_2();
 		//* sortable/searchable list
 		gebo_flist.init();
 		//* calendar
