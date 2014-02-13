@@ -220,6 +220,17 @@ class User < ActiveRecord::Base
   # TODO /gs/1 分享图片的文字
   # simple_form boolean bootstrap
 
+  # TODO
+  # 日志切割
+  # http://zhuxiaowu.com/jyuaEj
+  # 日志分析
+  # 要中文化,之后存入到数据库,方便生成图表
+  # https://github.com/wvanbergen/request-log-analyzer
+  # 图标分析
+  # http://www.humblesoftware.com/flotr2/
+  # http://www.jqplot.com/
+  # http://www.highcharts.com/
+
   # 消息, 通知, 设置相关所有
 
   # recommendations推荐表
