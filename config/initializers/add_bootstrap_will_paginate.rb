@@ -11,7 +11,7 @@ module WillPaginate
       protected
       
       def html_container(html)
-        tag :ul, html, container_attributes
+        tag :div, tag(:ul, html, container_attributes), class: 'text-center'
       end
       def gap
         text = @template.will_paginate_translate(:page_gap) { '&hellip;' }

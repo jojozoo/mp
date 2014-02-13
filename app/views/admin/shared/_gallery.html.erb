@@ -1,0 +1,27 @@
+<div class="heading clearfix">
+	<h3 class="pull-left">
+		最新上传
+		<small>图库</small>
+	</h3>
+	<span class="pull-right label label-success">10</span>
+</div>
+<div id="small_grid" class="wmk_grid">
+	<ul>
+		<% Image.all.each do |image| %>
+		<li class="thumbnail">
+			<% 
+				cpath = image.picture.path(:cover).gsub(/.+public/, "")
+				opath = image.picture.path(:big).gsub(/.+public/, "")
+			 %>
+			<%= link_to image_tag(cpath), opath %>
+			<p>
+				<span>
+					<%= (image.picture_file_size / 1024.0).round(2) %> kb
+					<br>
+					<%= image.created_at.to_date %>
+				</span>
+			</p>
+		</li>
+		<% end %>
+	</ul>
+</div>

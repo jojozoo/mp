@@ -1,62 +1,76 @@
-<div class="navbar navbar-default" role="navigation">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="#">漫拍管理后台</a>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div class="navbar-inner">
+		<div class="container" style="width:1360px;">
+			<a class="brand pull-left" href="/admin">
+				漫拍 后台管理
+				<span class="sml_t">3</span>
+			</a>
+			<ul class="nav navbar-nav">
+				<li>
+					<a href="/admin">网站管理</a>
+				</li>
+				<li class="dropdown">
+					<a href="javascript:void(0);">
+						<span class="icon-th"></span>
+						数据管理 <b class="caret"></b>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="alerts_btns.html">动态管理</a>
+						</li>
+						<li>
+							<a href="icons.html">图库</a>
+						</li>
+						<li>
+							<a href="notifications.html">活动</a>
+						</li>
+						<li>
+							<a href="tables.html">作品</a>
+						</li>
+						<li>
+							<a href="tables_more.html">圈子</a>
+						</li>
+						<li>
+							<a href="tabs_accordion.html">论坛</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav user_menu pull-right">
+				<li class="hidden-phone hidden-tablet">
+					<div class="nb_boxes clearfix">
+						<a data-toggle="modal" data-backdrop="static" href="#myTasks" class="label ttip_b" title="最新消息">
+							25 <i class="icon-envelope"></i>
+						</a>
+						<a data-toggle="modal" data-backdrop="static" href="#myTasks" class="label ttip_b" title="最新任务">
+							10 <i class="icon-tasks"></i>
+						</a>
+					</div>
+				</li>
+				<li class="divider-vertical hidden-sm hidden-xs"></li>
+				<li class="dropdown">
+					<%= link_to 'javascript:void(0);', class: 'dropdown-toggle', data:{toggle: 'dropdown'} do %>
+					<%= image_tag current_user.avatar(:small), class: 'user_avatar' %>
+					<%= current_user.username %>
+					<b class="caret"></b>
+					<% end %>
+					<ul class="dropdown-menu">
+						<li>
+							<a href="/">
+								<i class="icon-signout"></i>
+								去首页
+							</a>
+						</li>
+						<li class="divider"></li>
+						<li>
+							<a href="/sign_out">
+								<i class="icon-off"></i>
+								退出
+							</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
 	</div>
-
-	
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		<ul class="nav navbar-nav">
-			<li class="active">
-				<a href="#">首页</a>
-			</li>
-			<li class="dropdown">
-				<a href="#">
-					设置 <b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<li>
-						<a href="#">Action</a>
-					</li>
-					<li>
-						<a href="#">Another action</a>
-					</li>
-					<li>
-						<a href="#">Something else here</a>
-					</li>
-					<li class="divider"></li>
-					<li>
-						<a href="#">Separated link</a>
-					</li>
-					<li class="divider"></li>
-					<li>
-						<a href="#">One more separated link</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-		<form class="navbar-form navbar-left" role="search">
-			<div class="form-group">
-				<input type="text" class="form-control" placeholder="Search">
-			</div>
-			<button type="submit" class="btn btn-default">搜索</button>
-		</form>
-		<ul class="nav navbar-nav navbar-right">
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<span class="icon-user"></span>
-					管理员 <b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<li>
-						<a href="#">去首页</a>
-					</li>
-					<li class="divider"></li>
-					<li>
-						<a href="/sign_out">退出</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
-	<!-- /.navbar-collapse -->
-</div>
+</nav>

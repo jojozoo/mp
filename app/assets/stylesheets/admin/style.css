@@ -168,9 +168,12 @@
 	
 	
 	/* sidebar */
-		.sidebar{margin-left:-100%;width:240px;float:left;position:relative;overflow-x:hidden;overflow-y:auto;border-right:1px solid #ccc}
+		.sidebar{margin-left:-100%;width:240px;float:left;position:relative;overflow-x:hidden;
+			/*overflow-y:auto;*/
+			overflow-y:hidden;
+			border-right:1px solid #ccc}
 		.sidebar_sep{background:#efefef;clear:both;float:none;height:5px;border-color:#ccc;border-style:solid;border-width:1px 0;margin:14px 0}
-		.sidebar_switch{text-indent:-10000px;width:16px;position:fixed;left:220px;top:45px;height:14px;cursor:pointer;z-index:100;display:block;opacity:.5}
+		.sidebar_switch{text-indent:-10000px;width:16px;position:fixed;left:240px;top:45px;height:14px;cursor:pointer;z-index:100;display:block;opacity:.5}
 		.on_switch {background: url(/admin/images/sidebar_switch.png) no-repeat 0 -19px}
 		.off_switch {background: url(/admin/images/sidebar_switch.png) no-repeat 0 -1px}
 		.sidebar_inner form{padding:18px 15px 9px}
@@ -182,7 +185,13 @@
 		.sidebar_hidden .main_content {margin:0;border-left:none}
 		.sidebar_hidden {background: #fff}
 		
-		.sidebar_info {width:180px;position:relative;left:30px;bottom:10px}
+		.sidebar_info {
+			width:180px;
+			margin-left: 26px;
+			/*position:relative;
+			left:30px;
+			bottom:10px;*/
+		}
         .sidebar_info ul {padding:5px 10px;margin:0;font-size:11px;background:#fafafa;border:1px solid #e5e5e5;-webkit-border-radius: 6px;-moz-border-radius: 6px;-ms-border-radius: 6px;border-radius: 6px}
         .sidebar_info ul li {line-height:26px;overflow:hidden;border-bottom:1px dashed #ccc}
         .sidebar_info ul li:last-child {border:none}
@@ -504,11 +513,11 @@
 		.dataTables_wrapper{position:relative;overflow:hidden}
 		.dataTables_wrapper table.table {clear:both;margin-bottom:6px!important;max-width:inherit}
 		.dataTables_wrapper table.table thead .sorting,table.table thead .sorting_asc,table.table thead .sorting_desc,table.table thead .sorting_asc_disabled,table.table thead .sorting_desc_disabled{cursor:hand;cursor:pointer}
-		.dataTables_wrapper table.table thead .sorting{background: #e9f3f8 url(/admin/images/datatables/images/sort_both.png) no-repeat center right}
-		.dataTables_wrapper table.table thead .sorting_asc{background: #e9f3f8 url(/admin/images/datatables/images/sort_asc.png) no-repeat center right}
-		.dataTables_wrapper table.table thead .sorting_desc{background: #e9f3f8 url(/admin/images/datatables/images/sort_desc.png) no-repeat center right}
-		.dataTables_wrapper table.table thead .sorting_asc_disabled{background: #e9f3f8 url(/admin/images/datatables/images/sort_asc_disabled.png) no-repeat center right}
-		.dataTables_wrapper table.table thead .sorting_desc_disabled{background: #e9f3f8 url(/admin/images/datatables/images/sort_desc_disabled.png) no-repeat center right}
+		.dataTables_wrapper table.table thead .sorting{background: #e9f3f8 url(/admin/images/sort_both.png) no-repeat center right}
+		.dataTables_wrapper table.table thead .sorting_asc{background: #e9f3f8 url(/admin/images/sort_asc.png) no-repeat center right}
+		.dataTables_wrapper table.table thead .sorting_desc{background: #e9f3f8 url(/admin/images/sort_desc.png) no-repeat center right}
+		.dataTables_wrapper table.table thead .sorting_asc_disabled{background: #e9f3f8 url(/admin/images/sort_asc_disabled.png) no-repeat center right}
+		.dataTables_wrapper table.table thead .sorting_desc_disabled{background: #e9f3f8 url(/admin/images/sort_desc_disabled.png) no-repeat center right}
 		.dataTables_wrapper table.dataTable th:active{outline:none}
 		.dataTables_wrapper .row {margin:0 -10px 10px}
 		.dataTables_wrapper select{min-height:inherit}

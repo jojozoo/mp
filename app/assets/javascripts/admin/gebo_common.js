@@ -81,10 +81,10 @@
                 if(!$('body').hasClass('sidebar_hidden')) {
                     if( $.cookie('gebo_sidebar') == "hidden") {
                         $('body').addClass('sidebar_hidden');
-                        $('.sidebar_switch').toggleClass('on_switch off_switch').attr('title','Show Sidebar');
+                        $('.sidebar_switch').toggleClass('on_switch off_switch').attr('title','显示侧边栏');
                     }
                 } else {
-                    $('.sidebar_switch').toggleClass('on_switch off_switch').attr('title','Show Sidebar');
+                    $('.sidebar_switch').toggleClass('on_switch off_switch').attr('title','显示侧边栏');
                 }
             } else {
                 $('body').addClass('sidebar_hidden');
@@ -100,12 +100,12 @@
                     $.cookie('gebo_sidebar', null);
                     $('body').removeClass('sidebar_hidden');
                     $('.sidebar_switch').addClass('on_switch').show();
-                    $('.sidebar_switch').attr( 'title', "Hide Sidebar" );
+                    $('.sidebar_switch').attr( 'title', "隐藏侧边栏" );
                 } else {
                     $.cookie('gebo_sidebar', 'hidden');
                     $('body').addClass('sidebar_hidden');
                     $('.sidebar_switch').addClass('off_switch');
-                    $('.sidebar_switch').attr( 'title', "Show Sidebar" );
+                    $('.sidebar_switch').attr( 'title', "显示侧边栏" );
                 };
 				gebo_sidebar.info_box();
 				//gebo_sidebar.update_scroll();
@@ -125,11 +125,11 @@
 			s_box.css({
 				'height'        : s_box_height
 			});
-			$('.push').height(s_box_height);
-			$('.sidebar_inner').css({
-				'margin-bottom' : '-'+s_box_height+'px',
-				'min-height'    : '100%'
-			});
+			// $('.push').height(s_box_height);
+			// $('.sidebar_inner').css({
+			// 	'margin-bottom' : '-'+s_box_height+'px',
+			// 	'min-height'    : '100%'
+			// });
         },
 		make_active: function() {
 			var thisAccordion = $('#side_accordion');
@@ -140,15 +140,17 @@
 			}
 		},
 		scrollbar: function() {
-			if($('.sidebar_inner_scroll').length) {
-				$('.sidebar_inner_scroll').slimScroll({
-					position: 'left',
-					height: 'auto',
-					alwaysVisible: true,
-					opacity: '0.2',
-					wheelStep: is_touch_device() ? 40 : 1
-				});
-			}
+			console.log('侧边栏滚动');
+			// 删除侧边栏滚动效果
+			// if($('.sidebar_inner_scroll').length) {
+			// 	$('.sidebar_inner_scroll').slimScroll({
+			// 		position: 'left',
+			// 		height: 'auto',
+			// 		alwaysVisible: true,
+			// 		opacity: '0.2',
+			// 		wheelStep: is_touch_device() ? 40 : 1
+			// 	});
+			// }
         }
     };
 

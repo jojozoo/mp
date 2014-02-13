@@ -218,6 +218,7 @@ class User < ActiveRecord::Base
   # 1 活动跳转到本页         标题显示活动名称
   # 2 图库或者相册跳转到本页  显示相册名称
   # TODO /gs/1 分享图片的文字
+  # simple_form boolean bootstrap
 
   # 消息, 通知, 设置相关所有
 

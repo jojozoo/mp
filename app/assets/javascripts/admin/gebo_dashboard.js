@@ -77,8 +77,8 @@
             // Setup the flot chart using our data
             $.plot(elem, 
                 [
-                    { label: "sin(x)",  data: sin},
-                    { label: "cos(x)",  data: cos}
+                    { label: "用户注册(x)",  data: sin},
+                    { label: "图片上传(x)",  data: cos}
                 ], 
                 {
                     lines: { show: true },
