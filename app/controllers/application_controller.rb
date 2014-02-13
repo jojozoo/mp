@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :site_config, :current_user
+  before_filter :site_config, :current_user, :set_servers
+  def set_servers
+    headers['Server'] = 'Mp Server v1.0'
+  end
 
   helper_method :current_user, :sign_in?
 
@@ -37,6 +40,78 @@ class ApplicationController < ActionController::Base
   def sign_out_keeping_session
     @current_user = nil
     session[:user_id] = nil
+  end
+
+  def default_url_options(options={})
+  logger.debug "default_url_options is passed options: #{options.inspect}\n"
+  { :evn => 'dev' }
+  end
+
+  # 生成手机验证码
+  def mobile_captcha(session_name,mobile)
+    session_name = session_name.to_sym
+    session[session_name] = {}
+    session[session_name][:mobile] = mobile
+    session[session_name][:captcha] = ''
+    session[session_name][:expire_at] = 5.minutes.from_now
+    session[session_name][:expire_times] = 5
+    1.upto(4){session[session_name][:captcha].push(rand(10).to_s)}
+    logger.info('----------'+mobile+'/'+session[session_name][:captcha])
+  end
+  
+  #发送验证码
+  def send_mobile_captcha(mobile)
+    mobile_captcha(:join, mobile)
+    # i18n 里的join是什么类型的sms
+    Sms.send(mobile, I18n.t('sms.join', code: session[:join][:captcha]))
+  end
+
+  # 清空手机验证码
+  def clear_mobile_captcha(session_name)
+    session.delete(session_name.to_sym)
+  end
+  # 自定义错误页面
+  # 由于全面导入Rack的关系
+  # 现在的Route其实也是一个Rack middleware
+  # 所以RoutingError, ActionNotFound(UnknownAction)不再被当作异常抛出
+  # rescue_from Exception, :with => :rescue_action if Rails.env.production?
+  # Person.pluck(:id)
+  # SELECT people.id FROM people
+  # => [1, 2, 3]
+  def rescue_action(exception)
+    case exception
+    when ActiveRecord::RecordNotFound,
+        ActionController::RoutingError,
+        AbstractController::ActionNotFound
+      # CGI.escapeHTML(exception.message)
+      # exception.backtrace.join("<br/>")
+      @message = "页面不存在。"
+      @title = status = '404 Not Found'
+      @exception = ("<p>request:#{request.url}</p>").html_safe
+    when ActiveRecord::RecordInvalid,
+        ActiveRecord::RecordNotSaved,
+        ActionController::InvalidAuthenticityToken,
+        ActiveRecord::StaleObjectError,
+        ActionController::MethodNotAllowed,
+        ActionController::NotImplemented
+      @message = "该请求无法处理。"
+      @title = status = '422 Unprocessable Entity'
+    else
+      @message = "网站升级，稍候访问。"
+      @title = status = '500 Internal Server Error'
+      # exception.backtrace.first(10).join("<br/>")
+      @exception = @exception = ("<p>request:#{request.url}</p>").html_safe
+      # TODO 定制500错误信息，方便日志分析工具统计
+      puts error = {
+        user_id: current_user_id,
+        event:   "#{params[:controller]}##{params[:action]}",
+        log:     @exception,
+        message: exception.message,
+        ip:      request.ip
+      }
+    end
+    # render :template => '/path/error.html.erb', status: status
+    render text: @exception, :status => status
   end
 
 end

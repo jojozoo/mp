@@ -9,4 +9,6 @@ en:
   timepicker:
     dformat: '%R'
     pformat: 'hh:mm'
+  sms:
+    join: '【漫拍网】欢迎注册漫拍网，您申请的短信激活码为：%{code}，请在注册页面填写（如非本人操作，可不予理会）'
 
