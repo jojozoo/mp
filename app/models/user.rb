@@ -219,6 +219,15 @@ class User < ActiveRecord::Base
   # 2 图库或者相册跳转到本页  显示相册名称
   # TODO /gs/1 分享图片的文字
   # simple_form boolean bootstrap
+  # 作品展示参考例子
+  # http://www.wookmark.com/image/375537/fireworks-by-gaudibuendia-d70nozr-jpg-image-jpeg-1249-639-pixels
+  # 幻灯片带底部缩略图展示插件
+  # fancyBox,flare,prettyphoto
+  # http://doc.bropaul.com/fancyBox/
+  # http://www.fancyapps.com/fancybox/ 缩略图并不好看, 但可以参照付费的flare调整缩略图
+  # http://pixelentity.com/previews/components/flare/
+  # http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/ 缩略图也是可参考的
+  # http://www.itivy.com/jquery/archive/2011/7/2/jquery-image-player-prettyphoto-usage.html
 
   # TODO
   # 日志切割
@@ -226,7 +235,7 @@ class User < ActiveRecord::Base
   # 日志分析
   # 要中文化,之后存入到数据库,方便生成图表
   # https://github.com/wvanbergen/request-log-analyzer
-  # 图标分析
+  # 图表分析
   # http://www.humblesoftware.com/flotr2/
   # http://www.jqplot.com/
   # http://www.highcharts.com/

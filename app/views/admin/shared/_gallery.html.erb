@@ -7,7 +7,7 @@
 </div>
 <div id="small_grid" class="wmk_grid">
 	<ul>
-		<% Image.all.each do |image| %>
+		<% Image.limit(16).each do |image| %>
 		<li class="thumbnail">
 			<% 
 				cpath = image.picture.path(:cover).gsub(/.+public/, "")
