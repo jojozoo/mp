@@ -31,7 +31,7 @@
 // * Non uniform scaling does not correctly scale strokes.
 // * Filling very large shapes (above 5000 points) is buggy.
 // * Optimize. There is always room for speed improvements.
-
+// jquery-flot画图插件在ie9时需要此文件
 // Only add this code if we do not already have a canvas implementation
 if (!document.createElement('canvas').getContext) {
 
