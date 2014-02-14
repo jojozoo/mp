@@ -1,0 +1,8 @@
+---
+name: '漫拍网'
+title: '漫拍网-生活因摄影而美好'
+key_words: '漫拍,摄影,分享,摄影师'
+description: '图库'
+server_name: 'Mp Server v1.0'
+admin_mail: '用于接受异常通知'
+user_mainl: '用于给用户发邮件'

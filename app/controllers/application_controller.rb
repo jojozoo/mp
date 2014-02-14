@@ -1,14 +1,12 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :site_config, :current_user, :set_servers
-  def set_servers
-    headers['Server'] = 'Mp Server v1.0'
-  end
+  before_filter :site_config, :current_user
 
   helper_method :current_user, :sign_in?
 
   def site_config
+    headers['Server'] = 'Mp Server v1.0'
     @title ||= $site_config[:title]
     @keywords ||= $site_config[:keywords]
     @description ||= $site_config[:description]
@@ -43,8 +41,8 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options={})
-  logger.debug "default_url_options is passed options: #{options.inspect}\n"
-  { :env => 'dev' }
+  # logger.debug "default_url_options is passed options: #{options.inspect}\n"
+  # { :env => 'dev' }
   end
 
   # 生成手机验证码
