@@ -1,3 +1,1 @@
-启动nginx sudo /opt/nginx/sbin/nginx
-关闭nginx sudo killall nginx
-配置nginx sudo vim /opt/nginx/conf/nginx.conf
+Image 有变化 部署时要改图片名字

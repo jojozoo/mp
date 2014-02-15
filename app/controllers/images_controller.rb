@@ -16,11 +16,14 @@ class ImagesController < ApplicationController
     def browse
         # sleep(1)
         send_path = "public/system/#{params[:class]}/#{params[:id]}/#{params[:style]}/#{params[:random]}.#{params[:format]}"
-        if params[:class].eql?('images') and params[:style] and params[:style].eql?('original') and sign_in?
-            if image = current_user.images.find_by_id(params[:id])
-                send_path = image.picture.path
-            else
-                redirect_to '/404' and return
+        if params[:class].eql?('images') and image = Image.find_by_id(params[:id])
+            send_path = image.picture.path
+            if params[:style].eql?('original')
+                if sign_in? and (current_user.id.eql?(image.user_id) or current_user.admin)
+                    # 反着写
+                else
+                    render text: request.path + 'not found', status: 404 and return
+                end
             end
         end
         send_file send_path, disposition: 'inline'

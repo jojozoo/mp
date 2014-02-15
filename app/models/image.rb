@@ -16,7 +16,8 @@ class Image < ActiveRecord::Base
   # avatar 时自动获取宽高 参考 paperclip.rb 文件
   has_attached_file :picture,
     processors: [:watermark],
-    styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.jpg", quality: :better}]}]
+    styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.jpg", quality: :better}]}],
+    path: ":rails_root/public/system/:class/:id/:style/:randomp.:extension"
 
   has_many :works
   belongs_to :user

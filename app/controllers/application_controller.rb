@@ -43,6 +43,7 @@ class ApplicationController < ActionController::Base
   def default_url_options(options={})
   # logger.debug "default_url_options is passed options: #{options.inspect}\n"
   # { :env => 'dev' }
+  {}
   end
 
   # 生成手机验证码
