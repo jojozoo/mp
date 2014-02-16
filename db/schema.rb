@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140208085729) do
+ActiveRecord::Schema.define(:version => 20140208085730) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -23,9 +23,8 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "expires_in"
     t.string   "expires_at"
     t.text     "other"
-    t.boolean  "del",           :default => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "albums", :force => true do |t|
@@ -50,7 +49,6 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "repeat"
     t.integer  "user_id"
     t.boolean  "admin",             :default => false
-    t.boolean  "del",               :default => false
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
   end
@@ -149,9 +147,8 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "extraer_name"
     t.string   "extraer_title"
     t.string   "extraer_text"
-    t.boolean  "del",           :default => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "notices", :force => true do |t|
@@ -160,9 +157,8 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "title"
     t.text     "content"
     t.boolean  "read"
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "pushes", :force => true do |t|
@@ -170,18 +166,31 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.string   "sourcer_type"
     t.string   "type"
     t.integer  "user_id"
-    t.boolean  "del",          :default => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "sends", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.string   "tag"
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "del"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "site_bgs", :force => true do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "link"
+    t.string   "title"
+    t.string   "desc"
+    t.string   "type"
+    t.boolean  "del",                :default => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   create_table "tags", :force => true do |t|
@@ -244,9 +253,9 @@ ActiveRecord::Schema.define(:version => 20140208085729) do
     t.integer  "warrant"
     t.integer  "winner"
     t.string   "desc"
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "del"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

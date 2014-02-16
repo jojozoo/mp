@@ -5,10 +5,10 @@
 			<div id="side_accordion" class="panel-group">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<a href="/admin/ok" class="accordion-toggle"> 
+						<%= link_to admin_feedbacks_path, class: 'accordion-toggle' do %>
 							<i class="icon-edit"></i>
 							反馈信息
-						</a>
+						<% end %>
 					</div>
 				</div>
 				<div class="panel panel-default">
@@ -44,8 +44,8 @@
 					</div>
 					<div class="accordion-body collapse" id="collapseLong">
 						<div class="panel-body">
-							随便一些东西
-							<br>详细描述</div>
+							赞无此功能	
+						</div>
 					</div>
 				</div>
 				<div class="panel panel-default">
@@ -58,7 +58,10 @@
 					<div class="accordion-body collapse" id="collapseFour">
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked">
-								<li class="nav-header">用户相关</li>
+								<li class="nav-header">网站图片</li>
+								<li>
+									<%= link_to 'Banner', admin_banners_path %>
+								</li>
 								<li>
 									<a href="javascript:void(0)">背景模板</a>
 								</li>
@@ -66,9 +69,6 @@
 									<a href="javascript:void(0)">登录背景</a>
 								</li>
 								<li class="nav-header">系统设置</li>
-								<li>
-									<a href="javascript:void(0)">banner</a>
-								</li>
 								<li>
 									<a href="javascript:void(0)">登录背景</a>
 								</li>

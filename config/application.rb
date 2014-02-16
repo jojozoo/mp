@@ -39,6 +39,7 @@ module Mp
         # path: ":rails_root/public/system/:class/:id/:updated_at/:id_partition/:style/:random.:extension",
         url: "/system/:class/:id/:updated_at/:id_partition/:style/:random.:extension",
         path: ":rails_root/public/system/:class/:id/:style/:random.:extension",
+        # path: ":rails_root/public/system/:class/:id/:style/:random.:extension", 为/systen 地址做个软连接到public下 不知道是否可行
         default_url: "/images/defaults/:class.jpg"
     }
 

@@ -13,9 +13,9 @@ $(function() {
 	$().UItoTop({inDelay:200,outDelay:200,scrollSpeed: 500});
 	gebo_tag_handler.init();
 	// stick
-	$.sticky("bar 1 callback", {autoclose : false, position: "top-right", type: "st-info" });
-	$.sticky("bar 2 callback", {autoclose : false, position: "top-right", type: "st-success" });
-	$.sticky("bar 3 callback", {autoclose : false, position: "top-right", type: "st-error" });
+	$.sticky("bar 1 callback", {autoclose : false, position: "bottom-right", type: "st-info" });
+	$.sticky("bar 2 callback", {autoclose : false, position: "bottom-right", type: "st-success" });
+	$.sticky("bar 3 callback", {autoclose : false, position: "bottom-right", type: "st-error" });
 });
 function is_touch_device() {
 	return !!('ontouchstart' in window);

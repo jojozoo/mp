@@ -1,1 +1,140 @@
-index
+<script type="text/javascript" src="/ie/highcharts-data.js"></script>
+<div class="row">
+    <div class="col-sm-12">
+        <h3 class="heading">快速导航</h3>
+        <ul class="dshb_icoNav clearfix">
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="label label-info">+10</span>
+                    <span class="center-block"> <i class="icon-user icon-2x"></i>
+                    </span>
+                    用户
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="center-block"> <i class="icon-picture icon-2x"></i>
+                    </span>
+                    图库
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="center-block">
+                        <i class="icon-cog icon-2x"></i>
+                    </span>
+                    设置
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="center-block">
+                        <i class="icon-camera icon-2x"></i>
+                    </span>
+                    作品
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="label label-success">$2851</span>
+                    <span class="center-block">
+                        <i class="icon-flag icon-2x"></i>
+                    </span>
+                    活动
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="center-block">
+                        <i class="icon-ok-circle icon-2x"></i>
+                    </span>
+                    推荐
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="center-block">
+                        <i class="icon-group icon-2x"></i>
+                    </span>
+                    圈子
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <span class="label label-danger">26</span>
+                    <span class="center-block">
+                        <i class="icon-comments icon-2x"></i>
+                    </span>
+                    回应
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="heading clearfix">
+            <h3 class="pull-left">
+                今日数据
+                <small>
+                    <%= Date.today %></small>
+            </h3>
+        </div>
+        <div id="highcharts0" class="highcharts-div"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="heading clearfix">
+            <h3 class="pull-left">
+                日志分析
+                <small>
+                    <%= Date.today %></small>
+            </h3>
+        </div>
+        <div id="highcharts1" class="highcharts-div"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="heading clearfix">
+            <h3 class="pull-left">
+                广告统计
+                <small>
+                    <%= Date.today %></small>
+            </h3>
+        </div>
+        <div id="highcharts2" class="highcharts-div"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-12">
+        <%= render 'admin/shared/gallery' %></div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-12">
+        <%= render 'admin/shared/table' %></div>
+</div>
+<div class="row">
+    <div class="col-sm-6 col-md-6">
+        <div class="heading clearfix">
+            <h3 class="pull-left">Tag Handler</h3>
+        </div>
+        <ul id="array_tag_handler"></ul>
+        <span class="help-block">
+            The Tag Handler initialized with preset tags, and autocomplete is turned on
+        </span>
+    </div>
+    <div class="col-sm-6 col-md-6">
+        <div class="heading clearfix">
+            <h3 class="pull-left">Tag Handler Maximum 5</h3>
+        </div>
+        <ul id="max_tags_tag_handler"></ul>
+        <span class="help-block">Maximum 5 tags allowed.</span>
+    </div>
+</div>

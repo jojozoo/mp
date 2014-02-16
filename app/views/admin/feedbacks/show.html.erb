@@ -1,0 +1,65 @@
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <h3 class="heading">网站反馈信息-<%= @fb.name %></h3>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="vcard">
+                    <ul style="margin:0; padding:0;">
+                        <li class="v-heading">详细信息</li>
+                        <li>
+                            <span class="item-key">反馈用户</span>
+                            <div class="vcard-item"><%= @fb.user_id %></div>
+                        </li>
+                        <li>
+                            <span class="item-key">反馈姓名</span>
+                            <div class="vcard-item"><%= @fb.name %></div>
+                        </li>
+                        <li>
+                            <span class="item-key">反馈邮箱</span>
+                            <div class="vcard-item"><%= @fb.email %></div>
+                        </li>
+                        <li>
+                            <span class="item-key">反馈标题</span>
+                            <div class="vcard-item"><%= @fb.subject %></div>
+                        </li>
+                        <li>
+                            <span class="item-key">反馈描述</span>
+                            <div class="vcard-item">
+                                <%= @fb.desc %>
+                            </div>
+                        </li>
+                        <li class="v-heading">
+                            回应信息
+                            <span>(全部)</span>
+                        </li>
+                        <li>
+                            <table class="table table-bordered table12 table-condensed table-hover">
+                                <tr>
+                                    <td>这件事我们会慎重处理</td>
+                                    <td>2012-12-28 10:20</td>
+                                    <td><a href="">删除</a></td>
+                                </tr>
+                                <tr>
+                                    <td>这件事我们会慎重处理</td>
+                                    <td>2012-12-28 10:20</td>
+                                    <td><a href="">删除</a></td>
+                                </tr>
+                                <tr>
+                                    <td>这件事我们会慎重处理</td>
+                                    <td>2012-12-28 10:20</td>
+                                    <td><a href="">删除</a></td>
+                                </tr>
+                            </table>
+
+                            <div class="form-group">
+                                <textarea name="" id="" class="form-control"></textarea>
+                            </div>
+                            <input type="submit" value="回应" class="btn btn-default">
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

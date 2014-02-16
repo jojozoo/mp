@@ -1,4 +1,6 @@
 Mp::Application.routes.draw do
+
+
   get    '/'              => 'sessions#index', as: :sessions
   get    '/sign_in'       => 'sessions#new'
   post   '/sign_in'       => 'sessions#create'
@@ -87,6 +89,8 @@ Mp::Application.routes.draw do
 
   scope '/admin', :module => 'admin', :as => 'admin' do
     get    '/'              => 'sessions#index'
+    resources :feedbacks
+    resources :banners
     # resources :products do
     # end
   end
