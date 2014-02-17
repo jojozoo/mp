@@ -13,6 +13,14 @@
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
+						<%= link_to admin_ads_path, class: 'accordion-toggle' do %>
+							<i class="icon-leaf"></i>
+							广告管理
+						<% end %>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
 						<a href="#collapseThree" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle"> 
 							<i class="icon-bullhorn"></i>
 							系统通知
@@ -37,19 +45,6 @@
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<a href="#collapseLong" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
-							<i class="icon-leaf"></i>
-							广告管理
-						</a>
-					</div>
-					<div class="accordion-body collapse" id="collapseLong">
-						<div class="panel-body">
-							赞无此功能	
-						</div>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
 						<a href="#collapseFour" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
 							<i class="icon-cog"></i>
 							设置
@@ -65,18 +60,12 @@
 								<li>
 									<%= link_to '背景模板', admin_bgs_path %>
 								</li>
-								<li>
-									<a href="javascript:void(0)">登录背景</a>
-								</li>
 								<li class="nav-header">系统设置</li>
 								<li>
-									<a href="javascript:void(0)">登录背景</a>
+									<%= link_to '网站信息', '/admin/info' %>
 								</li>
 								<li>
-									<a href="javascript:void(0)">网站信息</a>
-								</li>
-								<li>
-									<a href="javascript:void(0)">网站日志</a>
+									<%= link_to '网站日志', '/admin/log' %>
 								</li>
 							</ul>
 						</div>

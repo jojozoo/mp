@@ -1,3 +1,9 @@
+.form-error-tip{
+    margin: 6px 0 0 0;
+}
+.has-error .form-error-tip{
+    color: #a94442;
+}
 table.table12{
     font-size: 12px;
 }

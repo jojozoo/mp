@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140208085731) do
+ActiveRecord::Schema.define(:version => 20140217060518) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -26,6 +26,24 @@ ActiveRecord::Schema.define(:version => 20140208085731) do
     t.boolean  "del",           :default => false
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "ads", :force => true do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "title"
+    t.string   "desc"
+    t.string   "target"
+    t.integer  "t"
+    t.integer  "s"
+    t.integer  "b",                  :default => 0
+    t.integer  "c",                  :default => 0
+    t.integer  "f"
+    t.boolean  "del",                :default => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   create_table "albums", :force => true do |t|
@@ -180,7 +198,7 @@ ActiveRecord::Schema.define(:version => 20140208085731) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.string   "bg",                 :default => "1"
+    t.boolean  "bg",                 :default => true
     t.boolean  "del",                :default => false
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false

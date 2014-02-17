@@ -88,10 +88,14 @@ Mp::Application.routes.draw do
   ##### my end #####
 
   scope '/admin', :module => 'admin', :as => 'admin' do
-    get    '/'              => 'sessions#index'
+    get  '/'     => 'sessions#index'
+    get  '/info' => 'sessions#info'
+    post '/info' => 'sessions#info'
+    get  '/log'  => 'sessions#log'
     resources :feedbacks
     resources :banners
     resources :bgs
+    resources :ads
     # resources :products do
     # end
   end

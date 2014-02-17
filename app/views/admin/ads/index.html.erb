@@ -1,0 +1,42 @@
+<div class="w-box">
+    <div class="w-box-header">
+        <div class="pull-right sort-disabled">
+            <%= link_to '新建ad', new_admin_ad_path %>
+        </div>
+    </div>
+    <div class="w-box-content">
+        <table class="table table-striped table12 table-condensed table-hover text-center">
+            <tr>
+                <th>投放资源</th>
+                <th>跳转地址</th>
+                <th>标题</th>
+                <th>描述</th>
+                
+                <th>类型</th>
+                <th>显示</th>
+                <th>浏览</th>
+                <th>点击</th>
+                <th>状态</th>
+                <th>操作</th>
+            </tr>
+        <% @ads.each do |ad| %>
+            <tr>
+                <td><%= image_tag ad.photo.url, style: 'max-width: 80px;' %></td>
+                <td><%= link_to ad.target, ad.target, target: '_blank' %></td>
+                <td><%= truncate(ad.title, length: 10) %></td>
+                <td><%= truncate(ad.desc, length: 10) %></td>
+                <td><%= Ad::ADTYPE[ad.t] || '其他' %></td>
+                <td><%= Ad::ADSHOW[ad.s] || '其他' %></td>
+                <td><%= ad.b %></td>
+                <td><%= ad.c %></td>
+                <td><%= ad.del ? '已删除' : '正常' %></td>
+                <td>
+                    <%= link_to '详细/回应', admin_ad_path(ad), class: 'btn btn-info btn-xs' %>
+                    <%= link_to '删除', admin_ad_path(ad), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>
+                </td>
+            </tr>
+        <% end %>
+        </table>
+    </div>
+    <%= will_paginate @ads %>
+</div>
