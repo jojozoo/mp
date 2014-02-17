@@ -1,4 +1,4 @@
-<%= simple_form_for(@banner, url: admin_banners_path) do |f| %>
+<%= simple_form_for @banner, url: admin_banners_path, validate: true do |f| %>
     <%= f.error_notification %>
     <div class="form-group file optional site_banner_photo">
         <%= f.label :photo %>
@@ -9,10 +9,10 @@
     </div>
     <%= f.input :link %>
     <%= f.input :title %>
-    <%= f.input :desc %>
+    <%= f.input :desc, as: :text %>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
-            <input type="submit" value="保存Banner" class="btn btn-default" value="保存">
+            <input type="submit" value="保存Banner" class="btn btn-default">
         </div>
     </div>
 <% end %>

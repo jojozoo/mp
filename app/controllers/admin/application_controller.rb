@@ -1,5 +1,5 @@
 class Admin::ApplicationController < ApplicationController
-	layout 'admin1'
+	layout 'admin'
     before_filter :must_login, :is_admin
     
     def is_admin

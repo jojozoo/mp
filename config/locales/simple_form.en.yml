@@ -44,16 +44,21 @@ en:
         name: '名称'
         desc: '描述'
       event:
-        logo: LOGO
-        name: 活动名称
-        title: 活动标题
-        desc: 活动描述
-        end_time: 结束时间
-        tag: 活动类型
+        logo: 'LOGO'
+        name: '活动名称'
+        title: '活动标题'
+        desc: '活动描述'
+        end_time: '结束时间'
+        tag: '活动类型'
+      site_banner:
+        photo: '照片'
+        link: '链接'
+        title: '标题'
+        desc: '描述'
     hints:
       defaults:
         domain: '申请成功将不可修改,成为摄影师才可以拥有二级域名'
       event:
-        end_time: 最长两年内，不填写默认一年
-        tag: 活动类型(同城、年度、手机等等)
+        end_time: '最长两年内，不填写默认一年'
+        tag: '活动类型(同城、年度、手机等等)'
 

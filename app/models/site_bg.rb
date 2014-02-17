@@ -7,4 +7,6 @@ class SiteBg < ActiveRecord::Base
   # File.open('path/to/image.png', 'rb') { |photo_file| user.photo = photo_file }
   # user.save
   
+  validates_presence_of :photo, 
+                        message: '不能为空'
 end

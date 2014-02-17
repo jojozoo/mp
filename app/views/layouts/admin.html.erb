@@ -1,34 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>漫拍-管理页面</title>
-	<%= stylesheet_link_tag    "admin", :media => "all" %>
-	<%= javascript_include_tag "admin" %>
-	<%= csrf_meta_tags %>
-	<link rel="shortcut icon" href="/favicon.ico">
-	<!--[if lte IE 8]>
-	<link rel="stylesheet" href="/ie/ie.css" />
-	<![endif]-->
+<html lang="en">
+	<head>
+		<head>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>漫拍-管理页面</title>
+		<%= stylesheet_link_tag "admin", :media => nil %>
+		<%= javascript_include_tag "admin" %>
+		<%= csrf_meta_tags %>
+		<link rel="shortcut icon" href="/favicon.ico">
+	</head>
+	<body class="full_width menu_hover">
+		<%= render 'admin/shared/style_switcher' %>
 
-	<!--[if lt IE 9]>
-	<script src="/ie/html5.js"></script>
-	<script src="/ie/respond.min.js"></script>
-	<script src="/ie/excanvas.js"></script>
-	<![endif]-->
-</head>
-<body>
-	<%= render 'admin/shared/nav' %>
-	<div class="container">
-		<div class="row">
-			<%= render 'admin/shared/left_bar' %>
-			<div class="col-md-10">
-				<div class="alert alert-warning alert-dismissable">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> <strong></strong>欢迎管理员登录.
+		<div id="maincontainer" class="clearfix">
+			<header>
+				<%= render 'admin/shared/nav' %>
+				<%= render 'admin/shared/modal' %>
+			</header>
+
+			<div id="contentwrapper">
+				<div class="main_content">
+					<%= render 'admin/shared/breadcrumb' %>
+					<%= yield %>
 				</div>
-				<%= render 'admin/shared/breadcrumb' %>
-				<%= yield %>
 			</div>
+			<%= render 'admin/shared/left_bar' %>
 		</div>
-	</div>
-</body>
+	</body>
 </html>
