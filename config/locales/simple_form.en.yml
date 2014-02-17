@@ -66,6 +66,11 @@ en:
         from: 来源
         start_time: 开始
         end_time: 结束
+      send:
+        title: '通知标题'
+        content: '通知内容'
+        tag: '通知类型'
+        target: '通知人群'
     hints:
       defaults:
         domain: '申请成功将不可修改,成为摄影师才可以拥有二级域名'

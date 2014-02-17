@@ -3,7 +3,7 @@
     <div class="form-group file optional site_bg_photo">
         <%= f.label :photo %>
         <div class="col-sm-6 input-text-add">
-            <%= image_tag(@bg.photo.path.gsub(/.+public/, ""), style: 'height:80px;margin-bottom:10px;') unless @bg.new_record? %>
+            <%= image_tag(@bg.photo.url, style: 'height:80px;margin-bottom:10px;') unless @bg.new_record? %>
             <%= f.input_field :photo %>
         </div>
     </div>

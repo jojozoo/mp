@@ -9,11 +9,7 @@
 	<ul>
 		<% Image.limit(16).each do |image| %>
 		<li class="thumbnail">
-			<% 
-				cpath = image.picture.path(:cover).gsub(/.+public/, "")
-				opath = image.picture.path(:big).gsub(/.+public/, "")
-			 %>
-			<%= link_to image_tag(cpath), opath %>
+			<%= link_to image_tag(image.picture.url(:cover)), image.picture.url(:big) %>
 			<p>
 				<span>
 					<%= (image.picture_file_size / 1024.0).round(2) %> kb

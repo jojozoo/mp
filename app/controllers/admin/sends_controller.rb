@@ -1,4 +1,4 @@
-class Sendmin::SendsController < Admin::ApplicationController
+class Admin::SendsController < Admin::ApplicationController
     def index
         @sends = Send.paginate(:page => params[:page], per_page: 20).order('id desc')
     end
@@ -18,19 +18,6 @@ class Sendmin::SendsController < Admin::ApplicationController
         else
             render action: "new"
         end
-    end
-
-    def edit
-        @send = Send.find(params[:id])
-    end
-
-    def update
-       @send = Send.find(params[:id])
-       if @send.update_attributes(params[:send])
-            redirect_to action: :show, id: @send.id, notice: '创建成功'
-       else
-            render action: "edit"
-       end
     end
 
     def destroy
