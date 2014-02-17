@@ -91,6 +91,7 @@ Mp::Application.routes.draw do
     get    '/'              => 'sessions#index'
     resources :feedbacks
     resources :banners
+    resources :bgs
     # resources :products do
     # end
   end

@@ -26,5 +26,13 @@
 			</div>
 			<%= render 'admin/shared/left_bar' %>
 		</div>
+
+	<% if flash[:notice].present? %>
+		<script type="text/javascript">
+		// <%#= f.error_notification %>
+		$.sticky("创建失败", {autoclose : false, position: "bottom-right", type: "st-info" });
+		</script>
+	<% end %>
+
 	</body>
 </html>

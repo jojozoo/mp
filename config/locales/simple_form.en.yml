@@ -50,7 +50,7 @@ en:
         desc: '活动描述'
         end_time: '结束时间'
         tag: '活动类型'
-      site_banner:
+      sbanner:
         photo: '照片'
         link: '链接'
         title: '标题'

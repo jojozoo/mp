@@ -1,0 +1,27 @@
+<%= simple_form_for @bg, url: @bg.new_record? ? admin_bgs_path : admin_bg_path(@bg), validate: true do |f| %>
+    <%= f.error_notification %>
+    <div class="form-group file optional site_bg_photo">
+        <%= f.label :photo %>
+        <div class="col-sm-6 input-text-add">
+            <%= image_tag(@bg.photo.path.gsub(/.+public/, ""), style: 'height:80px;margin-bottom:10px;') unless @bg.new_record? %>
+            <%= f.input_field :photo %>
+        </div>
+    </div>
+    <div class="form-group radio_buttons optional sbg_bg">
+        <label class="radio_buttons optional col-sm-2 control-label">性别</label>
+        <div class="col-sm-6 input-text-add">
+            <label class="radio-inline" for="sbg_bg_true">
+                <input type="radio" id="sbg_bg_true" value="true" name="sbg[bg]" <%= 'checked=""' if @bg.bg == true %>>个人背景
+            </label>
+            <label class="radio-inline" for="sbg_bg_false" style="padding-left:40px;">
+                <input type="radio" id="sbg_bg_false" value="false" name="sbg[bg]" <%= 'checked=""' if @bg.bg == false %>>登录背景
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-8 col-sm-offset-2">
+            <input type="submit" value="保存bg" class="btn btn-default">
+        </div>
+    </div>
+<% end %>

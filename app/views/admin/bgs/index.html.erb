@@ -1,0 +1,31 @@
+<div class="w-box">
+    <div class="w-box-header">
+        <div class="pull-right sort-disabled">
+            <%= link_to '新建bg', new_admin_bg_path %>
+        </div>
+    </div>
+    <div class="w-box-content">
+        <table class="table table-striped table12 table-condensed table-hover text-center">
+            <tr>
+                <th>照片</th>
+                <th>类型</th>
+                <th>状态</th>
+                <th>时间</th>
+                <th>操作</th>
+            </tr>
+        <% @bgs.each do |bg| %>
+            <tr>
+                <td><%= image_tag bg.photo.url, style: 'max-width: 80px;' %></td>
+                <td><%= bg.bg ? '个人背景' : '登录背景' %></td>
+                <td><%= bg.del ? '已删除' : '正常' %></td>
+                <td><%= bg.created_at.to_date %></td>
+                <td>
+                    <%= link_to '详细/回应', admin_bg_path(bg), class: 'btn btn-info btn-xs' %>
+                    <%= link_to '删除', 'javascript:void(0);', class: 'btn btn-danger btn-xs' %>
+                </td>
+            </tr>
+        <% end %>
+        </table>
+    </div>
+    <%= will_paginate @bgs %>
+</div>

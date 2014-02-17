@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140208085730) do
+ActiveRecord::Schema.define(:version => 20140208085731) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -162,6 +162,30 @@ ActiveRecord::Schema.define(:version => 20140208085730) do
     t.datetime "updated_at",                      :null => false
   end
 
+  create_table "sbanners", :force => true do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "link",               :default => "javascript:void(0);"
+    t.string   "title"
+    t.string   "desc"
+    t.boolean  "del",                :default => false
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
+  end
+
+  create_table "sbgs", :force => true do |t|
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "bg",                 :default => "1"
+    t.boolean  "del",                :default => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
+  end
+
   create_table "sends", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -169,20 +193,6 @@ ActiveRecord::Schema.define(:version => 20140208085730) do
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
-  end
-
-  create_table "site_bgs", :force => true do |t|
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.string   "link"
-    t.string   "title"
-    t.string   "desc"
-    t.string   "type"
-    t.boolean  "del",                :default => false
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
   end
 
   create_table "tags", :force => true do |t|

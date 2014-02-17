@@ -17,7 +17,7 @@
             </tr>
         <% @banners.each do |banner| %>
             <tr>
-                <td><%= image_tag banner.photo.url %></td>
+                <td><%= image_tag banner.photo.url, style: 'max-width: 80px;' %></td>
                 <td><%= link_to banner.link, banner.link, target: '_blank' %></td>
                 <td><%= truncate(banner.title, length: 10) %></td>
                 <td><%= truncate(banner.desc, length: 10) %></td>
@@ -25,7 +25,7 @@
                 <td><%= banner.created_at.to_date %></td>
                 <td>
                     <%= link_to '详细/回应', admin_banner_path(banner), class: 'btn btn-info btn-xs' %>
-                    <%= link_to '删除', 'javascript:void(0);', class: 'btn btn-danger btn-xs' %>
+                    <%= link_to '删除', admin_banner_path(banner), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>
                 </td>
             </tr>
         <% end %>
