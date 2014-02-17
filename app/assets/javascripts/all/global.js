@@ -8,7 +8,9 @@ $(function(){
 
     // 全局 modal
     $(".custom-modal").on('click', function(){
-        $('#custom-modal').modal('show');
+        $('#custom-modal').modal('show').on('shown.bs.modal', function(){
+            $(this).find('input:visible:first').focus().end().find('form').enableClientSideValidations();
+        });
     });
 
     // 生日
