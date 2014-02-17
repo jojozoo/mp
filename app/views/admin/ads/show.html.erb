@@ -34,26 +34,56 @@
                             <div class="vcard-item"><%= Ad::ADSHOW[@ad.s] || '其他' %></div>
                         </li>
                         <li class="v-heading">
+                            创建投放
+                        </li>
+                        <li>
+                            <%= simple_form_for Putin.new, url: putin_admin_ad_path(@ad), validate: true do |f| %>
+                                <%= f.input :from %>
+                                <%= f.input :start_time, as: :datepicker %>
+                                <%= f.input :end_time, as: :datepicker %>
+                                <div class="form-group">
+                                    <div class="col-sm-8 col-sm-offset-2">
+                                    <input type="submit" value="保存投放" class="btn btn-default">
+                                    </div>
+                                </div>
+                            <% end %>
+
+                        </li>
+                        <li class="v-heading">
                             全部投放
                         </li>
                         <li>
                             <table class="table table-bordered table12 table-condensed table-hover">
                                 <tr>
-                                    <th>投放标识</th>
-                                    <th>点击数</th>
-                                    <th>浏览数</th>
-                                    <th>投放时间</th>
+                                    <th>来源</th>
+                                    <th>点击</th>
+                                    <th>浏览</th>
+                                    <th>开始</th>
+                                    <th>结束</th>
+                                    <th>创建于</th>
                                     <th>投放链接</th>
                                     <th>操作</th>
                                 </tr>
+                                <% @ad.putins.each do |p| %>
                                 <tr>
-                                    <td><%= @ad.f || '未知' %></td>
-                                    <td><%= @ad.c %></td>
-                                    <td><%= @ad.b %></td>
-                                    <td><%= @ad.created_at.to_s(:db) %></td>
+                                    <td><%= p.from || '未知' %></td>
+                                    <td><%= p.click %></td>
+                                    <td><%= p.browser %></td>
+                                    <td><%= p.start_time %></td>
+                                    <td><%= p.end_time %></td>
+                                    <td><%= p.created_at.to_s(:db) %></td>
                                     <td><%= 'http://shanpro.com/ad/1?f=来源' %></td>
-                                    <td><a href="javascript:void(0);">关闭</a></td>
+                                    <td>
+                                        <% unless p.state %>
+                                        <%= link_to '关闭', close_admin_ad_path(@ad, pid: p.id) %>
+                                        <% else %>
+                                        <%= link_to '打开', open_admin_ad_path(@ad, pid: p.id) %>
+                                        <% end %>
+                                        /
+                                        <%= link_to '删除', del_admin_ad_path(@ad, pid: p.id), data: {confirm: '确定删除？不可恢复操作!' } %>
+                                    </td>
                                 </tr>
+                                <% end %>
                             </table>
                         </li>
                     </ul>

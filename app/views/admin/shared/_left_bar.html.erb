@@ -15,32 +15,8 @@
 					<div class="panel-heading">
 						<%= link_to admin_ads_path, class: 'accordion-toggle' do %>
 							<i class="icon-leaf"></i>
-							广告管理
+							广告/管理
 						<% end %>
-					</div>
-				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<a href="#collapseThree" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle"> 
-							<i class="icon-bullhorn"></i>
-							系统通知
-						</a>
-					</div>
-					<div class="accordion-body collapse" id="collapseThree">
-						<div class="panel-body">
-							<ul class="nav nav-pills nav-stacked">
-								<li>
-									<a href="javascript:void(0)">全站邮件</a>
-								</li>
-								<li>
-									<a href="javascript:void(0)">全站私信</a>
-								</li>
-								<li>
-									<a href="javascript:void(0)">网站通知</a>
-								</li>
-							</ul>
-
-						</div>
 					</div>
 				</div>
 				<div class="panel panel-default">
@@ -59,6 +35,19 @@
 								</li>
 								<li>
 									<%= link_to '背景模板', admin_bgs_path %>
+								</li>
+								<li class="nav-header">系统通知</li>
+								<li>
+									<a href="javascript:void(0)">通知列表</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)">全站邮件</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)">全站私信</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)">网页通知</a>
 								</li>
 								<li class="nav-header">系统设置</li>
 								<li>

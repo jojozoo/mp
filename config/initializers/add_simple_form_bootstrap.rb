@@ -90,7 +90,7 @@ class DatepickerInput < SimpleForm::Inputs::StringInput
     input_html_options[:class].push('form-control')
     input_html_options[:readonly] ||= true
 
-    template.content_tag :div, class: 'input-group date', id: 'datepicker', data: picker do
+    template.content_tag :div, class: 'input-group date datepicker-start', data: picker do
       input = super
 
       input += template.content_tag :span, class: 'input-group-addon' do

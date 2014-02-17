@@ -95,7 +95,15 @@ Mp::Application.routes.draw do
     resources :feedbacks
     resources :banners
     resources :bgs
-    resources :ads
+    resources :ads do
+      member do
+        post :putin
+        get  :close
+        get  :open
+        get  :del
+      end
+    end
+    resources :sends
     # resources :products do
     # end
   end

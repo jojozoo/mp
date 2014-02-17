@@ -62,15 +62,19 @@ en:
         desc: 描述
         t: 类型
         s: 显示
-        b: 浏览
-        c: 点击
-        f: 来源
+      putin:
+        from: 来源
+        start_time: 开始
+        end_time: 结束
     hints:
       defaults:
         domain: '申请成功将不可修改,成为摄影师才可以拥有二级域名'
       event:
         end_time: '最长两年内，不填写默认一年'
         tag: '活动类型(同城、年度、手机等等)'
+      putin:
+        start_time: 可不选(默认一直到关闭)
+        end_time: 可不选(默认一直到关闭)
     placeholders:
       defaults:
         username: 账户

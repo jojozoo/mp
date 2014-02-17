@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140217060518) do
+ActiveRecord::Schema.define(:version => 20140217073800) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -38,9 +38,6 @@ ActiveRecord::Schema.define(:version => 20140217060518) do
     t.string   "target"
     t.integer  "t"
     t.integer  "s"
-    t.integer  "b",                  :default => 0
-    t.integer  "c",                  :default => 0
-    t.integer  "f"
     t.boolean  "del",                :default => false
     t.datetime "created_at",                            :null => false
     t.datetime "updated_at",                            :null => false
@@ -178,6 +175,19 @@ ActiveRecord::Schema.define(:version => 20140217060518) do
     t.boolean  "del",          :default => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "putins", :force => true do |t|
+    t.integer  "ad_id"
+    t.integer  "click",      :default => 0
+    t.integer  "browser",    :default => 0
+    t.string   "from",       :default => "mp"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.boolean  "state",      :default => false
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "sbanners", :force => true do |t|

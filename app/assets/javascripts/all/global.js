@@ -12,7 +12,7 @@ $(function(){
     });
 
     // 生日
-	$('#datepicker').datetimepicker({
+	$('.datepicker-start').datetimepicker({
 		linkFormat: 'yyyy-mm-dd',
 		format: 'yyyy-mm-dd',
 		language:  'zh-CN',

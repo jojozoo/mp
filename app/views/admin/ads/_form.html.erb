@@ -12,9 +12,6 @@
     <%= f.input :s, collection: Ad::ADSHOW.invert, include_blank: false %>
     <%= f.input :title %>
     <%= f.input :desc, as: :text %>
-    <%= f.input :b, as: :string, disabled: true %>
-    <%= f.input :c, as: :string, disabled: true %>
-    <%= f.input :f, as: :string %>
     <div class="form-group">
         <div class="col-sm-8 col-sm-offset-2">
             <input type="submit" value="保存ad" class="btn btn-default">

@@ -33,6 +33,34 @@ class Admin::AdsController < Admin::ApplicationController
        end
     end
 
+    def putin
+        if @ad = Ad.find(params[:id])
+           @ad.putins.create(params[:putin])
+        end
+        redirect_to action: :show, id: @ad.id, notice: '创建成功'
+    end
+
+    def close
+        if @ad = Ad.find(params[:id])
+           @ad.putins.find(params[:pid]).update_attributes(state: true)
+        end
+        redirect_to action: :show, id: @ad.id, notice: '创建成功'
+    end
+
+    def open
+        if @ad = Ad.find(params[:id])
+           @ad.putins.find(params[:pid]).update_attributes(state: false)
+        end
+        redirect_to action: :show, id: @ad.id, notice: '创建成功'
+    end
+
+    def del
+        if @ad = Ad.find(params[:id])
+           @ad.putins.find(params[:pid]).update_attributes(del: true)
+        end
+        redirect_to action: :show, id: @ad.id, notice: '创建成功'
+    end
+
     def destroy
         @ad = Ad.find(params[:id])
         @ad.update_attributes(del: true)
