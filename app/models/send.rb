@@ -12,4 +12,6 @@ class Send < ActiveRecord::Base
 
   TAG    = ['邮件','漫信','页面']
   TARGET = ['全站', '全部用户', '图库', '活动', '动态', '圈子']
+
+  scope :site, -> {where(tag: '页面')}
 end
