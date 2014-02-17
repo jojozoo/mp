@@ -3,7 +3,7 @@ class ActiveRecord::Base
   # 也可以下面方法定义 
   # singleton_class 应该代表继承者的class
   def self.default_scope
-    where(del: false).order('id desc')
+    where(del: false)#.order('id desc')
   end
 
   singleton_class.instance_eval do

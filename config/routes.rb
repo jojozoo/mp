@@ -48,14 +48,14 @@ Mp::Application.routes.draw do
     get '/' => 'sets#index'
     resources :sets, only: [:index, :update], path: 'set' do
       collection do
-        post 'avatar'
-        post 'cut'
         get  'basic'
+        post 'avatar'
         get  'avatar'
+        post 'cut'
         get  'security'
         get  'push'
-        get  'dy'
-        get  'privacy'
+        # get  'dy'
+        # get  'privacy'
         get  'bg'
         get  'others'
       end

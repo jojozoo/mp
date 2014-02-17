@@ -52,47 +52,7 @@ class User < ActiveRecord::Base
   # 授权其他网站
   has_many :accounts
   
-  PRIVACY = {
-    mobile: 0,
-    email: 0,
-    realname: 0,
-    qq: 0,
-    weibo: 0,
-    msn: 0,
-    local: 0,
-    profession: 0,
-    commendations: 0, # 赞过的
-    recommendations: 0, # 推荐的
-    collect: 0, # 收藏的
-    likes: 0, # 喜欢的
-    posts: 0,
-    groups: 0
-  }
-
-  PRIVACYI18N = {
-    mobile: '手机',
-    email: '邮箱',
-    realname: '真实姓名',
-    qq: 'QQ',
-    weibo: '微博',
-    msn: 'MSN',
-    local: '所在地',
-    profession: '职业',
-    commendations: '赞过的',
-    recommendations: '推荐的',
-    collect: '收藏的',
-    likes: '喜欢的',
-    posts: '日志',
-    groups: '圈子'
-  }
-
-  PRIVACYVAL = {
-    0 => '所有人',
-    1 => '关注+粉丝+圈子',
-    2 => '我的关注',
-    3 => '我的粉丝',
-    
-  }
+  
   validates_presence_of     :email, 
                             :message => '邮箱不能为空',
                             :if => :email_changed?
@@ -193,10 +153,8 @@ class User < ActiveRecord::Base
   ###再考虑
   # 自定义模块: 
   # 编辑器: 富文本编辑器  Markdown编辑器 (使用帮助)
-  # 黑名单:
   # friends表(user_id, friend_id, mark) has_many through 朋友关系表
   # feeds表(网站动态)
-  # ad(visit, click, title) 暂时不做
   # 站内互动: 允许回应(所有,圈子,好友,粉丝)针对活动/other,允许漫信(所有,圈子,好友,粉丝) 暂时不加
 
   # TODO 参与活动的照片也瀑布流,全部图片上传解决，相册(logo,创建等)，瀑布流也可以正常排列,列表排列
@@ -240,8 +198,6 @@ class User < ActiveRecord::Base
   # http://www.jqplot.com/
   # http://www.highcharts.com/
 
-  # 消息, 通知, 设置相关所有
-
   # recommendations推荐表
   # profiles个人信息表
   # follows关注表(user_id, follower_id, mark)
@@ -254,12 +210,8 @@ class User < ActiveRecord::Base
   # comments 针对这些资源回应(post/events/image/Dt)
 
   # tags 图片标签表(ok)
-  # like_tags(user_id, tag_id) 感兴趣的标签
   # groups圈子表(name, desc, user_id, visits_count, events_count, members_count, permission(公开 被搜索))
   # group users(user_id, group_id, auth(创建 管理 成员)) 圈子用户中间表
-  # account 第三方登陆用户表
-  # sites(type,type_id,image_id)
-  # 其余设置，尽量redis banner 登陆注册页背景图template
   # logs统计
   # 其他
 end
