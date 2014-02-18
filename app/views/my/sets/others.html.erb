@@ -1,82 +1,82 @@
 <style>
-    .sync-other li{
-        line-height: 28px;
-    }
-    .sync-tip, .sync-name{
-        min-width: 120px;
-        display: inline-block;
-    }
-    .sync-logo{
-        min-width: 20px;
-        display: inline-block;
-    }
-    .sync-other li i{
-        width: 18px;
-        height: 18px;
-        position: relative;
-        top: 3px;
-        background: url(/images/share_icon.png) 0 0 no-repeat;
-    }
-    .sync-other a:hover i.weibo{
-        background-position: -40px 0;
-    }
-    .sync-other a:hover i.qzone{
-        background-position: -40px -40px;
-    }
-    .sync-other a:hover i.qqmp{
-        background-position: -40px -80px;
-    }
-    .sync-other a:hover i.qq{
-        background-position: -40px -160px;
-    }
+	.sync-other li{
+		line-height: 28px;
+	}
+	.sync-tip, .sync-name{
+		min-width: 120px;
+		display: inline-block;
+	}
+	.sync-logo{
+		min-width: 20px;
+		display: inline-block;
+	}
+	.sync-other li i{
+		width: 18px;
+		height: 18px;
+		position: relative;
+		top: 3px;
+		background: url(/images/share_icon.png) 0 0 no-repeat;
+	}
+	.sync-other a:hover i.weibo{
+		background-position: -40px 0;
+	}
+	.sync-other a:hover i.qzone{
+		background-position: -40px -40px;
+	}
+	.sync-other a:hover i.qqmp{
+		background-position: -40px -80px;
+	}
+	.sync-other a:hover i.qq{
+		background-position: -40px -160px;
+	}
 
-    .sync-other a:hover i.douban{
-        background-position: -40px -200px;
-    }
-    .sync-other a:hover i.renren{
-        background-position: -40px -240px;
-    }
-    .sync-other i.weibo{
-        background-position: 0 0;
-    }
-    .sync-other i.qzone{
-        background-position: 0 -40px;
-    }
-    .sync-other i.qqmp{
-        background-position: 0 -80px;
-    }
-    .sync-other i.qq{
-        background-position: 0 -160px;
-    }
-    .sync-other i.douban{
-        background-position: 0 -200px;
-    }
-    .sync-other i.renren{
-        background-position: 0 -240px;
-    }
+	.sync-other a:hover i.douban{
+		background-position: -40px -200px;
+	}
+	.sync-other a:hover i.renren{
+		background-position: -40px -240px;
+	}
+	.sync-other i.weibo{
+		background-position: 0 0;
+	}
+	.sync-other i.qzone{
+		background-position: 0 -40px;
+	}
+	.sync-other i.qqmp{
+		background-position: 0 -80px;
+	}
+	.sync-other i.qq{
+		background-position: 0 -160px;
+	}
+	.sync-other i.douban{
+		background-position: 0 -200px;
+	}
+	.sync-other i.renren{
+		background-position: 0 -240px;
+	}
 </style>
 <div class="row">
-    <div class="col-md-4">
-        <h4 class="text-right">同步到其他网站：</h4>
-    </div>
-    <div class="col-md-8">
-      <ul class="sync-other list-unstyled">
-        <% 
-            accounts = current_user.accounts
-            all = {'qzone' => 'QQ空间', 'weibo' => '新浪微博', 'renren' => '人人网', 'douban' => '豆瓣网', 'qqmp' => '腾讯微博', 'qq' => '腾讯QQ'}
-         %>
-        <% ["qzone", "weibo", "renren", "douban", "qqmp", "qq"].each do |site| %>
-        <li>
-            <a href="javascript:void(0);"><i class="sync-logo <%= site %>"></i></a>
-            <span class="sync-tip"><%= accounts.map(&:site).member?(site) ? '已绑定到' : '同步到' %><%= all[site] %></span>
-            <span class="sync-name">
-                <% if row = accounts.find{|a| a.site == site} %>
-                (<%= row.name %>)
-                <% end %>
-            </span>
-            <a href="javascript:void(0);" id="sync-bind-sinaweibo" class=""><%= accounts.map(&:site).member?(site) ? '取消' : '设置' %></a>
-        </li>
-        <% end %>
-    </ul>  
-    </div>
+	<div class="col-md-4">
+		<h4 class="text-right">同步到其他网站：</h4>
+	</div>
+	<div class="col-md-8">
+	  <ul class="sync-other list-unstyled">
+		<% 
+			accounts = current_user.accounts
+			all = {'qzone' => 'QQ空间', 'weibo' => '新浪微博', 'renren' => '人人网', 'douban' => '豆瓣网', 'qqmp' => '腾讯微博', 'qq' => '腾讯QQ'}
+		 %>
+		<% ["qzone", "weibo", "renren", "douban", "qqmp", "qq"].each do |site| %>
+		<li>
+			<a href="javascript:void(0);"><i class="sync-logo <%= site %>"></i></a>
+			<span class="sync-tip"><%= accounts.map(&:site).member?(site) ? '已绑定到' : '同步到' %><%= all[site] %></span>
+			<span class="sync-name">
+				<% if row = accounts.find{|a| a.site == site} %>
+				(<%= row.name %>)
+				<% end %>
+			</span>
+			<a href="javascript:void(0);" id="sync-bind-sinaweibo" class=""><%= accounts.map(&:site).member?(site) ? '取消' : '设置' %></a>
+		</li>
+		<% end %>
+	</ul>  
+	</div>
 </div>

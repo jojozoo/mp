@@ -1,60 +1,60 @@
 <% 
   privacy = {
-    mobile: 0,
-    email: 0,
-    realname: 0,
-    qq: 0,
-    weibo: 0,
-    msn: 0,
-    local: 0,
-    profession: 0,
-    commendations: 0, # 赞过的
-    recommendations: 0, # 推荐的
-    collect: 0, # 收藏的
-    likes: 0, # 喜欢的
-    posts: 0,
-    groups: 0
+	mobile: 0,
+	email: 0,
+	realname: 0,
+	qq: 0,
+	weibo: 0,
+	msn: 0,
+	local: 0,
+	profession: 0,
+	commendations: 0, # 赞过的
+	recommendations: 0, # 推荐的
+	collect: 0, # 收藏的
+	likes: 0, # 喜欢的
+	posts: 0,
+	groups: 0
   }
 
   privacyi18n = {
-    mobile: '手机',
-    email: '邮箱',
-    realname: '真实姓名',
-    qq: 'QQ',
-    weibo: '微博',
-    msn: 'MSN',
-    local: '所在地',
-    profession: '职业',
-    commendations: '赞过的',
-    recommendations: '推荐的',
-    collect: '收藏的',
-    likes: '喜欢的',
-    posts: '日志',
-    groups: '圈子'
+	mobile: '手机',
+	email: '邮箱',
+	realname: '真实姓名',
+	qq: 'QQ',
+	weibo: '微博',
+	msn: 'MSN',
+	local: '所在地',
+	profession: '职业',
+	commendations: '赞过的',
+	recommendations: '推荐的',
+	collect: '收藏的',
+	likes: '喜欢的',
+	posts: '日志',
+	groups: '圈子'
   }
 
   privacyval = {
-    0 => '所有人',
-    1 => '关注+粉丝+圈子',
-    2 => '我的关注',
-    3 => '我的粉丝',
-    
+	0 => '所有人',
+	1 => '关注+粉丝+圈子',
+	2 => '我的关注',
+	3 => '我的粉丝',
+	
   }
 %>
 <form class="form-horizontal">
-    <% 0.upto(4) do |i| %>
-    <div class="form-group">
-        <% (i * 2 + i).upto(i * 2 + i + 2) do |index| %>
-        <% k = privacy.keys[index] %>
-        <% next unless k %>
-        <div class="col-sm-4">
-            <label class="col-sm-6 control-label <%= index %>" for="user_<%= k %>"><%= privacyi18n[k] %></label>   
-            <div class="col-sm-6 input-text-add">
-                <%= select_tag "privacy[#{k}]", options_for_select(privacyval.invert, 0), include_blank: false, class: 'form-control' %>
-            </div>
-        </div>
-        <% end %>
-    </div>
-    <% end %>
-    <input type="submit" value="保存" class="btn btn-default">
+	<% 0.upto(4) do |i| %>
+	<div class="form-group">
+		<% (i * 2 + i).upto(i * 2 + i + 2) do |index| %>
+		<% k = privacy.keys[index] %>
+		<% next unless k %>
+		<div class="col-sm-4">
+			<label class="col-sm-6 control-label <%= index %>" for="user_<%= k %>"><%= privacyi18n[k] %></label>   
+			<div class="col-sm-6 input-text-add">
+				<%= select_tag "privacy[#{k}]", options_for_select(privacyval.invert, 0), include_blank: false, class: 'form-control' %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	<% end %>
+	<input type="submit" value="保存" class="btn btn-default">
 </form>

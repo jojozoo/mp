@@ -1,12 +1,12 @@
 <div class="row">
-    <% User.where(['id != ?', current_user.id]).each do |u| %>
-    <div class="col-sm-3 col-md-2">
-        <div class="thumbnail">
-            <%= link_to image_tag(u.avatar(:small), style: 'width:100px;height:100px;'), new_my_msg_path(to: u.id), class: 'write-mail' %>
-            <div class="caption text-center">
-                <%= link_to u.username, user_path(u) %>
-            </div>
-        </div>
-    </div>
-    <% end %>
+	<% User.where(['id != ?', current_user.id]).each do |u| %>
+	<div class="col-sm-3 col-md-2">
+		<div class="thumbnail">
+			<%= link_to image_tag(u.avatar(:small), style: 'width:100px;height:100px;'), new_my_msg_path(to: u.id), class: 'write-mail' %>
+			<div class="caption text-center">
+				<%= link_to u.username, user_path(u) %>
+			</div>
+		</div>
+	</div>
+	<% end %>
 </div>

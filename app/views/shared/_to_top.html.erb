@@ -3,18 +3,18 @@
 <script type="text/javascript">
 $(function(){
   $(window).scroll(function () {
-        // if($.browser.msie && $.browser.version == '6.0'){
-        //   $('#toTop').css('top', $(this).scrollTop() + $(this).height() - 170);
-        // }
-        if($(window).scrollTop()=="0") {
-            $("#toTop").fadeOut();
-        }else {
-            $("#toTop").fadeIn();
-        }
-    });
-    $("#toTop").on("click", function(){
-        $("html,body").animate({scrollTop:0},300);
-        return false;
-    });
+		// if($.browser.msie && $.browser.version == '6.0'){
+		//   $('#toTop').css('top', $(this).scrollTop() + $(this).height() - 170);
+		// }
+		if($(window).scrollTop()=="0") {
+			$("#toTop").fadeOut();
+		}else {
+			$("#toTop").fadeIn();
+		}
+	});
+	$("#toTop").on("click", function(){
+		$("html,body").animate({scrollTop:0},300);
+		return false;
+	});
 });
 </script>

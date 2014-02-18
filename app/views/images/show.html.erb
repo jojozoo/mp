@@ -1,188 +1,188 @@
 <div class="row">
-    <div class="col-md-9">
-        <div class="white-col-md">
-            <div class="page-header">
-                <h3>
-                    这是活动标题
-                    <div class="pull-right">
-                        <a href="" class="btn btn-default btn-xs">
-                            <i class="icon-arrow-left"></i>
-                            上一张
-                        </a>
-                        <a href="" class="btn btn-default btn-xs">
-                            下一张
-                            <i class="icon-arrow-right"></i>
-                        </a>
-                    </div>
-                </h3>
-                
-            </div>
-            <div class="pic">
-                <%= link_to image_tag(@obj.picture(:big), style: 'max-width:100%;') %>
-                <!-- <a href=""><img src="/images/photo.jpg"></a> -->
-                <%= render "/shared/actions" if sign_in? %>
-            </div>
-            <hr>
-            <div class="position">
-                <span class="opt-b">
-                    <i class="icon-user"></i>
-                    作者：<a href="">朱晓武</a>
-                </span>
-                <span class="opt-b">
-                    <i class="icon-heart"></i>
-                    <a href="/" title="点赞">喜欢(10)</a>
-                </span>
-                <span class="opt-b">
-                    <i class="icon-thumbs-up"></i>
-                    <a href="/" title="喜欢">点赞(5)</a>
-                </span>
-                <span class="opt-b">
-                    <i class="icon-comment"></i>
-                    <a href="/post-standard-two/#comments">回应(2)</a>
-                </span>
-                <span class="opt-b">
-                    <i class="icon-tags"></i>
-                    <a href="/" title="每日一拍">每日一拍</a>
-                    ,
-                    <a href="/" title="同城活动">同城活动</a>
-                </span>
-                <span class="opt-b">
-                    <i class="icon-time"></i>
-                    <%= @obj.created_at.to_s(:db) %>
-                </span>
-            </div>
-            <hr>
-            <pre style="font-size: 14px;border: 0;background: #fff;padding: 0;"><code><%= @obj.desc.blank? ? '暂无描述' : @obj.desc %></code></pre>
-            <hr>
-            <div class="respond">
-                <h5>回应: 朱晓武</h5>
-                <form role="form">
-                    <textarea class="form-control" rows="3"></textarea>
-                    <input type="submit" class="btn btn-default pull-right" value="提交">
-                </form>
-                <div class="clearfix"></div>
-            </div>
-            <hr>
-            <div class="comments">
-                <h5>所有回应</h5>
-                <ul class="media-list">
-                    <li class="media">
-                        <a class="pull-left" href="#">
-                            <img class="img-circle avatar" src="/images/defaults/users.jpg">
-                        </a>
-                        <div class="media-body">
-                            <div class="media-heading">
-                                <a href="">朱晓武</a>
-                                <span class="date">2013-08-19 10:37</span>
-                                <a class="reply-link pull-right" href="/">回应TA</a>
-                            </div>
-                            <p class="reply-content">这个图片真得很漂亮唉</p>
-                            <ul class="media-list">
-                                <li class="media">
-                                    <a class="pull-left" href="#">
-                                        <img class="img-circle avatar" src="/images/defaults/users.jpg">
-                                    </a>
-                                    <div class="media-body">
-                                        <div class="media-heading">
-                                            <a href="">朱晓武</a>
-                                            <span class="date">2013-08-19 10:37</span>
-                                            <a class="reply-link pull-right" href="/">回应TA</a>
-                                        </div>
-                                        <p class="reply-content">这个图片真得很漂亮唉</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="media">
-                        <a class="pull-left" href="#">
-                            <img class="img-circle avatar" src="/images/defaults/users.jpg">
-                        </a>
-                        <div class="media-body">
-                            <div class="media-heading">
-                                <a href="">朱晓武</a>
-                                <span class="date">2013-08-19 10:37</span>
-                                <a class="reply-link pull-right" href="/">回应TA</a>
-                            </div>
-                            <p>这个图片真得很漂亮唉这个图片真得很漂亮唉这个图片真得很漂亮唉这个图片真得很漂亮唉这个图片真得很漂亮唉这个图片真得很漂亮唉这个图片真得很漂亮唉</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="radbox">
-            <div class="box_top">
-                <span class="title light">每日重点</span>
-                <a href="" class="pull-right">更多</a>
-            </div>
-            <div class="box_con">
-                <ul class="list-unstyled">
-                    <li><a href="/">Ruby</a></li>
-                    <li><a href="/">Mysql</a></li>
-                    <li><a href="/">MongoDB</a></li>
-                    <li><a href="/">JavaScript</a></li>
-                    <li><a href="/">JQuery</a></li>
-                    <li><a href="/">Phonegap</a></li>
-                    <li><a href="/">Titanium</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="radbox">
-            <div class="box_top">
-                <span class="title light">新注用户</span>
-            </div>
-            <div class="box_con">
-                <ul class="media-list">
-                    <% 5.times do %>
-                    <li class="media">
-                        <a class="pull-left" href="#">
-                            <img class="img-circle avatar" src="/images/defaults/users.jpg">
-                        </a>
-                        <div class="media-body">
-                            <div class="media-body">
-                                <div class="media-heading">
-                                    <a href="">朱晓武</a>
-                                </div>
-                                <span class="date">2013-08-19 10:37</span>
-                            </div>
-                        </div>
-                    </li>
-                    <% end %>
-                </ul>
-            </div>
-        </div>
-        <div class="radbox">
-            <div class="box_top">
-                <span class="title light">网站标签</span>
-            </div>
-            <div class="box_con">
-                <% ["胶片", "奥林巴斯", "宾得", "索尼", "尼康", "佳能", "徕卡", "卡片机", "120", "数码", "手机", "iphone", "大光圈", "广角", "中画幅", "纪实", "风光", "人文", "人像", "公益", "一条路", "大海", "自拍", "静物", "旅行", "校园", "民俗", "自然", "儿童", "植物", "建筑", "生活", "城市", "光影", "西湖", "女生", "街拍", "彩色", "小品", "黑白", "印象", "现场", "创意", "复古", "小清新", "日系", "lomo", "观念", "微距", "抓拍", "长曝光", "HDR", "逆光", "情绪", "艺术"].each do |row| %>
-                <a href="/?tag=Ruby" class="tag"><%= row %></a>
-                <% end %>
-            </div>
-        </div>
-    </div>
+	<div class="col-md-9">
+		<div class="white-col-md">
+			<div class="page-header">
+				<h3>
+					这是活动标题
+					<div class="pull-right">
+						<a href="" class="btn btn-default btn-xs">
+							<i class="icon-arrow-left"></i>
+							上一张
+						</a>
+						<a href="" class="btn btn-default btn-xs">
+							下一张
+							<i class="icon-arrow-right"></i>
+						</a>
+					</div>
+				</h3>
+				
+			</div>
+			<div class="pic">
+				<%= link_to image_tag(@obj.picture(:big), style: 'max-width:100%;') %>
+				<!-- <a href=""><img src="/images/photo.jpg"></a> -->
+				<%= render "/shared/actions" if sign_in? %>
+			</div>
+			<hr>
+			<div class="position">
+				<span class="opt-b">
+					<i class="icon-user"></i>
+					作者：<a href="">朱晓武</a>
+				</span>
+				<span class="opt-b">
+					<i class="icon-heart"></i>
+					<a href="/" title="点赞">喜欢(10)</a>
+				</span>
+				<span class="opt-b">
+					<i class="icon-thumbs-up"></i>
+					<a href="/" title="喜欢">点赞(5)</a>
+				</span>
+				<span class="opt-b">
+					<i class="icon-comment"></i>
+					<a href="/post-standard-two/#comments">回应(2)</a>
+				</span>
+				<span class="opt-b">
+					<i class="icon-tags"></i>
+					<a href="/" title="每日一拍">每日一拍</a>
+					,
+					<a href="/" title="同城活动">同城活动</a>
+				</span>
+				<span class="opt-b">
+					<i class="icon-time"></i>
+					<%= @obj.created_at.to_s(:db) %>
+				</span>
+			</div>
+			<hr>
+			<pre style="font-size: 14px;border: 0;background: #fff;padding: 0;"><code><%= @obj.desc.blank? ? '暂无描述' : @obj.desc %></code></pre>
+			<hr>
+			<div class="respond">
+				<h5>回应: 朱晓武</h5>
+				<form role="form">
+					<textarea class="form-control" rows="3"></textarea>
+					<input type="submit" class="btn btn-default pull-right" value="提交">
+				</form>
+				<div class="clearfix"></div>
+			</div>
+			<hr>
+			<div class="comments">
+				<h5>所有回应</h5>
+				<ul class="media-list">
+					<li class="media">
+						<a class="pull-left" href="#">
+							<img class="img-circle avatar" src="/images/defaults/users.jpg">
+						</a>
+						<div class="media-body">
+							<div class="media-heading">
+								<a href="">朱晓武</a>
+								<span class="date">2013-08-19 10:37</span>
+								<a class="reply-link pull-right" href="/">回应TA</a>
+							</div>
+							<p class="reply-content">这个图片真得很漂亮唉</p>
+							<ul class="media-list">
+								<li class="media">
+									<a class="pull-left" href="#">
+										<img class="img-circle avatar" src="/images/defaults/users.jpg">
+									</a>
+									<div class="media-body">
+										<div class="media-heading">
+											<a href="">朱晓武</a>
+											<span class="date">2013-08-19 10:37</span>
+											<a class="reply-link pull-right" href="/">回应TA</a>
+										</div>
+										<p class="reply-content">这个图片真得很漂亮唉</p>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</li>
+					<li class="media">
+						<a class="pull-left" href="#">
+							<img class="img-circle avatar" src="/images/defaults/users.jpg">
+						</a>
+						<div class="media-body">
+							<div class="media-heading">
+								<a href="">朱晓武</a>
+								<span class="date">2013-08-19 10:37</span>
+								<a class="reply-link pull-right" href="/">回应TA</a>
+							</div>
+							<p>这个图片真得很漂亮唉这个图片真得很漂亮唉这个图片真得很漂亮唉这个图片真得很漂亮唉这个图片真得很漂亮唉这个图片真得很漂亮唉这个图片真得很漂亮唉</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="radbox">
+			<div class="box_top">
+				<span class="title light">每日重点</span>
+				<a href="" class="pull-right">更多</a>
+			</div>
+			<div class="box_con">
+				<ul class="list-unstyled">
+					<li><a href="/">Ruby</a></li>
+					<li><a href="/">Mysql</a></li>
+					<li><a href="/">MongoDB</a></li>
+					<li><a href="/">JavaScript</a></li>
+					<li><a href="/">JQuery</a></li>
+					<li><a href="/">Phonegap</a></li>
+					<li><a href="/">Titanium</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="radbox">
+			<div class="box_top">
+				<span class="title light">新注用户</span>
+			</div>
+			<div class="box_con">
+				<ul class="media-list">
+					<% 5.times do %>
+					<li class="media">
+						<a class="pull-left" href="#">
+							<img class="img-circle avatar" src="/images/defaults/users.jpg">
+						</a>
+						<div class="media-body">
+							<div class="media-body">
+								<div class="media-heading">
+									<a href="">朱晓武</a>
+								</div>
+								<span class="date">2013-08-19 10:37</span>
+							</div>
+						</div>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+		<div class="radbox">
+			<div class="box_top">
+				<span class="title light">网站标签</span>
+			</div>
+			<div class="box_con">
+				<% ["胶片", "奥林巴斯", "宾得", "索尼", "尼康", "佳能", "徕卡", "卡片机", "120", "数码", "手机", "iphone", "大光圈", "广角", "中画幅", "纪实", "风光", "人文", "人像", "公益", "一条路", "大海", "自拍", "静物", "旅行", "校园", "民俗", "自然", "儿童", "植物", "建筑", "生活", "城市", "光影", "西湖", "女生", "街拍", "彩色", "小品", "黑白", "印象", "现场", "创意", "复古", "小清新", "日系", "lomo", "观念", "微距", "抓拍", "长曝光", "HDR", "逆光", "情绪", "艺术"].each do |row| %>
+				<a href="/?tag=Ruby" class="tag"><%= row %></a>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>
 
 
 <script>
-    window._bd_share_config={
-        "common":{
-            "bdSnsKey":{},
-            "bdText":"这是分享内容",
-            "bdDesc":"这是分享摘要",
-            "bdUrl":"这是分享的url",
-            "bdPic":"分享的图片",
-            "bdMini":"1", // 下拉浮层中分享按钮的列数
-            "bdMiniList":false,
-            "bdStyle":"1",
-            "bdSize":"16"
-        },
-        "share":{
-            "bdSize":16
-        }
-    };
-    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+	window._bd_share_config={
+		"common":{
+			"bdSnsKey":{},
+			"bdText":"这是分享内容",
+			"bdDesc":"这是分享摘要",
+			"bdUrl":"这是分享的url",
+			"bdPic":"分享的图片",
+			"bdMini":"1", // 下拉浮层中分享按钮的列数
+			"bdMiniList":false,
+			"bdStyle":"1",
+			"bdSize":"16"
+		},
+		"share":{
+			"bdSize":16
+		}
+	};
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>

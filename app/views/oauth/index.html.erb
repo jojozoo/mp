@@ -1,49 +1,49 @@
 <div class="oauth" style="margin-top:160px;background:#fff;padding:10px;">
-    <div class="page-header">
-        <h3> <i class="icon-email"></i>
-            授权来自 
-            <small>
-                <a href="javascript:void(0);" class="<%= @account.site %> login-button" style='position: relative;top: -10px;display:inline-block;'>微博</a>
-                <%= @oauthsite[@account.site] %>
-            </small>
-        </h3>
-    </div>
-    <% 
-        other = JSON.parse(@account.other)
-        name  = other.delete('name')
-        @user = User.new(username: name)
-    %>
-    <div class="row">
-        <div class="col-md-6">
-            <%= form_for @user, url: '/sign_up', validate: true do |f| %>
-                <h4>注册漫拍网，分享精致图片</h4>
-                <hr>
-                <div class="form-group text-center">
-                    <a href="javascript:void(0);"><%= name %></a>
-                    <img src="<%= other['avatar'] %>" alt="<%= name %>" style="max-width:100px;">
-                </div>
-                <div class="form-group">
-                    <%= f.text_field :username, class: 'form-control', placeholder: '汉字/字母/数字/下划线组成' %>
-                </div>
-                <div class="form-group">
-                    <%= f.email_field :email, class: 'form-control', placeholder: '5-32位长度的邮箱地址' %>
-                </div>
-                <div class="form-group">
-                    <%= f.password_field :password, class: 'form-control', placeholder: '密码' %>
-                </div>
-                <div class="form-group">
-                    <%= f.password_field :password_confirmation, class: 'form-control', placeholder: '重复密码' %>
-                </div>
-                <input type="hidden" value='<%= params[:id] %>' name='a_id'>
-                <input type="hidden" value='<%= other.delete('avatar') %>' name='avatar'>
-                <input type="hidden" value='<%= other.delete('uid') %>' name='uid'>
-                <% other.each do |key, val| %>
-                    <% next if val.is_a?(Hash) %>
-                    <input type="hidden" value='<%= val %>' name='user[<%= key %>]'>
-                <% end %>
-                <input type="submit" value="注册为漫拍账户" class="btn btn-info">
-            <% end %>
-        </div>
-    </div>
-    
+	<div class="page-header">
+		<h3> <i class="icon-email"></i>
+			授权来自 
+			<small>
+				<a href="javascript:void(0);" class="<%= @account.site %> login-button" style='position: relative;top: -10px;display:inline-block;'>微博</a>
+				<%= @oauthsite[@account.site] %>
+			</small>
+		</h3>
+	</div>
+	<% 
+		other = JSON.parse(@account.other)
+		name  = other.delete('name')
+		@user = User.new(username: name)
+	%>
+	<div class="row">
+		<div class="col-md-6">
+			<%= form_for @user, url: '/sign_up', validate: true do |f| %>
+				<h4>注册漫拍网，分享精致图片</h4>
+				<hr>
+				<div class="form-group text-center">
+					<a href="javascript:void(0);"><%= name %></a>
+					<img src="<%= other['avatar'] %>" alt="<%= name %>" style="max-width:100px;">
+				</div>
+				<div class="form-group">
+					<%= f.text_field :username, class: 'form-control', placeholder: '汉字/字母/数字/下划线组成' %>
+				</div>
+				<div class="form-group">
+					<%= f.email_field :email, class: 'form-control', placeholder: '5-32位长度的邮箱地址' %>
+				</div>
+				<div class="form-group">
+					<%= f.password_field :password, class: 'form-control', placeholder: '密码' %>
+				</div>
+				<div class="form-group">
+					<%= f.password_field :password_confirmation, class: 'form-control', placeholder: '重复密码' %>
+				</div>
+				<input type="hidden" value='<%= params[:id] %>' name='a_id'>
+				<input type="hidden" value='<%= other.delete('avatar') %>' name='avatar'>
+				<input type="hidden" value='<%= other.delete('uid') %>' name='uid'>
+				<% other.each do |key, val| %>
+					<% next if val.is_a?(Hash) %>
+					<input type="hidden" value='<%= val %>' name='user[<%= key %>]'>
+				<% end %>
+				<input type="submit" value="注册为漫拍账户" class="btn btn-info">
+			<% end %>
+		</div>
+	</div>
+	
 </div>

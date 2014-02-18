@@ -1,36 +1,36 @@
 <div class="forgot_password" style="margin-top:160px;background:#fff;padding:10px;">
-    <div class="page-header">
-        <h3> <i class="icon-email"></i>
-            找回密码
-        </h3>
-    </div>
-    <%= form_tag '/forgot_password', method: :post, class: 'form-inline' %>
-        <div class="form-group <%= 'has-error' if @error %>">
-            <label class="sr-only" for="login">账户</label>
-            <input type="text" id="login" name="login" class="form-control" placeholder="请输入账号/邮箱/手机" style="width:300px;" value="<%= params[:login] %>">
-            <p class="help-block"><%= @error %></p>
-        </div>
-        <div class="form-group">
-            <input type="submit" id="submit-push-forgot" class="btn btn-info" value="找回密码">
-        </div>
-    <%# end %>
-    </form>
+	<div class="page-header">
+		<h3> <i class="icon-email"></i>
+			找回密码
+		</h3>
+	</div>
+	<%= form_tag '/forgot_password', method: :post, class: 'form-inline' %>
+		<div class="form-group <%= 'has-error' if @error %>">
+			<label class="sr-only" for="login">账户</label>
+			<input type="text" id="login" name="login" class="form-control" placeholder="请输入账号/邮箱/手机" style="width:300px;" value="<%= params[:login] %>">
+			<p class="help-block"><%= @error %></p>
+		</div>
+		<div class="form-group">
+			<input type="submit" id="submit-push-forgot" class="btn btn-info" value="找回密码">
+		</div>
+	<%# end %>
+	</form>
 </div>
 <script>
-    $(function(){
-        $("#submit-push-forgot").click(function(){
-            var login = $(this).parents("form").find("#login");
-            if(login.val().length <= 0){
-                login.parent().addClass('has-error');
-                login.next().text('账号不能为空');
-                return false
-            }
-            if(login.val().length < 5){
-                login.parent().addClass('has-error');
-                login.next().text('账号格式不正确');
-                return false
-            }
-        });
-    })
-    
+	$(function(){
+		$("#submit-push-forgot").click(function(){
+			var login = $(this).parents("form").find("#login");
+			if(login.val().length <= 0){
+				login.parent().addClass('has-error');
+				login.next().text('账号不能为空');
+				return false
+			}
+			if(login.val().length < 5){
+				login.parent().addClass('has-error');
+				login.next().text('账号格式不正确');
+				return false
+			}
+		});
+	})
+	
 </script>

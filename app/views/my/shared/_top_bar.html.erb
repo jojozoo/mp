@@ -3,34 +3,34 @@
 <% icons = nav['icons'] %>
 <% smalls = nav['smalls'] %>
 <div class="page-header">
-    <h3>
-        <i class="icon-<%= icons[action_name] || nav['icon'] %>"></i>
-        <%= nav['name'] %>
-        <small><%= smalls[action_name] || navs[request.path] || nav['small'] %></small>
-    </h3>
+	<h3>
+		<i class="icon-<%= icons[action_name] || nav['icon'] %>"></i>
+		<%= nav['name'] %>
+		<small><%= smalls[action_name] || navs[request.path] || nav['small'] %></small>
+	</h3>
 </div>
 <% if navs.present? %>
-    <ul class="nav nav-tabs">
-        <% navs.each do |key, value| %>
-            <% if value.is_a?(Hash) %>
-                <li class="dropdown <%= 'active' if value.keys.member?(request.path) %>">
-                    <a href="javascript:void(0);">
-                        <%= value[request.path] || value.values[0] %>
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <% value.each do |k, v| %>
-                            <li>
-                                <%= link_to v, k %>
-                            </li>
-                        <% end %>
-                    </ul>
-                </li>
-            <% else %>
-                <li class="<%= 'active' if request.path.eql?(key) %>">
-                    <%= link_to value, key %>
-                </li>
-            <% end %>
-        <% end %>
-    </ul>
+	<ul class="nav nav-tabs">
+		<% navs.each do |key, value| %>
+			<% if value.is_a?(Hash) %>
+				<li class="dropdown <%= 'active' if value.keys.member?(request.path) %>">
+					<a href="javascript:void(0);">
+						<%= value[request.path] || value.values[0] %>
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						<% value.each do |k, v| %>
+							<li>
+								<%= link_to v, k %>
+							</li>
+						<% end %>
+					</ul>
+				</li>
+			<% else %>
+				<li class="<%= 'active' if request.path.eql?(key) %>">
+					<%= link_to value, key %>
+				</li>
+			<% end %>
+		<% end %>
+	</ul>
 <% end %>

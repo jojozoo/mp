@@ -1,43 +1,43 @@
 <div class="w-box">
-    <div class="w-box-header">
-        <div class="pull-right sort-disabled">
-            <div class="pull-right sort-disabled">
-                <input name="name" class="input-medium form-control" placeholder="搜索" type="text">
-            </div>
-        </div>
-    </div>
-    <div class="w-box-content">
-        <table class="table table-striped table12 table-condensed table-hover text-center">
-            <tr>
-                <th>ID</th>
-                <th>头像</th>
-                <th>邮箱</th>
-                <th>帐号</th>
-                <th>性别</th>
-                <th>授权</th>
-                <th>管理</th>
-                <th>角色</th>
-                <th>创建时间</th>
-                <th>操作</th>
-            </tr>
-        <% @users.each do |user| %>
-            <tr>
-                <td><%= user.id %></td>
-                <td><%= image_tag user.avatar(:s50), style: 'max-width: 80px;' %></td>
-                <td><%= user.email    %></td>
-                <td><%= user.username %></td>
-                <td><%= {nil: '未知', true: '男', false: '女'}[user.gender] %></td>
-                <td><%= $warrantval[user.warrant] || '未知' %></td>
-                <td><%= user.admin ? '管理员' : '否' %></td>
-                <td><%= user.photographer ? '摄影师' : '否' %></td>
-                <td><%= user.created_at.to_date %></td>
-                <td>
-                    <%= link_to '详细', admin_user_path(user), class: 'btn btn-info btn-xs' %>
-                    <%= link_to '删除', 'javascript:void(0);', class: 'btn btn-danger btn-xs' %>
-                </td>
-            </tr>
-        <% end %>
-        </table>
-    </div>
-    <%= will_paginate @users %>
+	<div class="w-box-header">
+		<div class="pull-right sort-disabled">
+			<div class="pull-right sort-disabled">
+				<input name="name" class="input-medium form-control" placeholder="搜索" type="text">
+			</div>
+		</div>
+	</div>
+	<div class="w-box-content">
+		<table class="table table-striped table12 table-condensed table-hover text-center">
+			<tr>
+				<th>ID</th>
+				<th>头像</th>
+				<th>邮箱</th>
+				<th>帐号</th>
+				<th>性别</th>
+				<th>授权</th>
+				<th>管理</th>
+				<th>角色</th>
+				<th>创建时间</th>
+				<th>操作</th>
+			</tr>
+		<% @users.each do |user| %>
+			<tr>
+				<td><%= user.id %></td>
+				<td><%= image_tag user.avatar(:s50), style: 'max-width: 80px;' %></td>
+				<td><%= user.email	%></td>
+				<td><%= user.username %></td>
+				<td><%= {nil: '未知', true: '男', false: '女'}[user.gender] %></td>
+				<td><%= $warrantval[user.warrant] || '未知' %></td>
+				<td><%= user.admin ? '管理员' : '否' %></td>
+				<td><%= user.photographer ? '摄影师' : '否' %></td>
+				<td><%= user.created_at.to_date %></td>
+				<td>
+					<%= link_to '详细', admin_user_path(user), class: 'btn btn-info btn-xs' %>
+					<%= link_to '删除', 'javascript:void(0);', class: 'btn btn-danger btn-xs' %>
+				</td>
+			</tr>
+		<% end %>
+		</table>
+	</div>
+	<%= will_paginate @users %>
 </div>

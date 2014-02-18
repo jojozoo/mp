@@ -1,110 +1,110 @@
 <style>
-    .fadedown, .bgdown{
-        display: none;
-        position: absolute;
-        padding: 15px 10px;
-        color: white;
-    }
-    .ondown{
-        width: 200px;
-        height: 80px;
-        position: absolute;
-        cursor: pointer;
-        /*border: 1px solid #ccc;*/
-    }
-    .bgdown{
-        background: #000;
-        filter: alpha(opacity=30);
-        -moz-opacity: 0.3;
-        -kHTML-opacity: 0.3;
-        opacity: 0.3;
-    }
-    .on-left-top, .bgfade-left-top{
-        top: 0;
-        left: 0;
-    }
-    .on-right-top, .bgfade-right-top{
-        top: 0;
-        right: 0;
-    }
-    .on-left-bottom, .bgfade-left-bottom{
-        left: 0;
-        bottom: 0;
-    }
-    .on-right-bottom, .bgfade-right-bottom{
-        right: 0;
-        bottom: 0;
-    }
-    .bgfade-left-top{
-        width: 330px;
-    }
-    .bgfade-right-top{
-        width: 400px;
-    }
-    .bgfade-left-bottom{
-        width: 230px;
-    }
-    .bgfade-right-bottom{
-        width: 600px;
-        padding: 4px 10px;
-    }
+	.fadedown, .bgdown{
+		display: none;
+		position: absolute;
+		padding: 15px 10px;
+		color: white;
+	}
+	.ondown{
+		width: 200px;
+		height: 80px;
+		position: absolute;
+		cursor: pointer;
+		/*border: 1px solid #ccc;*/
+	}
+	.bgdown{
+		background: #000;
+		filter: alpha(opacity=30);
+		-moz-opacity: 0.3;
+		-kHTML-opacity: 0.3;
+		opacity: 0.3;
+	}
+	.on-left-top, .bgfade-left-top{
+		top: 0;
+		left: 0;
+	}
+	.on-right-top, .bgfade-right-top{
+		top: 0;
+		right: 0;
+	}
+	.on-left-bottom, .bgfade-left-bottom{
+		left: 0;
+		bottom: 0;
+	}
+	.on-right-bottom, .bgfade-right-bottom{
+		right: 0;
+		bottom: 0;
+	}
+	.bgfade-left-top{
+		width: 330px;
+	}
+	.bgfade-right-top{
+		width: 400px;
+	}
+	.bgfade-left-bottom{
+		width: 230px;
+	}
+	.bgfade-right-bottom{
+		width: 600px;
+		padding: 4px 10px;
+	}
 </style>
 <script>
 $(function(){
-    $(".ondown").on('mouseenter', function(){
-        $(this).find(".bgdown").css('height', $(this).find(".fadedown").outerHeight());
-        $(this).children().slideDown(300);
-    }).on('mouseleave', function(){
-        $(this).children().slideUp(300);
-    });
+	$(".ondown").on('mouseenter', function(){
+		$(this).find(".bgdown").css('height', $(this).find(".fadedown").outerHeight());
+		$(this).children().slideDown(300);
+	}).on('mouseleave', function(){
+		$(this).children().slideUp(300);
+	});
 })
 </script>
 <div class="actions">
-    <div class="ondown on-left-top">
-        <div class="bgdown bgfade-left-top"></div>
-        <div class="fadedown bgfade-left-top">
-            <p>作者:<%= @obj.user.username %></p>
-            <% if @obj.user.photographer == true %>
-                <p>个人主页:<%= @obj.user.site %></p>
-            <% end %>
-        </div>
-    </div>
-    <div class="ondown on-right-top">
-        <div class="bgdown bgfade-right-top"></div>
-        <div class="fadedown bgfade-right-top">
-            <p>
-                <%= @obj.desc.blank? ? '暂无描述' : @obj.desc %>
-            </p>
-        </div>
-    </div>
-    <div class="ondown on-left-bottom">
-        <% json = JSON.parse(@obj.exif).slice('make', 'model', 'date_time') rescue {} %>
-        <% if json.present? %>
-        <div class="bgdown bgfade-left-bottom"></div>
-        <div class="fadedown bgfade-left-bottom">
-            <p>
-                <% json.each do |k, v| %>
-                    <%= k %>：<%= v %>
-                    <br>
-                <% end %>
-            </p>
-        </div>
-        <% end %>
-    </div>
-    <div class="ondown on-right-bottom">
-        <div class="bgdown bgfade-right-bottom"></div>
-        <div class="fadedown bgfade-right-bottom">
-            <div class="bdsharebuttonbox">
-                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
-                <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
-                <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友">QQ好友</a>
-                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
-                <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a>
-                <a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博">网易微博</a>
-                <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
-                <a href="#" class="bds_kaixin001" data-cmd="kaixin001" title="分享到开心网">开心网</a>
-                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
-            </div>
-        </div>
-    </div>
+	<div class="ondown on-left-top">
+		<div class="bgdown bgfade-left-top"></div>
+		<div class="fadedown bgfade-left-top">
+			<p>作者:<%= @obj.user.username %></p>
+			<% if @obj.user.photographer == true %>
+				<p>个人主页:<%= @obj.user.site %></p>
+			<% end %>
+		</div>
+	</div>
+	<div class="ondown on-right-top">
+		<div class="bgdown bgfade-right-top"></div>
+		<div class="fadedown bgfade-right-top">
+			<p>
+				<%= @obj.desc.blank? ? '暂无描述' : @obj.desc %>
+			</p>
+		</div>
+	</div>
+	<div class="ondown on-left-bottom">
+		<% json = JSON.parse(@obj.exif).slice('make', 'model', 'date_time') rescue {} %>
+		<% if json.present? %>
+		<div class="bgdown bgfade-left-bottom"></div>
+		<div class="fadedown bgfade-left-bottom">
+			<p>
+				<% json.each do |k, v| %>
+					<%= k %>：<%= v %>
+					<br>
+				<% end %>
+			</p>
+		</div>
+		<% end %>
+	</div>
+	<div class="ondown on-right-bottom">
+		<div class="bgdown bgfade-right-bottom"></div>
+		<div class="fadedown bgfade-right-bottom">
+			<div class="bdsharebuttonbox">
+				<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a>
+				<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a>
+				<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友">QQ好友</a>
+				<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a>
+				<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网">豆瓣网</a>
+				<a href="#" class="bds_t163" data-cmd="t163" title="分享到网易微博">网易微博</a>
+				<a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a>
+				<a href="#" class="bds_kaixin001" data-cmd="kaixin001" title="分享到开心网">开心网</a>
+				<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a>
+			</div>
+		</div>
+	</div>
 </div>

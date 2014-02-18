@@ -1,17 +1,17 @@
 <%= simple_form_for @bg, url: @bg.new_record? ? admin_bgs_path : admin_bg_path(@bg), validate: true do |f| %>
-    <%= f.error_notification %>
-    <div class="form-group file optional site_bg_photo">
-        <%= f.label :photo %>
-        <div class="col-sm-6 input-text-add">
-            <%= image_tag(@bg.photo.url, style: 'height:80px;margin-bottom:10px;') unless @bg.new_record? %>
-            <%= f.input_field :photo %>
-        </div>
-    </div>
-    <%= f.input :bg, :collection => [['个人背景',true] ,['登录背景', false]], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
+	<%= f.error_notification %>
+	<div class="form-group file optional site_bg_photo">
+		<%= f.label :photo %>
+		<div class="col-sm-6 input-text-add">
+			<%= image_tag(@bg.photo.url, style: 'height:80px;margin-bottom:10px;') unless @bg.new_record? %>
+			<%= f.input_field :photo %>
+		</div>
+	</div>
+	<%= f.input :bg, :collection => [['个人背景',true] ,['登录背景', false]], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
 
-    <div class="form-group">
-        <div class="col-sm-8 col-sm-offset-2">
-            <input type="submit" value="保存bg" class="btn btn-default">
-        </div>
-    </div>
+	<div class="form-group">
+		<div class="col-sm-8 col-sm-offset-2">
+			<input type="submit" value="保存bg" class="btn btn-default">
+		</div>
+	</div>
 <% end %>

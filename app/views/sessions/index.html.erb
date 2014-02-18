@@ -1,108 +1,108 @@
 <div class="row">
-    <style type="text/css">
-    .main .breadcrumb{
-        margin-bottom: 20px;
-    }
-    .main > .row > .col-md-9 .ad > img{
-        width: 100%;
-    }
-    </style>
-    <div class="col-md-9">
-        <div class="ad">
-            <img src="/images/ad.jpg" alt="我的十大手机图片征集">
-        </div>
+	<style type="text/css">
+	.main .breadcrumb{
+		margin-bottom: 20px;
+	}
+	.main > .row > .col-md-9 .ad > img{
+		width: 100%;
+	}
+	</style>
+	<div class="col-md-9">
+		<div class="ad">
+			<img src="/images/ad.jpg" alt="我的十大手机图片征集">
+		</div>
 
-        <%= render 'shared/flexslider' %>
+		<%= render 'shared/flexslider' %>
 
-        <div class="row">
-            <% Image.limit(3).each do |image| %>
-            <div class="col-md-4">
-                <div class="thumbnail">
-                    <%= link_to image_tag(image.picture(:cover)), image_path(image), style: 'display:block', target: '_blank' %>
-                    <div class="caption">
-                        <a href="">活动1</a>
-                        <br>
-                        <a href="">更多活动1>></a>
-                    </div>
-                </div>
-            </div>
-            <% end %>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="breadcrumb">
-            <span>每日重点</span>
-        </div>
-    </div>
+		<div class="row">
+			<% Image.limit(3).each do |image| %>
+			<div class="col-md-4">
+				<div class="thumbnail">
+					<%= link_to image_tag(image.picture(:cover)), image_path(image), style: 'display:block', target: '_blank' %>
+					<div class="caption">
+						<a href="">活动1</a>
+						<br>
+						<a href="">更多活动1>></a>
+					</div>
+				</div>
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="breadcrumb">
+			<span>每日重点</span>
+		</div>
+	</div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-        <div class="breadcrumb">
-            <span>全部活动</span>
-            <div class="pull-right">
-                <a href="">年度活动</a>
-                <a href="">正在进行的活动</a>
-                <a href="">已结束的活动</a>
-                <a href="">浏览更多快拍活动>></a>
-            </div>
-        </div>
-        <div class="event-tags">
-            <% "每天最有意思的图片 快拍天气 旅行快拍 快拍它 胶片摄影大展 手机快拍 最接近现场的图片 私摄影 快拍睡宝宝 快拍心爱人 快拍我的大学 街头摄影 快拍365 快拍城市 风景摄影 肖像摄影 快拍一条路 公益快拍 获奖公告".split(" ").each do |tag| %>
-            <a href="javascript:void(0);" class="tag"><%= tag %></a>
-            <% end %>
-        </div>    
-    </div>
+	<div class="col-md-12">
+		<div class="breadcrumb">
+			<span>全部活动</span>
+			<div class="pull-right">
+				<a href="">年度活动</a>
+				<a href="">正在进行的活动</a>
+				<a href="">已结束的活动</a>
+				<a href="">浏览更多快拍活动>></a>
+			</div>
+		</div>
+		<div class="event-tags">
+			<% "每天最有意思的图片 快拍天气 旅行快拍 快拍它 胶片摄影大展 手机快拍 最接近现场的图片 私摄影 快拍睡宝宝 快拍心爱人 快拍我的大学 街头摄影 快拍365 快拍城市 风景摄影 肖像摄影 快拍一条路 公益快拍 获奖公告".split(" ").each do |tag| %>
+			<a href="javascript:void(0);" class="tag"><%= tag %></a>
+			<% end %>
+		</div>	
+	</div>
 </div>
 <div class="row">
-    <div class="col-md-9">
-        <div class="breadcrumb">
-            <span>特别推荐</span>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="breadcrumb">
-            <span>推荐摄影师</span>
-        </div>
-    </div>
+	<div class="col-md-9">
+		<div class="breadcrumb">
+			<span>特别推荐</span>
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="breadcrumb">
+			<span>推荐摄影师</span>
+		</div>
+	</div>
 </div>
 
 <div class="row">
-    <div class="col-md-12">
-        <div class="breadcrumb">
-            <span>找圈子</span>
-        </div>
-    </div>
-    
-    <div class="col-md-9">
-        
-    </div>
-    <div class="col-md-3">
-        <!-- <span>推荐话题</span>
-        <hr>
-        <ul>
-            <li>aaa</li>
-        </ul> -->
-    </div>
+	<div class="col-md-12">
+		<div class="breadcrumb">
+			<span>找圈子</span>
+		</div>
+	</div>
+	
+	<div class="col-md-9">
+		
+	</div>
+	<div class="col-md-3">
+		<!-- <span>推荐话题</span>
+		<hr>
+		<ul>
+			<li>aaa</li>
+		</ul> -->
+	</div>
 </div>
 <div class="row">
-    <div class="col-md-12">
-        <div class="breadcrumb">
-            <span>最新上传</span>
-            <div class="pull-right">
-                <a href="">每日精选</a>
-                <a href="">每日快拍之星</a>
-                <a href="">热门作品</a>
-                <a href="">浏览更多>></a>
-            </div>
-        </div>
-        <div class="new-works">
-            
-        </div>
-    </div>
+	<div class="col-md-12">
+		<div class="breadcrumb">
+			<span>最新上传</span>
+			<div class="pull-right">
+				<a href="">每日精选</a>
+				<a href="">每日快拍之星</a>
+				<a href="">热门作品</a>
+				<a href="">浏览更多>></a>
+			</div>
+		</div>
+		<div class="new-works">
+			
+		</div>
+	</div>
 </div>
 <!-- <div class="row">
-    推荐网站
-    <hr>
-    <a href="">朱晓武</a>
+	推荐网站
+	<hr>
+	<a href="">朱晓武</a>
 </div> -->
