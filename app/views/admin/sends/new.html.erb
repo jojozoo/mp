@@ -3,20 +3,7 @@
 	<%= simple_form_for @send, url: admin_sends_path, validate: true do |f| %>
 	<%= f.input :title %>
 	<%= f.input :content, as: :text %>
-	<div class="form-group radio_buttons optional send_tag">
-		<%= f.label :tag %>
-		<div class="col-sm-6 input-text-add">
-			<label class="radio-inline" for="send_tag_mail">
-				<input type="radio" id="send_tag_mail" value="邮件" name="send[tag]">邮件
-			</label>
-			<label class="radio-inline" for="send_tag_msg">
-				<input type="radio" id="send_tag_msg" value="漫信" name="send[tag]">漫信
-			</label>
-			<label class="radio-inline" for="send_tag_site">
-				<input type="radio" id="send_tag_site" value="页面" name="send[tag]" checked>页面
-			</label>
-		</div>
-	</div>
+	<%= f.input :tag, :collection => [['邮件', 'mail'] ,['漫信', 'msg'], ['页面', 'site']], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
 	<%= f.input :target, collection: Send::TARGET, include_blank: false %>
 	<div class="form-group">
 		<div class="col-sm-8 col-sm-offset-2">

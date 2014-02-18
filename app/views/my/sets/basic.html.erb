@@ -17,17 +17,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="form-group radio_buttons optional user_gender">
-		<label class="radio_buttons optional col-sm-2 control-label">性别</label>
-		<div class="col-sm-6 input-text-add">
-			<label class="radio-inline" for="user_gender_true">
-				<input type="radio" id="user_gender_true" value="true" name="user[gender]" <%= 'checked=""' if current_user.gender == true %>>男
-			</label>
-			<label class="radio-inline" for="user_gender_false">
-				<input type="radio" id="user_gender_false" value="false" name="user[gender]" <%= 'checked=""' if current_user.gender == false %>>女
-			</label>
-		</div>
-	</div>
+	<%= f.input :gender, :collection => [['男',true] ,['女', false]], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
 	<%= f.input :site %>
 	<%= f.input :domain, disabled: current_user.domain.present? %>
 	<%= f.input :profession %>

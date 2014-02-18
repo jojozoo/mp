@@ -71,6 +71,8 @@ en:
         content: '通知内容'
         tag: '通知类型'
         target: '通知人群'
+      sbg:
+        bg: '类型'
     hints:
       defaults:
         domain: '申请成功将不可修改,成为摄影师才可以拥有二级域名'
@@ -80,6 +82,8 @@ en:
       putin:
         start_time: 可不选(默认一直到关闭)
         end_time: 可不选(默认一直到关闭)
+      sbg:
+        bg: 个人背景最好小图，方便平铺
     placeholders:
       defaults:
         username: 账户

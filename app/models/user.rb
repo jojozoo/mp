@@ -118,9 +118,15 @@ class User < ActiveRecord::Base
 
   
   after_create :basic_build
+  before_save  :check_not_v_attr
 
   def basic_build
     self.albums.create(name: '默认相册', desc: '默认相册', open: 0)
+  end
+
+  def check_not_v_attr
+    # 之前有值,但还想再次改变 domain_change
+    self.domain = domain_was if domain_was.present? and domain_changed?
   end
 
   # 加密
@@ -143,15 +149,10 @@ class User < ActiveRecord::Base
   # from 注册来源
   # 修改邮箱 修改密码
   # 图片水印: 左中右(/昵称/账户/mail|第二排http://domain.xx.com)
-  # 定义模板: bg
   ###权限相关(auth)
   # 邮件提醒: 被关注,加好友,被回应,被喜欢,被点赞,圈子通过,收到漫信
   # 站内通知: 被关注,加好友,被回应,被喜欢,被点赞,圈子通过,收到漫信
-  # 站内漫信: 不接受非 圈子,粉丝,关注者的其他信息
-  
-  # 公开信息: 电话/邮箱/真实姓名/QQ/weibo/douban/msn/城市/职业
   ###再考虑
-  # 自定义模块: 
   # 编辑器: 富文本编辑器  Markdown编辑器 (使用帮助)
   # friends表(user_id, friend_id, mark) has_many through 朋友关系表
   # feeds表(网站动态)
@@ -168,15 +169,13 @@ class User < ActiveRecord::Base
   # TODO 相册添加移动功能,达到分组的效果,并且参加活动的时候可以从相册选择照片
   # TODO 系统方面 数据备份 日志切割 日志分析 进程监控
   # TODO
-  # 相册创建
   # 瀑布流加载
-  # 相册创建的问题 
   # 如果micros中的相册删除掉，就显示已删除
   # image show页面 两种方式
   # 1 活动跳转到本页         标题显示活动名称
   # 2 图库或者相册跳转到本页  显示相册名称
   # TODO /gs/1 分享图片的文字
-  # simple_form boolean bootstrap
+  # simple_form boolean bootstrap validate
   # 作品展示参考例子
   # http://www.wookmark.com/image/375537/fireworks-by-gaudibuendia-d70nozr-jpg-image-jpeg-1249-639-pixels
   # 幻灯片带底部缩略图展示插件

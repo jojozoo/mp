@@ -8,6 +8,14 @@
 		<%= javascript_include_tag "admin" %>
 		<%= csrf_meta_tags %>
 		<link rel="shortcut icon" href="/favicon.ico">
+		<!--[if lte IE 8]>
+		<link rel="stylesheet" href="/ie/ie.css" />
+		<![endif]-->
+
+		<!--[if lt IE 9]>
+		<script src="/ie/html5.js"></script>
+		<script src="/ie/respond.min.js"></script>
+		<![endif]-->
 	</head>
 	<body class="full_width menu_hover">
 		<div id="maincontainer" class="clearfix">
