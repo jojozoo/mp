@@ -40,6 +40,8 @@ class User < ActiveRecord::Base
   has_many :works
   has_many :notices
   has_many :micros
+  has_many :pushes
+  has_many :push_images
   # 收件箱 & 发件箱 名义没有发件箱
   has_many :iboxs, class_name: 'Talk', conditions: {del: false}
   # 未读
@@ -193,24 +195,20 @@ class User < ActiveRecord::Base
   # 要中文化,之后存入到数据库,方便生成图表
   # https://github.com/wvanbergen/request-log-analyzer
   # 图表分析
-  # http://www.humblesoftware.com/flotr2/
-  # http://www.jqplot.com/
   # http://www.highcharts.com/
 
-  # recommendations推荐表
-  # profiles个人信息表
+  # tuis推荐表
   # follows关注表(user_id, follower_id, mark)
   # visits(profile event image album group)最新访问表(user_id, visit_id, mark) 
-  
-  # micro 动态表
   # push 用户对图片/日志/作品等资源的各种操作 单继承表+多态表
-  
-  # topics 游记，日志表
+  # profiles个人信息表
+  # groups圈子表(name, desc, user_id, visits_count, members_count, publish(公开 被搜索))
+  # members(user_id, group_id, auth(创建 管理 成员)) 圈子用户中间表
+  # topics (user_id, group_id, title, content)日志表
   # comments 针对这些资源回应(post/events/image/Dt)
+  # micro 动态表
 
-  # tags 图片标签表(ok)
-  # groups圈子表(name, desc, user_id, visits_count, events_count, members_count, permission(公开 被搜索))
-  # group users(user_id, group_id, auth(创建 管理 成员)) 圈子用户中间表
+  # tags 图片标签表
   # logs统计
   # 其他
 end
