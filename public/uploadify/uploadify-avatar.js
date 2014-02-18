@@ -7,7 +7,6 @@ $(function(){
     uploadify_form_data['timestamp'] = Math.random();
     $field.uploadify({//配置uploadify
         'formData'  : uploadify_form_data,
-        'scriptData' : uploadify_form_data,
         'buttonText': '上传头像',  //选择按钮显示的字符
         'preventCaching' : true,
         'swf'       : '/uploadify/uploadify.swf', //swf文件的位置
