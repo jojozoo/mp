@@ -41,6 +41,8 @@ en:
         profession: '职业'
         duty: '生日'
         resume: '个人简介'
+        province: '省'
+        city: '市'
       album:
         name: '名称'
         desc: '描述'
@@ -75,7 +77,9 @@ en:
         bg: '类型'
     hints:
       defaults:
+      user:
         domain: '申请成功将不可修改,成为摄影师才可以拥有二级域名'
+        province: '直辖市只填写省即可'
       event:
         end_time: '最长两年内，不填写默认一年'
         tag: '活动类型(同城、年度、手机等等)'

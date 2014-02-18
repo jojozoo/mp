@@ -1,0 +1,174 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12">
+		<h3 class="heading">
+			基本信息-<%= @user.id %>
+			<small>
+				<%= link_to '回列表页', admin_users_path %>
+				|
+				<%= link_to '辅助编辑', edit_admin_user_path(@user) %>
+			</small>
+		</h3>
+		<style type="text/css">
+		.uhead-t{
+			font-weight: 700;
+		}
+		</style>
+		<table class="table table-bordered table-condensed table12">
+			<tr>
+				<td>
+					<span class="uhead-t">邮箱：</span>
+					<span class="uhead-c">
+						<%= @user.email %>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">帐号：</span>
+					<span class="uhead-c">
+						<%= @user.username %>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">管理：</span>
+					<span class="uhead-c">
+						<%= @user.admin ? '管理员' : '否' %>
+					</span>
+					<span>
+						<%= link_to '设为管理员', 'javascript:void(0);' %>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="uhead-t">姓名：</span>
+					<span class="uhead-c">
+						<%= @user.realname %>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">昵称：</span>
+					<span class="uhead-c">
+						<%= @user.nickname %>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">手机：</span>
+					<span class="uhead-c">
+						<%= @user.mobile %>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="uhead-t">网站：</span>
+					<span class="uhead-c">
+						<%= @user.site %>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">域名：</span>
+					<span class="uhead-c">
+						<%= @user.domain %>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">状态：</span>
+					<span class="uhead-c">
+						<%= @user.del ? '帐号关闭' : '正常' %>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="uhead-t">地点：</span>
+					<span class="uhead-c">
+						<%= @user.addr %>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">职业：</span>
+					<span class="uhead-c">
+						<%= @user.profession %>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">生日：</span>
+					<span class="uhead-c">
+						<%= @user.duty %>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="uhead-t">性别：</span>
+					<span class="uhead-c">
+						<%= {nil: '未知', true: '男', false: '女'}[@user.gender] %>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">授权：</span>
+					<span class="uhead-c">
+						<%= $warrantval[@user.warrant] || '未知' %>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">角色：</span>
+					<span class="uhead-c">
+						<%= @user.photographer ? '摄影师' : '否' %>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<span class="uhead-t">简介：</span>
+					<span class="uhead-c">
+						<%= @user.resume %>
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="uhead-t">头像：</span>
+					<span class="uhead-c">
+						<%= image_tag @user.avatar(:s50) %>
+					</span>
+					<span>
+						<a href="<%= @user.avatar.url %>" target="_blank">大图</a>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">背景：</span>
+					<span class="uhead-c">
+						<%= image_tag @user.bg, style: 'max-width: 50px;' %>
+					</span>
+					<span>
+						<a href="<%= @user.bg %>" target="_blank">大图</a>
+					</span>
+				</td>
+				<td>
+					<span class="uhead-t">背景展示方式：</span>
+					<span class="uhead-c">
+						<%= @user.repeat %>
+					</span>
+				</td>
+			</tr>
+		</table>
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<div class="vcard">
+					<ul>
+						<li class="v-heading">
+                            当前用户其他信息
+                        </li>
+						<li>
+							<div class="vcard-item" style="margin-left:0;">
+							<% ['图片', '相册', '作品', '活动', '话题', '圈子', '通知', '动态'].each do |r| %>
+								<a href="javascript:void(0);"><%= r %></a>
+							<% end %>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

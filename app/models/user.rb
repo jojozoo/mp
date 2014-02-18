@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   :gender, 
   :warrant, # 授权
   :bg,
-  :bg_repeat, 
+  :repeat, 
   :remember_me,
   :messages_count,
   :nocices_count,
@@ -160,15 +160,15 @@ class User < ActiveRecord::Base
   # feeds表(网站动态)
   # 站内互动: 允许回应(所有,圈子,好友,粉丝)针对活动/other,允许漫信(所有,圈子,好友,粉丝) 暂时不加
 
-  # TODO 参与活动的照片也瀑布流,全部图片上传解决，相册(logo,创建等)，瀑布流也可以正常排列,列表排列
+  # TODO 参与活动的图片也瀑布流,全部图片上传解决，相册(logo,创建等)，瀑布流也可以正常排列,列表排列
   # TODO 其中列表排列时后面是详细的点赞，浏览，喜欢等等乱七八糟的
   # TODO image/show 有evid,woid和currid来决定作品的浏览。 alid和currid来决定相册的浏览, else 一般浏览
-  # TODO 怎么让照片成组,这样方便成组浏览,做为活动作品的一个属性想一下: 可以在work表添加group字段来标示某组, 内容用uid和eventid+随机串
+  # TODO 怎么让图片成组,这样方便成组浏览,做为活动作品的一个属性想一下: 可以在work表添加group字段来标示某组, 内容用uid和eventid+随机串
   # TODO (如果参加某活动的所有图片都分为一组，那么不需要此字段, 直接活动where eventid group uid就可以了, 同时 相册和作品分开浏览,但原图必须跳转到一个地址)
   # TODO 没有推荐话题,按照评论多少来显示
-  # TODO 推荐摄影师按照后台推荐和照片质量
-  # TODO 添加照片类型(风光、人文、静物、广告)
-  # TODO 相册添加移动功能,达到分组的效果,并且参加活动的时候可以从相册选择照片
+  # TODO 推荐摄影师按照后台推荐和图片质量
+  # TODO 添加图片类型(风光、人文、静物、广告)
+  # TODO 相册添加移动功能,达到分组的效果,并且参加活动的时候可以从相册选择图片
   # TODO 系统方面 数据备份 日志切割 日志分析 进程监控
   # TODO
   # 瀑布流加载
@@ -197,7 +197,7 @@ class User < ActiveRecord::Base
   # 图表分析
   # http://www.highcharts.com/
 
-  # tuis推荐表
+  # tuis推荐表 推荐里面有个score来判断此图或者资源的分数, score应该是被推荐的对象
   # follows关注表(user_id, follower_id, mark)
   # visits(profile event image album group)最新访问表(user_id, visit_id, mark) 
   # push 用户对图片/日志/作品等资源的各种操作 单继承表+多态表

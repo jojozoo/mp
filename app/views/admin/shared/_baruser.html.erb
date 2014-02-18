@@ -1,0 +1,45 @@
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<%= link_to admin_users_path, class: 'accordion-toggle' do %> 
+		<i class="icon-user"></i>
+		用户管理
+		<% end %>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<%= link_to admin_images_path, class: 'accordion-toggle' do %> 
+		<i class="icon-picture"></i>
+		图库管理
+		<% end %>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<a href="#collapseFour" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+			<i class="icon-ok-circle"></i>
+			推荐
+		</a>
+	</div>
+	<div class="accordion-body collapse in" id="collapseFour">
+		<div class="panel-body">
+			<ul class="nav nav-pills nav-stacked">
+				<li class="nav-header">用户</li>
+				<li>
+					<%= link_to 'Banner', admin_banners_path %></li>
+				<li>
+					<%= link_to '背景模板', admin_bgs_path %></li>
+				<li class="nav-header">作品</li>
+				<li>
+					<%= link_to '通知列表', admin_sends_path %></li>
+				<li class="nav-header">图片</li>
+				<li>
+					<%= link_to '网站信息', '/admin/info' %></li>
+				<li>
+					<%= link_to '网站日志', '/admin/log' %></li>
+				<li class="nav-header">帖子</li>
+				<li class="nav-header">活动</li>
+			</ul>
+		</div>
+	</div>
+</div>

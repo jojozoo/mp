@@ -59,7 +59,7 @@ class Event < ActiveRecord::Base
                             
   # 作品 参与活动的作品
   has_many :works
-  # 参与活动的照片
+  # 参与活动的图片
   has_many :images, through: :work, source: :image
   # 发起活动的人
   has_one :publisher, class_name: 'User', foreign_key: :user_id

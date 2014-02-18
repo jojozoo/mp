@@ -1,0 +1,33 @@
+<%= simple_form_for @user, url: admin_user_path(@user), validate: true do |f| %>
+    <%= f.input :username %>
+    <%= f.input :email %>
+    <%= f.input :mobile %>
+    <%= f.input :realname %>
+    <%= f.input :province %>
+    <%= f.input :city %>
+    <%= f.input :gender, :collection => [['男',true] ,['女', false]], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
+    <%= f.input :site %>
+    <%= f.input :domain %>
+    <%= f.input :profession %>
+    <%= f.input :duty %>
+    <div class="form-group string optional user_warrant">
+        <label class="col-sm-2 control-label">默认版权声明</label>
+        <div class="col-sm-6 input-text-add">
+            <div>
+                <% $warrant.each do |k, v| %>
+                <div class="warrant-row">
+                    <input type="radio" id="warrant<%= k %>" name="user[warrant]" value="<%= k %>" <%= 'checked=""' if current_user.warrant.eql?(k) %>>
+                    <label for="warrant<%= k %>">
+                        <% v[:style].each do |row| %>
+                            <span class="cc-<%= row %>"></span>
+                        <% end %>
+                        <span class="cc-h"><%= v[:name] %></span>
+                    </label>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <%= f.input :resume, as: :text, input_html:{rows: 3} %>
+    <%= f.submit '保存', class: 'btn btn-default col-sm-offset-7' %>
+<% end %>

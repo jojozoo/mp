@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140217073800) do
+ActiveRecord::Schema.define(:version => 20140218051157) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(:version => 20140217073800) do
     t.datetime "updated_at",                           :null => false
   end
 
+  create_table "comments", :force => true do |t|
+    t.integer  "obj_id"
+    t.string   "obj_type"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "content"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -89,6 +100,28 @@ ActiveRecord::Schema.define(:version => 20140217073800) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "follows", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "follower_id"
+    t.string   "mark"
+    t.boolean  "del",         :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "publish",       :default => 1
+    t.integer  "topics_count",  :default => 0
+    t.integer  "members_count", :default => 0
+    t.integer  "visits_count",  :default => 0
+    t.string   "title"
+    t.text     "desc"
+    t.boolean  "del",           :default => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
   create_table "images", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -105,6 +138,15 @@ ActiveRecord::Schema.define(:version => 20140217073800) do
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
+  end
+
+  create_table "members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.integer  "auth"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "messages", :force => true do |t|
@@ -167,14 +209,24 @@ ActiveRecord::Schema.define(:version => 20140217073800) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "profiles", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "pmail"
+    t.string   "psite"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "pushes", :force => true do |t|
-    t.integer  "sourcer_id"
-    t.string   "sourcer_type"
+    t.integer  "obj_id"
+    t.string   "obj_type"
     t.string   "type"
     t.integer  "user_id"
-    t.boolean  "del",          :default => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.string   "mark"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "putins", :force => true do |t|
@@ -244,6 +296,28 @@ ActiveRecord::Schema.define(:version => 20140217073800) do
     t.datetime "updated_at",                        :null => false
   end
 
+  create_table "topics", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.string   "title"
+    t.string   "content"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "tuis", :force => true do |t|
+    t.integer  "obj_id"
+    t.string   "obj_type"
+    t.string   "type"
+    t.integer  "user_id"
+    t.integer  "score",      :default => 0
+    t.string   "mark"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "username"
@@ -264,17 +338,28 @@ ActiveRecord::Schema.define(:version => 20140217073800) do
     t.string   "profession"
     t.date     "duty"
     t.boolean  "gender"
-    t.integer  "warrant"
+    t.integer  "warrant",             :default => 5
     t.boolean  "admin",               :default => false
     t.boolean  "photographer",        :default => false
     t.integer  "talks_count",         :default => 0
     t.integer  "notices_count",       :default => 0
-    t.string   "bg",                  :default => "/images/defaults/bg.jpg"
+    t.string   "bg",                  :default => "/images/defaults/bgs.jpg"
     t.string   "repeat",              :default => "repeat"
     t.string   "remember_me"
     t.boolean  "del",                 :default => false
-    t.datetime "created_at",                                                 :null => false
-    t.datetime "updated_at",                                                 :null => false
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
+  end
+
+  create_table "visits", :force => true do |t|
+    t.integer  "obj_id"
+    t.string   "obj_type"
+    t.string   "type"
+    t.integer  "user_id"
+    t.string   "mark"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "works", :force => true do |t|

@@ -106,6 +106,8 @@ Mp::Application.routes.draw do
     resources :sends
     # resources :products do
     # end
+    resources :users, except: [:new, :create]
+    resources :images
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -4,6 +4,7 @@ class CreateTuis < ActiveRecord::Migration
       t.references :obj, polymorphic: true
       t.string :type
       t.integer :user_id
+      t.integer :score, default: 0
       t.string :mark
       t.boolean :del, default: false
 
