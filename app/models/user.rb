@@ -207,7 +207,8 @@ class User < ActiveRecord::Base
   # topics (user_id, group_id, title, content)日志表
   # comments 针对这些资源回应(post/events/image/Dt)
   # micro 动态表
-
+  # TODO 每天看世界最好的照片/影展
+  # 组图上传,上传一次为一个作品 图片不直接隶属于活动 图片不可以评论 单个作品 和组图作品才可以评论
   # tags 图片标签表
   # logs统计
   # 其他
