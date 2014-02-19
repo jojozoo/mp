@@ -17,7 +17,7 @@ class ImagesController < ApplicationController
         # sleep(1)
         send_path = "public/system/#{params[:class]}/#{params[:id]}/#{params[:style]}/#{params[:random]}.#{params[:format]}"
         if params[:class].eql?('images') and image = Image.find_by_id(params[:id])
-            send_path = image.picture.path
+            send_path = image.picture.path(params[:style])
             if params[:style].eql?('original')
                 if sign_in? and (current_user.id.eql?(image.user_id) or current_user.admin)
                     # 反着写
