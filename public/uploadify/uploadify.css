@@ -3,7 +3,57 @@ Uploadify
 Copyright (c) 2012 Reactive Apps, Ronnie Garcia
 Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
-
+/*.hihi{
+	background: #ccc;
+	width: 300px;
+	height: 163px;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	opacity: 0.6;
+}*/
+.gkimg{
+	border-right: 1px solid #ccc;
+	min-height:300px;
+	position:relative;
+}
+.gkimg .uploadify-queue{
+	width: 300px;
+	height: 50px;
+	position: absolute;
+	bottom: 0;
+}
+.gkimg .uploadify-queue > .uploadify-queue-item{
+	height: auto;
+	position: static;
+}
+/*avatar end*/
+.thumbnail{
+	position: relative;
+}
+.front-cover, .fade-left{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.remove-self, .fade-right{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.thumbnail > a.bk-img{
+	height:160px;
+	display: block;
+	background: #ccc;
+}
+.thumbnail > a > img{
+	height: 100%;
+	width: auto;
+}
+.cover-page, .cover-page:hover{
+	background: orange;
+	border-color: orange;
+}
 .uploadify {
 	position: relative;
 	margin-bottom: 1em;
@@ -33,18 +83,35 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	background-color: #D0D0D0;
 	color: #808080;
 }
-.uploadify-queue {
+/*.uploadify-queue {
 	margin-bottom: 1em;
-}
+}*/
 .uploadify-queue-item {
-	background-color: #F5F5F5;
+	/*background-color: #F5F5F5;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	font: 11px Verdana, Geneva, sans-serif;
 	margin-top: 5px;
-	max-width: 350px;
+	max-width: 300px;
+	padding: 10px;*/
+	/*one*/
+	/*width: 90%;
 	padding: 10px;
+	position: absolute;
+	top: 50px;
+	left: 12px;
+	font-size: 12px;
+	background-color: #f5f5f5;*/
+	/*two*/
+	z-index: 2;
+	width: 100%;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	font-size: 12px;
+	background-color: #f5f5f5;
+	height: 160px;
 }
 .uploadify-error {
 	background-color: #FDE5DD !important;

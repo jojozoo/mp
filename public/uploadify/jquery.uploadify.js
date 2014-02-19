@@ -121,7 +121,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					queueID         : false,              // The ID of the DOM object to use as a file queue (without the #)
 					queueSizeLimit  : 999,                // The maximum number of files that can be in the queue at one time
 					removeCompleted : true,               // Remove queue items from the queue when they are done uploading
-					removeTimeout   : 3,                  // The delay in seconds before removing a queue item if removeCompleted is set to true
+					removeTimeout   : 1,                  // The delay in seconds before removing a queue item if removeCompleted is set to true
 					requeueErrors   : false,              // Keep errored files in the queue and keep trying to upload them
 					successTimeout  : 30,                 // The number of seconds to wait for Flash to detect the server's response after the file has finished uploading
 					uploadLimit     : 0,                  // The maximum number of files you can upload
@@ -254,11 +254,12 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					
 					// Create the file queue
 					if (!settings.queueID) {
-						var $queue = $('<div />', {
-							'id'    : settings.id + '-queue',
-							'class' : 'uploadify-queue'
-						});
-						$wrapper.after($queue);
+						// var $queue = $('<div />', {
+						// 	'id'    : settings.id + '-queue',
+						// 	'class' : 'uploadify-queue'
+						// });
+						// $wrapper.after($queue);
+						var $queue = $(settings.id + '-queue');
 						swfuploadify.settings.queueID      = settings.id + '-queue';
 						swfuploadify.settings.defaultQueue = true;
 					}
@@ -279,7 +280,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 						uploadSize         : 0, // The size in bytes of the upload queue
 						queueBytesUploaded : 0, // The size in bytes that have been uploaded for the current upload queue
 						uploadQueue        : [], // The files currently to be uploaded
-						errorMsg           : 'Some files were not added to the queue:'
+						errorMsg           : '文件不能添加到队列' // 'Some files were not added to the queue:'
 					};
 
 					// Save references to all the objects
@@ -324,10 +325,14 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 							} else {
 								swfuploadify.cancelUpload($(this).attr('id'));
 							}
-							$(this).find('.data').removeClass('data').html(' - 取消上传');
+							$(this).find('.data').removeClass('data').html('取消上传');
 							$(this).find('.uploadify-progress-bar').remove();
-							$(this).delay(1000 + 100 * delay).fadeOut(500, function() {
-								$(this).remove();
+							$(this).delay(1000 + 100 * delay).fadeOut(300, function() {
+								if($(this).parents(".thumbnail").length > 0){
+									$(this).parents(".thumbnail").remove();
+								} else {
+									$(this).remove();
+								}
 							});
 						});
 						swfuploadify.queueData.queueSize   = 0;
@@ -337,10 +342,14 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					} else {
 						for (var n = 0; n < args.length; n++) {
 							swfuploadify.cancelUpload(args[n]);
-							$('#' + args[n]).find('.data').removeClass('data').html(' - 取消上传');
+							$('#' + args[n]).find('.data').removeClass('data').html('取消上传');
 							$('#' + args[n]).find('.uploadify-progress-bar').remove();
-							$('#' + args[n]).delay(1000 + 100 * n).fadeOut(500, function() {
-								$(this).remove();
+							$('#' + args[n]).delay(1000 + 100 * n).fadeOut(300, function() {
+								if($(this).parents(".thumbnail").length > 0){
+									$(this).parents(".thumbnail").remove();
+								} else {
+									$(this).remove();
+								}
 							});
 						}
 					}
@@ -348,10 +357,14 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					var item = $('#' + settings.queueID).find('.uploadify-queue-item').get(0);
 					$item = $(item);
 					swfuploadify.cancelUpload($item.attr('id'));
-					$item.find('.data').removeClass('data').html(' - Cancelled');
+					$item.find('.data').removeClass('data').html('取消上传');
 					$item.find('.uploadify-progress-bar').remove();
-					$item.delay(1000).fadeOut(500, function() {
-						$(this).remove();
+					$item.delay(1000).fadeOut(300, function() {
+						if($(this).parents(".thumbnail").length > 0){
+							$(this).parents(".thumbnail").remove();
+						} else {
+							$(this).remove();
+						}
 					});
 				}
 			});
@@ -645,12 +658,15 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 				fileName = fileName.substr(0,25) + '...';
 			}
 
+			var d      = new Date(),
+				YMDHMS = d.getFullYear() + "-" + ('0' + (d.getMonth()+1)).substr(-2,2) + "-" + d.getDate() + " " + d.getHours() + ":" + d.getMinutes() + ":" + ('0' + d.getSeconds()).substr(-2,2);
 			// Create the file data object
 			itemData = {
 				'fileID'     : file.id,
 				'instanceID' : settings.id,
 				'fileName'   : fileName,
-				'fileSize'   : fileSize
+				'fileSize'   : fileSize,
+				'YMDHMS'     : YMDHMS
 			}
 
 			// Create the file item template
@@ -765,7 +781,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 									swfuploadify.queueData.queueSize   -= file.size;
 									swfuploadify.queueData.queueLength -= 1;
 									delete swfuploadify.queueData.files[file.id]
-									$('#' + file.id).fadeOut(500, function() {
+									$('#' + file.id).fadeOut(300, function() {
 										$(this).remove();
 									});
 								}
@@ -778,7 +794,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 										swfuploadify.queueData.queueSize   -= file.size;
 										swfuploadify.queueData.queueLength -= 1;
 										delete swfuploadify.queueData.files[file.id];
-										$('#' + file.id).fadeOut(500, function() {
+										$('#' + file.id).fadeOut(300, function() {
 											$(this).remove();
 										});
 									}
@@ -963,7 +979,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 			// Call the default event handler
 			if ($.inArray('onUploadSuccess', settings.overrideEvents) < 0) {
-				$('#' + file.id).find('.data').html(' - 上传成功');
+				$('#' + file.id).find('.data').html('上传成功');
 			}
 
 			// Call the user-defined event handler

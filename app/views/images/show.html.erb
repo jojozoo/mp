@@ -23,32 +23,40 @@
 				<%= render "/shared/actions" if sign_in? %>
 			</div>
 			<hr>
-			<div class="position">
-				<span class="opt-b">
+			<ul class="list-unstyled clearfix">
+				<li class="opt-b">
 					<i class="icon-user"></i>
-					作者：<a href="">朱晓武</a>
-				</span>
-				<span class="opt-b">
+					<a href="">朱晓武</a>/<a href="">关注</a>
+				</li>
+				<li class="opt-b">
+					<i class="icon-ok-circle"></i>
+					<a href="/" title="推荐">推荐(1)</a>
+				</li>
+				<li class="opt-b">
+					<i class="icon-pushpin"></i>
+					<a href="/" title="推荐">收藏(22)</a>
+				</li>
+				<li class="opt-b">
 					<i class="icon-heart"></i>
-					<a href="/" title="点赞">喜欢(10)</a>
-				</span>
-				<span class="opt-b">
+					<a href="/" title="喜欢">喜欢(10)</a>
+				</li>
+				<li class="opt-b">
 					<i class="icon-thumbs-up"></i>
-					<a href="/" title="喜欢">点赞(5)</a>
-				</span>
-				<span class="opt-b">
+					<a href="/" title="点赞">点赞(5)</a>
+				</li>
+				<li class="opt-b">
 					<i class="icon-comment"></i>
-					<a href="/post-standard-two/#comments">回应(2)</a>
-				</span>
-				<span class="opt-b">
+					<a href="/" title="回应">回应(2)</a>
+				</li>
+				<li class="opt-b">
 					<i class="icon-flag"></i>
 					<a href="/" title="每日一拍">每日一拍</a>
-				</span>
-				<span class="opt-b">
+				</li>
+				<li class="opt-b">
 					<i class="icon-time"></i>
-					<%= @obj.created_at.to_s(:db) %>
-				</span>
-			</div>
+					<%= @obj.created_at.strftime("%m-%d %R") %>
+				</li>
+			</ul>
 			<hr>
 			<pre style="font-size: 14px;border: 0;background: #fff;padding: 0;"><code><%= @obj.desc.blank? ? '暂无描述' : @obj.desc %></code></pre>
 			<hr>

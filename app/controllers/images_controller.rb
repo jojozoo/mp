@@ -39,7 +39,7 @@ class ImagesController < ApplicationController
         @image = current_user.images.create(picture: params[:Filedata], name: params[:Filename])
         data = {
                 time: @image.created_at.to_s(:db),
-                url: @image.picture.url(:cover),
+                url: @image.picture(:cover),
                 id: @image.id
             }
         render json: data.to_json

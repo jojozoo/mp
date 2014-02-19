@@ -20,12 +20,6 @@ $(function(){
         'queueSizeLimit' : 1,//最多能选择加入的文件数量
         'fileTypeExts': '*.gif; *.jpg; *.png; *.jpeg', //允许的后缀
         'fileTypeDesc': 'Image Files', //允许的格式，详见文档
-     
-        'onSelect': function(file) {
-            // 选择文件后的触发事件
-            // console.log('selectend')
-        },
-     
         'onUploadSuccess' : function(file, data, response) {
             //上传成功后的触发事件
             // $field.uploadify('disable', true);  //(上传成功后)'disable'禁止再选择图片

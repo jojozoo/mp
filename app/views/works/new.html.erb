@@ -15,16 +15,26 @@
 			<script type="text/javascript" src="/uploadify/jquery.uploadify.js"></script>
 			<script type="text/javascript" src="/uploadify/uploadify-work.js"></script>
 			<%= form_tag '/works' %>
-				<div class="uploads row">
+				<div class="row uploadify-queue" id="upload-file-queue">
 					<% (@images || []).each do |image| %>
 					<div class="col-sm-6 col-md-3">
 						<div class="thumbnail">
-							<%= image_tag image.picture(:cover) %>
+							<a href="" class="bk-img">
+								<%= image_tag image.picture(:cover) %>
+							</a>
+							
+							<%= link_to '设为封面', "javascript:void(0);", 
+							onclick: "front_cover('#{image.id}');return false;", 
+							id: "#{image.id}-cover", 
+							class: 'btn btn-primary btn-xs front-cover' %>
+
+							<%= link_to '删除本张', "javascript:void(0);", 
+							onclick: "remove_self('#{image.id}');return false;", 
+							id: "#{image.id}-remove",
+							class: 'btn btn-danger btn-xs remove-self' %>
 							<div class="caption caption-border">
-								<%= link_to '设为封面', "#{image.id}", class: 'btn btn-default btn-xs front-cover' %>
-								<%= link_to '删除本张', image, class: 'btn btn-default btn-xs remove-self' %>
-								<textarea class="once-desc form-control" placeholder="输入图片描述" name="desc[<%= image.id %>]"></textarea>
-								<span>上传时间：2014-02-08 17:17:00</span>
+								<textarea class="once-desc" placeholder="输入图片描述" name="desc[<%= image.id %>]"></textarea>
+								<span>上传时间：<%= image.created_at.to_s(:db) %></span>
 							</div>
 						</div>
 					</div>
@@ -34,10 +44,10 @@
 				<input type="hidden" name="album" id="p-album">
 				<input type="hidden" name="event" id="p-event" value="<%= params[:eid] %>">
 				
-				<input type="file" id="upload-file">
+				<input type="file" id="upload-file" tg='work'>
 
 				<div class="row">
-					<div class="form-group form-group-album  col-md-7 col-sm-7">
+					<div class="form-group form-group-album col-md-7 col-sm-7">
 						<div class="input-group">
 							<div class="input-group-btn">
 								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
