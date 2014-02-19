@@ -22,7 +22,7 @@
 			var login = $(this).parents("form").find("#login");
 			if(login.val().length <= 0){
 				login.parent().addClass('has-error');
-				login.next().text('账号不能为空');
+				login.next().text('不能为空');
 				return false
 			}
 			if(login.val().length < 5){

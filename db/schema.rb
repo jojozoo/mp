@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.integer  "members_count",     :default => 0
     t.integer  "works_count",       :default => 0
     t.integer  "state",             :default => 0
-    t.boolean  "show",              :default => false
+    t.integer  "totop",             :default => 0
     t.boolean  "del",               :default => false
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
@@ -125,8 +125,9 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
   create_table "images", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
-    t.integer  "album_id"
     t.integer  "event_id"
+    t.integer  "work_id"
+    t.integer  "album_id"
     t.integer  "state",                :default => 0
     t.integer  "warrant"
     t.string   "picture_file_name"

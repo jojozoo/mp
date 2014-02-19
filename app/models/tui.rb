@@ -3,7 +3,4 @@ class Tui < ActiveRecord::Base
   
   belongs_to :obj, polymorphic: true
 
-  validates_uniqueness_of :user_id, 
-                          :scope => [:obj_type, :obj_id],
-                          :message => '相册已存在'
 end

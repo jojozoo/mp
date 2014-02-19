@@ -1,0 +1,38 @@
+<div class="w-box">
+	<div class="w-box-header">
+		<div class="pull-right sort-disabled">
+			<%= link_to '新建event', new_admin_event_path %>
+		</div>
+	</div>
+	<div class="w-box-content">
+		<table class="table table-striped table12 table-condensed table-hover text-center">
+			<tr>
+				<th>发起人</th>
+				<th>名称</th>
+				<th>标题</th>
+				<th>结束</th>
+				<th>参与数</th>
+				<th>作品数</th>
+				<th>状态</th>
+				<th>操作</th>
+			</tr>
+		<% @events.each do |event| %>
+			<tr>
+				<td><%= link_to event.user.username, admin_user_path(event.user), target: '_blank' %></td>
+				<td><%= truncate(event.name, length: 10) %></td>
+				<td><%= truncate(event.title, length: 10) %></td>
+				<td><%= event.end_time.to_date %></td>
+				<td><%= event.members_count %></td>
+				<td><%= event.works_count %></td>
+				<td><%= Event::STATE.merge(audit: '未审核').values[event.state] %></td>
+				<td>
+					<%= link_to '详细', admin_event_path(event), class: 'btn btn-info btn-xs' %>
+					<%= link_to '编辑', edit_admin_event_path(event), class: 'btn btn-info btn-xs' %>
+					<%= link_to '删除', admin_event_path(event), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>
+				</td>
+			</tr>
+		<% end %>
+		</table>
+	</div>
+	<%= will_paginate @events %>
+</div>

@@ -11,7 +11,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :members_count, default: 0
       t.integer :works_count, default: 0
       t.integer :state, default: 0
-      t.boolean :show, default: 0
+      t.integer :totop, default: 0
       t.boolean :del, default: false
 
       t.timestamps

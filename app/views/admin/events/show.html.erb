@@ -1,0 +1,127 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12">
+		<h3 class="heading">
+			活动-<%= @event.id %>
+			<small><%= link_to '修改', edit_admin_event_path(@event) %></small>
+		</h3>
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<div class="vcard">
+					<ul>
+						<li class="v-heading">详细信息</li>
+						<li>
+							<span class="item-key">LOGO</span>
+							<div class="vcard-item"><%= image_tag @event.logo.url, style: 'max-width: 80px;' %></div>
+						</li>
+						<li>
+							<span class="item-key">发起人</span>
+							<div class="vcard-item"><%= link_to @event.user.username, admin_user_path(@event.user) %></div>
+						</li>
+						<li>
+							<span class="item-key">活动名称</span>
+							<div class="vcard-item"><%= @event.name %></div>
+						</li>
+						<li>
+							<span class="item-key">活动标题</span>
+							<div class="vcard-item"><%= @event.title %></div>
+						</li>
+						<li>
+							<span class="item-key">活动描述</span>
+							<div class="vcard-item"><%= @event.desc %></div>
+						</li>
+						<li>
+							<span class="item-key">活动类型(可删除属性)</span>
+							<div class="vcard-item"><%= @event.tag %></div>
+						</li>
+						<li>
+							<span class="item-key">活动置顶</span>
+							<div class="vcard-item">
+								(<%= Event::TOTOP[@event.totop] %>)
+								<% case @event.totop %>
+								<% when 0 %>
+									<%= link_to '导航&首页', totop_admin_event_path(@event, val: 3) %>
+									<%= link_to '导航',     totop_admin_event_path(@event, val: 2) %>
+									<%= link_to '首页',     totop_admin_event_path(@event, val: 1) %>
+								<% when 1 %>
+									<%= link_to '导航&首页', totop_admin_event_path(@event, val: 3) %>
+									<%= link_to '导航',     totop_admin_event_path(@event, val: 2) %>
+									<%= link_to '取消',     totop_admin_event_path(@event, val: 0) %>
+								<% when 2 %>
+									<%= link_to '导航&首页', totop_admin_event_path(@event, val: 3) %>
+									<%= link_to '首页',      totop_admin_event_path(@event, val: 1) %>
+									<%= link_to '取消',      totop_admin_event_path(@event, val: 0) %>
+								<% when 3 %>
+									<%= link_to '导航',     totop_admin_event_path(@event, val: 2) %>
+									<%= link_to '首页',     totop_admin_event_path(@event, val: 1) %>
+									<%= link_to '取消',     totop_admin_event_path(@event, val: 0) %>
+								<% else %>
+									(未知错误)<%= link_to '置为取消', totop_admin_event_path(@event, val: 0) %>
+								<% end %>
+							</div>
+						</li>
+						<li>
+							<span class="item-key">活动状态</span>
+							<div class="vcard-item">
+								(<%= Event::STATE.merge(audit: '未审核').values[@event.state] %>)
+								<% case @event.state %>
+								<% when 0 %>
+									<%= link_to '通过', state_admin_event_path(@event, val: 'ongoing!') %>
+									/
+									<%= link_to '不通过', state_admin_event_path(@event, val: 'not_by!') %>
+								<% when 1 %>
+									<%= link_to '通过', state_admin_event_path(@event, val: 'ongoing!') %>
+									/
+									<%= link_to '关闭', state_admin_event_path(@event, val: 'closed!') %>
+								<% when 2 %>
+									<%= link_to '不通过', state_admin_event_path(@event, val: 'not_by!') %>
+									/
+									<%= link_to '关闭', state_admin_event_path(@event, val: 'closed!') %>
+								<% when 3 %>
+									<%= link_to '重启活动', state_admin_event_path(@event, val: 'ongoing!') %>
+								<% else %>
+									(未知错误)<%= link_to '置为关闭', state_admin_event_path(@event, val: 'closed!') %>
+								<% end %>
+							</div>
+						</li>
+						<li>
+							<span class="item-key">参与人数(<%= @event.members_count %>)</span>
+							<div class="vcard-item"><%= link_to '查看全部', 'javascript:void(0);' %></div>
+						</li>
+						<li>
+							<span class="item-key">参与作品(<%= @event.works_count %>)</span>
+							<div class="vcard-item"><%= link_to '查看全部', 'javascript:void(0);' %></div>
+						</li>
+						<li class="v-heading">
+							公告
+							<a href="">去发布</a>
+						</li>
+						<li>
+							<table class="table table-bordered table12 table-condensed table-hover">
+								<tr>
+									<th>标题</th>
+									<th>内容</th>
+									<th>发布人</th>
+									<th>创建于</th>
+									<th>操作</th>
+								</tr>
+								<% [].each do |topic| %>
+								<tr>
+									<td><%= topic.title %></td>
+									<td><%= truncate(topic.content, length: 20) %></td>
+									<td><%= topic.user.username %></td>
+									<td><%= topic.created_at.to_date %></td>
+									<td>
+										<%= link_to '详细', admin_topic_path(topic) %>
+										<%= link_to '删除', admin_topic_path(topic), data: {confirm: '确定删除？不可恢复操作!' } %>
+									</td>
+								</tr>
+								<% end %>
+							</table>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

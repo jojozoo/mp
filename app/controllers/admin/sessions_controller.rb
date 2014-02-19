@@ -16,6 +16,10 @@ class Admin::SessionsController < Admin::ApplicationController
   def log
     params[:day]
   end
+
+  def basic
+    
+  end
   
 end
 

@@ -1,6 +1,9 @@
 # require 'paperclip_processors/watermark'
 class Image < ActiveRecord::Base
-  attr_accessible :album_id, :event_id, :warrant, :state, :exif, :name, :desc, :user_id, :picture, :del
+  attr_accessible :user_id, :event_id, :work_id, :album_id, :warrant, :state, :exif, :name, :desc, :picture, :del
+  # state 状态 (上传完成: 作品/相册上传过程中跳转了,回来应该接着显示,如果不完成,那么就不显示到活动页或者相册页) 
+  # state 改变注定album_id 或event_id有值
+  # TODO state 上传过程中存在相册id或者活动id就应该为state true
   # 几种水印图, 原图无水印,原图水印,大图水印, 中图水印, 小图中间水印, 头像, 50x50无水印
   # cover 封面
   # 如果是图片后缀, 但不是图片, 那么图片会加载不起来, 要想办法统计到, 现在的方式是通过日志分析
@@ -19,7 +22,6 @@ class Image < ActiveRecord::Base
     styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.jpg", quality: :better}]}],
     path: ":rails_root/public/system/:class/:id/:style/:randomp.:extension"
 
-  has_many :works
   belongs_to :user
 
   after_picture_post_process :load_exif

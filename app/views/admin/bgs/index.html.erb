@@ -9,7 +9,6 @@
 			<tr>
 				<th>图片</th>
 				<th>类型</th>
-				<th>状态</th>
 				<th>时间</th>
 				<th>操作</th>
 			</tr>
@@ -17,7 +16,6 @@
 			<tr>
 				<td><%= image_tag bg.photo.url, style: 'max-width: 80px;' %></td>
 				<td><%= bg.bg ? '个人背景' : '登录背景' %></td>
-				<td><%= bg.del ? '已删除' : '正常' %></td>
 				<td><%= bg.created_at.to_date %></td>
 				<td>
 					<%= link_to '详细/回应', admin_bg_path(bg), class: 'btn btn-info btn-xs' %>

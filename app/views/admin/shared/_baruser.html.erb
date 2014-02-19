@@ -8,7 +8,7 @@
 </div>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<%= link_to admin_images_path, class: 'accordion-toggle' do %> 
+		<%= link_to admin_events_path, class: 'accordion-toggle' do %> 
 		<i class="icon-flag"></i>
 		活动管理
 		<% end %>
@@ -16,7 +16,7 @@
 </div>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<%= link_to admin_images_path, class: 'accordion-toggle' do %> 
+		<%= link_to admin_works_path, class: 'accordion-toggle' do %> 
 		<i class="icon-camera"></i>
 		作品管理
 		<% end %>
@@ -27,6 +27,30 @@
 		<%= link_to admin_images_path, class: 'accordion-toggle' do %> 
 		<i class="icon-picture"></i>
 		图库管理
+		<% end %>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<%= link_to admin_groups_path, class: 'accordion-toggle' do %> 
+		<i class="icon-group"></i>
+		圈子管理
+		<% end %>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<%= link_to admin_topics_path, class: 'accordion-toggle' do %> 
+		<i class="icon-comment"></i>
+		帖子管理
+		<% end %>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<%= link_to admin_topics_path, class: 'accordion-toggle' do %> 
+		<i class="icon-envelope"></i>
+		漫信管理
 		<% end %>
 	</div>
 </div>
@@ -54,6 +78,9 @@
 				</li>
 				<li>
 					<%= link_to '推荐活动', '/admin/log' %>
+				</li>
+				<li>
+					<%= link_to '推荐重点', '/admin/log' %>
 				</li>
 			</ul>
 		</div>

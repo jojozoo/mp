@@ -14,7 +14,6 @@
 				<th>类型</th>
 				<th>显示</th>
 				<th>投放</th>
-				<th>状态</th>
 				<th>操作</th>
 			</tr>
 		<% @ads.each do |ad| %>
@@ -26,7 +25,6 @@
 				<td><%= Ad::ADTYPE[ad.t] || '其他' %></td>
 				<td><%= Ad::ADSHOW[ad.s] || '其他' %></td>
 				<td><%= ad.putins.count %>个</td>
-				<td><%= ad.del ? '已删除' : '正常' %></td>
 				<td>
 					<%= link_to '详细/投放', admin_ad_path(ad), class: 'btn btn-info btn-xs' %>
 					<%= link_to '编辑', edit_admin_ad_path(ad), class: 'btn btn-info btn-xs' %>

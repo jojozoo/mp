@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   
   
   validates_presence_of     :email, 
-                            :message => '邮箱不能为空',
+                            :message => '不能为空',
                             :if => :email_changed?
 
   validates_uniqueness_of   :email, 
@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
                             :message => '邮箱格式不正确'
 
   validates_presence_of     :password,
-                            :message => '密码不能为空',
+                            :message => '不能为空',
                             :if => :password_changed?
 
   validates_length_of       :password,
@@ -79,10 +79,10 @@ class User < ActiveRecord::Base
                             :on => :create
 
   validates_presence_of     :username,
-                            :message => '用户名不能为空'
+                            :message => '不能为空'
 
   validates_uniqueness_of   :username, 
-                            :message => '用户名已存在'
+                            :message => '账户已存在'
 
   validates_format_of       :username,
                             :with => /[\u4e00-\u9fa5\w]{2,10}$/,
@@ -198,9 +198,9 @@ class User < ActiveRecord::Base
   # http://www.highcharts.com/
 
   # tuis推荐表 推荐里面有个score来判断此图或者资源的分数, score应该是被推荐的对象
+  # push 用户对图片/作品等资源的各种操作 单继承表+多态表 push 和 tui 没什么区别呢
   # follows关注表(user_id, follower_id, mark)
   # visits(profile event image album group)最新访问表(user_id, visit_id, mark) 
-  # push 用户对图片/日志/作品等资源的各种操作 单继承表+多态表
   # profiles个人信息表
   # groups圈子表(name, desc, user_id, visits_count, members_count, publish(公开 被搜索))
   # members(user_id, group_id, auth(创建 管理 成员)) 圈子用户中间表

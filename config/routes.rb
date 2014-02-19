@@ -92,6 +92,8 @@ Mp::Application.routes.draw do
     get  '/info' => 'sessions#info'
     post '/info' => 'sessions#info'
     get  '/log'  => 'sessions#log'
+    get  '/basic'  => 'sessions#basic'
+    get  '/refresh'  => 'sessions#refresh'
     resources :feedbacks
     resources :banners
     resources :bgs
@@ -108,6 +110,15 @@ Mp::Application.routes.draw do
     # end
     resources :users, except: [:new, :create]
     resources :images
+    resources :events do
+      member do
+        get :state
+        get :totop
+      end
+    end
+    resources :works
+    resources :groups
+    resources :topics
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

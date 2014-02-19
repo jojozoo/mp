@@ -11,7 +11,6 @@
 				<th>通知内容</th>
 				<th>通知类型</th>
 				<th>通知人群</th>
-				<th>状态</th>
 				<th>操作</th>
 			</tr>
 		<% @sends.each do |send| %>
@@ -20,7 +19,6 @@
 				<td><%= truncate(send.content, length: 10) %></td>
 				<td><%= send.tag %></td>
 				<td><%= send.target %></td>
-				<td><%= send.del ? '已删除' : '正常' %></td>
 				<td>
 					<%= link_to '详细', admin_send_path(send), class: 'btn btn-info btn-xs' %>
 					<%= link_to '删除', admin_send_path(send), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>

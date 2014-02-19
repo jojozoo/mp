@@ -11,7 +11,6 @@
 				<th>链接</th>
 				<th>标题</th>
 				<th>描述</th>
-				<th>状态</th>
 				<th>时间</th>
 				<th>操作</th>
 			</tr>
@@ -21,7 +20,6 @@
 				<td><%= link_to banner.link, banner.link, target: '_blank' %></td>
 				<td><%= truncate(banner.title, length: 10) %></td>
 				<td><%= truncate(banner.desc, length: 10) %></td>
-				<td><%= banner.del ? '已删除' : '正常' %></td>
 				<td><%= banner.created_at.to_date %></td>
 				<td>
 					<%= link_to '详细/回应', admin_banner_path(banner), class: 'btn btn-info btn-xs' %>
