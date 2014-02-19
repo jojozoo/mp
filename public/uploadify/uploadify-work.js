@@ -4,7 +4,7 @@ $(function(){
     if($field.length > 0){
         var workitemTemplate = '<div class="col-sm-6 col-md-3">\
             <div class="thumbnail">\
-                <a href="" class="bk-img">\
+                <a href="javascript:void(0);" class="bk-img">\
                 </a>\
                 <div id="${fileID}" class="uploadify-queue-item">\
                     <div class="cancel">\
@@ -77,18 +77,11 @@ $(function(){
 // 活动或者相册 插入队列的内容
 function insert_page(file, data){
     var data = JSON.parse(data);
-    var str =      '<div class="thumbnail">'
-        str +=         '<a href="javascript:void(0);" class="bk-img">'
-        str +=             '<img src="' + data.url + '">'
-        str +=         '</a>'
-        str +=         '<a href="javascript:void(0);" class="btn btn-primary btn-xs front-cover" id="' + data.id + '-cover" onclick="front_cover(\'' + data.id + '\');return false;">设为封面</a>'
-        str +=         '<a href="javascript:void(0);" class="btn btn-danger btn-xs remove-self" id="' + data.id + '-remove" onclick="remove_self(\'' + data.id + '\');return false;">删除本张</a>'
-        str +=         '<div class="caption caption-border">'
-        str +=             '<textarea class="once-desc" placeholder="输入图片描述" name="desc[' + data.id + ']"></textarea>'
-        str +=             '<span>上传时间：' + data.time + '</span>'
-        str +=         '</div>'
-        str +=     '</div>'
-    $("#col-" + file.id).html(str);
+    $item = $("#" + file.id).parents(".thumbnail");
+    $item.find('.bk-img').html('<img src="' + data.url + '">');
+    $item.find('.front-cover').attr({'id':data.id + '-cover', 'onclick':'front_cover(\'' + data.id + '\');return false;'});
+    $item.find('.remove-self').attr({'id':data.id + '-remove', 'onclick':'remove_self(\'' + data.id + '\');return false;'});
+    $item.find('.once-desc').attr({name: 'desc[' + data.id + ']'});
 }
 function remove_self(target){
     target = "#" + target + "-remove";
