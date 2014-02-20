@@ -6,6 +6,15 @@ class Work < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
 
+  validates_presence_of     :cover_id, 
+                            :message => '不能为空'
+  validates_presence_of     :event_id,
+                            :message => '不能为空'
+  validates_presence_of     :title, 
+                            :message => '不能为空'
+  validates_presence_of     :desc, 
+                            :message => '不能为空'
+
   # desc:SecureRandom.hex(30), user_id: 116, image_id: Image.limit(1).order('rand()').first.id
   
 end

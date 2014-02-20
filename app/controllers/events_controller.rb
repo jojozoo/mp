@@ -27,8 +27,8 @@ class EventsController < ApplicationController
 	end
 
 	def show
+		# TODO 自动跳转到404页面
 		@event = Event.ongoing.find(params[:id])
-		redirect_to events_path and return if @event.blank?
 		@works = @event.works.limit(20)
 	end
 

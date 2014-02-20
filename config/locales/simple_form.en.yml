@@ -75,6 +75,10 @@ en:
         target: '通知人群'
       sbg:
         bg: '类型'
+      work:
+        title: '输入标题'
+        desc: '详细描述'
+        event_id: '选择活动'
     hints:
       defaults:
       user:

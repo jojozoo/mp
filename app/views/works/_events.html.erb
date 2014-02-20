@@ -1,20 +1,26 @@
-<% unless @event %>
-<div class="input-group">
-	<div class="input-group-btn">
-		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-			<span>选择活动</span>
-			<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu" id="events">
-			<% @events.each do |event| %>
-			<li>
-				<%= link_to event.name, "#{event.id}", class: 'choose-event' %>
-			</li>
-			<% end %>
-		</ul>
-	</div>
-	<input type="text" class="form-control" disabled id="event">
-</div>
+<% if @event %>
+<%= f.input_field :event_id, as: :string, readonly: true, value: @event.name %>
+<input id="work-event-id" name="work_event_id" type="hidden">
 <% else %>
-	<input type="text" class="form-control" disabled value="<%= @event.name %>" id="event">
+<div class="input-group">
+    <%= f.input_field :event_id, as: :string, readonly: true %>
+    <input id="work-event-id" name="work_event_id" type="hidden">
+    <span class="input-group-addon custom-modal">
+        <i class="icon-flag"></i>
+    </span>
+</div>
+<div class="modal fade" id="custom-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">选择活动</h4>
+            </div>
+            <div class="modal-body">
+                <% Event.ongoing.each do |event| %>
+                <%= link_to event.name, "javascript:choose_event(#{event.id}, '#{event.name}');" %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
 <% end %>

@@ -16,10 +16,10 @@ $(function(){
                         <div class="uploadify-progress-bar"><!--Progress Bar--></div>\
                     </div>\
                 </div>\
-                <a href="javascript:void(0);" class="btn btn-primary btn-xs front-cover" id="44-cover" onclick="front_cover(\'44\');return false;">设为封面</a>\
-                <a href="javascript:void(0);" class="btn btn-danger btn-xs remove-self" id="44-remove" onclick="remove_self(\'44\');return false;">删除本张</a>\
+                <a href="javascript:void(0);" class="btn btn-primary btn-xs front-cover">设为封面</a>\
+                <a href="javascript:void(0);" class="btn btn-danger btn-xs remove-self">删除本张</a>\
                 <div class="caption caption-border">\
-                    <textarea class="once-desc" placeholder="输入图片描述" name="desc[44]"></textarea>\
+                    <textarea class="once-desc" placeholder="输入图片描述"></textarea>\
                     <span>上传时间：${YMDHMS}</span>\
                 </div>\
             </div>\
@@ -52,6 +52,7 @@ $(function(){
             'formData'        : uploadify_form_data,
             'buttonText'      : '上传图片',                              //选择按钮显示的字符
             'preventCaching'  : true,
+            'height'          : 35,
             'swf'             : '/uploadify/uploadify.swf',             //swf文件的位置
             'uploader'        : $tg['uploader'],                        //上传的接收者
             'cancelImg'       : 'uploadify-cancel.png',
@@ -72,8 +73,6 @@ $(function(){
                 }
             }
         });
-        // $(".choose-album").on('click', choose_album);
-        $(".choose-event").on('click', choose_event);
         $("#push-work").on('click', push_work);
     }; // 判断是否需要初始化upload end
 });
@@ -82,8 +81,8 @@ function insert_page(file, data){
     var data = JSON.parse(data);
     $item = $("#" + file.id).parents(".thumbnail");
     $item.find('.bk-img').html('<img src="' + data.url + '">');
-    $item.find('.front-cover').attr({'id':data.id + '-cover', 'onclick':'front_cover(\'' + data.id + '\');return false;'});
-    $item.find('.remove-self').attr({'id':data.id + '-remove', 'onclick':'remove_self(\'' + data.id + '\');return false;'});
+    $item.find('.front-cover').attr({'id':data.id + '-cover', 'onclick':'front_cover(\'' + data.id + '\');'});
+    $item.find('.remove-self').attr({'id':data.id + '-remove', 'onclick':'remove_self(\'' + data.id + '\');'});
     $item.find('.once-desc').attr({name: 'desc[' + data.id + ']'});
 }
 function remove_self(target){
@@ -108,11 +107,14 @@ function front_cover(target){
         $('.front-cover.cover-page').removeClass('cover-page');
         $(target).addClass('cover-page');
     }
-    $('input#p-cover').val(parseInt($(target).attr('id')));
+    $('#work_cover_id').val(parseInt($(target).attr('id')));
     return false;
 };
 // 作品/相册上传前检查
 function push_work(){
+    // if(window.ClientSideValidations.forms['new_work']['validators']['work[event_id]'] == undefined){
+    //     window.ClientSideValidations.forms['new_work']['validators']['work[event_id]'] = {presence:[{message: '不能为空'}]};
+    // }
     if ($("#upload-file-queue > .col-md-3").length < 1){
         $("#upload-tip").remove();
         $("#upload-file").css('width', 300);
@@ -121,20 +123,13 @@ function push_work(){
         // margin-left: 20px;line-height: 30px;color: red;width: 120px;height: 30px;display: inline-block;
         return false;
     }
-    // 检查活动是否已选 判断>0去掉了相册上传没有活动的情况
-    if($("input#event").length > 0 && $("input#event").val() == false){
-        $('.form-group-event').addClass('has-error').append('<span class="form-error-tip col-sm-4">请选择活动</span>')
-        return false;
-    }
 }
 
 // 作品上传时 选择活动
-function choose_event(){
-    $("#event").val($(this).text());
-    $("#p-event").val($(this).attr('href'));
-    if($(this).parents('.open').length > 0){
-        $('.dropdown-toggle').dropdown('toggle');
-    }
+function choose_event(eventid, eventname){
+    $("#work-event-id").val(eventid);
+    $("#work_event_id").val(eventname).focusout();
+    $('#custom-modal').modal('hide');
     return false;
 }
 

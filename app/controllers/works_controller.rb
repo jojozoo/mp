@@ -16,20 +16,28 @@ class WorksController < ApplicationController
     end
 
     def create
-        album = current_user.albums.find_by_id(params[:album])
-        # 封面
-        if cover = current_user.images.find_by_id(params[:cover])
-            album.update_attributes(logo: File.open(cover.picture.path(:cover)))
-        end
-        # 不需要查询
-        event  = Event.find_by_id(params[:event])
-        images = current_user.images.where(["id in (?)", params[:desc].keys]).each do |image|
-            desc = params[:desc][image.id.to_s]
-            image.update_attributes(album_id: album.id, event_id: event.id, state: true, warrant: current_user.warrant, desc: desc)
-            work = image.works.find_by_event_id_and_user_id(event.id, current_user.id)
-            image.works.create(event_id: event.id, user_id: current_user.id, warrant: current_user.warrant, desc: desc) unless work
-        end
+        params[:work][:event_id] = params[:work_event_id]
+        params[:work][:cover_id] = params[:desc].keys[0] if params[:work][:cover_id].blank?
+        @work = current_user.works.create(params[:work])
 
-        redirect_to event
+        # TODO 判断照片数量是否至少一张
+        album   = current_user.albums.find_or_create_by_name('活动相册')
+        warrant = params[:work][:warrant] || current_user.warrant
+        current_user.images.where(["id in (?)", params[:desc].keys]).each do |image|
+            desc = params[:desc][image.id.to_s]
+            image.update_attributes(
+                album_id: album.id, 
+                event_id: params[:work][:event_id], 
+                work_id: @work.id,
+                state: true, 
+                warrant: warrant, 
+                desc: desc)
+        end
+        # TODO 最后跳转到作品展示页
+        redirect_to action: :show, id: @work.id
+    end
+
+    def show
+
     end
 end

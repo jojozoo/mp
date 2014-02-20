@@ -14,24 +14,35 @@
 					<% end %>
 				</h4>
 			</div>
-			<%#= form_tag '/works' %>
+			<style>
+			.form-group > label{
+				width: 100px;
+			}
+			</style>
 			<%= simple_form_for Work.new, html: {class: 'clearfix'}, validate: true do |f| %>
 				<%= f.text_field :cover_id, type: :hidden %>
-				<%= f.text_field :event_id, type: :hidden, value: params[:eid] %>
 				<div class="row uploadify-queue" id="upload-file-queue">
 					<%= render partial: 'uploads', collection: @images, as: :image %>
 				</div>
-				<div class="form-group col-md-7 col-sm-7">
-					<input type="file" id="upload-file" tg='work'>
+				<div class="form-group string required">
+					<label class="string required col-sm-2 control-label" for="upload-file">
+						<abbr title="required">*</abbr>
+						上传照片
+					</label>
+					<div class="col-sm-6 input-text-add">
+						<input type="file" id="upload-file" tg='work'>
+					</div>
 				</div>
-				<div class="form-group col-md-7 col-sm-7 form-group-event">
-					<%= render 'events' %>
+				<div class="form-group string required work_event_id">
+					<%= f.label :event_id %>
+					<div class="col-sm-6 input-text-add">
+						<%= render 'events', f: f %>
+					</div>
 				</div>
-				<div class="form-group col-md-7 col-sm-7">
-					<%= f.input_field :title %>
-				</div>
-				<div class="form-group col-md-7 col-sm-7">
-					<input type="submit" class="btn btn-info" id="push-work" value="保存此次作品">
+				<%= f.input :title %>
+				<%= f.input :desc, as: :text %>
+				<div class="form-group">
+					<input class="btn btn-info" style="margin-left:115px;" id="push-work" name="commit" type="submit" value="保存此次作品">	
 				</div>
 			<% end %>
 		</div>
