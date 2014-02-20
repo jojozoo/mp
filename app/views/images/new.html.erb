@@ -44,28 +44,6 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group  col-md-7 col-sm-7">
-						<div class="input-group">
-							<% unless @event %>
-							<div class="input-group-btn">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-									<span id="event-text">选择活动</span>
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<% Event.limit(10).each do |e| %>
-									<li>
-										<%= link_to e.title, 'javascript:void(0);', class: 'choose-event' %>
-									</li>
-									<% end %>
-								</ul>
-							</div>
-							<% end %>
-							<input type="text" class="form-control" disabled value="<%= @event.title if @event %>" id="event" name="event">
-						</div>
-					</div>
-				</div>
-				<div class="row">
 					<fiv class="form-group col-md-7 col-sm-7">
 						<input type="submit" class="btn btn-info" value="保存">
 					</fiv>	
@@ -86,7 +64,7 @@
 				</div>
 				<div class="modal-body">
 					<%= f.input :name %>
-					<%= f.input :desc, as: :text, input_html:{rows: 3} %>
+					<%#= f.input :desc, as: :text %>
 				</div>
 				<div class="modal-footer">
 					<%= f.submit '保存', class: 'btn btn-primary pull-right' %>

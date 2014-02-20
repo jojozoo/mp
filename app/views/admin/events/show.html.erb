@@ -15,7 +15,7 @@
 						</li>
 						<li>
 							<span class="item-key">发起人</span>
-							<div class="vcard-item"><%= link_to @event.user.username, admin_user_path(@event.user) %></div>
+							<div class="vcard-item"><%= link_to @event.user.username, admin_user_path(@event.user_id) %></div>
 						</li>
 						<li>
 							<span class="item-key">活动名称</span>
@@ -92,7 +92,41 @@
 							<div class="vcard-item"><%= link_to '查看全部', 'javascript:void(0);' %></div>
 						</li>
 						<li class="v-heading">
-							公告
+							活动获奖
+						</li>
+						<li>
+							<table class="table table-bordered table12 table-condensed table-hover">
+								<tr>
+									<th>获奖人</th>
+									<th>名次</th>
+									<th>作品</th>
+									<th>作品所在组</th>
+									<th>操作</th>
+								</tr>
+								
+								<% @event.winner_works.each do |winwork| %>
+								<tr>
+									<td>
+										<%= link_to winwork.user.username, admin_user_path(winwork.user_id) %>
+									</td>
+									<td>
+										<%= winwork.winner %>
+									</td>
+									<td>
+										<%= link_to '查看', 'javascript:void(winwork.image.id);' %>
+									</td>
+									<td>
+										<%= link_to '查看', 'javascript:void(winwork.id);' %>
+									</td>
+									<td>
+										
+									</td>
+								</tr>
+								<% end %>
+							</table>
+						</li>
+						<li class="v-heading">
+							活动公告
 							<a href="">去发布</a>
 						</li>
 						<li>

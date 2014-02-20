@@ -1,11 +1,11 @@
 class CreateAlbums < ActiveRecord::Migration
   def change
     create_table :albums do |t|
+      t.attachment :logo
       t.integer :user_id
       t.string :name
-      t.attachment :logo
       t.string :desc
-      t.integer :open, default: 0
+      t.boolean :publish, default: true
       t.boolean :del, default: false
 
       t.timestamps

@@ -44,14 +44,14 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
   end
 
   create_table "albums", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "name"
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.integer  "user_id"
+    t.string   "name"
     t.string   "desc"
-    t.integer  "open",              :default => 0
+    t.boolean  "publish",           :default => true
     t.boolean  "del",               :default => false
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
@@ -364,15 +364,20 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
   end
 
   create_table "works", :force => true do |t|
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.integer  "user_id"
     t.integer  "image_id"
     t.integer  "event_id"
     t.integer  "warrant"
     t.integer  "winner"
+    t.string   "title"
     t.string   "desc"
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "del",               :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
 end

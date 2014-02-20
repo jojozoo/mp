@@ -18,7 +18,7 @@
 			</tr>
 		<% @events.each do |event| %>
 			<tr>
-				<td><%= link_to event.user.username, admin_user_path(event.user), target: '_blank' %></td>
+				<td><%= link_to event.user.username, admin_user_path(event.user_id), target: '_blank' %></td>
 				<td><%= truncate(event.name, length: 10) %></td>
 				<td><%= truncate(event.title, length: 10) %></td>
 				<td><%= event.end_time.to_date %></td>

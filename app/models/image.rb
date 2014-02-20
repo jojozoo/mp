@@ -23,6 +23,7 @@ class Image < ActiveRecord::Base
     path: ":rails_root/public/system/:class/:id/:style/:randomp.:extension"
 
   belongs_to :user
+  has_many :works
 
   after_picture_post_process :load_exif
 

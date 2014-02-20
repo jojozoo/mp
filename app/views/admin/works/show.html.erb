@@ -1,8 +1,8 @@
 <div class="row">
 	<div class="col-sm-12 col-md-12">
 		<h3 class="heading">
-			广告-<%= @ad.id %>(如果已投放 不可修改广告)
-			<small><%= link_to '修改', edit_admin_ad_path(@ad) %></small>
+			作品-<%= @work.id %>
+			<small>个人用户数据,切勿随意修改!!</small>
 		</h3>
 		<div class="row">
 			<div class="col-sm-12 col-md-12">
@@ -11,80 +11,35 @@
 						<li class="v-heading">详细信息</li>
 						<li>
 							<span class="item-key">图片</span>
-							<div class="vcard-item"><%= image_tag @ad.photo.url, style: 'max-width: 80px;' %></div>
-						</li>
-						<li>
-							<span class="item-key">跳转地址</span>
-							<div class="vcard-item"><%= @ad.target %></div>
+							<div class="vcard-item">
+								<%= image_tag @work.cover.picture(:thumb), style: 'max-width: 80px;' %>
+							</div>
 						</li>
 						<li>
 							<span class="item-key">标题</span>
-							<div class="vcard-item"><%= @ad.title %></div>
+							<div class="vcard-item"><%= @work.title %></div>
 						</li>
 						<li>
 							<span class="item-key">描述</span>
-							<div class="vcard-item"><%= @ad.desc %></div>
+							<div class="vcard-item"><%= @work.desc %></div>
 						</li>
 						<li>
 							<span class="item-key">类型</span>
-							<div class="vcard-item"><%= Ad::ADTYPE[@ad.t] || '其他' %></div>
+							<div class="vcard-item"><%= @work.warrant %></div>
 						</li>
 						<li>
 							<span class="item-key">显示方式</span>
-							<div class="vcard-item"><%= Ad::ADSHOW[@ad.s] || '其他' %></div>
-						</li>
-						<li class="v-heading">
-							创建投放
+							<div class="vcard-item"><%= @work.event.name %></div>
 						</li>
 						<li>
-							<%= simple_form_for Putin.new, url: putin_admin_ad_path(@ad), validate: true do |f| %>
-								<%= f.input :from %>
-								<%= f.input :start_time, as: :datepicker %>
-								<%= f.input :end_time, as: :datepicker %>
-								<div class="form-group">
-									<div class="col-sm-8 col-sm-offset-2">
-									<input type="submit" value="保存投放" class="btn btn-default">
-									</div>
-								</div>
-							<% end %>
-
+							<span class="item-key">上传时间</span>
+							<div class="vcard-item"><%= @work.created_at.to_s(:db) %></div>
 						</li>
 						<li class="v-heading">
-							全部投放
+							作品集
 						</li>
 						<li>
-							<table class="table table-bordered table12 table-condensed table-hover">
-								<tr>
-									<th>来源</th>
-									<th>点击</th>
-									<th>浏览</th>
-									<th>开始</th>
-									<th>结束</th>
-									<th>创建于</th>
-									<th>投放链接</th>
-									<th>操作</th>
-								</tr>
-								<% @ad.putins.each do |p| %>
-								<tr>
-									<td><%= p.from || '未知' %></td>
-									<td><%= p.click %></td>
-									<td><%= p.browser %></td>
-									<td><%= p.start_time %></td>
-									<td><%= p.end_time %></td>
-									<td><%= p.created_at.to_s(:db) %></td>
-									<td><%= 'http://shanpro.com/ad/1?f=来源' %></td>
-									<td>
-										<% unless p.state %>
-										<%= link_to '关闭', close_admin_ad_path(@ad, pid: p.id) %>
-										<% else %>
-										<%= link_to '打开', open_admin_ad_path(@ad, pid: p.id) %>
-										<% end %>
-										/
-										<%= link_to '删除', del_admin_ad_path(@ad, pid: p.id), data: {confirm: '确定删除？不可恢复操作!' } %>
-									</td>
-								</tr>
-								<% end %>
-							</table>
+							
 						</li>
 					</ul>
 				</div>

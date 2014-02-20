@@ -1,6 +1,7 @@
 class Album < ActiveRecord::Base
-  attr_accessible :desc, :logo, :name, :open, :user_id
-  # open 所有人 联系人 仅自己
+  attr_accessible :desc, :logo, :name, :publish, :user_id
+  # 相册不需要desc字段
+  # publish 所有人 仅自己
   has_many :images
   has_attached_file :logo,
     styles: {

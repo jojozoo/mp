@@ -50,7 +50,7 @@ $(function(){
         // 配置uploadify
         $field.uploadify({
             'formData'        : uploadify_form_data,
-            'buttonText'      : '选择图片',                              //选择按钮显示的字符
+            'buttonText'      : '上传图片',                              //选择按钮显示的字符
             'preventCaching'  : true,
             'swf'             : '/uploadify/uploadify.swf',             //swf文件的位置
             'uploader'        : $tg['uploader'],                        //上传的接收者
@@ -72,6 +72,9 @@ $(function(){
                 }
             }
         });
+        // $(".choose-album").on('click', choose_album);
+        $(".choose-event").on('click', choose_event);
+        $("#push-work").on('click', push_work);
     }; // 判断是否需要初始化upload end
 });
 // 活动或者相册 插入队列的内容
@@ -115,11 +118,7 @@ function push_work(){
         $("#upload-file").css('width', 300);
         $("#upload-file-button").css('float', 'left');
         $("#upload-file").append('<span id="upload-tip" style="margin-left: 20px;line-height: 30px;color: red;">请先上传图片</span>');
-        return false;
-    }
-    // 检查相册是否已选
-    if($("input#album").val() == false){
-        $('.form-group-album').addClass('has-error').append('<span class="form-error-tip col-sm-4">请选择相册</span>')
+        // margin-left: 20px;line-height: 30px;color: red;width: 120px;height: 30px;display: inline-block;
         return false;
     }
     // 检查活动是否已选 判断>0去掉了相册上传没有活动的情况
@@ -129,16 +128,13 @@ function push_work(){
     }
 }
 
-// 作品上传时/相册上传时 选择相册
-function choose_album(){
-    $("#album").val($(this).text());
-    $("#p-album").val($(this).attr('href'));
-    return false;
-}
 // 作品上传时 选择活动
 function choose_event(){
     $("#event").val($(this).text());
     $("#p-event").val($(this).attr('href'));
+    if($(this).parents('.open').length > 0){
+        $('.dropdown-toggle').dropdown('toggle');
+    }
     return false;
 }
 

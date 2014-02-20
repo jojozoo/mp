@@ -60,11 +60,12 @@ class Event < ActiveRecord::Base
   # 作品 参与活动的作品
   has_many :works
   # 参与活动的图片
-  has_many :images, through: :work, source: :image
+  has_many :images, through: :works, source: :image
   # 参与活动的人
-  has_many :members, through: :work, source: :user
+  has_many :members, through: :works, source: :user
+  has_many :winner_works, class_name: 'Work', :conditions => '`works`.`winner` > 0'
   # 活动获奖的人 大于0 asc排序: 0参与 1等奖 2等奖
-  has_many :winners, :class_name => 'User', :conditions => '`works`.`winner` > 0'
+  has_many :winners, source: :user, through: :winner_works
   # 发起活动的人
   belongs_to :user
   # 作品 参与活动的作品

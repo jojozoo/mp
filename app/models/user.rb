@@ -123,7 +123,7 @@ class User < ActiveRecord::Base
   before_save  :check_not_v_attr
 
   def basic_build
-    self.albums.create(name: '默认相册', desc: '默认相册', open: 0)
+    self.albums.create(name: '默认相册')
   end
 
   def check_not_v_attr

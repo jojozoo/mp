@@ -24,7 +24,7 @@ class WorksController < ApplicationController
         # 不需要查询
         event  = Event.find_by_id(params[:event])
         images = current_user.images.where(["id in (?)", params[:desc].keys]).each do |image|
-            desc  = params[:desc][image.id.to_s]
+            desc = params[:desc][image.id.to_s]
             image.update_attributes(album_id: album.id, event_id: event.id, state: true, warrant: current_user.warrant, desc: desc)
             work = image.works.find_by_event_id_and_user_id(event.id, current_user.id)
             image.works.create(event_id: event.id, user_id: current_user.id, warrant: current_user.warrant, desc: desc) unless work

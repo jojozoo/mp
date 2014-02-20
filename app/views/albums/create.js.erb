@@ -1,2 +1,3 @@
 $('#custom-modal').modal('hide');
+$('#album_name').val('');
 $("<li><a href='<%= @album.id %>' class='choose-album'><%= @album.name %></a></li>").appendTo('#albums').find('a').click(choose_album).click();
