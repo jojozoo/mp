@@ -110,16 +110,20 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
   end
 
   create_table "groups", :force => true do |t|
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.integer  "user_id"
-    t.integer  "publish",       :default => 1
-    t.integer  "topics_count",  :default => 0
-    t.integer  "members_count", :default => 0
-    t.integer  "visits_count",  :default => 0
+    t.boolean  "publish",           :default => true
+    t.integer  "topics_count",      :default => 0
+    t.integer  "members_count",     :default => 0
+    t.integer  "visits_count",      :default => 0
     t.string   "title"
     t.text     "desc"
-    t.boolean  "del",           :default => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.boolean  "del",               :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "images", :force => true do |t|

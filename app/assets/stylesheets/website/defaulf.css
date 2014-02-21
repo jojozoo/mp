@@ -83,6 +83,9 @@ textarea.form-control{
     margin-top: 10px;
     padding: 4px;
     border: 0;
+    border-radius:4px;
+    -moz-border-radius:4px;
+    padding: 10px;
 }
 .breadcrumb {
 	border-radius: 0;
@@ -498,3 +501,39 @@ a.qzone {
 .second-nav a{
     text-decoration: none;
 }
+
+
+.table-group{
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 0;
+    font-size: 12px;
+}
+.table-group .title {
+    font-size: 13px;
+    width: 66%;
+}
+.table-group td{
+    padding: 6px 3px 5px 0;
+    border-bottom: 1px dashed #ddd;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+.table-group > tbody > tr > td{
+    border-top: 0;
+}
+.table-group > tbody > .th > td{
+    border-top: 0;
+    color: #666;
+}
+.table-group .time {
+    text-align: right;
+    color: #999;
+}
+
+
+
+
+
+
+            

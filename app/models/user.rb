@@ -41,6 +41,12 @@ class User < ActiveRecord::Base
   has_many :notices
   has_many :micros
   has_many :pushes
+  has_many :groups
+  has_many :topics
+  has_many :members
+  has_many :admin_groups, source: :group, through: :members, conditions: '`members`.`auth` = 1'
+  has_many :join_groups, source: :group, through: :members, conditions: '`members`.`auth` = 0'
+  has_many :speak_groups, source: :group, through: :members
   has_many :push_images
   # 收件箱 & 发件箱 名义没有发件箱
   has_many :iboxs, class_name: 'Talk', conditions: {del: false}
@@ -146,6 +152,12 @@ class User < ActiveRecord::Base
   # 常驻地
   def addr
     province.eql?(city) ? province : province + ' ' + city
+  end
+
+  # 针对group是否能发言
+  def speak?(group)
+    gid = group.is_a?(Group) ? group.id : group
+    members.exists?(group_id: gid)
   end
 
   # from 注册来源

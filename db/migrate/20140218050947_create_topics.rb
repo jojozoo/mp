@@ -5,6 +5,7 @@ class CreateTopics < ActiveRecord::Migration
       t.integer :group_id
       t.string :title
       t.string :content
+      t.integer :comments_count, default: 0
       t.boolean :del, default: false
 
       t.timestamps

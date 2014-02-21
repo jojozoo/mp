@@ -19,7 +19,14 @@ Mp::Application.routes.draw do
   # gallery
   resources :images, path: 'gs'
   resources :albums
-  resources :groups, path: 'g'
+  resources :groups , path: 'g' do
+    collection do
+      get :me
+      get :explore
+    end
+    resources :topics, only: [:new, :create]
+  end
+  resources :topics, path: 't', except: [:new, :create]
   resources :events, path: 'e'
   resources :users, path: 'u'
   resources :micros, path: 'ms'

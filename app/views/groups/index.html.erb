@@ -2,18 +2,24 @@
 <div class="row">
 	<div class="col-md-9">
 		<div class="white-col-md wrapper">
-			<h3>圈子话题</h3>
-			<table class="table" style="margin-bottom:20px;">
-				<% 20.times do |i| %>
+			<h3><%= {'explore' => '发现话题', 'publish' => '发起的话题', 'reply' => '回应的话题'}[params[:t]] || '圈子话题' %></h3>
+			<table class="table table-group">
+				<% @topics.each do |topic| %>
 					<tr>
-						<td><a href="">有菏泽学院的朋友么···</a></td>
-						<td>52回应</td>
-						<td><%= humanize(Time.now) %></td>
-						<td><a href="">一起在北京过年</a></td>
+						<td class="title">
+							<%= link_to truncate(topic.title, length: 30), topic_path(topic) %>
+						</td>
+						<td>
+							<%= topic.comments_count %>回应
+						</td>
+						<td><%= humanize(topic.updated_at) %></td>
+						<td class="time">
+							<%= link_to topic.group.title, group_path(topic.group_id) %>
+						</td>
 					</tr>
 				<% end %>
 			</table>
-			<ul class="pagination"><li class="previous_page disabled"><span>← Previous</span></li> <li class="active"><span rel="start">1</span></li> <li><a rel="next" href="javascript:void(0);">2</a></li> <li><a href="javascript:void(0);">3</a></li> <li><a href="javascript:void(0);">4</a></li> <li><a href="javascript:void(0);">5</a></li> <li><a href="javascript:void(0);">6</a></li> <li><a href="javascript:void(0);">7</a></li> <li><a href="javascript:void(0);">8</a></li> <li><a href="javascript:void(0);">9</a></li> <li><a href="javascript:void(0);">10</a></li> <li class="next_page"><a rel="next" href="javascript:void(0);">Next →</a></li></ul>
+			<%= will_paginate @topics %>
 		</div>
 		
 	</div>

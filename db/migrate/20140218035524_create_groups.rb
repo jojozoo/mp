@@ -1,8 +1,9 @@
 class CreateGroups < ActiveRecord::Migration
   def change
     create_table :groups do |t|
+      t.attachment :logo
       t.integer :user_id
-      t.integer :publish, default: true
+      t.boolean :publish, default: true
       t.integer :topics_count, default: 0
       t.integer :members_count, default: 0
       t.integer :visits_count, default: 0

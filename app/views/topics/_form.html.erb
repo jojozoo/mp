@@ -1,0 +1,7 @@
+<%= simple_form_for @topic.new_record? ? [@group, @topic] : @topic, validate: true do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
+    <div class="form-group">
+        <input class="btn btn-info col-sm-offset-2 col-md-offset-2" name="commit" type="submit" value="发布话题">
+    </div>
+<% end %>

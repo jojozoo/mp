@@ -1,0 +1,85 @@
+<div class="row">
+    <div class="col-md-9">
+        <div class="white-col-md">
+            <div class="page-header">
+                <div class="media">
+                    <a class="pull-left" href="javascript:void(0);">
+                        <%= image_tag @group.logo(:small), size: '60x60' %>
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading"><%= @group.title %></h4>
+                        <small style="display: block;">
+                            <a href="">推荐</a>
+                            /
+                            <a href="">喜欢</a>
+                        </small>
+                        <small>
+                            我是这个圈子的成员 > 
+                            <a href="">退出圈子</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="gray-desc" style="background:#fff4e8;">
+                <p style="color:#000;">
+                    创建于<%= @group.created_at.to_date %>&nbsp;&nbsp;&nbsp;&nbsp;
+                    创建者：<%= link_to @group.user.username, user_path(@group.user_id) %>
+                </p>
+                <%= sanitize @group.desc %>
+            </div>
+            
+            <ul class="breadcrumb" style="margin: 10px 0;">
+                <li>
+                    <a href="javascript:void(0);">最近话题</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">最热话题</a>
+                </li>
+                <%= link_to @speak ? new_group_topic_path(@group.id) : 'javascript:void(0);', class: 'btn-xs btn-info btn pull-right', style: 'margin-right: -10px;' do %>
+                    <i class="icon-plus"></i>
+                    发言
+                <% end %>
+            </ul>
+            <table class="table table-group">
+                <tr class="th">
+                    <td>
+                        话题
+                    </td>
+                    <td>
+                        作者
+                    </td>
+                    <td nowrap="nowrap">
+                        回应
+                    </th> 
+                    <td align="right">
+                        最后回应
+                    </td>
+                </tr>
+                <% @topics.each do |topic| %>
+                <tr>
+                    <td class="title">
+                        <%= link_to truncate(topic.title, length: 30), topic_path(topic) %>
+                    </td>
+                    <td>
+                        <%= link_to topic.user.username, user_path(topic.user_id) %>
+                    </td>
+                    <td nowrap="nowrap">
+                        <%= topic.comments_count %>
+                    </td>
+                    <td class="time">
+                        <%= humanize(topic.updated_at) %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+            <%= will_paginate @topics %>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="white-col-md">
+            <div class="page-header">
+                <h4>最新圈子</h4>
+            </div>
+        </div>
+    </div>
+</div>
