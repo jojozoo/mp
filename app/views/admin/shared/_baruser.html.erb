@@ -40,6 +40,22 @@
 </div>
 <div class="panel panel-default">
 	<div class="panel-heading">
+		<%= link_to 'javascript:void(0);', class: 'accordion-toggle' do %> 
+		<i class="icon-tag"></i>
+		标签管理
+		<% end %>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<%= link_to 'javascript:void(0);', class: 'accordion-toggle' do %> 
+		<i class="icon-envelope"></i>
+		漫信管理
+		<% end %>
+	</div>
+</div>
+<div class="panel panel-default">
+	<div class="panel-heading">
 		<%= link_to admin_topics_path, class: 'accordion-toggle' do %> 
 		<i class="icon-comment"></i>
 		帖子管理
@@ -48,39 +64,39 @@
 </div>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<%= link_to admin_topics_path, class: 'accordion-toggle' do %> 
-		<i class="icon-envelope"></i>
-		漫信管理
+		<%= link_to admin_comments_path, class: 'accordion-toggle' do %> 
+		<i class="icon-reply"></i>
+		回应管理
 		<% end %>
 	</div>
 </div>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<a href="#collapseFour" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+		<a href="#tuis" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
 			<i class="icon-ok-circle"></i>
 			推荐管理
 		</a>
 	</div>
-	<div class="accordion-body collapse in" id="collapseFour">
+	<div class="accordion-body collapse in" id="tuis">
 		<div class="panel-body">
 			<ul class="nav nav-pills nav-stacked">
 				<li>
-					<%= link_to '推荐用户', admin_banners_path %>
+					<%= link_to '推荐用户', 'javascript:void(0);' %>
 				</li>
 				<li>
-					<%= link_to '推荐作品', admin_bgs_path %>
+					<%= link_to '推荐作品', 'javascript:void(0);' %>
 				</li>
 				<li>
-					<%= link_to '推荐图片', admin_sends_path %>
+					<%= link_to '推荐图片', 'javascript:void(0);' %>
 				</li>
 				<li>
-					<%= link_to '推荐帖子', '/admin/info' %>
+					<%= link_to '推荐帖子', 'javascript:void(0);' %>
 				</li>
 				<li>
-					<%= link_to '推荐活动', '/admin/log' %>
+					<%= link_to '推荐活动', 'javascript:void(0);' %>
 				</li>
 				<li>
-					<%= link_to '推荐重点', '/admin/log' %>
+					<%= link_to '推荐重点', 'javascript:void(0);' %>
 				</li>
 			</ul>
 		</div>

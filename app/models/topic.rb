@@ -1,7 +1,7 @@
 class Topic < ActiveRecord::Base
   attr_accessible :content, :del, :group_id, :title, :user_id, :comments_count
 
-  has_many :comments
+  has_many :comments, as: :obj
   belongs_to :group
   belongs_to :user
 

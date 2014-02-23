@@ -148,7 +148,7 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
   create_table "members", :force => true do |t|
     t.integer  "user_id"
     t.integer  "group_id"
-    t.integer  "auth"
+    t.integer  "auth",       :default => 0
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
@@ -306,9 +306,10 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.integer  "group_id"
     t.string   "title"
     t.string   "content"
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "comments_count", :default => 0
+    t.boolean  "del",            :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "tuis", :force => true do |t|

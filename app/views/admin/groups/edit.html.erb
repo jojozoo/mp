@@ -1,0 +1,40 @@
+<div class="col-sm-12 col-md-12">
+    <h3 class="heading">group 编辑</h3>
+    <%= simple_form_for @group, url: admin_ad_path(@group), validate: true do |f| %>
+        <%= f.error_notification %>
+        <div class="form-group file optional site_ad_photo">
+            <%= f.label :logo %>
+            <div class="col-sm-6 input-text-add">
+                <%= image_tag(@group.logo.url, style: 'height:80px;margin-bottom:10px;') %>
+                <%= f.input_field :logo %>
+            </div>
+        </div>
+        <%= f.input :title %>
+        <%= f.input :desc, as: :text %>
+        <%= f.input :publish, collection: [['公开圈子',true] ,['私密圈子', false]], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
+        <div class="form-group string optional group_tag">
+            <label class="string optional col-sm-2 control-label" for="group_tag">圈子标签</label>
+            <div class="col-sm-6 input-text-add">
+                <ul id="group_tag"></ul>
+                <p class="help-block">标签作为关键词可以被用户搜索到，多个标签之间用空格分隔开。</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-2">
+                <input type="submit" value="保存圈子" class="btn btn-default">
+            </div>
+        </div>
+    <% end %>
+</div>
+
+<script src="/assets/admin/jquery.taghandler.js?body=1" type="text/javascript"></script>
+<link href="/assets/admin/jquery.taghandler.css?body=1" media="all" rel="stylesheet" type="text/css">
+<script>
+$(function(){
+    $("#group_tag").tagHandler({
+        assignedTags: [ '单反'],
+        availableTags: [ '单反', '莱卡', '胶片'],
+        autocomplete: true
+    });
+})
+</script>

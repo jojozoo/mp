@@ -1,7 +1,9 @@
 class GroupsController < ApplicationController
 	def index
         @topics = if params[:t].eql?('publish')
-            current_user.topics.paginate(:page => params[:page], per_page: 20).order('id desc')
+            Topic.paginate(:page => params[:page], per_page: 20).order('id desc')
+        elsif params[:t].eql?('reply')
+            Topic.paginate(:page => params[:page], per_page: 20).order('id desc')
         elsif params[:t].eql?('explore')
             Topic.paginate(:page => params[:page], per_page: 20).order('updated_at desc')
         else
@@ -45,6 +47,6 @@ class GroupsController < ApplicationController
 
     # TODO 发现圈子 标签符合的, 话题多的, 喜欢多的, 推荐多的
     def explore
-
+        @groups = Group.paginate(:page => params[:page], per_page: 20).order('topics_count desc, members_count desc')
     end
 end

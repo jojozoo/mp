@@ -1,0 +1,37 @@
+<div class="w-box">
+	<div class="w-box-header">
+		<div class="pull-right sort-disabled">
+			<div class="pull-right sort-disabled">
+				<input name="name" class="input-medium form-control" placeholder="搜索" type="text">
+			</div>
+		</div>
+	</div>
+	<div class="w-box-content">
+		<table class="table table-striped table12 table-condensed table-hover text-center">
+			<tr>
+				<th>名称</th>
+				<th>类型</th>
+				<th>创建者</th>
+				<th>帖子数</th>
+				<th>成员数</th>
+				<th>访问数</th>
+				<th>操作</th>
+			</tr>
+		<% @groups.each do |group| %>
+			<tr>
+				<td><%= group.title %></td>
+				<td><%= group.publish ? '公开' : '私密' %></td>
+				<td><%= link_to group.user.username, admin_user_path(group.user_id) %></td>
+				<td><%= group.topics_count %></td>
+				<td><%= group.members_count %></td>
+				<td><%= group.visits_count %></td>
+				<td>
+					<%= link_to '详细', admin_group_path(group), class: 'btn btn-info btn-xs' %>
+					<%= link_to '删除', admin_group_path(group), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>
+				</td>
+			</tr>
+		<% end %>
+		</table>
+	</div>
+	<%= will_paginate @groups %>
+</div>

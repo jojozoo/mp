@@ -126,6 +126,10 @@ Mp::Application.routes.draw do
     resources :works
     resources :groups
     resources :topics
+    resources :talks
+    resources :tags
+    resources :comments
+    resources :tuis
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

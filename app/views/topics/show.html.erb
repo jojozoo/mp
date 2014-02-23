@@ -7,7 +7,7 @@
                     <div class="media-body">
                         <h4 class="media-heading">
                             <%= @topic.title[0,20] %>
-                            <small class="pull-right" style='font-size:13px;'>
+                            <small class="pull-right" style='font-size:12px;'>
                                 <a href="">关注TA</a> &nbsp;&nbsp;
                                 <a href="">推荐</a> &nbsp;&nbsp;
                                 <a href="">喜欢</a> &nbsp;&nbsp;
@@ -55,8 +55,14 @@
     </div>
     <div class="col-md-3">
         <div class="white-col-md">
-            <div class="page-header">
-                <h4>最新圈子</h4>
+            <div class="media">
+                <%= link_to image_tag(@topic.group.logo(:small), size: '60x60'), group_path(@topic.group_id), class: 'pull-left' %>
+                </a>
+                <div class="media-body">
+                    <div class="media-heading" style="font-size: 14px;">
+                        <%= @topic.group.title %>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
