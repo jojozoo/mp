@@ -1,10 +1,10 @@
 class ImagesController < ApplicationController
     def index
-        @objs = Image.where(del: false, state: true).paginate(:page => params[:page], per_page: 10).order('rand()')
-        if request.xhr?
-            render partial: 'row', collection: @objs, as: :image
-            return
-        end
+        @images = Image.where(state: true).paginate(:page => params[:page], per_page: 40).order('id desc')
+    end
+
+    def star
+        @users = User.limit(10)
     end
 
     def show

@@ -70,7 +70,7 @@ CREATE TABLE `albums` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -79,7 +79,7 @@ CREATE TABLE `albums` (
 
 LOCK TABLES `albums` WRITE;
 /*!40000 ALTER TABLE `albums` DISABLE KEYS */;
-INSERT INTO `albums` VALUES (1,1,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-08 20:19:37','2014-02-08 20:19:37'),(2,2,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-08 21:02:50','2014-02-08 21:02:50'),(3,3,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-09 10:57:59','2014-02-09 10:57:59'),(4,3,'图片１',NULL,NULL,NULL,NULL,'图片１',0,0,'2014-02-09 11:04:47','2014-02-09 11:04:47'),(5,4,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-10 13:17:07','2014-02-10 13:17:07'),(6,4,'2014扫街',NULL,NULL,NULL,NULL,'街头是一个不落幕的舞台，你我都是演员，也都是导演，我还是这部舞台剧的摄影。',0,0,'2014-02-10 13:19:52','2014-02-10 13:19:52');
+INSERT INTO `albums` VALUES (1,1,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-08 20:19:37','2014-02-08 20:19:37'),(2,2,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-08 21:02:50','2014-02-08 21:02:50'),(3,3,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-09 10:57:59','2014-02-09 10:57:59'),(4,3,'图片１',NULL,NULL,NULL,NULL,'图片１',0,0,'2014-02-09 11:04:47','2014-02-09 11:04:47'),(5,4,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-10 13:17:07','2014-02-10 13:17:07'),(6,4,'2014扫街',NULL,NULL,NULL,NULL,'街头是一个不落幕的舞台，你我都是演员，也都是导演，我还是这部舞台剧的摄影。',0,0,'2014-02-10 13:19:52','2014-02-10 13:19:52'),(7,5,'默认相册',NULL,NULL,NULL,NULL,'默认相册',0,0,'2014-02-11 10:27:44','2014-02-11 10:27:44');
 /*!40000 ALTER TABLE `albums` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -516,7 +516,7 @@ CREATE TABLE `users` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -525,7 +525,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'1@qq.com','噼里啪啦小五哥',NULL,'','','9574be986128d15270f02ee203ffce18',NULL,'c4ca4238a0.png','image/png',103639,'2014-02-11 08:15:13','北京','北京','http://www.zhuxiaowu.com','精神生活很重要','zhu404','',NULL,1,5,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-08 20:19:37','2014-02-08 20:38:41'),(2,'2@q.com','bopro',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-08 21:02:50','2014-02-08 21:02:50'),(3,'xingcj@126.com','xingcj',NULL,NULL,NULL,'e10655cb0a445d47de4f4148954c4e11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-09 10:57:59','2014-02-09 10:57:59'),(4,'13626361516@163.com','王宁wangning1980_',NULL,NULL,NULL,'cc3f1fc5fc56962817466d0a78c1b756',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-10 13:17:07','2014-02-10 13:17:07');
+INSERT INTO `users` VALUES (1,'1@qq.com','噼里啪啦小五哥',NULL,'','','9574be986128d15270f02ee203ffce18',NULL,'c4ca4238a0.png','image/png',103639,'2014-02-11 08:15:13','北京','北京','http://www.zhuxiaowu.com','精神生活很重要','zhu404','',NULL,1,5,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-08 20:19:37','2014-02-08 20:38:41'),(2,'2@q.com','bopro',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-08 21:02:50','2014-02-08 21:02:50'),(3,'xingcj@126.com','xingcj',NULL,NULL,NULL,'e10655cb0a445d47de4f4148954c4e11',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-09 10:57:59','2014-02-09 10:57:59'),(4,'13626361516@163.com','王宁wangning1980_',NULL,NULL,NULL,'cc3f1fc5fc56962817466d0a78c1b756',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-10 13:17:07','2014-02-10 13:17:07'),(5,'515856563@qq.com','晓武朱',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,'118974fd2db254cbeeacd29897dab873820040f3.jpg','image/jpeg',11134,'2014-02-11 10:27:41',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,0,0,0,'/images/defaults/bg.jpg','repeat',NULL,0,'2014-02-11 10:27:44','2014-02-11 10:27:44');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -570,4 +570,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-11 10:24:36
+-- Dump completed on 2014-02-23 16:39:00

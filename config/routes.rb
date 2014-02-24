@@ -17,7 +17,11 @@ Mp::Application.routes.draw do
   get    '/search'        => 'search#index'
 
   # gallery
-  resources :images, path: 'gs'
+  resources :images, path: 'gs' do
+    collection do
+      get :star
+    end
+  end
   resources :albums
   resources :groups , path: 'g' do
     collection do

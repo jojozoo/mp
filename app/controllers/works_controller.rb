@@ -1,8 +1,6 @@
 class WorksController < ApplicationController
-
-
 	def index
-
+        @works = Work.paginate(:page => params[:page], per_page: 30).order('id desc')
     end
 
     def new
@@ -38,6 +36,6 @@ class WorksController < ApplicationController
     end
 
     def show
-
+        @work = Work.find(params[:id])
     end
 end

@@ -1,7 +1,7 @@
 ---
 sessions: 首页
 micros: 动态
-images: 图库
+images: 作品
 events:
   name: 活动
   second:
@@ -13,13 +13,13 @@ events:
     divider1: divider
     正在进行的活动: events
     已经结束的活动: events
-works:
-  name: 作品
-  second:
-    编辑推荐: works
-    每日精选: works
-    最新上传: works
-    热门作品: works
+# works:
+#   name: 作品
+#   second:
+#     编辑推荐: works
+#     每日精选: works
+#     最新上传: works
+#     热门作品: works
 rs:
   name: 推荐
   second:

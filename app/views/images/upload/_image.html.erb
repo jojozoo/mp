@@ -1,0 +1,20 @@
+<div class="col-sm-6 col-md-3">
+    <div class="thumbnail">
+        <a href="javascript:void(0);" class="bk-img">
+            <%= image_tag image.picture(:cover) %>
+        </a>
+        <%= link_to '设为封面', "javascript:void(0);", 
+        onclick: "front_cover('#{image.id}');return false;", 
+        id: "#{image.id}-cover", 
+        class: 'btn btn-primary btn-xs front-cover' %>
+
+        <%= link_to '删除本张', "javascript:void(0);", 
+        onclick: "remove_self('#{image.id}');return false;", 
+        id: "#{image.id}-remove",
+        class: 'btn btn-danger btn-xs remove-self' %>
+        <div class="caption caption-border">
+            <textarea class="once-desc" placeholder="输入图片描述" name="desc[<%= image.id %>]"></textarea>
+            <span>上传时间：<%= image.created_at.to_s(:db) %></span>
+        </div>
+    </div>
+</div>

@@ -24,6 +24,7 @@ class Image < ActiveRecord::Base
 
   belongs_to :user
   has_many :works
+  has_many :comments, as: :obj
 
   after_picture_post_process :load_exif
 
