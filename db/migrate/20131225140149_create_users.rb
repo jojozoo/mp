@@ -22,6 +22,7 @@ class CreateUsers < ActiveRecord::Migration
       t.boolean :photographer, default: 0 # 摄影师
       t.integer :talks_count, default: 0
       t.integer :notices_count, default: 0
+      t.integer :followers_count, default: 0 # 关注者数量
       t.string :bg, default: '/images/defaults/bgs.jpg'
       t.string :repeat, default: 'repeat'
       t.string :remember_me

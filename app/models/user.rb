@@ -41,6 +41,14 @@ class User < ActiveRecord::Base
   has_many :notices
   has_many :micros
   has_many :pushes
+  
+  # 我的关注(我关注的人)
+  has_many :follow_ships, class_name: 'Follow', foreign_key: :follower_id
+  has_many :follows, source: :user, through: :follow_ships
+  # 关注我的(我的关注者)
+  has_many :follower_ships, class_name: 'Follow', foreign_key: :user_id
+  has_many :followers, source: :user, through: :follower_ships
+
   has_many :groups
   has_many :topics
   has_many :members

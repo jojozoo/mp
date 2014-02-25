@@ -55,7 +55,6 @@ class ImagesController < ApplicationController
     def tui
         if sign_in?
             @image = Image.find(params[:id])
-            binding.pry
             case params[:ac]
             when 'lauds'
                 @image.lauds.create!(user_id: current_user.id)
