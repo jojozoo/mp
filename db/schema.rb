@@ -133,6 +133,11 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.integer  "work_id"
     t.integer  "album_id"
     t.integer  "state",                :default => 0
+    t.integer  "tuis_count",           :default => 0
+    t.integer  "lauds_count",          :default => 0
+    t.integer  "likes_count",          :default => 0
+    t.integer  "stores_count",         :default => 0
+    t.integer  "recoms_count",         :default => 0
     t.integer  "warrant"
     t.string   "picture_file_name"
     t.string   "picture_content_type"

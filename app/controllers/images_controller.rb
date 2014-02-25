@@ -51,4 +51,27 @@ class ImagesController < ApplicationController
         end
         render text: 'ok'
     end
+
+    def tui
+        if sign_in?
+            @image = Image.find(params[:id])
+            binding.pry
+            case params[:ac]
+            when 'lauds'
+                @image.lauds.create!(user_id: current_user.id)
+                @count = @image.lauds_count
+            when 'likes'
+                @image.likes.create!(user_id: current_user.id)
+                @count = @image.likes_count
+            when 'stores'
+                @image.stores.create!(user_id: current_user.id)
+                @count = @image.stores_count
+            else # 'recoms'
+                @image.recoms.create!(user_id: current_user.id)
+                @count = @image.recoms_count
+            end
+        else
+            render js: "alert('请先登录')"
+        end
+    end
 end

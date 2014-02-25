@@ -1,30 +1,30 @@
 <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
         <div class="actions fade-row">
-            <a href="javascript:void(0);" class="btn btn-success btn-xs"> 
+            <%= link_to tui_image_path(image.id, ac: 'lauds'), remote: true, class: 'btn-ajax btn btn-success btn-xs' do %>
                 <i class="icon-thumbs-up"></i>
                 点赞
-            </a>
-            <a href="javascript:void(0);" class="btn btn-success btn-xs"> 
+            <% end %>
+            <%= link_to tui_image_path(image.id, ac: 'likes'), remote: true, class: 'btn-ajax btn btn-success btn-xs' do %>
                 <i class="icon-heart"></i>
                 喜欢
-            </a>
-            <a href="javascript:void(0);" class="btn btn-success btn-xs">
+            <% end %>
+            <%= link_to tui_image_path(image.id, ac: 'stores'), remote: true, class: 'btn-ajax btn btn-success btn-xs' do %>
                 <i class="icon-pushpin"></i>
                 收藏
-            </a>
-            <a href="javascript:void(0);" class="btn btn-success btn-xs">
+            <% end %>
+            <%= link_to tui_image_path(image.id, ac: 'recoms'), remote: true, class: 'btn-ajax btn btn-success btn-xs' do %>
                 <i class="icon-ok-circle"></i>
                 推荐
-            </a>
+            <% end %>
         </div>
         <%= link_to image_tag(image.picture.url(:thumb)), image_path(image), style: 'display:block', target: '_blank' %>
         <div class="caption">
-            <div>苹果电脑30年产品收藏视频展示苹果电脑30年产</div>
-            <span class="push-thumbs-up">赞(8)</span>
-            <span class="push-heart">喜欢(12)</span>
-            <span class="push-pushpin">收藏(0)</span>
-            <span class="push-ok-circle">推荐(198)</span>
+            <div><%= image.desc %></div>
+            <span id="push-lauds-<%= image.id %>" title="点赞">点赞(<%= image.lauds_count %>)</span>
+            <span id="push-likes-<%= image.id %>" title="喜欢">喜欢(<%= image.likes_count %>)</span>
+            <span id="push-stores-<%= image.id %>" title="收藏">收藏(<%= image.stores_count %>)</span>
+            <span id="push-recoms-<%= image.id %>" title="推荐">推荐(<%= image.recoms_count %>)</span>
             <hr>
             <div class="media">
                 <%= link_to image_tag(image.user.avatar(:s50), class: 'img-circle avatar-mini'), user_path(image.user_id), class: 'pull-left' %>

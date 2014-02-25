@@ -21,6 +21,9 @@ Mp::Application.routes.draw do
     collection do
       get :star
     end
+    member do
+      get :tui
+    end
   end
   resources :albums
   resources :groups , path: 'g' do
