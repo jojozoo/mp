@@ -25,6 +25,10 @@ class Image < ActiveRecord::Base
   belongs_to :user
   has_many :works
   has_many :comments, as: :obj
+  has_many :tuilauds, as: :obj
+  has_many :tuilikes, as: :obj
+  has_many :tuistores, as: :obj
+  has_many :tuirecoms, as: :obj
 
   after_picture_post_process :load_exif
 
@@ -47,6 +51,21 @@ class Image < ActiveRecord::Base
     rescue
         {}
     end.to_json
+  end
+
+  def tuilaud?(obj)
+    tuilauds.exists?(user_id: obj.id)
+  end
+
+  def tuilike?
+
+  end
+
+  def tuistore?
+
+  end
+
+  def tuirecom?
   end
 
     # before_post_process

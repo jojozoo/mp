@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
     def index
-        @images = Image.where(state: true).paginate(:page => params[:page], per_page: 40).order('id desc')
+        @images = Image.where(state: true).paginate(:page => params[:page], per_page: 12).order('id desc')
     end
 
     def star
@@ -57,16 +57,16 @@ class ImagesController < ApplicationController
             @image = Image.find(params[:id])
             case params[:ac]
             when 'lauds'
-                @image.lauds.create!(user_id: current_user.id)
+                @image.tuilauds.create(user_id: current_user.id)
                 @count = @image.lauds_count
             when 'likes'
-                @image.likes.create!(user_id: current_user.id)
+                @image.tuilikes.create(user_id: current_user.id)
                 @count = @image.likes_count
             when 'stores'
-                @image.stores.create!(user_id: current_user.id)
+                @image.tuistores.create(user_id: current_user.id)
                 @count = @image.stores_count
             else # 'recoms'
-                @image.recoms.create!(user_id: current_user.id)
+                @image.tuirecoms.create(user_id: current_user.id)
                 @count = @image.recoms_count
             end
         else
