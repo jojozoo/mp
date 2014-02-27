@@ -2,7 +2,7 @@
 	<% @works.each do |work| %>
 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<%= link_to image_tag(work.image.picture(:cover)), image_path(work.image_id) %>
+				<%= link_to image_tag(work.cover.picture(:cover)), image_path(work.cover_id) %>
 				<div class="caption caption-border">
 					来自:<%= link_to "##{work.event.name}#", event_path(work.event_id) %>
 					<br>
