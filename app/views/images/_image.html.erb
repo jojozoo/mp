@@ -1,7 +1,7 @@
 <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
         <div class="actions fade-row">
-            <%= link_to tui_image_path(image.id, ac: 'lauds'), remote: true, class: 'btn-ajax btn btn-success btn-xs' do %>
+            <%= link_to tui_image_path(image.id, ac: 'lauds'), remote: true, class: "#{'disabled' if image.tuilaud?(current_user)} btn-ajax btn btn-success btn-xs", id: "push-lauds-#{image.id}-a" do %>
                 <i class="icon-thumbs-up"></i>
                 点赞
             <% end %>

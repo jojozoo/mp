@@ -41,6 +41,11 @@ class User < ActiveRecord::Base
   has_many :notices
   has_many :micros
   has_many :pushes
+
+  has_many :tuilauds, as: :obj
+  has_many :tuilikes, as: :obj
+  has_many :tuistores, as: :obj
+  has_many :tuirecoms, as: :obj
   
   # 我的关注(我关注的人)
   has_many :follow_ships, class_name: 'Follow', foreign_key: :follower_id

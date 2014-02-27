@@ -27,21 +27,21 @@ end
 
 
 # tui 单继承变量
-['Laud', 'Like', 'Store', 'Recom'].each do |c|
-  Object.const_set(c, Class.new(Tui)).instance_eval <<-BELONG
-    belongs_to :obj, polymorphic: true, counter_cache: true
-  BELONG
-end
+# ['Laud', 'Like', 'Store', 'Recom'].each do |c|
+#   Object.const_set(c, Class.new(Tui)).instance_eval <<-BELONG
+#     belongs_to :obj, polymorphic: true, counter_cache: true
+#   BELONG
+# end
 
 # 这些类需要has_many tuis,likes等等
-{
-  'User'  => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
-  'Work'  => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
-  'Image' => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
-  'Group' => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
-  'Topic' => ['tuis', 'lauds', 'likes', 'stores', 'recoms']
-}.each do |key, val|
-  key.constantize.class_eval <<-HASCON
-    #{val.map{|row| "has_many :" + row + ", as: :obj"}.join("\n")}
-  HASCON
-end
+# {
+#   'User'  => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
+#   'Work'  => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
+#   'Image' => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
+#   'Group' => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
+#   'Topic' => ['tuis', 'lauds', 'likes', 'stores', 'recoms']
+# }.each do |key, val|
+#   key.constantize.class_eval <<-HASCON
+#     #{val.map{|row| "has_many :" + row + ", as: :obj"}.join("\n")}
+#   HASCON
+# end

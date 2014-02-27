@@ -133,7 +133,6 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.integer  "work_id"
     t.integer  "album_id"
     t.integer  "state",                :default => 0
-    t.integer  "tuis_count",           :default => 0
     t.integer  "lauds_count",          :default => 0
     t.integer  "likes_count",          :default => 0
     t.integer  "stores_count",         :default => 0
@@ -354,6 +353,7 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.boolean  "photographer",        :default => false
     t.integer  "talks_count",         :default => 0
     t.integer  "notices_count",       :default => 0
+    t.integer  "followers_count",     :default => 0
     t.string   "bg",                  :default => "/images/defaults/bgs.jpg"
     t.string   "repeat",              :default => "repeat"
     t.string   "remember_me"

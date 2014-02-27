@@ -1,2 +1,3 @@
 var item = $("#push-<%= params[:ac] %>-<%= @image.id %>");
-item.text(item.attr('title') + '(<%= @count + 1 %>)');
+item.text(item.attr('title') + '(<%= @count + 1 %>)').effect( "highlight", 3000 );
+$("#push-<%= params[:ac] %>-<%= @image.id %>-a").addClass('disabled');
