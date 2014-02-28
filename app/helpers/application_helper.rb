@@ -1,43 +1,74 @@
 module ApplicationHelper
 
   # 转换时间为友好格式
-  def humanize(date)
-    p = Time.now - date
-    return case
-    when p <= 2.minutes then '刚刚'
-    when p > 2.minutes && p <= 1.hour then "#{p.to_i / 60} 分钟前"
-    when p > 1.hour && date.today? then "今天 #{date.strftime("%H:%M")}"
-    when p > 1.hour && date.to_date == Date.yesterday then "昨天 #{date.strftime("%H:%M")}"
-    when p > 1.hour && date.to_date < Date.yesterday then date.strftime("%m-%d %H:%M")
+  def humanize(from_time)
+    # def distance_of_time_in_words(from_time, to_time = 0, include_seconds = false)
+    # from_time = from_time.to_time if from_time.respond_to?(:to_time)
+    # to_time = to_time.to_time if to_time.respond_to?(:to_time)
+    # p = Time.now - date
+    # return case
+    # when p <= 2.minutes then '刚刚'
+    # when p > 2.minutes && p <= 1.hour then "#{p.to_i / 60} 分钟前"
+    # when p > 1.hour && date.today? then "今天 #{date.strftime("%H:%M")}"
+    # when p > 1.hour && date.to_date == Date.yesterday then "昨天 #{date.strftime("%H:%M")}"
+    # when p > 1.hour && date.to_date < Date.yesterday then date.strftime("%m-%d %H:%M")
+    # end
+    to_time = Time.now
+    distance_in_minutes = (((to_time - from_time).abs) / 60).round
+    distance_in_seconds = ((to_time - from_time).abs).round
+    case distance_in_minutes
+    when 0..1
+     case distance_in_seconds
+       when 0..4   then '不到5秒'
+       when 5..9   then '不到10秒'
+       when 10..19 then '不到20秒'
+       when 20..39 then '大约半分钟'
+       when 40..59 then '不到一分钟'
+       else             '一分钟'
+     end
+    when 2..59           then "#{distance_in_minutes} 分钟前"
+    when 60..1439        then "今天 #{from_time.strftime("%H:%M")}" # "大约 #{(distance_in_minutes.to_f / 60.0).round} 小时"
+    when 1440..2879      then "昨天 #{from_time.strftime("%H:%M")}"
+    # when 2880..43199     then "#{(distance_in_minutes / 1440).round} days"
+    # when 43200..86399    then 'about 1 month'
+    # when 86400..525599   then "#{(distance_in_minutes / 43200).round} months"
+    # when 525600..1051199 then 'about 1 year'
+    else                     from_time.strftime("%m-%d %H:%M")
     end
   end
 
-  def link_to_push_laud
-
-  end
-
-  def link_to_push_like
-
-  end
-
-  def link_to_push_store
-
-  end
-
-  def link_to_push_recom
-    
-  end
-
-  def link_to(name = nil, options = nil, html_options = nil, &block)
-    html_options, options, name = options, name, block if block_given?
-    options ||= {}
-
-    html_options = convert_options_to_data_attributes(options, html_options)
-
-    url = url_for(options)
-    html_options['href'] ||= url
-
-    content_tag(:a, name || url, html_options, &block)
+  # TODO 重写remote js diabled时不请求
+  def link_to_push name, obj, isblock = true
+    type, method, icon, str = case name
+    when 'laud'
+      ['lauds', 'tuilaud?', 'thumbs-up', '点赞']
+    when 'like'
+      ['likes', 'tuilike?', 'heart', '喜欢']
+    when 'store'
+      ['stores', 'tuistore?', 'star', '收藏']
+    when 'recom'
+      ['recoms', 'tuirecom?', 'ok-circle', '推荐']
+    else
+      ['lauds', 'tuilaud?', 'thumbs-up', '点赞']
+    end
+    class_str = "push-#{type}-#{obj.id}-effect"
+    class_str += isblock ? ' btn btn-success btn-xs' : ''
+    if current_user
+      if obj.try(method, current_user)
+        class_str += ' disabled'
+      else
+        class_str += ' btn-ajax'
+      end
+    end
+    options = {remote: true, class: class_str}
+    if isblock
+      link_to tui_image_path(obj.id, ac: type), options do
+        "<i class='icon-#{icon}'></i>#{str}".html_safe
+      end
+    else
+      options[:class] = options[:class] + " push-#{type}-#{obj.id}-link"
+      link_to str + "(#{obj.try(type + '_count')})", tui_image_path(obj.id, ac: type), options.merge(title: str)
+    end
   end
 
 end

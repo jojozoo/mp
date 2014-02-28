@@ -1,3 +1,3 @@
-var item = $("#push-<%= params[:ac] %>-<%= @image.id %>");
+var item = $(".push-<%= params[:ac] %>-<%= @image.id %>-effect");
 item.text(item.attr('title') + '(<%= @count + 1 %>)').effect( "highlight", 3000 );
-$("#push-<%= params[:ac] %>-<%= @image.id %>-a").addClass('disabled');
+$(".push-<%= params[:ac] %>-<%= @image.id %>-link").addClass('disabled').removeClass('btn-ajax');

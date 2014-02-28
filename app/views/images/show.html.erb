@@ -30,19 +30,19 @@
 				</li>
 				<li class="opt-b">
 					<i class="icon-thumbs-up"></i>
-					<a href="/" title="点赞">点赞(5)</a>
+					<%= link_to_push 'laud', @obj, false %>
 				</li>
 				<li class="opt-b">
 					<i class="icon-heart"></i>
-					<a href="/" title="喜欢">喜欢(10)</a>
+					<%= link_to_push 'like', @obj, false %>
 				</li>
 				<li class="opt-b">
-					<i class="icon-pushpin"></i>
-					<a href="/" title="收藏">收藏(22)</a>
+					<i class="icon-star"></i>
+					<%= link_to_push 'store', @obj, false %>
 				</li>
 				<li class="opt-b">
 					<i class="icon-ok-circle"></i>
-					<a href="/" title="推荐">推荐(1)</a>
+					<%= link_to_push 'recom', @obj, false %>
 				</li>
 				<li class="opt-b">
 					<i class="icon-comment"></i>

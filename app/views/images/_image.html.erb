@@ -1,22 +1,10 @@
 <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
         <div class="actions fade-row">
-            <%= link_to tui_image_path(image.id, ac: 'lauds'), remote: true, class: "#{'disabled' if image.tuilaud?(current_user)} btn-ajax btn btn-success btn-xs", id: "push-lauds-#{image.id}-a" do %>
-                <i class="icon-thumbs-up"></i>
-                点赞
-            <% end %>
-            <%= link_to tui_image_path(image.id, ac: 'likes'), remote: true, class: 'btn-ajax btn btn-success btn-xs' do %>
-                <i class="icon-heart"></i>
-                喜欢
-            <% end %>
-            <%= link_to tui_image_path(image.id, ac: 'stores'), remote: true, class: 'btn-ajax btn btn-success btn-xs' do %>
-                <i class="icon-pushpin"></i>
-                收藏
-            <% end %>
-            <%= link_to tui_image_path(image.id, ac: 'recoms'), remote: true, class: 'btn-ajax btn btn-success btn-xs' do %>
-                <i class="icon-ok-circle"></i>
-                推荐
-            <% end %>
+            <%= link_to_push 'laud', image %>
+            <%= link_to_push 'like', image %>
+            <%= link_to_push 'store', image %>
+            <%= link_to_push 'recom', image %>
         </div>
         <%= link_to image_tag(image.picture.url(:thumb)), image_path(image), style: 'display:block', target: '_blank' %>
         <div class="caption">
