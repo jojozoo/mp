@@ -8,8 +8,7 @@ class ImagesController < ApplicationController
     end
 
     def show
-        @obj = Image.find_by_id_and_del_and_state(params[:id], false, true)
-        redirect_to action: :index unless @obj
+        @image = Image.find_by_id_and_del_and_state(params[:id], false, true)
     end
 
     # 图片访问权限控制
@@ -50,6 +49,13 @@ class ImagesController < ApplicationController
             image.update_attributes(del: true)
         end
         render text: 'ok'
+    end
+
+    def comment
+        if image = Image.find(params[:id])
+            image.comments.create(params[:comment].merge(user_id: current_user.id))
+        end
+        redirect_to :back
     end
 
     def tui

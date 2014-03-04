@@ -1,0 +1,17 @@
+<li class="media">
+	<%= link_to image_tag(comment.user.avatar(:s50), class: 'img-circle avatar'), user_path(comment.user_id), class: 'pull-left' %>
+	<div class="media-body">
+		<div class="media-heading">
+			<%= link_to comment.user.username, user_path(comment.user_id) %>
+				<% if reply = comment.reply and comment.reply_id != comment.user_id %>
+					<span class="date">
+						<i class="icon-share-alt"></i>
+					</span>
+					<%= link_to reply.username, user_path(reply.id) %>
+				<% end %>
+			<span class="date"><%= humanize comment.created_at %></span>
+			<a class="reply-link pull-right" href="javascript:void(0);" data-id="<%= comment.user_id %>" data-name="<%= comment.user.username %>">回应TA</a>
+		</div>
+		<p class="reply-content"><%= comment.content %></p>
+	</div>
+</li>

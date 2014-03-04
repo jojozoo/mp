@@ -23,6 +23,7 @@ Mp::Application.routes.draw do
     end
     member do
       get :tui
+      post :comment
     end
   end
   resources :albums
@@ -39,6 +40,7 @@ Mp::Application.routes.draw do
   resources :micros, path: 'ms'
   resources :works
   resources :rs
+  # resources :comments
   resources :sites, only: :create do
     collection do
       match ':action'

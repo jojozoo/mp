@@ -11,6 +11,7 @@ class CreateImages < ActiveRecord::Migration
       t.integer :likes_count, default: 0
       t.integer :stores_count, default: 0
       t.integer :recoms_count, default: 0
+      t.integer :comments_count, default: 0
       t.integer :warrant # 授权
       t.attachment :picture
       t.string :desc

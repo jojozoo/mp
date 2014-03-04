@@ -3,6 +3,7 @@ class CreateComments < ActiveRecord::Migration
     create_table :comments do |t|
       t.references :obj, polymorphic: true
       t.integer :user_id
+      t.integer :reply_id
       t.string :title
       t.text :content
       t.boolean :del, default: false
