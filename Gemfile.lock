@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/radar/by_star
-  revision: 453f100644d3b0e8ef00c5666ae817e8752bc268
-  specs:
-    by_star (2.1.0.beta2)
-      activerecord
-      chronic
-
 GEM
   remote: http://ruby.taobao.org/
   specs:
@@ -41,7 +33,6 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.0.4)
-    chronic (0.10.2)
     client_side_validations (3.2.6)
     client_side_validations-simple_form (2.1.0)
       client_side_validations (~> 3.2.5)
@@ -170,7 +161,6 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  by_star!
   client_side_validations
   client_side_validations-simple_form
   coffee-rails (~> 3.2.1)

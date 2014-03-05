@@ -12,7 +12,7 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 
-gem 'by_star', :git => 'git://github.com/radar/by_star'
+#gem 'by_star'
 
 # 上传图片
 gem 'paperclip', '~> 3.0'

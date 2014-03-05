@@ -51,6 +51,14 @@ class Image < ActiveRecord::Base
     end.to_json
   end
 
+  def prev(offset = 0)
+    self.class.first(:conditions => ['work_id = ? and id < ?', self.work_id, self.id], :limit => 1, :offset => offset, :order => "id DESC") || self
+  end
+
+  def next(offset = 0)
+    self.class.first(:conditions => ['work_id = ? and id > ?', self.work_id, self.id], :limit => 1, :offset => offset, :order => "id ASC") || self
+  end
+
     # before_post_process
     # after_post_process
     # before_<attachment>_post_process

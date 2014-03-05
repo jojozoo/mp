@@ -8,7 +8,7 @@ class ImagesController < ApplicationController
     end
 
     def show
-        @image = Image.find_by_id_and_del_and_state(params[:id], false, true)
+        @image = Image.find_by_id_and_state(params[:id], true)
     end
 
     # 图片访问权限控制
