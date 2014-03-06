@@ -1,14 +1,10 @@
 <div class="flexslider">
 	<ul class="slides">
+		<% Sbanner.all.each do |banner| %>
 		<li>
-			<img src="/images/slide1.jpg" />
+			<%= image_tag banner.photo.url %>
 		</li>
-		<li>
-			<img src="/images/slide2.jpg" />
-		</li>
-		<li>
-			<img src="/images/slide3.jpg" />
-		</li>
+		<% end %>
 	</ul>
 </div>
 <style>

@@ -77,12 +77,12 @@
 						<i class="icon-remove"></i>
 					</a>
 				</h5>
-				<%= simple_form_for Comment.new, url: comment_image_path(@image.id), validate: true do |f| %>
-					<%= f.input :reply_id, as: :hidden %>
-					<%= f.input_field :content, as: :text %>
+				<%= form_tag comment_image_path(@image.id), method: :post do %>
+					<input class="hidden" id="comment_reply_id" name="comment[reply_id]" type="hidden"></div>
+					<textarea class="text required form-control" cols="40" id="comment_content" maxlength="200" name="comment[content]" rows="20" data-validate="true"></textarea>
 					<span class="text-danger pull-left form-error-tip">不能为空</span>
-					<%= f.submit '回应', class: 'btn btn-default pull-right' %>
-				<% end %>
+					<input class="btn btn-default pull-right" name="commit" type="submit" value="回应">
+				</form>
 				<div class="clearfix"></div>
 			</div>
 			<hr>
