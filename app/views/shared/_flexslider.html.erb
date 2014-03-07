@@ -2,7 +2,12 @@
 	<ul class="slides">
 		<% Sbanner.all.each do |banner| %>
 		<li>
-			<%= image_tag banner.photo.url %>
+			<% if banner.link.eql?('javascript:void(0);') %>
+			<%= image_tag(banner.photo.url) %>
+			<% else %>
+			<%= link_to image_tag(banner.photo.url), banner.link, target: '_blank' %>
+			<% end %>
+			
 		</li>
 		<% end %>
 	</ul>

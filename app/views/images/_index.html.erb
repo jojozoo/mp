@@ -1,0 +1,7 @@
+<div class="row" id="container" <%= "np=#{@images.next_page}" if @images.next_page %>>
+    <%= render partial: :image, collection: @images %>
+    <div id="page_loading">
+		<img src="/images/ajax-loader.gif">
+		<span>加载中...</span>
+	</div>
+</div>

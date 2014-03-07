@@ -1,6 +1,7 @@
 class ImagesController < ApplicationController
     def index
         @images = Image.where(state: true).paginate(:page => params[:page], per_page: 12).order('id desc')
+        render '_index', layout: false if request.xhr?
     end
 
     def star
@@ -13,7 +14,6 @@ class ImagesController < ApplicationController
 
     # 图片访问权限控制
     def browse
-        # sleep(1)
         send_path = "public/system/#{params[:class]}/#{params[:id]}/#{params[:style]}/#{params[:random]}.#{params[:format]}"
         if params[:class].eql?('images') and image = Image.find_by_id(params[:id])
             send_path = image.picture.path(params[:style])

@@ -6,5 +6,6 @@ class Sbg < ActiveRecord::Base
     scope :signs, -> {where(bg: false)}
 
     validates_presence_of :photo, 
+    					on: :create,
                         message: '不能为空'
 end
