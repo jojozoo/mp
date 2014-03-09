@@ -26,5 +26,3 @@ $warrant = {
     }
 }
 $warrantval = Hash[$warrant.map{|k,v|[k,v[:name]]}]
-# 全局导航
-$navs = YAML.load_file("config/datas/global_nav.yml")
