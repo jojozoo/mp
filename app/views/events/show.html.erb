@@ -1,82 +1,86 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="white-col-md">
-			<div class="page-header">
-					<h4>
-						<%= @event.title %>
-						<small>
-							<a class="text-success">100</a>张图片&nbsp;&nbsp;
-							<a class="text-success">30</a>人参加
-						</small>
-						<%= link_to '上传到本活动', new_work_path(eid: @event.id), class: 'btn btn-success btn-sm pull-right', style: 'margin-top:-4px;' %>
-					</h4>
-				</div>
-				<div class="mp-page">
-					<div class="media">
-						<img class="media-object pull-left" src="/images/eventbody.png" style="width:800px;height:400px;">
-						<div class="media-body">
-							<h4 class="media-heading">活动公告
-								<small>活动里的推荐</small>
-							</h4>
-							<hr>
-							<ul>
-								<% 5.times do %>
-								<li>
-									<a href="">活动里的推荐</a>
-								</li>
-								<% end %>
-							</ul>
-						</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="page-header">
+						<h4>
+							<%= @event.title %>
+							<small>
+								<a class="text-success">100</a>张图片&nbsp;&nbsp;
+								<a class="text-success">30</a>人参加
+							</small>
+							<%= link_to '上传到本活动', new_work_path(eid: @event.id), class: 'btn btn-success btn-sm pull-right', style: 'margin-top:-4px;' %>
+						</h4>
 					</div>
-					<pre class="event-content gray-desc"><code><%= @event.desc %></code></pre>
-				</div>
-
-				<ul class="breadcrumb" style="margin-bottom: 10px;">
-					<li>
-						<a href="javascript:void(0);" class="">最新上传</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);" class="">人气最高</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);" class="">评论最多</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);" class="">每周热图</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);" class="">只看自己</a>
-					</li>
-					<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
-						<i class="icon-th"></i>
-					</a>
-					<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
-						<i class="icon-th-list"></i>
-					</a>
-					<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
-						<i class="icon-th-large"></i>
-					</a>
-				</ul>
-				<div class="row">
-					<% @works.each do |work| %>
-						<div class="col-sm-6 col-md-3">
-							<div class="thumbnail">
-								<%= link_to image_tag(work.cover.picture(:thumb)), work_path(work.id), target: '_blank' %>
-								<div class="caption caption-border">
-									<div style="margin: 6px 0;">
-										<%= work.desc.present? ? work.desc : "暂无描述" %>
-									</div>
-									<span class="push-thumbs-up">点赞(8)</span>
-									<span class="push-heart">喜欢(12)</span>
-									<span class="push-pushpin">收藏(0)</span>
-									<span class="push-ok-circle">推荐(198)</span>
-									<br>
-									<span>上传时间:<%= work.created_at.to_date %></span>
-								</div>
+					<div class="mp-page">
+						<div class="media">
+							<img class="media-object pull-left" src="/images/eventbody.png" style="width:800px;height:400px;">
+							<div class="media-body">
+								<h4 class="media-heading">活动公告
+									<small>活动里的推荐</small>
+								</h4>
+								<hr>
+								<ul>
+									<% 5.times do %>
+									<li>
+										<a href="">活动里的推荐</a>
+									</li>
+									<% end %>
+								</ul>
 							</div>
 						</div>
-					<% end %>
+						<pre class="event-content gray-desc"><code><%= @event.desc %></code></pre>
+					</div>
+
+					<ul class="breadcrumb" style="margin-bottom: 10px;">
+						<li>
+							<a href="javascript:void(0);" class="">最新上传</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="">人气最高</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="">评论最多</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="">每周热图</a>
+						</li>
+						<li>
+							<a href="javascript:void(0);" class="">只看自己</a>
+						</li>
+						<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
+							<i class="icon-th"></i>
+						</a>
+						<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
+							<i class="icon-th-list"></i>
+						</a>
+						<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
+							<i class="icon-th-large"></i>
+						</a>
+					</ul>
+					<div class="row">
+						<% @works.each do |work| %>
+							<div class="col-sm-6 col-md-3">
+								<div class="thumbnail">
+									<%= link_to image_tag(work.cover.picture(:thumb)), work_path(work.id), target: '_blank' %>
+									<div class="caption caption-border">
+										<div style="margin: 6px 0;">
+											<%= work.desc.present? ? work.desc : "暂无描述" %>
+										</div>
+										<span class="push-thumbs-up">点赞(8)</span>
+										<span class="push-heart">喜欢(12)</span>
+										<span class="push-pushpin">收藏(0)</span>
+										<span class="push-ok-circle">推荐(198)</span>
+										<br>
+										<span>上传时间:<%= work.created_at.to_date %></span>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
 				</div>
+			</div>
 		</div>
 	</div>
 </div>

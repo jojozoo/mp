@@ -1,3 +1,52 @@
+.fadedown, .bgdown{
+    display: none;
+    position: absolute;
+    padding: 15px 10px;
+    color: white;
+}
+.ondown{
+    width: 200px;
+    height: 80px;
+    position: absolute;
+    cursor: pointer;
+    /*border: 1px solid #ccc;*/
+}
+.bgdown{
+    background: #000;
+    filter: alpha(opacity=30);
+    -moz-opacity: 0.3;
+    -kHTML-opacity: 0.3;
+    opacity: 0.3;
+}
+.on-left-top, .bgfade-left-top{
+    top: 0;
+    left: 0;
+}
+.on-right-top, .bgfade-right-top{
+    top: 0;
+    right: 0;
+}
+.on-left-bottom, .bgfade-left-bottom{
+    left: 0;
+    bottom: 0;
+}
+.on-right-bottom, .bgfade-right-bottom{
+    right: 0;
+    bottom: 0;
+}
+.bgfade-left-top{
+    width: 330px;
+}
+.bgfade-right-top{
+    width: 400px;
+}
+.bgfade-left-bottom{
+    width: 230px;
+}
+.bgfade-right-bottom{
+    width: 600px;
+    padding: 4px 10px;
+}
 .fade-row{
   display: none;
   position: absolute;
@@ -52,7 +101,7 @@ textarea.form-control{
 }
 .white-col-md{
     background: #fff;
-    padding: 1px 15px;
+    padding: 0 15px;
 }
 .alert{
     margin-bottom: 10px;
@@ -311,7 +360,7 @@ hr{
     font-size: 10px;
 }
 .page-header{
-    margin: 20px 0;
+    margin: 15px 0;
     padding-bottom: 0;
 }
 .header-tip{

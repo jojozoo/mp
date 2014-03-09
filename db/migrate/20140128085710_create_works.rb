@@ -8,7 +8,7 @@ class CreateWorks < ActiveRecord::Migration
       t.integer :winner
       t.string :title
       t.string :desc
-      t.string :images_count, default: 0
+      t.integer :images_count, default: 0
       t.boolean :del, default: false
 
       t.timestamps

@@ -7,7 +7,7 @@ $(function(){
             hiddenStyle: { opacity: 0 },
             visibleStyle: { opacity: 1}
         });
-        // $('.col-sm-6.col-md-3').animate({'opacity': 1}, 500);
+        $('.col-sm-6.col-md-3').animate({'opacity': 1}, 500);
     });
     // 给浏览器窗口绑定 scroll 事件
     $(window).bind("scroll",function(){
@@ -20,7 +20,7 @@ $(function(){
                 $.ajax( {
                     url: '/gs?page=' + nextPage,
                     type: "get",
-                    // async: false,
+                    async: false,
                     beforeSend: function(){
                         // 显示正在加载模块
                         $("#page_loading").show("slow");

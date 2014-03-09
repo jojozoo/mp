@@ -11,10 +11,9 @@ Mp::Application.routes.draw do
   get    '/forgot'        => 'sessions#forgot'
   post   '/forgot'        => 'sessions#forgot'
 
-
   get    '/profile'       => 'users#profile'
-
   get    '/search'        => 'search#index'
+  match '/ajax/:push/:source/:id' => 'ajax#tui', via: :post, as: :tui
 
   # gallery
   resources :images, path: 'gs' do

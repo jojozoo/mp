@@ -7,35 +7,43 @@
 <div class="row">
     <div class="col-md-9">
         <div class="white-col-md">
-            <h3>
-                发现圈子
-            </h3>
             <div class="row">
-                <% @groups.each do |group| %>
-                <div class="col-md-4">
-                    <div class="media">
-                        <a class="pull-left" href="javascript:void(0);">
-                            <%= image_tag group.logo(:small), size: '60x60' %>
-                        </a>
-                        <div class="media-body">
-                            <div class="media-heading" style='font-size: 14px;'>
-                                <%= link_to group.title, group_path(group.id) %>
+                <div class="col-md-12">
+                    <h3>
+                        发现圈子
+                    </h3>
+                    <div class="row">
+                        <% @groups.each do |group| %>
+                        <div class="col-md-4">
+                            <div class="media">
+                                <a class="pull-left" href="javascript:void(0);">
+                                    <%= image_tag group.logo(:small), size: '60x60' %>
+                                </a>
+                                <div class="media-body">
+                                    <div class="media-heading" style='font-size: 14px;'>
+                                        <%= link_to group.title, group_path(group.id) %>
+                                    </div>
+                                    <small>
+                                        喜欢：<%= group.members_count %>
+                                        推荐：<%= group.topics_count %>
+                                    </small>
+                                </div>
                             </div>
-                            <small>
-                                喜欢：<%= group.members_count %>
-                                推荐：<%= group.topics_count %>
-                            </small>
                         </div>
+                        <% end %>
                     </div>
                 </div>
-                <% end %>
             </div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="white-col-md">
-            <div class="page-header">
-                <h4>最新圈子</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h4>最新圈子</h4>
+                    </div>
+                </div>
             </div>
         </div>
     </div>    

@@ -1,1 +1,156 @@
-用户主页 完善中
+<style>
+    .profile-header-left{
+        position: absolute;
+        top: -128px;
+        left: 20px;
+        background: #fafafa;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        border-width: 1px\9;
+        border-style: solid\9;
+    }
+    .user_atten{
+        width: 204px;
+        padding: 0;
+        margin-top: 10px;
+    }
+    .user_atten li {
+        padding: 0 3px 3px;
+        float: left;
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-color: #e3e4fb;
+        text-align: center;
+        width: 68px;
+        list-style: none;
+    }
+    .user_atten li a {
+        display: block;
+    }
+    li.W_no_border{
+        border: 0;
+    }
+    .user_atten li a:hover {
+        color: #53364c;
+        text-decoration: none;
+    }
+    .user_atten li strong {
+        line-height: 20px;
+        display: block;
+        margin-bottom: 5px;
+        font-family: Tahoma;
+        font-weight: 400;
+        font-size: 20px;
+    }
+    .pf_head_pic{
+        padding: 2px;
+        width: 200px;
+        height: 200px;
+        position: relative;
+    }
+    .profile-header-right{
+        margin-left: 225px;
+    }
+    .profile-header-right > div{
+        min-height: 32px;
+        padding-top: 10px;
+    }
+    .pf_name{
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+    .pf-url{
+        font-size: 12px;
+    }
+    .pf_resume{
+        color: #808080;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <img src="/images/profile.jpg" style="width:100%;">
+    </div>
+</div>
+<div class="white-col-md">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="profile-header-left">
+                <div class="pf_head_pic">
+                    <%= image_tag current_user.avatar(:thumb) %>
+                </div>
+                <ul class="user_atten">
+                    <li>
+                        <a href="javascript:void(0);"> 
+                            <strong>58</strong>
+                            <span>作品</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"> 
+                            <strong>632</strong>
+                            <span>粉丝</span>
+                        </a>
+                    </li>
+                    <li class="W_no_border">
+                        <a href="javascript:void(0);"> 
+                            <strong>69</strong>
+                            <span>点赞</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="profile-header-right" style="margin-bottom:10px;">
+                <h3 class="pf_name">
+                    <%= @user.username %>
+                    <small class="pf-url"><%= link_to user_url(@user.id), user_path(@user.id) %></small>
+                </h3>
+                <div class="pf_resume">
+                    <%= @user.resume %>
+                </div>
+                <div class="pf_tags">
+                    <%= @user.addr %>
+                </div>
+                <div class="pf_do">
+                    <a href="" class="btn btn-default btn-xs">
+                        <i class="icon-plus"></i>
+                        关注
+                    </a>
+                    <a href="" class="btn btn-default btn-xs">
+                        <i class="icon-envelope"></i>
+                        漫信
+                    </a>
+                </div>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="javascript:void(0);">作品</a>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0);">相册</a>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0);">简介</a>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0);">粉丝</a>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0);">动态</a>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0);">点赞</a>
+                </li>
+                <li class="">
+                    <a href="javascript:void(0);">足迹</a>
+                </li>
+            </ul>
+            <div class="row">
+                <div class="col-md-9">
+                    
+                </div>
+                <div class="col-md-3">
+                    
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>

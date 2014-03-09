@@ -1,1 +1,240 @@
-这个显示活动的一组照片,连带着用户显示
+<div class="row">
+    <div class="col-md-9">
+        <div class="white-col-md">
+            <div class="row" style="height:200px;margin-bottom:20px;">
+                <div class="col-md-8" style="border-right: 1px solid #F8F8F8;">
+                    <h3>
+                        <%= @work.title %>
+                        <small><%= @work.images_count %>张照片</small>
+                    </h3>
+                    <p class="gray-desc">
+                        <%= @work.desc %>
+                    </p>
+                    <p>
+                        标签: 
+                        <a href="">摄影</a>
+                        <a href="">Iphone</a>
+                    </p>
+                </div>
+                <div class="col-md-4" style="margin-top:10px;">
+                    <div class="basic-info">
+                        <%= link_to image_tag(@work.user.avatar(:s50), class: 'img-circle'), user_path(@work.user_id), style: 'float:left;margin-right:10px;' %>
+                        <div>
+                            <%= link_to @work.user.username, user_path(@work.user_id) %>    
+                        </div>
+                        <div class="basic-tui" style="margin-top:8px;">
+                            <a href="" class="btn btn-default btn-xs">
+                                <i class="icon-plus"></i>
+                                关注
+                            </a>
+                            <a href="" class="btn btn-default btn-xs">
+                                <i class="icon-envelope"></i>
+                                漫信
+                            </a>
+                        </div>
+                    </div>
+                    <div class="basic-attr" style="margin: 15px auto;">
+                        作品 <a href="">43</a>
+                        |
+                        点赞 <a href="">20</a>
+                        |
+                        关注 <a href="">66</a>
+                    </div>
+                    <p>
+                        浏览: 30
+                        <br> 
+                        时间: <%= humanize(@work.updated_at) %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- 图片 -->
+        <script src="/javascripts/image.js?v=<%= Time.now.to_i %>" type="text/javascript"></script>
+        <% @work.images.each do |image| %>
+        <div class="row" style="margin-bottom:20px;">
+            <div class="col-md-12">
+                    <div class="pic">
+                        <%= link_to image_tag(image.picture(:big), style: 'max-width:100%;') %>
+                        <%= render "/shared/actions", obj: image, as: :obj if sign_in? %>
+                    </div>
+            </div>
+        </div>
+        <% end %>
+        <style>
+        .smallSocials {
+          margin: 0;
+          list-style: none;
+        }
+        .smallSocials li {
+          display: block;
+          float: left;
+          margin: 0;
+        }
+        .smallSocials li a {
+          display: block;
+          width: 62px;
+          height: 62px;
+          font-size: 0;
+          color: transparent;
+          background: transparent;
+          border-left: 1px solid #506889;
+          border-left: 1px solid rgba(255,255,255,0.15);
+        }
+        .smallSocials li a:before {
+          color: #fff;
+          font-size: 27px;
+          line-height: 27px;
+          position: relative;
+          top: 19px;
+          left: 1px;
+        }
+        .smallSocials a:hover {
+          background: #f78927;
+        }
+        .smallSocials a.icon-facebook:hover {
+          background: #3b5998;
+        }
+        .smallSocials a.icon-twitter:hover {
+          background: #00a0d1;
+        }
+        .smallSocials a.icon-google-plus:hover {
+          background: #db4a39;
+        }
+        .smallSocials a.icon-pinterest:hover {
+          background: #c8232c;
+        }
+        .smallSocials a.icon-linkedin:hover {
+          background: #0e76a8;
+        }
+        .smallSocials a.icon-github-alt:hover {
+          background: #171515;
+        }
+        .smallSocials a.icon-instagram:hover {
+          background: #517fa4;
+        }
+        .smallSocials a.icon-youtube-sign:hover {
+          background: #c4302b;
+        }
+        .smallSocials a.icon-vimeo:hover {
+          background: #1ab7ea;
+        }
+        .smallSocials a.icon-skype:hover {
+          background: #00aff0;
+        }
+        .smallSocials a.icon-rss:hover {
+          background: #ee802f;
+        }
+        </style>
+        <div class="white-col-md">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="" style="background:#405b7f;">
+                        <ul class="smallSocials">
+                            <li>
+                                <a href="javascript:void(0);" class="icon-facebook">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-twitter">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-google-plus">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-linkedin">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-pinterest">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-instagram">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-youtube-sign">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-vimeo">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-phone">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-skype">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-envelope">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" class="icon-rss">
+                                    <i class="icon"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        
+    </div>
+    <div class="col-md-3">
+        <div class="radbox">
+            <div class="box_top">
+                <span class="title light">部分内容</span>
+            </div>
+            <div class="box_con">
+                <ul class="list-unstyled">
+                    <li><a href="/">Ruby</a></li>
+                    <li><a href="/">Mysql</a></li>
+                    <li><a href="/">MongoDB</a></li>
+                    <li><a href="/">JavaScript</a></li>
+                    <li><a href="/">JQuery</a></li>
+                    <li><a href="/">Phonegap</a></li>
+                    <li><a href="/">Titanium</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script>
+    window._bd_share_config={
+        "common":{
+            "bdSnsKey":{},
+            "bdText":"这是分享内容",
+            "bdDesc":"这是分享摘要",
+            "bdUrl":"这是分享的url",
+            "bdPic":"分享的图片",
+            "bdMini":"1", // 下拉浮层中分享按钮的列数
+            "bdMiniList":false,
+            "bdStyle":"1",
+            "bdSize":"16"
+        },
+        "share":{
+            "bdSize":16
+        }
+    };
+    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>

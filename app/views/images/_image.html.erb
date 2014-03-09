@@ -9,10 +9,10 @@
         <%= link_to image_tag(image.picture.url(:thumb)), image_path(image), style: 'display:block', target: '_blank' %>
         <div class="caption">
             <div><%= image.desc %></div>
-            <span id="push-lauds-<%= image.id %>" title="点赞">点赞(<%= image.lauds_count %>)</span>
-            <span id="push-likes-<%= image.id %>" title="喜欢">喜欢(<%= image.likes_count %>)</span>
-            <span id="push-stores-<%= image.id %>" title="收藏">收藏(<%= image.stores_count %>)</span>
-            <span id="push-recoms-<%= image.id %>" title="推荐">推荐(<%= image.recoms_count %>)</span>
+            <span class="push-lauds-<%= image.id %>-effect" title="点赞">点赞(<%= image.lauds_count %>)</span>
+            <span class="push-likes-<%= image.id %>-effect" title="喜欢">喜欢(<%= image.likes_count %>)</span>
+            <span class="push-stores-<%= image.id %>-effect" title="收藏">收藏(<%= image.stores_count %>)</span>
+            <span class="push-recoms-<%= image.id %>-effect" title="推荐">推荐(<%= image.recoms_count %>)</span>
             <hr>
             <div class="media">
                 <%= link_to image_tag(image.user.avatar(:s50), class: 'img-circle avatar-mini'), user_path(image.user_id), class: 'pull-left' %>

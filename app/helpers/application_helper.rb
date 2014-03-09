@@ -51,7 +51,7 @@ module ApplicationHelper
     else
       ['lauds', 'tuilaud?', 'thumbs-up', '点赞']
     end
-    class_str = "push-#{type}-#{obj.id}-effect"
+    class_str = "push-#{type}-#{obj.id}-link"
     class_str += isblock ? ' btn btn-success btn-xs' : ''
     if current_user
       if obj.try(method, current_user)
@@ -66,7 +66,7 @@ module ApplicationHelper
         "<i class='icon-#{icon}'></i>#{str}".html_safe
       end
     else
-      options[:class] = options[:class] + " push-#{type}-#{obj.id}-link"
+      options[:class] = options[:class] + " push-#{type}-#{obj.id}-effect"
       link_to str + "(#{obj.try(type + '_count')})", tui_image_path(obj.id, ac: type), options.merge(title: str)
     end
   end

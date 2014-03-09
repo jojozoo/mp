@@ -1,25 +1,29 @@
 <%= render 'nav' %>
 <div class="row">
 	<div class="col-md-9">
-		<div class="white-col-md wrapper">
-			<h3><%= {'explore' => '发现话题', 'publish' => '发起的话题', 'reply' => '回应的话题'}[params[:t]] || '圈子话题' %></h3>
-			<table class="table table-group">
-				<% @topics.each do |topic| %>
-					<tr>
-						<td class="title">
-							<%= link_to truncate(topic.title, length: 30), topic_path(topic) %>
-						</td>
-						<td>
-							<%= topic.comments_count %>回应
-						</td>
-						<td><%= humanize(topic.updated_at) %></td>
-						<td class="time">
-							<%= link_to topic.group.title, group_path(topic.group_id) %>
-						</td>
-					</tr>
-				<% end %>
-			</table>
-			<%= will_paginate @topics %>
+		<div class="white-col-md">
+			<div class="row">
+				<div class="col-md-12">
+					<h3><%= {'explore' => '发现话题', 'publish' => '发起的话题', 'reply' => '回应的话题'}[params[:t]] || '圈子话题' %></h3>
+					<table class="table table-group">
+						<% @topics.each do |topic| %>
+							<tr>
+								<td class="title">
+									<%= link_to truncate(topic.title, length: 30), topic_path(topic) %>
+								</td>
+								<td>
+									<%= topic.comments_count %>回应
+								</td>
+								<td><%= humanize(topic.updated_at) %></td>
+								<td class="time">
+									<%= link_to topic.group.title, group_path(topic.group_id) %>
+								</td>
+							</tr>
+						<% end %>
+					</table>
+					<%= will_paginate @topics %>	
+				</div>
+			</div>
 		</div>
 		
 	</div>
