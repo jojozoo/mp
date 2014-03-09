@@ -30,32 +30,17 @@
 							<div class="vcard-item"><%= @event.desc %></div>
 						</li>
 						<li>
-							<span class="item-key">活动类型(可删除属性)</span>
+							<span class="item-key">活动类型</span>
 							<div class="vcard-item"><%= @event.tag %></div>
 						</li>
 						<li>
-							<span class="item-key">活动置顶</span>
+							<span class="item-key">显示到导航</span>
 							<div class="vcard-item">
-								(<%= Event::TOTOP[@event.totop] %>)
-								<% case @event.totop %>
-								<% when 0 %>
-									<%= link_to '导航&首页', totop_admin_event_path(@event, val: 3) %>
-									<%= link_to '导航',     totop_admin_event_path(@event, val: 2) %>
-									<%= link_to '首页',     totop_admin_event_path(@event, val: 1) %>
-								<% when 1 %>
-									<%= link_to '导航&首页', totop_admin_event_path(@event, val: 3) %>
-									<%= link_to '导航',     totop_admin_event_path(@event, val: 2) %>
-									<%= link_to '取消',     totop_admin_event_path(@event, val: 0) %>
-								<% when 2 %>
-									<%= link_to '导航&首页', totop_admin_event_path(@event, val: 3) %>
-									<%= link_to '首页',      totop_admin_event_path(@event, val: 1) %>
-									<%= link_to '取消',      totop_admin_event_path(@event, val: 0) %>
-								<% when 3 %>
-									<%= link_to '导航',     totop_admin_event_path(@event, val: 2) %>
-									<%= link_to '首页',     totop_admin_event_path(@event, val: 1) %>
-									<%= link_to '取消',     totop_admin_event_path(@event, val: 0) %>
+								(<%= @event.totop ? '在导航' : '未设置' %>)
+								<% if @event.totop %>
+									<%= link_to '取消', totop_admin_event_path(@event, val: 0) %>
 								<% else %>
-									(未知错误)<%= link_to '置为取消', totop_admin_event_path(@event, val: 0) %>
+									<%= link_to '导航', totop_admin_event_path(@event, val: 1) %>
 								<% end %>
 							</div>
 						</li>

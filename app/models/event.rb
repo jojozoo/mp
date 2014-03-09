@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   attr_accessible :desc,
    :name,
    :logo, 
-   :tag, 
+   :channel, 
    :end_time, 
    :works_count, 
    :members_count, 
@@ -17,13 +17,18 @@ class Event < ActiveRecord::Base
   # state 审核中 未通过 进行中 已结束(0,1,2,3)
   # totop 是否显示到全站导航
   # logo
-  # tag 暂时有同城,年度,一般
+  # channel 暂时有同城,年度,手机
   # 导航显示方法
     # 1 推荐显示一般活动
     # 2 推荐显示同城活动
     # 3 推荐显示年度活动
     # 4 正在进行的活动
     # 5 已结束的活动
+  CHANNEL = {
+    0 => '年度',
+    1 => '同城',
+    2 => '手机'
+  }
   has_attached_file :logo,
     styles: {
       thumb: '200x200',
@@ -90,13 +95,6 @@ class Event < ActiveRecord::Base
       end
     STATE_METHOD
   end
-
-  TOTOP = {
-    0 => '未置顶',
-    1 => '首页',
-    2 => '导航',
-    3 => '导航&首页'
-  }
 
   # 活动不应该有类型
   # TAG = {

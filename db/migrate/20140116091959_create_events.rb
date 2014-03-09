@@ -6,12 +6,12 @@ class CreateEvents < ActiveRecord::Migration
       t.attachment :logo
       t.string :title
       t.text :desc
-      t.string :tag # 类型暂定
+      t.string :channel # 类型暂定
       t.date :end_time
       t.integer :members_count, default: 0
       t.integer :works_count, default: 0
       t.integer :state, default: 0
-      t.integer :totop, default: 0
+      t.boolean :totop, default: false
       t.boolean :del, default: false
 
       t.timestamps

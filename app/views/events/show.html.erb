@@ -7,8 +7,8 @@
 						<h4>
 							<%= @event.title %>
 							<small>
-								<a class="text-success">100</a>张图片&nbsp;&nbsp;
-								<a class="text-success">30</a>人参加
+								<a class="text-success"><%= Image.count(conditions: {event_id: @event.id}) %></a>张图片&nbsp;&nbsp;
+								<a class="text-success"><%= @event.members_count %></a>人参加
 							</small>
 							<%= link_to '上传到本活动', new_work_path(eid: @event.id), class: 'btn btn-success btn-sm pull-right', style: 'margin-top:-4px;' %>
 						</h4>
@@ -30,7 +30,9 @@
 								</ul>
 							</div>
 						</div>
-						<pre class="event-content gray-desc"><code><%= @event.desc %></code></pre>
+						<div class="event-content gray-desc">
+							<%= sanitize @event.desc %>
+						</div>
 					</div>
 
 					<ul class="breadcrumb" style="margin-bottom: 10px;">

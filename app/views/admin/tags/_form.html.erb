@@ -1,0 +1,10 @@
+<%= simple_form_for @tag, url: @tag.new_record? ? admin_tags_path : admin_tag_path(@tag), validate: true do |f| %>
+	<%= f.error_notification %>
+	<%= f.input :name %>
+	<%= f.input :channel, collection: Tag::CHANNEL, include_blank: false %>
+	<div class="form-group">
+		<div class="col-sm-8 col-sm-offset-2">
+			<input type="submit" value="保存tag" class="btn btn-default">
+		</div>
+	</div>
+<% end %>

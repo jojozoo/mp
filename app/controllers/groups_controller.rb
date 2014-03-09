@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
     end
 
     def create
-        params[:group][:desc] = params[:group][:desc].gsub(/<\/?.*?>/, "").gsub(/\n+/,"<br>") if params[:group][:desc].present?
+        params[:group][:desc] = params[:group][:desc].gsub(/<\/?.*?>/, "").gsub(/\r\n|\n/,"<br>") if params[:group][:desc].present?
         @group = current_user.groups.create(params[:group])
         redirect_to @group
     end

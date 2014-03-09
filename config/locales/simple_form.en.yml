@@ -52,7 +52,7 @@ en:
         title: '活动标题'
         desc: '活动描述'
         end_time: '结束时间'
-        tag: '活动类型'
+        channel: '活动类型'
       sbanner:
         link: '链接'
         title: '标题'
@@ -97,8 +97,8 @@ en:
         domain: '申请成功将不可修改,成为摄影师才可以拥有二级域名'
         province: '直辖市只填写省即可'
       event:
-        end_time: '最长两年内，不填写默认一年'
-        tag: '活动类型(同城、年度、手机等等)'
+        end_time: '活动期限'
+        tag: '同城、年度、手机等等'
       putin:
         start_time: 可不选(默认一直到关闭)
         end_time: 可不选(默认一直到关闭)

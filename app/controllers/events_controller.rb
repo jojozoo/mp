@@ -16,6 +16,7 @@ class EventsController < ApplicationController
 			flash[:notice] = "登录用户才可以创建活动"
 			redirect_to action: :index and return
 		end
+		params[:event][:desc] = params[:event][:desc].gsub(/<\/?.*?>/, "").gsub(/\r\n|\n/,"<br>") if params[:event][:desc].present?
 		@event = Event.new(params[:event].slice(:name, :logo, :title, :end_time, :tag, :desc).merge(user_id: current_user.id))
 		if @event.save!
 			# TODO 创建完成应该跳转到活动show页面(未审核只允许创建者和管理员访问)，可以修改

@@ -18,7 +18,7 @@
 						<%= f.input :end_time, as: :datepicker, picker: {
 							'date-startdate' => Date.today, 
 							'date-enddate' => 2.years.from_now.to_date.to_s} %>
-						<%= f.input :tag %>
+						<%= f.input :channel %>
 						<%= f.input :desc, as: :text %>
 						<%= f.submit '保存', class: 'btn btn-default btn-primary col-sm-offset-2', style: 'margin-bottom:20px' %>
 					<% end %>

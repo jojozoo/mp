@@ -3,28 +3,7 @@
 		<div class="navbar-header">
 			<%= link_to image_tag("/images/logo.png"), root_path, class: 'navbar-brand', style: 'padding:0' %></div>
 		<div class="collapse navbar-collapse">
-			<ul class="nav navbar-nav">
-				<% $navs.each do |key, val| %>
-					<li class="<%= 'dropdown' if val.is_a?(Hash) %> <%= 'active' if controller_name.eql?(key) %>">
-						<% if val.is_a?(Hash) %>
-							<%= link_to key.to_sym do %>
-								<%= val['name'] %> <b class="caret"></b>
-							<% end %>
-							<ul class="dropdown-menu">
-								<% val['second'].each do |k,v| %>
-									<% if v.eql?('divider') %>
-										<li class="divider"></li>
-									<% else %>
-										<li><%= link_to k, v.to_sym %></li>
-									<% end %>
-								<% end %>
-							</ul>
-						<% else %>
-							<%= link_to val, key.to_sym %>
-						<% end %>
-					</li>
-				<% end %>
-			</ul>
+			<%= render "shared/left_nav" %>
 			<form class="navbar-form navbar-left" style="width:300px">
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="动态/图库/用户">
@@ -36,6 +15,7 @@
 				</div>
 			</form>
 			<ul class="nav navbar-nav navbar-right">
+				<!-- <li id="js-nav-works"> -->
 				<li>
 					<%= link_to new_work_path do %>
 						<i class="icon-camera"></i>
