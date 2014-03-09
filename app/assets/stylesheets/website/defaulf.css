@@ -342,6 +342,7 @@ hr{
     background-color: #567189;
     color: white;
     text-shadow: none;
+    text-decoration: none;
 }
 .tag:hover:before {
     border-color: transparent #567189 transparent transparent;
