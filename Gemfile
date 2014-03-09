@@ -37,7 +37,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  gem 'libv8', '3.3.10.4'
+  gem 'libv8', '3.16.14.0'
   gem 'execjs'
   gem 'therubyracer', :platforms => :ruby
 
