@@ -15,14 +15,14 @@
 		<%= render 'shared/flexslider' %>
 
 		<div class="row">
-			<% Image.limit(3).each do |image| %>
+			<% Image.where('event_id is not null and work_id is not null').limit(3).each do |image| %>
 			<div class="col-md-4">
 				<div class="thumbnail">
 					<%= link_to image_tag(image.picture(:cover)), image_path(image), style: 'display:block', target: '_blank' %>
 					<div class="caption">
-						<a href="">活动1</a>
+						<%= link_to "##{image.event.name}#", event_path(image.event_id) %>
 						<br>
-						<a href="">更多活动1>></a>
+						<%= link_to '更多活动>>', events_path %>
 					</div>
 				</div>
 			</div>

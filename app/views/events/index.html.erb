@@ -34,7 +34,7 @@
 						<h5>#<%= event.name %>#</h5>
 					<% end %>
 					<p>
-						<%= truncate(event.desc, length: 50) %>
+						<%= truncate(event.desc.gsub("<br>", "\r\n"), length: 50) %>
 					</p>
 					<span>人数/图片:<%= 0 %>/190</span>
 					<span>结束时间:<%= event.end_time %></span>
