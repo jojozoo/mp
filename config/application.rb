@@ -67,6 +67,7 @@ module Mp
 
     # Enable the asset pipeline
     config.assets.enabled = true
+    config.assets.compile = true
 
     # 不设置会有个警告, 暂时不知道什么用处
     config.i18n.enforce_available_locales = true
