@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
     @user = User.where(["username = ? or email = ?", params[:username], params[:username]]).first
     @errors = {}
     if @user.blank?
-      @errors[:username] = "请输入正确的账号/邮箱/手机"
+      @errors[:username] = "请输入正确的帐号/邮箱/手机"
       render action: :new and return
     end
     unless @user.valid_password?(params[:password])
@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
   # 真正注册在node方面(因为涉及发邮件)
   def sign_up
     if request.post?
-      # 为oauth 登陆添加部分
+      # 为oauth 登录添加部分
       param = params[:user].slice(:username, :email, :password, :password_confirmation, :province, :city, :resume, :domain, :gender, :site, :realname, :duty)
       @user = User.new(param)
 
@@ -51,7 +51,7 @@ class SessionsController < ApplicationController
       end
       if @user.save!
         set_sign_in_flag(@user.id)
-        # 如果第三方登陆
+        # 如果第三方登录
         if params[:uid].present? and account = Account.find_by_id_and_uid(params[:a_id], params[:uid])
           account.update_attributes!(user_id: @user.id)
           redirect_to root_path
@@ -59,7 +59,7 @@ class SessionsController < ApplicationController
           redirect_to '/validate'
         end
       else
-        # TODO 如果oauth登陆, 应该添加remote valid 这是个bug
+        # TODO 如果oauth登录, 应该添加remote valid 这是个bug
         render action: :sign_up
       end
     end
@@ -77,7 +77,7 @@ class SessionsController < ApplicationController
       if @user = User.where(["username = ? or email = ?", params[:login], params[:login]]).first
         redirect_to action: :validate and return
       else
-        @error = "找不到对应账号"
+        @error = "找不到对应帐号"
       end
     end
   end

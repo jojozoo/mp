@@ -18,7 +18,7 @@ class Oauth::ApplicationController < ApplicationController
             redirect_to '/my/set/others' and return
         end
 
-        # 如果登陆就跳转
+        # 如果登录就跳转
         if sign_in?
             @account.update_attributes(user_id: current_user.id) 
             redirect_to root_path and return

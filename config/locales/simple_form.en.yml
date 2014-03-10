@@ -106,7 +106,7 @@ en:
         bg: 个人背景最好小图，方便平铺
     placeholders:
       defaults:
-        username: 账户
+        username: 帐户
       ad:
         target: http://shanpro.com/events/1
         f: 随意一个标识 方便日后统计

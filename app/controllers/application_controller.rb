@@ -24,17 +24,17 @@ class ApplicationController < ActionController::Base
   	@current_user ||= sign_in_from_session
   end
 
-  #从session登陆
+  #从session登录
   def sign_in_from_session
     @current_user = User.find_by_id(session[:user_id]) if session[:user_id]
   end
 
-  #设置登陆状态
+  #设置登录状态
   def set_sign_in_flag(user_id)
     session[:user_id] = user_id
   end
   #登出，不重新生成session
-  #NOTICE 不是一种安全的策略，session泄露一次账户就会被永久劫持
+  #NOTICE 不是一种安全的策略，session泄露一次帐户就会被永久劫持
   def sign_out_keeping_session
     @current_user = nil
     session[:user_id] = nil

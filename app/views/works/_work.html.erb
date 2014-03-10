@@ -1,7 +1,7 @@
 <div class="row">
     <%= render partial: :row, collection: work.images, as: :image %>    
 </div>
-<%= will_paginate @objs, style: 'display:none' %>
+<%= will_paginate @works, style: 'display:none' %>
 <!-- <div id="loading" page='1' max-page='' class="alert alert-success" style="text-align: center;">正在加载...</div> -->
 <script>
 $(function(){

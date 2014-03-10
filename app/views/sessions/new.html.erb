@@ -1,8 +1,8 @@
 <%= form_for @user || User.new, url: '/sign_in', html: {id: 'sign-in', class: 'sign-form'} do |f| %>
-	<h4>登陆漫拍网，看精致图片</h4>
+	<h4>登录漫拍网，看精致图片</h4>
 	<hr>
 	<div class="form-group <%= 'has-error' if @errors[:username].present? %>">
-		<input type="text" class="form-control" id="username" name="username" placeholder="账号/邮箱/手机" value="<%= params[:username] %>">
+		<input type="text" class="form-control" id="username" name="username" placeholder="帐号/邮箱/手机" value="<%= params[:username] %>">
 		<p class="help-block"><%= @errors[:username] %></p>
 	</div>
 	<div class="form-group <%= 'has-error' if @errors[:password].present? %>">
@@ -18,7 +18,7 @@
 		<a class="pull-right" href="/sign_up">去注册</a>
 	</div>
 	<hr>
-	<h5>合作网站帐号登录,未注册漫拍也可直接登录!</h5>
+	<h5>合作网站帐号登录,“无需”注册漫拍也可直接登录!</h5>
 	<table class="table">
 		<tr>
 			<td>
@@ -56,7 +56,7 @@
 			var value = $(this).val();
 			var reg = /[\w\.\@\u4e00-\u9fa5]{2,}/;
 			if(!(reg.test(value))){
-				$(this).next().text("请输入正确的账号/邮箱/手机").parent().addClass('has-error');
+				$(this).next().text("请输入正确的帐号/邮箱/手机").parent().addClass('has-error');
 				return false
 			}
 			$(this).next().text('').parent().removeClass('has-error');

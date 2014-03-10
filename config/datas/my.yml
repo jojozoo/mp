@@ -57,7 +57,7 @@ msgs:
       /my/msgs/read: 已读漫信
       /my/msgs/unread: 未读漫信
     #/my/msgs/trash: 垃圾漫信
-    /my/msgs/new: 给关注着写信
+    /my/msgs/new: 给关注的人写信
     /my/msgs/notices: 网站通知
   icons: 
     new: edit

@@ -6,8 +6,8 @@
 	</div>
 	<%= form_tag '/forgot_password', method: :post, class: 'form-inline' %>
 		<div class="form-group <%= 'has-error' if @error %>">
-			<label class="sr-only" for="login">账户</label>
-			<input type="text" id="login" name="login" class="form-control" placeholder="请输入账号/邮箱/手机" style="width:300px;" value="<%= params[:login] %>">
+			<label class="sr-only" for="login">帐户</label>
+			<input type="text" id="login" name="login" class="form-control" placeholder="请输入帐号/邮箱/手机" style="width:300px;" value="<%= params[:login] %>">
 			<p class="help-block"><%= @error %></p>
 		</div>
 		<div class="form-group">
@@ -27,7 +27,7 @@
 			}
 			if(login.val().length < 5){
 				login.parent().addClass('has-error');
-				login.next().text('账号格式不正确');
+				login.next().text('帐号格式不正确');
 				return false
 			}
 		});

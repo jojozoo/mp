@@ -101,7 +101,7 @@ class User < ActiveRecord::Base
                             :message => '不能为空'
 
   validates_uniqueness_of   :username, 
-                            :message => '账户已存在'
+                            :message => '帐户已存在'
 
   validates_format_of       :username,
                             :with => /[\u4e00-\u9fa5\w]{2,10}$/,
@@ -175,7 +175,7 @@ class User < ActiveRecord::Base
 
   # from 注册来源
   # 修改邮箱 修改密码
-  # 图片水印: 左中右(/昵称/账户/mail|第二排http://domain.xx.com)
+  # 图片水印: 左中右(/昵称/帐户/mail|第二排http://domain.xx.com)
   ###权限相关(auth)
   # 邮件提醒: 被关注,加好友,被回应,被喜欢,被点赞,圈子通过,收到漫信
   # 站内通知: 被关注,加好友,被回应,被喜欢,被点赞,圈子通过,收到漫信

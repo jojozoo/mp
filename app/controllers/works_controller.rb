@@ -16,7 +16,7 @@ class WorksController < ApplicationController
     def create
         params[:work][:event_id] = params[:work_event_id]
         params[:work][:cover_id] = params[:desc].keys[0] if params[:work][:cover_id].blank?
-        @work = current_user.works.create(params[:work])
+        @work = current_user.works.create!(params[:work])
 
         # TODO 判断照片数量是否至少一张
         album   = current_user.albums.find_or_create_by_name('活动相册')
