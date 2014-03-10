@@ -1,6 +1,6 @@
 <% if @event %>
 <%= f.input_field :event_id, as: :string, readonly: true, value: @event.name %>
-<input id="work-event-id" name="work_event_id" type="hidden">
+<input id="work-event-id" name="work_event_id" type="hidden" value="<%= @event.id %>">
 <% else %>
 <div class="input-group">
     <%= f.input_field :event_id, as: :string, readonly: true %>
