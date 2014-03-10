@@ -55,11 +55,4 @@ $(function(){
             }
         }
     });
-
-
-    $(".thumbnail").on('mouseenter', function(){
-        $(this).find('.fade-row').show();
-    }).on('mouseleave', function(){
-        $(this).find('.fade-row').hide();
-    });
 });

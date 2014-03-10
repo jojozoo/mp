@@ -21,7 +21,6 @@
 					</div>
 					<div class="pic">
 						<%= link_to image_tag(@image.picture(:big), style: 'max-width:100%;') %>
-						<script src="/javascripts/image.js?v=<%= Time.now.to_i %>" type="text/javascript"></script>
 						<%= render "/shared/actions", obj: @image, as: :obj if sign_in? %>
 					</div>
 					<hr>
