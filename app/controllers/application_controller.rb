@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :sign_in?
 
   def site_config
-    headers['Server'] = 'Mp Server v1.0'
     @title ||= $site_config[:title]
     @keywords ||= $site_config[:keywords]
     @description ||= $site_config[:description]
