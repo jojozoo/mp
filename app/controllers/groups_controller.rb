@@ -12,7 +12,12 @@ class GroupsController < ApplicationController
 	end
 
     def new
-        @group = Group.new
+        unless sign_in?
+            flash[:notice] = "登录用户才可以创建圈子"
+            redirect_to action: :index and return
+        else
+            @group = Group.new
+        end
     end
 
     def create
