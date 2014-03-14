@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140218051157) do
+ActiveRecord::Schema.define(:version => 20140218051158) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.integer  "obj_id"
     t.string   "obj_type"
     t.integer  "user_id"
+    t.integer  "reply_id"
     t.string   "title"
     t.text     "content"
     t.boolean  "del",        :default => false
@@ -77,12 +78,12 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.datetime "logo_updated_at"
     t.string   "title"
     t.text     "desc"
-    t.string   "tag"
+    t.string   "channel"
     t.date     "end_time"
     t.integer  "members_count",     :default => 0
     t.integer  "works_count",       :default => 0
     t.integer  "state",             :default => 0
-    t.integer  "totop",             :default => 0
+    t.boolean  "totop",             :default => false
     t.boolean  "del",               :default => false
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
@@ -109,23 +110,6 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.datetime "updated_at",                     :null => false
   end
 
-  create_table "groups", :force => true do |t|
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
-    t.integer  "user_id"
-    t.boolean  "publish",           :default => true
-    t.integer  "topics_count",      :default => 0
-    t.integer  "members_count",     :default => 0
-    t.integer  "visits_count",      :default => 0
-    t.string   "title"
-    t.text     "desc"
-    t.boolean  "del",               :default => false
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-  end
-
   create_table "images", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -137,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.integer  "likes_count",          :default => 0
     t.integer  "stores_count",         :default => 0
     t.integer  "recoms_count",         :default => 0
+    t.integer  "comments_count",       :default => 0
     t.integer  "warrant"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
@@ -144,18 +129,10 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.datetime "picture_updated_at"
     t.string   "desc"
     t.text     "exif"
+    t.string   "wh"
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
-  end
-
-  create_table "members", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.integer  "auth",       :default => 0
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
   end
 
   create_table "messages", :force => true do |t|
@@ -213,6 +190,15 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.string   "title"
     t.text     "content"
     t.boolean  "read"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "obj_tags", :force => true do |t|
+    t.integer  "obj_id"
+    t.string   "obj_type"
+    t.integer  "tag_id"
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
@@ -287,11 +273,11 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
 
   create_table "tags", :force => true do |t|
     t.string   "name"
-    t.string   "t"
-    t.integer  "likes_count", :default => 0
-    t.boolean  "del",         :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.string   "channel"
+    t.integer  "objs_count", :default => 0
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "talks", :force => true do |t|
@@ -307,7 +293,8 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
 
   create_table "topics", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "group_id"
+    t.integer  "tag_id"
+    t.integer  "last_user_id"
     t.string   "title"
     t.string   "content"
     t.integer  "comments_count", :default => 0
@@ -365,7 +352,6 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
   create_table "visits", :force => true do |t|
     t.integer  "obj_id"
     t.string   "obj_type"
-    t.string   "type"
     t.integer  "user_id"
     t.string   "mark"
     t.boolean  "del",        :default => false
@@ -381,7 +367,7 @@ ActiveRecord::Schema.define(:version => 20140218051157) do
     t.integer  "winner"
     t.string   "title"
     t.string   "desc"
-    t.string   "images_count", :default => "0"
+    t.integer  "images_count", :default => 0
     t.boolean  "del",          :default => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
