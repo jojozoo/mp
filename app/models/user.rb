@@ -225,7 +225,8 @@ class User < ActiveRecord::Base
   # tuis推荐表 推荐里面有个score来判断此图或者资源的分数, score应该是被推荐的对象
   # push 用户对图片/作品等资源的各种操作 单继承表+多态表 push 和 tui 没什么区别呢
   # follows关注表(user_id, follower_id, mark)
-  # visits(profile event image album group)最新访问表(user_id, visit_id, mark) 
+  # visits(profile event image album group)最新访问表(user_id, visit_id, mark)
+  # essence 摄影师作品 用于摄影师的优秀作品集合
   # profiles个人信息表
   # groups圈子表(name, desc, user_id, visits_count, members_count, publish(公开 被搜索))
   # members(user_id, group_id, auth(创建 管理 成员)) 圈子用户中间表
