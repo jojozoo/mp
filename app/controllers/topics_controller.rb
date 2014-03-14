@@ -18,7 +18,13 @@ class TopicsController < ApplicationController
     end
 
     def new
-        @topic = Topic.new
+        unless sign_in?
+            redirect_to action: :index
+            flash[:notice] = '请先登录'
+            return
+        else
+            @topic = Topic.new
+        end
     end
 
     def create
