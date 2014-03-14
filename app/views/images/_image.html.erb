@@ -6,7 +6,7 @@
             <%= link_to_push 'store', image %>
             <%= link_to_push 'recom', image %>
         </div>
-        <%= link_to image_tag(image.picture.url(:thumb)), image_path(image), style: 'display:block', target: '_blank' %>
+        <%= link_to image_tag(image.picture.url(:thumb), wh: image.wh), image_path(image), style: 'display:block', target: '_blank' %>
         <div class="caption">
             <div><%= image.desc %></div>
             <span class="push-lauds-<%= image.id %>-effect" title="点赞">点赞(<%= image.lauds_count %>)</span>

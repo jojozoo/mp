@@ -16,6 +16,7 @@ class CreateImages < ActiveRecord::Migration
       t.attachment :picture
       t.string :desc
       t.text   :exif
+      t.string :wh
       t.boolean :del, default: false
       t.timestamps
     end

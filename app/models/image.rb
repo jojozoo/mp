@@ -1,7 +1,7 @@
 # require 'paperclip_processors/watermark'
 class Image < ActiveRecord::Base
   include TuiCore
-  attr_accessible :user_id, :event_id, :work_id, :album_id, :warrant, :state, :exif, :name, :desc, :picture, :del, :likes_count, :lauds_count, :recoms_count, :stores_count, :comments_count
+  attr_accessible :user_id, :event_id, :work_id, :album_id, :warrant, :state, :exif, :wh, :name, :desc, :picture, :del, :likes_count, :lauds_count, :recoms_count, :stores_count, :comments_count
   # state 状态 (上传完成: 作品/相册上传过程中跳转了,回来应该接着显示,如果不完成,那么就不显示到活动页或者相册页) 
   # state 改变注定album_id 或event_id有值
   # TODO state 上传过程中存在相册id或者活动id就应该为state true
@@ -49,6 +49,7 @@ class Image < ActiveRecord::Base
     rescue
         {}
     end.to_json
+    self.wh = Paperclip::Geometry.from_file(picture.queued_for_write[:thumb].path).to_s rescue '250x160'
   end
 
   def prev(offset = 0)

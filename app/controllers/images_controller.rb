@@ -1,7 +1,11 @@
 class ImagesController < ApplicationController
     def index
         @images = Image.where(state: true).paginate(:page => params[:page], per_page: 12).order('id desc')
-        render '_index', layout: false if request.xhr?
+    end
+
+    def waterfall
+        @images = Image.where(state: true).paginate(:page => params[:page], per_page: 12).order('id desc')
+        render '_waterfall', layout: false
     end
 
     def star

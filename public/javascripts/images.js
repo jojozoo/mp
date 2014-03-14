@@ -48,7 +48,7 @@ $(function(){
                     }
                 });
             } else {
-                $("#page_loading span").text("木有了噢，最后一页了！");
+                $("#page_loading span").text("最后一页了");
                 $("#page_loading").show("fast");
                 setTimeout("$('#page_loading').hide()",1000);
                 setTimeout("$('#page_loading').remove()",1100);

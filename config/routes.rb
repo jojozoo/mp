@@ -18,6 +18,7 @@ Mp::Application.routes.draw do
   # gallery
   resources :images, path: 'gs' do
     collection do
+      get :waterfall
       get :star
     end
     member do
