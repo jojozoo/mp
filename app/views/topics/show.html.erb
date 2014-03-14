@@ -2,28 +2,36 @@
     <div class="col-md-9">
         <div class="white-col-md">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header">
-                        <div class="media">
-                            <%= link_to image_tag(@topic.user.avatar(:s50), size: '60x60'), user_path(@topic.user_id), class: 'pull-left' %>        
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    <%= @topic.title[0,20] %>
-                                    <small class="pull-right" style='font-size:12px;'>
-                                        <a href="">关注TA</a> &nbsp;&nbsp;
-                                        <a href="">推荐</a> &nbsp;&nbsp;
-                                        <a href="">喜欢</a> &nbsp;&nbsp;
-                                    </small>
-                                </h4>
-                                <div>
-                                    来自: <%= link_to @topic.user.username, user_path(@topic.user_id) %>
-                                    <small>
-                                        <%= @topic.created_at.to_s(:db) %>
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
+                <div class="infos breadcrumb" style="">
+                    <div class="pull-left">
+                        <%= link_to image_tag(@topic.user.avatar(:s50), class: 'avatar'), user_path(@topic.user_id) %>
                     </div>
+                    <h4 class="entry-title" style="font-size: 22px;color: #333;margin: 0 auto 8px 60px;">
+                        <%= @topic.title %>
+                        <small class="pull-right" style="font-size:12px;">
+                            <a href="">关注TA</a> &nbsp;&nbsp;
+                            <a href="">推荐</a> &nbsp;&nbsp;
+                            <a href="">喜欢</a> &nbsp;&nbsp;
+                        </small>
+                    </h4>
+                    <div class="info leader">
+                        <%= link_to @topic.tag.name, topics_path(tag: @topic.tag.name), class: 'node' %>
+                        •
+                        <%= link_to @topic.user.username, user_path(@topic.user_id) %>
+                        • 于 <abbr class="timeago" title="2014-03-04T21:31:13+08:00"><%=  humanize(@topic.created_at) %></abbr>
+                        发布
+                        <% if last_user = @topic.last_user %>
+                        •
+                        最后由
+                        <%= link_to last_user.username, user_path(@topic.last_user_id) %>
+                        于 <abbr class="timeago" title="2014-03-14T11:45:40+08:00"><%= humanize(@topic.updated_at) %></abbr>
+                        回复
+                        <% end %>
+                        •
+                        710次阅读
+                    </div>
+                </div>
+                <div class="col-md-12">
                     <pre style="font-size: 14px;border: 0;background: #fff;padding: 0;"><code><%= @topic.content %></code></pre>
                     <hr>
                     <div class="respond">
@@ -58,18 +66,11 @@
         </div>
     </div>
     <div class="col-md-3">
-        <div class="white-col-md">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="media">
-                        <%= link_to image_tag(@topic.group.logo(:small), size: '60x60'), group_path(@topic.group_id), class: 'pull-left' %>
-                        <div class="media-body">
-                            <div class="media-heading" style="font-size: 14px;">
-                                <%= @topic.group.title %>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div class="radbox">
+            <div class="box_top">
+                <span class="title light">热门讨论</span>
+            </div>
+            <div class="box_con">
             </div>
         </div>
     </div>

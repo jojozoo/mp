@@ -79,15 +79,6 @@ en:
         title: '输入标题'
         desc: '详细描述'
         event_id: '选择活动'
-      group:
-        title: '圈子名称'
-        desc: '圈子描述'
-        publish: '圈子类型'
-        logo: '圈子图标'
-        new:
-          commit: '创建圈子'
-        edit:
-          commit: '修改圈子'
       topic:
         title: '标题'
         content: '内容'

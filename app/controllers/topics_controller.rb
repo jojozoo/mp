@@ -1,7 +1,16 @@
 class TopicsController < ApplicationController
 
     def index
+        if params[:tag].present? and @tag = Tag.find_by_name(params[:tag])
+            @topics = Topic.where(tag_id: @tag.id).paginate(:page => params[:page], per_page: 20).order('id desc')
+            render 'index_tag' and return
+        else
+            @topics = Topic.paginate(:page => params[:page], per_page: 20).order('id desc')
+        end
+    end
 
+    def explore
+       @topics = Topic.paginate(:page => params[:page], per_page: 20).order('id desc') 
     end
 
     def show
@@ -9,8 +18,7 @@ class TopicsController < ApplicationController
     end
 
     def new
-        @group = current_user.speak_groups.find(params[:group_id])
-        @topic = @group.topics.new
+        @topic = Topic.new
     end
 
     def create
@@ -24,7 +32,7 @@ class TopicsController < ApplicationController
 
     def edit
         @topic = current_user.topics.find(params[:id])
-        @group = @topic.group
+        @tag = @topic.tag
     end
 
     def update

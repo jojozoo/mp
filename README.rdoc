@@ -28,3 +28,10 @@ Image 有变化 部署时要改图片名字
 
 粉丝&关注
   粉丝列表 关注列表，参考一下其他网站 可取消关注 头像点击进入/u/id页面
+
+
+
+修改topics group_id tag_id
+修改topics last_user_id
+删除 groups表
+删除 members表

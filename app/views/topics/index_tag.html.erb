@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-9">
+        <div class="white-col-md">
+            <div class="row topic-tag-row">
+                <div class="breadcrumb">
+                    <div class="pull-left topic-tag-name">
+                        <%= @tag.name %>
+                        <span>共<%= @topics.total_entries %>个话题</span>
+                    </div>
+                    <%= link_to new_topic_path, class: 'btn-xs btn-info btn pull-right' do %>
+                        <i class="icon-plus"></i>
+                        发布
+                    <% end %>
+                    <div class="clearfix"></div>
+                </div> 
+                <div class="gray-desc">
+                    tag的描述
+                </div>
+                <div class="col-md-12">
+                    <% if @topics.blank? %>
+                    <div class="text-center topics-no">
+                        暂时没有讨论 <%= link_to '发布讨论', new_topic_path %>
+                    </div>
+                    <% else %>
+                        <div class="topics">
+                            <%= render partial: 'topic', collection: @topics %>
+                        </div>
+                        <%= will_paginate @topics %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="radbox">
+            <div class="box_top">
+                <span class="title light">发布</span>
+            </div>
+            <div class="box_con text-center">
+                <%= link_to '发布', new_topic_path, class: 'btn btn-success', style: 'width:100%;' %>
+            </div>
+        </div>
+    </div>
+</div>
