@@ -48,7 +48,7 @@
 			</div>
 		</div>
 		<div class="event-tags">
-			<% Event.limit(18).each do |event| %>
+			<% Event.ongoing.limit(18).each do |event| %>
 			<%= link_to event.name, event_path(event.id), class: 'tag' %>
 			<% end %>
 		</div>	
