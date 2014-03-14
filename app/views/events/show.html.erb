@@ -15,7 +15,9 @@
 					</div>
 					<div class="mp-page">
 						<div class="media">
-							<img class="media-object pull-left" src="/images/eventbody.png" style="width:800px;height:400px;">
+							<div class="media-object pull-left" style="max-width:800px;">
+								<%= image_tag @event.logo.url %>
+							</div>
 							<div class="media-body">
 								<h4 class="media-heading">活动公告
 									<small>活动里的推荐</small>
