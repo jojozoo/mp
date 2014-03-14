@@ -28,7 +28,7 @@
 	<% @events.each do |event| %>
 		<div class="col-sm-6 col-md-3">
 			<div class="thumbnail">
-				<%= link_to image_tag(event.logo.url), event_path(event), target: '_blank' %>
+				<%= link_to image_tag(event.logo(:thumb)), event_path(event), target: '_blank' %>
 				<div class="caption">
 					<%= link_to event_path(event), target: '_blank' do %>
 						<h5>#<%= event.name %>#</h5>

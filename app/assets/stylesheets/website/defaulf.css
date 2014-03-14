@@ -1,5 +1,5 @@
 .media-object{
-    max-width: 800px;
+    width: 800px;
 }
 .media-object > img{
     width: 100%;
