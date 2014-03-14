@@ -62,27 +62,12 @@
 					</ul>
 					<hr>
 					<pre style="font-size: 14px;border: 0;background: #fff;padding: 0;"><code><%= @image.desc.blank? ? '暂无描述' : @image.desc %></code></pre>
-					<%= render "respond" if current_user %>
+					<%= render "shared/respond", url: comment_path('image', @image.id) if current_user %>
 					<hr>
 					<div class="comments">
 						<h5>所有回应</h5>
 						<ul class="media-list">
-							<%= render partial: 'images/comment', collection: @image.comments %>
-							<script type="text/javascript">
-							$(function(){
-								$(".reply-link").on("click", function(){
-									var _id   = $(this).data("id"),
-										_name = $(this).data("name")
-									$("#comment_reply_id").val(_id);
-									$("#replywho").find("small").text(_name).end().show();
-								});
-
-								$("#link-remove").click(function(){
-									$("#comment_reply_id").removeAttr('value');
-									$("#replywho").hide();
-								})
-							})
-							</script>
+							<%= render partial: 'shared/comment', collection: @image.comments %>
 						</ul>
 					</div>
 				</div>

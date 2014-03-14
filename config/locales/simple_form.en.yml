@@ -82,6 +82,7 @@ en:
       topic:
         title: '标题'
         content: '内容'
+        tag_id: '标签'
     hints:
       defaults:
       user:

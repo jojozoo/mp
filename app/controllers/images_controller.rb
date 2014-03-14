@@ -55,13 +55,6 @@ class ImagesController < ApplicationController
         render text: 'ok'
     end
 
-    def comment
-        if image = Image.find(params[:id])
-            image.comments.create(params[:comment].merge(user_id: current_user.id))
-        end
-        redirect_to :back
-    end
-
     def tui
         if sign_in?
             @image = Image.find(params[:id])

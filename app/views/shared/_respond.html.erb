@@ -1,0 +1,23 @@
+<hr>
+<div class="respond">
+	<style type="text/css">
+	.replywho{
+		background-color: #e8eef2;
+		display: none;
+		padding: 10px 5px;
+	}
+	</style>
+	<h5 id="replywho" class="replywho">
+		回应:
+		<small>朱晓武</small>
+		<a href="javascript:void(0);" class="pull-right" id="link-remove"> <i class="icon-remove"></i>
+		</a>
+	</h5>
+	<%= form_tag url, method: :post do %>
+		<input class="hidden" id="comment_reply_id" name="comment[reply_id]" type="hidden">
+		<textarea class="text required form-control" cols="40" id="comment_content" maxlength="200" name="comment[content]" rows="20" data-validate="true"></textarea>
+		<span class="text-danger pull-left form-error-tip">不能为空</span>
+		<input class="btn btn-default pull-right" name="commit" type="submit" value="回应">
+	<% end %>
+	<div class="clearfix"></div>
+</div>

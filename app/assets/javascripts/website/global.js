@@ -13,4 +13,16 @@ $(function(){
 	}).on('mouseleave', '.thumbnail', function(){
 		$(this).find('.fade-row').hide();
 	});
+
+	// 回应 评论
+	$(".reply-link").on("click", function(){
+		var _id   = $(this).data("id"),
+		_name = $(this).data("name")
+		$("#comment_reply_id").val(_id);
+		$("#replywho").find("small").text(_name).end().show();
+	});
+	$("#link-remove").click(function(){
+		$("#comment_reply_id").removeAttr('value');
+		$("#replywho").hide();
+	});
 })

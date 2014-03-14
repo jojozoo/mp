@@ -22,8 +22,7 @@ class TopicsController < ApplicationController
     end
 
     def create
-        @group = current_user.speak_groups.find(params[:group_id])
-        if @topic = @group.topics.create!(params[:topic].slice(:title, :content).merge(user_id: current_user.id))
+        if @topic = Topic.create!(params[:topic].slice(:title, :content, :tag_id).merge(user_id: current_user.id))
             redirect_to action: :show, id: @topic.id
         else
             render action: :new

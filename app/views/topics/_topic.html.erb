@@ -14,8 +14,10 @@
                 <% end %>
             </div>
             <div class="info">
+                <% unless @tag %>
                 <%= link_to topic.tag.name, topics_path(tag: topic.tag.name), class: 'node' %>
                 •
+                <% end %>
                 <%= link_to topic.user.username, user_path(topic.user_id) %>
                 <% if last_user = topic.last_user %>
                 <em>

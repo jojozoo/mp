@@ -14,6 +14,7 @@ Mp::Application.routes.draw do
   get    '/profile'       => 'users#profile'
   get    '/search'        => 'search#index'
   match '/ajax/:push/:source/:id' => 'ajax#tui', via: :post, as: :tui
+  match '/comment/:obj/:id' => 'comments#create', via: :post, as: :comment
 
   # gallery
   resources :images, path: 'gs' do
@@ -23,7 +24,6 @@ Mp::Application.routes.draw do
     end
     member do
       get :tui
-      post :comment
     end
   end
   resources :albums
