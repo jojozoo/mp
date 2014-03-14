@@ -36,17 +36,6 @@ timelines:
   navs: {}
   icons: {}
   smalls: {}
-join_projects:
-  name: 我的参与
-  icon: 
-  small:
-  navs:
-    /my/join_projects/events: 活动管理
-    /my/join_projects/groups: 我的圈子
-  icons: 
-    groups: 'group'
-    events: 'flag'
-  smalls: {}
 msgs:
   name: 漫信&通知
   icon: envelope

@@ -61,6 +61,13 @@ class Event < ActiveRecord::Base
 
   validates_presence_of     :end_time,
                             :message => '不能为空'
+
+  # 修改活动 增加tag
+  after_save :add_to_tag, if: Proc.new{|r| r.state_changed? }
+  def add_to_tag
+    tag = Tag.unscoped.find_or_create_by_name_and_channel(self.name, '活动')
+    tag.update_attributes(del: !self.ongoing?)
+  end
                             
   # 作品 参与活动的作品
   has_many :works

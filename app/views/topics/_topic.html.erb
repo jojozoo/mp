@@ -1,0 +1,32 @@
+<div class="topic">
+    <div class="pull-left">
+        <%= link_to image_tag(topic.user.avatar(:s50), class: 'avatar'), user_path(topic.user_id) %>
+    </div>
+    <div class="right_info">
+        <div class="pull-right">
+            <%= link_to topic.comments_count, topic_path(topic.id) + "##{topic.id}", class: 'label label-primary' %>
+        </div>
+        <div class="infos">
+            <div class="title">
+                <%= link_to topic_path(topic.id) do %>
+                    <%= topic.title %>
+                    <i class="icon small_cert_on" title="精华贴"></i>
+                <% end %>
+            </div>
+            <div class="info">
+                <%= link_to topic.tag.name, topics_path(tag: topic.tag.name), class: 'node' %>
+                •
+                <%= link_to topic.user.username, user_path(topic.user_id) %>
+                <% if last_user = topic.last_user %>
+                <em>
+                    • 最后由
+                    <%= link_to last_user.username, user_path(topic.last_user_id) %>
+                    于
+                    <abbr class="timeago" title="2014-03-14T19:54:35+08:00"><%= humanize(topic.updated_at) %></abbr>
+                    回复
+                </em>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

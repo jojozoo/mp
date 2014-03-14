@@ -54,12 +54,7 @@ class User < ActiveRecord::Base
   has_many :follower_ships, class_name: 'Follow', foreign_key: :user_id
   has_many :followers, source: :user, through: :follower_ships
 
-  has_many :groups
   has_many :topics
-  has_many :members
-  has_many :admin_groups, source: :group, through: :members, conditions: '`members`.`auth` = 1'
-  has_many :join_groups, source: :group, through: :members, conditions: '`members`.`auth` = 0'
-  has_many :speak_groups, source: :group, through: :members
   has_many :push_images
   # 收件箱 & 发件箱 名义没有发件箱
   has_many :iboxs, class_name: 'Talk', conditions: {del: false}
@@ -167,7 +162,7 @@ class User < ActiveRecord::Base
     province.eql?(city) ? province : province + ' ' + city
   end
 
-  # 针对group是否能发言
+  # 针对group是否能发布
   def speak?(group)
     gid = group.is_a?(Group) ? group.id : group
     members.exists?(group_id: gid)
@@ -177,13 +172,13 @@ class User < ActiveRecord::Base
   # 修改邮箱 修改密码
   # 图片水印: 左中右(/昵称/帐户/mail|第二排http://domain.xx.com)
   ###权限相关(auth)
-  # 邮件提醒: 被关注,加好友,被回应,被喜欢,被点赞,圈子通过,收到漫信
-  # 站内通知: 被关注,加好友,被回应,被喜欢,被点赞,圈子通过,收到漫信
+  # 邮件提醒: 被关注,加好友,被回应,被喜欢,被点赞,收到漫信
+  # 站内通知: 被关注,加好友,被回应,被喜欢,被点赞,收到漫信
   ###再考虑
   # 编辑器: 富文本编辑器  Markdown编辑器 (使用帮助)
   # friends表(user_id, friend_id, mark) has_many through 朋友关系表
   # feeds表(网站动态)
-  # 站内互动: 允许回应(所有,圈子,好友,粉丝)针对活动/other,允许漫信(所有,圈子,好友,粉丝) 暂时不加
+  # 站内互动: 允许回应(所有,好友,粉丝)针对活动/other,允许漫信(所有,好友,粉丝) 暂时不加
 
   # TODO 参与活动的图片也瀑布流,全部图片上传解决，相册(logo,创建等)，瀑布流也可以正常排列,列表排列
   # TODO 其中列表排列时后面是详细的点赞，浏览，喜欢等等乱七八糟的
@@ -228,9 +223,7 @@ class User < ActiveRecord::Base
   # visits(profile event image album group)最新访问表(user_id, visit_id, mark)
   # essence 摄影师作品 用于摄影师的优秀作品集合
   # profiles个人信息表
-  # groups圈子表(name, desc, user_id, visits_count, members_count, publish(公开 被搜索))
-  # members(user_id, group_id, auth(创建 管理 成员)) 圈子用户中间表
-  # topics (user_id, group_id, title, content)日志表
+  # topics (user_id, tag_id, title, content)日志表
   # comments 针对这些资源回应(post/events/image/Dt)
   # micro 动态表
   # TODO 每天看世界最好的照片/影展

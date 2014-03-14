@@ -27,14 +27,10 @@ Mp::Application.routes.draw do
     end
   end
   resources :albums
-  resources :groups , path: 'g' do
-    collection do
-      get :me
-      get :explore
-    end
-    resources :topics, only: [:new, :create]
+  resources :topics, path: 't' do
+    get :excellent, on: :collection
+    get :explore, on: :collection
   end
-  resources :topics, path: 't', except: [:new, :create]
   resources :events, path: 'e'
   resources :users, path: 'u'
   resources :micros, path: 'ms'
@@ -92,12 +88,6 @@ Mp::Application.routes.draw do
       collection do
         get 'fans'
         get 'follows'
-      end
-    end
-    resources :join_projects do
-      collection do
-        get 'events'
-        get 'groups'
       end
     end
   end

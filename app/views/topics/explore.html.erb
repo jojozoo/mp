@@ -2,11 +2,18 @@
     <div class="col-md-9">
         <div class="white-col-md">
             <div class="row">
+                <ul class="breadcrumb">
+                    <% ['默认', '优质话题', '无人问津', '最新创建'].each do |sort| %>
+                    <li>
+                        <%= link_to sort, topics_path(sort: sort) %>
+                    </li>
+                    <% end %>
+                </ul>
                 <div class="col-md-12">
-                    <div class="page-header">
-                        <h4>发布话题: <%= link_to '@group.title', 'group_path(@group.id)' %></h4>
+                    <div class="topics">
+                        <%= render partial: 'topic', collection: @topics %>
                     </div>
-                    <%= render 'form' %>
+                    <%= will_paginate @topics %>
                 </div>
             </div>
         </div>
