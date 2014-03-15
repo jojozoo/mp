@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
             @topics = Topic.where(tag_id: @tag.id).paginate(:page => params[:page], per_page: 20).order('id desc')
             render 'index_tag' and return
         else
-            @topics = Topic.paginate(:page => params[:page], per_page: 20).order('id desc')
+            @topics = Topic.order('comments_count desc, id desc').limit(20)
         end
     end
 
