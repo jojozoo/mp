@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.1.73, for debian-linux-gnu (i486)
+-- MySQL dump 10.13  Distrib 5.6.15, for osx10.7 (x86_64)
 --
 -- Host: localhost    Database: mp_dev
 -- ------------------------------------------------------
--- Server version	5.1.73-1
+-- Server version 5.6.15
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,6 +14,46 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `accepts`
+--
+
+DROP TABLE IF EXISTS `accepts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accepts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `followd_mail` tinyint(1) DEFAULT '0',
+  `recom_mail` tinyint(1) DEFAULT '0',
+  `laud_mail` tinyint(1) DEFAULT '0',
+  `like_mail` tinyint(1) DEFAULT '0',
+  `store_mail` tinyint(1) DEFAULT '0',
+  `comment_mail` tinyint(1) DEFAULT '0',
+  `msg_mail` tinyint(1) DEFAULT '0',
+  `followd_notice` tinyint(1) DEFAULT '0',
+  `recom_notice` tinyint(1) DEFAULT '0',
+  `laud_notice` tinyint(1) DEFAULT '0',
+  `like_notice` tinyint(1) DEFAULT '0',
+  `store_notice` tinyint(1) DEFAULT '0',
+  `comment_notice` tinyint(1) DEFAULT '0',
+  `msg_notice` tinyint(1) DEFAULT '0',
+  `del` tinyint(1) DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accepts`
+--
+
+LOCK TABLES `accepts` WRITE;
+/*!40000 ALTER TABLE `accepts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `accepts` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `accounts`
@@ -959,4 +999,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-15 13:14:51
+-- Dump completed on 2014-03-15 17:21:38
