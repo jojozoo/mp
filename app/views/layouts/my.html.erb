@@ -61,5 +61,11 @@
 	</div>
 	<%= render 'shared/to_top' %>
 	<%= render 'shared/footer' %>
+	<% if flash[:notice].present? %>
+		<script type="text/javascript">
+			var str = '<div class="alert alert-success" style="display:none;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><%= flash[:notice] %></div>';
+			$(str).prependTo('.main-tip > .col-md-12').slideDown(500);
+		</script>
+	<% end %>
 </body>
 </html>
