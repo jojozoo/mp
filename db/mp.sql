@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.35, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.1.73, for debian-linux-gnu (i486)
 --
 -- Host: localhost    Database: mp_dev
 -- ------------------------------------------------------
--- Server version	5.5.35-0ubuntu0.12.04.2
+-- Server version	5.1.73-1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -104,7 +104,7 @@ CREATE TABLE `albums` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,7 +113,7 @@ CREATE TABLE `albums` (
 
 LOCK TABLES `albums` WRITE;
 /*!40000 ALTER TABLE `albums` DISABLE KEYS */;
-INSERT INTO `albums` VALUES (1,NULL,NULL,NULL,NULL,1,'默认相册',NULL,1,0,'2014-03-09 09:03:54','2014-03-09 09:03:54'),(2,NULL,NULL,NULL,NULL,1,'活动相册',NULL,1,0,'2014-03-09 09:08:29','2014-03-09 09:08:29'),(3,NULL,NULL,NULL,NULL,2,'默认相册',NULL,1,0,'2014-03-10 08:13:01','2014-03-10 08:13:01'),(4,NULL,NULL,NULL,NULL,2,'活动相册',NULL,1,0,'2014-03-10 08:20:52','2014-03-10 08:20:52');
+INSERT INTO `albums` VALUES (1,NULL,NULL,NULL,NULL,1,'默认相册',NULL,1,0,'2014-03-09 09:03:54','2014-03-09 09:03:54'),(2,NULL,NULL,NULL,NULL,1,'活动相册',NULL,1,0,'2014-03-09 09:08:29','2014-03-09 09:08:29'),(3,NULL,NULL,NULL,NULL,2,'默认相册',NULL,1,0,'2014-03-10 08:13:01','2014-03-10 08:13:01'),(4,NULL,NULL,NULL,NULL,2,'活动相册',NULL,1,0,'2014-03-10 08:20:52','2014-03-10 08:20:52'),(5,NULL,NULL,NULL,NULL,3,'默认相册',NULL,1,0,'2014-03-13 12:09:39','2014-03-13 12:09:39'),(6,NULL,NULL,NULL,NULL,4,'默认相册',NULL,1,0,'2014-03-15 07:45:57','2014-03-15 07:45:57');
 /*!40000 ALTER TABLE `albums` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +136,7 @@ CREATE TABLE `comments` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,6 +145,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,2,'Topic',4,NULL,NULL,'还是不错的嘛',0,'2014-03-15 07:46:16','2014-03-15 07:46:16');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +176,7 @@ CREATE TABLE `events` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -184,7 +185,7 @@ CREATE TABLE `events` (
 
 LOCK TABLES `events` WRITE;
 /*!40000 ALTER TABLE `events` DISABLE KEYS */;
-INSERT INTO `events` VALUES (1,'身边的风景',1,'bg1.jpg','image/jpeg',659162,'2014-03-09 09:06:25','你走到过哪里','这是美的风景<br><br>这是大自然解决浮躁的良方',NULL,'2014-12-31',0,0,2,1,0,'2014-03-09 09:06:26','2014-03-09 09:07:08');
+INSERT INTO `events` VALUES (1,'身边的风景',1,'c4ca4238a0.jpg','image/jpeg',659162,'2014-03-14 02:46:36','你走到过哪里','这是美的风景<br><br>这是大自然解决浮躁的良方',NULL,'2014-12-31',0,0,2,1,0,'2014-03-09 09:06:26','2014-03-14 02:46:39'),(2,'活动测试',1,'c81e728d9d.jpg','image/jpeg',93523,'2014-03-14 02:46:39','活动测试','asdfsaf asf','','2014-03-30',0,0,2,0,0,'2014-03-13 11:23:45','2014-03-14 02:46:40');
 /*!40000 ALTER TABLE `events` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,11 +312,12 @@ CREATE TABLE `images` (
   `picture_updated_at` datetime DEFAULT NULL,
   `desc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `exif` text COLLATE utf8_unicode_ci,
+  `wh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `del` tinyint(1) DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -324,7 +326,7 @@ CREATE TABLE `images` (
 
 LOCK TABLES `images` WRITE;
 /*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (1,'1281699100_big.jpg',1,1,1,2,1,1,0,0,0,0,5,'1281699100_big.jpg','application/octet-stream',190258,'2014-03-09 09:07:51','','{\"width\":1000,\"height\":619,\"bits\":8,\"comment\":null}',0,'2014-03-09 09:07:52','2014-03-09 09:08:29'),(2,'DSC06855.JPG',2,NULL,NULL,4,1,0,0,0,0,0,5,'DSC06855.JPG','application/octet-stream',890844,'2014-03-10 08:20:07','TC 活动','{\"width\":1632,\"height\":1224,\"bits\":8,\"comment\":null,\"image_description\":\"\",\"make\":\"SONY\",\"model\":\"DSC-T10\",\"orientation\":1,\"x_resolution\":72.0,\"y_resolution\":72.0,\"resolution_unit\":2,\"date_time\":\"2011-10-31T09:36:31+04:00\",\"ycb_cr_positioning\":2,\"exposure_time\":0.125,\"f_number\":3.5,\"exposure_program\":2,\"iso_speed_ratings\":320,\"date_time_original\":\"2011-10-31T09:36:31+04:00\",\"date_time_digitized\":\"2011-10-31T09:36:31+04:00\",\"compressed_bits_per_pixel\":8.0,\"exposure_bias_value\":0.0,\"max_aperture_value\":3.625,\"metering_mode\":5,\"light_source\":0,\"flash\":16,\"focal_length\":7.7,\"color_space\":1,\"pixel_x_dimension\":1632,\"pixel_y_dimension\":1224,\"custom_rendered\":0,\"exposure_mode\":0,\"white_balance\":0,\"scene_capture_type\":0,\"contrast\":0,\"saturation\":0,\"sharpness\":0}',0,'2014-03-10 08:20:16','2014-03-10 08:20:52'),(3,'DSC06855.JPG',2,NULL,NULL,4,1,0,0,0,0,0,5,'DSC06855.JPG','application/octet-stream',890844,'2014-03-10 08:21:29','','{\"width\":1632,\"height\":1224,\"bits\":8,\"comment\":null,\"image_description\":\"\",\"make\":\"SONY\",\"model\":\"DSC-T10\",\"orientation\":1,\"x_resolution\":72.0,\"y_resolution\":72.0,\"resolution_unit\":2,\"date_time\":\"2011-10-31T09:36:31+04:00\",\"ycb_cr_positioning\":2,\"exposure_time\":0.125,\"f_number\":3.5,\"exposure_program\":2,\"iso_speed_ratings\":320,\"date_time_original\":\"2011-10-31T09:36:31+04:00\",\"date_time_digitized\":\"2011-10-31T09:36:31+04:00\",\"compressed_bits_per_pixel\":8.0,\"exposure_bias_value\":0.0,\"max_aperture_value\":3.625,\"metering_mode\":5,\"light_source\":0,\"flash\":16,\"focal_length\":7.7,\"color_space\":1,\"pixel_x_dimension\":1632,\"pixel_y_dimension\":1224,\"custom_rendered\":0,\"exposure_mode\":0,\"white_balance\":0,\"scene_capture_type\":0,\"contrast\":0,\"saturation\":0,\"sharpness\":0}',0,'2014-03-10 08:21:37','2014-03-10 08:21:41'),(4,'p2.jpeg',1,NULL,NULL,2,1,0,0,0,0,0,5,'p2.jpeg','application/octet-stream',29450,'2014-03-10 08:25:17','','{\"width\":236,\"height\":353,\"bits\":8,\"comment\":null}',0,'2014-03-10 08:25:25','2014-03-10 08:25:28'),(5,'1281693252_big.jpg',1,1,2,2,1,1,1,0,0,0,5,'1281693252_big.jpg','application/octet-stream',224849,'2014-03-10 08:34:39','如果美景','{\"width\":1000,\"height\":669,\"bits\":8,\"comment\":null}',0,'2014-03-10 08:34:47','2014-03-10 08:34:53'),(6,'1281698992_big.jpg',1,1,3,2,1,0,0,0,0,0,5,'1281698992_big.jpg','application/octet-stream',150506,'2014-03-11 06:47:50','','{\"width\":1000,\"height\":602,\"bits\":8,\"comment\":null}',0,'2014-03-11 06:47:50','2014-03-11 06:48:19');
+INSERT INTO `images` VALUES (1,'1281699100_big.jpg',1,1,1,2,1,1,0,0,0,0,5,'bc640ecb0f821b0d408a8d7bc1997976.jpg','image/jpeg',190258,'2014-03-14 04:55:12','','{\"width\":1000,\"height\":619,\"bits\":8,\"comment\":null}','250x155',0,'2014-03-09 09:07:52','2014-03-14 10:25:34'),(2,'DSC06855.JPG',2,NULL,NULL,4,1,0,0,0,0,0,5,'3a17b2790e0fb6f9a94400d70b9d81bf.JPG','image/jpeg',890844,'2014-03-14 04:55:18','TC 活动','{\"width\":1632,\"height\":1224,\"bits\":8,\"comment\":null,\"image_description\":\"\",\"make\":\"SONY\",\"model\":\"DSC-T10\",\"orientation\":1,\"x_resolution\":72.0,\"y_resolution\":72.0,\"resolution_unit\":2,\"date_time\":\"2011-10-31T09:36:31+04:00\",\"ycb_cr_positioning\":2,\"exposure_time\":0.125,\"f_number\":3.5,\"exposure_program\":2,\"iso_speed_ratings\":320,\"date_time_original\":\"2011-10-31T09:36:31+04:00\",\"date_time_digitized\":\"2011-10-31T09:36:31+04:00\",\"compressed_bits_per_pixel\":8.0,\"exposure_bias_value\":0.0,\"max_aperture_value\":3.625,\"metering_mode\":5,\"light_source\":0,\"flash\":16,\"focal_length\":7.7,\"color_space\":1,\"pixel_x_dimension\":1632,\"pixel_y_dimension\":1224,\"custom_rendered\":0,\"exposure_mode\":0,\"white_balance\":0,\"scene_capture_type\":0,\"contrast\":0,\"saturation\":0,\"sharpness\":0}','250x188',0,'2014-03-10 08:20:16','2014-03-14 10:25:35'),(3,'DSC06855.JPG',2,NULL,NULL,4,1,0,0,0,0,0,5,'aef0b17b6a4ec4c7322ba5888299f205.JPG','image/jpeg',890844,'2014-03-14 04:55:25','','{\"width\":1632,\"height\":1224,\"bits\":8,\"comment\":null,\"image_description\":\"\",\"make\":\"SONY\",\"model\":\"DSC-T10\",\"orientation\":1,\"x_resolution\":72.0,\"y_resolution\":72.0,\"resolution_unit\":2,\"date_time\":\"2011-10-31T09:36:31+04:00\",\"ycb_cr_positioning\":2,\"exposure_time\":0.125,\"f_number\":3.5,\"exposure_program\":2,\"iso_speed_ratings\":320,\"date_time_original\":\"2011-10-31T09:36:31+04:00\",\"date_time_digitized\":\"2011-10-31T09:36:31+04:00\",\"compressed_bits_per_pixel\":8.0,\"exposure_bias_value\":0.0,\"max_aperture_value\":3.625,\"metering_mode\":5,\"light_source\":0,\"flash\":16,\"focal_length\":7.7,\"color_space\":1,\"pixel_x_dimension\":1632,\"pixel_y_dimension\":1224,\"custom_rendered\":0,\"exposure_mode\":0,\"white_balance\":0,\"scene_capture_type\":0,\"contrast\":0,\"saturation\":0,\"sharpness\":0}','250x188',0,'2014-03-10 08:21:37','2014-03-14 10:25:35'),(4,'p2.jpeg',1,NULL,NULL,2,1,0,0,0,0,0,5,'1d36a482364ae497fea4d5719caf2823.jpeg','image/jpeg',29450,'2014-03-14 04:55:33','','{\"width\":236,\"height\":353,\"bits\":8,\"comment\":null}','236x353',0,'2014-03-10 08:25:25','2014-03-14 10:25:35'),(5,'1281693252_big.jpg',1,1,2,2,1,1,1,0,0,0,5,'f6064cdb992229205044f81942b54c07.jpg','image/jpeg',224849,'2014-03-14 04:55:38','如果美景','{\"width\":1000,\"height\":669,\"bits\":8,\"comment\":null}','250x167',0,'2014-03-10 08:34:47','2014-03-14 10:25:35'),(6,'1281698992_big.jpg',1,1,3,2,1,0,0,0,0,0,5,'8daea0e781b3da20f4c7e9f4615c2e0c.jpg','image/jpeg',150506,'2014-03-14 04:55:44','','{\"width\":1000,\"height\":602,\"bits\":8,\"comment\":null}','250x151',0,'2014-03-11 06:47:50','2014-03-14 10:25:35'),(7,'1.gif',1,1,4,2,1,0,0,0,0,0,5,'ee2555044379b460f3d8969bf0478c40.gif','image/gif',3648304,'2014-03-14 05:13:55','','{}','236x356',0,'2014-03-14 05:02:00','2014-03-14 10:25:35'),(8,'2.jpg',1,1,4,2,1,0,0,0,0,0,5,'2.jpg','application/octet-stream',103365,'2014-03-14 05:02:02','','{\"width\":426,\"height\":640,\"bits\":8,\"comment\":null}','250x376',0,'2014-03-14 05:02:08','2014-03-14 10:25:35'),(9,'3.jpg',1,1,4,2,1,0,0,0,0,0,5,'3.jpg','application/octet-stream',134950,'2014-03-14 05:02:10','','{\"width\":610,\"height\":891,\"bits\":8,\"comment\":null}','250x365',0,'2014-03-14 05:02:17','2014-03-14 10:25:35'),(10,'4.jpg',1,1,4,2,1,0,0,0,0,0,5,'4.jpg','application/octet-stream',226575,'2014-03-14 05:02:19','','{\"width\":498,\"height\":750,\"bits\":8,\"comment\":null}','250x377',0,'2014-03-14 05:02:25','2014-03-14 10:25:35'),(11,'5.jpg',1,1,4,2,1,0,0,0,0,0,5,'5.jpg','application/octet-stream',109975,'2014-03-14 05:02:26','','{\"width\":401,\"height\":600,\"bits\":8,\"comment\":null}','250x374',0,'2014-03-14 05:02:32','2014-03-14 10:25:35'),(12,'6.jpg',1,1,4,2,1,0,0,0,0,0,5,'6.jpg','application/octet-stream',107855,'2014-03-14 05:02:33','','{\"width\":499,\"height\":750,\"bits\":8,\"comment\":null}','250x376',0,'2014-03-14 05:02:39','2014-03-14 10:25:35'),(13,'7.jpg',1,1,4,2,1,0,0,0,0,0,5,'7.jpg','application/octet-stream',246447,'2014-03-14 05:02:41','','{\"width\":474,\"height\":720,\"bits\":8,\"comment\":null}','250x380',0,'2014-03-14 05:02:49','2014-03-14 10:25:35'),(14,'8.jpg',1,1,4,2,1,0,0,0,0,0,5,'8.jpg','application/octet-stream',188142,'2014-03-14 05:02:50','','{\"width\":466,\"height\":700,\"bits\":8,\"comment\":null}','250x376',0,'2014-03-14 05:02:57','2014-03-14 10:25:35'),(15,'9.jpg',1,1,4,2,1,0,0,0,0,0,5,'9.jpg','application/octet-stream',169167,'2014-03-14 05:02:59','','{\"width\":642,\"height\":960,\"bits\":8,\"comment\":null}','250x374',0,'2014-03-14 05:03:06','2014-03-14 10:25:35'),(16,'10.jpg',1,1,4,2,1,0,0,0,0,0,5,'10.jpg','application/octet-stream',259738,'2014-03-14 05:03:08','','{\"width\":619,\"height\":933,\"bits\":8,\"comment\":null}','250x377',0,'2014-03-14 05:03:15','2014-03-14 10:25:35'),(17,'p3.jpeg',1,1,4,2,1,0,0,0,0,0,5,'p3.jpeg','application/octet-stream',33799,'2014-03-14 05:03:16','','{\"width\":236,\"height\":355,\"bits\":8,\"comment\":null}','236x355',0,'2014-03-14 05:03:21','2014-03-14 10:25:35'),(18,'p4.jpeg',1,1,4,2,1,0,0,0,0,0,5,'p4.jpeg','application/octet-stream',36397,'2014-03-14 05:03:22','','{\"width\":236,\"height\":354,\"bits\":8,\"comment\":null}','236x354',0,'2014-03-14 05:03:27','2014-03-14 10:25:35'),(19,'p5.jpeg',1,1,4,2,1,0,0,0,0,0,5,'p5.jpeg','application/octet-stream',71674,'2014-03-14 05:03:28','','{\"width\":236,\"height\":355,\"bits\":8,\"comment\":null}','236x355',0,'2014-03-14 05:03:33','2014-03-14 10:25:35'),(20,'p7.jpeg',1,1,4,2,1,0,0,0,0,0,5,'p7.jpeg','application/octet-stream',42993,'2014-03-14 05:03:34','','{\"width\":236,\"height\":354,\"bits\":8,\"comment\":null}','236x354',0,'2014-03-14 05:03:39','2014-03-14 10:25:35'),(21,'p8.jpeg',1,1,4,2,1,0,0,0,0,0,5,'p8.jpeg','application/octet-stream',86935,'2014-03-14 05:03:41','','{\"width\":236,\"height\":591,\"bits\":8,\"comment\":null}','236x591',0,'2014-03-14 05:03:46','2014-03-14 10:25:35'),(22,'0.jpg',1,1,5,2,1,0,0,0,0,0,5,'0.jpg','application/octet-stream',115766,'2014-03-14 05:20:47','','{\"width\":460,\"height\":717,\"bits\":8,\"comment\":null}','250x390',0,'2014-03-14 05:20:53','2014-03-14 10:25:35'),(23,'1.jpg',1,1,5,2,1,0,0,0,0,0,5,'1.jpg','application/octet-stream',179455,'2014-03-14 05:20:54','','{\"width\":554,\"height\":755,\"bits\":8,\"comment\":null}','250x341',0,'2014-03-14 05:21:01','2014-03-14 10:25:35'),(24,'2.jpg',1,1,5,2,1,0,0,0,0,0,5,'2.jpg','application/octet-stream',66719,'2014-03-14 05:21:02','','{\"width\":553,\"height\":841,\"bits\":8,\"comment\":null}','250x380',0,'2014-03-14 05:21:09','2014-03-14 10:25:35'),(25,'3.jpg',1,1,5,2,1,0,0,0,0,0,5,'3.jpg','application/octet-stream',209754,'2014-03-14 05:21:12','','{\"width\":500,\"height\":750,\"bits\":8,\"comment\":null}','250x375',0,'2014-03-14 05:21:20','2014-03-14 10:25:35'),(26,'4.jpg',1,1,5,2,1,0,0,0,0,0,5,'4.jpg','application/octet-stream',155484,'2014-03-14 05:21:23','','{\"width\":427,\"height\":640,\"bits\":8,\"comment\":null}','250x375',0,'2014-03-14 05:21:30','2014-03-14 10:25:35'),(27,'5.jpg',1,1,5,2,1,0,0,0,0,0,5,'5.jpg','application/octet-stream',216365,'2014-03-14 05:21:32','','{\"width\":460,\"height\":687,\"bits\":8,\"comment\":null}','250x373',0,'2014-03-14 05:21:40','2014-03-14 10:25:35'),(28,'6.jpg',1,1,5,2,1,0,0,0,0,0,5,'6.jpg','application/octet-stream',302824,'2014-03-14 05:21:44','','{\"width\":500,\"height\":750,\"bits\":8,\"comment\":null}','250x375',0,'2014-03-14 05:21:50','2014-03-14 10:25:36'),(29,'7.jpg',1,1,5,2,1,0,0,0,0,0,5,'7.jpg','application/octet-stream',112249,'2014-03-14 05:21:53','','{\"width\":480,\"height\":613,\"bits\":8,\"comment\":null}','250x319',0,'2014-03-14 05:22:00','2014-03-14 10:25:36'),(30,'8.jpg',1,1,5,2,1,0,0,0,0,0,5,'8.jpg','application/octet-stream',137207,'2014-03-14 05:22:03','','{\"width\":467,\"height\":700,\"bits\":8,\"comment\":null}','250x375',0,'2014-03-14 05:22:10','2014-03-14 10:25:36'),(31,'9.jpg',1,1,5,2,1,0,0,0,0,0,5,'9.jpg','application/octet-stream',404133,'2014-03-14 05:22:13','','{\"width\":554,\"height\":832,\"bits\":8,\"comment\":null}','250x375',0,'2014-03-14 05:22:19','2014-03-14 10:25:36'),(32,'10.jpg',1,1,5,2,1,0,0,0,0,0,5,'10.jpg','application/octet-stream',364385,'2014-03-14 05:22:23','','{\"width\":554,\"height\":800,\"bits\":8,\"comment\":null}','250x361',0,'2014-03-14 05:22:29','2014-03-14 10:25:36'),(33,'11.jpg',1,1,5,2,1,0,0,0,0,0,5,'11.jpg','application/octet-stream',286949,'2014-03-14 05:22:32','','{\"width\":427,\"height\":640,\"bits\":8,\"comment\":null}','250x375',0,'2014-03-14 05:22:39','2014-03-14 10:25:36'),(34,'12.jpg',1,1,5,2,1,0,0,0,0,0,5,'12.jpg','application/octet-stream',213769,'2014-03-14 05:22:41','','{\"width\":467,\"height\":700,\"bits\":8,\"comment\":null}','250x375',0,'2014-03-14 05:22:48','2014-03-14 10:25:36'),(35,'13.jpg',1,1,5,2,1,0,0,0,0,0,5,'13.jpg','application/octet-stream',279253,'2014-03-14 05:22:51','','{\"width\":510,\"height\":766,\"bits\":8,\"comment\":null}','250x375',0,'2014-03-14 05:22:58','2014-03-14 10:25:36'),(36,'14.jpg',1,1,5,2,1,0,0,0,0,0,5,'14.jpg','application/octet-stream',311878,'2014-03-14 05:23:01','','{\"width\":467,\"height\":700,\"bits\":8,\"comment\":null}','250x375',0,'2014-03-14 05:23:08','2014-03-14 10:25:36'),(37,'15.jpg',1,1,5,2,1,0,0,0,0,0,5,'15.jpg','application/octet-stream',184165,'2014-03-14 05:23:11','','{\"width\":440,\"height\":638,\"bits\":8,\"comment\":null}','250x363',0,'2014-03-14 05:23:18','2014-03-14 10:25:36'),(38,'16.jpg',1,1,5,2,1,0,0,0,0,0,5,'16.jpg','application/octet-stream',167426,'2014-03-14 05:23:22','','{\"width\":528,\"height\":800,\"bits\":8,\"comment\":null}','250x379',0,'2014-03-14 05:23:29','2014-03-14 10:25:36'),(39,'17.jpg',1,1,5,2,1,0,0,0,0,0,5,'17.jpg','application/octet-stream',468843,'2014-03-14 05:23:33','','{\"width\":600,\"height\":900,\"bits\":8,\"comment\":null}','250x375',0,'2014-03-14 05:23:40','2014-03-14 10:25:36'),(40,'18.jpg',1,1,5,2,1,0,0,0,0,0,5,'18.jpg','application/octet-stream',66076,'2014-03-14 05:23:43','','{\"width\":440,\"height\":586,\"bits\":8,\"comment\":null}','250x333',0,'2014-03-14 05:23:48','2014-03-14 10:25:36'),(41,'19.jpg',1,1,5,2,1,0,0,0,0,0,5,'19.jpg','application/octet-stream',165371,'2014-03-14 05:23:51','','{\"width\":580,\"height\":446,\"bits\":8,\"comment\":null}','250x192',0,'2014-03-14 05:23:58','2014-03-14 10:25:36');
 /*!40000 ALTER TABLE `images` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -674,7 +676,7 @@ CREATE TABLE `schema_migrations` (
 
 LOCK TABLES `schema_migrations` WRITE;
 /*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
-INSERT INTO `schema_migrations` VALUES ('20131225140149'),('20131225140150'),('20140114064822'),('20140114070954'),('20140116091959'),('20140119074029'),('20140119075534'),('20140119075801'),('20140120145855'),('20140128085710'),('20140207085415'),('20140208085729'),('20140208085730'),('20140208085731'),('20140217060518'),('20140217073800'),('20140218035042'),('20140218035306'),('20140218035521'),('20140218035522'),('20140218035523'),('20140218035524'),('20140218050902'),('20140218050947'),('20140218051156'),('20140218051157'),('20140218051158');
+INSERT INTO `schema_migrations` VALUES ('20131225140149'),('20131225140150'),('20140114064822'),('20140114070954'),('20140116091959'),('20140119074029'),('20140119075534'),('20140119075801'),('20140120145855'),('20140128085710'),('20140207085415'),('20140208085729'),('20140208085730'),('20140208085731'),('20140217060518'),('20140217073800'),('20140218035042'),('20140218035306'),('20140218035521'),('20140218035522'),('20140218035523'),('20140218050947'),('20140218051156'),('20140218051157'),('20140218051158');
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -776,7 +778,9 @@ DROP TABLE IF EXISTS `topics`;
 CREATE TABLE `topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
-  `group_id` int(11) DEFAULT NULL,
+  `tag_id` int(11) DEFAULT NULL,
+  `last_user_id` int(11) DEFAULT NULL,
+  `last_updated_at` datetime DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `comments_count` int(11) DEFAULT '0',
@@ -784,7 +788,7 @@ CREATE TABLE `topics` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -793,7 +797,7 @@ CREATE TABLE `topics` (
 
 LOCK TABLES `topics` WRITE;
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
-INSERT INTO `topics` VALUES (1,2,1,'11111','11111111111111',0,0,'2014-03-10 08:51:49','2014-03-10 08:51:49');
+INSERT INTO `topics` VALUES (1,1,9,NULL,NULL,'好i好i好i好i好i好i','好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i',0,0,'2014-03-15 07:06:01','2014-03-15 07:06:01'),(2,1,68,4,NULL,'测试测试一下啊如何了','测试测试一下啊如何了测试测试一下啊如何了测试测试一下啊如何了测试测试一下啊如何了',1,0,'2014-03-15 07:06:37','2014-03-15 07:46:16');
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -870,7 +874,7 @@ CREATE TABLE `users` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -879,7 +883,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin@shanpro.com','管理员',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,'000e34c90192f431623917db7049a28ef7f1f26e.jpg','image/jpeg',13649,'2014-03-09 09:03:53',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,1,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-09 09:03:53','2014-03-09 09:04:47'),(2,'tianyishengshui1226@126.com','huishan1226',NULL,NULL,NULL,'c023bc0f91e5e6bb95e82c9254540433',NULL,'71cb74554036a1cd70c0180c1f9f3fcb913abc4b.jpg','image/jpeg',6908,'2014-03-10 08:12:58',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,0,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-10 08:13:01','2014-03-10 08:13:01');
+INSERT INTO `users` VALUES (1,'admin@shanpro.com','管理员',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,'000e34c90192f431623917db7049a28ef7f1f26e.jpg','image/jpeg',13649,'2014-03-09 09:03:53',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,1,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-09 09:03:53','2014-03-09 09:04:47'),(2,'tianyishengshui1226@126.com','huishan1226',NULL,NULL,NULL,'c023bc0f91e5e6bb95e82c9254540433',NULL,'71cb74554036a1cd70c0180c1f9f3fcb913abc4b.jpg','image/jpeg',6908,'2014-03-10 08:12:58',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,0,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-10 08:13:01','2014-03-10 08:13:01'),(3,'xingcj@126.com','邢春江',NULL,NULL,NULL,'e10655cb0a445d47de4f4148954c4e11',NULL,'5fb47b3e48d4b4d059ff7d40b89d0b683ce6df41.jpg','image/jpeg',9501,'2014-03-13 12:09:35',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,0,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-13 12:09:39','2014-03-13 12:09:39'),(4,'515856563@qq.com','朱晓武',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,'817ad5bc0539b9fc62c485718af9a0f699ebd57f.jpg','image/jpeg',13249,'2014-03-15 07:45:53',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,0,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-15 07:45:57','2014-03-15 07:45:57');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -933,7 +937,7 @@ CREATE TABLE `works` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -942,7 +946,7 @@ CREATE TABLE `works` (
 
 LOCK TABLES `works` WRITE;
 /*!40000 ALTER TABLE `works` DISABLE KEYS */;
-INSERT INTO `works` VALUES (1,1,1,1,NULL,NULL,'不知道哪里的美景，着实羡慕','在这里享受，在这里甩掉城市的浮躁',0,0,'2014-03-09 09:08:29','2014-03-09 09:08:29'),(2,1,5,1,NULL,NULL,'如果美景','如果美景如果美景',0,0,'2014-03-10 08:34:53','2014-03-10 08:34:53'),(3,1,6,1,NULL,NULL,'有太多这样的美景照片','有太多这样的美景照片，如果有幸亲自到场！！！！',0,0,'2014-03-11 06:48:19','2014-03-11 06:48:19');
+INSERT INTO `works` VALUES (1,1,1,1,NULL,NULL,'不知道哪里的美景，着实羡慕','在这里享受，在这里甩掉城市的浮躁',0,0,'2014-03-09 09:08:29','2014-03-09 09:08:29'),(2,1,5,1,NULL,NULL,'如果美景','如果美景如果美景',0,0,'2014-03-10 08:34:53','2014-03-10 08:34:53'),(3,1,6,1,NULL,NULL,'有太多这样的美景照片','有太多这样的美景照片，如果有幸亲自到场！！！！',0,0,'2014-03-11 06:48:19','2014-03-11 06:48:19'),(4,1,7,1,NULL,NULL,'采集一点，放到我大漫拍','采集一点，放到我大漫拍。\r\n还是很漂亮的',0,0,'2014-03-14 05:03:50','2014-03-14 05:03:50'),(5,1,22,1,NULL,NULL,'采集一点，放到我大漫拍','采集一点，放到我大漫拍采集一点，放到我大漫拍采集一点，放到我大漫拍',0,0,'2014-03-14 05:24:22','2014-03-14 05:24:22');
 /*!40000 ALTER TABLE `works` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -955,4 +959,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-13 16:12:50
+-- Dump completed on 2014-03-15 13:14:51
