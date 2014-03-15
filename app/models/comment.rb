@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :integer          not null, primary key
+#  obj_id     :integer
+#  obj_type   :string(255)
+#  user_id    :integer
+#  reply_id   :integer
+#  title      :string(255)
+#  content    :text
+#  del        :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Comment < ActiveRecord::Base
   attr_accessible :content, :del, :title, :user_id, :reply_id, :obj_id, :obj_type
 

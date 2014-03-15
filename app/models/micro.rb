@@ -1,3 +1,47 @@
+# == Schema Information
+#
+# Table name: micros
+#
+#  id            :integer          not null, primary key
+#  user_id       :integer
+#  name          :string(255)
+#  title         :string(255)
+#  text          :string(255)
+#  source_id     :integer
+#  source_type   :string(255)
+#  source_name   :string(255)
+#  source_title  :string(255)
+#  source_text   :string(255)
+#  sourcer_id    :integer
+#  sourcer_type  :string(255)
+#  sourcer_name  :string(255)
+#  sourcer_title :string(255)
+#  sourcer_text  :string(255)
+#  refer_id      :integer
+#  refer_type    :string(255)
+#  refer_name    :string(255)
+#  refer_title   :string(255)
+#  refer_text    :string(255)
+#  referer_id    :integer
+#  referer_type  :string(255)
+#  referer_name  :string(255)
+#  referer_title :string(255)
+#  referer_text  :string(255)
+#  extra_id      :integer
+#  extra_type    :string(255)
+#  extra_name    :string(255)
+#  extra_title   :string(255)
+#  extra_text    :string(255)
+#  extraer_id    :integer
+#  extraer_type  :string(255)
+#  extraer_name  :string(255)
+#  extraer_title :string(255)
+#  extraer_text  :string(255)
+#  del           :boolean          default(FALSE)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
+
 class Micro < ActiveRecord::Base
   attr_accessible :user_id,
   :name,

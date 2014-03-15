@@ -24,7 +24,8 @@ gem 'oauth2'
 # gem 'oauth_china', path: 'vendor/oauth_china'
 
 group :development do
-	gem 'awesome_print'
+    gem 'awesome_print'
+    gem 'annotate', ">=2.6.0"
     gem 'pry'
     gem 'pry-remote'
     gem 'pry-stack_explorer'

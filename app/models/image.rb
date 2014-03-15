@@ -1,3 +1,32 @@
+# == Schema Information
+#
+# Table name: images
+#
+#  id                   :integer          not null, primary key
+#  name                 :string(255)
+#  user_id              :integer
+#  event_id             :integer
+#  work_id              :integer
+#  album_id             :integer
+#  state                :integer          default(0)
+#  lauds_count          :integer          default(0)
+#  likes_count          :integer          default(0)
+#  stores_count         :integer          default(0)
+#  recoms_count         :integer          default(0)
+#  comments_count       :integer          default(0)
+#  warrant              :integer
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
+#  desc                 :string(255)
+#  exif                 :text
+#  wh                   :string(255)
+#  del                  :boolean          default(FALSE)
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
 # require 'paperclip_processors/watermark'
 class Image < ActiveRecord::Base
   include TuiCore

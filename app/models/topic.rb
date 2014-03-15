@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: topics
+#
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  tag_id         :integer
+#  last_user_id   :integer
+#  title          :string(255)
+#  content        :string(255)
+#  comments_count :integer          default(0)
+#  del            :boolean          default(FALSE)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 class Topic < ActiveRecord::Base
   attr_accessible :content, :del, :tag_id, :title, :user_id, :last_user_id, :comments_count
 

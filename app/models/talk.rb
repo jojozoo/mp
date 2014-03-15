@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: talks
+#
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  sender_id      :integer
+#  content        :string(255)
+#  state          :integer          default(1)
+#  messages_count :integer          default(0)
+#  del            :boolean          default(FALSE)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
 class Talk < ActiveRecord::Base
   attr_accessible :del, :state, :content, :user_id, :sender_id, :messages_count
 

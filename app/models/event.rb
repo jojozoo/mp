@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id                :integer          not null, primary key
+#  name              :string(255)
+#  user_id           :integer
+#  logo_file_name    :string(255)
+#  logo_content_type :string(255)
+#  logo_file_size    :integer
+#  logo_updated_at   :datetime
+#  title             :string(255)
+#  desc              :text
+#  channel           :string(255)
+#  end_time          :date
+#  members_count     :integer          default(0)
+#  works_count       :integer          default(0)
+#  state             :integer          default(0)
+#  totop             :boolean          default(FALSE)
+#  del               :boolean          default(FALSE)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
 class Event < ActiveRecord::Base
   attr_accessible :desc,
    :name,

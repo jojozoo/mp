@@ -1,3 +1,41 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                  :integer          not null, primary key
+#  email               :string(255)
+#  username            :string(255)
+#  nickname            :string(255)
+#  realname            :string(255)
+#  mobile              :string(255)
+#  password            :string(255)
+#  salt                :string(255)
+#  avatar_file_name    :string(255)
+#  avatar_content_type :string(255)
+#  avatar_file_size    :integer
+#  avatar_updated_at   :datetime
+#  province            :string(255)
+#  city                :string(255)
+#  site                :string(255)
+#  resume              :string(255)
+#  domain              :string(255)
+#  profession          :string(255)
+#  duty                :date
+#  gender              :boolean
+#  warrant             :integer          default(5)
+#  admin               :boolean          default(FALSE)
+#  photographer        :boolean          default(FALSE)
+#  talks_count         :integer          default(0)
+#  notices_count       :integer          default(0)
+#  followers_count     :integer          default(0)
+#  bg                  :string(255)      default("/images/defaults/bgs.jpg")
+#  repeat              :string(255)      default("repeat")
+#  remember_me         :string(255)
+#  del                 :boolean          default(FALSE)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+
 class User < ActiveRecord::Base
   attr_accessor :password_confirmation
   attr_accessible :email, 

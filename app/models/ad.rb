@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: ads
+#
+#  id                 :integer          not null, primary key
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#  title              :string(255)
+#  desc               :string(255)
+#  target             :string(255)
+#  t                  :integer
+#  s                  :integer
+#  del                :boolean          default(FALSE)
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#
+
 class Ad < ActiveRecord::Base
   attr_accessible :photo, :title, :desc, :target, :t, :s, :b, :c, :f, :del
   # photo      图片

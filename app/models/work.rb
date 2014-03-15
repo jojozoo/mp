@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: works
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  cover_id     :integer
+#  event_id     :integer
+#  warrant      :integer
+#  winner       :integer
+#  title        :string(255)
+#  desc         :string(255)
+#  images_count :integer          default(0)
+#  del          :boolean          default(FALSE)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Work < ActiveRecord::Base
   attr_accessible :del, :event_id, :cover_id, :title, :desc, :user_id, :warrant, :winner, :images_count
 
