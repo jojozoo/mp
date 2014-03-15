@@ -65,6 +65,7 @@ Mp::Application.routes.draw do
         get  'avatar'
         post 'cut'
         get  'security'
+        post 'update_pass'
         get  'push'
         # get  'dy'
         # get  'privacy'
