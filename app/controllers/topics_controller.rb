@@ -36,8 +36,13 @@ class TopicsController < ApplicationController
     end
 
     def edit
-        @topic = current_user.topics.find(params[:id])
-        @tag = @topic.tag
+        unless sign_in?
+            redirect_to action: :index
+            flash[:notice] = '请先登录'
+            return
+        else
+            @topic = current_user.topics.find(params[:id])
+        end
     end
 
     def update

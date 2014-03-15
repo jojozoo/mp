@@ -4,6 +4,7 @@ class CreateTopics < ActiveRecord::Migration
       t.integer :user_id
       t.integer :tag_id
       t.integer :last_user_id
+      t.datetime :last_updated_at
       t.string :title
       t.string :content
       t.integer :comments_count, default: 0

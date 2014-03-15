@@ -13,6 +13,7 @@ module ApplicationHelper
     # when p > 1.hour && date.to_date == Date.yesterday then "昨天 #{date.strftime("%H:%M")}"
     # when p > 1.hour && date.to_date < Date.yesterday then date.strftime("%m-%d %H:%M")
     # end
+    from_time = from_time || Time.now
     to_time = Time.now
     distance_in_minutes = (((to_time - from_time).abs) / 60).round
     distance_in_seconds = ((to_time - from_time).abs).round

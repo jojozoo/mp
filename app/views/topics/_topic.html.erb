@@ -24,7 +24,7 @@
                     • 最后由
                     <%= link_to last_user.username, user_path(topic.last_user_id) %>
                     于
-                    <abbr class="timeago" title="2014-03-14T19:54:35+08:00"><%= humanize(topic.updated_at) %></abbr>
+                    <abbr class="timeago" title="2014-03-14T19:54:35+08:00"><%= humanize(topic.last_updated_at) %></abbr>
                     回复
                 </em>
                 <% end %>

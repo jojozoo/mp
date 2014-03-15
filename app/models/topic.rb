@@ -15,7 +15,7 @@
 #
 
 class Topic < ActiveRecord::Base
-  attr_accessible :content, :del, :tag_id, :title, :user_id, :last_user_id, :comments_count
+  attr_accessible :content, :del, :tag_id, :title, :user_id, :last_user_id, :last_updated_at, :comments_count
 
   has_many :comments, as: :obj
   belongs_to :user
