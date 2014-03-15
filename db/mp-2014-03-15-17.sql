@@ -16,6 +16,46 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `accepts`
+--
+
+DROP TABLE IF EXISTS `accepts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accepts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `followd_mail` tinyint(1) DEFAULT '0',
+  `recom_mail` tinyint(1) DEFAULT '0',
+  `laud_mail` tinyint(1) DEFAULT '0',
+  `like_mail` tinyint(1) DEFAULT '0',
+  `store_mail` tinyint(1) DEFAULT '0',
+  `comment_mail` tinyint(1) DEFAULT '0',
+  `msg_mail` tinyint(1) DEFAULT '0',
+  `followd_notice` tinyint(1) DEFAULT '0',
+  `recom_notice` tinyint(1) DEFAULT '0',
+  `laud_notice` tinyint(1) DEFAULT '0',
+  `like_notice` tinyint(1) DEFAULT '0',
+  `store_notice` tinyint(1) DEFAULT '0',
+  `comment_notice` tinyint(1) DEFAULT '0',
+  `msg_notice` tinyint(1) DEFAULT '0',
+  `del` tinyint(1) DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accepts`
+--
+
+LOCK TABLES `accepts` WRITE;
+/*!40000 ALTER TABLE `accepts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `accepts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `accounts`
 --
 
@@ -676,7 +716,7 @@ CREATE TABLE `schema_migrations` (
 
 LOCK TABLES `schema_migrations` WRITE;
 /*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
-INSERT INTO `schema_migrations` VALUES ('20131225140149'),('20131225140150'),('20140114064822'),('20140114070954'),('20140116091959'),('20140119074029'),('20140119075534'),('20140119075801'),('20140120145855'),('20140128085710'),('20140207085415'),('20140208085729'),('20140208085730'),('20140208085731'),('20140217060518'),('20140217073800'),('20140218035042'),('20140218035306'),('20140218035521'),('20140218035522'),('20140218035523'),('20140218050947'),('20140218051156'),('20140218051157'),('20140218051158');
+INSERT INTO `schema_migrations` VALUES ('20131225140149'),('20131225140150'),('20140114064822'),('20140114070954'),('20140116091959'),('20140119074029'),('20140119075534'),('20140119075801'),('20140120145855'),('20140128085710'),('20140207085415'),('20140208085729'),('20140208085730'),('20140208085731'),('20140217060518'),('20140217073800'),('20140218035042'),('20140218035306'),('20140218035521'),('20140218035522'),('20140218035523'),('20140218050947'),('20140218051156'),('20140218051157'),('20140218051158'),('20140315083033');
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -959,4 +999,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-15 13:24:19
+-- Dump completed on 2014-03-15 13:25:45
