@@ -94,6 +94,7 @@ class User < ActiveRecord::Base
 
   has_many :topics
   has_many :push_images
+  has_one  :accept
   # 收件箱 & 发件箱 名义没有发件箱
   has_many :iboxs, class_name: 'Talk', conditions: {del: false}
   # 未读
@@ -176,6 +177,7 @@ class User < ActiveRecord::Base
 
   def basic_build
     self.albums.create(name: '默认相册')
+    Accept.create(user_id: self.id)
   end
 
   def check_not_v_attr

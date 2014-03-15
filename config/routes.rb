@@ -67,6 +67,7 @@ Mp::Application.routes.draw do
         get  'security'
         post 'update_pass'
         get  'push'
+        post 'push'
         # get  'dy'
         # get  'privacy'
         get  'bg'

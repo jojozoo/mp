@@ -35,6 +35,19 @@ class My::SetsController < My::ApplicationController
         redirect_to action: :basic
     end
 
+    def update_pass
+        if current_user.valid_password?(params[:user][:password])
+            if current_user.update_attributes password: params[:user][:newpassword]
+                flash[:notice] = '密码修改成功'
+            else
+                flash[:notice] = '密码修改失败, 请联系管理员'
+            end
+        else
+            flash[:notice] = '原密码输入错误'
+        end
+        redirect_to action: :security
+    end
+
     def security
         # render '/my/shared/template'
     end
@@ -44,6 +57,12 @@ class My::SetsController < My::ApplicationController
     end
 
     def push
+        @accept = current_user.accept
+        if request.post?
+            @accept.update_attributes(params[:accept])
+            flash[:notice] = '数据修改成功！'
+            redirect_to action: :push
+        end
         # render '/my/shared/template'
     end
 

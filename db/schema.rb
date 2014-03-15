@@ -11,7 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140218051158) do
+ActiveRecord::Schema.define(:version => 20140315083033) do
+
+  create_table "accepts", :force => true do |t|
+    t.integer  "user_id"
+    t.boolean  "followd_mail",   :default => false
+    t.boolean  "recom_mail",     :default => false
+    t.boolean  "laud_mail",      :default => false
+    t.boolean  "like_mail",      :default => false
+    t.boolean  "store_mail",     :default => false
+    t.boolean  "comment_mail",   :default => false
+    t.boolean  "msg_mail",       :default => false
+    t.boolean  "followd_notice", :default => false
+    t.boolean  "recom_notice",   :default => false
+    t.boolean  "laud_notice",    :default => false
+    t.boolean  "like_notice",    :default => false
+    t.boolean  "store_notice",   :default => false
+    t.boolean  "comment_notice", :default => false
+    t.boolean  "msg_notice",     :default => false
+    t.boolean  "del",            :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -295,12 +316,13 @@ ActiveRecord::Schema.define(:version => 20140218051158) do
     t.integer  "user_id"
     t.integer  "tag_id"
     t.integer  "last_user_id"
+    t.datetime "last_updated_at"
     t.string   "title"
     t.string   "content"
-    t.integer  "comments_count", :default => 0
-    t.boolean  "del",            :default => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.integer  "comments_count",  :default => 0
+    t.boolean  "del",             :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "tuis", :force => true do |t|
