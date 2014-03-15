@@ -211,9 +211,6 @@ abbr[title] {
 .modal-content {border:8px solid rgba(0, 0, 0, 0.5);-webkit-box-shadow: none;-moz-box-shadow: none;-ms-box-shadow: none;box-shadow: none}
 .modal-body{padding:20px 15px}
 .modal-backdrop, .modal-backdrop.fade.in {opacity:.1;background:#777}
-body{
-	background: transparent url("/images/body01.jpg");
-}
 textarea.form-control{
     height: 80px;
     margin-bottom: 10px;

@@ -7,6 +7,7 @@
 	<div class="w-box-content">
 		<table class="table table-striped table12 table-condensed table-hover text-center">
 			<tr>
+				<th>ID</th>
 				<th>图片</th>
 				<th>类型</th>
 				<th>时间</th>
@@ -14,6 +15,7 @@
 			</tr>
 		<% @bgs.each do |bg| %>
 			<tr>
+				<td><%= bg.id %></td>
 				<td><%= image_tag bg.photo.url, style: 'max-width: 80px;' %></td>
 				<td><%= bg.bg ? '个人背景' : '登录背景' %></td>
 				<td><%= bg.created_at.to_date %></td>

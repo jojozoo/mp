@@ -3,8 +3,7 @@
 	<%= simple_form_for @send, url: admin_sends_path, validate: true do |f| %>
 	<%= f.input :title %>
 	<%= f.input :content, as: :text %>
-	<%= f.input :tag, :collection => [['邮件', 'mail'] ,['漫信', 'msg'], ['页面', 'site']], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
-	<%= f.input :target, collection: Send::TARGET, include_blank: false %>
+	<%= f.input :channel, :collection => [['邮件', 'mail'] ,['漫信', 'msg'], ['页面', 'site']], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
 	<div class="form-group">
 		<div class="col-sm-8 col-sm-offset-2">
 			<input type="submit" value="发送" class="btn btn-default">

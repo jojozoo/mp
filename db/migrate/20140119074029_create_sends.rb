@@ -3,8 +3,7 @@ class CreateSends < ActiveRecord::Migration
     create_table :sends do |t|
       t.string :title
       t.text :content
-      t.string :tag
-      t.string :target
+      t.string :channel
       t.boolean :del, default: false
 
       t.timestamps

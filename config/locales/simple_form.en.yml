@@ -71,8 +71,7 @@ en:
       send:
         title: '通知标题'
         content: '通知内容'
-        tag: '通知类型'
-        target: '通知人群'
+        channel: '通知类型'
       sbg:
         bg: '类型'
       work:
