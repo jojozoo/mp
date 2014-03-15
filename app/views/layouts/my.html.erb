@@ -18,7 +18,7 @@
 	<script src="/ie/respond.min.js"></script>
 	<![endif]-->
 </head>
-<body style="background: transparent url('<%= Sbg.bgs.order('rand()').first.photo.url %>');">
+<body style="background: transparent url('<%= asset_path(Sbg.bgs.order('rand()').first.photo.url) %>');">
 	<%= render 'shared/nav' %>
 	<div class="container main">
 		<div class="row main-tip">
