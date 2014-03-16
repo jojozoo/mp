@@ -45,6 +45,7 @@ en:
         city: '市'
       album:
         name: '名称'
+        publish: '权限'
         desc: '描述'
       event:
         logo: 'LOGO'

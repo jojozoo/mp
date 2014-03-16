@@ -20,8 +20,7 @@ albums:
   small:
   navs: {}
   icons: {}
-  smalls: 
-    show: '%{name}'
+  smalls: {}
 works:
   name: 我的作品
   icon: camera

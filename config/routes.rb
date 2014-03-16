@@ -84,7 +84,11 @@ Mp::Application.routes.draw do
       end
     end
     resources :timelines
-    resources :albums
+    resources :albums do
+      collection do
+        match :upload, via: [:get, :post], as: :upload
+      end
+    end
     resources :works
     resources :users do
       collection do

@@ -93,8 +93,8 @@ class User < ActiveRecord::Base
   has_many :followers, source: :user, through: :follower_ships
 
   has_many :topics
-  has_many :push_images
-  has_one  :accept
+  # has_many :push_images
+  has_one  :accept # 个人推送设置
   # 收件箱 & 发件箱 名义没有发件箱
   has_many :iboxs, class_name: 'Talk', conditions: {del: false}
   # 未读

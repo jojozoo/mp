@@ -17,7 +17,7 @@
 #
 
 class Album < ActiveRecord::Base
-  attr_accessible :desc, :logo, :name, :publish, :user_id
+  attr_accessible :desc, :logo, :name, :publish, :user_id, :del
   # 相册不需要desc字段
   # publish 所有人 仅自己
   has_many :images
@@ -37,4 +37,8 @@ class Album < ActiveRecord::Base
   validates_length_of     :name, 
                           :within => 1..20,
                           :message => '长度1..20字'
+
+  def publish_name
+    publish ? '所有人' : '仅自己'
+  end
 end

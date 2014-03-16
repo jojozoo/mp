@@ -6,7 +6,13 @@
 	<h3>
 		<i class="icon-<%= icons[action_name] || nav['icon'] %>"></i>
 		<%= nav['name'] %>
-		<small><%= smalls[action_name] || navs[request.path] || nav['small'] %></small>
+		<small>
+			<% if controller_name.eql?('albums') and action_name.eql?('show') %>
+				<%= @album.name %>
+			<% else %>
+				<%= smalls[action_name] || navs[request.path] || nav['small'] %>
+			<% end %>
+		</small>
 	</h3>
 </div>
 <% if navs.present? %>

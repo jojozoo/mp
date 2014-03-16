@@ -1,35 +1,89 @@
 <style type="text/css">
-.hide-cap{display: none;}
+.hide-cap, .album-tool, .js-image-desc-edit-textarea{
+	display: none;
+}
+.checkbox-image{
+	position: absolute;top: -5px;
+	right: 0;
+}
+.js-image-desc-edit{
+	/*margin: 6px auto;*/
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 40px;
+}
+.album-tool, .album-menu{
+	margin-bottom:10px;
+}
+.album-all-checkbox-label{
+	margin: 0 60px 0 0;
+}
 </style>
-<div style="margin-bottom:10px;">
-	<a href="/my/albums">返回相册</a>
-	共500张图片
+<script type="text/javascript">
+$(function(){
+	// 编辑描述
+	$(".js-image-desc-edit").on('click', function(){
+		$(this).hide();
+		$(this).next().show().focus();
+	})
+	// 编辑描述 完成
+	$(".js-image-desc-edit-textarea").on('blur', function(){
+		var val = $(this).val();
+		$(this).hide();
+		$(this).prev().text(val).show();
+	})
+	// 批量管理
+	$("#album").on('click', function(){
+		// :visible
+		if($(".album-tool").is(':hidden')){
+			$(".album-tool, .hide-cap").show();
+		} else {
+			$(".album-tool, .hide-cap").hide();
+		}
+	})
+	// 全选 / 反选
+	$("#album-all-checkbox").on('click', function(){
+		var checked = $(this).is(':checked');
+		$("input[type=checkbox][id!=album-all-checkbox]").each(function(index, row){
+			row.checked = checked;
+		});
+	})
+	// 移动
+	
+	// 删除
+	// $("#checkbox-image-38").parents(".col-sm-6.col-md-3").fadeOut();
+})
+	
+</script>
+
+<div class="album-menu text-right">
+	<%= link_to '返回相册', my_albums_path %>
+	共<%= @album.images.count %>张图片
+
+	<%= link_to '上传图片', upload_my_albums_path(aid: @album.id), class: 'btn-primary btn btn-xs' %>
+
+	<a class="btn-warning btn btn-xs" href='javascript:void(0);' id="album">批量管理</a>
+
+	<%= link_to '删除相册', my_album_path(@album.id), method: :delete, data: {confirm: "确定删除？不可恢复操作!\n请先把照片合并到其他相册" }, class: 'btn-danger btn btn-xs' %>
+</div>
+<div class="album-tool">
 	<div class="pull-right">
-		<a class="btn-default btn btn-sm" href='javascript:void(0);'>上传图片</a>
-		<a class="btn-default btn btn-sm" href='javascript:void(0);'>批量管理</a>
-		<a class="btn-default btn btn-sm" href='javascript:void(0);'>删除相册</a>
+		<input id="album-all-checkbox" type="checkbox">
+		<label for="album-all-checkbox" class="album-all-checkbox-label">全选</label>
+		<a href="javascript:void(0);" class="btn btn-default btn-xs">移动</a>
+		<a href="javascript:void(0);" class="btn btn-default btn-xs">删除</a>
 	</div>
 	<div class="clearfix"></div>
 </div>
 <div class="row">
-	<% @images.each do |image| %>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<%= link_to image_tag(image.picture(:cover)), image_path(image) %>
-				<div class="caption caption-border">
-					<a href="javascript:void(0);" class="btn btn-default btn-xs front-cover">
-						设为封面
-					</a>
-					<a href="javascript:void(0);" class="btn btn-default btn-xs remove-self">
-						删除本张
-					</a>
-					<span class="pull-right hide-cap">
-						<input type="checkbox">
-					</span>
-					<textarea class="once-desc" placeholder="输入图片描述"><%= image.desc %></textarea>
-					<span>上传时间：<%= image.created_at.to_s(:db) %></span>
-				</div>
-			</div>
+	<%= render partial: 'image', collection: @images %>
+	<%= will_paginate @images %>
+	<% if @images.total_entries < 1 %>
+	<div class="col-md-12">
+		<div class="text-center" style="height: 300px; padding-top: 140px;">
+			还没有照片， 快去上传吧。 <%= link_to '上传图片', upload_my_albums_path(aid: @album.id) %>
 		</div>
+	</div>
 	<% end %>
 </div>

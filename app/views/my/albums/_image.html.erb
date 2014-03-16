@@ -1,0 +1,23 @@
+<div class="col-sm-6 col-md-3">
+    <div class="thumbnail" style="position: relative;">
+        <%= check_box_tag 'image', image.id, false, class: "checkbox-image hide-cap", id: "checkbox-image-#{image.id}" %>
+        <%= link_to image_tag(image.picture(:cover)), image_path(image) %>
+        <div class="caption caption-border">
+            <span>
+                <%= humanize image.created_at %>
+            </span>
+            <div class="js-image-desc-edit" title="点击进行编辑"><%= image.desc %></div>
+            <textarea class="once-desc js-image-desc-edit-textarea" placeholder="输入图片描述"><%= image.desc %></textarea>
+            <div>
+                <a href="javascript:void(0);" class="front-cover">封面</a>
+                <a href="javascript:void(0);" class="remove-self">删除</a>
+                <div class="pull-right">
+                    <%= link_to '大', image.picture(:big), target: '_blank' %>
+                    <%= link_to '小', image.picture(:small), target: '_blank' %>
+                    <%= link_to '原', image.picture(:original), target: '_blank' %>
+                    <%= link_to '封', image.picture(:cover), target: '_blank' %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

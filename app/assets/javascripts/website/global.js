@@ -1,4 +1,6 @@
 $(function(){
+	// bgdown ondown fade-row fadedown choose-ok
+	// 以上class 都是 移动显示，移出隐藏 需要整合
 	// /gs/1
 	$(document).on('mouseenter', '.ondown', function(){
 		$(this).find(".bgdown").css('height', $(this).find(".fadedown").outerHeight());

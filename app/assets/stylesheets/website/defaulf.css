@@ -659,7 +659,7 @@ a.qzone {
 .once-desc{
     width: 100%;
     height:40px;
-    margin: 6px auto;
+    /*margin: 6px auto;*/
     border-color: #ccc;
 }
 .thumbnail > a > img{
