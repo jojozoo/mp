@@ -16,8 +16,8 @@ $(function(){
                         <div class="uploadify-progress-bar"><!--Progress Bar--></div>\
                     </div>\
                 </div>\
-                <a href="javascript:void(0);" class="btn btn-primary btn-xs front-cover">设为封面</a>\
-                <a href="javascript:void(0);" class="btn btn-danger btn-xs remove-self">删除本张</a>\
+                <a href="javascript:void(0);" class="btn btn-primary btn-xs js-image-cover">设为封面</a>\
+                <a href="javascript:void(0);" class="btn btn-danger btn-xs js-image-remove">删除本张</a>\
                 <div class="caption caption-border">\
                     <textarea class="once-desc" placeholder="输入图片描述"></textarea>\
                     <span>上传时间：${YMDHMS}</span>\
@@ -81,35 +81,9 @@ function insert_page(file, data){
     var data = JSON.parse(data);
     $item = $("#" + file.id).parents(".thumbnail");
     $item.find('.bk-img').html('<img src="' + data.url + '">');
-    $item.find('.front-cover').attr({'id':data.id + '-cover', 'onclick':'front_cover(\'' + data.id + '\');'});
-    $item.find('.remove-self').attr({'id':data.id + '-remove', 'onclick':'remove_self(\'' + data.id + '\');'});
+    $item.find('.js-image-cover, .js-image-remove').attr({'tid':data.id});
     $item.find('.once-desc').attr({name: 'desc[' + data.id + ']'});
 }
-function remove_self(target){
-    target = "#" + target + "-remove";
-    var url = '/gs/' + parseInt($(target).attr('id'));
-    $(target).parents(".col-md-3").fadeOut(function(){
-        $(this).remove();
-        $.ajax({
-          url: url,
-          type: 'delete',
-          dataType: 'script'
-        });
-    })
-    return false;
-};
-// 选为封面
-function front_cover(target){
-    target = "#" + target + "-cover";
-    if($(target).hasClass('cover-page')){
-        $(target).removeClass('cover-page');
-    } else {
-        $('.front-cover.cover-page').removeClass('cover-page');
-        $(target).addClass('cover-page');
-    }
-    $('#work_cover_id').val(parseInt($(target).attr('id')));
-    return false;
-};
 // 作品/相册上传前检查
 function push_work(){
     // if(window.ClientSideValidations.forms['new_work']['validators']['work[event_id]'] == undefined){

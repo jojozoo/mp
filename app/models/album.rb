@@ -23,7 +23,7 @@ class Album < ActiveRecord::Base
   has_many :images
   has_attached_file :logo,
     styles: {
-      thumb: '260x180#',
+      thumb: '300x200#',
       small: '200x120#'
     }
 

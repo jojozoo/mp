@@ -49,10 +49,6 @@ class ImagesController < ApplicationController
     end
 
     def destroy
-        if image = Image.find_by_id(params[:id])
-            image.update_attributes(del: true)
-        end
-        render text: 'ok'
     end
 
     def tui

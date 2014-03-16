@@ -78,7 +78,8 @@ class User < ActiveRecord::Base
   has_many :works
   has_many :notices
   has_many :micros
-  has_many :pushes
+  # has_many :pushes
+  # has_many :push_images
 
   has_many :tuilauds, as: :obj
   has_many :tuilikes, as: :obj
@@ -93,7 +94,6 @@ class User < ActiveRecord::Base
   has_many :followers, source: :user, through: :follower_ships
 
   has_many :topics
-  # has_many :push_images
   has_one  :accept # 个人推送设置
   # 收件箱 & 发件箱 名义没有发件箱
   has_many :iboxs, class_name: 'Talk', conditions: {del: false}
@@ -258,7 +258,7 @@ class User < ActiveRecord::Base
   # http://www.highcharts.com/
 
   # tuis推荐表 推荐里面有个score来判断此图或者资源的分数, score应该是被推荐的对象
-  # push 用户对图片/作品等资源的各种操作 单继承表+多态表 push 和 tui 没什么区别呢
+  # push 管理员对图片/作品/用户/帖子等资源的各种操作 单继承表+多态表
   # follows关注表(user_id, follower_id, mark)
   # visits(profile event image album group)最新访问表(user_id, visit_id, mark)
   # essence 摄影师作品 用于摄影师的优秀作品集合

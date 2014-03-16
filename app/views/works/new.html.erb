@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/uploadify/uploadify.css">
+<link rel="stylesheet" type="text/css" href="/uploadify/uploadify.css?v=<%= Time.now.to_i %>">
 <script type="text/javascript" src="/uploadify/jquery.uploadify.js"></script>
 <script type="text/javascript" src="/uploadify/uploadify-work.js"></script>
 <div class="row">
@@ -24,7 +24,7 @@
 					<%= simple_form_for Work.new, html: {class: 'clearfix'}, validate: true do |f| %>
 						<%= f.text_field :cover_id, type: :hidden %>
 						<div class="row uploadify-queue" id="upload-file-queue">
-							<%= render partial: 'uploads', collection: @images, as: :image %>
+							<%= render partial: 'upload_row', collection: @images, as: :image %>
 						</div>
 						<div class="form-group string required">
 							<label class="string required col-sm-2 control-label" for="upload-file">

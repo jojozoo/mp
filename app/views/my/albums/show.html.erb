@@ -26,13 +26,13 @@ $(function(){
 	$(".js-image-desc-edit").on('click', function(){
 		$(this).hide();
 		$(this).next().show().focus();
-	})
+	});
 	// 编辑描述 完成
 	$(".js-image-desc-edit-textarea").on('blur', function(){
 		var val = $(this).val();
 		$(this).hide();
 		$(this).prev().text(val).show();
-	})
+	});
 	// 批量管理
 	$("#album").on('click', function(){
 		// :visible
@@ -41,18 +41,24 @@ $(function(){
 		} else {
 			$(".album-tool, .hide-cap").hide();
 		}
-	})
+	});
 	// 全选 / 反选
 	$("#album-all-checkbox").on('click', function(){
 		var checked = $(this).is(':checked');
 		$("input[type=checkbox][id!=album-all-checkbox]").each(function(index, row){
 			row.checked = checked;
 		});
-	})
+	});
 	// 移动
 	
-	// 删除
-	// $("#checkbox-image-38").parents(".col-sm-6.col-md-3").fadeOut();
+	// 封面
+	$(".js-album-cover").on('click', function(){
+		var url = $(this).attr('href');
+		console.log(url);
+		$.post(url, '', '', 'script');
+		return false;
+	});
+	// $("#checkbox-image-53").parents(".col-sm-6.col-md-3").find('.js-image-remove').click();
 })
 	
 </script>

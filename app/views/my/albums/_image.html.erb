@@ -9,8 +9,8 @@
             <div class="js-image-desc-edit" title="点击进行编辑"><%= image.desc %></div>
             <textarea class="once-desc js-image-desc-edit-textarea" placeholder="输入图片描述"><%= image.desc %></textarea>
             <div>
-                <a href="javascript:void(0);" class="front-cover">封面</a>
-                <a href="javascript:void(0);" class="remove-self">删除</a>
+                <%= link_to '封面', cover_my_album_path(image.album_id, image.id), class: 'js-album-cover' %>
+                <%= link_to '删除', "javascript:void(0);", class: 'js-image-remove', data: {confirm: '确定删除？不可恢复操作!' }, tid: image.id %>
                 <div class="pull-right">
                     <%= link_to '大', image.picture(:big), target: '_blank' %>
                     <%= link_to '小', image.picture(:small), target: '_blank' %>

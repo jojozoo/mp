@@ -13,7 +13,9 @@ Mp::Application.routes.draw do
 
   get    '/profile'       => 'users#profile'
   get    '/search'        => 'search#index'
-  match '/ajax/:push/:source/:id' => 'ajax#tui', via: :post, as: :tui
+  match '/ajax/tui/:push/:source/:id' => 'ajax#tui', via: :post, as: :ajax_tui # 推
+  match '/ajax/del/:source/:id'       => 'ajax#del', via: :post, as: :ajax_del # 删除
+  match '/ajax/com/:source/:id'       => 'ajax#com', via: :post, as: :ajax_com # 评论
   match '/comment/:obj/:id' => 'comments#create', via: :post, as: :comment
 
   # gallery
@@ -87,6 +89,9 @@ Mp::Application.routes.draw do
     resources :albums do
       collection do
         match :upload, via: [:get, :post], as: :upload
+      end
+      member do
+        match 'cover/:image_id' => 'albums#cover', via: :post, as: :cover
       end
     end
     resources :works
