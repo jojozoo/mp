@@ -311,7 +311,8 @@ ActiveRecord::Schema.define(:version => 20140315083033) do
   create_table "sends", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.string   "channel"
+    t.string   "tag"
+    t.string   "target"
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
@@ -339,15 +340,13 @@ ActiveRecord::Schema.define(:version => 20140315083033) do
 
   create_table "topics", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "tag_id"
-    t.integer  "last_user_id"
-    t.datetime "last_updated_at"
+    t.integer  "group_id"
     t.string   "title"
     t.string   "content"
-    t.integer  "comments_count",  :default => 0
-    t.boolean  "del",             :default => false
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.integer  "comments_count", :default => 0
+    t.boolean  "del",            :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "tuis", :force => true do |t|

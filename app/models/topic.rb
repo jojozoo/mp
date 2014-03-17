@@ -4,8 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  user_id        :integer
-#  tag_id         :integer
-#  last_user_id   :integer
+#  group_id       :integer
 #  title          :string(255)
 #  content        :string(255)
 #  comments_count :integer          default(0)
