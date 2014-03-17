@@ -1,0 +1,17 @@
+<div class="col-sm-6 col-md-3">
+    <div class="thumbnail js-album">
+        <%= link_to image_tag(album.logo(:thumb)), my_album_path(album) %>
+        <div class="caption caption-border">
+            <%= link_to album.name, my_album_path(album) %>
+            <span class="pull-right"><%= album.publish_name %></span>
+            <p><%= album.desc %></p>
+            <span>共<%= album.images.count %>张</span>
+            <span class="pull-right hide-cap">
+                <%= link_to '上传', upload_my_albums_path(aid: album.id) %>
+                <%= link_to '移动', move_modal_my_album_path(album.id), method: :post, remote: true %>
+                <%= link_to '编辑', edit_my_album_path(album.id), remote: true %>
+                <%= link_to '删除', my_album_path(album.id), method: :delete, data: {confirm: "确定删除？不可恢复操作!\n\n相册内图片也将删除\n可以先把图片移动到其他相册" } %>
+            </span>
+        </div>
+    </div>
+</div>

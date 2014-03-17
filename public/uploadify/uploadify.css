@@ -31,12 +31,12 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 .thumbnail{
 	position: relative;
 }
-.front-cover, .fade-left{
+.js-image-cover, .fade-left{
 	position: absolute;
 	top: 0;
 	left: 0;
 }
-.remove-self, .fade-right{
+.js-image-remove, .fade-right{
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -50,7 +50,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	height: 100%;
 	width: auto;
 }
-.cover-page, .cover-page:hover{
+.js-image-cover-page, .js-image-cover-page:hover{
 	background: orange;
 	border-color: orange;
 }

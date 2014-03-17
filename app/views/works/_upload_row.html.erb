@@ -3,15 +3,8 @@
 		<a href="javascript:void(0);" class="bk-img">
 			<%= image_tag image.picture(:cover) %>
 		</a>
-		<%= link_to '设为封面', "javascript:void(0);", 
-		onclick: "front_cover('#{image.id}');return false;", 
-		id: "#{image.id}-cover", 
-		class: 'btn btn-primary btn-xs front-cover' %>
-
-		<%= link_to '删除本张', "javascript:void(0);", 
-		onclick: "remove_self('#{image.id}');return false;", 
-		id: "#{image.id}-remove",
-		class: 'btn btn-danger btn-xs remove-self' %>
+		<%= link_to '设为封面', "javascript:void(0);", class: 'btn btn-primary btn-xs js-image-cover', tid: image.id %>
+		<%= link_to '删除本张', "javascript:void(0);", class: 'btn btn-danger btn-xs js-image-remove', tid: image.id %>
 		<div class="caption caption-border">
 			<textarea class="once-desc" placeholder="输入图片描述" name="desc[<%= image.id %>]"></textarea>
 			<span>上传时间：<%= image.created_at.to_s(:db) %></span>

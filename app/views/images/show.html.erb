@@ -27,7 +27,7 @@
 					<ul class="list-unstyled clearfix">
 						<li class="opt-b">
 							<i class="icon-user"></i>
-							<%= link_to @image.user.username, user_path(@image.user_id) %>/<%= link_to '关注', tui_path('follow', 'user', @image.user_id) %>
+							<%= link_to @image.user.username, user_path(@image.user_id) %>/<%= link_to '关注', ajax_tui_path('follow', 'user', @image.user_id) %>
 						</li>
 						<li class="opt-b">
 							<i class="icon-thumbs-up"></i>

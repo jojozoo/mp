@@ -1,4 +1,6 @@
 $(function(){
+	// bgdown ondown fade-row fadedown choose-ok
+	// 以上class 都是 移动显示，移出隐藏 需要整合
 	// /gs/1
 	$(document).on('mouseenter', '.ondown', function(){
 		$(this).find(".bgdown").css('height', $(this).find(".fadedown").outerHeight());
@@ -24,5 +26,28 @@ $(function(){
 	$("#link-remove").click(function(){
 		$("#comment_reply_id").removeAttr('value');
 		$("#replywho").hide();
+	});
+
+	// 选为封面
+	$(document).on("click", ".js-image-cover", function(){
+		var _tid = $(this).attr('tid');
+		if($(this).hasClass('js-image-cover-page')){
+			$(this).removeClass('js-image-cover-page');
+			$('#work_cover_id').removeAttr('value');
+		} else {
+			$(".js-image-cover.js-image-cover-page").removeClass('js-image-cover-page');
+			$(this).addClass('js-image-cover-page');
+			$('#work_cover_id').val(_tid);
+		}
+	});
+
+	// 删除本张
+	$(document).on("click", ".js-image-remove", function(){
+		var _tid = $(this).attr('tid');
+		var url = '/ajax/del/image/' + _tid;
+		$(this).parents(".col-md-3.col-sm-6").fadeOut(function(){
+			$(this).remove();
+			$.post(url, '', '', 'script');
+		});
 	});
 })

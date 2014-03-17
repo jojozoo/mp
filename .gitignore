@@ -16,3 +16,7 @@
 /tmp
 /public/system
 /public/assets
+.ruby-version
+.ruby-gemset
+config/database.yml
+public/system/*
