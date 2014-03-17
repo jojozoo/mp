@@ -131,23 +131,6 @@ ActiveRecord::Schema.define(:version => 20140315083033) do
     t.datetime "updated_at",                     :null => false
   end
 
-  create_table "groups", :force => true do |t|
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
-    t.integer  "user_id"
-    t.boolean  "publish",           :default => true
-    t.integer  "topics_count",      :default => 0
-    t.integer  "members_count",     :default => 0
-    t.integer  "visits_count",      :default => 0
-    t.string   "title"
-    t.text     "desc"
-    t.boolean  "del",               :default => false
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-  end
-
   create_table "images", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -171,15 +154,6 @@ ActiveRecord::Schema.define(:version => 20140315083033) do
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
-  end
-
-  create_table "members", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.integer  "auth",       :default => 0
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
   end
 
   create_table "messages", :force => true do |t|
@@ -339,13 +313,15 @@ ActiveRecord::Schema.define(:version => 20140315083033) do
 
   create_table "topics", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "group_id"
+    t.integer  "tag_id"
+    t.integer  "last_user_id"
+    t.datetime "last_updated_at"
     t.string   "title"
     t.string   "content"
-    t.integer  "comments_count", :default => 0
-    t.boolean  "del",            :default => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.integer  "comments_count",  :default => 0
+    t.boolean  "del",             :default => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "tuis", :force => true do |t|
