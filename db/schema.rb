@@ -311,8 +311,7 @@ ActiveRecord::Schema.define(:version => 20140315083033) do
   create_table "sends", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.string   "tag"
-    t.string   "target"
+    t.string   "channel"
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
