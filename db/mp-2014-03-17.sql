@@ -16,6 +16,47 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `accepts`
+--
+
+DROP TABLE IF EXISTS `accepts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `accepts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `followd_mail` tinyint(1) DEFAULT '0',
+  `recom_mail` tinyint(1) DEFAULT '0',
+  `laud_mail` tinyint(1) DEFAULT '0',
+  `like_mail` tinyint(1) DEFAULT '0',
+  `store_mail` tinyint(1) DEFAULT '0',
+  `comment_mail` tinyint(1) DEFAULT '0',
+  `msg_mail` tinyint(1) DEFAULT '0',
+  `followd_notice` tinyint(1) DEFAULT '0',
+  `recom_notice` tinyint(1) DEFAULT '0',
+  `laud_notice` tinyint(1) DEFAULT '0',
+  `like_notice` tinyint(1) DEFAULT '0',
+  `store_notice` tinyint(1) DEFAULT '0',
+  `comment_notice` tinyint(1) DEFAULT '0',
+  `msg_notice` tinyint(1) DEFAULT '0',
+  `del` tinyint(1) DEFAULT '0',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `accepts`
+--
+
+LOCK TABLES `accepts` WRITE;
+/*!40000 ALTER TABLE `accepts` DISABLE KEYS */;
+INSERT INTO `accepts` VALUES (1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,'2014-03-16 07:31:01','2014-03-16 07:31:09'),(2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'2014-03-16 07:31:01','2014-03-16 07:31:01'),(3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'2014-03-16 07:31:01','2014-03-16 07:31:01'),(4,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,'2014-03-16 07:31:01','2014-03-16 07:31:01');
+/*!40000 ALTER TABLE `accepts` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `accounts`
 --
 
@@ -104,7 +145,7 @@ CREATE TABLE `albums` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,7 +154,7 @@ CREATE TABLE `albums` (
 
 LOCK TABLES `albums` WRITE;
 /*!40000 ALTER TABLE `albums` DISABLE KEYS */;
-INSERT INTO `albums` VALUES (1,NULL,NULL,NULL,NULL,1,'默认相册',NULL,1,0,'2014-03-09 09:03:54','2014-03-09 09:03:54'),(2,NULL,NULL,NULL,NULL,1,'活动相册',NULL,1,0,'2014-03-09 09:08:29','2014-03-09 09:08:29'),(3,NULL,NULL,NULL,NULL,2,'默认相册',NULL,1,0,'2014-03-10 08:13:01','2014-03-10 08:13:01'),(4,NULL,NULL,NULL,NULL,2,'活动相册',NULL,1,0,'2014-03-10 08:20:52','2014-03-10 08:20:52'),(5,NULL,NULL,NULL,NULL,3,'默认相册',NULL,1,0,'2014-03-13 12:09:39','2014-03-13 12:09:39');
+INSERT INTO `albums` VALUES (1,NULL,NULL,NULL,NULL,1,'默认相册',NULL,1,0,'2014-03-09 09:03:54','2014-03-09 09:03:54'),(2,NULL,NULL,NULL,NULL,1,'活动相册',NULL,1,0,'2014-03-09 09:08:29','2014-03-09 09:08:29'),(3,NULL,NULL,NULL,NULL,2,'默认相册',NULL,1,0,'2014-03-10 08:13:01','2014-03-10 08:13:01'),(4,NULL,NULL,NULL,NULL,2,'活动相册',NULL,1,0,'2014-03-10 08:20:52','2014-03-10 08:20:52'),(5,NULL,NULL,NULL,NULL,3,'默认相册',NULL,1,0,'2014-03-13 12:09:39','2014-03-13 12:09:39'),(6,NULL,NULL,NULL,NULL,4,'默认相册',NULL,1,0,'2014-03-15 07:45:57','2014-03-15 07:45:57');
 /*!40000 ALTER TABLE `albums` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +177,7 @@ CREATE TABLE `comments` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,6 +186,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (1,2,'Topic',4,NULL,NULL,'还是不错的嘛',0,'2014-03-15 07:46:16','2014-03-15 07:46:16');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -644,7 +686,7 @@ CREATE TABLE `sbgs` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -653,6 +695,7 @@ CREATE TABLE `sbgs` (
 
 LOCK TABLES `sbgs` WRITE;
 /*!40000 ALTER TABLE `sbgs` DISABLE KEYS */;
+INSERT INTO `sbgs` VALUES (1,'bg2.jpg','image/jpeg',862492,'2014-03-15 09:53:16',0,0,'2014-03-15 09:53:16','2014-03-15 09:53:16'),(2,'bg1.jpg','image/jpeg',659162,'2014-03-15 09:53:48',0,0,'2014-03-15 09:53:48','2014-03-15 09:53:48'),(3,'bg4.jpg','image/jpeg',264581,'2014-03-15 09:54:02',0,0,'2014-03-15 09:54:02','2014-03-15 09:54:02'),(4,'signs.jpg','image/jpeg',190298,'2014-03-15 09:54:33',0,0,'2014-03-15 09:54:33','2014-03-15 09:54:33'),(5,'bgs.jpg','image/jpeg',6564,'2014-03-15 09:54:53',1,0,'2014-03-15 09:54:53','2014-03-15 09:54:53');
 /*!40000 ALTER TABLE `sbgs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -675,7 +718,7 @@ CREATE TABLE `schema_migrations` (
 
 LOCK TABLES `schema_migrations` WRITE;
 /*!40000 ALTER TABLE `schema_migrations` DISABLE KEYS */;
-INSERT INTO `schema_migrations` VALUES ('20131225140149'),('20131225140150'),('20140114064822'),('20140114070954'),('20140116091959'),('20140119074029'),('20140119075534'),('20140119075801'),('20140120145855'),('20140128085710'),('20140207085415'),('20140208085729'),('20140208085730'),('20140208085731'),('20140217060518'),('20140217073800'),('20140218035042'),('20140218035306'),('20140218035521'),('20140218035522'),('20140218035523'),('20140218035524'),('20140218050902'),('20140218050947'),('20140218051156'),('20140218051157'),('20140218051158');
+INSERT INTO `schema_migrations` VALUES ('20131225140149'),('20131225140150'),('20140114064822'),('20140114070954'),('20140116091959'),('20140119074029'),('20140119075534'),('20140119075801'),('20140120145855'),('20140128085710'),('20140207085415'),('20140208085729'),('20140208085730'),('20140208085731'),('20140217060518'),('20140217073800'),('20140218035042'),('20140218035306'),('20140218035521'),('20140218035522'),('20140218035523'),('20140218050947'),('20140218051156'),('20140218051157'),('20140218051158'),('20140315083033');
 /*!40000 ALTER TABLE `schema_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -690,8 +733,7 @@ CREATE TABLE `sends` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `content` text COLLATE utf8_unicode_ci,
-  `tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `target` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `channel` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `del` tinyint(1) DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -777,7 +819,9 @@ DROP TABLE IF EXISTS `topics`;
 CREATE TABLE `topics` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
-  `group_id` int(11) DEFAULT NULL,
+  `tag_id` int(11) DEFAULT NULL,
+  `last_user_id` int(11) DEFAULT NULL,
+  `last_updated_at` datetime DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `content` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `comments_count` int(11) DEFAULT '0',
@@ -785,7 +829,7 @@ CREATE TABLE `topics` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -794,7 +838,7 @@ CREATE TABLE `topics` (
 
 LOCK TABLES `topics` WRITE;
 /*!40000 ALTER TABLE `topics` DISABLE KEYS */;
-INSERT INTO `topics` VALUES (1,2,1,'11111','11111111111111',0,0,'2014-03-10 08:51:49','2014-03-10 08:51:49');
+INSERT INTO `topics` VALUES (1,1,9,NULL,NULL,'好i好i好i好i好i好i','好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i好i',0,0,'2014-03-15 07:06:01','2014-03-15 07:06:01'),(2,1,68,4,NULL,'测试测试一下啊如何了','测试测试一下啊如何了测试测试一下啊如何了测试测试一下啊如何了测试测试一下啊如何了',1,0,'2014-03-15 07:06:37','2014-03-15 07:46:16');
 /*!40000 ALTER TABLE `topics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -871,7 +915,7 @@ CREATE TABLE `users` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -880,7 +924,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin@shanpro.com','管理员',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,'000e34c90192f431623917db7049a28ef7f1f26e.jpg','image/jpeg',13649,'2014-03-09 09:03:53',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,1,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-09 09:03:53','2014-03-09 09:04:47'),(2,'tianyishengshui1226@126.com','huishan1226',NULL,NULL,NULL,'c023bc0f91e5e6bb95e82c9254540433',NULL,'71cb74554036a1cd70c0180c1f9f3fcb913abc4b.jpg','image/jpeg',6908,'2014-03-10 08:12:58',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,0,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-10 08:13:01','2014-03-10 08:13:01'),(3,'xingcj@126.com','邢春江',NULL,NULL,NULL,'e10655cb0a445d47de4f4148954c4e11',NULL,'5fb47b3e48d4b4d059ff7d40b89d0b683ce6df41.jpg','image/jpeg',9501,'2014-03-13 12:09:35',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,0,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-13 12:09:39','2014-03-13 12:09:39');
+INSERT INTO `users` VALUES (1,'admin@shanpro.com','管理员',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,'000e34c90192f431623917db7049a28ef7f1f26e.jpg','image/jpeg',13649,'2014-03-09 09:03:53',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,1,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-09 09:03:53','2014-03-09 09:04:47'),(2,'tianyishengshui1226@126.com','huishan1226',NULL,NULL,NULL,'c023bc0f91e5e6bb95e82c9254540433',NULL,'71cb74554036a1cd70c0180c1f9f3fcb913abc4b.jpg','image/jpeg',6908,'2014-03-10 08:12:58',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,0,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-10 08:13:01','2014-03-10 08:13:01'),(3,'xingcj@126.com','邢春江',NULL,NULL,NULL,'e10655cb0a445d47de4f4148954c4e11',NULL,'5fb47b3e48d4b4d059ff7d40b89d0b683ce6df41.jpg','image/jpeg',9501,'2014-03-13 12:09:35',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,0,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-13 12:09:39','2014-03-13 12:09:39'),(4,'515856563@qq.com','朱晓武',NULL,NULL,NULL,'9574be986128d15270f02ee203ffce18',NULL,'817ad5bc0539b9fc62c485718af9a0f699ebd57f.jpg','image/jpeg',13249,'2014-03-15 07:45:53',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,5,0,0,0,0,0,'/images/defaults/bgs.jpg','repeat',NULL,0,'2014-03-15 07:45:57','2014-03-15 07:45:57');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -956,4 +1000,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-14 14:26:32
+-- Dump completed on 2014-03-17  6:23:16

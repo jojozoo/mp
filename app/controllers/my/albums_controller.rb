@@ -15,12 +15,33 @@ class My::AlbumsController < My::ApplicationController
 
     def destroy
         @album = Album.find_by_id(params[:id])
+        @album.images.update_all("del = 1")
         @album.update_attributes(del: true)
         redirect_to my_albums_path
     end
 
-    # album_id or images_id
-    # to_album_id
+    def new
+        @album = Album.new
+    end
+
+    def edit
+        @album = current_user.albums.find(params[:id])
+    end
+
+    def update
+        album = current_user.albums.find(params[:id])
+        album.update_attributes!(params[:album])
+        redirect_to my_albums_path
+    end
+
+    # 编辑图片描述
+    # image_id, desc
+    def desc
+
+    end
+
+    # id 移动到的相册ID
+    # 当前相册album_id or ids
     # 移动
     def move
 

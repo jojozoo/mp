@@ -19,6 +19,9 @@
 .album-all-checkbox-label{
 	margin: 0 60px 0 0;
 }
+.thumbnail{
+	position: relative;
+}
 </style>
 <script type="text/javascript">
 $(function(){
@@ -49,7 +52,30 @@ $(function(){
 			row.checked = checked;
 		});
 	});
-	// 移动
+	// 全选移动
+	$("#image-all-move").on('click', function(){
+		var checkboxs = $("input[type=checkbox][id!=album-all-checkbox]:checked");
+	});
+
+	// 全选删除
+	$("#image-all-del").on('click', function(){
+		var checkboxs = $("input[type=checkbox][id!=album-all-checkbox]:checked");
+		if(checkboxs.length < 1){
+			alert('至少选中1张图片');
+		} else {
+			if(confirm("确定删除？不可恢复操作!")){
+				checkboxs.each(function(){
+					var del = $(this).parents(".col-sm-6.col-md-3").find('.js-image-remove');
+					var _id = del.attr('tid');
+					var url = '/ajax/del/image/' + _id;
+					del.parents('.col-sm-6.col-md-3').fadeOut(function(){
+						$(this).remove();
+						$.post(url, '', '', 'script');
+					});
+				});
+			}
+		}
+	});
 	
 	// 封面
 	$(".js-album-cover").on('click', function(){
@@ -58,7 +84,6 @@ $(function(){
 		$.post(url, '', '', 'script');
 		return false;
 	});
-	// $("#checkbox-image-53").parents(".col-sm-6.col-md-3").find('.js-image-remove').click();
 })
 	
 </script>
@@ -71,14 +96,14 @@ $(function(){
 
 	<a class="btn-warning btn btn-xs" href='javascript:void(0);' id="album">批量管理</a>
 
-	<%= link_to '删除相册', my_album_path(@album.id), method: :delete, data: {confirm: "确定删除？不可恢复操作!\n请先把照片合并到其他相册" }, class: 'btn-danger btn btn-xs' %>
+	<%= link_to '删除相册', my_album_path(@album.id), method: :delete, data: {confirm: "确定删除？不可恢复操作!\n\n相册内图片也将删除\n可以先把图片移动到其他相册" }, class: 'btn-danger btn btn-xs' %>
 </div>
 <div class="album-tool">
 	<div class="pull-right">
 		<input id="album-all-checkbox" type="checkbox">
 		<label for="album-all-checkbox" class="album-all-checkbox-label">全选</label>
-		<a href="javascript:void(0);" class="btn btn-default btn-xs">移动</a>
-		<a href="javascript:void(0);" class="btn btn-default btn-xs">删除</a>
+		<a href="javascript:void(0);" class="btn btn-default btn-xs" id="image-all-move">移动</a>
+		<a href="javascript:void(0);" class="btn btn-default btn-xs" id="image-all-del">删除</a>
 	</div>
 	<div class="clearfix"></div>
 </div>

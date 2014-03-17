@@ -17,7 +17,7 @@ $(function(){
 <div class="text-right album-menu">
 	您共<%= current_user.albums.count %>个相册，<%= current_user.images.count %>张图片
 	<%= link_to '上传图片', upload_my_albums_path, class: 'btn-primary btn btn-sm' %>
-    <%= link_to '创建相册', 'javascript:void(0);', class: 'btn-success btn btn-sm custom-modal' %>
+    <%= link_to '创建相册', new_my_album_path, class: 'btn-success btn btn-sm', remote: true %>
 </div>
 <div class="row">
 	<%= render partial: 'album', collection: @albums %>
@@ -25,7 +25,7 @@ $(function(){
     <% if @albums.total_entries < 1 %>
     <div class="col-md-12">
         <div class="text-center" style="height: 300px; padding-top: 140px;">
-            还没有相册， 先创建一个吧。 <%= link_to '创建相册', 'javascript:void(0);', class: 'custom-modal' %>
+            还没有相册， 先创建一个吧。 <%= link_to '创建相册', new_my_album_path, remote: true %>
         </div>
     </div>
     <% end %>

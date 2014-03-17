@@ -92,6 +92,7 @@ Mp::Application.routes.draw do
       end
       member do
         match 'cover/:image_id' => 'albums#cover', via: :post, as: :cover
+        post :move
       end
     end
     resources :works

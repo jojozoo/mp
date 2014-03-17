@@ -46,8 +46,8 @@ $(function(){
 		var _tid = $(this).attr('tid');
 		var url = '/ajax/del/image/' + _tid;
 		$(this).parents(".col-md-3.col-sm-6").fadeOut(function(){
-		$(this).remove();
-		$.post(url, '', '', 'script');
+			$(this).remove();
+			$.post(url, '', '', 'script');
 		});
 	});
 })
