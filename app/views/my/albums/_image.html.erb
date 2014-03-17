@@ -1,13 +1,14 @@
 <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
         <%= check_box_tag 'image', image.id, false, class: "checkbox-image hide-cap" %>
+        <a href="javascript:void(0);" class="checkbox-layer"></a>
         <%= link_to image_tag(image.picture(:cover)), image_path(image) %>
         <div class="caption caption-border">
             <span>
                 <%= humanize image.created_at %>
             </span>
             <div class="js-image-desc-edit" title="点击进行编辑"><%= image.desc %></div>
-            <textarea class="once-desc js-image-desc-edit-textarea" placeholder="输入图片描述"><%= image.desc %></textarea>
+            <textarea tid="<%= image.id %>" class="once-desc js-image-desc-edit-textarea" placeholder="输入图片描述"><%= image.desc %></textarea>
             <div>
                 <%= link_to '封面', cover_my_album_path(image.album_id, image.id), class: 'js-album-cover' %>
                 <%= link_to '删除', "javascript:void(0);", class: 'js-image-remove', data: {confirm: '确定删除？不可恢复操作!' }, tid: image.id %>

@@ -16,7 +16,7 @@ class AjaxController < ApplicationController
         if image = current_user.images.find_by_id(params[:id])
             image.update_attributes(del: true)
         end
-        render text: 'ok'
+        render text: 'success'
     end
 	
 end

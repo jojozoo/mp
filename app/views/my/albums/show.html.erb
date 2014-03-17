@@ -22,6 +22,13 @@
 .thumbnail{
 	position: relative;
 }
+.checkbox-layer{
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -10;
+}
 </style>
 <script type="text/javascript">
 $(function(){
@@ -32,17 +39,24 @@ $(function(){
 	});
 	// 编辑描述 完成
 	$(".js-image-desc-edit-textarea").on('blur', function(){
-		var val = $(this).val();
+		var val  = $(this).val(),
+			text = $(this).prev().text();
 		$(this).hide();
 		$(this).prev().text(val).show();
+		if(text != val){
+			var _id = $(this).attr('tid');
+			$.post('/my/albums/' + _id + '/desc', {desc: val}, '', 'script');
+		}
 	});
 	// 批量管理
 	$("#album").on('click', function(){
 		// :visible
 		if($(".album-tool").is(':hidden')){
 			$(".album-tool, .hide-cap").show();
+			$(".checkbox-layer").css('z-index', 10);
 		} else {
 			$(".album-tool, .hide-cap").hide();
+			$(".checkbox-layer").css('z-index', -10);
 		}
 	});
 	// 全选 / 反选
@@ -52,9 +66,24 @@ $(function(){
 			row.checked = checked;
 		});
 	});
+	// 选择一个
+	$(".checkbox-layer").on('click', function(){
+		$(this).prev().click();
+	});
+
+
 	// 全选移动
 	$("#image-all-move").on('click', function(){
 		var checkboxs = $("input[type=checkbox][id!=album-all-checkbox]:checked");
+		if(checkboxs.length < 1){
+			alert('至少选中1张图片');
+			return false;
+		} else {
+			var url = $(this).attr('href'),
+				ids = checkboxs.map(function(){ return this.value; }).get().join(',');
+			$.post(url, {ids: ids}, '', 'script');
+			return false;
+		}
 	});
 
 	// 全选删除
@@ -80,7 +109,6 @@ $(function(){
 	// 封面
 	$(".js-album-cover").on('click', function(){
 		var url = $(this).attr('href');
-		console.log(url);
 		$.post(url, '', '', 'script');
 		return false;
 	});
@@ -102,7 +130,7 @@ $(function(){
 	<div class="pull-right">
 		<input id="album-all-checkbox" type="checkbox">
 		<label for="album-all-checkbox" class="album-all-checkbox-label">全选</label>
-		<a href="javascript:void(0);" class="btn btn-default btn-xs" id="image-all-move">移动</a>
+		<%= link_to '移动', move_modal_my_album_path(@album.id), class: 'btn-default btn btn-xs', id: 'image-all-move' %>
 		<a href="javascript:void(0);" class="btn btn-default btn-xs" id="image-all-del">删除</a>
 	</div>
 	<div class="clearfix"></div>

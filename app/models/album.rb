@@ -24,7 +24,7 @@ class Album < ActiveRecord::Base
   has_attached_file :logo,
     styles: {
       thumb: '300x200#',
-      small: '200x120#'
+      small: '150x100#'
     }
 
   validates_presence_of   :name, 

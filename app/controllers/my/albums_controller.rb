@@ -10,6 +10,7 @@ class My::AlbumsController < My::ApplicationController
 
     def create
         current_user.albums.create!(params[:album])
+        flash[:notice] = "相册创建成功"
         redirect_to my_albums_path
     end
 
@@ -31,20 +32,41 @@ class My::AlbumsController < My::ApplicationController
     def update
         album = current_user.albums.find(params[:id])
         album.update_attributes!(params[:album])
+        flash[:notice] = "相册修改成功"
         redirect_to my_albums_path
     end
 
     # 编辑图片描述
-    # image_id, desc
     def desc
-
+        if image = current_user.images.find_by_id(params[:id])
+            image.update_attributes desc: params[:desc]
+        end
+        render text: 'success'
     end
 
-    # id 移动到的相册ID
-    # 当前相册album_id or ids
-    # 移动
+    # 移动到的相册ID album_id or ids
     def move
+        url, ids = if params[:ids].blank?
+            [my_albums_path, nil]
+        else
+            [my_album_path(params[:id]), params[:ids].split(',')]
+        end
 
+        if params[:album_id].present?
+            album_id, id = params[:album_id], params[:id]
+            if ids
+                current_user.images.where(['album_id = ? and id in (?)', id, ids]).update_all(['album_id = ?', album_id])
+            else
+                current_user.images.where(['album_id = ?', id]).update_all(['album_id = ?', album_id])
+            end
+        end
+        flash[:notice] = "成功移动到其他相册"
+        redirect_to url
+    end
+
+    def move_modal
+        @album = current_user.albums.find(params[:id])
+        @other = current_user.albums.where(['id <> ?', params[:id]])
     end
     
     # 封面
