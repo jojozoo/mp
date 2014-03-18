@@ -306,7 +306,9 @@ textarea.form-control{
 .navbar-default .navbar-nav > li > a{
 	color: #fff;
 }
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+.navbar-default .navbar-nav > .active > a, 
+.navbar-default .navbar-nav > .active > a:hover, 
+.navbar-default .navbar-nav > .active > a:focus{
 	background: #3a3f46;
 	color: #f78927;
 }
@@ -315,6 +317,14 @@ textarea.form-control{
   color: #f78927;
   /*background-color: transparent;*/
   background: #3a3f46;
+}
+.navbar-default .navbar-nav > li > a.btn-warning:hover,
+.navbar-default .navbar-nav > li > a.btn-warning:focus {
+  color: #ffffff;
+  /*background-color: #47a447;
+  border-color: #398439; success */
+  background-color: #ed9c28;
+  border-color: #d58512;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 	background: #3a3f46;
