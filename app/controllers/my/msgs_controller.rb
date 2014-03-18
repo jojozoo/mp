@@ -1,40 +1,33 @@
 class My::MsgsController < My::ApplicationController
 
     def index
-        @talks = current_user.iboxs.paginate(:page => params[:page], per_page: 5).order('id desc')
-    end
-
-    def read
-        @talks = current_user.reads.paginate(:page => params[:page], per_page: 5).order('id desc')
-        render 'index'
-    end
-
-    def unread
-        @talks = current_user.unreads.paginate(:page => params[:page], per_page: 5).order('id desc')
-        render 'index'
+        @msgs = current_user.newiboxs.paginate(:page => params[:page], per_page: 5).order('id desc')
     end
 
     def new
-        if params[:to].present? and @to = User.find_by_id(params[:to])
-            render 'sendmsg'
-        end
+        # follows 的 id
+        @writers = current_user.follows
+        @writers = User.where(['id != ?', current_user.id])
+    end
+
+    def write
+       @user = User.find(params[:user_id])
     end
 
     def create
-        if iboxer = User.find_by_id(params[:to_id])
+        if iboxer = User.find_by_id(params[:user_id])
             msg = current_user.send_msg(iboxer, params[:message][:content])
-            redirect_to my_msg_path(msg.talk_id)
+            redirect_to my_msg_path(msg.user_id)
         else
-            redirect_to root_path
+            redirect_to my_msgs_path
         end
         
     end
 
     def show
-        @talk = current_user.iboxs.find_by_id(params[:id])
-        redirect_to my_msgs_path unless @talk
-        @talk.update_attributes(state: 0)
-        @msgs = @talk.messages.where(del: false)
+        @user = User.find(params[:id])
+        @msgs = Message.where(['(sender_id = ? and user_id = ?) or (user_id = ? and sender_id = ?)', current_user.id, @user.id, current_user.id, @user.id])
+        current_user.unreads.where(sender_id: @user.id).each{|m| m.update_attributes(state: 1)}
     end
 
     def notices

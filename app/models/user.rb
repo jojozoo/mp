@@ -25,7 +25,7 @@
 #  warrant             :integer          default(5)
 #  admin               :boolean          default(FALSE)
 #  photographer        :boolean          default(FALSE)
-#  talks_count         :integer          default(0)
+#  messages_count      :integer          default(0)
 #  notices_count       :integer          default(0)
 #  followers_count     :integer          default(0)
 #  bg                  :string(255)      default("/images/defaults/bgs.jpg")
@@ -95,14 +95,14 @@ class User < ActiveRecord::Base
 
   has_many :topics
   has_one  :accept # 个人推送设置
-  # 收件箱 & 发件箱 名义没有发件箱
-  has_many :iboxs, class_name: 'Talk', conditions: {del: false}
+  # 收件箱
+  # has_many :iboxs,   class_name: 'Message', foreign_key: :user_id, conditions: {state: [0, 1]}
   # 未读
-  has_many :unreads, class_name: 'Talk', conditions: {state: 1, del: false}
+  has_many :unreads, class_name: 'Message', conditions: {state: 0, u_is_del: false}
   # 已读
-  has_many :reads, class_name: 'Talk', conditions: {state: 0, del: false}
+  has_many :reads,   class_name: 'Message', conditions: {state: 1, u_is_del: false}
   # 垃圾
-  has_many :trashs, class_name: 'Talk', conditions: 'state != 0 and state != 1 and del = 0'
+  has_many :trashs,  class_name: 'Message', conditions: {state: 2, u_is_del: false}
 
   # 授权其他网站
   has_many :accounts
@@ -158,19 +158,6 @@ class User < ActiveRecord::Base
                             :with => /[\w-]{2,10}$/,
                             :allow_blank => true,
                             :message => "2-10位字母/数字/下划线/横线"
-
-  def send_msg(to, content)
-    # 接受者收件箱一条
-    jointalk = Talk.find_or_create_by_user_id_and_sender_id(to.id, self.id)
-    jointalk.update_attributes(content: content, state: 1)
-    jointalk.messages.create(content: content, user_id: jointalk.sender_id)
-
-    # 发送者发件箱一条
-    sendtalk = Talk.find_or_create_by_user_id_and_sender_id(self.id, to.id)
-    sendtalk.update_attributes(content: content, state: 0)
-    sendtalk.messages.create(content: content, user_id: sendtalk.user_id)
-  end
-
   
   after_create :basic_build
   before_save  :check_not_v_attr
@@ -183,6 +170,26 @@ class User < ActiveRecord::Base
   def check_not_v_attr
     # 之前有值,但还想再次改变 domain_change
     self.domain = domain_was if domain_was.present? and domain_changed?
+  end
+
+  def send_msg(user, content)
+    # self.reads.create(sender_id: user.id, content: content) 需要删除
+    user.unreads.create(sender_id: self.id, content: content)
+  end
+
+  def iboxs user = nil, isdel = false
+    if user
+      sql = '((sender_id = ? and user_id = ?) or (user_id = ? and sender_id = ?)) and u_is_del = ?'
+      Message.where([sql, self.id, user.id, self.id, user.id, isdel])
+    else
+      sql = 'sender_id = ? or user_id = ? and u_is_del = ?'
+      Message.where([sql, self.id, self.id, isdel])
+    end
+  end
+  # 收件箱
+  def newiboxs
+    sql = self.iboxs.order('id desc').to_sql
+    Message.from("(#{sql}) messages").group([:sender_id, :user_id])
   end
 
   # 加密

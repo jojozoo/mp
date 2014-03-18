@@ -7,9 +7,8 @@
 .del, .del:hover{
 	font-size: 12px;
 	color: #999;
-	text-decoration: none;
 }
-.simple_form{
+form.new_message{
 	margin: auto 60px 10px 60px;
 }
 .all-left{
@@ -19,30 +18,15 @@
 	margin-left: 60px;
 }
 </style>
-<%= simple_form_for Message.new, url: '/', validate: true do |f| %>
-	<input type="hidden" name="to_id" value="<%= @talk.sender_id %>">
-	<textarea class="form-control" id="message_content" name="message[content]" data-validate="true"></textarea>
-	<%= f.submit '发送', class: 'btn btn-default pull-right' %>
-	<div class="clearfix"></div>
-<% end %>
 <ul class="media-list">
 	<% @msgs.each do |msg| %>
-	<li class="media all-<%= "#{current_user.id.eql?(msg.user_id) ? 'left' : 'right'}" %>">
-		<%= link_to image_tag('/images/defaults/users.jpg', class: 'avatar img-circle'), user_path(msg.user_id), class: "pull-#{current_user.id.eql?(msg.user_id) ? 'left' : 'right'}" %>
-		<div class="media-body">
-			<div class="media-heading">
-				<div class="userinfo pull-<%= "#{current_user.id.eql?(msg.user_id) ? 'left' : 'right'}" %>">
-					<%= link_to msg.user.username, user_path(msg.user_id) %>
-					<%= msg.created_at.strftime("%m-%d %H:%M") %>
-					<%= link_to '删除', my_msg_path(@talk.id, mid: msg.id), method: :delete, class: 'del' %>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="text">
-				<%= msg.content %>
-				<%#= auto_link(msg.content, html: { target: '_blank' }) rescue msg.content %>
-			</div>
-		</div>
-	</li>
+		<%= render "msg_#{msg.user_id == @user.id ? 'left' : 'right'}", msg: msg %>
 	<% end %>
 </ul>
+<%= form_for Message.new, url: my_msgs_path, validate: true do |f| %>
+	<input type="hidden" name='user_id' value='<%= @user.id %>'>
+	<%= f.text_area :content, class: 'form-control' %>
+	<div class="text-right">
+		<%= f.submit '发送', class: 'btn btn-default' %>
+	</div>
+<% end %>

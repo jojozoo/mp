@@ -2,15 +2,17 @@
 #
 # Table name: topics
 #
-#  id             :integer          not null, primary key
-#  user_id        :integer
-#  group_id       :integer
-#  title          :string(255)
-#  content        :string(255)
-#  comments_count :integer          default(0)
-#  del            :boolean          default(FALSE)
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id              :integer          not null, primary key
+#  user_id         :integer
+#  tag_id          :integer
+#  last_user_id    :integer
+#  last_updated_at :datetime
+#  title           :string(255)
+#  content         :string(255)
+#  comments_count  :integer          default(0)
+#  del             :boolean          default(FALSE)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 
 class Topic < ActiveRecord::Base

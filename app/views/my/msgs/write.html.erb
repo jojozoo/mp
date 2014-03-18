@@ -3,9 +3,9 @@
 		<img src="/images/defaults/users.jpg" class="avatar img-circle">
 	</a>
 	<div class="media-body">
-		<h4 class="media-heading">给 <%= @to.username %> 写信</h4>
+		<h4 class="media-heading">给 <%= @user.username %> 写信</h4>
 		<%= form_for Message.new, url: my_msgs_path, validate: true do |f| %>
-		<input type="hidden" name='to_id' value='<%= @to.id %>'>
+		<input type="hidden" name='user_id' value='<%= @user.id %>'>
 		<%= f.text_area :content, class: 'form-control' %>
 		<%= f.submit '发送', class: 'btn btn-default pull-right' %>
 		<% end %>

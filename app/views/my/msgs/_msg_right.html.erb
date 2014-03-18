@@ -1,0 +1,16 @@
+<li class="media all-right" %>
+    <%= link_to image_tag(msg.sender.avatar(:small), class: 'avatar img-circle'), user_path(msg.sender.id), class: "pull-right" %>
+    <div class="media-body">
+        <div class="media-heading">
+            <div class="userinfo pull-right">
+                <%= link_to msg.sender.username, user_path(msg.sender.id) %>
+                <%= humanize msg.created_at %>
+                <%= link_to '删除', my_msg_path(msg.sender.id, mid: msg.id), method: :delete, class: 'del' %>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="text">
+            <%= msg.content %>
+        </div>
+    </div>
+</li>

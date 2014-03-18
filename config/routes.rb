@@ -76,12 +76,10 @@ Mp::Application.routes.draw do
         get  'others'
       end
     end
-
+    # :path_names => {show: 'manmail' }
     resources :msgs do
       collection do
-        get 'read'
-        get 'unread'
-        get 'trash'
+        match 'write/:user_id' => "msgs#write", via: :get, as: :write
         get 'notices'
       end
     end
