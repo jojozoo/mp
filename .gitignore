@@ -14,7 +14,7 @@
 /log/*.log
 /nodemp/node_modules
 /tmp
-/public/system
+#/public/system
 /public/assets
 .ruby-version
 .ruby-gemset
