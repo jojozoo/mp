@@ -10,8 +10,10 @@ module Paperclip
         end
 
         def randomp(attachment, style)
-            Digest::MD5.hexdigest('hi' + attachment.instance.id.to_s)
-            # ":random.#{@ext}#{'.:style.jpg' if style && style != :original}"
+            obj = attachment.instance
+            hex = obj.is_a?(Image) ? obj.hex.to_s : 'mp_server' # 别的类用不到randomp
+            ori = style && style == :original
+            Digest::MD5.hexdigest(ori ? obj.id.to_s + hex + "server" : hex + obj.id.to_s)
         end
     end
 end

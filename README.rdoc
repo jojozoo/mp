@@ -28,3 +28,13 @@ Image 有变化 部署时要改图片名字
 
 粉丝&关注
   粉丝列表 关注列表，参考一下其他网站 可取消关注 头像点击进入/u/id页面
+
+再次重启 一定要迁移数据 修改图片路径等
+
+alter table images add hex varchar(255) after picture_updated_at;
+Image.all.each{|i| i.update_attributes(hex: SecureRandom.hex(6))}
+Image.all.each do |i| 
+p = "public/system/images/#{i.id}/original/" + Digest::MD5.hexdigest('hi' + i.id.to_s) + "." + i.picture_file_name.split(".")[1]
+i.update_attributes(picture: File.open(p))
+system "rm public/system/images/#{i.id}/*/" + Digest::MD5.hexdigest('hi' + i.id.to_s) + "." + i.picture_file_name.split(".")[1]
+end

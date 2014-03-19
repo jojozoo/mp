@@ -14,6 +14,7 @@ class CreateImages < ActiveRecord::Migration
       t.integer :comments_count, default: 0
       t.integer :warrant # 授权
       t.attachment :picture
+      t.string :hex
       t.string :desc
       t.text   :exif
       t.string :wh
