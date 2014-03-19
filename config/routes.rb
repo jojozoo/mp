@@ -141,6 +141,9 @@ Mp::Application.routes.draw do
     resources :tags
     resources :comments
     resources :tuis
+    resources :messages, only: [:index, :show, :destroy] do
+      get :talk, on: :member
+    end
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.

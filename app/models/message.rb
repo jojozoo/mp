@@ -25,7 +25,7 @@ class Message < ActiveRecord::Base
 
   belongs_to :sender, class_name: 'User', counter_cache: :messages_count
   belongs_to :user
-  has_many :inners, class_name: 'Message'
+  has_many :inners, class_name: 'Message', primary_key: :talk, foreign_key: :talk
 
 
   STATE = {

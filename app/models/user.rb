@@ -173,7 +173,6 @@ class User < ActiveRecord::Base
   end
 
   def send_msg(user, content)
-    # self.reads.create(sender_id: user.id, content: content) 需要删除
     user.unreads.create(sender_id: self.id, content: content, talk: [user.id, self.id].sort.join('_'))
   end
 
@@ -194,7 +193,7 @@ class User < ActiveRecord::Base
     if self.id == msg.sender_id
       true
     else
-      state == 1
+      msg.state == 1
     end    
   end
 

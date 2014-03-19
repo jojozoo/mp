@@ -23,12 +23,19 @@
 }
 .msg-list-item{
 	cursor: pointer;
+	overflow: hidden;
+	word-wrap: break-word;
 }
 .msg-list-text{
 	width: 80%;
 }
-.msg-list-user span{
+.msg-list-user{
+	margin: -2px 0 2px;
 	font-size: 12px;
+	color: #666;
+	zoom: 1;
+	line-height: 1.5;
+	cursor: pointer;
 }
 .msg-list-opera{
 	position: absolute;
@@ -58,23 +65,25 @@
 		<div class="msg-user-pic">
 			<%= link_to image_tag(msg.sender.avatar(:s50), class: 'avatar-mini'), user_path(msg.sender_id) %>
 		</div>
-		<div class="msg-list-item">
+		<div class="msg-list-item" url="<%= my_msg_path(msg.sender_id.eql?(current_user.id) ? msg.user_id : msg.sender_id ) %>">
 			<div class="msg-list-user">
-				<%= link_to msg.user.username, "javascript:void(0);" %>
+				<span class="msg-from">
+					<%= msg.user.username %>
+				</span>
 				<span class="pull-right">
 					<%= humanize msg.updated_at %>
 				</span>
 			</div>
 			<div class="msg-list-text">
-				<%= link_to msg.content, my_msg_path(msg.id), class: 'text-desc' %>
+				<%= msg.content %>
 			</div>
-			<div class="msg-list-select">
-				<input type="checkbox" name="tid[]" class="check-tid">
-			</div>
-			<div class="msg-list-opera">
-				<a class="transh" href="javascript:void(0);" title="真的要标记为垃圾漫信？">垃圾漫信</a>
-				<%= link_to '删除', my_msg_path(msg.id), method: :delete, data: { confirm: "将删除整个对话, 是否确定?" } %>
-			</div>
+		</div>
+		<div class="msg-list-select">
+			<input type="checkbox" name="tid[]" class="check-tid">
+		</div>
+		<div class="msg-list-opera">
+			<a class="transh" href="javascript:void(0);" title="真的要标记为垃圾漫信？">垃圾漫信</a>
+			<%= link_to '删除', my_msg_path(msg.id), method: :delete, data: { confirm: "将删除整个对话, 是否确定?" } %>
 		</div>
 	</div>
 <% end %>
@@ -93,9 +102,6 @@ $(function(){
 		$(this).find('.msg-list-opera a').show();
 	}, function(){
 		$(this).find('.msg-list-opera a').hide();
-	})
-	$(".list-group-item").on('click', function(){
-		$(this).find('a.text-desc').click();
 	});
 	$(".transh").click(function(){
 		alert('暂未实现');
@@ -106,6 +112,9 @@ $(function(){
 		$("input[type=checkbox][class!=check-all]").each(function(index, row){
 			row.checked = checked;
 		});
+	});
+	$(".msg-list-item").on('click', function(){
+		window.location.href = $(this).attr('url');
 	});
 });
 </script>

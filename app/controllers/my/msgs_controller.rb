@@ -1,7 +1,7 @@
 class My::MsgsController < My::ApplicationController
 
     def index
-        @msgs = current_user.newiboxs.paginate(:page => params[:page], per_page: 5).order('id desc')
+        @msgs = current_user.newiboxs.paginate(:page => params[:page], per_page: 10).order('id desc')
     end
 
     def new
@@ -12,6 +12,9 @@ class My::MsgsController < My::ApplicationController
 
     def write
        @user = User.find(params[:user_id])
+       if exisit = current_user.iboxs(@user).first
+        redirect_to action: :show, id: @user.id and return
+       end
     end
 
     def create
@@ -21,12 +24,11 @@ class My::MsgsController < My::ApplicationController
         else
             redirect_to my_msgs_path
         end
-        
     end
 
     def show
         @user = User.find(params[:id])
-        @msgs = Message.where(['(sender_id = ? and user_id = ?) or (user_id = ? and sender_id = ?)', current_user.id, @user.id, current_user.id, @user.id])
+        @msgs = current_user.iboxs(@user).paginate(:page => params[:page], per_page: 5).order('id desc')
         current_user.unreads.where(sender_id: @user.id).each{|m| m.update_attributes(state: 1)}
     end
 
