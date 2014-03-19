@@ -100,9 +100,9 @@ class User < ActiveRecord::Base
   # 未读
   has_many :unreads, class_name: 'Message', conditions: {state: 0, u_is_del: false}
   # 已读
-  has_many :reads,   class_name: 'Message', conditions: {state: 1, u_is_del: false}
+  # has_many :reads,   class_name: 'Message', conditions: {state: 1, u_is_del: false}
   # 垃圾
-  has_many :trashs,  class_name: 'Message', conditions: {state: 2, u_is_del: false}
+  # has_many :trashs,  class_name: 'Message', conditions: {state: 2, u_is_del: false}
 
   # 授权其他网站
   has_many :accounts
@@ -179,17 +179,23 @@ class User < ActiveRecord::Base
 
   def iboxs user = nil, isdel = false
     if user
-      sql = '((sender_id = ? and user_id = ?) or (user_id = ? and sender_id = ?)) and u_is_del = ?'
-      Message.where([sql, self.id, user.id, self.id, user.id, isdel])
+      Message.where(talk: [user.id, self.id].sort.join('_'), u_is_del: isdel)
     else
-      sql = 'sender_id = ? or user_id = ? and u_is_del = ?'
-      Message.where([sql, self.id, self.id, isdel])
+      Message.where(['sender_id = ? or user_id = ? and u_is_del = ?', self.id, self.id, isdel])
     end
   end
   # 收件箱
   def newiboxs
     sql = self.iboxs.order('id desc').to_sql
     Message.from("(#{sql}) messages").group(:talk)
+  end
+  # 已读 未读
+  def read? msg
+    if self.id == msg.sender_id
+      true
+    else
+      state == 1
+    end    
   end
 
   # 加密

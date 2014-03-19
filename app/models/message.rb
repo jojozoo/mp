@@ -27,17 +27,6 @@ class Message < ActiveRecord::Base
   belongs_to :user
   has_many :inners, class_name: 'Message'
 
-  def unread?
-    state.zero?
-  end
-
-  def read?
-    state == 1
-  end
-
-  def trash?
-    state == 2
-  end
 
   STATE = {
     0 => '未读',

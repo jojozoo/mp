@@ -28,7 +28,6 @@
 	width: 80%;
 }
 .msg-list-user span{
-	color: #ccc;
 	font-size: 12px;
 }
 .msg-list-opera{
@@ -55,7 +54,7 @@
 </style>
 <div class="list-group">
 <% @msgs.each do |msg| %>
-	<div class="list-group-item <%= 'unread' if msg.unread? %>">
+	<div class="list-group-item <%= 'unread' unless current_user.read?(msg) %>">
 		<div class="msg-user-pic">
 			<%= link_to image_tag(msg.sender.avatar(:s50), class: 'avatar-mini'), user_path(msg.sender_id) %>
 		</div>
