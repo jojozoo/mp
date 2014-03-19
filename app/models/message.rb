@@ -23,8 +23,8 @@ class Message < ActiveRecord::Base
                           :within => 1..200,
                           :message => '长度1..200字'
 
-  belongs_to :sender, class_name: 'User', counter_cache: :messages_count
-  belongs_to :user
+  belongs_to :sender, class_name: 'User'
+  belongs_to :user, counter_cache: :messages_count
   has_many :inners, class_name: 'Message', primary_key: :talk, foreign_key: :talk
 
 

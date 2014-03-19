@@ -30,6 +30,7 @@ class My::MsgsController < My::ApplicationController
         @user = User.find(params[:id])
         @msgs = current_user.iboxs(@user).paginate(:page => params[:page], per_page: 5).order('id desc')
         current_user.unreads.where(sender_id: @user.id).each{|m| m.update_attributes(state: 1)}
+        # current_user.update_attributes(messages_count: current_user.unreads(:refresh).size)
     end
 
     def notices

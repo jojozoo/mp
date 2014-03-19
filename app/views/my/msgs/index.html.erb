@@ -1,35 +1,35 @@
 <style type="text/css">
-.list-group-item:first-child{
+.messages .list-group-item:first-child{
 	border-top-right-radius: 0;
 	border-top-left-radius: 0;
 }
-.list-group-item:last-child{
+.messages .list-group-item:last-child{
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 0;
 }
-.list-group-item{
+.messages .list-group-item{
 	margin-bottom: 0;
 	border: none;
 	border-bottom: 1px solid #dddddd;
 	padding: 10px 10px 0 10px;
 	position: relative;
 }
-.unread{
+.messages .unread{
 	background: #fffced;
 }
-.msg-user-pic{
+.messages .msg-user-pic{
 	float: left;
 	margin: 0 10px 0 0;
 }
-.msg-list-item{
+.messages .msg-list-item{
 	cursor: pointer;
 	overflow: hidden;
 	word-wrap: break-word;
 }
-.msg-list-text{
+.messages .msg-list-text{
 	width: 80%;
 }
-.msg-list-user{
+.messages .msg-list-user{
 	margin: -2px 0 2px;
 	font-size: 12px;
 	color: #666;
@@ -37,29 +37,29 @@
 	line-height: 1.5;
 	cursor: pointer;
 }
-.msg-list-opera{
+.messages .msg-list-opera{
 	position: absolute;
 	top: 30px;
 	right: 30px;
 }
-.msg-list-opera a{
+.messages .msg-list-opera a{
 	font-size: 12px;
 	color: #999;
 	display: none;
 	text-decoration: none;
 	margin-right: 10px;
 }
-.msg-list-select{
+.messages .msg-list-select{
 	position: absolute;
 	right: 16px;
 	top: 30px;
 }
-.text-desc, .text-desc:hover{
+.messages .text-desc, .text-desc:hover{
 	text-decoration: none;
 	color: #333333;
 }
 </style>
-<div class="list-group">
+<div class="list-group messages">
 <% @msgs.each do |msg| %>
 	<div class="list-group-item <%= 'unread' unless current_user.read?(msg) %>">
 		<div class="msg-user-pic">

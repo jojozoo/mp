@@ -20,8 +20,8 @@ module ActiveRecord
           relation = relation.and(table[scope_item].eq(scope_value))
         end
 
-        # if finder_class.unscoped.where(relation).exists? 默认写法
-        # if finder_class.where(relation).exists?          去掉unscoped
+        # if finder_class.unscoped.where(relation).exists? # 默认写法
+        # if finder_class.where(relation).exists?          # 去掉unscoped
         if finder_class.unscoped.where(del: false).where(relation).exists?
           record.errors.add(attribute, :taken, options.except(:case_sensitive, :scope).merge(:value => value))
         end

@@ -330,17 +330,6 @@ ActiveRecord::Schema.define(:version => 20140315083034) do
     t.datetime "updated_at",                    :null => false
   end
 
-  create_table "talks", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "sender_id"
-    t.string   "content"
-    t.integer  "state",          :default => 1
-    t.integer  "messages_count", :default => 0
-    t.boolean  "del",            :default => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-  end
-
   create_table "topics", :force => true do |t|
     t.integer  "user_id"
     t.integer  "tag_id"
@@ -389,7 +378,7 @@ ActiveRecord::Schema.define(:version => 20140315083034) do
     t.integer  "warrant",             :default => 5
     t.boolean  "admin",               :default => false
     t.boolean  "photographer",        :default => false
-    t.integer  "talks_count",         :default => 0
+    t.integer  "messages_count",      :default => 0
     t.integer  "notices_count",       :default => 0
     t.integer  "followers_count",     :default => 0
     t.string   "bg",                  :default => "/images/defaults/bgs.jpg"

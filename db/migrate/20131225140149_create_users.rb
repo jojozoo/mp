@@ -20,7 +20,6 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :warrant, default: 5 # 授权
       t.boolean :admin, default: 0 # 管理员
       t.boolean :photographer, default: 0 # 摄影师
-      t.integer :messages_count, default: 0
       t.integer :notices_count, default: 0
       t.integer :followers_count, default: 0 # 关注者数量
       t.string :bg, default: '/images/defaults/bgs.jpg'

@@ -25,7 +25,6 @@
 #  warrant             :integer          default(5)
 #  admin               :boolean          default(FALSE)
 #  photographer        :boolean          default(FALSE)
-#  messages_count      :integer          default(0)
 #  notices_count       :integer          default(0)
 #  followers_count     :integer          default(0)
 #  bg                  :string(255)      default("/images/defaults/bgs.jpg")
@@ -59,7 +58,6 @@ class User < ActiveRecord::Base
   :bg,
   :repeat, 
   :remember_me,
-  :messages_count,
   :nocices_count,
   :del
 
@@ -113,7 +111,8 @@ class User < ActiveRecord::Base
                             :if => :email_changed?
 
   validates_uniqueness_of   :email, 
-                            :message => '邮箱已存在'
+                            :message => '邮箱已存在',
+                            :if => :email_changed?
 
   validates_format_of       :email, 
                             :with  => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/,
@@ -135,7 +134,8 @@ class User < ActiveRecord::Base
                             :message => '不能为空'
 
   validates_uniqueness_of   :username, 
-                            :message => '帐户已存在'
+                            :message => '帐户已存在',
+                            :if => :username_changed?
 
   validates_format_of       :username,
                             :with => /[\u4e00-\u9fa5\w]{2,10}$/,
@@ -147,7 +147,8 @@ class User < ActiveRecord::Base
                             :message => '手机格式不正确'
   validates_uniqueness_of   :mobile, 
                             :allow_blank => true,
-                            :message => '手机已存在'
+                            :message => '手机已存在',
+                            :if => :mobile_changed?
 
   validates_format_of       :realname,
                             :with => /[\u4e00-\u9fa5]{2,10}$/,
