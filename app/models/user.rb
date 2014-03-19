@@ -174,7 +174,7 @@ class User < ActiveRecord::Base
 
   def send_msg(user, content)
     # self.reads.create(sender_id: user.id, content: content) 需要删除
-    user.unreads.create(sender_id: self.id, content: content)
+    user.unreads.create(sender_id: self.id, content: content, talk: [user.id, self.id].sort.join('_'))
   end
 
   def iboxs user = nil, isdel = false
@@ -189,7 +189,7 @@ class User < ActiveRecord::Base
   # 收件箱
   def newiboxs
     sql = self.iboxs.order('id desc').to_sql
-    Message.from("(#{sql}) messages").group([:sender_id, :user_id])
+    Message.from("(#{sql}) messages").group(:talk)
   end
 
   # 加密

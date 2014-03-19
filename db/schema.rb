@@ -185,13 +185,14 @@ ActiveRecord::Schema.define(:version => 20140315083034) do
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
     t.integer  "user_id"
+    t.string   "talk"
     t.integer  "state",      :default => 0
-    t.boolean  "sender_del", :default => false
-    t.boolean  "user_del",   :default => false
+    t.integer  "s_is_del",   :default => 0
+    t.integer  "u_is_del",   :default => 0
     t.string   "content"
     t.integer  "del",        :default => 0
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "micros", :force => true do |t|
@@ -327,6 +328,17 @@ ActiveRecord::Schema.define(:version => 20140315083034) do
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "talks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "sender_id"
+    t.string   "content"
+    t.integer  "state",          :default => 1
+    t.integer  "messages_count", :default => 0
+    t.boolean  "del",            :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "topics", :force => true do |t|
