@@ -26,8 +26,7 @@
 		<%= yield %>
 	</div>
 	<div id="mp_bg">
-		<%#= image_tag Sbg.signs.order('rand()').first.photo.url, id: 'mp_img' %>
-		<img id="mp_img" src="<%= asset_path(Sbg.signs.order('rand()').first.photo.url) %>">
+		<img id="mp_img" src="<%= signsbackground %>">
 	</div>
 	<script type="text/javascript">
 	$(function(){

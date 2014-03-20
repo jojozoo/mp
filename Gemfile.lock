@@ -36,6 +36,10 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.0.4)
+    by_star (1.0.1)
+      activerecord (>= 2.0.0)
+      chronic
+    chronic (0.10.2)
     client_side_validations (3.2.6)
     client_side_validations-simple_form (2.1.0)
       client_side_validations (~> 3.2.5)
@@ -170,6 +174,7 @@ PLATFORMS
 DEPENDENCIES
   annotate (>= 2.6.0)
   awesome_print
+  by_star
   client_side_validations
   client_side_validations-simple_form
   coffee-rails (~> 3.2.1)

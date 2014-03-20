@@ -2,15 +2,30 @@
 	<div class="col-sm-12 col-md-12">
 		<h3 class="heading">
 			今日上传
-			<small><a href="">选择日期</a></small>
-			<small><a href="">选择时段</a></small>
-			<small><a href="">任务进展</a></small>
+			<small>
+				<a href="javascript:void(0);">
+					<i class="icon-calendar"></i>
+					选择日期
+				</a>
+			</small>
+			<small>
+				<a href="javascript:void(0);">
+					<i class="icon-time"></i>
+					选择时段
+				</a>
+			</small>
+			<small>
+				<a href="javascript:void(0);">
+					<i class="icon-tasks"></i>
+					任务进展
+				</a>
+			</small>
 		</h3>
 		<div id="large_grid" class="wmk_grid">
 			<ul>
-				<% Image.all.each do |image| %>
+				<% @images.each do |image| %>
 				<li class="thumbnail">
-					<%= link_to image_tag(image.picture(:thumb)), image.picture(:big) %>
+					<%= link_to image_tag(image.picture(:cover)), image.picture(:big) %>
 					<p>
 						<a href="javascript:void(0)" title="删除"> 
 							<i class="icon-trash"></i>
