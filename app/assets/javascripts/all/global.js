@@ -31,4 +31,3 @@ $(function(){
 	// });
 
 })
-window.console&&window.console.info("喜欢看漫拍的代码，还是发现了什么bug？不如和我们一起为漫拍添砖加瓦吧！\n电话 18611149191");
