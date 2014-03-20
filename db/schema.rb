@@ -131,23 +131,6 @@ ActiveRecord::Schema.define(:version => 20140315083034) do
     t.datetime "updated_at",                     :null => false
   end
 
-  create_table "groups", :force => true do |t|
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
-    t.integer  "user_id"
-    t.boolean  "publish",           :default => true
-    t.integer  "topics_count",      :default => 0
-    t.integer  "members_count",     :default => 0
-    t.integer  "visits_count",      :default => 0
-    t.string   "title"
-    t.text     "desc"
-    t.boolean  "del",               :default => false
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-  end
-
   create_table "images", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
@@ -165,21 +148,13 @@ ActiveRecord::Schema.define(:version => 20140315083034) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "hex"
     t.string   "desc"
     t.text     "exif"
     t.string   "wh"
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
-  end
-
-  create_table "members", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "group_id"
-    t.integer  "auth",       :default => 0
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
   end
 
   create_table "messages", :force => true do |t|
@@ -378,7 +353,6 @@ ActiveRecord::Schema.define(:version => 20140315083034) do
     t.integer  "warrant",             :default => 5
     t.boolean  "admin",               :default => false
     t.boolean  "photographer",        :default => false
-    t.integer  "messages_count",      :default => 0
     t.integer  "notices_count",       :default => 0
     t.integer  "followers_count",     :default => 0
     t.string   "bg",                  :default => "/images/defaults/bgs.jpg"
