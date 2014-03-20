@@ -50,14 +50,6 @@ zhu_gal_grid = {
 			
 			// Call the layout function.
 			handler.wookmark(options);
-			
-			$('#small_grid ul li > a').attr('rel', 'gallery').colorbox({
-				maxWidth	: '80%',
-				maxHeight	: '80%',
-				opacity		: '0.2', 
-				loop		: false,
-				fixed		: true
-			});
 		});
 	}
 };
