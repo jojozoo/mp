@@ -57,8 +57,8 @@
 				list += '<li><a style="width:' + thumbWidth + 'px;height:' + thumbHeight + 'px;" href="javascript:jQuery.fancybox.jumpto(' + n + ');"></a></li>';
 			}
 
-			this.wrap = $('<div id="fancybox-thumbs"></div>').addClass(opts.position).appendTo('body');
-			this.list = $('<ul>' + list + '</ul>').appendTo(this.wrap);
+			this.wrap = $('<div id="fancybox-thumbs"><div id="fancybox-thumbs-box"></div></div>').addClass(opts.position).appendTo('body');
+			this.list = $('<ul>' + list + '</ul>').appendTo(this.wrap.find("#fancybox-thumbs-box"));
 
 			//Load each thumbnail
 			$.each(obj.group, function (i) {
@@ -109,9 +109,9 @@
 			});
 
 			//Set initial width
-			this.width = this.list.children().eq(0).outerWidth(true);
-
-			this.list.width(this.width * (obj.group.length + 1)).css('left', Math.floor($(window).width() * 0.5 - (obj.index * this.width + this.width * 0.5)));
+			this.width = this.list.children().eq(0).outerWidth(true) + 2;
+			// this.list.width(this.width * (obj.group.length + 1)).css('left', Math.floor($(window).width() * 0.5 - (obj.index * this.width + this.width * 0.5)));
+			this.list.width((this.width) * (obj.group.length + 1)).css('left', 0);
 		},
 
 		beforeLoad: function (opts, obj) {
@@ -142,8 +142,16 @@
 		//Center list
 		onUpdate: function (opts, obj) {
 			if (this.list) {
+				var leftVal;
+				if(obj.index < 6){
+					leftVal = 0;
+				} else if((obj.group.length - obj.index) < 6 ){
+					leftVal = -((obj.group.length - 11) * this.width);
+				} else {
+					leftVal = -((obj.index - 5) * this.width);
+				}
 				this.list.stop(true).animate({
-					'left': Math.floor($(window).width() * 0.5 - (obj.index * this.width + this.width * 0.5))
+					'left': leftVal
 				}, 150);
 			}
 		},

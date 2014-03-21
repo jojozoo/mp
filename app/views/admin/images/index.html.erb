@@ -1,8 +1,10 @@
 <link type="text/css" href="/fb/jquery.fancybox.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet">
 <link type="text/css" href="/fb/jquery.fancybox-thumbs.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet">
+<link type="text/css" href="/fb/jquery.fancybox-buttons.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet">
 <script type="text/javascript" src="/fb/jquery.mousewheel-3.0.6.pack.js"></script>
 <script type="text/javascript" src="/fb/jquery.fancybox.js?v=<%= Time.now.to_i %>"></script>
 <script type="text/javascript" src="/fb/jquery.fancybox-thumbs.js?v=<%= Time.now.to_i %>"></script>
+<script type="text/javascript" src="/fb/jquery.fancybox-buttons.js?v=<%= Time.now.to_i %>"></script>
 <script type="text/javascript">
 $(function(){
 	$('.thumbnail a').fancybox({
@@ -14,7 +16,42 @@ $(function(){
 			thumbs : {
 				width  : 50,
 				height : 50
+			},
+			buttons: {
+				position : 'top',
+				tpl        : '\
+<div id="fancybox-buttons"> \
+	<div id="fancybox-buttons-box" class="text-center"> \
+		<div class="btn-group btn-group-sm"> \
+			<a class="btn btn-default btnBig" href="javascript:void(0);">大</a> \
+			<a class="btn btn-default btnSmall" href="javascript:void(0);">小</a> \
+			<a class="btn btn-default btnOriginal" href="javascript:void(0);">原</a> \
+			<a class="btn btn-default btnCover" href="javascript:void(0);">封</a> \
+			<i class="btn btn-default icon-zoom-in btnToggle"></i> \
+		</div> \
+	</div> \
+</div>'
+			},
+			title : {
+				type : 'over'
 			}
+		},
+		afterLoad : function() {
+			// this.title = '第 ' + (this.index + 1) + ' 张 共 ' + this.group.length + (this.title ? ' - ' + this.title : '') + ' 张';
+			this.title = '日期：2013-12-10 （上午）【星期四】</br> \
+						  活动：未参加</br> \
+						  作品：未参加</br> \
+						  相册：活动相册</br> \
+						  用户：<a href="javascript:void(0);">相册</a>(30)</br> \
+						  动态：点赞(1) 喜欢(10) 收藏(2) 推荐(90)</br> \
+						  ';
+this.title_two = '<a class="btn btn-default btn-xs" href="javascript:void(0);"> \
+					每日精选 \
+				  </a> \
+				  <a class="btn btn-default btn-xs disabled" href="javascript:void(0);"> \
+				  	每日之星 \
+				  </a> \
+				  '
 		}
 	});
 });

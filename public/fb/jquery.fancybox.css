@@ -206,6 +206,7 @@
 	position: relative;
 	text-shadow: none;
 	z-index: 8050;
+	background: #f5f5f5;
 }
 
 .fancybox-opened .fancybox-title {
@@ -244,7 +245,7 @@
 }
 
 .fancybox-title-inside-wrap {
-	padding-top: 10px;
+	padding: 2px;
 }
 
 .fancybox-title-over-wrap {

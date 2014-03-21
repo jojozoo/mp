@@ -19,7 +19,7 @@ class Send < ActiveRecord::Base
   validates_presence_of :title, :content, :channel,
                         message: '不能为空'
 
-  TAG = ['邮件','漫信','页面']
+  TAG = ['邮件','站内通知','页面']
 
   scope :site, -> {where(channel: '页面')}
 end
