@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="col-sm-12 col-md-12">
+		<h3 class="heading">
+			话题-<%= @topic.id %>
+			<small><%= link_to '修改', edit_admin_topic_path(@topic) %></small>
+		</h3>
+		<div class="row">
+			<div class="col-sm-12 col-md-12">
+				<div class="vcard">
+					<ul>
+						<li class="v-heading">详细信息</li>
+						<li>
+							<span class="item-key">发帖人</span>
+							<div class="vcard-item"><%= link_to @topic.user.username %></div>
+						</li>
+						<li>
+							<span class="item-key">标签</span>
+							<div class="vcard-item"><%= @topic.tag.name %></div>
+						</li>
+						<li>
+							<span class="item-key">标题</span>
+							<div class="vcard-item"><%= @topic.title %></div>
+						</li>
+						<li>
+							<span class="item-key">描述</span>
+							<div class="vcard-item"><%= @topic.content %></div>
+						</li>
+						<li class="v-heading">
+							评论(<%= @topic.comments_count %>)
+						</li>
+						<li>
+							<table class="table table-bordered table12 table-condensed table-hover">
+								<tr>
+									<th width='100'>回应者</th>
+									<th>内容</th>
+									<th width='100'>操作</th>
+								</tr>
+								<% @topic.comments.each do |comment| %>
+								<tr>
+									<td><%= link_to comment.user.username, admin_user_path(comment.user_id) %></td>
+									<td><%= comment.content %></td>
+									<td>
+										<%= link_to '删除', admin_comment_path(comment.id), data: {confirm: '确定删除？不可恢复操作!' } %>
+									</td>
+								</tr>
+								<% end %>
+							</table>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

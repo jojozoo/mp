@@ -62,7 +62,7 @@
 					</ul>
 					<hr>
 					<pre style="font-size: 14px;border: 0;background: #fff;padding: 0;"><code><%= @image.desc.blank? ? '暂无描述' : @image.desc %></code></pre>
-					<%= render "shared/respond", url: comment_path('image', @image.id) if current_user %>
+					<%= render "shared/respond", url: ajax_com_path('image', @image.id) if current_user %>
 					<hr>
 					<div class="comments">
 						<h5>所有回应</h5>

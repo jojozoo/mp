@@ -16,7 +16,6 @@ Mp::Application.routes.draw do
   match '/ajax/tui/:push/:source/:id' => 'ajax#tui', via: :post, as: :ajax_tui # 推
   match '/ajax/del/:source/:id'       => 'ajax#del', via: :post, as: :ajax_del # 删除
   match '/ajax/com/:source/:id'       => 'ajax#com', via: :post, as: :ajax_com # 评论
-  match '/comment/:obj/:id' => 'comments#create', via: :post, as: :comment
 
   # gallery
   resources :images, path: 'gs' do

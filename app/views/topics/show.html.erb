@@ -37,7 +37,7 @@
                 </div>
                 <div class="col-md-12">
                     <pre style="font-size: 14px;border: 0;background: #fff;padding: 0;"><code><%= @topic.content %></code></pre>
-                    <%= render "shared/respond", url: comment_path('topic', @topic.id) if current_user %>
+                    <%= render "shared/respond", url: ajax_com_path('topic', @topic.id) if current_user %>
                     <hr>
                     <div class="comments">
                         <h5>所有回应</h5>
