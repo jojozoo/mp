@@ -33,7 +33,7 @@ class ImagesController < ApplicationController
     end
     
     def new
-        
+        redirect_to images_path, notice: '请先登录' and return unless sign_in?
     end
 
     def create
@@ -49,27 +49,5 @@ class ImagesController < ApplicationController
     end
 
     def destroy
-    end
-
-    def tui
-        if sign_in?
-            @image = Image.find(params[:id])
-            case params[:ac]
-            when 'lauds'
-                @image.tuilauds.create(user_id: current_user.id)
-                @count = @image.lauds_count
-            when 'likes'
-                @image.tuilikes.create(user_id: current_user.id)
-                @count = @image.likes_count
-            when 'stores'
-                @image.tuistores.create(user_id: current_user.id)
-                @count = @image.stores_count
-            else # 'recoms'
-                @image.tuirecoms.create(user_id: current_user.id)
-                @count = @image.recoms_count
-            end
-        else
-            render js: "alert('请先登录')"
-        end
     end
 end

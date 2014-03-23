@@ -214,11 +214,9 @@ class User < ActiveRecord::Base
   def addr
     province.eql?(city) ? province : province + ' ' + city
   end
-
-  # 针对group是否能发布
-  def speak?(group)
-    gid = group.is_a?(Group) ? group.id : group
-    members.exists?(group_id: gid)
+  # 是否已关注
+  def fol? user_id
+    self.follow_ships.exists?(user_id: user_id)
   end
 
   # from 注册来源

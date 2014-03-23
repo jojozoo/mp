@@ -23,14 +23,12 @@
                             <%= link_to @work.user.username, user_path(@work.user_id) %>    
                         </div>
                         <div class="basic-tui" style="margin-top:8px;">
-                            <a href="" class="btn btn-default btn-xs">
-                                <i class="icon-plus"></i>
-                                关注
-                            </a>
-                            <a href="" class="btn btn-default btn-xs">
+                            <%= link_to_follow(@work.user_id) %>
+                            
+                            <%= link_to write_my_msgs_path(@work.user_id), class: 'btn btn-default btn-xs' do %>
                                 <i class="icon-envelope"></i>
                                 漫信
-                            </a>
+                            <% end %>
                         </div>
                     </div>
                     <div class="basic-attr" style="margin: 15px auto;">
@@ -38,7 +36,7 @@
                         |
                         点赞 <a href="">20</a>
                         |
-                        关注 <a href="">66</a>
+                        关注 <a href=""><%= @work.user.followers_count %></a>
                     </div>
                     <p>
                         浏览: 30

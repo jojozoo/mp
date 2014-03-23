@@ -61,14 +61,22 @@ module ApplicationHelper
         class_str += ' btn-ajax'
       end
     end
-    options = {remote: true, class: class_str}
+    options = {remote: true, method: :post, class: class_str}
     if isblock
-      link_to tui_image_path(obj.id, ac: type), options do
+      link_to ajax_tui_path(type, 'image', obj.id), options do
         "<i class='icon-#{icon}'></i>#{str}".html_safe
       end
     else
       options[:class] = options[:class] + " push-#{type}-#{obj.id}-effect"
-      link_to str + "(#{obj.try(type + '_count')})", tui_image_path(obj.id, ac: type), options.merge(title: str)
+      link_to str + "(#{obj.try(type + '_count')})", ajax_tui_path(type, 'image', obj.id), options.merge(title: str)
+    end
+  end
+
+  def link_to_follow user_id
+    if current_user and current_user.fol?(user_id)
+      link_to '取消关注', ajax_ufl_path('user', user_id), remote: true, method: :post, class: 'btn btn-default btn-xs', id: "js-follow-#{user_id}"
+    else
+      link_to '<i class="icon-plus"></i> 关注'.html_safe, ajax_fol_path('user', user_id), remote: true, method: :post, class: 'btn btn-default btn-xs', id: "js-follow-#{user_id}"
     end
   end
 

@@ -1,0 +1,2 @@
+$("#js-follow-<%= params[:id] %>").replaceWith('<%= link_to "取消关注", ajax_ufl_path("user", params[:id]), remote: true, method: :post, class: "btn btn-default btn-xs", id: "js-follow-#{params[:id]}" %>');
+$("#js-follow-<%= params[:id] %>").effect( "highlight", 3000 );

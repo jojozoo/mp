@@ -1,4 +1,13 @@
 <div class="col-sm-12 col-md-12">
-	<h3 class="heading">topic 编辑</h3>
-	<%= render 'form' %>
+    <h3 class="heading">Comment 编辑</h3>
+    <%= simple_form_for @comment, url: admin_comment_path(@comment), validate: true do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
+        <div class="form-group">
+            <div class="col-sm-8 col-sm-offset-2">
+                <input type="submit" value="保存Comment" class="btn btn-default">
+            </div>
+        </div>
+    <% end %>
+
 </div>

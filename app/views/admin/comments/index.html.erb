@@ -11,17 +11,17 @@
 			<tr>
 				<th>评论资源</th>
 				<th>评论资源ID</th>
-				<th>评论用户</th>
+				<th>发起评论</th>
 				<th>内容</th>
+				<th>操作</th>
 			</tr>
 		<% @comments.each do |comment| %>
 			<tr>
 				<td><%= link_to comment.obj_type, 'javascript:void(0);' %></td>
-				<td><%= comment.obj_type_id %></td>
+				<td><%= comment.obj_id %></td>
 				<td><%= link_to comment.user.username, admin_user_path(comment.user_id) %></td>
 				<td><%= comment.content %></td>
 				<td>
-					<%= link_to '详细', admin_comment_path(comment.id), class: 'btn btn-info btn-xs' %>
 					<%= link_to '编辑', edit_admin_comment_path(comment.id), class: 'btn btn-info btn-xs' %>
 					<%= link_to '删除', admin_comment_path(comment.id), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>
 				</td>
