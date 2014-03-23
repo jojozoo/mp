@@ -128,7 +128,11 @@ Mp::Application.routes.draw do
     # resources :products do
     # end
     resources :users, except: [:new, :create]
-    resources :images
+    resources :images do
+      member do
+        get :basic
+      end
+    end
     resources :events do
       member do
         get :state

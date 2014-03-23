@@ -1,57 +1,41 @@
 <div class="images-second-nav">
     <ul class="breadcrumb second-nav">
+        <%
+        data = {
+            'all'  => ['align-justify', '全部'],
+            'like' => ['heart', '喜欢最多'],
+            'tui'  => ['ok-circle', '编辑推荐'],
+            'hot'  => ['comments', '热门作品'],
+            'nup'  => ['upload', '最新上传'],
+            'eve'  => ['time', '每日精选']
+        }
+        %>
+        <% data.each do |key, val| %>
         <li>
-            <%= link_to images_path do %>
-                <i class="icon-align-justify"></i>
-                全部
+            <% if params[:o].eql?(key) %>
+                <%= link_to 'javascript:void(0);', style: 'color:#999;' do %>
+                    <i class="icon-<%= val[0] %>"></i>
+                    <%= val[1] %>
+                <% end %>
+            <% else %>
+                <%= link_to images_path(o: key) do %>
+                    <i class="icon-<%= val[0] %>"></i>
+                    <%= val[1] %>
+                <% end %>
             <% end %>
         </li>
+        <% end %>
         <li>
-            <%= link_to images_path do %>
-                <i class="icon-thumbs-up"></i>
-              点赞
-            <% end %>
-        </li>
-        <li>
-            <%= link_to images_path do %>
-                <i class="icon-heart"></i>
-              喜欢
-            <% end %>
-        </li>
-        <li>
-            <%= link_to images_path do %>
-                <i class="icon-bookmark"></i>
-              收藏
-            <% end %>
-        </li>
-        <li>
-            <%= link_to images_path do %>
-                <i class="icon-ok-circle"></i>
-              编辑推荐
-            <% end %>
-        </li>
-        <li>
-            <%= link_to images_path do %>
-                <i class="icon-comments"></i>
-                热门作品
-            <% end %>
-        </li>
-        <li>
-            <%= link_to images_path do %>
-                <i class="icon-upload"></i>
-                最新上传
-            <% end %>
-        </li>
-        <li>
-            <%= link_to images_path do %>
-                <i class="icon-time"></i>
-                每日精选
-            <% end %>
-        </li>
-        <li>
-            <%= link_to star_images_path do %>
-                <i class="icon-star"></i>
-              漫拍之星
+            <% if action_name == "star" %>
+                <%= link_to 'javascript:void(0);', style: 'color:#999;' do %>
+                    <i class="icon-star"></i>
+                    漫拍之星
+                <% end %>
+            <% else %>
+                <%= link_to star_images_path do %>
+                    <i class="icon-star"></i>
+                    漫拍之星
+                <% end %>
             <% end %>
         </li>
     </ul>

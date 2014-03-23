@@ -57,7 +57,8 @@ class Image < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :event
-  has_many :works
+  belongs_to :work
+  belongs_to :album
   has_many :comments, as: :obj, order: 'id desc'
 
   after_picture_post_process :load_exif

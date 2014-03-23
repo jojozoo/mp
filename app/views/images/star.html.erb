@@ -1,2 +1,44 @@
 <%= render "nav" %>
 <%= render partial: 'images/user', collection: @users %>
+<style type="text/css">
+.star {
+    margin-bottom: 10px;
+}
+.star > .col-md-5{
+    padding-right: 0;
+    border-right: 1px solid #F8F8F8;
+}
+.star > .col-md-7{
+    padding-left:0;
+}
+.star > .col-md-7 .white-col-md{
+    height: 153px;
+}
+.starone{
+    margin: 4px 0;
+}
+.starone > a{
+    margin-right: 10px;
+}
+.starname{
+    height: 27px;
+}
+.link-outs a{
+    text-decoration: none;
+}
+.link-outs{
+    margin-top: 6px;
+}
+.link-outs .pin-count{
+    padding-left: 0;
+    border-left: 0;
+}
+.link-outs > div{
+    display: inline-block;
+    padding: 0 10px;
+    border-left: 1px solid #E8E8E8;
+}
+.link-outs strong, .link-outs span{
+    display: block;
+}
+</style>

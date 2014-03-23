@@ -89,4 +89,36 @@ module ApplicationHelper
     ["/system/sbgs/1/original/c4ca4238a0.jpg?1394877196", "/system/sbgs/2/original/c81e728d9d.jpg?1394877228", "/system/sbgs/3/original/eccbc87e4b.jpg?1394877242", "/system/sbgs/4/original/a87ff679a2.jpg?1394877273"].sort_by{rand}[0]
   end
 
+  def time_style time
+    de = time.to_date.to_s
+    sx = case time.strftime("%H").to_i
+    when 0..12
+      '（上午）'
+    when 13..18
+      '（下午）'
+    when 18..23
+      '（晚上）'
+    else
+      '（上午）'
+    end
+
+    zj = case time.wday
+    when 0
+      '天'
+    when 1
+      '一'
+    when 2
+      '二'
+    when 3
+      '三'
+    when 4
+      '四'
+    when 5
+      '五'
+    else
+      '六'
+    end
+    de + sx + "【星期#{zj}】"
+  end
+
 end

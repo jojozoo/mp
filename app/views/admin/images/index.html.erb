@@ -37,21 +37,28 @@ $(function(){
 			}
 		},
 		afterLoad : function() {
-			// this.title = '第 ' + (this.index + 1) + ' 张 共 ' + this.group.length + (this.title ? ' - ' + this.title : '') + ' 张';
-			this.title = '日期：2013-12-10 （上午）【星期四】</br> \
-						  活动：未参加</br> \
-						  作品：未参加</br> \
-						  相册：活动相册</br> \
-						  用户：<a href="javascript:void(0);">相册</a>(30)</br> \
-						  动态：点赞(1) 喜欢(10) 收藏(2) 推荐(90)</br> \
-						  ';
+			this.title = '获取中...';
 this.title_two = '<a class="btn btn-default btn-xs" href="javascript:void(0);"> \
 					每日精选 \
-				  </a> \
+				  </a> <br>\
+				  <a class="btn btn-default btn-xs" href="javascript:void(0);"> \
+					每日一图（封面） \
+				  </a> <br>\
 				  <a class="btn btn-default btn-xs disabled" href="javascript:void(0);"> \
-				  	每日之星 \
-				  </a> \
+				  	每月一图 \
+				  </a> <br>\
+				  <a class="btn btn-default btn-xs disabled" href="javascript:void(0);"> \
+				  	每季一图 \
+				  </a> <br>\
 				  '
+			var that = this;
+			var obj = this.group[this.index];
+			$.get("/admin/images/" + obj.jsid + "/basic", function(data){
+				$(".fancybox-title-over-wrap").html(data);
+			})
+			
+			
+			console.log(obj);
 		}
 	});
 });
@@ -95,7 +102,7 @@ this.title_two = '<a class="btn btn-default btn-xs" href="javascript:void(0);"> 
 			<% @images.each do |image| %>
 			<div class="col-md-2">
 				<div class="thumbnail">
-					<%= link_to image_tag(image.picture(:cover)), image.picture(:big), class: 'fancybox', data:{'fancybox-group' => "gallery"} %>
+					<%= link_to image_tag(image.picture(:cover)), image.picture(:big), class: 'fancybox', data:{'fancybox-group' => "gallery"}, jsid: image.id %>
 					<div class="caption">
 						<a href="javascript:void(0)" title="删除"> 
 							<i class="icon-trash"></i>

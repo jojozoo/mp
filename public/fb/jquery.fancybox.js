@@ -250,7 +250,8 @@
 					type,
 					rez,
 					hrefParts,
-					selector;
+					selector,
+					isid;
 
 				if ($.type(element) === "object") {
 					// Check if is DOM element
@@ -262,6 +263,7 @@
 						obj = {
 							href    : element.data('fancybox-href') || element.attr('href'),
 							title   : element.data('fancybox-title') || element.attr('title'),
+							jsid    : element.attr('jsid'),
 							isDom   : true,
 							element : element
 						};

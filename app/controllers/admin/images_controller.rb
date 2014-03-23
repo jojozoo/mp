@@ -12,4 +12,9 @@ class Admin::ImagesController < Admin::ApplicationController
 	def tasks
 		
 	end
+
+	def basic
+		@image = Image.find(params[:id])
+		render :basic, layout: false
+	end
 end

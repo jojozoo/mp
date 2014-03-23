@@ -1,14 +1,14 @@
-<div class="row">
-    <div class="col-md-5" style="padding-right:0; border-right: 1px solid #F8F8F8;">
+<div class="row star">
+    <div class="col-md-5">
         <div class="white-col-md">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="media" style="margin: 4px 0;">
-                        <a class="pull-left" href="javascript:void(0);">
-                            <img src="/images/defaults/users.jpg" class="avatar-big img-circle">
-                        </a>
-                        <div class="media-body">
-                            <h5 class="media-heading"><a href="/qrfwwuw5pq/" class="author">SUNSHINE蜜糖</a></h5>
+                    <div class="starone">
+                        <%= link_to image_tag('/images/defaults/users.jpg', class: 'avatar-big'), 'javascript:void(0);', class: 'pull-left' %>
+                        <div class="stardesc">
+                            <div class="starname">
+                                <%= link_to user.username, 'javascript:void(0);', class: 'author' %>
+                            </div>
                             <div class="link-outs">
                                 <div class="pin-count">
                                     <a href="/qrfwwuw5pq/pins/"> 
@@ -28,26 +28,20 @@
                                         <span>粉丝</span>
                                     </a>
                                 </div>
-                                <a href="/" class="btn btn-default btn-sm">
-                                    <i class="icon-plus"></i>
-                                    关注
-                                </a>
-                                <a href="/" class="btn btn-default btn-sm">
-                                    <!-- <i class="icon-minus"></i> -->
-                                    取消
-                                </a>
+                                <%= link_to_follow(user.id) %>
                             </div>
                         </div>
-                        <p class="gray-desc">网页设计，爱玩爱学习，对新事物很感兴趣，通过花瓣不断充实自己，愿自己与花瓣共同成长。</p>
-                        <a href="/binbinhudie" class="homepage">访问TA的主页</a>
                     </div>
+                    <p class="gray-desc">
+                        网页设计，爱玩爱学习，对新事物很感兴趣，通过花瓣不断充实自己，愿自己与花瓣共同成长。
+                    </p>
                 </div>
             </div>
         </div>
         
     </div>
-    <div class="col-md-7" style="padding-left:0;">
-        <div class="white-col-md" style="height:173px;">
+    <div class="col-md-7">
+        <div class="white-col-md">
             <div class="row">
                 <div class="col-md-12">
                     ...

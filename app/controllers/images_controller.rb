@@ -1,6 +1,13 @@
 class ImagesController < ApplicationController
     def index
+        params[:o] = params[:o] || 'all'
         @images = Image.where(state: true).paginate(:page => params[:page], per_page: 12).order('id desc')
+        case params[:o]
+        when ''
+
+        when ''
+
+        end
     end
 
     def waterfall
