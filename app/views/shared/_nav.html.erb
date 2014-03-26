@@ -15,7 +15,6 @@
 				</div>
 			</form> -->
 			<ul class="nav navbar-nav navbar-right">
-				<!-- <li id="js-nav-works"> -->
 				<li>
 					<%= link_to new_work_path, class: 'btn btn-warning' do %>
 						<i class="icon-camera"></i>
@@ -45,7 +44,7 @@
 								</div>
 							</a>
 						</li>
-						<li>
+						<!-- <li>
 							<a href="/my/msgs/notices">
 								<i class="icon-bullhorn"></i>
 								通知
@@ -56,7 +55,7 @@
 								<i class="icon-truck"></i>
 								积分(暂未开通)
 							</a>
-						</li>
+						</li> -->
 						<li class="divider"></li>
 						<li>
 							<% if !!current_user.admin %>

@@ -28,13 +28,13 @@ works:
   navs: {}
   icons: {}
   smalls: {}
-timelines:
-  name: 我的动态(点赞,推荐,喜欢,收藏,动态)
-  icon: time
-  small:
-  navs: {}
-  icons: {}
-  smalls: {}
+# timelines:
+#   name: 我的动态(点赞,推荐,喜欢,收藏,动态)
+#   icon: time
+#   small:
+#   navs: {}
+#   icons: {}
+#   smalls: {}
 msgs:
   name: 漫信&通知
   icon: envelope
