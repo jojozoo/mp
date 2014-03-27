@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
   has_many :follows, source: :user, through: :follow_ships
   # 关注我的(我的关注者)
   has_many :follower_ships, class_name: 'Follow', foreign_key: :user_id
-  has_many :followers, source: :user, through: :follower_ships
+  has_many :followers, source: :follower, through: :follower_ships
 
   has_many :topics
   has_one  :accept # 个人推送设置
