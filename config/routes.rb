@@ -105,7 +105,7 @@ Mp::Application.routes.draw do
     end
   end
   ##### my end #####
-
+  match '/admin/push/:source/:id' => 'admin/pushes#tui', via: :post, as: :admin_push
   scope '/admin', :module => 'admin', :as => 'admin' do
     get  '/'     => 'sessions#index'
     get  '/info' => 'sessions#info'
@@ -140,12 +140,10 @@ Mp::Application.routes.draw do
       end
     end
     resources :works
-    resources :groups
     resources :topics
-    resources :talks
     resources :tags
     resources :comments
-    resources :tuis
+    resources :pushes
     resources :messages, only: [:index, :show, :destroy] do
       get :talk, on: :member
     end

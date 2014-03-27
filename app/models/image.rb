@@ -59,7 +59,8 @@ class Image < ActiveRecord::Base
   belongs_to :event
   belongs_to :work
   belongs_to :album
-  has_many :comments, as: :obj, order: 'id desc'
+  has_many   :pushes, as: :obj, order: 'updated_at desc'
+  has_many   :comments, as: :obj, order: 'id desc'
 
   after_picture_post_process :load_exif
   before_picture_post_process :gen_hex

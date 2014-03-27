@@ -10,3 +10,4 @@
 <br>
 动态：点赞(<%= @image.lauds_count %>) 喜欢(<%= @image.likes_count %>) 收藏(<%= @image.stores_count %>) 推荐(<%= @image.recoms_count %>)
 <br>
+操作：<%= @image.pushes.map(&:channel).join(",") %>
