@@ -1,21 +1,16 @@
 class Admin::PushesController < Admin::ApplicationController
 
 	def tui
-		if @obj = Image.find(params[:id])
-			p = case params[:source]
-			when 'jx'
-				Push.find_or_create_by_obj_id_and_obj_type_and_channel(@obj.id, 'Image', '每日精选')
-			when 'yt'
-				Push.find_or_create_by_obj_id_and_obj_type_and_channel(@obj.id, 'Image', '每日一图')
-			when 'tj'
-				Push.find_or_create_by_obj_id_and_obj_type_and_channel(@obj.id, 'Image', '编辑推荐')
-			when 'st' # star漫拍之星
-				Push.find_or_create_by_obj_id_and_obj_type_and_channel(@obj.user_id, 'User', '漫拍之星')
-			end
-			mark = mark_style(p.updated_at)
-			p.update_attributes(user_id: current_user.id, mark: mark)
+		obj  = Image.find(params[:id])
+		push = Push.find_or_create_by_obj_id_and_obj_type_and_channel(obj.id, 'Image', params[:source])
+		if params[:source] == '漫拍之星'
+			push.source = obj.user
 		end
-
+		if params[:source] == '推荐作品'
+			
+		end
+		mark = mark_style(push.updated_at)
+		push.update_attributes(user_id: current_user.id, mark: mark)
 		render text: 'success'
 	end
 
@@ -50,6 +45,10 @@ class Admin::PushesController < Admin::ApplicationController
 			'六'
 		end
 		de + sx + "【星期#{zj}】"
+	end
+
+	def index
+
 	end
 
 end
