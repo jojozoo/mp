@@ -31,9 +31,9 @@
                 <td><%= hash[push.source_type] %></td>
                 <td><%= push.source_id %></td>
                 <td><%= push.mark %></td>
-                <td><%= time_style push.updated_at %></td>
+                <td><%= push.updated_at.to_s(:db) %></td>
                 <td>
-                    <%= link_to '详细', admin_push_path(push), class: 'btn btn-info btn-xs' %>
+                    <%#= link_to '详细', admin_push_path(push), class: 'btn btn-info btn-xs' %>
                     <%= link_to '编辑', edit_admin_push_path(push), class: 'btn btn-success btn-xs' %>
                     <%= link_to '删除', admin_push_path(push.id), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>
                 </td>

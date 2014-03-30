@@ -72,3 +72,14 @@
 
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        $(document).on('click', '.jp', function(){
+            var href = this.href;
+            $.post(href, function(data){
+                alert('设置成功');
+            });
+            return false;
+        })
+    })
+</script>

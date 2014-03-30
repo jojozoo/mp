@@ -41,11 +41,13 @@ class Admin::TopicsController < Admin::ApplicationController
     p = {channel: '推荐重点', obj_id: topic.id, obj_type: 'Topic'}
     if params[:event_id].present?
       p.merge!(source_id: params[:event_id], source_type: 'Event')
+    else
+      p.merge!(source_id: topic.id, source_type: 'Topic')
     end
     if push = Push.where(p).first
       push.touch
     else
-      Push.create(p)
+      Push.create(p.merge(mark: '推荐话题'))
     end
     redirect_to :back
   end

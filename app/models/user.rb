@@ -219,6 +219,9 @@ class User < ActiveRecord::Base
     self.follow_ships.exists?(user_id: user_id)
   end
 
+  # TODO
+  # 检查页面显示
+
   # from 注册来源
   # 修改邮箱 修改密码
   # 图片水印: 左中右(/昵称/帐户/mail|第二排http://domain.xx.com)

@@ -5,20 +5,34 @@ class Admin::PushesController < Admin::ApplicationController
     attrs = {
       obj_id: obj.id,
       obj_type: 'Image',
-      channel: params[:channel]
+      channel: params[:channel],
+      source_id: obj.id,
+      source_type: 'Image'
     }
     if params[:channel] == '漫拍之星'
-      attrs.merge!(source_id: obj.user_id, source_type: 'User')
+      attrs.merge(source_id: obj.user_id, source_type: 'User')
     end
     if params[:channel] == '推荐作品'
-      attrs.merge!(source_id: obj.work_id, source_type: 'Work')
+      attrs.merge(source_id: obj.work_id, source_type: 'Work')
+    end
+    if params[:channel] == '推荐摄影师'
+      attrs.merge(source_id: obj.user_id, source_type: 'User')
     end
     push = Push.where(attrs).first
-    push = Push.create!(attrs) unless push
+    mark = mark_val params[:channel]
+    push = Push.create!(attrs.merge(mark: mark)) unless push
     
-    # mark = mark_style(push.updated_at)
     # push.update_attributes(user_id: current_user.id, mark: mark)
     render text: 'success'
+  end
+
+  def mark_val channel
+    case channel
+    when '每日一图'
+      mark_style( Time.now )
+    else
+      '无'
+    end
   end
 
   def mark_style time
