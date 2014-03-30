@@ -1,8 +1,21 @@
-<%= simple_form_for @topic, url: @topic.new_record? ? admin_topics_path : admin_topic_path(@topic), validate: true do |f| %>
+<%= simple_form_for ['admin', @topic], validate: true do |f| %>
 	<%= f.error_notification %>
+    <%= f.input :user_id, readonly: true, input_html: {value: @topic.new_record? ? current_user.id : @topic.user_id} %>
 	<%= f.input :title %>
     <%= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
-    <%= f.input :tag_id, collection: Tag.all.map{|t| [t.name, t.id]}, include_blank: false %>
+    <% if @tag %>
+    <div class="form-group">
+        <%= f.label :tag_id %>
+        <div class="col-sm-6 input-text-add">
+            <p class="form-control-static">
+                <%= @tag.name %>
+            </p>
+            <input class="hidden" id="topic_tag_id" name="topic[tag_id]" type="hidden" value="<%= @tag.id %>">
+        </div>
+    </div>
+    <% else %>
+        <%= f.input :tag_id, collection: Tag.all.map{|t| [t.name, t.id]}, include_blank: false %>
+    <% end %>
 	<div class="form-group">
 		<div class="col-sm-8 col-sm-offset-2">
 			<input type="submit" value="保存topic" class="btn btn-default">

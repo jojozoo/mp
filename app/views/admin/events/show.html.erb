@@ -69,12 +69,20 @@
 							</div>
 						</li>
 						<li>
-							<span class="item-key">参与人数(<%= @event.members_count %>)</span>
-							<div class="vcard-item"><%= link_to '查看全部', 'javascript:void(0);' %></div>
+							<span class="item-key">参与人数</span>
+							<div class="vcard-item"><%= @event.members_count %></div>
 						</li>
 						<li>
 							<span class="item-key">参与作品(<%= @event.works_count %>)</span>
-							<div class="vcard-item"><%= link_to '查看全部', 'javascript:void(0);' %></div>
+							<div class="vcard-item">
+								<%= link_to '查看全部', admin_works_path('con[event_id]' => @event.id) %>
+							</div>
+						</li>
+						<li>
+							<span class="item-key">参与图片(<%= @event.images_count %>)</span>
+							<div class="vcard-item">
+								<%= link_to '查看全部', admin_images_path('con[event_id]' => @event.id) %>
+							</div>
 						</li>
 						<li class="v-heading">
 							活动获奖
@@ -85,7 +93,6 @@
 									<th>获奖人</th>
 									<th>名次</th>
 									<th>作品</th>
-									<th>作品所在组</th>
 									<th>操作</th>
 								</tr>
 								
@@ -98,13 +105,10 @@
 										<%= winwork.winner %>
 									</td>
 									<td>
-										<%= link_to '查看', 'javascript:void(winwork.image.id);' %>
+										<%= link_to '查看', admin_work_path(winwork.id) %>
 									</td>
 									<td>
-										<%= link_to '查看', 'javascript:void(winwork.id);' %>
-									</td>
-									<td>
-										
+										<%= link_to '查看', 'javascript:void(0);' %>
 									</td>
 								</tr>
 								<% end %>
@@ -112,7 +116,7 @@
 						</li>
 						<li class="v-heading">
 							活动公告
-							<a href="">去发布</a>
+							<%= link_to '去发布', new_admin_topic_path(tag: @event.name) %>
 						</li>
 						<li>
 							<table class="table table-bordered table12 table-condensed table-hover">
@@ -123,7 +127,8 @@
 									<th>创建于</th>
 									<th>操作</th>
 								</tr>
-								<% [].each do |topic| %>
+								<% @event.push_topics.each do |push| %>
+								<% topic = push.obj %>
 								<tr>
 									<td><%= topic.title %></td>
 									<td><%= truncate(topic.content, length: 20) %></td>

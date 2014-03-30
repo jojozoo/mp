@@ -1,4 +1,4 @@
-<%= simple_form_for @event, url: @event.new_record? ? admin_events_path : admin_event_path(@event), validate: true do |f| %>
+<%= simple_form_for ['admin', @event], validate: true do |f| %>
 	<%= f.error_notification %>
 	<div class="form-group file optional site_ad_photo">
 		<%= f.label :logo %>

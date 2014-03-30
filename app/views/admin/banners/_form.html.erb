@@ -1,4 +1,4 @@
-<%= simple_form_for @banner, url: @banner.new_record? ? admin_banners_path : admin_banner_path(@banner), validate: true do |f| %>
+<%= simple_form_for ['admin', @banner], validate: true do |f| %>
 	<%= f.error_notification %>
 	<div class="form-group file optional site_banner_photo">
 		<%= f.label :photo %>

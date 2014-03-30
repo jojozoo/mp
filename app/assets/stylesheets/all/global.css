@@ -37,3 +37,11 @@
 	background: none;
 	margin-left: 3px;
 }
+.admin .thumbnail:hover {border-color:#0088CC}
+.admin .thumbnail .caption{
+    padding: 0;
+    color: #666;
+    font-size: 12px;
+    margin: 8px 4px 2px;
+    overflow: hidden;
+}

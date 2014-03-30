@@ -14,7 +14,7 @@ class Admin::BannersController < Admin::ApplicationController
     def create
         @banner = Sbanner.new(params[:sbanner])
         if @banner.save
-            redirect_to action: :index, notice: '创建成功'
+            redirect_to action: :index
         else
             render action: "new"
         end
@@ -27,7 +27,7 @@ class Admin::BannersController < Admin::ApplicationController
     def update
        @banner = Sbanner.find(params[:id])
        if @banner.update_attributes(params[:sbanner])
-            redirect_to action: :show, id: @banner.id, notice: '创建成功'
+            redirect_to action: :show, id: @banner.id
        else
             render action: "edit"
        end

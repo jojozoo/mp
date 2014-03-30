@@ -28,7 +28,7 @@ class Admin::EventsController < Admin::ApplicationController
     @event = Event.new(params[:event].merge(user_id: current_user.id))
 
     if @event.save
-      redirect_to action: :index, notice: 'Event was successfully created.'
+      redirect_to action: :index
     else
       render action: "new"
     end
@@ -40,7 +40,7 @@ class Admin::EventsController < Admin::ApplicationController
     @event = Event.find(params[:id])
 
     if @event.update_attributes(params[:event])
-      redirect_to action: :show, id: @event, notice: 'ok'
+      redirect_to action: :show, id: @event
     else
       render action: "edit"
     end

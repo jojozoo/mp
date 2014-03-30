@@ -83,6 +83,13 @@ en:
         title: '标题'
         content: '内容'
         tag_id: '标签'
+      push:
+        obj_id: '资源ID'
+        obj_type: '资源类型(obj)'
+        channel: '推荐类别'
+        source_id: '推荐ID'
+        source_type: '推荐类型(source)'
+        mark: '描述文字'
     hints:
       defaults:
       user:

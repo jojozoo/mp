@@ -28,7 +28,7 @@ class Admin::BgsController < Admin::ApplicationController
     @bg = Sbg.new(params[:sbg])
 
     if @bg.save
-      redirect_to action: :index, notice: 'Sbg was successfully created.'
+      redirect_to action: :index
     else
       render action: "new"
     end
@@ -40,7 +40,7 @@ class Admin::BgsController < Admin::ApplicationController
     @bg = Sbg.find(params[:id])
 
     if @bg.update_attributes(params[:sbg])
-      redirect_to action: :show, id: @bg, notice: 'ok'
+      redirect_to action: :show, id: @bg
     else
       render action: "edit"
     end

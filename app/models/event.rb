@@ -15,6 +15,7 @@
 #  end_time          :date
 #  members_count     :integer          default(0)
 #  works_count       :integer          default(0)
+#  images_count      :integer          default(0)
 #  state             :integer          default(0)
 #  totop             :boolean          default(FALSE)
 #  del               :boolean          default(FALSE)
@@ -29,7 +30,8 @@ class Event < ActiveRecord::Base
    :channel, 
    :end_time, 
    :works_count, 
-   :members_count, 
+   :members_count,
+   :images_count, 
    :totop, 
    :state, 
    :title, 
@@ -99,13 +101,14 @@ class Event < ActiveRecord::Base
   has_many :images, through: :works, source: :image
   # 参与活动的人
   has_many :members, through: :works, source: :user
-  has_many :winner_works, class_name: 'Work', :conditions => '`works`.`winner` > 0'
+  has_many :winner_works, class_name: 'Work', :conditions => '`works`.`winner` > 0', order: 'winner desc'
   # 活动获奖的人 大于0 asc排序: 0参与 1等奖 2等奖
   has_many :winners, source: :user, through: :winner_works
   # 发起活动的人
   belongs_to :user
   # 作品 参与活动的作品
-  has_many :topics
+  has_many :pushes, as: :source
+  has_many :push_topics, as: :source, class_name: 'Push', conditions: {obj_type: 'Topic'}
 
   STATE = {
     audit:   '审核中', # 0

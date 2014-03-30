@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140315083034) do
+ActiveRecord::Schema.define(:version => 20140315083035) do
 
   create_table "accepts", :force => true do |t|
     t.integer  "user_id"
@@ -242,12 +242,14 @@ ActiveRecord::Schema.define(:version => 20140315083034) do
   create_table "pushes", :force => true do |t|
     t.integer  "obj_id"
     t.string   "obj_type"
-    t.string   "type"
+    t.integer  "source_id"
+    t.string   "source_type"
+    t.string   "channel"
     t.integer  "user_id"
     t.string   "mark"
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "del",         :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "putins", :force => true do |t|

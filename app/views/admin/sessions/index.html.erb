@@ -4,44 +4,46 @@
 		<h3 class="heading">快速导航</h3>
 		<ul class="dshb_icoNav clearfix">
 			<li>
-				<a href="javascript:void(0)">
-					<span class="label label-info">+10</span>
-					<span class="center-block"> <i class="icon-user icon-2x"></i>
-					</span>
-					用户
-				</a>
+				<%= link_to admin_users_path do %>
+				<!-- <span class="label label-info">+10</span> -->
+				<span class="center-block">
+					<i class="icon-user icon-2x"></i>
+				</span>
+				用户
+				<% end %>
 			</li>
 			<li>
-				<a href="javascript:void(0)">
-					<span class="center-block"> <i class="icon-picture icon-2x"></i>
+				<%= link_to admin_images_path do %>
+					<span class="center-block">
+						<i class="icon-picture icon-2x"></i>
 					</span>
 					图库
-				</a>
+				<% end %>
 			</li>
 			<li>
-				<a href="javascript:void(0)">
+				<%= link_to '/admin/info' do %>
 					<span class="center-block">
 						<i class="icon-cog icon-2x"></i>
 					</span>
 					设置
-				</a>
+				<% end %>
 			</li>
 			<li>
-				<a href="javascript:void(0)">
+				<%= link_to admin_works_path do %>
 					<span class="center-block">
 						<i class="icon-camera icon-2x"></i>
 					</span>
 					作品
-				</a>
+				<% end %>
 			</li>
 			<li>
-				<a href="javascript:void(0)">
-					<span class="label label-success">$2851</span>
+				<%= link_to admin_events_path do %>
+					<!-- <span class="label label-success">$2851</span> -->
 					<span class="center-block">
 						<i class="icon-flag icon-2x"></i>
 					</span>
 					活动
-				</a>
+				<% end %>
 			</li>
 			<li>
 				<a href="javascript:void(0)">
@@ -52,13 +54,13 @@
 				</a>
 			</li>
 			<li>
-				<a href="javascript:void(0)">
+				<%= link_to admin_comments_path do %>
 					<span class="label label-danger">26</span>
 					<span class="center-block">
 						<i class="icon-comments icon-2x"></i>
 					</span>
 					回应
-				</a>
+				<% end %>
 			</li>
 		</ul>
 	</div>

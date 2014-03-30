@@ -1,12 +1,11 @@
 class Admin::ImagesController < Admin::ApplicationController
-	def index
+
+	def all
 		# Date.today.beginning_of_day
 		# Date.today.end_of_day
 		params[:date] = params[:date] || Date.today.to_s
 		params[:time] = params[:time] || '上午'
 		s_dt, e_dt = datetime_merge(params[:date], params[:time])
-		ap s_dt
-		ap e_dt
 		@images = Image.where(['created_at >= ? and created_at <= ?', s_dt, e_dt]).paginate(:page => params[:page], per_page: 24)
 	end
 
@@ -22,12 +21,20 @@ class Admin::ImagesController < Admin::ApplicationController
 		arr.map{|t| t.to_time(:local)}
 	end
 
-	def tasks
-		
-	end
-
 	def basic
 		@image = Image.find(params[:id])
 		render :basic, layout: false
+	end
+
+	def index
+		@images = Image.where(params[:con]).paginate(:page => params[:page], per_page: 20).includes([:user, :event, :work, :album])
+	end
+
+	def show
+		@image = Image.find(params[:id])
+	end
+
+	def destroy
+		
 	end
 end

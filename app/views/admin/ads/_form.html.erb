@@ -1,4 +1,4 @@
-<%= simple_form_for @ad, url: @ad.new_record? ? admin_ads_path : admin_ad_path(@ad), validate: true do |f| %>
+<%= simple_form_for ['admin', @ad], validate: true do |f| %>
 	<%= f.error_notification %>
 	<div class="form-group file optional site_ad_photo">
 		<%= f.label :photo %>

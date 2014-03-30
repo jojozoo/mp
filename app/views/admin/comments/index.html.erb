@@ -17,7 +17,7 @@
 			</tr>
 		<% @comments.each do |comment| %>
 			<tr>
-				<td><%= link_to comment.obj_type, 'javascript:void(0);' %></td>
+				<td><%= link_to comment.obj_type.eql?('Topic') ? '帖子' : '图片',  eval("admin_#{comment.obj_type.downcase}_path(1)") %></td>
 				<td><%= comment.obj_id %></td>
 				<td><%= link_to comment.user.username, admin_user_path(comment.user_id) %></td>
 				<td><%= comment.content %></td>

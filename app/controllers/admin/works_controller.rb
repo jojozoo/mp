@@ -2,7 +2,7 @@ class Admin::WorksController < Admin::ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @works = Work.paginate(:page => params[:page], per_page: 20).order('id desc')
+    @works = Work.where(params[:con]).paginate(:page => params[:page], per_page: 20).order('id desc')
   end
 
   # GET /works/1
@@ -20,6 +20,12 @@ class Admin::WorksController < Admin::ApplicationController
   # GET /works/1/edit
   def edit
     @work = Work.find(params[:id])
+  end
+
+  def winner
+    @work = Work.find(params[:id])
+    @work.update_attributes(winner: params[:winner])
+    redirect_to action: :show, id: @work.id
   end
 
   # POST /works

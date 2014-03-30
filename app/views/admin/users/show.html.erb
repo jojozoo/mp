@@ -73,7 +73,8 @@
 				<td>
 					<span class="uhead-t">推荐：</span>
 					<span class="uhead-c">
-						<%= '未推荐' %>
+						<!-- <a href="">漫拍之星</a>
+						<a href="">摄影师</a> -->
 					</span>
 				</td>
 			</tr>
@@ -162,8 +163,16 @@
 						</li>
 						<li>
 							<div class="vcard-item" style="margin-left:0;">
-							<% ['图片', '相册', '作品', '活动', '话题', '标签', '通知', '动态', '漫信'].each do |r| %>
-								<a href="javascript:void(0);"><%= r %></a>
+							<% {
+								'图片' => admin_images_path('con[user_id]' => @user.id),
+								'作品' => admin_works_path('con[user_id]' => @user.id), 
+								'活动' => admin_events_path('con[user_id]' => @user.id), 
+								'话题' => admin_topics_path('con[user_id]' => @user.id), 
+								'标签' => admin_tags_path('con[user_id]' => @user.id), 
+								# '通知' => admin_notices_path('con[user_id]' => @user.id), 
+								'漫信' => admin_messages_path('con[user_id]' => @user.id)
+							}.each do |key, val| %>
+								<%= link_to key, val, target: '_blank' %>
 							<% end %>
 							</div>
 						</li>

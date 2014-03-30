@@ -1,0 +1,154 @@
+<link type="text/css" href="/fb/jquery.fancybox.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet">
+<link type="text/css" href="/fb/jquery.fancybox-thumbs.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet">
+<link type="text/css" href="/fb/jquery.fancybox-buttons.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet">
+<script type="text/javascript" src="/fb/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="/fb/jquery.fancybox.js?v=<%= Time.now.to_i %>"></script>
+<script type="text/javascript" src="/fb/jquery.fancybox-thumbs.js?v=<%= Time.now.to_i %>"></script>
+<script type="text/javascript" src="/fb/jquery.fancybox-buttons.js?v=<%= Time.now.to_i %>"></script>
+<script type="text/javascript">
+$(function(){
+    $('.thumbnail a').fancybox({
+        prevEffect  : 'none',
+        nextEffect  : 'none',
+        nextClick : true,
+
+        helpers : {
+            thumbs : {
+                width  : 50,
+                height : 50
+            },
+            buttons: {
+                position : 'top',
+                tpl        : '\
+<div id="fancybox-buttons"> \
+    <div id="fancybox-buttons-box" class="text-center"> \
+        <div class="btn-group btn-group-sm"> \
+            <a class="btn btn-default btnBig" href="javascript:void(0);">大</a> \
+            <a class="btn btn-default btnSmall" href="javascript:void(0);">小</a> \
+            <a class="btn btn-default btnOriginal" href="javascript:void(0);">原</a> \
+            <a class="btn btn-default btnCover" href="javascript:void(0);">封</a> \
+            <i class="btn btn-default icon-zoom-in btnToggle"></i> \
+        </div> \
+    </div> \
+</div>'
+            },
+            title : {
+                type : 'over'
+            }
+        },
+        afterLoad : function() {
+            var that = this;
+            var obj = this.group[this.index];
+            this.title = '获取中...';
+this.title_two = '<a class="btn btn-info btn-xs jp" href="/admin/push/每日精选/' + obj.jsid + '"> \
+                    每日精选 \
+                  </a> \
+                  <a class="btn btn-info btn-xs jp" href="/admin/push/编辑推荐/' + obj.jsid + '"> \
+                    编辑推荐 \
+                  </a> \
+                  <a class="btn btn-info btn-xs jp" href="/admin/push/每日一图/' + obj.jsid + '"> \
+                    每日一图 \
+                  </a> \
+                  <a class="btn btn-info btn-xs jp" href="/admin/push/漫拍之星/' + obj.jsid + '"> \
+                    漫拍之星 \
+                  </a> \
+                  <a class="btn btn-info btn-xs jp" href="/admin/push/推荐作品/' + obj.jsid + '"> \
+                    推荐作品 \
+                  </a> \
+                  <a class="btn btn-default btn-xs jp" href="/admin/push/每月一图/' + obj.jsid + '"> \
+                    每月一图 \
+                  </a> \
+                  <a class="btn btn-default btn-xs jp" href="/admin/push/每季一图/' + obj.jsid + '"> \
+                    每季一图 \
+                  </a> \
+                  '
+            // request
+            $.get("/admin/images/" + obj.jsid + "/basic", function(data){
+                $(".fancybox-title-over-wrap").html(data);
+            });
+        }
+    });
+    $(document).on('click', '.jp', function(){
+        var href = this.href;
+        $.post(href, function(data){
+            alert('设置成功');
+        });
+        return false;
+    })
+// datetimepicker
+    $('.date').datetimepicker({
+        linkFormat: 'yyyy-mm-dd',
+        format: 'yyyy-mm-dd',
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+        autoclose: 1,
+        todayHighlight: 1,
+        startView: 2,
+        minView: 2,
+        forceParse: 0
+    });
+    $(".date").change(function(){
+        var date = $(this).val(),
+            time = $(this).attr('t');
+        window.location.href = '/admin/images/all?date=' + date + '&time=' + time;
+    })
+});
+</script>
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <h3 class="heading">
+            <%= params[:date] %>上传
+            <small>
+                <i class="icon-calendar"></i>
+                选择日期
+                <input type="text" class="date form-control input-sm" value="<%= params[:date] %>" style="width: 100px; display: inline-block;height:23px;" t="<%= params[:time] %>">
+            </small>
+            /
+            <small>
+                <i class="icon-time"></i>
+                选择时段
+                <div class="btn-group">
+                    <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown">
+                        <%= params[:time] %>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <%= link_to '上午', all_admin_images_path(time: '上午', date: params[:date]) %>
+                        </li>
+                        <li>
+                            <%= link_to '下午', all_admin_images_path(time: '下午', date: params[:date]) %>
+                        </li>
+                        <li>
+                            <%= link_to '晚上', all_admin_images_path(time: '晚上', date: params[:date]) %>
+                        </li>
+                    </ul>
+                </div>
+            </small>
+            /
+            <small>
+                <%= link_to '列表浏览', admin_images_path %>
+            </small>
+        </h3>
+        <div class="row admin">
+            <% @images.each do |image| %>
+            <div class="col-md-2">
+                <div class="thumbnail">
+                    <%= link_to image_tag(image.picture(:cover)), image.picture(:big), class: 'fancybox', data:{'fancybox-group' => "gallery"}, jsid: image.id %>
+                    <div class="caption">
+                        <a href="javascript:void(0)" title="删除"> 
+                            <i class="icon-trash"></i>
+                        </a>
+                        <a href="javascript:void(0)" title="编辑">
+                            <i class="icon-pencil"></i>
+                        </a>
+                        <%= link_to image.user.username, 'javascript:void(0);' %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        </div>
+        <%= will_paginate @images %>
+    </div>
+</div>

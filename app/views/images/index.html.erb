@@ -1,5 +1,6 @@
 <%= render partial: 'nav' %>
 <script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
+<%= render partial: 'index_all' if params[:o].eql?('all') %>
 <div class="row" id="container">
 	<%= render partial: :image, collection: @images %>
 	<div id="page_loading" page="2" state="static" url="/gs/waterfall">

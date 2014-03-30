@@ -20,6 +20,15 @@
 							<div class="vcard-item"><%= @work.title %></div>
 						</li>
 						<li>
+							<span class="item-key">获奖(<%= case @work.winner when 1 then '一等奖' when 2 then '二等奖' when 3 then '三等奖' else '未获奖' end %>)</span>
+							<div class="vcard-item">
+								<%= link_to '一等奖', winner_admin_work_path(@work.id, winner: 1) %>
+								<%= link_to '二等奖', winner_admin_work_path(@work.id, winner: 2) %>
+								<%= link_to '三等奖', winner_admin_work_path(@work.id, winner: 3) %>
+								<%= link_to '取消获奖', winner_admin_work_path(@work.id, winner: 0) %>
+							</div>
+						</li>
+						<li>
 							<span class="item-key">描述</span>
 							<div class="vcard-item"><%= @work.desc %></div>
 						</li>
@@ -35,11 +44,26 @@
 							<span class="item-key">上传时间</span>
 							<div class="vcard-item"><%= @work.created_at.to_s(:db) %></div>
 						</li>
+						<li>
+							<span class="item-key">作品集</span>
+							<div class="vcard-item"><%= link_to '查看', admin_images_path('con[work_id]' => @work.id) %></div>
+						</li>
 						<li class="v-heading">
 							作品集
 						</li>
 						<li>
-							
+							<div class="row admin">
+								<% @work.images.each do |image| %>
+								<div class="col-md-2">
+									<div class="thumbnail">
+										<%= link_to image_tag(image.picture(:cover)), admin_image_path(image.id) %>
+										<div class="caption">
+											<%= link_to image.user.username, 'javascript:void(0);' %>
+										</div>
+									</div>
+								</div>
+								<% end %>
+							</div>
 						</li>
 					</ul>
 				</div>

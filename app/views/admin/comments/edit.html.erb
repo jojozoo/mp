@@ -1,13 +1,44 @@
-<div class="col-sm-12 col-md-12">
-    <h3 class="heading">Comment 编辑</h3>
-    <%= simple_form_for @comment, url: admin_comment_path(@comment), validate: true do |f| %>
-        <%= f.error_notification %>
-        <%= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
-        <div class="form-group">
-            <div class="col-sm-8 col-sm-offset-2">
-                <input type="submit" value="保存Comment" class="btn btn-default">
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <h3 class="heading">Comment 编辑</h3>
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <div class="vcard">
+                    <ul>
+                        <li class="v-heading">详细信息</li>
+                        <% case @comment.obj_type %>
+                        <% when 'Topic' %>
+                        <li>
+                            <span class="item-key">帖子</span>
+                            <div class="vcard-item"><%= link_to @comment.obj.title, admin_topic_path(@comment.obj_id) %></div>
+                        </li>
+                        <li>
+                            <span class="item-key">内容</span>
+                            <div class="vcard-item"><%= @comment.obj.content %></div>
+                        </li>
+                        <% when 'Image' %>
+                        <li>
+                            <span class="item-key">图片</span>
+                            <div class="vcard-item"><%= image_tag @comment.obj.picture(:big) %></div>
+                        </li>
+                        <% end %>
+                        <li>
+                            <span class="item-key">回应</span>
+                            <div class="vcard-item">
+                                <%= simple_form_for @comment, url: admin_comment_path(@comment), validate: true do |f| %>
+                                    <%= f.input :content, label: false, as: :text, input_html: {style: 'height:200px;'} %>
+                                    <div class="form-group">
+                                        <div class="col-sm-8">
+                                            <input type="submit" value="保存Comment" class="btn btn-default">
+                                        </div>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
             </div>
         </div>
-    <% end %>
-
+    </div>
 </div>

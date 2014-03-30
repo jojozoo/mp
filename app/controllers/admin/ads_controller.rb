@@ -14,7 +14,7 @@ class Admin::AdsController < Admin::ApplicationController
     def create
         @ad = Ad.new(params[:ad])
         if @ad.save
-            redirect_to action: :index, notice: '创建成功'
+            redirect_to action: :index
         else
             render action: "new"
         end
@@ -27,7 +27,7 @@ class Admin::AdsController < Admin::ApplicationController
     def update
        @ad = Ad.find(params[:id])
        if @ad.update_attributes(params[:ad])
-            redirect_to action: :show, id: @ad.id, notice: '创建成功'
+            redirect_to action: :show, id: @ad.id
        else
             render action: "edit"
        end
@@ -37,28 +37,28 @@ class Admin::AdsController < Admin::ApplicationController
         if @ad = Ad.find(params[:id])
            @ad.putins.create(params[:putin])
         end
-        redirect_to action: :show, id: @ad.id, notice: '创建成功'
+        redirect_to action: :show, id: @ad.id
     end
 
     def close
         if @ad = Ad.find(params[:id])
            @ad.putins.find(params[:pid]).update_attributes(state: true)
         end
-        redirect_to action: :show, id: @ad.id, notice: '创建成功'
+        redirect_to action: :show, id: @ad.id
     end
 
     def open
         if @ad = Ad.find(params[:id])
            @ad.putins.find(params[:pid]).update_attributes(state: false)
         end
-        redirect_to action: :show, id: @ad.id, notice: '创建成功'
+        redirect_to action: :show, id: @ad.id
     end
 
     def del
         if @ad = Ad.find(params[:id])
            @ad.putins.find(params[:pid]).update_attributes(del: true)
         end
-        redirect_to action: :show, id: @ad.id, notice: '创建成功'
+        redirect_to action: :show, id: @ad.id
     end
 
     def destroy

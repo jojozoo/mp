@@ -105,7 +105,7 @@ Mp::Application.routes.draw do
     end
   end
   ##### my end #####
-  match '/admin/push/:source/:id' => 'admin/pushes#tui', via: :post, as: :admin_push
+  match '/admin/push/:channel/:id' => 'admin/pushes#tui', via: :post, as: :admin_push_tui
   scope '/admin', :module => 'admin', :as => 'admin' do
     get  '/'     => 'sessions#index'
     get  '/info' => 'sessions#info'
@@ -114,8 +114,8 @@ Mp::Application.routes.draw do
     get  '/basic'  => 'sessions#basic'
     get  '/refresh'  => 'sessions#refresh'
     resources :feedbacks
-    resources :banners
-    resources :bgs
+    resources :sbanners, as: :banners, :controller => "banners"
+    resources :sbgs, as: :bgs, :path => :bgs, :controller => "bgs"
     resources :ads do
       member do
         post :putin
@@ -129,6 +129,9 @@ Mp::Application.routes.draw do
     # end
     resources :users, except: [:new, :create]
     resources :images do
+      collection do
+        get :all
+      end
       member do
         get :basic
       end
@@ -139,8 +142,12 @@ Mp::Application.routes.draw do
         get :totop
       end
     end
-    resources :works
-    resources :topics
+    resources :works do
+      get :winner, on: :member
+    end
+    resources :topics do
+      get :tui, on: :member
+    end
     resources :tags
     resources :comments
     resources :pushes

@@ -22,6 +22,16 @@
 							<div class="vcard-item"><%= @topic.title %></div>
 						</li>
 						<li>
+							<span class="item-key">推荐</span>
+							<div class="vcard-item">
+								<%= link_to '推荐首页', tui_admin_topic_path() %>
+								<% if @topic.tag.channel.eql?('活动') and event = Event.find_by_name(@topic.tag.name) %>
+									<%= link_to '推荐到此活动', tui_admin_topic_path(event_id: event.id) %>
+									会在活动右侧边栏的推荐重点显示
+								<% end %>
+							</div>
+						</li>
+						<li>
 							<span class="item-key">描述</span>
 							<div class="vcard-item"><%= @topic.content %></div>
 						</li>

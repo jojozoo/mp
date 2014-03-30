@@ -10,6 +10,7 @@ class CreateEvents < ActiveRecord::Migration
       t.date :end_time
       t.integer :members_count, default: 0
       t.integer :works_count, default: 0
+      t.integer :images_count, default: 0
       t.integer :state, default: 0
       t.boolean :totop, default: false
       t.boolean :del, default: false

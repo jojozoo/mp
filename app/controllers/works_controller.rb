@@ -31,6 +31,13 @@ class WorksController < ApplicationController
                 warrant: warrant, 
                 desc: desc)
         end
+        image_for_work_count = Image.where(work_id: @work.id).count
+        @work.update_attributes(images_count: image_for_work_count)
+
+        image_for_event_count = Image.where(event_id: params[:work][:event_id]).count
+        work_for_event_count = Work.where(event_id: params[:work][:event_id]).count
+        user_for_event_count = Work.uniq.where(event_id: params[:work][:event_id]).pluck(:user_id).length
+        Event.find(params[:work][:event_id]).update_attributes(images_count: image_for_event_count, works_count: work_for_event_count, members_count: user_for_event_count)
         # TODO 最后跳转到作品展示页
         redirect_to action: :show, id: @work.id
     end
