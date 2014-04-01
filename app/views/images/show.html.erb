@@ -92,40 +92,6 @@
 				</ul>
 			</div>
 		</div>
-		<div class="radbox">
-			<div class="box_top">
-				<span class="title light">新注用户</span>
-			</div>
-			<div class="box_con">
-				<ul class="media-list">
-					<% 5.times do %>
-					<li class="media">
-						<a class="pull-left" href="#">
-							<img class="img-circle avatar" src="/images/defaults/users.jpg">
-						</a>
-						<div class="media-body">
-							<div class="media-body">
-								<div class="media-heading">
-									<a href="">朱晓武</a>
-								</div>
-								<span class="date">2013-08-19 10:37</span>
-							</div>
-						</div>
-					</li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-		<div class="radbox">
-			<div class="box_top">
-				<span class="title light">网站标签</span>
-			</div>
-			<div class="box_con">
-				<% Tag.all.each do |tag| %>
-				<a href="javascript:void(0);" class="tag"><%= tag.name %></a>
-				<% end %>
-			</div>
-		</div>
 	</div>
 </div>
 

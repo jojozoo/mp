@@ -72,11 +72,12 @@ module ApplicationHelper
     end
   end
 
-  def link_to_follow user_id
+  def link_to_follow user_id, glass = 'btn btn-default btn-xs'
+    isglass = glass.eql?('')
     if current_user and current_user.fol?(user_id)
-      link_to '取消关注', ajax_ufl_path('user', user_id), remote: true, method: :post, class: 'btn btn-default btn-xs', id: "js-follow-#{user_id}"
+      link_to '取消关注', ajax_ufl_path('user', user_id, isglass: isglass), remote: true, method: :post, class: glass, id: "js-follow-#{user_id}"
     else
-      link_to '<i class="icon-plus"></i> 关注'.html_safe, ajax_fol_path('user', user_id), remote: true, method: :post, class: 'btn btn-default btn-xs', id: "js-follow-#{user_id}"
+      link_to '<i class="icon-plus"></i> 关注'.html_safe, ajax_fol_path('user', user_id, isglass: isglass), remote: true, method: :post, class: glass, id: "js-follow-#{user_id}"
     end
   end
 

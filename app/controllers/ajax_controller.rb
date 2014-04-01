@@ -11,6 +11,7 @@ class AjaxController < ApplicationController
 
     # 关注
     def fol
+        @glass = params[:isglass].eql?('true') ? '' : 'btn btn-default btn-xs'
         if user = User.find_by_id(params[:id])
             user.follower_ships.create(follower_id: current_user.id) rescue nil
         end
@@ -18,6 +19,7 @@ class AjaxController < ApplicationController
 
     # 取消关注
     def ufl
+        @glass = params[:isglass].eql?('true') ? '' : 'btn btn-default btn-xs'
         if user = User.find_by_id(params[:id])
             fol = user.follower_ships.find_by_follower_id(current_user.id)
             fol.destroy if fol

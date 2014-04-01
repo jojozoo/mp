@@ -91,11 +91,12 @@ class Image < ActiveRecord::Base
   end
 
   def prev(offset = 0)
-    self.class.first(:conditions => ['work_id = ? and id < ?', self.work_id, self.id], :limit => 1, :offset => offset, :order => "id DESC") || self
+    # self.class.first(:conditions => ['work_id = ? and id < ?', self.work_id, self.id], :limit => 1, :offset => offset, :order => "id DESC") || self
+    self.class.first(:conditions => ['id < ?', self.id], :limit => 1, :offset => offset, :order => "id DESC") || self
   end
 
   def next(offset = 0)
-    self.class.first(:conditions => ['work_id = ? and id > ?', self.work_id, self.id], :limit => 1, :offset => offset, :order => "id ASC") || self
+    self.class.first(:conditions => ['id > ?', self.id], :limit => 1, :offset => offset, :order => "id ASC") || self
   end
 
     # before_post_process

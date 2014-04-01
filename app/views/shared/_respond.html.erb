@@ -13,11 +13,26 @@
 		<a href="javascript:void(0);" class="pull-right" id="link-remove"> <i class="icon-remove"></i>
 		</a>
 	</h5>
-	<%= form_tag url, method: :post do %>
+	<%= simple_form_for Comment.new, url: url, validate: true do |f| %>
 		<input class="hidden" id="comment_reply_id" name="comment[reply_id]" type="hidden">
-		<textarea class="text required form-control" cols="40" id="comment_content" maxlength="200" name="comment[content]" rows="20" data-validate="true"></textarea>
-		<span class="text-danger pull-left form-error-tip">不能为空</span>
+		<div class="form-group text comment_content">
+			<div class="input-text-add">
+				<%= f.input_field :content, as: :text %>
+			</div>
+		</div>
 		<input class="btn btn-default pull-right" name="commit" type="submit" value="回应">
 	<% end %>
 	<div class="clearfix"></div>
 </div>
+<style type="text/css">
+.form-error-tip{
+	position: absolute;
+}
+#comment_content{
+	width: 97%;
+	margin: 0 auto;
+}
+.form-group.comment_content{
+	margin-bottom: 20px;
+}
+</style>

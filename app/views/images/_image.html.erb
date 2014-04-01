@@ -14,20 +14,16 @@
             <span class="push-stores-<%= image.id %>-effect" title="收藏">收藏(<%= image.stores_count %>)</span>
             <span class="push-recoms-<%= image.id %>-effect" title="推荐">推荐(<%= image.recoms_count %>)</span>
             <hr>
-            <div class="media">
+            <div class="thumb-basic">
                 <%= link_to image_tag(image.user.avatar(:s50), class: 'img-circle avatar-mini'), user_path(image.user_id), class: 'pull-left' %>
-                <div class="media-body">
-                    <div class="media-heading">
-                        <div>
-                            <%= link_to image.user.username, user_path(image.user_id) %>
-                            <span>(20)</span>
-                            <%= link_to '关注', 'javascript:void(0)', class: 'follow' %>
-                            <div class="pull-right">
-                                <a href="javascript:void(0);" class="reply pull-right">评论</a>
-                            </div>
-                        </div>
-                        <span class="date"><%= humanize image.created_at %></span>
+                <div class="thumb-basic-body" style="margin-left: 45px;">
+                    <div>
+                        <%= link_to image.user.username, user_path(image.user_id) %>
+                        <span>(<%= image.user.followers_count %>)</span>
+                        <%= link_to_follow image.user_id, '' %>
+                        <%= link_to '去评论', image_path(image), class: 'pull-right' %>
                     </div>
+                    <span class="date"><%= humanize image.created_at %></span>
                 </div>
             </div>
         </div>
