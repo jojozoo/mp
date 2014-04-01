@@ -4,10 +4,10 @@
 			找回密码
 		</h3>
 	</div>
-	<%= form_tag '/forgot_password', method: :post, class: 'form-inline' %>
+	<%= form_tag '/forgot', method: :post, class: 'form-inline' %>
 		<div class="form-group <%= 'has-error' if @error %>">
 			<label class="sr-only" for="login">帐户</label>
-			<input type="text" id="login" name="login" class="form-control" placeholder="请输入帐号/邮箱/手机" style="width:300px;" value="<%= params[:login] %>">
+			<input type="text" id="login" name="login" class="form-control" placeholder="邮箱" style="width:300px;" value="<%= params[:login] %>">
 			<p class="help-block"><%= @error %></p>
 		</div>
 		<div class="form-group">

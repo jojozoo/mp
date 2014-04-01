@@ -9,6 +9,9 @@ Mp::Application.routes.draw do
   get    '/validate'      => 'sessions#validate'
   get    '/forgot'        => 'sessions#forgot'
   post   '/forgot'        => 'sessions#forgot'
+  get    '/forgotdb'      => 'sessions#forgotdb'
+  get    '/findpwd'       => 'sessions#findpwd'
+  post   '/findpwd'       => 'sessions#findpwd'
 
   get    '/profile'       => 'users#profile'
   get    '/search'        => 'search#index'

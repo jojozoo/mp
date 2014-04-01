@@ -1,0 +1,14 @@
+<div class="forgot_password" style="margin-top:160px;background:#fff;padding:10px;">
+	<div class="page-header">
+		<h3> <i class="icon-email"></i>
+			找回密码
+		</h3>
+	</div>
+	<%= form_for @user, url: '/findpwd', validate: true, method: :post, html: {style: 'width: 300px;'} do |f| %>
+		<input name="code" type="hidden" value="<%= params[:code] %>">
+		<div class="form-group">
+			<%= f.password_field :password, class: 'form-control', placeholder: '密码' %>
+		</div>
+		<input type="submit" value="找回密码" class="btn btn-info btn-block">
+	<% end %>
+</div>
