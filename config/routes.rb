@@ -1,6 +1,5 @@
 Mp::Application.routes.draw do
 
-
   get    '/'              => 'sessions#index', as: :sessions
   get    '/sign_in'       => 'sessions#new'
   post   '/sign_in'       => 'sessions#create'
@@ -107,6 +106,7 @@ Mp::Application.routes.draw do
   ##### my end #####
   match '/admin/push/:channel/:id' => 'admin/pushes#tui', via: :post, as: :admin_push_tui
   scope '/admin', :module => 'admin', :as => 'admin' do
+    mount Resque::Server => '/resque'
     get  '/'     => 'sessions#index'
     get  '/info' => 'sessions#info'
     post '/info' => 'sessions#info'

@@ -23,6 +23,10 @@ gem 'exifr'
 gem 'oauth2'
 # gem 'oauth_china', path: 'vendor/oauth_china'
 
+# mailer
+gem 'redis'
+gem 'resque'
+
 group :development do
     gem 'awesome_print'
     gem 'annotate', ">=2.6.0"
