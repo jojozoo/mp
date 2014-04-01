@@ -28,7 +28,7 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      redirect_to action: :index, notice: 'User was successfully created.'
+      redirect_to action: :index
     else
       render action: "new"
     end
@@ -40,10 +40,22 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-      redirect_to action: :show, id: @user, notice: 'ok'
+      redirect_to action: :show, id: @user
     else
       render action: "edit"
     end
+  end
+
+  def spg
+    user = User.find(params[:id])
+    user.update_attribute(:photographer, !user.photographer)
+    redirect_to :back
+  end
+  
+  def sad
+    user = User.find(params[:id])
+    user.update_attribute(:admin, !user.admin)
+    redirect_to :back
   end
 
   # DELETE /users/1

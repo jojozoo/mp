@@ -14,6 +14,7 @@ Mp::Application.routes.draw do
   post   '/findpwd'       => 'sessions#findpwd'
 
   get    '/profile'       => 'users#profile'
+  get    '/pg/:id'        => 'users#pg', as: :pg # 摄影师地址
   get    '/search'        => 'search#index'
   match '/ajax/tui/:push/:source/:id' => 'ajax#tui', via: :post, as: :ajax_tui # 推
   match '/ajax/del/:source/:id'       => 'ajax#del', via: :post, as: :ajax_del # 删除
@@ -117,7 +118,7 @@ Mp::Application.routes.draw do
     get  '/basic'  => 'sessions#basic'
     get  '/refresh'  => 'sessions#refresh'
     resources :feedbacks
-    resources :sbanners, as: :banners, :controller => "banners"
+    resources :sbanners, as: :banners, :path => :banners, :controller => "banners"
     resources :sbgs, as: :bgs, :path => :bgs, :controller => "bgs"
     resources :ads do
       member do
@@ -130,7 +131,12 @@ Mp::Application.routes.draw do
     resources :sends
     # resources :products do
     # end
-    resources :users, except: [:new, :create]
+    resources :users, except: [:new, :create] do
+      member do
+        get :spg
+        get :sad
+      end
+    end
     resources :images do
       collection do
         get :all
@@ -143,6 +149,7 @@ Mp::Application.routes.draw do
       member do
         get :state
         get :totop
+        get :tui
       end
     end
     resources :works do

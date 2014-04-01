@@ -44,5 +44,6 @@ class WorksController < ApplicationController
 
     def show
         @work = Work.find(params[:id])
+        @work.visits.create(user_id: current_user.try(:id))
     end
 end

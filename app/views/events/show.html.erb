@@ -39,45 +39,26 @@
 
 					<ul class="breadcrumb" style="margin-bottom: 10px;">
 						<li>
-							<a href="javascript:void(0);" class="">最新上传</a>
+							<%= link_to '最新上传', event_path(@event.id, o: 'id desc') %>
 						</li>
 						<li>
-							<a href="javascript:void(0);" class="">人气最高</a>
+							<%= link_to '人气最高', event_path(@event.id, o: 'visits_count desc') %>
 						</li>
 						<li>
-							<a href="javascript:void(0);" class="">评论最多</a>
+							<%= link_to '评论最多', event_path(@event.id, o: 'comments_count desc') %>
 						</li>
-						<li>
-							<a href="javascript:void(0);" class="">每周热图</a>
-						</li>
-						<li>
-							<a href="javascript:void(0);" class="">只看自己</a>
-						</li>
-						<!-- <a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
-							<i class="icon-th"></i>
-						</a>
-						<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
-							<i class="icon-th-list"></i>
-						</a>
-						<a href="/e" class="btn-xs pull-right" style="margin: 0 -10px 2px 10px;font-size: 18px;display:block;"> 
-							<i class="icon-th-large"></i>
-						</a> -->
 					</ul>
 					<div class="row">
 						<% @works.each do |work| %>
 							<div class="col-sm-6 col-md-3">
 								<div class="thumbnail">
-									<%= link_to image_tag(work.cover.picture(:thumb)), work_path(work.id), target: '_blank' %>
+									<%= link_to image_tag(work.cover.picture(:cover)), work_path(work.id), target: '_blank' %>
 									<div class="caption caption-border">
 										<div style="margin: 6px 0;">
 											<%= work.desc.present? ? work.desc : "暂无描述" %>
 										</div>
-										<span class="push-thumbs-up">点赞(8)</span>
-										<span class="push-heart">喜欢(12)</span>
-										<span class="push-pushpin">收藏(0)</span>
-										<span class="push-ok-circle">推荐(198)</span>
-										<br>
 										<span>上传时间:<%= work.created_at.to_date %></span>
+										<span class="pull-right" style="color: red;">组图(<%= work.images_count %>)张</span>
 									</div>
 								</div>
 							</div>

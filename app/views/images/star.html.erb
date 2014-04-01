@@ -1,5 +1,5 @@
 <%= render "nav" %>
-<%= render partial: 'images/user', collection: @users %>
+<%= render partial: 'images/user', collection: @pushes.map(&:source) %>
 <style type="text/css">
 .star {
     margin-bottom: 10px;

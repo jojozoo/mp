@@ -34,6 +34,10 @@
 							<div class="vcard-item"><%= @event.channel %></div>
 						</li>
 						<li>
+							<span class="item-key">推荐活动(显示到首页)</span>
+							<div class="vcard-item"><%= link_to '推荐', tui_admin_event_path(@event.id) %></div>
+						</li>
+						<li>
 							<span class="item-key">显示到导航</span>
 							<div class="vcard-item">
 								(<%= @event.totop ? '在导航' : '未设置' %>)

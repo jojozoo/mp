@@ -82,13 +82,12 @@
 			</div>
 			<div class="box_con">
 				<ul class="list-unstyled">
-					<li><a href="/">Ruby</a></li>
-					<li><a href="/">Mysql</a></li>
-					<li><a href="/">MongoDB</a></li>
-					<li><a href="/">JavaScript</a></li>
-					<li><a href="/">JQuery</a></li>
-					<li><a href="/">Phonegap</a></li>
-					<li><a href="/">Titanium</a></li>
+					<% Push.where(channel: '推荐重点').order('id desc').limit(12).each do |push| %>
+						<% topic = push.source %>
+						<li>
+							<%= link_to topic.title, topic_path(topic.id) %>
+						</li>
+					<% end %>
 				</ul>
 			</div>
 		</div>

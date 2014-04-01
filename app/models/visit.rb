@@ -15,5 +15,5 @@
 class Visit < ActiveRecord::Base
   attr_accessible :del, :mark, :user_id, :obj_id, :obj_type
   
-  belongs_to :obj
+  belongs_to :obj, polymorphic: true, counter_cache: true
 end

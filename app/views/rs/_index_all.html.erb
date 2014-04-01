@@ -1,71 +1,39 @@
 <div class="row">
     <div class="col-md-6">
         <div class="thumbnail">
-            <a href="/gs/32" style="display:block" target="_blank">
-                <img src="http://kpkpw.com/attachment/201403/28/19563_1396019005b074.jpg" alt="">
-            </a>
+            <%= link_to image_tag(@star.obj.picture(:big), style: 'height:374px;width: auto;') %>
             <div class="caption" style="font-size: 14px;">
-                <a href="">
-                    3月28日快拍之星：古城三月
-                </a>
-                <a href="" class="pull-right">
-                    查看更多>>
-                </a>
+                <%= link_to user_path(@star.source_id) do %>
+                    <%= @star.updated_at.to_date %>漫拍之星：<%= @star.source.username %>
+                <% end %>
+                <%= link_to '查看更多>>', star_images_path, class: 'pull-right' %>
             </div>
         </div>
     </div>
     <div class="col-md-6">
         <div class="row">
+            <% @yts[0..1].each do |yt| %>
             <div class="col-md-6">
                 <div class="thumbnail">
-                    <a href="/gs/32" style="display:block" target="_blank">
-                        <img alt="6364d3f0f4" src="/system/images/33/1396023015/000/000/033/cover/182be0c5cd.jpg?1396023015">
-                    </a>
+                    <%= link_to image_tag(yt.obj.picture(:cover)) %>
                     <div class="caption" style="font-size: 14px;">
-                        <a href="">
-                            03月28日快拍图选(晚上版)
-                        </a>
+                        <%= link_to yt.mark, images_path(o: 'eve') %>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="thumbnail">
-                    <a href="/gs/32" style="display:block" target="_blank">
-                        <img alt="C16a5320fa" src="/system/images/34/1396023017/000/000/034/cover/e369853df7.jpg?1396023017">
-                    </a>
-                    <div class="caption" style="font-size: 14px;">
-                        <a href="">
-                            03月28日快拍图选(下午版)
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <% end %>
         </div>
         <div class="row">
+            <% @yts[2..-1].each do |yt| %>
             <div class="col-md-6">
                 <div class="thumbnail">
-                    <a href="/gs/32" style="display:block" target="_blank">
-                        <img alt="34173cb38f" src="/system/images/35/1396023018/000/000/035/cover/1c383cd30b.jpg?1396023018">
-                    </a>
+                    <%= link_to image_tag(yt.obj.picture(:cover)) %>
                     <div class="caption" style="font-size: 14px;">
-                        <a href="">
-                            03月28日快拍图选(上午版)
-                        </a>
+                        <%= link_to yt.mark, images_path(o: 'eve') %>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="thumbnail">
-                    <a href="/gs/32" style="display:block" target="_blank">
-                        <img alt="6ea9ab1baa" src="/system/images/36/1396023019/000/000/036/cover/19ca14e7ea.jpg?1396023019">
-                    </a>
-                    <div class="caption" style="font-size: 14px;">
-                        <a href="">
-                            03月28日快拍图选(上午版)
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <% end %>
         </div>
     </div>
 </div>

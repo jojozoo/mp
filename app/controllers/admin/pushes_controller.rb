@@ -10,13 +10,11 @@ class Admin::PushesController < Admin::ApplicationController
       source_type: 'Image'
     }
     if params[:channel] == '漫拍之星'
-      attrs.merge(source_id: obj.user_id, source_type: 'User')
-    end
-    if params[:channel] == '推荐作品'
-      attrs.merge(source_id: obj.work_id, source_type: 'Work')
+      attrs.merge!(source_id: obj.user_id, source_type: 'User')
     end
     if params[:channel] == '推荐摄影师'
-      attrs.merge(source_id: obj.user_id, source_type: 'User')
+      render text: '' and return unless obj.user.photographer
+      attrs.merge!(source_id: obj.user_id, source_type: 'User')
     end
     push = Push.where(attrs).first
     mark = mark_val params[:channel]

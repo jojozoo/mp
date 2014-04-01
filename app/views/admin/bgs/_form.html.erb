@@ -1,4 +1,4 @@
-<%= simple_form_for ['admin', @bg], validate: true do |f| %>
+<%= simple_form_for @bg, url: @bg.new_record? ? admin_bgs_path : admin_bg_path(@bg), validate: true do |f| %>
 	<%= f.error_notification %>
 	<div class="form-group file optional site_bg_photo">
 		<%= f.label :photo %>

@@ -33,7 +33,7 @@
 						<%= @user.admin ? '管理员' : '否' %>
 					</span>
 					<span>
-						<%= link_to '置为管理员', 'javascript:void(0);' %>
+						<%= link_to '置为管理员', sad_admin_user_path(@user.id) %>
 					</span>
 				</td>
 			</tr>
@@ -113,7 +113,7 @@
 					<span class="uhead-t">角色：</span>
 					<span class="uhead-c">
 						<%= @user.photographer ? '摄影师' : '否' %>
-						<%= link_to '置为摄影师', 'javascript:void(0);' %>
+						<%= link_to '置为摄影师', spg_admin_user_path(@user.id) %>
 					</span>
 				</td>
 			</tr>

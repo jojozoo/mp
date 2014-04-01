@@ -1,6 +1,15 @@
 class EventsController < ApplicationController
 	def index
-		@events = Event.ongoing.paginate(:page => params[:page], per_page: 12).order('id desc')
+		@events = case params[:t]
+		when 'ongoing'
+			Event.ongoing
+		when 'closed'
+			Event.closed
+		else
+			con = params[:tag].present? ? {channel: params[:tag]} : {}
+			Event.where('state > 1').where(con)
+		end.paginate(:page => params[:page], per_page: 12).order('id desc')
+		
 	end
 
 	def new
@@ -28,9 +37,14 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		# TODO 自动跳转到404页面
-		@event = Event.ongoing.find(params[:id])
-		@works = @event.works.limit(20)
+		@event = Event.find(params[:id])
+		# @works = if params[:c].present? and ['推荐作品', '每周热图'].member?(params[:c])
+		# 	params[:o] = 'ps.id desc'
+		# 	@event.works.joins(' inner join pushes ps on ps.source_id = works.id').where(["ps.source_type = 'Work' and channel = ?", params[:c]])
+		# else
+		# 	@event.works
+		# end.paginate(:page => params[:page], per_page: 24).order(params[:o])
+		@works = @event.works.paginate(:page => params[:page], per_page: 24).order(params[:o])
 	end
 
 	def edit

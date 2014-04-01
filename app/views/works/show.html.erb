@@ -32,14 +32,14 @@
                         </div>
                     </div>
                     <div class="basic-attr" style="margin: 15px auto;">
-                        作品 <a href="">43</a>
+                        作品 <a href=""><%= @work.user.works.count %></a>
                         |
-                        点赞 <a href="">20</a>
+                        喜欢 <a href="">0</a>
                         |
                         关注 <a href=""><%= @work.user.followers_count %></a>
                     </div>
                     <p>
-                        浏览: 30
+                        浏览: <%= @work.visits_count %>
                         <br> 
                         时间: <%= humanize(@work.updated_at) %>
                     </p>
@@ -53,10 +53,25 @@
                     <div class="pic">
                         <%= link_to image_tag(image.picture(:big), style: 'max-width:100%;'), image_path(image.id) %>
                         <%= render "/shared/actions", obj: image, as: :obj if sign_in? %>
+                        <% if image.desc.present? %>
+                        <div class="gray-desc" style="background: #fff4e8;margin-top: 0;border-radius: 0;">
+                            <%= image.desc %>
+                        </div>
+                        <% end %>
                     </div>
             </div>
         </div>
         <% end %>
+        <div class="white-col-md">
+            <%= render "shared/respond", url: ajax_com_path('work', @work.id) if current_user %>
+            <hr>
+            <div class="comments">
+                <h5>所有回应</h5>
+                <ul class="media-list">
+                    <%= render partial: 'shared/comment', collection: @work.comments %>
+                </ul>
+            </div>
+        </div>
     </div>
     <div class="col-md-3">
         <div class="radbox">

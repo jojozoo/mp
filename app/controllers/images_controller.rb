@@ -1,13 +1,14 @@
 class ImagesController < ApplicationController
     def index
-        params[:o] = params[:o] || 'all'
-        @images = Image.where(state: true).paginate(:page => params[:page], per_page: 12).order('id desc')
-        case params[:o]
-        when ''
-
-        when ''
-
-        end
+        params[:o] = params[:o] || 'id desc'
+        order = params[:o]
+        @images = if ['tui', 'eve'].member?(params[:o])
+            channel = params[:o].eql?('tui') ? '编辑推荐' : '每日精选'
+            order = 'ps.id desc'
+            Image.joins(" left join (select * from pushes where source_type = 'Image' and channel = '#{channel}') ps on ps.source_id = images.id")
+        else
+            Image.where(state: true)
+        end.paginate(:page => params[:page], per_page: 12).order(order)
     end
 
     def waterfall
@@ -16,7 +17,7 @@ class ImagesController < ApplicationController
     end
 
     def star
-        @users = User.limit(10)
+        @pushes = Push.where(channel: '漫拍之星').paginate(:page => params[:page], per_page: 20).order('id desc')
     end
 
     def show

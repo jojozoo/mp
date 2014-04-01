@@ -1,23 +1,15 @@
 <ul class="breadcrumb second-nav">
 	<li>
-		<a href="/e" class="">
-			全部活动
-		</a>
+		<%= link_to '全部活动', events_path %>
 	</li>
 	<li>
-		<a href="/e" class="">
-			同城活动
-		</a>
+		<%= link_to '同城活动', events_path(tag: '同城活动') %>
 	</li>
 	<li>
-		<a href="/e" class="">
-			正在进行的活动
-		</a>
+		<%= link_to '正在进行的活动', events_path(t: 'ongoing') %>
 	</li>
 	<li>
-		<a href="/e" class="">
-			已结束的活动
-		</a>
+		<%= link_to '已结束的活动', events_path(t: 'closed') %>
 	</li>
 	<%= link_to new_event_path, class: 'btn btn-xs btn-success pull-right', style: 'margin-right: -10px;' do %>
 		<i class="icon-flag"></i>
@@ -36,7 +28,7 @@
 					<p>
 						<%= truncate(event.desc.gsub("<br>", "\r\n"), length: 50) %>
 					</p>
-					<span>人数/图片:<%= 0 %>/190</span>
+					<span>人数/图片:<%= event.members_count %>/<%= event.images_count %></span>
 					<span>结束时间:<%= event.end_time %></span>
 				</div>
 			</div>

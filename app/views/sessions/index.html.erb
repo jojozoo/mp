@@ -1,7 +1,7 @@
 <div class="row">
 	<style type="text/css">
-	.main .breadcrumb{
-		margin-bottom: 20px;
+	.main .col-md-9 .breadcrumb, .main .col-md-12 .breadcrumb{
+		margin-bottom: 15px;
 	}
 	.ad > img{
 		width: 100%;
@@ -15,7 +15,7 @@
 		<%= render 'shared/flexslider' %>
 
 		<div class="row">
-			<% Image.where('event_id is not null and work_id is not null').limit(3).each do |image| %>
+			<% Push.where(channel: '编辑推荐').order('id desc').limit(3).map(&:source).each do |image| %>
 			<div class="col-md-4">
 				<div class="thumbnail">
 					<%= link_to image_tag(image.picture(:cover)), image_path(image), style: 'display:block', target: '_blank' %>
@@ -33,6 +33,18 @@
 		<div class="breadcrumb">
 			<span>每日重点</span>
 		</div>
+		<div class="radbox">
+			<div class="box_con">
+				<ul class="list-unstyled">
+					<% Push.where(channel: '推荐重点').order('id desc').limit(12).each do |push| %>
+						<% topic = push.source %>
+						<li>
+							<%= link_to topic.title, topic_path(topic.id) %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>
 
@@ -41,14 +53,15 @@
 		<div class="breadcrumb">
 			<span>全部活动</span>
 			<div class="pull-right">
-				<a href="">年度活动</a>
-				<a href="">正在进行的活动</a>
-				<a href="">已结束的活动</a>
-				<a href="">浏览更多快拍活动>></a>
+				<%= link_to '年度活动', events_path(tag: '年度活动') %>
+				<%= link_to '正在进行的活动', events_path(t: 'ongoing') %>
+				<%= link_to '已结束的活动', events_path(t: 'closed') %>
+				<%= link_to '浏览更多快拍活动>>', events_path %>
 			</div>
 		</div>
 		<div class="event-tags">
-			<% Event.ongoing.limit(18).each do |event| %>
+			<% Push.where(channel: '推荐活动').order('id desc').limit(18).each do |push| %>
+			<% event = push.source %>
 			<%= link_to event.name, event_path(event.id), class: 'tag' %>
 			<% end %>
 		</div>	
@@ -66,33 +79,18 @@
 		</div>
 	</div>
 </div>
-
-<div class="row">
-	<div class="col-md-12">
-		<div class="breadcrumb">
-			<span>优质话题</span>
-		</div>
-	</div>
-	
-	<div class="col-md-9">
-		
-	</div>
-	<div class="col-md-3">
-	</div>
-</div>
 <div class="row">
 	<div class="col-md-12">
 		<div class="breadcrumb">
 			<span>最新上传</span>
 			<div class="pull-right">
-				<a href="">每日精选</a>
-				<a href="">每日快拍之星</a>
-				<a href="">热门作品</a>
-				<a href="">浏览更多>></a>
+				<%= link_to '每日精选', images_path(o: 'tui') %>
+				<%= link_to '每日快拍之星', star_images_path %>
+				<%= link_to '浏览更多>>', images_path %>
 			</div>
 		</div>
-		<div class="new-works">
-			
+		<div class="row">
+			<%= render partial: 'images/thumb', collection: Image.order('id desc').limit(20), as: :image %>
 		</div>
 	</div>
 </div>

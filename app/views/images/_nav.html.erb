@@ -2,12 +2,11 @@
     <ul class="breadcrumb second-nav">
         <%
         data = {
-            'all'  => ['align-justify', '全部'],
-            'like' => ['heart', '喜欢最多'],
-            'tui'  => ['ok-circle', '编辑推荐'],
-            'hot'  => ['comments', '热门作品'],
-            'nup'  => ['upload', '最新上传'],
-            'eve'  => ['time', '每日精选']
+            'id desc'          => ['upload', '最新上传'],
+            'likes_count desc' => ['heart', '喜欢最多'],
+            'tui'              => ['ok-circle', '编辑推荐'],
+            'comments_count'   => ['comments', '热门作品'],
+            'eve'              => ['time', '每日精选']
         }
         %>
         <% data.each do |key, val| %>

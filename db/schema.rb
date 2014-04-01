@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20140315083035) do
     t.date     "end_time"
     t.integer  "members_count",     :default => 0
     t.integer  "works_count",       :default => 0
+    t.integer  "images_count",      :default => 0
     t.integer  "state",             :default => 0
     t.boolean  "totop",             :default => false
     t.boolean  "del",               :default => false
@@ -383,10 +384,12 @@ ActiveRecord::Schema.define(:version => 20140315083035) do
     t.integer  "winner"
     t.string   "title"
     t.string   "desc"
-    t.integer  "images_count", :default => 0
-    t.boolean  "del",          :default => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.integer  "images_count",   :default => 0
+    t.integer  "visits_count",   :default => 0
+    t.integer  "comments_count", :default => 0
+    t.boolean  "del",            :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
 end
