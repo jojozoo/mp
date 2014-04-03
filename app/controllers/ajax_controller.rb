@@ -1,8 +1,8 @@
 class AjaxController < ApplicationController
 	before_filter :ajax_login
-    # /ajax/laud/user/1
+    # /ajax/like/user/1
     # 应该包含 follow unfollow
-    # tuilaud, tuilike, tuistore, tuirecom
+    # tuilike, tuistore, tuirecom
     def tui
         @obj = params[:source].classify.constantize.find(params[:id])
         @obj.send('tui' + params[:push].pluralize).create(user_id: current_user.id)

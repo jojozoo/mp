@@ -35,11 +35,11 @@ end
 
 # 这些类需要has_many tuis,likes等等
 # {
-#   'User'  => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
-#   'Work'  => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
-#   'Image' => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
-#   'Group' => ['tuis', 'lauds', 'likes', 'stores', 'recoms'],
-#   'Topic' => ['tuis', 'lauds', 'likes', 'stores', 'recoms']
+#   'User'  => ['tuis', 'likes', 'stores', 'recoms'],
+#   'Work'  => ['tuis', 'likes', 'stores', 'recoms'],
+#   'Image' => ['tuis', 'likes', 'stores', 'recoms'],
+#   'Group' => ['tuis', 'likes', 'stores', 'recoms'],
+#   'Topic' => ['tuis', 'likes', 'stores', 'recoms']
 # }.each do |key, val|
 #   key.constantize.class_eval <<-HASCON
 #     #{val.map{|row| "has_many :" + row + ", as: :obj"}.join("\n")}

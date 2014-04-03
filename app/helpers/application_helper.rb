@@ -41,8 +41,6 @@ module ApplicationHelper
   # TODO 重写remote js diabled时不请求
   def link_to_push name, obj, isblock = true
     type, method, icon, str = case name
-    when 'laud'
-      ['lauds', 'tuilaud?', 'thumbs-up', '点赞']
     when 'like'
       ['likes', 'tuilike?', 'heart', '喜欢']
     when 'store'
@@ -50,7 +48,7 @@ module ApplicationHelper
     when 'recom'
       ['recoms', 'tuirecom?', 'ok-circle', '推荐']
     else
-      ['lauds', 'tuilaud?', 'thumbs-up', '点赞']
+      ['likes', 'tuilike?', 'heart', '喜欢']
     end
     class_str = "push-#{type}-#{obj.id}-link"
     class_str += isblock ? ' btn btn-success btn-xs' : ''

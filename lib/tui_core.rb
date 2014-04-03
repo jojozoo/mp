@@ -2,13 +2,9 @@ module TuiCore
   extend ActiveSupport::Concern
   
   included do
-    has_many :tuilauds, as: :obj
     has_many :tuilikes, as: :obj
     has_many :tuistores, as: :obj
     has_many :tuirecoms, as: :obj
-    def tuilaud?(obj)
-      tuilauds.exists?(user_id: obj.id)
-    end
 
     def tuilike?(obj)
       tuilikes.exists?(user_id: obj.id)

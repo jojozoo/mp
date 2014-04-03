@@ -17,7 +17,7 @@ Image 有变化 部署时要改图片名字
   创建相册 modal内容改成异步，和编辑公用一个modal。只需要name字段即可，其余desc和 logo publish先不用管
   我的相册 图片的增删改查批量操作等，这里的上传相册要指定album_id，/gs/new?album_id=xx
 
-  我的动态 像个人设置一样分成4栏 点赞(tuilaud.rb) 喜欢(tuilike.rb) 收藏(tuistore.rb) 推荐(tuirecom.rb)
+  我的动态 像个人设置一样分成3栏 喜欢(tuilike.rb) 收藏(tuistore.rb) 推荐(tuirecom.rb)
 
 我的参与
   活动管理 暂时不需管
@@ -31,10 +31,6 @@ Image 有变化 部署时要改图片名字
 
 再次重启 一定要迁移数据 修改图片路径等
 
-alter table images add hex varchar(255) after picture_updated_at;
-Image.all.each{|i| i.update_attributes(hex: SecureRandom.hex(6))}
-Image.all.each do |i| 
-p = "public/system/images/#{i.id}/original/" + Digest::MD5.hexdigest('hi' + i.id.to_s) + "." + i.picture_file_name.split(".")[1]
-i.update_attributes(picture: File.open(p))
-system "rm public/system/images/#{i.id}/*/" + Digest::MD5.hexdigest('hi' + i.id.to_s) + "." + i.picture_file_name.split(".")[1]
-end
+alter table accepts drop laud_mail;
+alter table accepts drop laud_notice;
+alter table images drop lauds_count;

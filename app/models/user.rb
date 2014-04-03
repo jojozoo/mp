@@ -79,7 +79,6 @@ class User < ActiveRecord::Base
   # has_many :pushes
   # has_many :push_images
 
-  has_many :tuilauds, as: :obj
   has_many :tuilikes, as: :obj
   has_many :tuistores, as: :obj
   has_many :tuirecoms, as: :obj
@@ -226,8 +225,8 @@ class User < ActiveRecord::Base
   # 修改邮箱 修改密码
   # 图片水印: 左中右(/昵称/帐户/mail|第二排http://domain.xx.com)
   ###权限相关(auth)
-  # 邮件提醒: 被关注,加好友,被回应,被喜欢,被点赞,收到漫信
-  # 站内通知: 被关注,加好友,被回应,被喜欢,被点赞,收到漫信
+  # 邮件提醒: 被关注,加好友,被回应,被喜欢,收到漫信
+  # 站内通知: 被关注,加好友,被回应,被喜欢,收到漫信
   ###再考虑
   # 编辑器: 富文本编辑器  Markdown编辑器 (使用帮助)
   # friends表(user_id, friend_id, mark) has_many through 朋友关系表
@@ -235,7 +234,7 @@ class User < ActiveRecord::Base
   # 站内互动: 允许回应(所有,好友,粉丝)针对活动/other,允许漫信(所有,好友,粉丝) 暂时不加
 
   # TODO 参与活动的图片也瀑布流,全部图片上传解决，相册(logo,创建等)，瀑布流也可以正常排列,列表排列
-  # TODO 其中列表排列时后面是详细的点赞，浏览，喜欢等等乱七八糟的
+  # TODO 其中列表排列时后面是详细的浏览，喜欢等等乱七八糟的
   # TODO image/show 有evid,woid和currid来决定作品的浏览。 alid和currid来决定相册的浏览, else 一般浏览
   # TODO 怎么让图片成组,这样方便成组浏览,做为活动作品的一个属性想一下: 可以在work表添加group字段来标示某组, 内容用uid和eventid+随机串
   # TODO (如果参加某活动的所有图片都分为一组，那么不需要此字段, 直接活动where eventid group uid就可以了, 同时 相册和作品分开浏览,但原图必须跳转到一个地址)

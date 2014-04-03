@@ -17,14 +17,12 @@ ActiveRecord::Schema.define(:version => 20140315083035) do
     t.integer  "user_id"
     t.boolean  "followd_mail",   :default => false
     t.boolean  "recom_mail",     :default => false
-    t.boolean  "laud_mail",      :default => false
     t.boolean  "like_mail",      :default => false
     t.boolean  "store_mail",     :default => false
     t.boolean  "comment_mail",   :default => false
     t.boolean  "msg_mail",       :default => false
     t.boolean  "followd_notice", :default => false
     t.boolean  "recom_notice",   :default => false
-    t.boolean  "laud_notice",    :default => false
     t.boolean  "like_notice",    :default => false
     t.boolean  "store_notice",   :default => false
     t.boolean  "comment_notice", :default => false
@@ -139,7 +137,6 @@ ActiveRecord::Schema.define(:version => 20140315083035) do
     t.integer  "work_id"
     t.integer  "album_id"
     t.integer  "state",                :default => 0
-    t.integer  "lauds_count",          :default => 0
     t.integer  "likes_count",          :default => 0
     t.integer  "stores_count",         :default => 0
     t.integer  "recoms_count",         :default => 0

@@ -3,7 +3,6 @@
         <%= link_to image_tag(image.picture.url(:cover)), image_path(image), style: 'display:block', target: '_blank' %>
         <div class="caption">
             <div><%= image.desc %></div>
-            <span title="点赞">点赞(<%= image.lauds_count %>)</span>
             <span title="喜欢">喜欢(<%= image.likes_count %>)</span>
             <span title="收藏">收藏(<%= image.stores_count %>)</span>
             <span title="推荐">推荐(<%= image.recoms_count %>)</span>
