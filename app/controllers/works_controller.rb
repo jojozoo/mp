@@ -16,11 +16,10 @@ class WorksController < ApplicationController
     def create
         event = Event.find(params[:work_event_id])
         params[:work][:cover_id] = params[:desc].keys[0] if params[:work][:cover_id].blank?
-        @work = current_user.works.create!(params[:work])
 
         # TODO 判断照片数量是否至少一张
         @work   = current_user.works.create!(params[:work].merge(event_id: event.id))
-        album   = current_user.albums.find_or_create_by_name(event.name + '活动相册')
+        album   = current_user.albums.find_or_create_by_name(event.name)
         album.update_attributes logo: File.open(Image.find(params[:work][:cover_id]).picture.path)
         current_user.images.where(["id in (?)", params[:desc].keys]).each do |image|
             desc = params[:desc][image.id.to_s]

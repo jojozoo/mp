@@ -8,7 +8,7 @@
 #  event_id             :integer
 #  work_id              :integer
 #  album_id             :integer
-#  state                :integer          default(0)
+#  state                :boolean          default(FALSE)
 #  likes_count          :integer          default(0)
 #  stores_count         :integer          default(0)
 #  recoms_count         :integer          default(0)
@@ -19,6 +19,7 @@
 #  picture_file_size    :integer
 #  picture_updated_at   :datetime
 #  hex                  :string(255)
+#  randomhex            :string(255)
 #  desc                 :string(255)
 #  exif                 :text
 #  wh                   :string(255)

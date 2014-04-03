@@ -96,9 +96,10 @@ class Event < ActiveRecord::Base
   end
                             
   # 作品 参与活动的作品
-  has_many :works
+  # has_many :works
   # 参与活动的图片
-  has_many :images, through: :works, source: :image
+  # has_many :images, through: :works, source: :image
+  has_many :images
   # 参与活动的人
   has_many :members, through: :works, source: :user
   has_many :winner_works, class_name: 'Work', :conditions => '`works`.`winner` > 0', order: 'winner desc'

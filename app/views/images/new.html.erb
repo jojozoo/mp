@@ -32,11 +32,11 @@
 								上传照片
 							</label>
 							<div class="col-sm-6 input-text-add">
-								<input type="file" id="upload-file" tg='image'>
+								<input type="file" id="upload-file">
 							</div>
 						</div>
-						<div class="form-group string required image_event_id">
-							<%= f.label :event_id %>
+						<div class="form-group string required">
+							<%= f.label :event_id, required: true %>
 							<div class="col-sm-6 input-text-add">
 								<%= render 'images/upload/event', f: f %>
 							</div>

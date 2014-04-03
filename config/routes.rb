@@ -27,6 +27,7 @@ Mp::Application.routes.draw do
     collection do
       get :waterfall
       get :star
+      post :upload
     end
     member do
       get :tui

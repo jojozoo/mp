@@ -11,8 +11,8 @@
 #  title          :string(255)
 #  desc           :string(255)
 #  images_count   :integer          default(0)
-#  comments_count :integer
-#  visits_count   :integer
+#  comments_count :integer          default(0)
+#  visits_count   :integer          default(0)
 #  del            :boolean          default(FALSE)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
