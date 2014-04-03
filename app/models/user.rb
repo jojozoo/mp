@@ -219,7 +219,7 @@ class User < ActiveRecord::Base
   end
 
   # TODO
-  # 检查页面显示
+  # topic 增加推荐tag
 
   # from 注册来源
   # 修改邮箱 修改密码
