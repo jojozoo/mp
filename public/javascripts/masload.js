@@ -39,7 +39,7 @@ $(function(){
 
 		// 可以进行一次加载
 		$.ajax( {
-			url: url + '?page=' + nextPage,
+			url: url + '&page=' + nextPage,
 			type: "get",
 			beforeSend: function(){
 				// 显示正在加载模块

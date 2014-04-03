@@ -1,19 +1,34 @@
 class ImagesController < ApplicationController
     def index
-        params[:o] = params[:o] || 'id desc'
-        order = params[:o]
-        @images = if ['tui', 'eve'].member?(params[:o])
-            channel = params[:o].eql?('tui') ? '编辑推荐' : '每日精选'
-            order = 'ps.id desc'
-            Image.joins(" left join (select * from pushes where source_type = 'Image' and channel = '#{channel}') ps on ps.source_id = images.id")
-        else
-            Image.where(state: true)
-        end.paginate(:page => params[:page], per_page: 12).order(order)
+        @images = load_data
     end
 
     def waterfall
-        @images = Image.where(state: true).paginate(:page => params[:page], per_page: 12).order('id desc')
+        @images = load_data
         render '_waterfall', layout: false
+    end
+
+    def load_data
+        order = {
+            'news'  => 'id desc',
+            'likes' => 'likes_count desc',
+            'push'  => 'ps.id desc',
+            'hot'   => 'comments_count desc',
+            'exp'   => 'ps.id desc',
+            'random' => 'randomhex asc'
+        }[params[:order]]
+        unless order
+            params[:order] = 'news'
+            order = 'id desc'
+        end
+        # TODO 不一样的选项render不一样的partial
+        if ['push', 'exp'].member?(params[:order])
+            channel = params[:order].eql?('push') ? '编辑推荐' : '每日一图'
+            # Image.joins(" left join (select * from pushes where source_type = 'Image' and channel = '#{channel}') ps on ps.source_id = images.id")
+            Image.joins(" inner join pushes ps on ps.obj_id = images.id").where("ps.channel = '#{channel}'")
+        else
+            Image.where(state: true)
+        end.paginate(:page => params[:page], per_page: 12).order(order)
     end
 
     def star

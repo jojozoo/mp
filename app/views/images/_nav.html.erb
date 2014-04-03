@@ -2,22 +2,23 @@
     <ul class="breadcrumb second-nav">
         <%
         data = {
-            'id desc'          => ['upload', '最新上传'],
-            'likes_count desc' => ['heart', '喜欢最多'],
-            'tui'              => ['ok-circle', '编辑推荐'],
-            'comments_count'   => ['comments', '热门作品'],
-            'eve'              => ['time', '每日精选']
+            'news'  => ['upload', '最新上传'],
+            'likes' => ['heart', '喜欢最多'],
+            'push'  => ['ok-circle', '编辑推荐'],
+            'hot'   => ['comments', '热门作品'],
+            'exp'   => ['time', '每日一图'],
+            'random' => ['random', '随机浏览']
         }
         %>
         <% data.each do |key, val| %>
         <li>
-            <% if params[:o].eql?(key) %>
+            <% if params[:order].eql?(key) %>
                 <%= link_to 'javascript:void(0);', style: 'color:#999;' do %>
                     <i class="icon-<%= val[0] %>"></i>
                     <%= val[1] %>
                 <% end %>
             <% else %>
-                <%= link_to images_path(o: key) do %>
+                <%= link_to images_path(order: key) do %>
                     <i class="icon-<%= val[0] %>"></i>
                     <%= val[1] %>
                 <% end %>

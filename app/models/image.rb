@@ -32,7 +32,7 @@
 class Image < ActiveRecord::Base
   include TuiCore
   # store :exif
-  attr_accessible :user_id, :event_id, :work_id, :album_id, :warrant, :state, :exif, :wh, :name, :desc, :hex, :picture, :del, :likes_count, :lauds_count, :recoms_count, :stores_count, :comments_count
+  attr_accessible :user_id, :event_id, :work_id, :album_id, :warrant, :state, :exif, :wh, :name, :desc, :randomhex, :hex, :picture, :del, :likes_count, :lauds_count, :recoms_count, :stores_count, :comments_count
   # state 状态 (上传完成: 作品/相册上传过程中跳转了,回来应该接着显示,如果不完成,那么就不显示到活动页或者相册页) 
   # state 改变注定album_id 或event_id有值
   # TODO state 上传过程中存在相册id或者活动id就应该为state true
@@ -64,8 +64,13 @@ class Image < ActiveRecord::Base
 
   after_picture_post_process :load_exif
   before_picture_post_process :gen_hex
+  after_save :random_hex
   def gen_hex
     self.hex = SecureRandom.hex(6)
+  end
+
+  def random_hex
+    self.randomhex = (('a'..'z').to_a + ('A'..'Z').to_a).sample(30).join('')
   end
 
   def load_exif

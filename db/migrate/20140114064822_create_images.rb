@@ -15,6 +15,7 @@ class CreateImages < ActiveRecord::Migration
       t.integer :warrant # 授权
       t.attachment :picture
       t.string :hex
+      t.string :randomhex
       t.string :desc
       t.text   :exif
       t.string :wh
