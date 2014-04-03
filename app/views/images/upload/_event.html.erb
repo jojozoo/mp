@@ -1,10 +1,10 @@
 <% if @event %>
-<%= f.input_field :event_id, as: :string, readonly: true, value: @event.name %>
-<input id="work-event-id" name="work_event_id" type="hidden" value="<%= @event.id %>">
+<%= f.input_field :event_id, as: :string, disabled: true, value: @event.name %>
+<input id="image-event-id" name="image[event_id]" type="hidden" value="<%= @event.id %>">
 <% else %>
 <div class="input-group">
-    <%= f.input_field :event_id, as: :string, readonly: true %>
-    <input id="work-event-id" name="work_event_id" type="hidden">
+    <%= f.input_field :event_id, as: :string, disabled: true, name: 'image-event-id' %>
+    <input id="image-event-id" name="image[event_id]" type="hidden">
     <span class="input-group-addon custom-modal">
         <i class="icon-flag"></i>
     </span>

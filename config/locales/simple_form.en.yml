@@ -79,6 +79,8 @@ en:
         title: '输入标题'
         desc: '详细描述'
         event_id: '选择活动'
+      image:
+        event_id: '选择活动'
       topic:
         title: '标题'
         content: '内容'

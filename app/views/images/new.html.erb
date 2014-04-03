@@ -1,6 +1,6 @@
-<link rel="stylesheet" type="text/css" href="/uploadify/uploadify.css">
+<link rel="stylesheet" type="text/css" href="/uploadify/uploadify.css?v=<%= Time.now.to_i %>">
 <script type="text/javascript" src="/uploadify/jquery.uploadify.js"></script>
-<script type="text/javascript" src="/uploadify/uploadify-work.js"></script>
+<script type="text/javascript" src="/uploadify/uploadify-image.js?v=<%= Time.now.to_i %>"></script>
 <div class="row">
 	<div class="col-md-12">
 		<div class="white-col-md">
@@ -21,8 +21,8 @@
 						width: 100px;
 					}
 					</style>
-					<%= simple_form_for Work.new, html: {class: 'clearfix'}, validate: true do |f| %>
-						<%= f.text_field :cover_id, type: :hidden %>
+					<%= simple_form_for Image.new, html: {class: 'clearfix'}, validate: true do |f| %>
+						<input id="cover_id" name="cover_id" type="hidden">
 						<div class="row uploadify-queue" id="upload-file-queue">
 							<%= render partial: 'images/upload/image', collection: @images, as: :image %>
 						</div>
@@ -32,19 +32,17 @@
 								上传照片
 							</label>
 							<div class="col-sm-6 input-text-add">
-								<input type="file" id="upload-file" tg='work'>
+								<input type="file" id="upload-file" tg='image'>
 							</div>
 						</div>
-						<div class="form-group string required work_event_id">
+						<div class="form-group string required image_event_id">
 							<%= f.label :event_id %>
 							<div class="col-sm-6 input-text-add">
 								<%= render 'images/upload/event', f: f %>
 							</div>
 						</div>
-						<%= f.input :title %>
-						<%= f.input :desc, as: :text %>
 						<div class="form-group">
-							<input class="btn btn-info" style="margin-left:115px;" id="push-work" name="commit" type="submit" value="保存此次作品">	
+							<input class="btn btn-info" style="margin-left:115px;" id="push-image" name="commit" type="submit" value="保存此次作品">	
 						</div>
 					<% end %>
 				</div>

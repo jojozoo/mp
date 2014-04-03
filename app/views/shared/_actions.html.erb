@@ -3,6 +3,9 @@
 		<div class="bgdown bgfade-left-top"></div>
 		<div class="fadedown bgfade-left-top">
 			<p>作者:<%= obj.user.username %></p>
+			<% if obj.user.warrant %>
+				<p>授权方式:<%= $warrant[obj.user.warrant][:name] %></p>
+			<% end %>
 			<% if obj.user.photographer == true %>
 				<p>个人主页:<%= obj.user.site %></p>
 			<% end %>

@@ -30,7 +30,3 @@ Image 有变化 部署时要改图片名字
   粉丝列表 关注列表，参考一下其他网站 可取消关注 头像点击进入/u/id页面
 
 再次重启 一定要迁移数据 修改图片路径等
-
-alter table accepts drop laud_mail;
-alter table accepts drop laud_notice;
-alter table images drop lauds_count;
