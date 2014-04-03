@@ -4,7 +4,7 @@
 <br>
 作品：<%= @image.work ? "##{@image.work.title}#" : '未参加' %>
 <br>
-相册：<%= @image.album.name %>
+相册：<%= @image.album ? @image.album.name : '未发布' %>
 <br>
 用户：<%= link_to @image.user.username, admin_user_path(@image.user_id), target: '_blank' %>(<%= @image.user.followers_count %>)
 <br>
