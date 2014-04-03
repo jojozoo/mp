@@ -38,7 +38,7 @@
                         <li>
                             <span class="item-key">相册:</span>
                             <div class="vcard-item">
-                                <%= @image.album.name %>
+                                <%= @image.album ? @image.album.name : '未上传' %>
                             </div>
                         </li>
                         <li>
