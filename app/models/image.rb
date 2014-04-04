@@ -52,8 +52,36 @@ class Image < ActiveRecord::Base
   # avatar 时自动获取宽高 参考 paperclip.rb 文件
   has_attached_file :picture,
     processors: [:watermark],
-    styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.png", quality: :better}]}],
-    url: "/system/:class/:id/:updated_at/:id_partition/:style/:random.:extension",
+    # styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.png", quality: :better}]}],
+    styles: {
+        :original => {
+          :url => "/system/:class/:id/:updated_at/:id_partition/:style/:random.:extension",
+          :geometry => '',
+          :water_path => "#{Rails.root.to_s}/public/images/water/original.png",
+          :quality => :better
+        },
+        :big => {
+              :geometry => "960x600>",
+            :water_path => "#{Rails.root.to_s}/public/images/water/big.png",
+               :quality => :better
+        },
+        :thumb => {
+              :geometry => "250>",
+            :water_path => "#{Rails.root.to_s}/public/images/water/thumb.png",
+               :quality => :better
+        },
+        :cover => {
+              :geometry => "250x160#",
+            :water_path => "#{Rails.root.to_s}/public/images/water/cover.png",
+               :quality => :better
+        },
+        :small => {
+              :geometry => "100x100>",
+            :water_path => "#{Rails.root.to_s}/public/images/water/small.png",
+               :quality => :better
+        }
+    },
+    url: "/system/:class/:id/:style/:randomp.:extension",
     path: ":rails_root/public/system/:class/:id/:style/:randomp.:extension"
 
   belongs_to :user

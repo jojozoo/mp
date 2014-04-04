@@ -17,3 +17,27 @@ module Paperclip
         end
     end
 end
+
+# default url
+module Paperclip
+  class UrlGenerator
+    def for(style_name, options)
+      escape_url_as_needed(
+        timestamp_as_needed(
+          @attachment_options[:interpolator].interpolate(most_appropriate_url(style_name), @attachment, style_name),
+          options
+      ), options)
+    end
+
+    private
+
+    def most_appropriate_url style_name
+      if @attachment.original_filename.nil?
+        default_url
+      else
+        @attachment_options[:styles][style_name][:url] || @attachment_options[:url]
+      end
+    end
+
+  end
+end
