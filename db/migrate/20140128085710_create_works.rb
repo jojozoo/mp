@@ -9,8 +9,8 @@ class CreateWorks < ActiveRecord::Migration
       t.string :title
       t.string :desc
       t.integer :images_count, default: 0
-      t.integer :visits_count, default: 0
       t.integer :comments_count, default: 0
+      t.integer :visits_count, default: 0
       t.boolean :del, default: false
 
       t.timestamps
