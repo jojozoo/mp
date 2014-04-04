@@ -1,6 +1,6 @@
 class Admin::ImagesController < Admin::ApplicationController
 
-	def all
+	def index
 		# Date.today.beginning_of_day
 		# Date.today.end_of_day
 		params[:date] = params[:date] || Date.today.to_s
@@ -26,7 +26,7 @@ class Admin::ImagesController < Admin::ApplicationController
 		render :basic, layout: false
 	end
 
-	def index
+	def all
 		@images = Image.where(params[:con]).paginate(:page => params[:page], per_page: 20).includes([:user, :event, :work, :album])
 	end
 

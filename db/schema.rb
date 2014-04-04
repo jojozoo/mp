@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(:version => 20140315083035) do
     t.integer  "event_id"
     t.integer  "work_id"
     t.integer  "album_id"
-    t.integer  "state",                :default => 0
+    t.boolean  "state",                :default => false
     t.integer  "likes_count",          :default => 0
     t.integer  "stores_count",         :default => 0
     t.integer  "recoms_count",         :default => 0
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20140315083035) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.string   "hex"
+    t.string   "randomhex"
     t.string   "desc"
     t.text     "exif"
     t.string   "wh"
