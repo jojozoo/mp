@@ -7,7 +7,7 @@
 						<h4>
 							<%= @event.title %>
 							<small>
-								<a class="text-success"><%= Image.count(conditions: {event_id: @event.id}) %></a>张图片&nbsp;&nbsp;
+								<a class="text-success"><%= @event.images_count %></a>张图片&nbsp;&nbsp;
 								<a class="text-success"><%= @event.members_count %></a>人参加
 							</small>
 							<%= link_to '上传到本活动', new_work_path(eid: @event.id), class: 'btn btn-success btn-sm pull-right', style: 'margin-top:-4px;' %>
@@ -38,27 +38,33 @@
 					</div>
 
 					<ul class="breadcrumb" style="margin-bottom: 10px;">
+						<a href="javascript:void(0);" style="color:#999;">
+						<% {
+							'news' => '最新上传',
+							'vist' => '人气最高',
+							'coms' => '评论最多',
+							'myse' => '只看自己'
+						}.each do |key, val|%>
 						<li>
-							<%= link_to '最新上传', event_path(@event.id, o: 'id desc') %>
+							<% if params[:order].eql?(key) %>
+							<%= link_to val, 'javascript:void(0);', style: 'color: #999;' %>
+							<% else %>
+							<%= link_to val, event_path(@event.id, order: key) %>
+							<% end %>
 						</li>
-						<li>
-							<%= link_to '人气最高', event_path(@event.id, o: 'visits_count desc') %>
-						</li>
-						<li>
-							<%= link_to '评论最多', event_path(@event.id, o: 'comments_count desc') %>
-						</li>
+						<% end %>
 					</ul>
 					<div class="row">
-						<% @works.each do |work| %>
+						<% @images.each do |image| %>
 							<div class="col-sm-6 col-md-3">
 								<div class="thumbnail">
-									<%= link_to image_tag(work.cover.picture(:cover)), work_path(work.id), target: '_blank' %>
+									<%= link_to image_tag(image.picture(:thumb)), image_path(image.id), target: '_blank' %>
 									<div class="caption caption-border">
 										<div style="margin: 6px 0;">
-											<%= work.desc.present? ? work.desc : "暂无描述" %>
+											<%= image.desc.present? ? image.desc : "暂无描述" %>
 										</div>
-										<span>上传时间:<%= work.created_at.to_date %></span>
-										<span class="pull-right" style="color: red;">组图(<%= work.images_count %>)张</span>
+										<span>上传时间:<%= humanize image.created_at %></span>
+										<!-- <span class="pull-right" style="color: red;">组图(10)张</span> -->
 									</div>
 								</div>
 							</div>

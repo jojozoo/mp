@@ -38,13 +38,20 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
-		# @works = if params[:c].present? and ['推荐作品', '每周热图'].member?(params[:c])
-		# 	params[:o] = 'ps.id desc'
-		# 	@event.works.joins(' inner join pushes ps on ps.source_id = works.id').where(["ps.source_type = 'Work' and channel = ?", params[:c]])
-		# else
-		# 	@event.works
-		# end.paginate(:page => params[:page], per_page: 24).order(params[:o])
-		@works = @event.works.paginate(:page => params[:page], per_page: 24).order(params[:o])
+		order, cond = case params[:order]
+		when 'news'
+			['id desc', {}]
+		when 'vist'
+			# ['visits_count desc', {}]
+			['likes_count desc', {}]
+		when 'coms'
+			['comments_count desc', {}]
+		when 'myse'
+			c = sign_in? ? {user_id: current_user.id} : {}
+			['id desc', c]
+		else
+		end
+		@images = @event.images.where(cond).paginate(:page => params[:page], per_page: 24).order(order)
 	end
 
 	def edit

@@ -35,10 +35,12 @@ $(function(){
 		if($(this).hasClass('js-image-cover-page')){
 			$(this).removeClass('js-image-cover-page');
 			$('#work_cover_id').removeAttr('value');
+			$('#cover-id').removeAttr('value');
 		} else {
 			$(".js-image-cover.js-image-cover-page").removeClass('js-image-cover-page');
 			$(this).addClass('js-image-cover-page');
 			$('#work_cover_id').val(_tid);
+			$('#cover-id').removeAttr('value');
 		}
 	});
 

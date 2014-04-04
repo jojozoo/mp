@@ -52,7 +52,7 @@
             <div class="col-md-12">
                     <div class="pic">
                         <%= link_to image_tag(image.picture(:big), style: 'max-width:100%;'), image_path(image.id) %>
-                        <%= render "/shared/actions", obj: image, as: :obj if sign_in? %>
+                        <%= render "/shared/actions", obj: image, as: :obj %>
                         <% if image.desc.present? %>
                         <div class="gray-desc" style="background: #fff4e8;margin-top: 0;border-radius: 0;">
                             <%= image.desc %>

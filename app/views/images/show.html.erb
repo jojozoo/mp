@@ -21,7 +21,7 @@
 					</div>
 					<div class="pic">
 						<%= link_to image_tag(@image.picture(:big), style: 'max-width:100%;') %>
-						<%= render "/shared/actions", obj: @image, as: :obj if sign_in? %>
+						<%= render "/shared/actions", obj: @image, as: :obj %>
 					</div>
 					<hr>
 					<ul class="list-unstyled clearfix">
