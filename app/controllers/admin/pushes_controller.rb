@@ -1,7 +1,7 @@
 class Admin::PushesController < Admin::ApplicationController
 
   def tui
-    obj  = Image.find_id_and_state(params[:id], true)
+    obj  = Image.find_by_id_and_state(params[:id], true)
     render text: 'success' and return unless obj
     attrs = {
       obj_id: obj.id,

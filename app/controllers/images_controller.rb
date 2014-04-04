@@ -37,6 +37,7 @@ class ImagesController < ApplicationController
 
     def show
         @image = Image.find_by_id_and_state(params[:id], true)
+        @image.visits.create(user_id: current_user.try(:id))
     end
 
     # 图片访问权限控制
@@ -71,17 +72,19 @@ class ImagesController < ApplicationController
         # TODO 判断照片数量是否至少一张
         album   = current_user.albums.find_or_create_by_name(event.name)
         album.update_attributes logo: File.open(Image.find(params[:cover_id]).picture.path)
+        work = Work.create({user_id: current_user.id, event_id: event.id})
         current_user.images.where(["id in (?)", params[:desc].keys]).each do |image|
             desc = params[:desc][image.id.to_s]
             image.update_attributes(
                 album_id: album.id, 
                 event_id: event.id, 
+                work_id: work.id,
                 state: true, 
                 desc: desc)
         end
 
         image_count = Image.where(event_id: event.id).count
-        membe_count = Work.uniq.where(event_id: event.id).pluck(:user_id).length
+        membe_count = Image.uniq.where(event_id: event.id).pluck(:user_id).length
         event.update_attributes(images_count: image_count, members_count: membe_count)
         redirect_to event_path(event.id, order: 'myse')
     end

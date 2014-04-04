@@ -220,6 +220,7 @@ class User < ActiveRecord::Base
 
   # TODO
   # topic 增加推荐tag
+  # 活动改为topic编辑
 
   # from 注册来源
   # 修改邮箱 修改密码
