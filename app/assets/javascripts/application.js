@@ -11,5 +11,6 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require kindeditor
 //= require_directory ./all
 //= require_directory ./website

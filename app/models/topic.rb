@@ -38,9 +38,9 @@ class Topic < ActiveRecord::Base
   validates_presence_of     :content,
                             message: '不能为空'
 
-  validates_length_of       :content,
-                            within: 10..300,
-                            message: '长度10..300字'
+  # validates_length_of       :content,
+  #                           within: 10..300,
+  #                           message: '长度10..300字'
 
   validates_presence_of     :tag_id,
                             message: '不能为空'

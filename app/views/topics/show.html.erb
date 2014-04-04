@@ -36,7 +36,9 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <pre style="font-size: 14px;border: 0;background: #fff;padding: 0;"><code><%= @topic.content %></code></pre>
+                    <div class="kindeditor">
+                        <%= raw @topic.content %>
+                    </div>
                     <%= render "shared/respond", url: ajax_com_path('topic', @topic.id) if current_user %>
                     <hr>
                     <div class="comments">

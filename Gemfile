@@ -18,6 +18,7 @@ gem 'by_star'
 gem 'paperclip', '~> 3.0'
 # 获取EXIF信息
 gem 'exifr'
+gem 'rails_kindeditor', :path => 'vendor/gems/rails_kindeditor-0.4.5'
 
 # oauth
 gem 'oauth2'

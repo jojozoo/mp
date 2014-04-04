@@ -1,6 +1,7 @@
 <%= simple_form_for @topic, validate: true do |f| %>
     <%= f.input :title %>
-    <%= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
+    <%#= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
+    <%= f.input :content, :as => :kindeditor %>
     <%= f.input :tag_id, collection: Tag.all.map{|t| [t.name, t.id]}, include_blank: false %>
     <!-- <div class="form-group string optional topic_tag">
         <label class="string optional col-sm-2 control-label" for="topic_tag">标签</label>
