@@ -15,6 +15,24 @@
 #  stores_count         :integer          default(0)
 #  recoms_count         :integer          default(0)
 #  comments_count       :integer          default(0)
+#  pushes_count         :integer          default(0)
+#  choice               :boolean          default(FALSE)
+#  choiced_at           :datetime
+#  pushed_at            :datetime
+#  warrant              :integer
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
+#  hex                  :string(255)
+#  randomhex            :string(255)
+#  desc                 :string(255)
+#  exif                 :text
+#  wh                   :string(255)
+#  del                  :boolean          default(FALSE)
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
 
 #  pushes_count         :integer          default(0)
 #  pushed_at            :datetime
