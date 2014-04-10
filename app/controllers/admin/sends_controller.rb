@@ -14,7 +14,8 @@ class Admin::SendsController < Admin::ApplicationController
     def create
         @send = Send.new(params[:send])
         if @send.save
-            redirect_to action: :index, notice: '创建成功'
+            flash[:notice] = '创建成功'
+            redirect_to action: :index
         else
             render action: "new"
         end

@@ -20,6 +20,15 @@ class Admin::SessionsController < Admin::ApplicationController
   def basic
     
   end
+
+  def msg
+    if request.post?
+      User.all.each do |u|
+        current_user.send_msg(u, params[:content])
+      end
+      flash[:notice] = "发送成功"
+    end
+  end
   
 end
 

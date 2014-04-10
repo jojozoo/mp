@@ -119,6 +119,8 @@ Mp::Application.routes.draw do
     get  '/log'  => 'sessions#log'
     get  '/basic'  => 'sessions#basic'
     get  '/refresh'  => 'sessions#refresh'
+    get  '/msg' => 'sessions#msg'
+    post '/msg' => 'sessions#msg'
     resources :feedbacks
     resources :sbanners, as: :banners, :path => :banners, :controller => "banners"
     resources :sbgs, as: :bgs, :path => :bgs, :controller => "bgs"

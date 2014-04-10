@@ -18,7 +18,7 @@ class Admin::PushesController < Admin::ApplicationController
       attrs.merge!(source_id: obj.user_id, source_type: 'User')
     end
     push = Push.where(attrs).first
-    push = Push.create!(attrs.merge(mark: mark)) unless push
+    push = Push.create!(attrs.merge(mark: '暂无备注')) unless push
     render text: 'success'
   end
 
