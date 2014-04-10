@@ -35,7 +35,11 @@ module Paperclip
       if @attachment.original_filename.nil?
         default_url
       else
-        @attachment_options[:styles][style_name][:url] || @attachment_options[:url]
+        if @attachment.instance.is_a?(Image) and style_name.to_sym.eql?(:original)
+          "/system/:class/:id/:updated_at/:id_partition/:style/:random.:extension"
+        else
+          @attachment_options[:url]
+        end
       end
     end
 

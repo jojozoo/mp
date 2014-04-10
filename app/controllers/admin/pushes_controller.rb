@@ -27,7 +27,7 @@ class Admin::PushesController < Admin::ApplicationController
 
   def mark_val channel
     case channel
-    when '每日一图'
+    when '每日精选'
       mark_style( Time.now )
     else
       '无'

@@ -20,13 +20,13 @@
 		</div>
 	</div>
 	<div class="ondown on-left-bottom">
-		<% json = JSON.parse(obj.exif).slice('make', 'model', 'date_time') rescue {} %>
+		<% json = JSON.parse(obj.exif).slice(*Image::EXIFLETH) rescue {} %>
 		<% if json.present? %>
 		<div class="bgdown bgfade-left-bottom"></div>
 		<div class="fadedown bgfade-left-bottom">
 			<p>
 				<% json.each do |k, v| %>
-					<%= k %>：<%= v %>
+					<%= Image::EXIFDATA[k] %>：<%= v %>
 					<br>
 				<% end %>
 			</p>

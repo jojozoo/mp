@@ -32,6 +32,7 @@
 # require 'paperclip_processors/watermark'
 class Image < ActiveRecord::Base
   include TuiCore
+  include ImageCore
   # store :exif
   attr_accessible :user_id, :event_id, :work_id, :album_id, :warrant, :state, :visits_count, :exif, :wh, :name, :desc, :randomhex, :hex, :picture, :del, :likes_count, :recoms_count, :stores_count, :comments_count
   # state 状态 (上传完成: 作品/相册上传过程中跳转了,回来应该接着显示,如果不完成,那么就不显示到活动页或者相册页) 
@@ -52,35 +53,7 @@ class Image < ActiveRecord::Base
   # avatar 时自动获取宽高 参考 paperclip.rb 文件
   has_attached_file :picture,
     processors: [:watermark],
-    # styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.png", quality: :better}]}],
-    styles: {
-        :original => {
-          :url => "/system/:class/:id/:updated_at/:id_partition/:style/:random.:extension",
-          :geometry => '',
-          :water_path => "#{Rails.root.to_s}/public/images/water/original.png",
-          :quality => :better
-        },
-        :big => {
-              :geometry => "960x600>",
-            :water_path => "#{Rails.root.to_s}/public/images/water/big.png",
-               :quality => :better
-        },
-        :thumb => {
-              :geometry => "250>",
-            :water_path => "#{Rails.root.to_s}/public/images/water/thumb.png",
-               :quality => :better
-        },
-        :cover => {
-              :geometry => "250x160#",
-            :water_path => "#{Rails.root.to_s}/public/images/water/cover.png",
-               :quality => :better
-        },
-        :small => {
-              :geometry => "100x100>",
-            :water_path => "#{Rails.root.to_s}/public/images/water/small.png",
-               :quality => :better
-        }
-    },
+    styles: Hash[Water.map{|k,v| [k, {geometry: v, water_path: "#{Rails.root.to_s}/public/images/water/#{k}.png", quality: :better}]}],
     url: "/system/:class/:id/:style/:randomp.:extension",
     path: ":rails_root/public/system/:class/:id/:style/:randomp.:extension"
 
@@ -101,28 +74,6 @@ class Image < ActiveRecord::Base
 
   def random_hex
     self.randomhex = (('a'..'z').to_a + ('A'..'Z').to_a).sample(30).join('')
-  end
-
-  def load_exif
-    original_filename = picture.original_filename
-    attachment        = picture.queued_for_write[:original].path # picture.path
-    self.exif = begin
-        hash = case original_filename
-        when /\.(jpg|jpeg)$/i
-            EXIFR::JPEG.new(attachment).to_hash
-        when /\.(tif|tiff)$/i
-            tiff = EXIFR::TIFF.new(attachment)
-            tiff.to_hash.merge(:width => tiff.width, :height => tiff.height)
-        else
-            {}
-        end
-
-        hash.each {|k,v| hash[k] = case v when Rational then v.to_f when EXIFR::TIFF::Orientation then v.to_i else v end }
-        hash
-    rescue
-        {}
-    end.to_json
-    self.wh = Paperclip::Geometry.from_file(picture.queued_for_write[:thumb].path).to_s rescue '250x160'
   end
 
   def prev(offset = 0)

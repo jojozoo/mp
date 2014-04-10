@@ -3,11 +3,151 @@
 	<div class="sidebar_inner_scroll">
 		<div class="sidebar_inner">
 			<div id="side_accordion" class="panel-group">
-				<% if ['feedbacks', 'ads', 'banners', 'bgs', 'sends', 'sessions'].member?(controller_name) %>
-					<%= render 'admin/shared/baradmin' %>
-				<% else %>
-					<%= render 'admin/shared/baruser' %>
-				<% end %>
+				<!-- slidebar -->
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<a href="#collapseAdmin" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+							<i class="icon-cog"></i>
+							网站设置
+						</a>
+					</div>
+					<div class="accordion-body collapse <%= 'in' if ['feedbacks', 'ads', 'banners', 'bgs', 'sends', 'sessions'].member?(controller_name) %>" id="collapseAdmin">
+						<div class="panel-body">
+							<ul class="nav nav-pills nav-stacked">
+								<li>
+									<%= link_to '反馈信息', admin_feedbacks_path, class: 'accordion-toggle' %>
+								</li>
+								<li>
+									<%= link_to '广告管理', admin_ads_path, class: 'accordion-toggle' %>
+								</li>
+								<li class="nav-header">网站图片</li>
+								<li>
+									<%= link_to 'Banner', admin_banners_path %>
+								</li>
+								<li>
+									<%= link_to '背景模板', admin_bgs_path %>
+								</li>
+								<li class="nav-header">系统通知</li>
+								<li>
+									<%= link_to '通知列表', admin_sends_path %>
+								</li>
+								<li>
+									<%= link_to '邮件相关', admin_resque_server_path %>
+								</li>
+								<li class="nav-header">系统设置</li>
+								<li>
+									<%= link_to '网站信息', '/admin/info' %>
+								</li>
+								<li>
+									<%= link_to '网站日志', '/admin/log' %>
+								</li>
+								<li>
+									<%= link_to '基础数据', '/admin/basic' %>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<%= link_to admin_users_path, class: 'accordion-toggle' do %> 
+						<i class="icon-user"></i>
+						用户管理
+						<% end %>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<%= link_to admin_events_path, class: 'accordion-toggle' do %> 
+						<i class="icon-flag"></i>
+						活动管理
+						<% end %>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<%= link_to admin_works_path, class: 'accordion-toggle' do %> 
+						<i class="icon-camera"></i>
+						作品管理
+						<% end %>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<%= link_to admin_images_path, class: 'accordion-toggle' do %> 
+						<i class="icon-picture"></i>
+						图库管理
+						<% end %>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<%= link_to admin_tags_path, class: 'accordion-toggle' do %> 
+						<i class="icon-tag"></i>
+						标签管理
+						<% end %>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<%= link_to admin_messages_path, class: 'accordion-toggle' do %> 
+						<i class="icon-envelope"></i>
+						漫信管理
+						<% end %>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<%= link_to admin_topics_path, class: 'accordion-toggle' do %> 
+						<i class="icon-comment"></i>
+						话题管理
+						<% end %>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<%= link_to admin_comments_path, class: 'accordion-toggle' do %> 
+						<i class="icon-reply"></i>
+						回应管理
+						<% end %>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<a href="#tuis" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
+							<i class="icon-ok-circle"></i>
+							推荐管理
+						</a>
+					</div>
+					<div class="accordion-body collapse <%= 'in' if controller_name.eql?('pushes') %>" id="tuis">
+						<div class="panel-body">
+							<ul class="nav nav-pills nav-stacked">
+								<li>
+									<%= link_to '全部推荐', admin_pushes_path %>
+								</li>
+								<li>
+									<%= link_to '推荐用户', admin_pushes_path(t: 'User') %>
+								</li>
+								<li>
+									<%= link_to '推荐作品', admin_pushes_path(t: 'Work') %>
+								</li>
+								<li>
+									<%= link_to '推荐图片', admin_pushes_path(t: 'Image') %>
+								</li>
+								<li>
+									<%= link_to '推荐话题', admin_pushes_path(t: 'Topic') %>
+								</li>
+								<li>
+									<%= link_to '推荐活动', admin_pushes_path(t: 'Event') %>
+								</li>
+								<li>
+									<%= link_to '推荐重点', admin_pushes_path(t: 'Zhong') %>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- slidebar -->
 			</div>
 		</div>
 	</div>

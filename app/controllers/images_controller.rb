@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
         end
         # TODO 不一样的选项render不一样的partial
         if ['push', 'exp'].member?(params[:order])
-            channel = params[:order].eql?('push') ? '编辑推荐' : '每日一图'
+            channel = params[:order].eql?('push') ? '编辑推荐' : '每日精选'
             # Image.joins(" left join (select * from pushes where source_type = 'Image' and channel = '#{channel}') ps on ps.source_id = images.id")
             Image.joins(" inner join pushes ps on ps.obj_id = images.id").where("ps.channel = '#{channel}'")
         else
@@ -42,18 +42,12 @@ class ImagesController < ApplicationController
 
     # 图片访问权限控制
     def browse
-        send_path = "public/system/#{params[:class]}/#{params[:id]}/#{params[:style]}/#{params[:random]}.#{params[:format]}"
-        if params[:class].eql?('images') and image = Image.find_by_id(params[:id])
-            send_path = image.picture.path(params[:style])
-            if params[:style].eql?('original')
-                if sign_in? and (current_user.id.eql?(image.user_id) or current_user.admin)
-                    # 反着写
-                else
-                    render text: request.path + 'not found', status: 404 and return
-                end
-            end
+        image = Image.find_by_id(params[:id])
+        if sign_in? and (current_user.id.eql?(image.user_id) or current_user.admin)
+            send_file image.picture.path(:original), disposition: 'inline'
+        else
+            render text: request.path + 'not found', status: 404 and return
         end
-        send_file send_path, disposition: 'inline'
     end
     
     def new

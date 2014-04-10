@@ -11,23 +11,7 @@
 		<div class="ad">
 			<img src="/images/ad.jpg" alt="我的十大手机图片征集">
 		</div>
-
 		<%= render 'shared/flexslider' %>
-
-		<div class="row">
-			<% Push.where(channel: '编辑推荐').order('id desc').limit(3).map(&:source).each do |image| %>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<%= link_to image_tag(image.picture(:cover)), image_path(image), style: 'display:block', target: '_blank' %>
-					<div class="caption">
-						<%= link_to "##{image.event.name}#", event_path(image.event_id) %>
-						<br>
-						<%= link_to '更多活动>>', events_path %>
-					</div>
-				</div>
-			</div>
-			<% end %>
-		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="breadcrumb">
@@ -49,7 +33,7 @@
 </div>
 
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-9">
 		<div class="breadcrumb">
 			<span>全部活动</span>
 			<div class="pull-right">
@@ -66,13 +50,6 @@
 			<% end %>
 		</div>	
 	</div>
-</div>
-<div class="row">
-	<div class="col-md-9">
-		<div class="breadcrumb">
-			<span>编辑推荐</span>
-		</div>
-	</div>
 	<div class="col-md-3">
 		<div class="breadcrumb">
 			<span>推荐摄影师</span>
@@ -82,9 +59,10 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="breadcrumb">
-			<span>最新上传</span>
+			<span>编辑推荐</span>
 			<div class="pull-right">
-				<%= link_to '每日一图', images_path(o: 'tui') %>
+				<%= link_to '最新上传', images_path(order: 'news') %>
+				<%= link_to '每日精选', images_path(order: 'exp') %>
 				<%= link_to '漫拍之星', star_images_path %>
 				<%= link_to '浏览更多>>', images_path %>
 			</div>
