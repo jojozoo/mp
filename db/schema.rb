@@ -136,11 +136,17 @@ ActiveRecord::Schema.define(:version => 20140315083035) do
     t.integer  "event_id"
     t.integer  "work_id"
     t.integer  "album_id"
+    t.integer  "groupid"
     t.boolean  "state",                :default => false
+    t.integer  "visits_count",         :default => 0
     t.integer  "likes_count",          :default => 0
     t.integer  "stores_count",         :default => 0
     t.integer  "recoms_count",         :default => 0
     t.integer  "comments_count",       :default => 0
+    t.integer  "pushes_count",         :default => 0
+    t.datetime "pushed_at"
+    t.boolean  "choice",               :default => false
+    t.datetime "choiced_at"
     t.integer  "warrant"
     t.string   "picture_file_name"
     t.string   "picture_content_type"
@@ -383,8 +389,8 @@ ActiveRecord::Schema.define(:version => 20140315083035) do
     t.string   "title"
     t.string   "desc"
     t.integer  "images_count",   :default => 0
-    t.integer  "visits_count",   :default => 0
     t.integer  "comments_count", :default => 0
+    t.integer  "visits_count",   :default => 0
     t.boolean  "del",            :default => false
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
