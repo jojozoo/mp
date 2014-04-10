@@ -11,10 +11,10 @@
 	<li>
 		<%= link_to '已结束的活动', events_path(t: 'closed') %>
 	</li>
-	<%= link_to new_event_path, class: 'btn btn-xs btn-success pull-right', style: 'margin-right: -10px;' do %>
-		<i class="icon-flag"></i>
-		发起活动
-	<% end %>
+	<%#= link_to new_event_path, class: 'btn btn-xs btn-success pull-right', style: 'margin-right: -10px;' do %>
+		<!-- <i class="icon-flag"></i>
+		发起活动 -->
+	<%# end %>
 </ul>
 <div class="row">
 	<% @events.each do |event| %>

@@ -1,0 +1,23 @@
+<%= render partial: 'nav' %>
+<div class="row" id="container">
+	<%= render partial: :image, collection: @images %>
+	<div id="page_loading" page="2" state="static" url="/gs/waterfall?order=<%= params[:order] %>">
+		<img src="/images/ajax-loader.gif">
+		<span>加载中...</span>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+	var container = $('#container');
+	container.imagesLoaded(function(){
+		container.masonry({
+			itemSelector : '.col-sm-6.col-md-3',
+			transitionDuration: '0.8s',
+			hiddenStyle: { opacity: 0 },
+			visibleStyle: { opacity: 1}
+		});
+		$('.col-sm-6.col-md-3').animate({'opacity': 1}, 500);
+	});
+})
+</script>

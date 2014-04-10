@@ -28,6 +28,7 @@ Mp::Application.routes.draw do
       get :waterfall
       get :star
       post :upload
+      get :random
     end
     member do
       get :tui
@@ -38,7 +39,7 @@ Mp::Application.routes.draw do
     get :excellent, on: :collection
     get :explore, on: :collection
   end
-  resources :events, path: 'e'
+  resources :events, path: 'e', only: [:index, :show]
   resources :users, path: 'u'
   resources :micros, path: 'ms'
   resources :works

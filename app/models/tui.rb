@@ -24,5 +24,4 @@ class Tui < ActiveRecord::Base
                           :scope => [:obj_type, :obj_id, :type],
                           :message => '重复操作'
 
-  # ['tuis', 'likes', 'stores', 'recoms']
 end

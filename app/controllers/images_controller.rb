@@ -5,34 +5,28 @@ class ImagesController < ApplicationController
 
     def waterfall
         @images = load_data
-        render '_waterfall', layout: false
+        render 'waterfall', layout: false
     end
 
     def load_data
-        order = {
-            'news'  => 'id desc',
-            'likes' => 'likes_count desc',
-            'push'  => 'ps.id desc',
-            'hot'   => 'comments_count desc',
-            'exp'   => 'ps.id desc',
-            'random' => 'randomhex asc'
+        params[:order] = params[:order] || 'news'
+        con, order = {
+            'news'   => [{}, 'id desc'],
+            'likes'  => [{}, 'likes_count desc'],
+            'push'   => ['pushes_count > 0', 'pushed_at desc'],
+            'hot'    => [{}, 'comments_count desc'],
+            'choice' => [{choice: true}, 'choiced_at desc'],
+            'random' => [{}, 'randomhex desc'] # TODO 缺少算法
         }[params[:order]]
-        unless order
-            params[:order] = 'news'
-            order = 'id desc'
-        end
-        # TODO 不一样的选项render不一样的partial
-        if ['push', 'exp'].member?(params[:order])
-            channel = params[:order].eql?('push') ? '编辑推荐' : '每日精选'
-            # Image.joins(" left join (select * from pushes where source_type = 'Image' and channel = '#{channel}') ps on ps.source_id = images.id")
-            Image.joins(" inner join pushes ps on ps.obj_id = images.id").where("ps.channel = '#{channel}'")
-        else
-            Image.where(state: true)
-        end.paginate(:page => params[:page], per_page: 12).order(order)
+        Image.where(state: true).where(con).paginate(:page => params[:page], per_page: 12).order(order)
     end
 
     def star
         @pushes = Push.where(channel: '漫拍之星').paginate(:page => params[:page], per_page: 20).order('id desc')
+    end
+
+    def random
+        @images = Image.order('rand()').limit(24)
     end
 
     def show
@@ -61,18 +55,19 @@ class ImagesController < ApplicationController
 
     def create
         event = Event.find(params[:image_event_id])
-        params[:cover_id] = params[:desc].keys[0] if params[:cover_id].blank?
 
         # TODO 判断照片数量是否至少一张
         album   = current_user.albums.find_or_create_by_name(event.name)
-        album.update_attributes logo: File.open(Image.find(params[:cover_id]).picture.path)
-        work = Work.create({user_id: current_user.id, event_id: event.id})
-        current_user.images.where(["id in (?)", params[:desc].keys]).each do |image|
+        album.update_attributes logo: File.open(Image.find(params[:cover_id]).picture.path) if params[:cover_id].present?
+
+        images = current_user.images.where(["id in (?)", params[:desc].keys])
+        groupid = images.last.id rescue nil
+        images.each do |image|
             desc = params[:desc][image.id.to_s]
             image.update_attributes(
                 album_id: album.id, 
                 event_id: event.id, 
-                work_id: work.id,
+                groupid: groupid,
                 state: true, 
                 desc: desc)
         end

@@ -120,7 +120,8 @@ $(function(){
 	<%= link_to '返回相册', my_albums_path %>
 	共<%= @album.images.count %>张图片
 
-	<%= link_to '上传图片', upload_my_albums_path(aid: @album.id), class: 'btn-primary btn btn-xs' %>
+	<%#= link_to '上传图片', upload_my_albums_path(aid: @album.id), class: 'btn-primary btn btn-xs' %>
+	<%= link_to '上传图片', 'javascript:void(0);', class: 'btn-primary btn btn-xs' %>
 
 	<a class="btn-warning btn btn-xs" href='javascript:void(0);' id="album">批量管理</a>
 
@@ -141,7 +142,7 @@ $(function(){
 	<% if @images.total_entries < 1 %>
 	<div class="col-md-12">
 		<div class="text-center" style="height: 300px; padding-top: 140px;">
-			还没有照片， 快去上传吧。 <%= link_to '上传图片', upload_my_albums_path(aid: @album.id) %>
+			还没有照片， 快去上传吧。 <%= link_to '上传图片', 'javascript:void(0);' %>
 		</div>
 	</div>
 	<% end %>

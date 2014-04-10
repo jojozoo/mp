@@ -32,3 +32,10 @@ Image 有变化 部署时要改图片名字
 再次重启 一定要迁移数据 修改图片路径等
 
 alter table images change state tinyint(1) default '0';
+
+alter table images add groupid int(11) after album_id;
+
+alter table images add pushes_count int(11) default '0' after comments_count;
+alter table images add pushed_at datetime after pushes_count;
+alter table images add choice tinyint(1) default '0' after pushes_count;
+alter table images add choiced_at datetime after choice;
