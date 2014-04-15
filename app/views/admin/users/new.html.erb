@@ -1,0 +1,9 @@
+<%= simple_form_for ['admin', User.new], validate: true do |f| %>
+	<%= f.input :avatar %>
+	<%= f.input :username %>
+	<%= f.input :email %>
+	<%= f.input :mobile %>
+	<%= f.input :password, readonly: true, input_html:{value: 'work123'} %>
+	<%= f.input :password_confirmation, readonly: true, input_html:{value: 'work123'} %>
+	<%= f.submit '保存', class: 'btn btn-default col-sm-offset-7' %>
+<% end %>

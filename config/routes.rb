@@ -139,7 +139,7 @@ Mp::Application.routes.draw do
     resources :sends
     # resources :products do
     # end
-    resources :users, except: [:new, :create] do
+    resources :users do
       member do
         get :spg
         get :sad
