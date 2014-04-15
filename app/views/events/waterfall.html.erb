@@ -1,0 +1,3 @@
+<div <%= "page=#{@images.next_page}" if @images.next_page %>>
+	<%= render partial: 'thumb', collection: @images, as: :image %>
+</div>

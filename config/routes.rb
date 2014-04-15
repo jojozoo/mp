@@ -23,7 +23,7 @@ Mp::Application.routes.draw do
   match '/ajax/ufl/:source/:id'       => 'ajax#ufl', via: :post, as: :ajax_ufl # 取消关注
 
   # gallery
-  resources :images, path: 'gs' do
+  resources :images, path: 'p' do
     collection do
       get :waterfall
       get :star
@@ -39,7 +39,11 @@ Mp::Application.routes.draw do
     get :excellent, on: :collection
     get :explore, on: :collection
   end
-  resources :events, path: 'e', only: [:index, :show]
+  resources :events, path: 'e', only: [:index, :show] do
+    collection do
+      get :waterfall
+    end
+  end
   resources :users, path: 'u'
   resources :micros, path: 'ms'
   resources :works

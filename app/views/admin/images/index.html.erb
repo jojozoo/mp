@@ -140,15 +140,15 @@ this.title_two = '<a class="btn btn-info btn-xs jp" href="/admin/push/编辑推�
             <div class="col-md-2">
                 <div class="thumbnail">
                     <%= link_to image_tag(image.picture(:cover)), image.picture(:big), class: 'fancybox', data:{'fancybox-group' => "gallery"}, jsid: image.id %>
-                    <div class="caption">
+                    <!-- <div class="caption">
                         <a href="javascript:void(0)" title="删除"> 
                             <i class="icon-trash"></i>
                         </a>
                         <a href="javascript:void(0)" title="编辑">
                             <i class="icon-pencil"></i>
                         </a>
-                        <%= link_to image.user.username, 'javascript:void(0);' %>
-                    </div>
+                        <%#= link_to image.user.username, 'javascript:void(0);' %>
+                    </div> -->
                 </div>
             </div>
             <% end %>

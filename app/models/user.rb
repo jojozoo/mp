@@ -250,7 +250,7 @@ class User < ActiveRecord::Base
   # image show页面 两种方式
   # 1 活动跳转到本页         标题显示活动名称
   # 2 图库或者相册跳转到本页  显示相册名称
-  # TODO /gs/1 分享图片的文字
+  # TODO /p/1 分享图片的文字
   # simple_form boolean bootstrap validate
   # 作品展示参考例子
   # http://www.wookmark.com/image/375537/fireworks-by-gaudibuendia-d70nozr-jpg-image-jpeg-1249-639-pixels

@@ -23,13 +23,14 @@
 	<%= f.input :profession %>
 	<%= f.input :duty, :as => :datepicker %>
 	<div class="form-group string optional user_warrant">
-		<label class="col-sm-2 control-label">默认版权声明</label>
+		<label class="col-sm-2 control-label">版权声明</label>
 		<div class="col-sm-6 input-text-add">
-			<div class="agreement-nav">
+			<!-- <div class="agreement-nav">
 				<input type="checkbox" id="open-agreement">
 				<label for="open-agreement">开启知识共享协议</label>
-			</div>
-			<div class="hide" id="agreement">
+			</div> -->
+			<!-- <div class="hide" id="agreement"> -->
+			<div id="agreement" style="margin-bottom: 15px;">
 				<% $warrant.each do |k, v| %>
 				<div class="warrant-row">
 					<input type="radio" id="warrant<%= k %>" name="user[warrant]" value="<%= k %>" <%= 'checked=""' if current_user.warrant.eql?(k) %>>

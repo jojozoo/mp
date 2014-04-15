@@ -245,6 +245,7 @@ textarea.form-control{
 }
 .alert{
     margin-bottom: 10px;
+    border-radius: 0px;
 }
 
 .profile-mini{

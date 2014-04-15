@@ -54,21 +54,13 @@
 						</li>
 						<% end %>
 					</ul>
-					<div class="row">
-						<% @images.each do |image| %>
-							<div class="col-sm-6 col-md-3">
-								<div class="thumbnail">
-									<%= link_to image_tag(image.picture(:thumb)), image_path(image.id), target: '_blank' %>
-									<div class="caption caption-border">
-										<div style="margin: 6px 0;">
-											<%= image.desc.present? ? image.desc : "暂无描述" %>
-										</div>
-										<span>上传时间:<%= humanize image.created_at %></span>
-										<!-- <span class="pull-right" style="color: red;">组图(10)张</span> -->
-									</div>
-								</div>
-							</div>
-						<% end %>
+					<script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
+					<div class="row" id="container">
+						<%= render partial: 'thumb', collection: @images, as: :image %>
+						<div id="page_loading" page="2" state="static" url="/e/waterfall?id=<%= @event.id %>&order=<%= params[:order] %>">
+							<img src="/images/ajax-loader.gif">
+							<span>加载中...</span>
+						</div>
 					</div>
 				</div>
 			</div>

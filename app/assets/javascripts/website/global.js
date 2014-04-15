@@ -2,7 +2,7 @@ window.console&&window.console.info("喜欢看漫拍的代码，还是发现了�
 $(function(){
 	// bgdown ondown fade-row fadedown choose-ok
 	// 以上class 都是 移动显示，移出隐藏 需要整合
-	// /gs/1
+	// /p/1
 	$(document).on('mouseenter', '.ondown', function(){
 		$(this).find(".bgdown").css('height', $(this).find(".fadedown").outerHeight());
 		$(this).children().slideDown(300);

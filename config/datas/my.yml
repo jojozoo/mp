@@ -10,7 +10,7 @@ sets:
     #/my/set/privacy: 隐私设置
     /my/set/push: 推送设置
     #/my/set/dy: 动态设置
-    /my/set/bg: 模板设置
+    # /my/set/bg: 模板设置
     /my/set/others: 同步网站
   icons: {}
   smalls: {}

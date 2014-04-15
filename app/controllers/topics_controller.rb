@@ -23,11 +23,13 @@ class TopicsController < ApplicationController
             flash[:notice] = '请先登录'
             return
         else
+            @tag = Tag.find_by_name(params[:tag]) if params[:tag].present?
             @topic = Topic.new
         end
     end
 
     def create
+        params[:topic][:tag_id] = params[:topic_tag_id]
         if @topic = Topic.create!(params[:topic].slice(:title, :content, :tag_id).merge(user_id: current_user.id))
             redirect_to action: :show, id: @topic.id
         else
@@ -42,6 +44,7 @@ class TopicsController < ApplicationController
             return
         else
             @topic = current_user.topics.find(params[:id])
+            @tag = @topic.tag
         end
     end
 

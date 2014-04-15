@@ -1,7 +1,7 @@
 <%= render partial: 'nav' %>
 <div class="row" id="container">
 	<%= render partial: :image, collection: @images %>
-	<div id="page_loading" page="2" state="static" url="/gs/waterfall?order=<%= params[:order] %>">
+	<div id="page_loading" page="2" state="static" url="/p/waterfall?order=<%= params[:order] %>">
 		<img src="/images/ajax-loader.gif">
 		<span>加载中...</span>
 	</div>

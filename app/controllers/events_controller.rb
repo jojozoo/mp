@@ -37,7 +37,16 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		@event = Event.find(params[:id])
+		@images = load_data
+	end
+
+	def waterfall
+        @images = load_data
+        render 'waterfall', layout: false
+    end
+
+    def load_data
+    	@event = Event.find(params[:id])
 		order, cond = case params[:order]
 		when 'news'
 			['id desc', {}]
@@ -50,9 +59,11 @@ class EventsController < ApplicationController
 			c = sign_in? ? {user_id: current_user.id} : {}
 			['id desc', c]
 		else
+			params[:order] = 'news'
+			['id desc', {}]
 		end
 		@images = @event.images.where(cond).paginate(:page => params[:page], per_page: 24).order(order)
-	end
+    end
 
 	def edit
 

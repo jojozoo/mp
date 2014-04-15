@@ -3,14 +3,14 @@
 	.main .col-md-9 .breadcrumb, .main .col-md-12 .breadcrumb{
 		margin-bottom: 15px;
 	}
-	.ad > img{
+	/*.ad > img{
 		width: 100%;
-	}
+	}*/
 	</style>
 	<div class="col-md-9">
-		<div class="ad">
+		<!-- <div class="ad">
 			<img src="/images/ad.jpg" alt="我的十大手机图片征集">
-		</div>
+		</div> -->
 		<%= render 'shared/flexslider' %>
 	</div>
 	<div class="col-md-3">
@@ -67,8 +67,22 @@
 				<%= link_to '浏览更多>>', images_path %>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" id="container">
 		<%= render partial: 'images/thumb', collection: Image.where(state: 1).order('id desc').limit(12), as: :image %>
 		</div>
+		<script type="text/javascript">
+		$(function(){
+			var container = $('#container');
+			container.imagesLoaded(function(){
+				container.masonry({
+					itemSelector : '.col-sm-6.col-md-3',
+					transitionDuration: '0.8s',
+					hiddenStyle: { opacity: 0 },
+					visibleStyle: { opacity: 1}
+				});
+				$('.col-sm-6.col-md-3').animate({'opacity': 1}, 500);
+			});
+		})
+		</script>
 	</div>
 </div>

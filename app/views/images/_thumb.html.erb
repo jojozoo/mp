@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-md-3">
     <div class="thumbnail">
-        <%= link_to image_tag(image.picture.url(:cover)), image_path(image), style: 'display:block', target: '_blank' %>
+        <%= link_to image_tag(image.picture.url(:thumb)), image_path(image), style: 'display:block', target: '_blank' %>
         <div class="caption">
             <div><%= image.desc %></div>
             <span title="喜欢">喜欢(<%= image.likes_count %>)</span>

@@ -42,7 +42,16 @@ html[xmlns] .slides {display: block;}
 
 /* FlexSlider Default Theme
 *********************************/
-.flexslider { overflow: hidden; margin: 0 0 10px; /* background: #fff; */ position: relative; -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; zoom: 1; }
+.flexslider { 
+	overflow: hidden; 
+	margin: 0 0 10px; 
+	/* background: #fff; */ 
+	position: relative; 
+	/*-webkit-border-radius: 4px; 
+	-moz-border-radius: 4px; 
+	-o-border-radius: 4px; */
+	zoom: 1; 
+}
 /*box-shadow: 0 1px 4px rgba(0,0,0,.2);*/
 .flex-viewport {/* max-height: 380px;*/ -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease; }
 .loading .flex-viewport { max-height: 300px; }

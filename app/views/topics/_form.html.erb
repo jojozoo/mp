@@ -2,7 +2,6 @@
     <%= f.input :title %>
     <%#= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
     <%= f.input :content, :as => :kindeditor %>
-    <%= f.input :tag_id, collection: Tag.all.map{|t| [t.name, t.id]}, include_blank: false %>
     <!-- <div class="form-group string optional topic_tag">
         <label class="string optional col-sm-2 control-label" for="topic_tag">标签</label>
         <div class="col-sm-6 input-text-add">
@@ -25,6 +24,41 @@
             </span>
         </div>
     </div> -->
+    <div class="form-group select required topic_tag_id">
+        <label class="select required col-sm-2 control-label" for="topic_tag_id">
+            <abbr title="required">*</abbr>
+            标签
+        </label>
+        <div class="col-sm-6 input-text-add">
+            <% if @tag %>
+            <%= f.input_field :tag_id, as: :string, readonly: true, value: @tag.name %>
+            <input id="topictagid" name="topic_tag_id" type="hidden" value="<%= @tag.id %>">
+            <% else %>
+            <div class="input-group">
+                <%= f.input_field :tag_id, as: :string, readonly: true %>
+                <input id="topictagid" name="topic_tag_id" type="hidden" value="">
+                <span class="input-group-addon custom-modal"> 
+                    <i class="icon-tag"></i>
+                </span>
+            </div>
+            <% end %>
+            <div class="modal fade" id="custom-modal" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">标签选择</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="taglabel"></div>
+                            <div class="taglabelitems"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
     <div class="form-group">
         <input class="btn btn-info col-sm-offset-2 col-md-offset-2" name="commit" type="submit" value="发布话题">
     </div>
@@ -33,6 +67,30 @@
 <link href="/stylesheets/jquery.taghandler.css" media="all" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 $(function(){
+    TAGS = <%= Tag.select('id,name,channel').group_by{|t| t.channel}.to_json.html_safe %>;
+    for(var p in TAGS){
+        $(".taglabel").append("<a href='javascript:void(0);' class='tlb10 taglabelrow'>"+p+"</a>");
+    }
+    $(document).on("click", ".taglabelrow", function(){
+        var list, index, item;
+        list = TAGS[$(this).text()];
+        $(".taglabelitems").html('');
+        for(index in list){
+            item = list[index];
+            $("<a href='javascript:void(0);' class='tlb10 taglabeltarget' tid='" + item.id + "'>" + item.name + "</a>").appendTo(".taglabelitems");
+        }
+    });
+    $(document).on("click", ".taglabeltarget", function(){
+        var _id, name;
+        _id = $(this).attr("tid");
+        name = $(this).text();
+        $("#topic_tag_id").val(name);
+        $("#topictagid").val(_id);
+        $('#custom-modal').modal('hide');
+    });
+    
+    $(".taglabel a:eq(0)").trigger('click');
+    
     // $("#topic_tag").tagHandler({
     //     assignedTags: ['单反'],
     //     availableTags: ['单反', '莱卡', '胶片'],
@@ -41,3 +99,13 @@ $(function(){
     // });
 })
 </script>
+<style type="text/css">
+.tlb10{
+    margin-right: 10px;
+}
+.taglabelitems{
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+</style>
