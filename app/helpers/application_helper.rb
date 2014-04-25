@@ -84,8 +84,8 @@ module ApplicationHelper
     '/system/sbgs/5/original/e4da3b7fbb.jpg?1394877293'
   end
   def signsbackground
-    # asset_path(Sbg.signs.order('rand()').first.photo.url)
-    ["/system/sbgs/1/original/c4ca4238a0.jpg?1394877196", "/system/sbgs/2/original/c81e728d9d.jpg?1394877228", "/system/sbgs/3/original/eccbc87e4b.jpg?1394877242", "/system/sbgs/4/original/a87ff679a2.jpg?1394877273"].sort_by{rand}[0]
+    Sbg.signs.order('rand()').first.photo.url
+    # ["/system/sbgs/1/original/c4ca4238a0.jpg?1394877196", "/system/sbgs/2/original/c81e728d9d.jpg?1394877228", "/system/sbgs/3/original/eccbc87e4b.jpg?1394877242", "/system/sbgs/4/original/a87ff679a2.jpg?1394877273"].sort_by{rand}[0]
   end
 
   def time_style time
