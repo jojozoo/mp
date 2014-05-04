@@ -27,9 +27,6 @@
 #  photographer        :boolean          default(FALSE)
 #  notices_count       :integer          default(0)
 #  followers_count     :integer          default(0)
-#  bg                  :string(255)      default("/images/defaults/bgs.jpg")
-#  repeat              :string(255)      default("repeat")
-#  remember_me         :string(255)
 #  del                 :boolean          default(FALSE)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
@@ -55,9 +52,6 @@ class User < ActiveRecord::Base
   :duty, 
   :gender, 
   :warrant, # 授权
-  :bg,
-  :repeat, 
-  :remember_me,
   :nocices_count,
   :del
 
