@@ -22,7 +22,7 @@ task :kpkpw3 => :environment do
 	end
 end
 task :kpkpw4 => :environment do
-	(120001..150000).each do |id|
+	(133630..150000).each do |id|
 		get(id)
 	end
 end
