@@ -19,6 +19,11 @@
 	<script src="/ie/respond.min.js"></script>
 	<![endif]-->
 	<%= render 'shared/baidu_tongji' %>
+	<script type="text/javascript">
+	$(function(){
+		$("body > .container.main").css({'min-height': document.body.clientHeight + 6});
+	})
+	</script>
 </head>
 <body style="background: transparent url('<%= userbackground %>');">
 	<%= render 'shared/nav' %>
