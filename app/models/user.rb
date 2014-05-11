@@ -156,6 +156,7 @@ class User < ActiveRecord::Base
   after_create :basic_build
   before_save  :check_not_v_attr
 
+
   def basic_build
     self.albums.create(name: '默认相册')
     Accept.create(user_id: self.id)

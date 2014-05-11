@@ -1,28 +1,13 @@
 require 'nokogiri'
 require 'open-uri'
 desc "获取kpkpw用户基本信息"
-task :kpkpw => :environment do
-	(11977..30000).each do |id|
+task :kpkpwfile => :environment do
+	File.read("ids").each_line do |id|
 		get id
 	end
 end
-task :kpkpw1 => :environment do
-	(35504..60000).each do |id|
-		get(id)
-	end
-end
-task :kpkpw2 => :environment do
-	(63123..90000).each do |id|
-		get(id)
-	end
-end
-task :kpkpw3 => :environment do
-	(94987..120000).each do |id|
-		get(id)
-	end
-end
-task :kpkpw4 => :environment do
-	(133630..150000).each do |id|
+task :kpkpw => :environment do
+	(140056..379100).each do |id|
 		get(id)
 	end
 end

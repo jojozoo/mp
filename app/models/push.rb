@@ -13,7 +13,7 @@
 #  del         :boolean          default(FALSE)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#
+#  去掉source 加入推荐人ID和作者ID
 
 class Push < ActiveRecord::Base
   # 只为管理员使用

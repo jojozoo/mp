@@ -1,12 +1,37 @@
 class AjaxController < ApplicationController
 	before_filter :ajax_login
-    # /ajax/like/user/1
-    # 应该包含 follow unfollow
-    # tuilike, tuistore, tuirecom
     def tui
         @obj = params[:source].classify.constantize.find(params[:id])
         @obj.send('tui' + params[:push].pluralize).create(user_id: current_user.id)
         @count = @obj.send(params[:push].pluralize + '_count')
+    end
+
+    def editer
+        @obj = Image.find(params[:id])
+        attrs = {
+          obj_id: @obj.id,
+          obj_type: 'Image',
+          channel: '编辑推荐',
+          source_id: @obj.id,
+          source_type: 'Image',
+          user_id: current_user.id
+        }
+        push = Push.where(attrs).first
+        if params[:cancel] == 'true'
+            push.destroy if push
+        else
+            unless push
+                stime = Date.today.to_s + ' 00:00:00'
+                etime = Date.today.to_s + ' 23:59:59'
+                tuiids = Push.where(obj_type: 'Image', user_id: current_user.id, channel: '编辑推荐').where(["updated_at between ? and ?", stime, etime]).map(&:obj_id)
+                @member = Member.find_by_event_id_and_user_id(params[:eid], current_user.id)
+                if tuiids.length < @member.sum
+                    push = Push.create!(attrs.merge(mark: '暂无备注'))
+                else
+                    @alert = true
+                end    
+            end
+        end
     end
 
     # 关注

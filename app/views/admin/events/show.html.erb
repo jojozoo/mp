@@ -89,6 +89,50 @@
 							</div>
 						</li>
 						<li class="v-heading">
+							活动编辑
+						</li>
+						<li>
+							<table class="table table-bordered table12 table-condensed table-hover">
+								<tr>
+									<th>用户</th>
+									<th>数量</th>
+									<th>操作</th>
+								</tr>
+								
+								<% @event.members.each do |member| %>
+									<%= form_for ['admin', member], validate: true do |f| %>
+										<tr>
+											<td>
+												<%= f.text_field :user_id %>
+											</td>
+											<td>
+												<%= f.text_field :sum %>
+											</td>
+											<td>
+												<%= f.submit '保存', class: 'btn btn-default btn-xs' %>
+												/
+												<%= link_to '删除', admin_member_path(member.id), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>
+											</td>
+										</tr>
+									<% end %>
+								<% end %>
+								<%= form_for ['admin', Member.new], validate: true do |f| %>
+									<%= f.hidden_field :event_id, value: params[:id] %>
+									<tr>
+										<td>
+											<%= f.text_field :user_id %>
+										</td>
+										<td>
+											<%= f.text_field :sum %>
+										</td>
+										<td>
+											<%= f.submit '创建', class: 'btn btn-default btn-xs' %>
+										</td>
+									</tr>
+								<% end %>
+							</table>
+						</li>
+						<!-- <li class="v-heading">
 							活动获奖
 						</li>
 						<li>
@@ -100,24 +144,24 @@
 									<th>操作</th>
 								</tr>
 								
-								<% @event.winner_works.each do |winwork| %>
+								<%# @event.winner_works.each do |winwork| %>
 								<tr>
 									<td>
-										<%= link_to winwork.user.username, admin_user_path(winwork.user_id) %>
+										<%#= link_to winwork.user.username, admin_user_path(winwork.user_id) %>
 									</td>
 									<td>
-										<%= winwork.winner %>
+										<%#= winwork.winner %>
 									</td>
 									<td>
-										<%= link_to '查看', admin_work_path(winwork.id) %>
+										<%#= link_to '查看', admin_work_path(winwork.id) %>
 									</td>
 									<td>
-										<%= link_to '查看', 'javascript:void(0);' %>
+										<%#= link_to '查看', 'javascript:void(0);' %>
 									</td>
 								</tr>
-								<% end %>
+								<%# end %>
 							</table>
-						</li>
+						</li> -->
 						<li class="v-heading">
 							活动公告
 							<%= link_to '去发布', new_admin_topic_path(tag: @event.name) %>

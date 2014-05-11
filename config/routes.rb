@@ -21,6 +21,7 @@ Mp::Application.routes.draw do
   match '/ajax/com/:source/:id'       => 'ajax#com', via: :post, as: :ajax_com # 评论
   match '/ajax/fol/:source/:id'       => 'ajax#fol', via: :post, as: :ajax_fol # 关注
   match '/ajax/ufl/:source/:id'       => 'ajax#ufl', via: :post, as: :ajax_ufl # 取消关注
+  match '/ajax/editer/:source/:id'    => 'ajax#editer', via: :post, as: :ajax_editer # 取消关注
 
   # gallery
   resources :images, path: 'p' do
@@ -160,6 +161,7 @@ Mp::Application.routes.draw do
         get :tui
       end
     end
+    resources :members
     resources :works do
       get :winner, on: :member
     end

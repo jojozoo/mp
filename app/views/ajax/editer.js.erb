@@ -1,0 +1,11 @@
+<% if @alert %>
+	alert("今天已推荐<%= @member.try(:sum) %>张");
+<% else %>
+	var url = "/ajax/editer/images/<%= @obj.id %>?eid=<%= params[:eid] %>"
+	<% if params[:cancel] == 'true' %>
+	$(".push-editer-<%= @obj.id %>-link").text("编辑推荐").attr("href", url);
+	<% else %>
+	$(".push-editer-<%= @obj.id %>-link").text("取消推荐").attr("href", url + "&cancel=true");
+	<% end %>
+<% end %>
+// $(".push-editer-<%= @obj.id %>-link").addClass('disabled').removeClass('btn-ajax');

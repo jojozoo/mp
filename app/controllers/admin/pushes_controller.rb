@@ -17,8 +17,8 @@ class Admin::PushesController < Admin::ApplicationController
       render text: '' and return unless obj.user.photographer
       attrs.merge!(source_id: obj.user_id, source_type: 'User')
     end
-    push = Push.where(attrs).first
-    push = Push.create!(attrs.merge(mark: '暂无备注')) unless push
+    @push = Push.where(attrs).first unless @push # 根据推荐摄影师和每日一图查询
+    @push = Push.create!(attrs.merge(mark: '暂无备注')) unless @push
     render text: 'success'
   end
 

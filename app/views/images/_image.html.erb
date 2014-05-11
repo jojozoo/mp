@@ -4,6 +4,10 @@
             <%= link_to_push 'like', image %>
             <%= link_to_push 'store', image %>
             <%= link_to_push 'recom', image %>
+            
+            <% if @event and sign_in?  %>
+                <%= link_to_editer_recom image, @event, @tuis.map(&:obj_id) %>
+            <% end %>
         </div>
         <%= link_to image_tag(image.picture.url(:thumb), wh: image.wh), image_path(image), style: 'display:block', target: '_blank' %>
         <div class="caption">

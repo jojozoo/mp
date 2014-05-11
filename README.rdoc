@@ -31,6 +31,9 @@ Image 有变化 部署时要改图片名字
 
 再次重启 一定要迁移数据 修改图片路径等
 
+每日一图 只允许选一次
+推荐摄影师 不可重复推荐
+
 alter table images change state tinyint(1) default '0';
 
 alter table images add groupid int(11) after album_id;

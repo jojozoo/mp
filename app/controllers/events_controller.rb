@@ -47,6 +47,11 @@ class EventsController < ApplicationController
 
     def load_data
     	@event = Event.find(params[:id])
+    	if current_user
+	    	stime = Date.today.to_s + ' 00:00:00'
+			etime = Date.today.to_s + ' 23:59:59'
+			@tuis = Push.where(obj_type: 'Image', user_id: current_user.id, channel: '编辑推荐').where(["updated_at between ? and ?", stime, etime])
+    	end
 		order, cond = case params[:order]
 		when 'news'
 			['id desc', {}]

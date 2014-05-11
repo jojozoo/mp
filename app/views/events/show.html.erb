@@ -56,7 +56,8 @@
 					</ul>
 					<script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
 					<div class="row" id="container">
-						<%= render partial: 'thumb', collection: @images, as: :image %>
+						<%= render partial: '/images/image', collection: @images, as: :image %>
+						<%#= render partial: 'thumb', collection: @images, as: :image %>
 						<div id="page_loading" page="2" state="static" url="/e/waterfall?id=<%= @event.id %>&order=<%= params[:order] %>">
 							<img src="/images/ajax-loader.gif">
 							<span>加载中...</span>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140315083035) do
+ActiveRecord::Schema.define(:version => 20140510111439) do
 
   create_table "accepts", :force => true do |t|
     t.integer  "user_id"
@@ -160,6 +160,31 @@ ActiveRecord::Schema.define(:version => 20140315083035) do
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
+  end
+
+  create_table "infos", :force => true do |t|
+    t.string   "url"
+    t.string   "site"
+    t.string   "path"
+    t.string   "nickname"
+    t.string   "local"
+    t.string   "email"
+    t.string   "gender"
+    t.string   "domain"
+    t.string   "desc"
+    t.string   "func"
+    t.string   "tag"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "members", :force => true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.integer  "sum"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "messages", :force => true do |t|
@@ -362,12 +387,10 @@ ActiveRecord::Schema.define(:version => 20140315083035) do
     t.boolean  "photographer",        :default => false
     t.integer  "notices_count",       :default => 0
     t.integer  "followers_count",     :default => 0
-    t.string   "bg",                  :default => "/images/defaults/bgs.jpg"
-    t.string   "repeat",              :default => "repeat"
-    t.string   "remember_me"
+    t.string   "event_auth"
     t.boolean  "del",                 :default => false
-    t.datetime "created_at",                                                  :null => false
-    t.datetime "updated_at",                                                  :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
 
   create_table "visits", :force => true do |t|

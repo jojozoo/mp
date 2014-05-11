@@ -10,6 +10,11 @@
 			
 		</li>
 		<% end %>
+		<% Push.where(channel: '每日精选').order("id desc").limit(5).each do |push| %>
+		<li>
+			<%= link_to image_tag(push.obj.picture(:big)), image_path(push.obj_id), target: '_blank' %>
+		</li>
+		<% end %>
 	</ul>
 </div>
 <style>
