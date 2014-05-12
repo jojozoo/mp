@@ -80,17 +80,7 @@ module ApplicationHelper
   end
 
   def sessionbackgrounds
-    url = [
-      'c4ca4238a0.jpg', 
-      'a87ff679a2.jpg', 
-      '8f14e45fce.jpg', 
-      'c81e728d9d.jpg', 
-      'e4da3b7fbb.jpg', 
-      'c9f0f895fb.jpg', 
-      'eccbc87e4b.jpg', 
-      '1679091c5a.jpg', 
-      '45c48cce2e.jpg'
-      ].sort_by{rand}[0]
+    url = ["1679091c5a.jpg", "45c48cce2e.jpg", "8f14e45fce.jpg", "a87ff679a2.jpg", "c4ca4238a0.jpg", "c81e728d9d.jpg", "c9f0f895fb.jpg", "eccbc87e4b.jpg"].sort_by{rand}[0]
     url = "/images/backgrounds/#{url}?1394877273"
   end
 
