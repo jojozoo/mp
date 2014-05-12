@@ -1,7 +1,27 @@
 <div class="col-sm-12 col-md-12">
-	<h3 class="heading">群发站内信</h3>
+	<h3 class="heading">群发</h3>
 	<form action="/admin/msg" class="simple_form form-horizontal" data-validate="true" id="sendmsg" method="post">
 		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+		<%#= f.input :channel, :collection => ['邮件', '站内通知', '页面'], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
+		<div class="form-group radio_buttons optional">
+			<label class="radio_buttons optional col-sm-2 control-label">
+				发送类型
+			</label>
+			<div class="col-sm-6 input-text-add">
+				<label class="radio radio-inline">
+					<input class="radio_buttons optional" id="channel" name="channel" type="radio" value="notice" checked="checked">
+					通知
+				</label>
+				<label class="radio radio-inline">
+					<input class="radio_buttons optional" id="channel" name="channel" type="radio" value="message">
+					私信
+				</label>
+				<label class="radio radio-inline">
+					<input class="radio_buttons optional" id="channel" name="channel" type="radio" value="mail">
+					邮件
+				</label>
+			</div>
+		</div>
 		<div class="form-group string optional content">
 			<label class="file required col-sm-2 control-label" for="content">
 				发送内容

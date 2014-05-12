@@ -14,7 +14,7 @@ class Admin::TopicsController < Admin::ApplicationController
   # GET /topics/new
   # GET /topics/new.json
   def new
-    @tag = Tag.find_by_name(params[:tag]) if params[:tag]
+    @event = Event.find_by_id(params[:eid])
     @topic = Topic.new
   end
 
@@ -29,27 +29,11 @@ class Admin::TopicsController < Admin::ApplicationController
     @topic = Topic.new(params[:topic])
 
     if @topic.save!
-      redirect_to action: :index, notice: 'Topic was successfully created.'
+      flash[:notice] = 'Topic was successfully created.'
+      redirect_to action: :index
     else
       render action: "new"
     end
-  end
-
-  # 推荐重点
-  def tui
-    topic = Topic.find(params[:id])
-    p = {channel: '推荐重点', obj_id: topic.id, obj_type: 'Topic'}
-    if params[:event_id].present?
-      p.merge!(source_id: params[:event_id], source_type: 'Event')
-    else
-      p.merge!(source_id: topic.id, source_type: 'Topic')
-    end
-    if push = Push.where(p).first
-      push.touch
-    else
-      Push.create(p.merge(mark: '推荐话题'))
-    end
-    redirect_to :back
   end
 
   # PUT /topics/1
@@ -58,7 +42,8 @@ class Admin::TopicsController < Admin::ApplicationController
     @topic = Topic.find(params[:id])
 
     if @topic.update_attributes(params[:topic])
-      redirect_to action: :show, id: @topic, notice: 'ok'
+      flash[:notice] = "更新成功"
+      redirect_to action: :show, id: @topic
     else
       render action: "edit"
     end

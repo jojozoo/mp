@@ -15,7 +15,7 @@
 #
 
 class Feedback < ActiveRecord::Base
-  attr_accessible :email, :name, :subject, :desc, :user_id, :ip
+  attr_accessible :user_id, :name, :email, :subject, :ip, :desc, :del
   validates_presence_of     :email,
                             :message => '不能为空'
 

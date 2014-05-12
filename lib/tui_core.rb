@@ -4,7 +4,6 @@ module TuiCore
   included do
     has_many :tuilikes, as: :obj
     has_many :tuistores, as: :obj
-    has_many :tuirecoms, as: :obj
 
     def tuilike?(obj)
       tuilikes.exists?(user_id: obj.id)
@@ -12,10 +11,6 @@ module TuiCore
 
     def tuistore?(obj)
       tuistores.exists?(user_id: obj.id)
-    end
-
-    def tuirecom?(obj)
-      tuirecoms.exists?(user_id: obj.id)
     end
     
     module ClassMethods

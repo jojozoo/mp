@@ -13,7 +13,8 @@
 #
 
 class Visit < ActiveRecord::Base
-  attr_accessible :del, :mark, :user_id, :obj_id, :obj_type
+  attr_accessible :obj_id, :obj_type, :user_id, :mark, :del
   
-  belongs_to :obj, polymorphic: true, counter_cache: true
+  # 活动 作品 相册 图片 文章 分别都加visit_count
+  belongs_to :obj, polymorphic: true, counter_cache: :visit_count
 end

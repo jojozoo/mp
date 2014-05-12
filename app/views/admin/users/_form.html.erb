@@ -1,8 +1,8 @@
 <%= simple_form_for @user, url: admin_user_path(@user), validate: true do |f| %>
 	<%= f.input :username %>
+	<%= f.input :nickname %>
 	<%= f.input :email %>
 	<%= f.input :mobile %>
-	<%= f.input :realname %>
 	<%= f.input :province %>
 	<%= f.input :city %>
 	<%= f.input :gender, :collection => [['男',true] ,['女', false]], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>

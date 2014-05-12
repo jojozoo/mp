@@ -1,0 +1,10 @@
+<%= render partial: 'nav' %>
+<script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
+<div class="row" id="container">
+	<%= render 'sidenav' %>
+	<%= render partial: :image, collection: @images %>
+	<div id="page_loading" page="2" state="static" url="/p/waterfall?order=<%= params[:order] %>">
+		<img src="/images/ajax-loader.gif">
+		<span>加载中...</span>
+	</div>
+</div>

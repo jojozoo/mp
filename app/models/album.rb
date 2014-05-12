@@ -17,7 +17,12 @@
 #
 
 class Album < ActiveRecord::Base
-  attr_accessible :desc, :logo, :name, :publish, :user_id, :del
+  attr_accessible :logo, 
+  :user_id, 
+  :name, 
+  :desc, 
+  :publish, 
+  :del
   # 相册不需要desc字段
   # publish 所有人 仅自己
   has_many :images

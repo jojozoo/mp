@@ -18,7 +18,7 @@
 				<td><%= tag.id %></td>
 				<td><%= tag.name %></td>
 				<td><%= tag.channel %></td>
-				<td><%= tag.objs_count %></td>
+				<td><%= tag.sum %></td>
 				<td>
 					<%= link_to '详细', admin_tag_path(tag), class: 'btn btn-info btn-xs' %>
 					<%= link_to '删除', admin_tag_path(tag), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>

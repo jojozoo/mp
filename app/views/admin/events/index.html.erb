@@ -12,7 +12,6 @@
 				<th>标题</th>
 				<th>结束</th>
 				<th>参与数</th>
-				<th>作品数</th>
 				<th>状态</th>
 				<th>操作</th>
 			</tr>
@@ -23,7 +22,6 @@
 				<td><%= truncate(event.title, length: 10) %></td>
 				<td><%= event.end_time.to_date %></td>
 				<td><%= event.members_count %></td>
-				<td><%= event.works_count %></td>
 				<td><%= Event::STATE.merge(audit: '未审核').values[event.state] %></td>
 				<td>
 					<%= link_to '详细', admin_event_path(event), class: 'btn btn-info btn-xs' %>

@@ -46,35 +46,6 @@ class Admin::EventsController < Admin::ApplicationController
     end
   end
 
-  def state
-    if @event = Event.find(params[:id])
-      @event.try(params[:val])
-      redirect_to action: :show, id: @event.id
-    else
-      redirect_to action: :index
-    end
-  end
-
-  def totop
-    if @event = Event.find(params[:id])
-      @event.update_attributes(totop: params[:val])
-      redirect_to action: :show, id: @event.id
-    else
-      redirect_to action: :index
-    end
-  end
-
-  def tui
-    event = Event.find(params[:id])
-    p = {channel: '推荐活动', obj_id: event.id, obj_type: 'Event', source_id: event.id, source_type: 'Event'}
-    if push = Push.where(p).first
-      push.touch
-    else
-      Push.create(p.merge(mark: '推荐活动'))
-    end
-    redirect_to :back
-  end
-
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy

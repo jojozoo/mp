@@ -3,19 +3,22 @@
     <%= f.input :user_id, readonly: true, input_html: {value: @topic.new_record? ? current_user.id : @topic.user_id} %>
 	<%= f.input :title %>
     <%= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
-    <% if @tag %>
-    <div class="form-group">
-        <%= f.label :tag_id %>
+
+    
+    <% if @event %>
+    <%= f.input :owner_id, readonly: true, input_html: {value: @event.id} %>
+    <% else %>
+    <%= f.input :owner_id, as: :string %>
+    <% end %>
+    <div class="form-group select optional tag">
+        <label class="select optional col-sm-2 control-label" for="tag">
+            标签
+        </label>
         <div class="col-sm-6 input-text-add">
-            <p class="form-control-static">
-                <%= @tag.name %>
-            </p>
-            <input class="hidden" id="topic_tag_id" name="topic[tag_id]" type="hidden" value="<%= @tag.id %>">
+            <input class="string required form-control" id="tag" name="tag" size="50" type="text" data-validate="true">
+            <p class="help-block">此处为tag</p>
         </div>
     </div>
-    <% else %>
-        <%= f.input :tag_id, collection: Tag.all.map{|t| [t.name, t.id]}, include_blank: false %>
-    <% end %>
 	<div class="form-group">
 		<div class="col-sm-8 col-sm-offset-2">
 			<input type="submit" value="保存topic" class="btn btn-default">

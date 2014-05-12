@@ -1,10 +1,10 @@
 <%= simple_form_for @banner, url: @banner.new_record? ? admin_banners_path : admin_banner_path(@banner), validate: true do |f| %>
 	<%= f.error_notification %>
-	<div class="form-group file optional site_banner_photo">
-		<%= f.label :photo %>
+	<div class="form-group file optional site_banner_picture">
+		<%= f.label :picture %>
 		<div class="col-sm-6 input-text-add">
-			<%= image_tag(@banner.photo.url, style: 'height:80px;margin-bottom:10px;') unless @banner.new_record? %>
-			<%= f.input_field :photo %>
+			<%= image_tag(@banner.picture.url, style: 'height:80px;margin-bottom:10px;') unless @banner.new_record? %>
+			<%= f.input_field :picture %>
 		</div>
 	</div>
 	<%= f.input :link %>

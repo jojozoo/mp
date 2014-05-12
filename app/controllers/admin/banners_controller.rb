@@ -1,18 +1,18 @@
 class Admin::BannersController < Admin::ApplicationController
     def index
-        @banners = Sbanner.paginate(:page => params[:page], per_page: 20).order('id desc')
+        @banners = Banner.paginate(:page => params[:page], per_page: 20).order('id desc')
     end
 
     def show
-        @banner = Sbanner.find(params[:id])
+        @banner = Banner.find(params[:id])
     end
 
     def new
-        @banner = Sbanner.new
+        @banner = Banner.new
     end
 
     def create
-        @banner = Sbanner.new(params[:sbanner])
+        @banner = Banner.new(params[:banner])
         if @banner.save
             redirect_to action: :index
         else
@@ -21,12 +21,12 @@ class Admin::BannersController < Admin::ApplicationController
     end
 
     def edit
-        @banner = Sbanner.find(params[:id])
+        @banner = Banner.find(params[:id])
     end
 
     def update
-       @banner = Sbanner.find(params[:id])
-       if @banner.update_attributes(params[:sbanner])
+       @banner = Banner.find(params[:id])
+       if @banner.update_attributes(params[:banner])
             redirect_to action: :show, id: @banner.id
        else
             render action: "edit"
@@ -34,7 +34,7 @@ class Admin::BannersController < Admin::ApplicationController
     end
 
     def destroy
-        @banner = Sbanner.find(params[:id])
+        @banner = Banner.find(params[:id])
         @banner.update_attributes(del: true)
         redirect_to admin_banners_path
     end

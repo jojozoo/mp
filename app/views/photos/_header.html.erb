@@ -1,0 +1,63 @@
+<div class="row" style="height:180px;margin-bottom:20px;border-bottom: 1px solid #eeeeee;">
+	<div class="col-md-8" style="border-right: 1px solid #F8F8F8;">
+		<h3>
+			<%= '标题未填写' %>
+			<small>
+				<%= '组图' %>照片
+			</small>
+			<div class="pull-right">
+				<%= link_to photo_path(image.prev.id), class: 'btn btn-default btn-xs' do %>
+				<i class="icon-arrow-left"></i>
+					上一张
+				<% end %>
+				<%= link_to photo_path(image.next.id), class: 'btn btn-default btn-xs' do %>
+					下一张
+				<i class="icon-arrow-right"></i>
+				<% end %>
+			</div>
+		</h3>
+		<p class="gray-desc">
+			<%= '图片描述或者组图描述' %>
+		</p>
+		<p>
+			标签:
+			<!-- <a href="">摄影</a>
+			<a href="">Iphone</a> -->
+		</p>
+	</div>
+	<div class="col-md-4" style="margin-top:10px;">
+		<div class="basic-info">
+			<%= link_to image_tag(image.user.avatar(:s50), class: 'img-circle'), user_path(image.user_id), style: 'float:left;margin-right:10px;' %>
+			<div>
+				<%= link_to image.user.username, user_path(image.user_id) %></div>
+			<div class="basic-tui" style="margin-top:8px;">
+				<%= link_to_follow(image.user_id) %>
+				<%= link_to write_my_msgs_path(image.user_id), class: 'btn btn-default btn-xs' do %> 
+				<i class="icon-envelope"></i>
+				漫信
+				<% end %>
+			</div>
+		</div>
+		<div class="basic-attr" style="margin: 15px auto;">
+			作品
+			<a href="">
+				<%= image.user.works.count %>
+			</a>
+			|
+			喜欢
+			<a href="">0</a>
+			|
+			关注
+			<a href="">
+				<%= image.user.followers_count %>
+			</a>
+		</div>
+		<p>
+			浏览:
+			<%= image.visits_count %>
+			<br>
+			时间:
+			<%= humanize(image.updated_at) %>
+		</p>
+	</div>
+</div>

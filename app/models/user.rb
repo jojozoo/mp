@@ -3,17 +3,16 @@
 # Table name: users
 #
 #  id                  :integer          not null, primary key
-#  email               :string(255)
-#  username            :string(255)
-#  nickname            :string(255)
-#  realname            :string(255)
-#  mobile              :string(255)
-#  password            :string(255)
-#  salt                :string(255)
 #  avatar_file_name    :string(255)
 #  avatar_content_type :string(255)
 #  avatar_file_size    :integer
 #  avatar_updated_at   :datetime
+#  email               :string(255)
+#  username            :string(255)
+#  nickname            :string(255)
+#  mobile              :string(255)
+#  password            :string(255)
+#  salt                :string(255)
 #  province            :string(255)
 #  city                :string(255)
 #  site                :string(255)
@@ -25,8 +24,14 @@
 #  warrant             :integer          default(5)
 #  admin               :boolean          default(FALSE)
 #  photographer        :boolean          default(FALSE)
-#  notices_count       :integer          default(0)
-#  followers_count     :integer          default(0)
+#  nots_count          :integer          default(0)
+#  fols_count          :integer          default(0)
+#  msgs_count          :integer          default(0)
+#  phos_count          :integer          default(0)
+#  albs_count          :integer          default(0)
+#  wors_count          :integer          default(0)
+#  liks_count          :integer          default(0)
+#  stos_count          :integer          default(0)
 #  del                 :boolean          default(FALSE)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
@@ -34,11 +39,10 @@
 
 class User < ActiveRecord::Base
   attr_accessor :password_confirmation
-  attr_accessible :email, 
-  :avatar,
+  attr_accessible :avatar, 
+  :email,
   :username, 
   :nickname, 
-  :realname, 
   :mobile, 
   :password, 
   :password_confirmation,
@@ -52,7 +56,16 @@ class User < ActiveRecord::Base
   :duty, 
   :gender, 
   :warrant, # 授权
-  :nocices_count,
+  :admin,
+  :photographer,
+  :nots_count,
+  :fols_count,
+  :msgs_count,
+  :phos_count,
+  :albs_count,
+  :wors_count,
+  :liks_count,
+  :stos_count,
   :del
 
   StyleRow = {
@@ -64,28 +77,38 @@ class User < ActiveRecord::Base
   has_attached_file :avatar,
                     styles: Hash[StyleRow.map{|k,v| [k, {geometry: v, quality: :better}]}]
 
-  has_many :images
+  has_many :photos
   has_many :albums
   has_many :events
   has_many :works
   has_many :notices
-  has_many :micros
-  # has_many :pushes
-  # has_many :push_images
 
-  has_many :tuilikes, as: :obj
-  has_many :tuistores, as: :obj
-  has_many :tuirecoms, as: :obj
+  has_many :likes, as: :obj
+  has_many :stores, as: :obj
   
   # 我的关注(我关注的人)
-  has_many :follow_ships, class_name: 'Follow', foreign_key: :follower_id
-  has_many :follows, source: :user, through: :follow_ships
+  has_many :folships, class_name: 'Folship', foreign_key: :fol_id
+  has_many :fols, source: :user, through: :folships
   # 关注我的(我的关注者)
-  has_many :follower_ships, class_name: 'Follow', foreign_key: :user_id
-  has_many :followers, source: :follower, through: :follower_ships
+  has_many :fanships, class_name: 'Folship', foreign_key: :user_id
+  has_many :fans, source: :fol,  through: :fanships
 
   has_many :topics
-  has_one  :accept # 个人推送设置
+  # 个人推送设置
+  ACCEPT = {
+    comment_mail:   true, 
+    followd_mail:   true, 
+    like_mail:      true, 
+    msg_mail:       true, 
+    recom_mail:     true, 
+    store_mail:     true, 
+    comment_notice: true, 
+    followd_notice: true, 
+    like_notice:    true, 
+    msg_notice:     true, 
+    recom_notice:   true, 
+    store_notice:   true
+  } 
   # 收件箱
   # has_many :iboxs,   class_name: 'Message', foreign_key: :user_id, conditions: {state: [0, 1]}
   # 未读
@@ -143,24 +166,23 @@ class User < ActiveRecord::Base
                             :message => '手机已存在',
                             :if => :mobile_changed?
 
-  validates_format_of       :realname,
-                            :with => /[\u4e00-\u9fa5]{2,10}$/,
-                            :allow_blank => true,
-                            :message => "2-10位汉字"
+  # validates_format_of       :realname,
+  #                           :with => /[\u4e00-\u9fa5]{2,10}$/,
+  #                           :allow_blank => true,
+  #                           :message => "2-10位汉字"
   
   validates_format_of       :domain,
                             :with => /[\w-]{2,10}$/,
                             :allow_blank => true,
                             :message => "2-10位字母/数字/下划线/横线"
   
-  after_create :basic_build
+  
   before_save  :check_not_v_attr
 
-
-  def basic_build
-    self.albums.create(name: '默认相册')
-    Accept.create(user_id: self.id)
-  end
+  # after_create :basic_build
+  # def basic_build
+  #   self.albums.create(name: '默认相册')
+  # end
 
   def check_not_v_attr
     # 之前有值,但还想再次改变 domain_change

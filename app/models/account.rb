@@ -18,7 +18,16 @@
 #
 
 class Account < ActiveRecord::Base
-  attr_accessible :expires_at, :expires_in, :other, :refresh_token, :site, :token, :uid, :user_id, :name
+  attr_accessible :uid,
+  :user_id, 
+  :site, 
+  :name, 
+  :token, 
+  :refresh_token, 
+  :expires_in, 
+  :expires_at, 
+  :other,
+  :del
 
   belongs_to :user
   

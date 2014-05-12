@@ -16,7 +16,7 @@
 			</tr>
 		<% @banners.each do |banner| %>
 			<tr>
-				<td><%= image_tag banner.photo.url, style: 'max-width: 80px;' %></td>
+				<td><%= image_tag banner.picture.url, style: 'max-width: 80px;' %></td>
 				<td><%= link_to banner.link, banner.link, target: '_blank' %></td>
 				<td><%= truncate(banner.title, length: 10) %></td>
 				<td><%= truncate(banner.desc, length: 10) %></td>

@@ -15,7 +15,13 @@
 #
 
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :del, :title, :user_id, :reply_id, :obj_id, :obj_type
+  attr_accessible :obj_id, 
+  :obj_type, 
+  :user_id, 
+  :reply_id, 
+  :title, 
+  :content, 
+  :del
 
   belongs_to :obj, polymorphic: true, counter_cache: true
   belongs_to :user

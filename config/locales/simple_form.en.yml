@@ -33,7 +33,6 @@ en:
         nickname: '昵称'
         mobile: '手机'
         email: '邮箱'
-        realname: '真实姓名'
         gender: '性别'
         warrant: '版权声明'
         site: '个人网站'
@@ -54,44 +53,21 @@ en:
         desc: '活动描述'
         end_time: '结束时间'
         channel: '活动类型'
-      sbanner:
+      banner:
+        picture: '图片'
         link: '链接'
         title: '标题'
         desc: '描述'
-      ad:
-        photo: 投放资源
-        target: 跳转地址
-        title: 标题
-        desc: 描述
-        t: 类型
-        s: 显示
-      putin:
-        from: 来源
-        start_time: 开始
-        end_time: 结束
-      send:
-        title: '通知标题'
-        content: '通知内容'
-        channel: '通知类型'
-      sbg:
-        bg: '类型'
       work:
         title: '输入标题'
         desc: '详细描述'
         event_id: '选择活动'
-      image:
+      photo:
         event_id: '选择活动'
       topic:
         title: '标题'
         content: '内容'
-        tag_id: '标签'
-      push:
-        obj_id: '资源ID'
-        obj_type: '资源类型(obj)'
-        channel: '推荐类别'
-        source_id: '推荐ID'
-        source_type: '推荐类型(source)'
-        mark: '描述文字'
+        owner_id: '所属活动'
     hints:
       defaults:
       user:
@@ -100,15 +76,9 @@ en:
       event:
         end_time: '活动期限'
         tag: '同城、年度、手机等等'
-      putin:
-        start_time: 可不选(默认一直到关闭)
-        end_time: 可不选(默认一直到关闭)
-      sbg:
-        bg: 个人背景最好小图，方便平铺
+      topic:
+        owner_id: '活动ID，关联后会显示到相应活动的推荐栏目'
     placeholders:
       defaults:
         username: 帐户
-      ad:
-        target: http://shanpro.com/events/1
-        f: 随意一个标识 方便日后统计
 

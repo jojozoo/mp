@@ -22,19 +22,14 @@ class Admin::WorksController < Admin::ApplicationController
     @work = Work.find(params[:id])
   end
 
-  def winner
-    @work = Work.find(params[:id])
-    @work.update_attributes(winner: params[:winner])
-    redirect_to action: :show, id: @work.id
-  end
-
   # POST /works
   # POST /works.json
   def create
     @work = Work.new(params[:work])
 
     if @work.save
-      redirect_to action: :index, notice: 'Work was successfully created.'
+      flash[:notice] = 'Topic was successfully created.'
+      redirect_to action: :index
     else
       render action: "new"
     end
@@ -46,7 +41,8 @@ class Admin::WorksController < Admin::ApplicationController
     @work = Work.find(params[:id])
 
     if @work.update_attributes(params[:work])
-      redirect_to action: :show, id: @work, notice: 'ok'
+      flash[:notice] = "更新成功"
+      redirect_to action: :show, id: @work
     else
       render action: "edit"
     end

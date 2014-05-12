@@ -12,10 +12,12 @@ class Admin::PushesController < Admin::ApplicationController
     }
     if params[:channel] == '漫拍之星'
       attrs.merge!(source_id: obj.user_id, source_type: 'User')
+      @push = Push.where(source_type: 'User', source_id: obj.user_id, channel: '漫拍之星').first
     end
     if params[:channel] == '推荐摄影师'
       render text: '' and return unless obj.user.photographer
       attrs.merge!(source_id: obj.user_id, source_type: 'User')
+      @push = Push.where(source_type: 'User', source_id: obj.user_id, channel: '推荐摄影师').first
     end
     @push = Push.where(attrs).first unless @push # 根据推荐摄影师和每日一图查询
     @push = Push.create!(attrs.merge(mark: '暂无备注')) unless @push

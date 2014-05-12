@@ -30,7 +30,7 @@
 				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<%= link_to admin_images_path, class: 'accordion-toggle' do %> 
+						<%= link_to admin_photos_path, class: 'accordion-toggle' do %> 
 						<i class="icon-picture"></i>
 						图库管理
 						<% end %>
@@ -68,41 +68,6 @@
 						<% end %>
 					</div>
 				</div>
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<a href="#tuis" data-parent="#side_accordion" data-toggle="collapse" class="accordion-toggle">
-							<i class="icon-ok-circle"></i>
-							推荐管理
-						</a>
-					</div>
-					<div class="accordion-body collapse <%= 'in' if controller_name.eql?('pushes') %>" id="tuis">
-						<div class="panel-body">
-							<ul class="nav nav-pills nav-stacked">
-								<li>
-									<%= link_to '全部推荐', admin_pushes_path %>
-								</li>
-								<li>
-									<%= link_to '推荐用户', admin_pushes_path(t: 'User') %>
-								</li>
-								<li>
-									<%= link_to '推荐作品', admin_pushes_path(t: 'Work') %>
-								</li>
-								<li>
-									<%= link_to '推荐图片', admin_pushes_path(t: 'Image') %>
-								</li>
-								<li>
-									<%= link_to '推荐话题', admin_pushes_path(t: 'Topic') %>
-								</li>
-								<li>
-									<%= link_to '推荐活动', admin_pushes_path(t: 'Event') %>
-								</li>
-								<li>
-									<%= link_to '推荐重点', admin_pushes_path(t: 'Zhong') %>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -118,34 +83,14 @@
 									<%= link_to '反馈信息', admin_feedbacks_path, class: 'accordion-toggle' %>
 								</li>
 								<li>
-									<%= link_to '广告管理', admin_ads_path, class: 'accordion-toggle' %>
-								</li>
-								<li class="nav-header">网站图片</li>
-								<li>
 									<%= link_to 'Banner', admin_banners_path %>
-								</li>
-								<li>
-									<%= link_to '背景模板', admin_bgs_path %>
 								</li>
 								<li class="nav-header">系统通知</li>
 								<li>
-									<%= link_to '通知列表', admin_sends_path %>
+									<%= link_to '群发', '/admin/msg' %>
 								</li>
 								<li>
-									<%= link_to '群发站内信', '/admin/msg' %>
-								</li>
-								<li>
-									<%= link_to '邮件相关', admin_resque_server_path %>
-								</li>
-								<li class="nav-header">系统设置</li>
-								<li>
-									<%= link_to '网站信息', '/admin/info' %>
-								</li>
-								<li>
-									<%= link_to '网站日志', '/admin/log' %>
-								</li>
-								<li>
-									<%= link_to '基础数据', '/admin/basic' %>
+									<%= link_to '邮件', admin_resque_server_path %>
 								</li>
 							</ul>
 						</div>

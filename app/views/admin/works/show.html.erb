@@ -46,7 +46,7 @@
 						</li>
 						<li>
 							<span class="item-key">作品集</span>
-							<div class="vcard-item"><%= link_to '查看', admin_images_path('con[work_id]' => @work.id) %></div>
+							<div class="vcard-item"><%= link_to '查看', admin_photos_path('con[work_id]' => @work.id) %></div>
 						</li>
 						<li class="v-heading">
 							作品集
@@ -56,7 +56,7 @@
 								<% @work.images.each do |image| %>
 								<div class="col-md-2">
 									<div class="thumbnail">
-										<%= link_to image_tag(image.picture(:cover)), admin_image_path(image.id) %>
+										<%= link_to image_tag(image.picture(:cover)), admin_photo_path(image.id) %>
 										<div class="caption">
 											<%= link_to image.user.username, 'javascript:void(0);' %>
 										</div>

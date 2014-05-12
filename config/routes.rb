@@ -1,6 +1,5 @@
 Mp::Application.routes.draw do
-
-  get    '/'              => 'sessions#index', as: :sessions
+  get    '/home'          => 'home#index', as: :home
   get    '/sign_in'       => 'sessions#new'
   post   '/sign_in'       => 'sessions#create'
   get    '/sign_out'      => 'sessions#destroy'
@@ -22,9 +21,10 @@ Mp::Application.routes.draw do
   match '/ajax/fol/:source/:id'       => 'ajax#fol', via: :post, as: :ajax_fol # 关注
   match '/ajax/ufl/:source/:id'       => 'ajax#ufl', via: :post, as: :ajax_ufl # 取消关注
   match '/ajax/editer/:source/:id'    => 'ajax#editer', via: :post, as: :ajax_editer # 取消关注
+  
 
   # gallery
-  resources :images, path: 'p' do
+  resources :photos do
     collection do
       get :waterfall
       get :star
@@ -40,7 +40,7 @@ Mp::Application.routes.draw do
     get :excellent, on: :collection
     get :explore, on: :collection
   end
-  resources :events, path: 'e', only: [:index, :show] do
+  resources :events, path: 'requests', only: [:index, :show] do
     collection do
       get :waterfall
     end
@@ -115,38 +115,26 @@ Mp::Application.routes.draw do
     end
   end
   ##### my end #####
-  match '/admin/push/:channel/:id' => 'admin/pushes#tui', via: :post, as: :admin_push_tui
+  
   scope '/admin', :module => 'admin', :as => 'admin' do
     mount Resque::Server => '/resque'
+    get '/ajax/:action', controller: 'ajax', as: :ajax
+
     get  '/'     => 'sessions#index'
-    get  '/info' => 'sessions#info'
-    post '/info' => 'sessions#info'
-    get  '/log'  => 'sessions#log'
-    get  '/basic'  => 'sessions#basic'
-    get  '/refresh'  => 'sessions#refresh'
     get  '/msg' => 'sessions#msg'
     post '/msg' => 'sessions#msg'
+    
     resources :feedbacks
-    resources :sbanners, as: :banners, :path => :banners, :controller => "banners"
-    resources :sbgs, as: :bgs, :path => :bgs, :controller => "bgs"
-    resources :ads do
-      member do
-        post :putin
-        get  :close
-        get  :open
-        get  :del
-      end
-    end
-    resources :sends
-    # resources :products do
-    # end
-    resources :users do
-      member do
-        get :spg
-        get :sad
-      end
-    end
-    resources :images do
+    resources :banners
+    resources :users
+    resources :editors
+    resources :works
+    resources :tags
+    resources :comments
+    resources :events
+    resources :topics
+
+    resources :photos do
       collection do
         get :all
       end
@@ -154,23 +142,8 @@ Mp::Application.routes.draw do
         get :basic
       end
     end
-    resources :events do
-      member do
-        get :state
-        get :totop
-        get :tui
-      end
-    end
-    resources :members
-    resources :works do
-      get :winner, on: :member
-    end
-    resources :topics do
-      get :tui, on: :member
-    end
-    resources :tags
-    resources :comments
-    resources :pushes
+    
+    
     resources :messages, only: [:index, :show, :destroy] do
       get :talk, on: :member
     end
@@ -225,7 +198,7 @@ Mp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # 图片访问权限
-  get "/system/:class/:id/:up/:one/:two/:three/:style/:random.:format" => 'images#browse'
+  get "/system/:class/:id/:up/:one/:two/:three/:style/:random.:format" => 'photos#browse'
   root :to => 'sessions#index'
 
   # See how all your routes lay out with "rake routes"

@@ -35,17 +35,14 @@
 						</li>
 						<li>
 							<span class="item-key">推荐活动(显示到首页)</span>
-							<div class="vcard-item"><%= link_to '推荐', tui_admin_event_path(@event.id) %></div>
-						</li>
-						<li>
-							<span class="item-key">显示到导航</span>
 							<div class="vcard-item">
-								(<%= @event.totop ? '在导航' : '未设置' %>)
-								<% if @event.totop %>
-									<%= link_to '取消', totop_admin_event_path(@event, val: 0) %>
-								<% else %>
-									<%= link_to '导航', totop_admin_event_path(@event, val: 1) %>
-								<% end %>
+								<%= link_to '推荐活动', admin_ajax_path('tui', {
+									source: 'Event',
+									id: @event.id,
+									channel: 'request',
+									user_id: @event.user_id
+								}) %>
+								<%= link_to '推荐', tui_admin_event_path(@event.id) %>
 							</div>
 						</li>
 						<li>
@@ -54,21 +51,69 @@
 								(<%= Event::STATE.merge(audit: '未审核').values[@event.state] %>)
 								<% case @event.state %>
 								<% when 0 %>
-									<%= link_to '通过', state_admin_event_path(@event, val: 'ongoing!') %>
+									<%= link_to '通过', admin_ajax_path( 'update', {
+										source: 'Event',
+										id: @event.id,
+										update: {
+											state: 2
+										}
+									}) %>
 									/
-									<%= link_to '不通过', state_admin_event_path(@event, val: 'not_by!') %>
+									<%= link_to '不通过', admin_ajax_path( 'update', {
+										source: 'Event',
+										id: @event.id,
+										update: {
+											state: 1
+										}
+									}) %>
 								<% when 1 %>
-									<%= link_to '通过', state_admin_event_path(@event, val: 'ongoing!') %>
+									<%= link_to '通过', admin_ajax_path( 'update', {
+										source: 'Event',
+										id: @event.id,
+										update: {
+											state: 2
+										}
+									}) %>
 									/
-									<%= link_to '关闭', state_admin_event_path(@event, val: 'closed!') %>
+									<%= link_to '关闭', admin_ajax_path( 'update', {
+										source: 'Event',
+										id: @event.id,
+										update: {
+											state: 3
+										}
+									}) %>
 								<% when 2 %>
-									<%= link_to '不通过', state_admin_event_path(@event, val: 'not_by!') %>
+									<%= link_to '不通过', admin_ajax_path( 'update', {
+										source: 'Event',
+										id: @event.id,
+										update: {
+											state: 1
+										}
+									}) %>
 									/
-									<%= link_to '关闭', state_admin_event_path(@event, val: 'closed!') %>
+									<%= link_to '关闭', admin_ajax_path( 'update', {
+										source: 'Event',
+										id: @event.id,
+										update: {
+											state: 3
+										}
+									}) %>
 								<% when 3 %>
-									<%= link_to '重启活动', state_admin_event_path(@event, val: 'ongoing!') %>
+									<%= link_to '重启活动', admin_ajax_path( 'update', {
+										source: 'Event',
+										id: @event.id,
+										update: {
+											state: 2
+										}
+									}) %>
 								<% else %>
-									(未知错误)<%= link_to '置为关闭', state_admin_event_path(@event, val: 'closed!') %>
+									(未知错误)<%= link_to '置为关闭', admin_ajax_path( 'update', {
+										source: 'Event',
+										id: @event.id,
+										update: {
+											state: 3
+										}
+									}) %>
 								<% end %>
 							</div>
 						</li>
@@ -77,15 +122,9 @@
 							<div class="vcard-item"><%= @event.members_count %></div>
 						</li>
 						<li>
-							<span class="item-key">参与作品(<%= @event.works_count %>)</span>
+							<span class="item-key">参与图片(<%= @event.photos_count %>)</span>
 							<div class="vcard-item">
-								<%= link_to '查看全部', admin_works_path('con[event_id]' => @event.id) %>
-							</div>
-						</li>
-						<li>
-							<span class="item-key">参与图片(<%= @event.images_count %>)</span>
-							<div class="vcard-item">
-								<%= link_to '查看全部', admin_images_path('con[event_id]' => @event.id) %>
+								<%= link_to '查看全部', admin_photos_path('con[event_id]' => @event.id) %>
 							</div>
 						</li>
 						<li class="v-heading">
@@ -99,11 +138,11 @@
 									<th>操作</th>
 								</tr>
 								
-								<% @event.members.each do |member| %>
-									<%= form_for ['admin', member], validate: true do |f| %>
+								<% @event.editors.each do |editor| %>
+									<%= form_for ['admin', editor], validate: true do |f| %>
 										<tr>
 											<td>
-												<%= f.text_field :user_id %>
+												<%= f.text_field :editor_id %>
 											</td>
 											<td>
 												<%= f.text_field :sum %>
@@ -111,16 +150,16 @@
 											<td>
 												<%= f.submit '保存', class: 'btn btn-default btn-xs' %>
 												/
-												<%= link_to '删除', admin_member_path(member.id), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>
+												<%= link_to '删除', admin_editor_path(editor.id), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>
 											</td>
 										</tr>
 									<% end %>
 								<% end %>
-								<%= form_for ['admin', Member.new], validate: true do |f| %>
+								<%= form_for ['admin', Editor.new], validate: true do |f| %>
 									<%= f.hidden_field :event_id, value: params[:id] %>
 									<tr>
 										<td>
-											<%= f.text_field :user_id %>
+											<%= f.text_field :editor_id %>
 										</td>
 										<td>
 											<%= f.text_field :sum %>
@@ -164,7 +203,7 @@
 						</li> -->
 						<li class="v-heading">
 							活动公告
-							<%= link_to '去发布', new_admin_topic_path(tag: @event.name) %>
+							<%= link_to '去发布', new_admin_topic_path(eid: @event.id) %>
 						</li>
 						<li>
 							<table class="table table-bordered table12 table-condensed table-hover">
@@ -175,8 +214,7 @@
 									<th>创建于</th>
 									<th>操作</th>
 								</tr>
-								<% @event.push_topics.each do |push| %>
-								<% topic = push.obj %>
+								<% @event.topics.each do |topic| %>
 								<tr>
 									<td><%= topic.title %></td>
 									<td><%= truncate(topic.content, length: 20) %></td>

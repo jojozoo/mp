@@ -5,24 +5,28 @@
 #  id             :integer          not null, primary key
 #  user_id        :integer
 #  cover_id       :integer
-#  event_id       :integer
-#  warrant        :integer
-#  winner         :integer
+#  photos_count   :integer          default(0)
+#  comments_count :integer          default(0)
+#  visit_count    :integer          default(0)
 #  title          :string(255)
 #  desc           :string(255)
-#  images_count   :integer          default(0)
-#  comments_count :integer          default(0)
-#  visits_count   :integer          default(0)
 #  del            :boolean          default(FALSE)
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
 
 class Work < ActiveRecord::Base
-  attr_accessible :del, :event_id, :cover_id, :title, :desc, :user_id, :warrant, :winner, :images_count, :visits_count, :comments_count
+  attr_accessible :user_id, 
+  :cover_id, 
+  :photos_count, 
+  :comments_count, 
+  :visit_count, 
+  :title, 
+  :desc, 
+  :del
 
-  # belongs_to :cover, class_name: 'Image', foreign_key: :cover_id
-  # has_many   :images
+  # belongs_to :cover, class_name: 'Photo', foreign_key: :cover_id
+  # has_many   :photos
   # belongs_to :user
   # belongs_to :event
   # has_many   :visits, as: :obj
@@ -37,6 +41,6 @@ class Work < ActiveRecord::Base
   # validates_presence_of     :desc, 
   #                           :message => '不能为空'
 
-  # desc:SecureRandom.hex(30), user_id: 116, image_id: Image.limit(1).order('rand()').first.id
+  # desc:SecureRandom.hex(30), user_id: 116, image_id: Photo.limit(1).order('rand()').first.id
   
 end

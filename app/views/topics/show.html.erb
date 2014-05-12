@@ -39,6 +39,7 @@
                     <div class="kindeditor">
                         <%= raw @topic.content %>
                     </div>
+                    <hr>
                     <%= render "shared/respond", url: ajax_com_path('topic', @topic.id) if current_user %>
                     <hr>
                     <div class="comments">

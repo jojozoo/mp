@@ -42,13 +42,13 @@ module ApplicationHelper
   def link_to_push name, obj, isblock = true
     type, method, icon, str = case name
     when 'like'
-      ['likes', 'tuilike?', 'heart', '喜欢']
+      ['likes', 'like?', 'heart', '喜欢']
     when 'store'
-      ['stores', 'tuistore?', 'star', '收藏']
+      ['stores', 'store?', 'star', '收藏']
     when 'recom'
-      ['recoms', 'tuirecom?', 'ok-circle', '推荐']
+      ['recoms', 'recom?', 'ok-circle', '推荐']
     else
-      ['likes', 'tuilike?', 'heart', '喜欢']
+      ['likes', 'like?', 'heart', '喜欢']
     end
     class_str = "push-#{type}-#{obj.id}-link"
     class_str += isblock ? ' btn btn-success btn-xs' : ''
@@ -79,13 +79,19 @@ module ApplicationHelper
     end
   end
 
-  def userbackground
-    # asset_path(Sbg.bgs.order('rand()').first.photo.url)
-    '/system/sbgs/5/original/e4da3b7fbb.jpg?1394877293'
-  end
-  def signsbackground
-    Sbg.signs.order('rand()').first.photo.url
-    # ["/system/sbgs/1/original/c4ca4238a0.jpg?1394877196", "/system/sbgs/2/original/c81e728d9d.jpg?1394877228", "/system/sbgs/3/original/eccbc87e4b.jpg?1394877242", "/system/sbgs/4/original/a87ff679a2.jpg?1394877273"].sort_by{rand}[0]
+  def sessionbackgrounds
+    url = [
+      'c4ca4238a0.jpg', 
+      'a87ff679a2.jpg', 
+      '8f14e45fce.jpg', 
+      'c81e728d9d.jpg', 
+      'e4da3b7fbb.jpg', 
+      'c9f0f895fb.jpg', 
+      'eccbc87e4b.jpg', 
+      '1679091c5a.jpg', 
+      '45c48cce2e.jpg'
+      ].sort_by{rand}[0]
+    url = "/images/backgrounds/#{url}?1394877273"
   end
 
   def time_style time

@@ -1,4 +1,4 @@
-<%= form_for @user || User.new, url: '/sign_in', method: :post, html: {id: 'sign-in', class: 'sign-form'} do |f| %>
+<%= form_for User.new, url: '/sign_in', method: :post, html: {id: 'sign-in', class: 'sign-form'} do |f| %>
 	<h4>登录漫拍网，看精致图片</h4>
 	<hr>
 	<div class="form-group <%= 'has-error' if @errors[:username].present? %>">

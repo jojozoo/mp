@@ -12,6 +12,14 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
+  database: mp_demo
+  pool: 5
+  username: tmp
+  password: tmp
+master:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
   database: mp_dev
   pool: 5
   username: tmp
@@ -24,7 +32,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: mp_dev
+  database: mp_demo
   pool: 5
   username: tmp
   password: tmp
@@ -33,7 +41,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: mp_dev
+  database: mp_demo
   pool: 5
   username: tmp
   password: tmp

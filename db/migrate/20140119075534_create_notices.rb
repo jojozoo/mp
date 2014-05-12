@@ -2,7 +2,7 @@ class CreateNotices < ActiveRecord::Migration
   def change
     create_table :notices do |t|
       t.integer :user_id
-      t.integer :sends_id
+      t.integer :send_id
       t.string :title
       t.text :content
       t.boolean :read

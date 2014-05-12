@@ -1,6 +1,6 @@
 class SitesController < ApplicationController
 
-    layout 'sign'
+    layout 'default'
 
     def index
         redirect_to action: :about

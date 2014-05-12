@@ -1,88 +1,74 @@
-<div class="row">
-	<style type="text/css">
-	.main .col-md-9 .breadcrumb, .main .col-md-12 .breadcrumb{
-		margin-bottom: 15px;
-	}
-	/*.ad > img{
-		width: 100%;
-	}*/
-	</style>
-	<div class="col-md-9">
-		<!-- <div class="ad">
-			<img src="/images/ad.jpg" alt="我的十大手机图片征集">
-		</div> -->
-		<%= render 'shared/flexslider' %>
+<%= form_for User.new, url: '/sign_in', method: :post, html: {id: 'sign-in', class: 'sign-form'} do |f| %>
+	<h4>登录漫拍网，看精致图片</h4>
+	<hr>
+	<div class="form-group <%= 'has-error' if @errors[:username].present? %>">
+		<input type="text" class="form-control" id="username" name="username" placeholder="帐号/邮箱/手机" value="<%= params[:username] %>">
+		<p class="help-block"><%= @errors[:username] %></p>
 	</div>
-	<div class="col-md-3">
-		<div class="breadcrumb">
-			<span>每日重点</span>
-		</div>
-		<div class="radbox">
-			<div class="box_con">
-				<ul class="list-unstyled">
-					<% Push.where(channel: '推荐重点').order('id desc').limit(12).each do |push| %>
-						<% topic = push.source %>
-						<li>
-							<%= link_to topic.title, topic_path(topic.id) %>
-						</li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
+	<div class="form-group <%= 'has-error' if @errors[:password].present? %>">
+		<input type="password" name= "password" class="form-control" id="password" placeholder="密码">
+		<p class="help-block"><%= @errors[:password] %></p>
 	</div>
-</div>
+	<input type="submit" value="登录漫拍" id="submit-push" class="btn btn-info btn-block">
+	<hr>
+	<div class="checkbox">
+		<input type="checkbox" name="remember_me" id="remember_me">
+		<label for="remember_me">记住我</label>
+		<a href="/forgot">忘记密码</a>
+		<a class="pull-right" href="/sign_up">去注册</a>
+	</div>
+	<hr>
+	<h5>合作网站帐号登录,“无需”注册漫拍也可直接登录!</h5>
+	<table class="table">
+		<tr>
+			<td>
+				<a href="/oauth/weibo" class="weibo login-button">微博</a>
+			</td>
+			<td>
+				<a href="/oauth/douban" class="douban login-button pull-right">豆瓣</a>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="/oauth/renren" class="renren login-button">人人</a>
+			</td>
+			<td>
+				<a href="/oauth/qzone" class="qzone login-button pull-right">QQ</a>
+			</td>
+		</tr>
+	</table>
+<% end %>
 
-<div class="row">
-	<div class="col-md-9">
-		<div class="breadcrumb">
-			<span>全部活动</span>
-			<div class="pull-right">
-				<%= link_to '年度活动', events_path(tag: '年度活动') %>
-				<%= link_to '正在进行的活动', events_path(t: 'ongoing') %>
-				<%= link_to '已结束的活动', events_path(t: 'closed') %>
-				<%= link_to '浏览更多快拍活动>>', events_path %>
-			</div>
-		</div>
-		<div class="event-tags">
-			<% Push.where(channel: '推荐活动').order('id desc').limit(18).each do |push| %>
-			<% event = push.source %>
-			<%= link_to event.name, event_path(event.id), class: 'tag' %>
-			<% end %>
-		</div>	
-	</div>
-	<div class="col-md-3">
-		<div class="breadcrumb">
-			<span>推荐摄影师</span>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-12">
-		<div class="breadcrumb">
-			<span>编辑推荐</span>
-			<div class="pull-right">
-				<%= link_to '最新上传', images_path(order: 'news') %>
-				<%= link_to '每日精选', images_path(order: 'choice') %>
-				<%= link_to '漫拍之星', star_images_path %>
-				<%= link_to '浏览更多>>', images_path %>
-			</div>
-		</div>
-		<div class="row" id="container">
-		<%= render partial: 'images/thumb', collection: Image.where(state: 1).order('id desc').limit(12), as: :image %>
-		</div>
-		<script type="text/javascript">
-		$(function(){
-			var container = $('#container');
-			container.imagesLoaded(function(){
-				container.masonry({
-					itemSelector : '.col-sm-6.col-md-3',
-					transitionDuration: '0.8s',
-					hiddenStyle: { opacity: 0 },
-					visibleStyle: { opacity: 1}
-				});
-				$('.col-sm-6.col-md-3').animate({'opacity': 1}, 500);
-			});
-		})
-		</script>
-	</div>
-</div>
+<script>
+	$(function(){
+		$("#submit-push").click(function(){
+			$("#username").blur();
+			$("#password").blur();
+			if($(".has-error").length > 0){
+				return false;
+			}
+			$(this).submit();
+		});
+		$("#username").blur(usernameBlur);
+		$("#password").blur(passwordBlur);
+		// username blur
+		function usernameBlur(){
+			var value = $(this).val();
+			var reg = /[\w\.\@\u4e00-\u9fa5]{2,}/;
+			if(!(reg.test(value))){
+				$(this).next().text("请输入正确的帐号/邮箱/手机").parent().addClass('has-error');
+				return false
+			}
+			$(this).next().text('').parent().removeClass('has-error');
+		}
+		// password blur
+		function passwordBlur(){
+			var value = $(this).val();
+			if(value.length < 5 || value.lenght > 32){
+				$(this).next().text("密码长度5..32位").parent().addClass('has-error');
+				return false;
+			}
+			$(this).next().text('').parent().removeClass('has-error');
+		}
+	})
+</script>

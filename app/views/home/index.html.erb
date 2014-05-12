@@ -1,0 +1,62 @@
+<div class="row">
+	<style type="text/css">
+	.main .col-md-9 .breadcrumb, .main .col-md-12 .breadcrumb{
+		margin-bottom: 15px;
+	}
+	/*.ad > img{
+		width: 100%;
+	}*/
+	</style>
+	<div class="col-md-9">
+		<!-- <div class="ad">
+			<img src="/images/ads/ad.jpg" alt="我的十大手机图片征集">
+		</div> -->
+		<%= render 'shared/flexslider' %>
+	</div>
+	<div class="col-md-3">
+		<div class="breadcrumb">
+			<span>每日重点</span>
+		</div>
+		<div class="radbox">
+			<div class="box_con">
+				<ul class="list-unstyled">
+					<% Topic.emphasis.order('id desc').limit(12).each do |topic| %>
+						<li>
+							<%= link_to topic.title, topic_path(topic.id) %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="breadcrumb">
+			<span>编辑推荐</span>
+			<div class="pull-right">
+				<%= link_to '最新上传', photos_path(order: 'news') %>
+				<%= link_to '每日精选', photos_path(order: 'choice') %>
+				<%= link_to '漫拍之星', star_photos_path %>
+				<%= link_to '浏览更多>>', photos_path %>
+			</div>
+		</div>
+		<div class="row" id="container">
+		<%= render partial: 'photos/image', collection: Photo.effective.order('id desc').limit(12), as: :image %>
+		</div>
+		<script type="text/javascript">
+		$(function(){
+			var container = $('#container');
+			container.imagesLoaded(function(){
+				container.masonry({
+					itemSelector : '.col-sm-6.col-md-3',
+					transitionDuration: '0.8s',
+					hiddenStyle: { opacity: 0 },
+					visibleStyle: { opacity: 1}
+				});
+				$('.col-sm-6.col-md-3').animate({'opacity': 1}, 500);
+			});
+		})
+		</script>
+	</div>
+</div>

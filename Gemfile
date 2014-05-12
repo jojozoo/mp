@@ -12,7 +12,6 @@ gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
 
-gem 'by_star'
 gem 'nokogiri'
 
 # 上传图片

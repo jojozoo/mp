@@ -14,8 +14,14 @@
 							<div class="vcard-item"><%= link_to @topic.user.username %></div>
 						</li>
 						<li>
-							<span class="item-key">标签</span>
-							<div class="vcard-item"><%= @topic.tag.name %></div>
+							<span class="item-key">所属活动</span>
+							<div class="vcard-item">
+								<% if event = @topic.owner %>
+								<%= link_to event.name, admin_event_path(event.id), target: '_blank' %>
+								<% else %>
+								未关联
+								<% end %>
+							</div>
 						</li>
 						<li>
 							<span class="item-key">标题</span>
@@ -24,10 +30,15 @@
 						<li>
 							<span class="item-key">推荐</span>
 							<div class="vcard-item">
-								<%= link_to '推荐首页', tui_admin_topic_path() %>
-								<% if @topic.tag.channel.eql?('活动') and event = Event.find_by_name(@topic.tag.name) %>
-									<%= link_to '推荐到此活动', tui_admin_topic_path(event_id: event.id) %>
-									会在活动右侧边栏的推荐重点显示
+								<%= link_to '推荐重点', admin_ajax_path('tui', {
+									source: 'Topic',
+									id: @topic.id,
+									channel: 'emphasis',
+									user_id: @topic.user_id
+								}) %>
+								<% if true %>
+									<%= link_to '推荐到此活动', '/' %>
+									会在活动右侧边栏的推荐重点显示/如果tags中含有某个活动标签就显示此推荐
 								<% end %>
 							</div>
 						</li>

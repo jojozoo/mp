@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
-#  sends_id   :integer
+#  send_id    :integer
 #  title      :string(255)
 #  content    :text
 #  read       :boolean
@@ -14,5 +14,6 @@
 #
 
 class Notice < ActiveRecord::Base
-  attr_accessible :content, :read, :sends_id, :title, :user_id
+  # 通知的发送者只能是系统, 所以send_id没有用处
+  attr_accessible :user_id, :send_id, :title, :content, :read, :del
 end

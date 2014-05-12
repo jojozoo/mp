@@ -1,14 +1,12 @@
 class SessionsController < ApplicationController
-  layout 'sign', except: :index
 
+  # 其中 new 和 sign_up 的get请求去掉 路由也去掉 只有首页
   def index
-
+    redirect_to home_path if sign_in?
+    @errors = {}
   end
 
-  # GET /sign_in 登录
   def new
-    redirect_to root_path if sign_in?
-    @user = User.new
     @errors = {}
   end
 
@@ -29,11 +27,10 @@ class SessionsController < ApplicationController
   end
 
   # GET /sign_up 注册
-  # 真正注册在node方面(因为涉及发邮件)
   def sign_up
     if request.post?
       # 为oauth 登录添加部分
-      param = params[:user].slice(:username, :email, :password, :password_confirmation, :province, :city, :resume, :domain, :gender, :site, :realname, :duty)
+      param = params[:user].slice(:username, :email, :password, :password_confirmation, :province, :city, :resume, :domain, :gender, :site, :duty)
       @user = User.new(param)
 
       

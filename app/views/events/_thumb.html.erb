@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-md-3">
 	<div class="thumbnail">
-		<%= link_to image_tag(image.picture(:thumb), wh: image.wh), image_path(image.id), target: '_blank' %>
+		<%= link_to image_tag(image.picture(:thumb), wh: image.wh), photo_path(image.id), target: '_blank' %>
 		<div class="caption caption-border">
 			<div style="margin: 6px 0;">
 				<%= image.desc.present? ? image.desc : "暂无描述" %>

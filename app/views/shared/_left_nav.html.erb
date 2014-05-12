@@ -1,33 +1,15 @@
 <ul class="nav navbar-nav js-nav">
-    <li id="js-nav-sessions">
-        <%= link_to '首页', root_path %>
+    <li id="js-nav-home">
+        <%= link_to '首页', home_path %>
     </li>
     <!-- <li id="js-nav-micros">
         <%#= link_to '动态', micros_path %>
     </li> -->
-    <li id="js-nav-images">
-        <%= link_to '图库', images_path %>
+    <li id="js-nav-photos">
+        <%= link_to '图库', photos_path %>
     </li>
-    <li class="dropdown" id="js-nav-events">
-        <%= link_to events_path do %>
-        活动 <b class="caret"></b>
-        <% end %>
-        <ul class="dropdown-menu">
-            <% if (events = Event.where(totop: true)).present? %>
-                <% events.each do |event| %>
-            <li>
-                <%= link_to event.name, event_path(event.id) %>
-            </li>
-                <% end %>
-            <li class="divider"></li>
-            <% end %>
-            <li>
-                <a href="/e">正在进行的活动</a>
-            </li>
-            <li>
-                <a href="/e">已经结束的活动</a>
-            </li>
-        </ul>
+    <li id="js-nav-events">
+        <%= link_to '活动', events_path %>
     </li>
     <li class="dropdown" id="js-nav-rs">
         <a href="/rs">

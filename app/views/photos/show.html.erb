@@ -1,0 +1,84 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="white-col-md">
+			<%= render 'images/header', image: @image %>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="pic">
+						<%= link_to image_tag(@image.picture(:big), style: 'max-width:100%;') %>
+						<%= render "/shared/actions", obj: @image, as: :obj %>
+					</div>
+					<hr>
+					<ul class="list-unstyled clearfix">
+						<li class="opt-b">
+							<i class="icon-heart"></i>
+							<%= link_to_push 'like', @image, false %>
+						</li>
+						<li class="opt-b">
+							<i class="icon-bookmark"></i>
+							<%= link_to_push 'store', @image, false %>
+						</li>
+						<li class="opt-b">
+							<i class="icon-ok-circle"></i>
+							<%= link_to_push 'recom', @image, false %>
+						</li>
+						<li class="opt-b">
+							<i class="icon-comment"></i>
+							<a href="#comment_content" title="回应">回应(<%= @image.comments_count %>)</a>
+						</li>
+						<li class="opt-b">
+							<i class="icon-flag"></i>
+							<% if @image.event %>
+								<%= link_to @image.event.name, event_path(@image.event_id) %>
+							<% end %>
+						</li>
+						<li class="opt-b">
+							<i class="icon-time"></i>
+							<%= @image.created_at.strftime("%m-%d %R") %>
+						</li>
+					</ul>
+					<hr>
+					<pre style="font-size: 14px;border: 0;background: #fff;padding: 0;"><code><%= @image.desc.blank? ? '暂无描述' : @image.desc %></code></pre>
+					<hr>
+					<div class="row">
+						<div class="col-md-8">
+							<%= render "shared/respond", url: ajax_com_path('image', @image.id) if current_user %>
+							<hr>
+							<div class="comments">
+								<h5>所有回应</h5>
+								<ul class="media-list">
+									<%= render partial: 'shared/comment', collection: @image.comments %>
+								</ul>
+							</div>
+						</div>
+						<div class="col-md-4">
+							visits
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script>
+	window._bd_share_config={
+		"common":{
+			"bdSnsKey":{},
+			"bdText":"这是分享内容",
+			"bdDesc":"这是分享摘要",
+			"bdUrl":"这是分享的url",
+			"bdPic":"分享的图片",
+			"bdMini":"1", // 下拉浮层中分享按钮的列数
+			"bdMiniList":false,
+			"bdStyle":"1",
+			"bdSize":"16"
+		},
+		"share":{
+			"bdSize":16
+		}
+	};
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>

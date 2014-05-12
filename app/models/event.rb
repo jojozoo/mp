@@ -4,45 +4,41 @@
 #
 #  id                :integer          not null, primary key
 #  name              :string(255)
+#  title             :string(255)
 #  user_id           :integer
 #  logo_file_name    :string(255)
 #  logo_content_type :string(255)
 #  logo_file_size    :integer
 #  logo_updated_at   :datetime
-#  title             :string(255)
 #  desc              :text
 #  channel           :string(255)
 #  end_time          :date
 #  members_count     :integer          default(0)
-#  works_count       :integer          default(0)
-#  images_count      :integer          default(0)
+#  photos_count      :integer          default(0)
 #  state             :integer          default(0)
-#  totop             :boolean          default(FALSE)
+#  request           :boolean          default(FALSE)
+#  request_at        :datetime
 #  del               :boolean          default(FALSE)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
 
 class Event < ActiveRecord::Base
-  attr_accessible :desc,
-   :name,
-   :logo, 
-   :channel, 
-   :end_time, 
-   :works_count, 
-   :members_count,
-   :images_count, 
-   :totop, 
-   :state, 
-   :title, 
+  attr_accessible :name,
+   :title,
    :user_id, 
+   :logo, 
+   :desc, 
+   :channel, 
+   :end_time,
+   :members_count,
+   :photos_count, 
+   :state, 
+   :request,
+   :request_at,  
    :del
   # user_id 发起人
-  # works_count: 图片数量
-  # members_count 参与者数量
   # state 审核中 未通过 进行中 已结束(0,1,2,3)
-  # totop 是否显示到全站导航
-  # logo
   # channel 暂时有同城,年度,手机
   # 导航显示方法
     # 1 推荐显示一般活动
@@ -94,25 +90,20 @@ class Event < ActiveRecord::Base
     tag = Tag.unscoped.find_or_create_by_name_and_channel(self.name, '活动')
     tag.update_attributes(del: !self.ongoing?)
   end
-                            
-  # 作品 参与活动的作品
-  # has_many :works
-  # 参与活动的图片
-  # has_many :images, through: :works, source: :image
-  has_many :images
-  # 参与活动的人
-  has_many :members
-  # has_many :members, through: :works, source: :user
-  # has_many :winner_works, class_name: 'Work', :conditions => '`works`.`winner` > 0', order: 'winner desc'
-  # # 活动获奖的人 大于0 asc排序: 0参与 1等奖 2等奖
-  # has_many :winners, source: :user, through: :winner_works
-  # 其实winners不需要. 获奖信息直接发布一个文章或者在活动页编辑即可
-  # has_many :winners, class_name: 'Member', conditions: 'winner > 0', order: 'winner desc'
-  # 发起活动的人
+
+  
+  # 参与活动的人 如何需要显示后期再加，现在是editor编辑者
+  # has_many :members
+  has_many :editors, foreign_key: :editor_id
+  # event_id, user_id, images_count, winner, auth(editor, other)
+  # 活动获奖的人 大于0 asc排序: 0参与 1等奖 2等奖
+  has_many :photos
+  # 活动的文章 但是创建文章的时候应该如何关联？ 只在后台有权限关联好了，前台只可以添加活动标签
+  has_many :topics, foreign_key: :owner_id
+  # 发起活动的人 publisher
   belongs_to :user
-  # 作品 参与活动的作品
-  has_many :pushes, as: :source
-  has_many :push_topics, as: :source, class_name: 'Push', conditions: {obj_type: 'Topic'}
+
+  scope :request, -> {where(request: true)}
 
   STATE = {
     audit:   '审核中', # 0
@@ -120,7 +111,7 @@ class Event < ActiveRecord::Base
     ongoing: '进行中', # 2
     closed:  '已结束'  # 3
   }
-  # STATEVAL = Hash[Array.new(4){|index| [index, STATE.values[index]]}]
+
   STATE.keys.each_with_index do |key, index|
     scope key, -> {where(state: index)}
     # instance_eval
@@ -133,13 +124,6 @@ class Event < ActiveRecord::Base
       end
     STATE_METHOD
   end
-
-  # 活动不应该有类型
-  # TAG = {
-  #   eyear: '年度活动',
-  #   ecity: '同城活动',
-  #   eany:  '一般活动'
-  # }
 
   
 end

@@ -1,9 +1,0 @@
-<%= simple_form_for ['admin', @push], validate: true do |f| %>
-    <%= f.input :obj_id %>
-    <%= f.input :obj_type %>
-    <%= f.input :channel %>
-    <%= f.input :source_id %>
-    <%= f.input :source_type %>
-    <%= f.input :mark, as: :text %>
-    <%= f.submit '保存', class: 'btn btn-default col-sm-offset-7' %>
-<% end %>

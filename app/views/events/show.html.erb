@@ -10,7 +10,7 @@
 								<a class="text-success"><%= @event.images_count %></a>张图片&nbsp;&nbsp;
 								<a class="text-success"><%= @event.members_count %></a>人参加
 							</small>
-							<%= link_to '上传到本活动', new_image_path(eid: @event.id), class: 'btn btn-success btn-sm pull-right', style: 'margin-top:-4px;' %>
+							<%= link_to '上传到本活动', new_photo_path(eid: @event.id), class: 'btn btn-success btn-sm pull-right', style: 'margin-top:-4px;' %>
 						</h4>
 					</div>
 					<div class="mp-page">

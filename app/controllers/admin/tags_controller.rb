@@ -28,7 +28,8 @@ class Admin::TagsController < Admin::ApplicationController
     @tag = Tag.new(params[:tag])
 
     if @tag.save
-      redirect_to action: :index, notice: 'Tag was successfully created.'
+      flash[:notice] = "Tag was successfully created."
+      redirect_to action: :index
     else
       render action: "new"
     end
@@ -40,7 +41,8 @@ class Admin::TagsController < Admin::ApplicationController
     @tag = Tag.find(params[:id])
 
     if @tag.update_attributes(params[:tag])
-      redirect_to action: :show, id: @tag, notice: 'ok'
+      flash[:notice] = "更新成功"
+      redirect_to action: :show, id: @tag
     else
       render action: "edit"
     end

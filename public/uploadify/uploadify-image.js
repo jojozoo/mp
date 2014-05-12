@@ -37,7 +37,7 @@ $(function(){
             'preventCaching'  : true,
             'height'          : 35,
             'swf'             : '/uploadify/uploadify.swf',             //swf文件的位置
-            'uploader'        : '/p/upload',                            //上传的接收者
+            'uploader'        : '/photos/upload',                       //上传的接收者
             'cancelImg'       : 'uploadify-cancel.png',
             'folder'          : '/upload',                              //上传图片的存放地址
             'auto'            : true,                                   //选择图片后是否自动上传
@@ -84,7 +84,7 @@ function push_image(){
 // 作品上传时 选择活动
 function choose_event(eventid, eventname){
     $("#imageeventid").val(eventid);
-    $("#image_event_id").val(eventname);
+    $("#photo_event_id").val(eventname);
     $("#imageeventid").parents('.form-group').removeClass('has-error');
     $("#imageeventid").parents('.form-group').find(".form-error-tip").remove();
     $('#custom-modal').modal('hide');

@@ -52,18 +52,6 @@ class Admin::UsersController < Admin::ApplicationController
     end
   end
 
-  def spg
-    user = User.find(params[:id])
-    user.update_attribute(:photographer, !user.photographer)
-    redirect_to :back
-  end
-  
-  def sad
-    user = User.find(params[:id])
-    user.update_attribute(:admin, !user.admin)
-    redirect_to :back
-  end
-
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
