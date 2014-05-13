@@ -6,6 +6,8 @@
 #  uid        :string(255)
 #  email      :string(255)
 #  username   :string(255)
+#  local      :string(255)
+#  channel    :string(255)
 #  isview     :boolean
 #  isclick    :integer
 #  del        :boolean          default(FALSE)
@@ -17,6 +19,8 @@ class MailInvite < ActiveRecord::Base
   attr_accessible :uid,  
   :email, 
   :username,  
+  :local, 
+  :channel, 
   :isview,
   :isclick, 
   :del

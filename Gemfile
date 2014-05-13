@@ -24,7 +24,7 @@ gem 'rails_kindeditor', :path => 'vendor/gems/rails_kindeditor-0.4.5'
 gem 'oauth2'
 # gem 'oauth_china', path: 'vendor/oauth_china'
 
-# mailer
+# mailer Sidekiq
 gem 'redis'
 gem 'resque'
 

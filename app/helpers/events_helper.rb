@@ -1,6 +1,6 @@
 module EventsHelper
 	def link_to_editer_recom image, event, tuiids
-		member = Member.find_by_event_id_and_user_id(event.id, current_user.id)
+		member = Editor.find_by_event_id_and_editor_id(event.id, current_user.id)
 		if member
 			classstr = "push-editer-#{image.id}-link btn btn-success btn-xs btn-ajax "
 			url      = "/ajax/editer/images/#{image.id}?eid=#{event.id}"

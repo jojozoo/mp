@@ -6,7 +6,7 @@
             <%= link_to_push 'recom', image %>
             
             <% if @event and sign_in?  %>
-                <%= link_to_editer_recom image, @event, @tuis.map(&:obj_id) %>
+                <%= link_to_editer_recom image, @event, @tuis.map(&:id) %>
             <% end %>
         </div>
         <%= link_to image_tag(image.picture.url(:thumb), wh: image.wh), photo_path(image), style: 'display:block', target: '_blank' %>

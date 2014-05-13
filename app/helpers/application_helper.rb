@@ -42,13 +42,13 @@ module ApplicationHelper
   def link_to_push name, obj, isblock = true
     type, method, icon, str = case name
     when 'like'
-      ['likes', 'like?', 'heart', '喜欢']
+      ['liks', 'like?', 'heart', '喜欢']
     when 'store'
-      ['stores', 'store?', 'star', '收藏']
+      ['stos', 'store?', 'star', '收藏']
     when 'recom'
-      ['recoms', 'recom?', 'ok-circle', '推荐']
+      ['recs', 'recom?', 'ok-circle', '推荐']
     else
-      ['likes', 'like?', 'heart', '喜欢']
+      ['liks', 'like?', 'heart', '喜欢']
     end
     class_str = "push-#{type}-#{obj.id}-link"
     class_str += isblock ? ' btn btn-success btn-xs' : ''
@@ -81,7 +81,7 @@ module ApplicationHelper
 
   def sessionbackgrounds
     url = ["1679091c5a.jpg", "45c48cce2e.jpg", "8f14e45fce.jpg", "a87ff679a2.jpg", "c4ca4238a0.jpg", "c81e728d9d.jpg", "c9f0f895fb.jpg", "eccbc87e4b.jpg"].sort_by{rand}[0]
-    url = "/images/backgrounds/#{url}?1394877273"
+    "/images/backgrounds/#{url}?1394877273"
   end
 
   def time_style time

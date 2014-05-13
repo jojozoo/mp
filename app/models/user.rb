@@ -13,6 +13,7 @@
 #  mobile              :string(255)
 #  password            :string(255)
 #  salt                :string(255)
+#  isblock             :boolean
 #  province            :string(255)
 #  city                :string(255)
 #  site                :string(255)
@@ -32,6 +33,7 @@
 #  wors_count          :integer          default(0)
 #  liks_count          :integer          default(0)
 #  stos_count          :integer          default(0)
+#  visit_count         :integer          default(0)
 #  del                 :boolean          default(FALSE)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
@@ -47,6 +49,7 @@ class User < ActiveRecord::Base
   :password, 
   :password_confirmation,
   :salt, 
+  :isblock,
   :province, 
   :city, 
   :site,
@@ -66,6 +69,7 @@ class User < ActiveRecord::Base
   :wors_count,
   :liks_count,
   :stos_count,
+  :visit_count,
   :del
 
   StyleRow = {
@@ -232,7 +236,7 @@ class User < ActiveRecord::Base
   end
   # 是否已关注
   def fol? user_id
-    self.follow_ships.exists?(user_id: user_id)
+    self.folships.exists?(user_id: user_id)
   end
 
   # TODO

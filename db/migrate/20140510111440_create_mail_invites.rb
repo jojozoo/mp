@@ -4,7 +4,9 @@ class CreateMailInvites < ActiveRecord::Migration
     create_table :mail_invites do |t| 
       t.string  :uid
       t.string  :email
-      t.string  :username      
+      t.string  :username
+      t.string  :local
+      t.string  :channel
       t.boolean :isview  # 
       t.integer :isclick #
       t.boolean :del, default: false

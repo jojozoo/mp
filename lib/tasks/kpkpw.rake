@@ -7,7 +7,7 @@ task :kpkpwfile => :environment do
 	end
 end
 task :kpkpw => :environment do
-	(282900..379278).each do |id|
+	(379278..379411).each do |id|
 		get(id)
 	end
 end
@@ -15,16 +15,16 @@ end
 
 def get id
 	str = "http://www.kpkpw.com/space.php?do=info&uid=#{id}"
-	begin
+	# begin
 		document = Nokogiri::HTML(open(str))
 		hash = {}
-		hash[:url] = document.search('.Personal_R .About_L img').first.attributes["src"].value
+		hash[:url] = document.search('.Personal_R .About_L img').first.attributes["src"].value rescue ''
 		tmp = {
-			"nickname" => "昵称", 
+			"username" => "昵称", 
 			"local"    => "所在地", 
 			"email"    => "Email", 
 			"gender"   => "性别",
-			"domain"   => "个性域名", 
+			"uid"      => "个性域名", 
 			"site"     => "个人网站", 
 			"desc"     => "简介", 
 			"func"     => "职业", 
@@ -33,11 +33,17 @@ def get id
 		document.search('.Personal_R .About_R dl').each do |dl|
 			key   = dl.search('dt').first.text.gsub("\n", "")
 			value = dl.search('dd').first.text.gsub("\n", "")
+			value = value.gsub("http://www.kpkpw.com/?", "") if key == "个性域名"
 			hash[tmp.invert[key]] = value
 		end
+		hash = hash.slice(*["uid", "username", "local", "email"])
+		hash['channel'] = 'kpkpw'
 		ap hash
-		MailInvite.create(hash)
-	rescue
-		ap 'error'
-	end
+		unless hash["email"].blank?
+			MailInvite.create(hash)
+			ap "create"
+		end
+	# rescue
+	# 	ap 'error'
+	# end
 end

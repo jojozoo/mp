@@ -72,7 +72,7 @@ class SessionsController < ApplicationController
     redirect_to root_path if sign_in?
     if request.post?
       if @user = User.where(["username = ? or email = ?", params[:login], params[:login]]).first
-        @user.update_attributes(:salt, Digest::MD5.hexdigest(Time.now.to_s(:db)))
+        @user.update_attribute(:salt, Digest::MD5.hexdigest(Time.now.to_s(:db)))
         redirect_to '/forgotdb'
       else
         @error = "找不到对应帐号"
@@ -83,6 +83,7 @@ class SessionsController < ApplicationController
   def forgotdb
   end
 
+  # reset
   def findpwd
     if params[:code].present? and @user = User.find_by_salt(params[:code])
       if request.post? and params[:user][:password].present?

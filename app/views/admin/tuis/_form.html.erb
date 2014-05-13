@@ -1,0 +1,9 @@
+<%= simple_form_for ['admin', @tui], validate: true do |f| %>
+    <%= f.input :obj_id %>
+    <%= f.input :obj_type %>
+    <%= f.input :channel %>
+    <%= f.input :editor, readonly: true, input_html:{value: true} %>
+    <%= f.input :editor_id, readonly: true, input_html:{value: current_user.id} %>
+    <%= f.input :mark, as: :text %>
+    <%= f.submit '保存', class: 'btn btn-default col-sm-offset-7' %>
+<% end %>

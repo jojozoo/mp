@@ -14,6 +14,7 @@
 #  updated_at :datetime         not null
 #
 
+# TODO 反馈信息的回复可以是邮件私信通知等
 class Feedback < ActiveRecord::Base
   attr_accessible :user_id, :name, :email, :subject, :ip, :desc, :del
   validates_presence_of     :email,

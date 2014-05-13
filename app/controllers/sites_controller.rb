@@ -1,7 +1,5 @@
 class SitesController < ApplicationController
 
-    layout 'default'
-
     def index
         redirect_to action: :about
     end

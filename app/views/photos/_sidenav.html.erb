@@ -1,117 +1,165 @@
 <div class="col-sm-6 col-md-3">
 	<div class="thumbnail sidenav">
-<ul class="main">
-<li><a href="/popular" class="active" title="Popular Photos">Popular</a></li>
-<li><a href="/fresh" class="" title="Fresh">Fresh</a></li>
-<li><a href="/upcoming" class="" title="Upcoming Photos">Upcoming</a></li>
-<li><a href="/editors" class="" title="Editors' Choice">Editors' Choice</a></li>
-</ul>
-<div class="sub clearfix">
-<ul class="all">
-<li>
-<a class="active all_categories" href="?">All Categories</a>
-</li>
-</ul>
-<div class="clear"></div>
-<ul class="categories">
-<li>
-<a href="?categories=Abstract">Abstract</a>
-</li>
-<li>
-<a href="?categories=Macro">Macro</a>
-</li>
-<li>
-<a href="?categories=Animals">Animals</a>
-</li>
-<li>
-<a href="?categories=Nature">Nature</a>
-</li>
-<li>
-<a href="?categories=Black+and+White">Black and White</a>
-</li>
-<li>
-<a href="?categories=People">People</a>
-</li>
-<li>
-<a href="?categories=Celebrities">Celebrities</a>
-</li>
-<li>
-<a href="?categories=Performing+Arts">Performing Arts</a>
-</li>
-<li>
-<a href="?categories=City+%26+Architecture">City &amp; Architecture</a>
-</li>
-<li>
-<a href="?categories=Sport">Sport</a>
-</li>
-<li>
-<a href="?categories=Commercial">Commercial</a>
-</li>
-<li>
-<a href="?categories=Still+Life">Still Life</a>
-</li>
-<li>
-<a href="?categories=Concert">Concert</a>
-</li>
-<li>
-<a href="?categories=Street">Street</a>
-</li>
-<li>
-<a href="?categories=Family">Family</a>
-</li>
-<li>
-<a href="?categories=Transportation">Transportation</a>
-</li>
-<li>
-<a href="?categories=Fashion">Fashion</a>
-</li>
-<li>
-<a href="?categories=Travel">Travel</a>
-</li>
-<li>
-<a href="?categories=Film">Film</a>
-</li>
-<li>
-<a href="?categories=Underwater">Underwater</a>
-</li>
-<li>
-<a href="?categories=Fine+Art">Fine Art</a>
-</li>
-<li>
-<a href="?categories=Urban+Exploration">Urban Exploration</a>
-</li>
-<li>
-<a href="?categories=Food">Food</a>
-</li>
-<li>
-<a href="?categories=Wedding">Wedding</a>
-</li>
-<li>
-<a href="?categories=Journalism">Journalism</a>
-</li>
-<li>
-<a href="?categories=Uncategorized">Uncategorized</a>
-</li>
-<li>
-<a href="?categories=Landscapes">Landscapes</a>
-</li>
-</ul>
-</div>
-<div class="hint">
-<span>?</span>
-Shift+click to select multiple categories
-</div>
-</div>
+		<ul class="main">
+			<%
+				data = {
+					'news'   => ['upload', '最新上传'],
+					'likes'  => ['heart', '喜欢最多'],
+					'hot'    => ['comments', '评论最多'],
+					'push'   => ['ok-circle', '编辑推荐'],
+					'choice' => ['time', '每日精选']
+				}
+			%>
+			<% data.each do |key, val| %>
+			<li>
+				<% if params[:order].eql?(key) %>
+					<%= link_to 'javascript:void(0);', style: 'color:#999;' do %>
+						<i class="icon-<%= val[0] %>"></i>
+						<%= val[1] %>
+					<% end %>
+				<% else %>
+					<%= link_to photos_path(order: key) do %>
+						<i class="icon-<%= val[0] %>"></i>
+						<%= val[1] %>
+					<% end %>
+				<% end %>
+			<% end %>
+			</li>
+			<li>
+			<% if action_name == "random" %>
+				<%= link_to random_photos_path, style: 'color:orange;' do %>
+					<i class="icon-random"></i>
+					随机浏览
+				<% end %>
+			<% else %>
+				<%= link_to random_photos_path do %>
+					<i class="icon-random"></i>
+					随机浏览
+				<% end %>
+			<% end %>
+			</li>
+			<li>
+			<% if action_name == "star" %>
+				<%= link_to 'javascript:void(0);', style: 'color:#999;' do %>
+					<i class="icon-star"></i>
+					漫拍之星
+				<% end %>
+			<% else %>
+				<%= link_to star_photos_path do %>
+				<i class="icon-star"></i>
+				漫拍之星
+				<% end %>
+			<% end %>
+			</li>
+		</ul>
+		<div class="sub clearfix">
+			<ul class="all">
+				<li>
+					<a class="active all_categories" href="?">标签</a>
+				</li>
+			</ul>
+			<div class="clear"></div>
+			<div class="photo-tags">
+				<% Tag.all.each do |tag| %>
+				<%= link_to tag.name, '' %>
+				<% end %>
+			</div>
+		</div>
+		<div class="hint">
+			<span>?</span>
+			按住Shift可以选择多个类别
+		</div>
+	</div>
 
 </div>
 <style type="text/css">
-.sidenav{
-	padding: 10px;
-	background: #f7f8fa;
+.sidenav {
+	background-color: #f7f8fa;
+	border: 1px solid #eeeff2;
 	-webkit-transition: opacity 0.2s 0.2s ease-in-out;
 	transition: opacity 0.2s 0.2s ease-in-out;
 }
+.sidenav ul {
+	width: 100%;
+	list-style: none;
+}
+.sidenav ul.main {
+	font-size: 20px;
+	padding: 10px 0 10px 0;
+	border-bottom: 1px solid #eeeff2;
+	height: auto;
+	margin: 0;
+}
+.sidenav .sub ul.all {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0;
+}
+.sidenav .sub ul.all li {
+	width: initial;
+}
+.sidenav .sub {
+	padding: 3px 0 10px 0;
+}
+.sidenav ul {
+	float: left;
+	font-size: 0;
+	padding: 0;
+}
+.sidenav ul li {
+	position: relative;
+	float: left;
+	display: block;
+	width: 130px; /*调整两排还是三排*/
+}
+.sidenav ul li a {
+	display: block;
+	padding: 4px 6px 5px 8px;
+	font-size: 13px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.sidenav .photo-tags > a{
+	width: 82px;
+}
+.sidenav .hint {
+	bottom: 0;
+	border-top: 1px solid #eeeff2;
+	font-size: 12px;
+	color: #9ba2a7;
+	margin: 10px 0 0 0 0;
+	padding: 8px 0px 10px 20px;
+	line-height: 1.2em;
+}
+.sidenav .hint span {
+	border-radius: 10px;
+	border: 1px solid #9ba2a7;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	text-align: center;
+	margin-right: 2px;
+}
 .sidenav a{
+	position: relative;
+	line-height: 1em;
+	color: #71767a;
+	border-radius: 3px;
+	-webkit-transition: all 0.1s ease-in;
+	transition: all 0.1s ease-in;
+
 	text-decoration: none;
+	display: inline-block;
+	font-size: inherit;
+	padding: 4px 6px 5px 8px;
+}
+.sidenav a:hover {
+	background-color: rgba(82,85,88,0.075);
+}
+.sidenav ul li a.active {
+	color: #525558;
+	font-weight: bold;
+	line-height: 19px;
 }
 </style>

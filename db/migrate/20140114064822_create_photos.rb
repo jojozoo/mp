@@ -13,7 +13,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.integer :recs_count, default: 0 # 推荐数量
       t.integer :liks_count, default: 0 # 喜欢数量
       t.integer :stos_count, default: 0 # 收藏数量
-      t.integer :vist_count, default: 0 # 浏览数量
+      t.integer :visit_count, default: 0 # 浏览数量
       t.integer :coms_count, default: 0 # 回应数量
        
       # 推荐是编辑或者管理员行为 不记录数量

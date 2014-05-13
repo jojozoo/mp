@@ -37,11 +37,11 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		@images = load_data
+		@photos = load_data
 	end
 
 	def waterfall
-        @images = load_data
+        @photos = load_data
         render 'waterfall', layout: false
     end
 
@@ -50,16 +50,15 @@ class EventsController < ApplicationController
     	if current_user
 	    	stime = Date.today.to_s + ' 00:00:00'
 			etime = Date.today.to_s + ' 23:59:59'
-			@tuis = Push.where(obj_type: 'Image', user_id: current_user.id, channel: '编辑推荐').where(["updated_at between ? and ?", stime, etime])
+			@tuis = Tui.where(obj_type: 'Photo', user_id: current_user.id, channel: 'choice').where(["updated_at between ? and ?", stime, etime])
     	end
 		order, cond = case params[:order]
 		when 'news'
 			['id desc', {}]
 		when 'vist'
-			# ['visits_count desc', {}]
-			['likes_count desc', {}]
+			['liks_count desc', {}]
 		when 'coms'
-			['comments_count desc', {}]
+			['coms_count desc', {}]
 		when 'myse'
 			c = sign_in? ? {user_id: current_user.id} : {}
 			['id desc', c]
@@ -67,7 +66,7 @@ class EventsController < ApplicationController
 			params[:order] = 'news'
 			['id desc', {}]
 		end
-		@images = @event.images.where(cond).paginate(:page => params[:page], per_page: 24).order(order)
+		@photos = @event.photos.where(cond).paginate(:page => params[:page], per_page: 24).order(order)
     end
 
 	def edit

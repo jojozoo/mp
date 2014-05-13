@@ -14,7 +14,7 @@
 #  recs_count           :integer          default(0)
 #  liks_count           :integer          default(0)
 #  stos_count           :integer          default(0)
-#  vist_count           :integer          default(0)
+#  visit_count          :integer          default(0)
 #  coms_count           :integer          default(0)
 #  recommend            :boolean          default(FALSE)
 #  recommend_at         :datetime
@@ -52,7 +52,7 @@ class Photo < ActiveRecord::Base
   :recs_count, 
   :liks_count, 
   :stos_count, 
-  :vist_count, 
+  :visit_count, 
   :coms_count, 
   :recommend, 
   :recommend_at, 
@@ -102,6 +102,7 @@ class Photo < ActiveRecord::Base
 
   # 有效的 state 为true的
   scope :effective, -> { where(state: true) }
+  scope :choice,    -> { where(choice: true)}
 
   # ['like', 'store', 'recom'].each do |item|
   #   define_method "#{item}?(obj)" do

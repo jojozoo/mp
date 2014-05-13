@@ -1,72 +1,42 @@
-<div class="site-main" style="margin-top:100px;background:#fff;padding:10px;">
-	<div class="page-header text-center">
-		<h3>
-			<%= @title.split('-').last %></h3>
-	</div>
-	<div class="row">
-		<div class="col-md-2">
-			<%= render 'nav' %></div>
-		<div class="col-md-10">
-			<div class="content">
-				<% if flash[:notice] %>
-				<div class="alert alert-warning">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-					<%= flash[:notice] %>
-				</div>
-				<% end %>
-				<div class="row">
-					<div class="col-md-6">
-						<%= form_for @fb || Feedback.new, validate: true, url: '/sites', html:{style:'margin-top:10px;'} do |f| %>
-							<div class="form-group">
-								<div class="row">
-									<div class="col-xs-6">
-										<%= f.text_field :name, class: 'form-control', placeholder: '您的姓名', value: current_user.try(:username) %>
-									</div>
-									<div class="col-xs-6">
-										<%= f.email_field :email, class: 'form-control', placeholder: '您的邮箱', value: current_user.try(:email) %>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<%= f.text_field :subject, class: 'form-control', placeholder: '反馈问题的标题' %>
-							</div>
-							<div class="form-group" style="height:110px;">
-								<%= f.text_area :desc, class: 'form-control', placeholder: '问题的详细描述,在10..200字以内' %>
-							</div>
-							<div class="form-group">
-								<input type="submit" value="反馈给我们" class="btn btn-info">
-							</div>
-						<% end %>
+<% if flash[:notice] %>
+<div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	<%= flash[:notice] %>
+</div>
+<% end %>
+<div class="sw-content-wrapper">
+	<h3 class="medium" style="margin-top:0;">对于您的反馈我们会及时处理</h3>
+	<%= form_for @fb || Feedback.new, validate: true, url: '/sites' do |f| %>
+		<div class="margin-bottom">
+			<label for="input-first_name" class="sr-only">Your Name</label>
+			<div class="row-fluid">
+				<div class="span6">
+					<div class="control-group controls">
+						<%= f.text_field :name, class: 'input-block', placeholder: '您的姓名', value: current_user.try(:username) %>
 					</div>
-					<div class="col-md-6">
-						<ul class="list-unstyled">
-							<li>
-								<h4> <i class="icon-map-marker"></i>
-									地址
-								</h4>
-								<p>
-									山东省潍坊市
-									<br>
-									奎文区幸福路
-									文明街1231号
-								</p>
-							</li>
-							<li>
-								<h4> <i class="icon-phone"></i>
-									联系方式
-								</h4>
-								<p>
-									电话: +86 0536-8888888
-									<br>
-									传真: +86 0536-7777777
-									<br>
-									Email: feedback@mp.com
-								</p>
-							</li>
-						</ul>
+				</div>
+				<div class="span6">
+					<div class="control-group controls">
+						<%= f.email_field :email, class: 'input-block', placeholder: '您的邮箱', value: current_user.try(:email) %>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</div>
+		<div class="control-group">
+			<label for="input-first_name" class="sr-only">Choose a Username</label>
+			<div class="controls">
+				<%= f.text_field :subject, class: 'input-block', placeholder: '反馈问题的标题' %>
+			</div>
+		</div>
+		<div class="control-group">
+			<label for="input-password" class="sr-only">Choose a password <span style="color: #999" <em="">(must include 1 number)</span>
+			</label>
+			<div class="controls">
+				<%= f.text_area :desc, class: 'input-block', placeholder: '问题的详细描述,在10..200字以内' %>
+			</div>
+		</div>
+		<div class="text-right">
+			<button type="submit" class="sw-btn sw-btn-confirm sw-btn-big">反馈给我们</button>
+		</div>
+	<% end %>
+</div> <!-- .sw-content-wrapper -->

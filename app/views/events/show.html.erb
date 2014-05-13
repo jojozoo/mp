@@ -7,7 +7,7 @@
 						<h4>
 							<%= @event.title %>
 							<small>
-								<a class="text-success"><%= @event.images_count %></a>张图片&nbsp;&nbsp;
+								<a class="text-success"><%= @event.photos_count %></a>张图片&nbsp;&nbsp;
 								<a class="text-success"><%= @event.members_count %></a>人参加
 							</small>
 							<%= link_to '上传到本活动', new_photo_path(eid: @event.id), class: 'btn btn-success btn-sm pull-right', style: 'margin-top:-4px;' %>
@@ -56,9 +56,8 @@
 					</ul>
 					<script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
 					<div class="row" id="container">
-						<%= render partial: '/images/image', collection: @images, as: :image %>
-						<%#= render partial: 'thumb', collection: @images, as: :image %>
-						<div id="page_loading" page="2" state="static" url="/e/waterfall?id=<%= @event.id %>&order=<%= params[:order] %>">
+						<%= render partial: '/photos/image', collection: @photos, as: :image %>
+						<div id="page_loading" page="2" state="static" url="<%= waterfall_events_path(id: @event.id, order: params[:order]) %>">
 							<img src="/images/ajax-loader.gif">
 							<span>加载中...</span>
 						</div>

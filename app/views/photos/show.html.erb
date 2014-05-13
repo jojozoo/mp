@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="white-col-md">
-			<%= render 'images/header', image: @image %>
+			<%= render 'photos/header', image: @image %>
 			<div class="row">
 				<div class="col-md-12">
 					<div class="pic">
@@ -24,7 +24,7 @@
 						</li>
 						<li class="opt-b">
 							<i class="icon-comment"></i>
-							<a href="#comment_content" title="回应">回应(<%= @image.comments_count %>)</a>
+							<a href="#comment_content" title="回应">回应(<%= @image.coms_count %>)</a>
 						</li>
 						<li class="opt-b">
 							<i class="icon-flag"></i>

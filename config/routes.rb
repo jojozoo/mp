@@ -36,9 +36,11 @@ Mp::Application.routes.draw do
     end
   end
   resources :albums
-  resources :topics, path: 't' do
-    get :excellent, on: :collection
-    get :explore, on: :collection
+  resources :topics do
+    collection do
+      get :excellent
+      get :explore  
+    end
   end
   resources :events, path: 'requests', only: [:index, :show] do
     collection do
@@ -133,6 +135,7 @@ Mp::Application.routes.draw do
     resources :comments
     resources :events
     resources :topics
+    resources :tuis
 
     resources :photos do
       collection do

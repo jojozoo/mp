@@ -44,5 +44,5 @@ alter table images add choice tinyint(1) default '0' after pushes_count;
 alter table images add choiced_at datetime after choice;
 
 
-
-user有两个需要更改 topic有两个需要更改
+update infos set tag=REPLACE(domain, 'http://www.kpkpw.com/?', '');
+create table mail_invites (select tag as uid, email, nickname as username from infos where email != '');
