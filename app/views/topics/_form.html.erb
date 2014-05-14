@@ -1,7 +1,6 @@
 <%= simple_form_for @topic, validate: true do |f| %>
     <%= f.input :title %>
-    <%#= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
-    <%= f.input :content, :as => :kindeditor %>
+    <%= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
     <!-- <div class="form-group string optional topic_tag">
         <label class="string optional col-sm-2 control-label" for="topic_tag">标签</label>
         <div class="col-sm-6 input-text-add">
@@ -24,19 +23,20 @@
             </span>
         </div>
     </div> -->
-    <div class="form-group select required topic_tag_id">
-        <label class="select required col-sm-2 control-label" for="topic_tag_id">
+    <div class="form-group select required topic_owner_id">
+        <label class="select required col-sm-2 control-label" for="topic_owner_id">
             <abbr title="required">*</abbr>
             标签
         </label>
+        <!-- TODO 某一活动标签， owner_id应该不存在 -->
         <div class="col-sm-6 input-text-add">
-            <% if @tag %>
-            <%= f.input_field :tag_id, as: :string, readonly: true, value: @tag.name %>
-            <input id="topictagid" name="topic_tag_id" type="hidden" value="<%= @tag.id %>">
+            <% if @owner %>
+            <%= f.input_field :owner_id, as: :string, value: @owner.name %>
+            <input id="topicownerid" name="topic_owner_id" type="hidden" value="<%= @owner.id %>">
             <% else %>
             <div class="input-group">
-                <%= f.input_field :tag_id, as: :string, readonly: true %>
-                <input id="topictagid" name="topic_tag_id" type="hidden" value="">
+                <%= f.input_field :owner_id, as: :string %>
+                <input id="topicownerid" name="topic_owner_id" type="hidden" value="">
                 <span class="input-group-addon custom-modal"> 
                     <i class="icon-tag"></i>
                 </span>
@@ -84,7 +84,7 @@ $(function(){
         var _id, name;
         _id = $(this).attr("tid");
         name = $(this).text();
-        $("#topic_tag_id").val(name);
+        $("#topic_owner_id").val(name);
         $("#topictagid").val(_id);
         $('#custom-modal').modal('hide');
     });

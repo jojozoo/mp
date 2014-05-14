@@ -23,7 +23,7 @@ class TopicsController < ApplicationController
             flash[:notice] = '请先登录'
             return
         else
-            @tag = Tag.find_by_name(params[:tag]) if params[:tag].present?
+            @owner = Event.find_by_name(params[:tag]) if params[:tag].present?
             @topic = Topic.new
         end
     end
@@ -44,7 +44,7 @@ class TopicsController < ApplicationController
             return
         else
             @topic = current_user.topics.find(params[:id])
-            @tag = @topic.tag
+            @owner = @topic.owner
         end
     end
 
