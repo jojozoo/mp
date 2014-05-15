@@ -82,12 +82,12 @@
 <div class="row home-tui-div tab-content">
 	<div class="col-md-12 tab-pane fade in active" id="home-photographers">
 		<% User.where(photographer: true).order("updated_at desc").limit(24).each do |user| %>
-			<%= link_to image_tag(user.avatar(:small)), '', title: user.username %>
+			<%= link_to image_tag(user.avatar(:small)), user_path(user), title: user.username %>
 		<% end %>
 	</div>
 	<div class="col-md-12 tab-pane fade" id="home-stars">
 		<% User.where(photographer: false).order("updated_at desc").limit(24).each do |user| %>
-			<%= link_to image_tag(user.avatar(:small)), '', title: user.username %>
+			<%= link_to image_tag(user.avatar(:small)), user_path(user), title: user.username %>
 		<% end %>
 	</div>
 </div>

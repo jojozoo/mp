@@ -41,11 +41,8 @@ class PhotosController < ApplicationController
     end
 
     def star
-        @pushes = Push.where(channel: '漫拍之星').paginate(:page => params[:page], per_page: 20).order('id desc')
-    end
-
-    def random
-        @photos = Photo.order('rand()').limit(24)
+        @users = User.order("rand()").limit(10)
+        # @tuis = Push.star.paginate(:page => params[:page], per_page: 20).order('id desc')
     end
 
     def show

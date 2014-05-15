@@ -1053,13 +1053,6 @@ body.full-width-layout .row-fluid, body.full-width-layout .sw-content-wrapper {
     line-height:0px;
     -webkit-font-smoothing:antialiased
 }
-.logo {
-    display:inline-block;
-    width:128px;
-    height:37px;
-    background:url(/assets/images/sw-logo-dark.png) no-repeat 0 50%;
-    text-indent:-9999px
-}
 @media (-webkit-min-device-pixel-ratio: 2) {
     .logo {
         background-image:url(/assets/images/sw-logo-dark@2x.png);
@@ -7347,8 +7340,8 @@ body#request.intro .photo-header .header-content {
     float:left;
     width:128px;
     height:28px;
-    background:url(/sites/sw-logo.png) 0 0 no-repeat;
-    text-indent:-9999px
+    /*background:url(/sites/sw-logo.png) 0 0 no-repeat;
+    text-indent:-9999px*/
 }
 #sw-static-page .menu {
     float:right;
