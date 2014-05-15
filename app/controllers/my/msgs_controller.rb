@@ -6,7 +6,7 @@ class My::MsgsController < My::ApplicationController
 
     def new
         # follows 的 id
-        @writers = current_user.follows
+        @writers = current_user.fols
         @writers = User.where(['id != ?', current_user.id])
     end
 

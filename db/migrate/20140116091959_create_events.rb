@@ -11,6 +11,7 @@ class CreateEvents < ActiveRecord::Migration
       t.integer :members_count, default: 0
       t.integer :photos_count, default: 0
       t.integer :state, default: 0
+      t.boolean :totop, default: 0
       t.boolean :request, default: false # 排序使用
       t.datetime :request_at
       t.boolean :del, default: false

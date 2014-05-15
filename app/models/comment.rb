@@ -23,7 +23,7 @@ class Comment < ActiveRecord::Base
   :content, 
   :del
 
-  belongs_to :obj, polymorphic: true, counter_cache: true
+  belongs_to :obj, polymorphic: true, counter_cache: :coms_count
   belongs_to :user
   belongs_to :reply, class_name: 'User', foreign_key: :reply_id
 

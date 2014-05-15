@@ -4,7 +4,7 @@
     </div>
     <div class="right_info">
         <div class="pull-right">
-            <%= link_to topic.comments_count, topic_path(topic.id) + "##{topic.id}", class: 'label label-primary' %>
+            <%= link_to topic.coms_count, topic_path(topic.id) + "##{topic.id}", class: 'label label-primary' %>
         </div>
         <div class="infos">
             <div class="title">
@@ -15,7 +15,7 @@
             </div>
             <div class="info">
                 <% unless @tag %>
-                <%= link_to topic.tag.name, topics_path(tag: topic.tag.name), class: 'node' %>
+                <%= link_to '标签', topics_path(tag: '标签'), class: 'node' %>
                 •
                 <% end %>
                 <%= link_to topic.user.username, user_path(topic.user_id) %>

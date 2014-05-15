@@ -1,68 +1,62 @@
 <div class="row">
 	<div class="col-md-12">
-		<div class="white-col-md">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="page-header">
-						<h4>
-							<%= @event.title %>
-							<small>
-								<a class="text-success"><%= @event.photos_count %></a>张图片&nbsp;&nbsp;
-								<a class="text-success"><%= @event.members_count %></a>人参加
-							</small>
-							<%= link_to '上传到本活动', new_photo_path(eid: @event.id), class: 'btn btn-success btn-sm pull-right', style: 'margin-top:-4px;' %>
-						</h4>
-					</div>
-					<div class="mp-page">
-						<div class="media">
-							<div class="media-object pull-left">
-								<%= image_tag @event.logo(:big) %>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading">活动公告
-									<small>活动里的推荐</small>
-								</h4>
-								<hr>
-								<ul>
-									<% 5.times do %>
-									<li>
-										<a href="">活动里的推荐</a>
-									</li>
-									<% end %>
-								</ul>
-							</div>
-						</div>
-						<div class="event-content gray-desc">
-							<%= sanitize @event.desc %>
-						</div>
-					</div>
-
-					<ul class="breadcrumb" style="margin-bottom: 10px;">
-						<a href="javascript:void(0);" style="color:#999;">
-						<% {
-							'news' => '最新上传',
-							'vist' => '人气最高',
-							'coms' => '评论最多',
-							'myse' => '只看自己'
-						}.each do |key, val|%>
+		<div class="page-header">
+			<h4>
+				<%= @event.title %>
+				<small>
+					<a class="text-success"><%= @event.photos_count %></a>张图片&nbsp;&nbsp;
+					<a class="text-success"><%= @event.members_count %></a>人参加
+				</small>
+				<%= link_to '上传到本活动', new_photo_path(eid: @event.id), class: 'btn btn-success btn-sm pull-right', style: 'margin-top:-4px;' %>
+			</h4>
+		</div>
+		<div class="mp-page">
+			<div class="media">
+				<div class="media-object pull-left">
+					<%= image_tag @event.logo(:big) %>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading">活动公告
+						<small>活动里的推荐</small>
+					</h4>
+					<hr>
+					<ul>
+						<% 5.times do %>
 						<li>
-							<% if params[:order].eql?(key) %>
-							<%= link_to val, 'javascript:void(0);', style: 'color: #999;' %>
-							<% else %>
-							<%= link_to val, event_path(@event.id, order: key) %>
-							<% end %>
+							<a href="">活动里的推荐</a>
 						</li>
 						<% end %>
 					</ul>
-					<script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
-					<div class="row" id="container">
-						<%= render partial: '/photos/image', collection: @photos, as: :image %>
-						<div id="page_loading" page="2" state="static" url="<%= waterfall_events_path(id: @event.id, order: params[:order]) %>">
-							<img src="/images/ajax-loader.gif">
-							<span>加载中...</span>
-						</div>
-					</div>
 				</div>
+			</div>
+			<div class="event-content gray-desc">
+				<%= sanitize @event.desc %>
+			</div>
+		</div>
+
+		<ul class="breadcrumb" style="margin-bottom: 10px;">
+			<a href="javascript:void(0);" style="color:#999;">
+			<% {
+				'news' => '最新上传',
+				'vist' => '人气最高',
+				'coms' => '评论最多',
+				'myse' => '只看自己'
+			}.each do |key, val|%>
+			<li>
+				<% if params[:order].eql?(key) %>
+				<%= link_to val, 'javascript:void(0);', style: 'color: #999;' %>
+				<% else %>
+				<%= link_to val, event_path(@event.id, order: key) %>
+				<% end %>
+			</li>
+			<% end %>
+		</ul>
+		<script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
+		<div class="row" id="container">
+			<%= render partial: '/photos/image', collection: @photos, as: :image %>
+			<div id="page_loading" page="2" state="static" url="<%= waterfall_events_path(id: @event.id, order: params[:order]) %>">
+				<img src="/images/ajax-loader.gif">
+				<span>加载中...</span>
 			</div>
 		</div>
 	</div>

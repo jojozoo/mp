@@ -25,7 +25,7 @@ class Album < ActiveRecord::Base
   :del
   # 相册不需要desc字段
   # publish 所有人 仅自己
-  has_many :images
+  has_many :photos
   has_attached_file :logo,
     styles: {
       thumb: '300x200#',

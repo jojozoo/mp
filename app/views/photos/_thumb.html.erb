@@ -1,17 +1,38 @@
-<div class="col-sm-6 col-md-3">
+<div class="col-sm-6 col-md-3 photo">
     <div class="thumbnail">
-        <%= link_to image_tag(image.picture.url(:thumb)), photo_path(image), style: 'display:block', target: '_blank' %>
-        <div class="caption">
-            <div><%= image.desc %></div>
-            <span title="喜欢">喜欢(<%= image.likes_count %>)</span>
-            <span title="收藏">收藏(<%= image.stores_count %>)</span>
-            <span title="推荐">推荐(<%= image.recoms_count %>)</span>
-            <%= link_to "##{image.event.name}#", photo_path(image), class: 'pull-right' %>
-            <hr>
-            <div class="thumb-basic">
-                <div class="thumb-basic-body">
-                    <%= link_to image.user.username %> 上传于 <span class="date"><%= humanize image.created_at %></span>
+        <div class="buttons">
+            <div class="shares">
+                <a class="action share facebook"></a>
+                <a class="action share twitter"></a>
+                <a class="action share pinterest"></a>
+            </div>
+            <div class="states">
+                <a class="action state like">
+                    <span class="icon-heart"></span>
+                    <span class="count">868</span>
+                </a>
+                <a class="action state star">
+                    <span class="icon-star"></span>
+                    <span class="count">20</span>
+                </a>
+            </div>
+        </div>
+        <%= link_to image_tag(photo.picture(:thumb), wh: '250x333'), photo_path(photo), target: '_blank' %>
+        <div class="details">
+            <div class="inside">
+                <div class="info">
+                    <a href="/">每日精选</a>
+                    <a href="/">老照片</a>
                 </div>
+                <div class="title">
+                    <!-- 如果有活动ID 就不应该显示活动了 -->
+                    <% if photo.event_id %>
+                        <%= link_to "##{photo.event.name}", event_path(photo.event), class: 'photo_title' %>
+                    <% else %>
+                        <%= link_to photo.user.username, user_path(photo.user), class: 'photo_title' %>
+                    <% end %>
+                </div>
+                <div class="rating">99.8</div>
             </div>
         </div>
     </div>

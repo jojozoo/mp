@@ -1,0 +1,237 @@
+.thumbnail a{
+	text-decoration: none;
+}
+.photo:hover .details .rating {
+    opacity:1;
+    bottom:0px
+}
+ .photo:hover .buttons {
+    opacity:1;
+    top:10px
+}
+ .photo .buttons {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    -o-user-select:none;
+    user-select:none;
+    display:inline-block;
+    float:right;
+    position:absolute;
+    z-index:2;
+    top:-10px;
+    right:25px;
+    width:auto;
+    opacity:0;
+    -webkit-transition:all 0.2s ease-in-out;
+    transition:all 0.2s ease-in-out;
+}
+.photo .buttons .shares {
+    display:inline-block;
+}
+.photo .buttons .states {
+    display:inline-block;
+    margin-left:10px;
+}
+ .photo .buttons .action {
+    background:center center no-repeat;
+    -webkit-background-size:20px 20px;
+    background-size:20px 20px;
+    margin-left:1px;
+    cursor:pointer;
+    display:inline-block;
+    width:40px;
+    height:40px;
+    border-radius:2px;
+    color:white;
+    font-size:16px;
+    -webkit-transition:all 0.1s ease-in-out;
+    transition:all 0.1s ease-in-out;
+    background-color:rgba(34, 34, 34, 0.2);
+    overflow:hidden;
+    position:relative;
+    cursor:pointer
+}
+ .photo .buttons .action:hover,  .photo .buttons .action.hover {
+    background-color:rgba(34, 34, 34, 0.4)
+}
+ .photo .buttons .action:hover .icon-heart,  .photo .buttons .action.hover .icon-heart {
+    top:-15px;
+    opacity:0;
+}
+.photo .buttons .action:hover .icon-star,  .photo .buttons .action.hover .icon-star {
+    top:-15px;
+    opacity:0;
+}
+ .photo .buttons .action:hover .count,  .photo .buttons .action.hover .count {
+    top:0px;
+    opacity:1;
+}
+.photo .buttons .action.like.active,  .photo .buttons .action.like.active:hover {
+    background-color:#02adea;
+}
+.photo .buttons .action.star.active,  .photo .buttons .action.star.active:hover {
+    background-color:#02adea;
+}
+/*点喜欢后*/
+ .photo .buttons .action.favorite.active,  .photo .buttons .action.favorite.active:hover {
+    background-color:#ff4c4c;
+}
+ .photo .buttons .action.active {
+    -webkit-animation:pulse 0.6s 0.15s ease-in-out;
+    -ms-animation:pulse 0.6s 0.15s ease-in-out;
+    animation:pulse 0.6s 0.15s ease-in-out;
+}
+ .photo .buttons .action.animate .icon,  .photo .buttons .action.animate:hover .icon {
+    top:0px;
+    opacity:1 !important;
+}
+ .photo .buttons .action.animate .count,  .photo .buttons .action.animate:hover .count {
+    top:15px;
+    opacity:0 !important;
+}
+ .photo .buttons .action span {
+    position:absolute;
+    top:0;
+    left:0;
+    display:block;
+    opacity:1;
+    width:100%;
+    height:100%;
+    text-align:center;
+    line-height:48px;
+    background:center center no-repeat;
+    -webkit-transition:all 0.15s ease-in-out;
+    transition:all 0.15s ease-in-out;
+}
+ .photo .buttons .action .count {
+    top:15px;
+    opacity:0;
+}
+ .photo .buttons .facebook:hover {
+    background-color:#3b5998;
+}
+ .photo .buttons .twitter:hover {
+    background-color:#00aced;
+}
+ .photo .buttons .pinterest:hover {
+    background-color:#cc2127;
+}
+
+
+.photo .buttons .facebook {
+    /*background: rgba(34, 34, 34, 0.2) url("/images/share_icon.png") no-repeat -29px 10px;*/
+    background-image:url("/images/facebook.svg");
+}
+ .photo .buttons .twitter {
+    background-image:url("/images/twitter.svg");
+}
+.photo .buttons .pinterest {
+    background-image:url("/images/pinterest.svg");
+}
+
+ .photo a {
+    display:block;
+    cursor:pointer;
+}
+ .photo img {
+    width:100%;
+    height:100%;
+    display:block;
+}
+ .photo .details {
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    bottom: 10px;
+    color: white;
+    background: black;
+    background: rgba(0,0,0,0.6);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.6)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.6)));
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 100%);
+    width: 90%;
+    height: 50px;
+    text-shadow: 0px 0px 1px #000;
+    -webkit-transition: 0.2s opacity;
+    transition: 0.2s opacity;
+}
+ .photo .details a {
+    overflow:hidden;
+    white-space:word-wrap;
+    text-overflow:ellipsis;
+    color:white;
+}
+ .photo .details a:before {
+    -webkit-box-sizing:content-box;
+    -moz-box-sizing:content-box;
+    box-sizing:content-box;
+    content:" ";
+    width:100%;
+    padding:1px 3px;
+    border-radius:3px;
+    height:100%;
+    position:absolute;
+    top:-1px;
+    left:-3px;
+    display:block;
+    background-color:rgba(255, 255, 255, 0);
+    z-index:1;
+    -webkit-transition:0.1s;
+    transition:0.1s;
+}
+ .photo .details a:hover:before {
+    background-color:rgba(255, 255, 255, 0.2);
+}
+.photo .details .inside{
+    position: relative;
+    height: 100%;
+    -webkit-transition: 0.2s bottom;
+    transition: 0.2s bottom;
+}
+ .photo .details .title {
+    max-width:192px;
+    height:22px;
+    font-size:18px;
+    line-height:20px;
+    font-weight:500;
+    position:absolute;
+    white-space:word-wrap;
+    text-overflow:ellipsis;
+    top: 0px;
+    left: 12px;
+    -webkit-transition:0.1s;
+    transition:0.1s;
+}
+ .photo .details .title a {
+    height:22px;
+}
+ .photo .details .info {
+    max-width:200px;
+    font-size:13px;
+    line-height:13px;
+    font-weight:200;
+    position:absolute;
+    bottom:8px;
+    left:13px;
+}
+ .photo .details .info a {
+    height:15px;
+    display: inline-block;
+}
+ .photo .details .rating {
+    position:absolute;
+    font-weight:300;
+    font-size:30px;
+    line-height:46px;
+    height:100%;
+    bottom:-10px;
+    right:10px;
+    text-align:right;
+    opacity:0;
+    -webkit-transition:0.2s;
+    transition:0.2s;
+}

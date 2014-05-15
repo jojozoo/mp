@@ -2,7 +2,7 @@ class Admin::TagsController < Admin::ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.paginate(:page => params[:page], per_page: 20).order('id desc')
+    @tags = Tag.paginate(:page => params[:page], per_page: 20).order('sum desc')
   end
 
   # GET /tags/1

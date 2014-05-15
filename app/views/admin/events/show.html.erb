@@ -34,6 +34,18 @@
 							<div class="vcard-item"><%= @event.channel %></div>
 						</li>
 						<li>
+							<span class="item-key">显示到导航</span>
+							<div class="vcard-item">
+								<%= link_to '推荐活动', admin_ajax_path('update', {
+									source: 'Event',
+									id: @event.id,
+									update: {
+										totop: !@event.totop
+									}
+								}) %>
+							</div>
+						</li>
+						<li>
 							<span class="item-key">推荐活动(显示到首页)</span>
 							<div class="vcard-item">
 								<%= link_to '推荐活动', admin_ajax_path('tui', {

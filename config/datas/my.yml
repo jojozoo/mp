@@ -9,9 +9,7 @@ sets:
     /my/set/security: 安全设置
     #/my/set/privacy: 隐私设置
     /my/set/push: 推送设置
-    #/my/set/dy: 动态设置
-    # /my/set/bg: 模板设置
-    /my/set/others: 同步网站
+    /my/set/socials: 同步网站
   icons: {}
   smalls: {}
 albums:
@@ -28,24 +26,17 @@ works:
   navs: {}
   icons: {}
   smalls: {}
-# timelines:
-#   name: 我的动态(点赞,推荐,喜欢,收藏,动态)
-#   icon: time
-#   small:
-#   navs: {}
-#   icons: {}
-#   smalls: {}
 msgs:
-  name: 漫信&通知
+  name: 私信&通知
   icon: envelope
   small:
   navs:
-    /my/msgs: 漫信
+    /my/msgs: 私信
     # mails:
-    #   /my/msgs: 全部漫信
-    #   /my/msgs/read: 已读漫信
-    #   /my/msgs/unread: 未读漫信
-    #   /my/msgs/trash: 垃圾漫信
+    #   /my/msgs: 全部私信
+    #   /my/msgs/read: 已读私信
+    #   /my/msgs/unread: 未读私信
+    #   /my/msgs/trash: 垃圾私信
     /my/msgs/new: 给关注的人写信
     /my/msgs/notices: 网站通知
   icons: 

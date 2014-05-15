@@ -8,7 +8,6 @@
 	<%= stylesheet_link_tag "application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
-	<meta property="qc:admins" content="551071253160276375" />
 	<link rel="shortcut icon" href="/favicon.ico">
 	<!--[if lte IE 8]>
 	<link rel="stylesheet" href="/ie/ie.css" />
@@ -19,37 +18,57 @@
 	<script src="/ie/respond.min.js"></script>
 	<![endif]-->
 	<%= render 'shared/tongji' %>
-	<script type="text/javascript">
-	$(function(){
-		$("body > .container.main").css({'min-height': document.body.clientHeight + 6});
-	})
-	</script>
 </head>
 <body>
 	<%= render 'shared/nav' %>
 	<div class="container main">
 		<div class="row main-tip">
 			<div class="col-md-12">
-				<!-- <div class="alert alert-info">
-					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-					<strong>通知:</strong>
-					漫拍网第二版即将发布，敬请期待！！！
-					<br>
-				</div> -->
 			</div>
 		</div>
 		
-		<%= yield %>
+		<!-- 主要内容 -->
+		<div class="row">
+			<div class="col-md-12">
+				<% 
+				hash = {
+					"information" => "基本资料",
+					"avatar"      => "头像设置",
+					"security"    => "安全设置",
+					"push"        => "推送设置",
+					"socials"     => "同步网站"
+				}
+				%>
+				<div class="page-header">
+					<h3>
+						<i class="icon-wrench"></i>
+						个人设置
+						<small>
+							<%= hash[action_name] %>
+						</small>
+					</h3>
+				</div>
+
+				<ul class="nav nav-tabs">
+					<% hash.each do |key, value| %>
+						<li class="<%= 'active' if key.eql?(action_name) %>">
+							<%= link_to value, "/settings/#{key}" %>
+						</li>
+					<% end %>
+				</ul>
+				<div class="mp-page">
+					<%= yield %>
+				</div>
+			</div>
+		</div>
 	</div>
 	<%= render 'shared/to_top' %>
 	<%= render 'shared/footer' %>
-
 	<% if flash[:notice].present? %>
 		<script type="text/javascript">
 			var str = '<div class="alert alert-success" style="display:none;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><%= flash[:notice] %></div>';
 			$(str).prependTo('.main-tip > .col-md-12').slideDown(500);
 		</script>
 	<% end %>
-
 </body>
 </html>

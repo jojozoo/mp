@@ -4,7 +4,7 @@ class CreateWorks < ActiveRecord::Migration
       t.integer :user_id
       t.integer :cover_id
       t.integer :photos_count,   default: 0
-      t.integer :comments_count, default: 0
+      t.integer :coms_count, default: 0
       t.integer :visit_count,    default: 0
       t.string :title
       t.string :desc

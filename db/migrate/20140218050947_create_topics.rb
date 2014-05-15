@@ -9,7 +9,7 @@ class CreateTopics < ActiveRecord::Migration
       t.datetime :emphasis_at
       t.string :title
       t.string :content
-      t.integer :comments_count, default: 0
+      t.integer :coms_count, default: 0
       t.boolean :del, default: false
 
       t.timestamps

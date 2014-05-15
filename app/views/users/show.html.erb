@@ -70,93 +70,89 @@
         <img src="/images/profile.jpg" style="width:100%;">
     </div>
 </div>
-<div class="white-col-md">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="profile-header-left">
-                <div class="pf_head_pic">
-                    <%= image_tag current_user.avatar(:thumb) %>
-                </div>
-                <ul class="user_atten">
-                    <li>
-                        <a href="javascript:void(0);"> 
-                            <strong>58</strong>
-                            <span>作品</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);"> 
-                            <strong>632</strong>
-                            <span>粉丝</span>
-                        </a>
-                    </li>
-                    <li class="W_no_border">
-                        <a href="javascript:void(0);"> 
-                            <strong>69</strong>
-                            <span>喜欢</span>
-                        </a>
-                    </li>
-                </ul>
+<div class="row">
+    <div class="col-md-6">
+        <div class="profile-header-left">
+            <div class="pf_head_pic">
+                <%= image_tag current_user.avatar(:thumb) %>
             </div>
-            <div class="profile-header-right" style="margin-bottom:10px;">
-                <h3 class="pf_name">
-                    <%= @user.username %>
-                    <small class="pf-url"><%= link_to user_url(@user.id), user_path(@user.id) %></small>
-                </h3>
-                <div class="pf_resume">
-                    <%= @user.resume %>
-                </div>
-                <div class="pf_tags">
-                    <%= @user.addr %>
-                </div>
-                <div class="pf_do">
-                    <a href="" class="btn btn-default btn-xs">
-                        <i class="icon-plus"></i>
-                        关注
+            <ul class="user_atten">
+                <li>
+                    <a href="javascript:void(0);"> 
+                        <strong>58</strong>
+                        <span>作品</span>
                     </a>
-                    <a href="" class="btn btn-default btn-xs">
-                        <i class="icon-envelope"></i>
-                        漫信
+                </li>
+                <li>
+                    <a href="javascript:void(0);"> 
+                        <strong>632</strong>
+                        <span>粉丝</span>
                     </a>
-                </div>
-            </div>
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="javascript:void(0);">作品</a>
                 </li>
-                <li class="">
-                    <a href="javascript:void(0);">相册</a>
+                <li class="W_no_border">
+                    <a href="javascript:void(0);"> 
+                        <strong>69</strong>
+                        <span>喜欢</span>
+                    </a>
                 </li>
-                <!-- <li class="">
-                    <a href="javascript:void(0);">简介</a>
-                </li> -->
-                <li class="">
-                    <a href="javascript:void(0);">粉丝</a>
-                </li>
-                <li class="">
-                    <a href="javascript:void(0);">关注</a>
-                </li>
-                <!-- <li class="">
-                    <a href="javascript:void(0);">动态</a>
-                </li> -->
-                <li class="">
-                    <a href="javascript:void(0);">喜欢</a>
-                </li>
-                <li class="">
-                    <a href="javascript:void(0);">收藏</a>
-                </li>
-                <!-- <li class="">
-                    <a href="javascript:void(0);">标签</a>
-                </li> -->
             </ul>
-            <div class="row">
-                <div class="col-md-9">
-                    
-                </div>
-                <div class="col-md-3">
-                    
-                </div>
+        </div>
+        <div class="profile-header-right" style="margin-bottom:10px;">
+            <h3 class="pf_name">
+                <%= @user.username %>
+                <small class="pf-url"><%= link_to user_url(@user.id), user_path(@user.id) %></small>
+            </h3>
+            <div class="pf_resume">
+                <%= @user.resume %>
+            </div>
+            <div class="pf_tags">
+                <%= @user.addr %>
+            </div>
+            <div class="pf_do">
+                <a href="" class="btn btn-default btn-xs">
+                    <i class="icon-plus"></i>
+                    关注
+                </a>
+                <a href="" class="btn btn-default btn-xs">
+                    <i class="icon-envelope"></i>
+                    私信
+                </a>
             </div>
         </div>
-    </div>    
+    </div>
+    <div class="col-md-6" style="height: 134px;">
+        <ul class="nav nav-tabs" style="position: absolute;bottom: 0;">
+            <li class="active">
+                <a href="javascript:void(0);">作品</a>
+            </li>
+            <li class="">
+                <a href="javascript:void(0);">相册</a>
+            </li>
+            <!-- <li class="">
+                <a href="javascript:void(0);">简介</a>
+            </li> -->
+            <li class="">
+                <a href="javascript:void(0);">粉丝</a>
+            </li>
+            <li class="">
+                <a href="javascript:void(0);">关注</a>
+            </li>
+            <!-- <li class="">
+                <a href="javascript:void(0);">动态</a>
+            </li> -->
+            <li class="">
+                <a href="javascript:void(0);">喜欢</a>
+            </li>
+            <li class="">
+                <a href="javascript:void(0);">收藏</a>
+            </li>
+            <!-- <li class="">
+                <a href="javascript:void(0);">标签</a>
+            </li> -->
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+
 </div>

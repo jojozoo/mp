@@ -47,10 +47,9 @@ Mp::Application.routes.draw do
       get :waterfall
     end
   end
-  resources :users, path: 'u'
-  resources :micros, path: 'ms'
+  resources :users, path: 'accounts'
   resources :works
-  resources :rs
+  resources :collections, path: 'collection'
   # resources :comments
   resources :sites, only: :create do
     collection do
@@ -70,6 +69,11 @@ Mp::Application.routes.draw do
     
   end
   
+  ['information', 'avatar', 'security', 'push', 'socials'].each do |r|
+    match "/settings/#{r}" => "settings##{r}", via: [:get, :post], as: "settings_#{r}".to_sym
+  end
+  match "/settings"    => "settings#index"
+  post "/settings/cut" => "settings#cut"
   ##### my star #####
   scope '/my', module: 'my', as: 'my' do
     get '/' => 'sets#index'

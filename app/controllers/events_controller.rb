@@ -9,7 +9,6 @@ class EventsController < ApplicationController
 			con = params[:tag].present? ? {channel: params[:tag]} : {}
 			Event.where('state > 1').where(con)
 		end.paginate(:page => params[:page], per_page: 12).order('id desc')
-		
 	end
 
 	def new

@@ -6,7 +6,7 @@
 #  user_id        :integer
 #  cover_id       :integer
 #  photos_count   :integer          default(0)
-#  comments_count :integer          default(0)
+#  coms_count     :integer          default(0)
 #  visit_count    :integer          default(0)
 #  title          :string(255)
 #  desc           :string(255)
@@ -19,7 +19,7 @@ class Work < ActiveRecord::Base
   attr_accessible :user_id, 
   :cover_id, 
   :photos_count, 
-  :comments_count, 
+  :coms_count, 
   :visit_count, 
   :title, 
   :desc, 

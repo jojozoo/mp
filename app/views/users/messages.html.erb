@@ -60,7 +60,7 @@
 }
 </style>
 <div class="list-group messages">
-<% @msgs.each do |msg| %>
+<% @messages.each do |msg| %>
 	<div class="list-group-item <%= 'unread' unless current_user.read?(msg) %>">
 		<div class="msg-user-pic">
 			<%= link_to image_tag(msg.sender.avatar(:s50), class: 'avatar-mini'), user_path(msg.sender_id) %>
@@ -94,7 +94,7 @@
 		<input type="checkbox" class="check-all">
 	</div>
 </div>
-<%= will_paginate @msgs %>
+<%= will_paginate @messages %>
 
 <script type="text/javascript">
 $(function(){

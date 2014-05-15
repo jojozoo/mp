@@ -2,31 +2,29 @@
     <li id="js-nav-home">
         <%= link_to '首页', home_path %>
     </li>
-    <!-- <li id="js-nav-micros">
-        <%#= link_to '动态', micros_path %>
-    </li> -->
     <li id="js-nav-photos">
         <%= link_to '图库', photos_path %>
     </li>
     <li id="js-nav-events">
         <%= link_to '活动', events_path %>
     </li>
-    <li class="dropdown" id="js-nav-rs">
-        <a href="/rs">
-            推荐 <b class="caret"></b>
-        </a>
+    <li class="dropdown" id="js-nav-collections">
+        <%= link_to collections_path do %>
+            推荐
+            <b class="caret"></b>
+        <% end %>
         <ul class="dropdown-menu">
             <li>
-                <a href="/rs">每天看世界最好的照片</a>
+                <%= link_to '每天看世界最好的照片', collections_path %>
             </li>
             <li>
-                <a href="/rs">月月评</a>
+                <%= link_to '月月评', collections_path %>
             </li>
             <li>
-                <a href="/rs">影展</a>
+                <%= link_to '影展', collections_path %>
             </li>
             <li>
-                <a href="/rs">摄影师</a>
+                <%= link_to '摄影师', collections_path %>
             </li>
         </ul>
     </li>

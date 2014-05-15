@@ -1,5 +1,24 @@
 class PhotosController < ApplicationController
     def index
+
+        # params[:time]
+        # mine
+        # params[:o] = {
+        #     id desc最新上传
+        #     updated_at desc,
+        #     recommend_at desc,
+        #     coms_count desc,
+        #     random asc
+        #     liks_count
+
+        # }
+        # params[:q] = {
+        #     recommend,
+        #     choice
+        #     request
+        #     tag
+        # }
+
         @photos = load_data
     end
 
@@ -12,10 +31,10 @@ class PhotosController < ApplicationController
         params[:order] = params[:order] || 'push'
         con, order = {
             'news'   => [{}, 'id desc'],
-            'likes'  => [{}, 'likes_count desc'],
-            'push'   => ['pushes_count > 0', 'pushed_at desc'],
-            'hot'    => [{}, 'comments_count desc'],
-            'choice' => [{choice: true}, 'choiced_at desc'],
+            'likes'  => [{}, 'liks_count desc'],
+            'push'   => [{recommend: true}, 'recommend_at desc'],
+            'hot'    => [{}, 'coms_count desc'],
+            'choice' => [{choice: true}, 'choice_at desc'],
             'random' => [{}, 'randomhex desc'] # TODO 缺少算法
         }[params[:order]]
         Photo.where(state: true).where(con).paginate(:page => params[:page], per_page: 12).order(order)
@@ -30,8 +49,8 @@ class PhotosController < ApplicationController
     end
 
     def show
-        @image = Photo.find_by_id_and_state(params[:id], true)
-        @image.visits.create(user_id: current_user.try(:id))
+        @photo = Photo.find_by_id_and_state(params[:id], true)
+        @photo.visits.create(user_id: current_user.try(:id))
     end
 
     # 图片访问权限控制

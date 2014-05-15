@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
     t.integer  "members_count",     :default => 0
     t.integer  "photos_count",      :default => 0
     t.integer  "state",             :default => 0
+    t.boolean  "totop",             :default => false
     t.boolean  "request",           :default => false
     t.datetime "request_at"
     t.boolean  "del",               :default => false
@@ -122,6 +123,8 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
     t.string   "uid"
     t.string   "email"
     t.string   "username"
+    t.string   "local"
+    t.string   "channel"
     t.boolean  "isview"
     t.integer  "isclick"
     t.boolean  "del",        :default => false
@@ -165,7 +168,7 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
     t.integer  "recs_count",           :default => 0
     t.integer  "liks_count",           :default => 0
     t.integer  "stos_count",           :default => 0
-    t.integer  "vist_count",           :default => 0
+    t.integer  "visit_count",          :default => 0
     t.integer  "coms_count",           :default => 0
     t.boolean  "recommend",            :default => false
     t.datetime "recommend_at"
@@ -218,7 +221,7 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
     t.datetime "emphasis_at"
     t.string   "title"
     t.string   "content"
-    t.integer  "comments_count",  :default => 0
+    t.integer  "coms_count",  :default => 0
     t.boolean  "del",             :default => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
@@ -250,6 +253,7 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
     t.string   "mobile"
     t.string   "password"
     t.string   "salt"
+    t.boolean  "isblock"
     t.string   "province"
     t.string   "city"
     t.string   "site"
@@ -269,6 +273,7 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
     t.integer  "wors_count",          :default => 0
     t.integer  "liks_count",          :default => 0
     t.integer  "stos_count",          :default => 0
+    t.integer  "visit_count",         :default => 0
     t.boolean  "del",                 :default => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
@@ -288,7 +293,7 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
     t.integer  "user_id"
     t.integer  "cover_id"
     t.integer  "photos_count",   :default => 0
-    t.integer  "comments_count", :default => 0
+    t.integer  "coms_count", :default => 0
     t.integer  "visit_count",    :default => 0
     t.string   "title"
     t.string   "desc"

@@ -112,7 +112,15 @@ class User < ActiveRecord::Base
     msg_notice:     true, 
     recom_notice:   true, 
     store_notice:   true
-  } 
+  }
+  ACCEPTTIP = {
+    followd: '被关注',
+    recom:   '被推荐',
+    like:    '被喜欢',
+    store:   '被收藏',
+    comment: '被回应',
+    msg:     '收到私信'
+  }
   # 收件箱
   # has_many :iboxs,   class_name: 'Message', foreign_key: :user_id, conditions: {state: [0, 1]}
   # 未读
@@ -247,13 +255,13 @@ class User < ActiveRecord::Base
   # 修改邮箱 修改密码
   # 图片水印: 左中右(/昵称/帐户/mail|第二排http://domain.xx.com)
   ###权限相关(auth)
-  # 邮件提醒: 被关注,加好友,被回应,被喜欢,收到漫信
-  # 站内通知: 被关注,加好友,被回应,被喜欢,收到漫信
+  # 邮件提醒: 被关注,加好友,被回应,被喜欢,收到私信
+  # 站内通知: 被关注,加好友,被回应,被喜欢,收到私信
   ###再考虑
   # 编辑器: 富文本编辑器  Markdown编辑器 (使用帮助)
   # friends表(user_id, friend_id, mark) has_many through 朋友关系表
   # feeds表(网站动态)
-  # 站内互动: 允许回应(所有,好友,粉丝)针对活动/other,允许漫信(所有,好友,粉丝) 暂时不加
+  # 站内互动: 允许回应(所有,好友,粉丝)针对活动/other,允许私信(所有,好友,粉丝) 暂时不加
 
   # TODO 参与活动的图片也瀑布流,全部图片上传解决，相册(logo,创建等)，瀑布流也可以正常排列,列表排列
   # TODO 其中列表排列时后面是详细的浏览，喜欢等等乱七八糟的

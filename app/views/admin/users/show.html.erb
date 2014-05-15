@@ -177,7 +177,7 @@
 								'话题' => admin_topics_path('con[user_id]' => @user.id), 
 								'标签' => admin_tags_path('con[user_id]' => @user.id), 
 								# '通知' => admin_notices_path('con[user_id]' => @user.id), 
-								'漫信' => admin_messages_path('con[user_id]' => @user.id)
+								'私信' => admin_messages_path('con[user_id]' => @user.id)
 							}.each do |key, val| %>
 								<%= link_to key, val, target: '_blank' %>
 							<% end %>

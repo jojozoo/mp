@@ -5,7 +5,7 @@ class TopicsController < ApplicationController
             @topics = Topic.where(tag_id: @tag.id).paginate(:page => params[:page], per_page: 20).order('id desc')
             render 'index_tag' and return
         else
-            @topics = Topic.order('comments_count desc, id desc').limit(20)
+            @topics = Topic.order('coms_count desc, id desc').limit(20)
         end
     end
 
@@ -29,7 +29,7 @@ class TopicsController < ApplicationController
     end
 
     def create
-        params[:topic][:tag_id] = params[:topic_tag_id]
+        params[:topic][:owner_id] = params[:topic_owner_id]
         if @topic = Topic.create!(params[:topic].slice(:title, :content, :tag_id).merge(user_id: current_user.id))
             redirect_to action: :show, id: @topic.id
         else

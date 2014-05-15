@@ -11,7 +11,7 @@ $(function(){
         'preventCaching'  : true,
         'height'          : 35,
         'swf'             : '/uploadify/uploadify.swf',             //swf文件的位置
-        'uploader'        : '/my/set/avatar',                       //上传的接收者
+        'uploader'        : '/settings/avatar',                     //上传的接收者
         'cancelImg'       : 'uploadify-cancel.png',
         'folder'          : '/upload',                              //上传图片的存放地址
         'auto'            : true,                                   //选择图片后是否自动上传

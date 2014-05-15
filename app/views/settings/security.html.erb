@@ -1,0 +1,17 @@
+<%= form_tag '/settings/security', class: 'form-horizontal' do %>
+	<div class="form-group password optional user_password">
+		<label class="password optional col-sm-2 control-label" for="user_password">原密码</label>
+		<div class="col-sm-6 input-text-add">
+			<input class="string password optional form-control form-control" id="user_password" name="user[password]" size="50" type="password" data-validate="true">
+		</div>
+	</div>
+	<div class="form-group password optional user_newpassword">
+		<label class="newpassword optional col-sm-2 control-label" for="user_newpassword">新密码</label>
+		<div class="col-sm-6 input-text-add">
+			<input class="string newpassword optional form-control form-control" id="user_newpassword" name="user[newpassword]" size="50" type="password" data-validate="true">
+		</div>
+	</div>
+	<div class="form-group">
+		<input class="btn btn-default col-sm-offset-7" name="commit" type="submit" value="修改密码">
+	</div>
+<% end %>

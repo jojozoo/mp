@@ -60,6 +60,7 @@ $(function(){
 						eleWidth  = Math.round((container.width() / 4) - 30);
 						eleHeight = Math.round(imgHeight / (Math.round((imgWidth / eleWidth) * 10) / 10));
 					$(row).find('img[wh]').css({width: eleWidth, height: eleHeight});
+					$(row).find('.details').css({width: eleWidth});
 					return row;
 				});
 				container.append(result);

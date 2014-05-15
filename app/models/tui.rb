@@ -48,7 +48,7 @@ class Tui < ActiveRecord::Base
     like:    '被喜欢',
     store:   '被收藏',
     comment: '被回应',
-    msg:     '收到漫信'
+    msg:     '收到私信'
   }
   
   RECOMMENDEDTYPE = {

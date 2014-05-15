@@ -54,8 +54,8 @@ class AjaxController < ApplicationController
     # comment
     def com
         obj = case params[:source]
-        when 'image'
-            Image.find(params[:id])
+        when 'photo'
+            Photo.find(params[:id])
         when 'topic'
             Topic.find(params[:id])
         when 'work'

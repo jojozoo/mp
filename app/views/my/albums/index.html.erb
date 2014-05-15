@@ -15,7 +15,7 @@ $(function(){
 </script>
 
 <div class="text-right album-menu">
-	您共<%= current_user.albums.count %>个相册，<%= current_user.images.count %>张图片
+	您共<%= current_user.albs_count %>个相册，<%= current_user.phos_count %>张图片
 	<%= link_to '上传图片', 'javascript:void(0);', class: 'btn-primary btn btn-sm' %>
     <%= link_to '创建相册', new_my_album_path, class: 'btn-success btn btn-sm', remote: true %>
 </div>

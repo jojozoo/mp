@@ -118,7 +118,7 @@ $(function(){
 
 <div class="album-menu text-right">
 	<%= link_to '返回相册', my_albums_path %>
-	共<%= @album.images.count %>张图片
+	共<%= @album.photos.count %>张图片
 
 	<%#= link_to '上传图片', upload_my_albums_path(aid: @album.id), class: 'btn-primary btn btn-xs' %>
 	<%= link_to '上传图片', 'javascript:void(0);', class: 'btn-primary btn btn-xs' %>
@@ -137,9 +137,9 @@ $(function(){
 	<div class="clearfix"></div>
 </div>
 <div class="row">
-	<%= render partial: 'image', collection: @images %>
-	<%= will_paginate @images %>
-	<% if @images.total_entries < 1 %>
+	<%= render partial: 'image', collection: @photos %>
+	<%= will_paginate @photos %>
+	<% if @photos.total_entries < 1 %>
 	<div class="col-md-12">
 		<div class="text-center" style="height: 300px; padding-top: 140px;">
 			还没有照片， 快去上传吧。 <%= link_to '上传图片', 'javascript:void(0);' %>

@@ -1,14 +1,17 @@
 <div class="row">
-	<style type="text/css">
-	.main .col-md-9 .breadcrumb, .main .col-md-12 .breadcrumb{
-		margin-bottom: 15px;
+	<!-- <style type="text/css">
+	.ad {
+		margin-bottom: 10px;
 	}
-	</style>
+	.ad img{
+		width: 100%;
+	}
+	</style> -->
 	<div class="col-md-9">
 		<!-- <div class="ad">
 			<img src="/images/ads/ad.jpg" alt="我的十大手机图片征集">
 		</div> -->
-		<%= render 'shared/flexslider' %>
+		<%= render 'flexslider' %>
 	</div>
 	<div class="col-md-3">
 		<div class="breadcrumb">
@@ -27,33 +30,123 @@
 		</div>
 	</div>
 </div>
+<style type="text/css">
+.nav-filter > li {
+	/*border-right: 1px solid #ccc;*/
+	margin-right: 20px;
+}
+.nav-filter > li > a {
+	padding: 5px 15px;
+	background: #f7f7f7;
+}
+.nav-filter{
+	margin-bottom: 15px;
+	border-bottom: 1px solid #f7f7f7;
+	padding-bottom: 5px;
+}
+.home-tip-name{
+	font-size: 24px;
+	margin-right: 10px;
+	padding-right: 20px;
+	border-right: 1px solid #ddd;
+	line-height: 30px;
+	color: #ccc;
+}
+.home-tui-div {
+	margin-bottom: 20px;
+}
+.home-tui-div a {
+	margin-bottom: 4px;
+	float: left;
+	width: 8%;
+	margin-right: 0.33%;
+	display: inline-block;
+}
+.home-tui-div a img{
+	width: 100%;
+}
+</style>
 <div class="row">
 	<div class="col-md-12">
-		<div class="breadcrumb">
-			<span>编辑推荐</span>
-			<div class="pull-right">
-				<%= link_to '最新上传', photos_path(order: 'news') %>
-				<%= link_to '每日精选', photos_path(order: 'choice') %>
-				<%= link_to '漫拍之星', star_photos_path %>
-				<%= link_to '浏览更多>>', photos_path %>
-			</div>
-		</div>
-		<div class="row" id="container">
-		<%= render partial: 'photos/image', collection: Photo.effective.order('id desc').limit(12), as: :image %>
-		</div>
-		<script type="text/javascript">
-		$(function(){
-			var container = $('#container');
-			container.imagesLoaded(function(){
-				container.masonry({
-					itemSelector : '.col-sm-6.col-md-3',
-					transitionDuration: '0.8s',
-					hiddenStyle: { opacity: 0 },
-					visibleStyle: { opacity: 1}
-				});
-				$('.col-sm-6.col-md-3').animate({'opacity': 1}, 500);
-			});
-		})
-		</script>
+		<span class="pull-left home-tip-name">推荐</span>
+		<ul class="nav nav-pills nav-filter">
+			<li class="active">
+				<a href="/#home-photographers" data-toggle="tab">摄影师</a>
+			</li>
+			<li>
+				<a href="/#home-stars" data-toggle="tab">漫拍之星</a>
+			</li>
+		</ul>
 	</div>
 </div>
+<div class="row home-tui-div tab-content">
+	<div class="col-md-12 tab-pane fade in active" id="home-photographers">
+		<% User.where(photographer: true).order("updated_at desc").limit(24).each do |user| %>
+			<%= link_to image_tag(user.avatar(:small)), '', title: user.username %>
+		<% end %>
+	</div>
+	<div class="col-md-12 tab-pane fade" id="home-stars">
+		<% User.where(photographer: false).order("updated_at desc").limit(24).each do |user| %>
+			<%= link_to image_tag(user.avatar(:small)), '', title: user.username %>
+		<% end %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<span class="pull-left home-tip-name">活动</span>
+		<ul class="nav nav-pills nav-filter">
+			<li class="dropdown">
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+					所有活动 <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<% '上班途中 我的办公桌 宠物乐园 最喜欢的图片 我的第一台相机'.split(" ").each do |event| %>
+					<li>
+						<a class="home-search" href="/"><%= event %></a>
+					</li>
+					<% end %>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+					所有图片 <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<% '所有图片 编辑推荐 评论最多 最新上传'.split(" ").each do |type| %>
+					<li>
+						<a class="home-order" href="/"><%= type %></a>
+					</li>
+					<% end %>
+				</ul>
+			</li>
+			<li>
+				<a href="">
+					选择日期 <i class="ttc icon-calendar"></i>
+				</a>
+			</li>
+			
+		</ul>
+	</div>
+</div>
+<script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
+<div class="row photos" id="container">
+	<%= render partial: 'photos/thumb', collection: @photos, as: :photo %>
+	<div id="page_loading" page="2" state="static" url="<%= waterfall_photos_path(order: params[:order]) %>">
+		<img src="/images/ajax-loader.gif">
+		<span>加载中...</span>
+	</div>
+</div>
+<script type="text/javascript">
+$(function(){
+	var container = $('#container');
+	container.imagesLoaded(function(){
+		container.masonry({
+			itemSelector : '.col-sm-6.col-md-3',
+			transitionDuration: '0.8s',
+			hiddenStyle: { opacity: 0 },
+			visibleStyle: { opacity: 1}
+		});
+		$('.col-sm-6.col-md-3').animate({'opacity': 1}, 500);
+	});
+})
+</script>

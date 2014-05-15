@@ -10,9 +10,9 @@
 			
 		</li>
 		<% end %>
-		<% Tui.choice.order("id desc").limit(5).each do |tui| %>
+		<% Photo.choice.order("id desc").limit(5).each do |photo| %>
 		<li>
-			<%= link_to image_tag(tui.obj.picture(:big)), photo_path(tui.obj_id), target: '_blank' %>
+			<%= link_to image_tag(photo.picture(:big)), photo_path(photo), target: '_blank' %>
 		</li>
 		<% end %>
 	</ul>
@@ -21,6 +21,9 @@
 	.flexslider{
 		border: 0;
 		/*margin-top:10px;*/
+	}
+	.slides > li {
+		height: 300px;
 	}
 </style>
 

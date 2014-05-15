@@ -16,6 +16,7 @@
 #  members_count     :integer          default(0)
 #  photos_count      :integer          default(0)
 #  state             :integer          default(0)
+#  totop             :boolean          default(0)
 #  request           :boolean          default(FALSE)
 #  request_at        :datetime
 #  del               :boolean          default(FALSE)
@@ -34,6 +35,7 @@ class Event < ActiveRecord::Base
    :members_count,
    :photos_count, 
    :state, 
+   :totop,
    :request,
    :request_at,  
    :del

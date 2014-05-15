@@ -11,14 +11,14 @@
 #  emphasis_at     :datetime
 #  title           :string(255)
 #  content         :string(255)
-#  comments_count  :integer          default(0)
+#  coms_count      :integer          default(0)
 #  del             :boolean          default(FALSE)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
 class Topic < ActiveRecord::Base
-  attr_accessible :user_id, :owner_id, :last_user_id, :last_updated_at, :emphasis, :emphasis_at, :title, :content, :comments_count, :del
+  attr_accessible :user_id, :owner_id, :last_user_id, :last_updated_at, :emphasis, :emphasis_at, :title, :content, :coms_count, :del
   # owner_id 属于某个活动的文章 但是创建文章的时候应该如何关联？ 只在后台有权限关联好了，前台只可以添加活动标签
   has_many :comments, as: :obj
   has_many :tagships, as: :obj

@@ -5,7 +5,7 @@ class My::AlbumsController < My::ApplicationController
 
 	def show
 		@album = Album.find_by_id(params[:id])
-        @images = @album.images.paginate(:page => params[:page], per_page: 20).order('id desc')
+        @photos = @album.photos.paginate(:page => params[:page], per_page: 20).order('id desc')
 	end
 
     def create
@@ -16,7 +16,7 @@ class My::AlbumsController < My::ApplicationController
 
     def destroy
         @album = Album.find_by_id(params[:id])
-        @album.images.update_all("del = 1")
+        @album.photos.update_all("del = 1")
         @album.update_attributes(del: true)
         redirect_to my_albums_path
     end
@@ -38,7 +38,7 @@ class My::AlbumsController < My::ApplicationController
 
     # 编辑图片描述
     def desc
-        if image = current_user.images.find_by_id(params[:id])
+        if image = current_user.photos.find_by_id(params[:id])
             image.update_attributes desc: params[:desc]
         end
         render text: 'success'
@@ -55,9 +55,9 @@ class My::AlbumsController < My::ApplicationController
         if params[:album_id].present?
             album_id, id = params[:album_id], params[:id]
             if ids
-                current_user.images.where(['album_id = ? and id in (?)', id, ids]).update_all(['album_id = ?', album_id])
+                current_user.photos.where(['album_id = ? and id in (?)', id, ids]).update_all(['album_id = ?', album_id])
             else
-                current_user.images.where(['album_id = ?', id]).update_all(['album_id = ?', album_id])
+                current_user.photos.where(['album_id = ?', id]).update_all(['album_id = ?', album_id])
             end
         end
         flash[:notice] = "成功移动到其他相册"
@@ -72,7 +72,7 @@ class My::AlbumsController < My::ApplicationController
     # 封面
     def cover
         if album = current_user.albums.find_by_id(params[:id])
-            if image = current_user.images.find_by_id(params[:image_id])
+            if image = current_user.photos.find_by_id(params[:image_id])
                 album.update_attributes logo: File.open(image.picture.path)
             end
         end

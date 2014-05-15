@@ -5,7 +5,7 @@
             <%= link_to album.name, my_album_path(album) %>
             <span class="pull-right"><%= album.publish_name %></span>
             <p><%= album.desc %></p>
-            <span>共<%= album.images.count %>张</span>
+            <span>共<%= album.photos.count %>张</span>
             <span class="pull-right hide-cap">
                 <%= link_to '上传', upload_my_albums_path(aid: album.id) %>
                 <%= link_to '移动', move_modal_my_album_path(album.id), method: :post, remote: true %>

@@ -15,7 +15,7 @@
                         </small>
                     </h4>
                     <div class="info leader">
-                        <%= link_to @topic.tag.name, topics_path(tag: @topic.tag.name), class: 'node' %>
+                        <%= link_to '标签', topics_path(tag: '标签'), class: 'node' %>
                         •
                         <%= link_to @topic.user.username, user_path(@topic.user_id) %>
                         • 于 <abbr class="timeago" title=""><%=  humanize(@topic.created_at) %></abbr>
