@@ -267,6 +267,7 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
     t.boolean  "photographer",        :default => false
     t.integer  "nots_count",          :default => 0
     t.integer  "fols_count",          :default => 0
+    t.integer  "fans_count",          :default => 0
     t.integer  "msgs_count",          :default => 0
     t.integer  "phos_count",          :default => 0
     t.integer  "albs_count",          :default => 0

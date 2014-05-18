@@ -27,6 +27,7 @@
 #  photographer        :boolean          default(FALSE)
 #  nots_count          :integer          default(0)
 #  fols_count          :integer          default(0)
+#  fans_count          :integer          default(0)
 #  msgs_count          :integer          default(0)
 #  phos_count          :integer          default(0)
 #  albs_count          :integer          default(0)
@@ -63,6 +64,7 @@ class User < ActiveRecord::Base
   :photographer,
   :nots_count,
   :fols_count,
+  :fans_count,
   :msgs_count,
   :phos_count,
   :albs_count,

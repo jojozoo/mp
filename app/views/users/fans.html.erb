@@ -1,0 +1,33 @@
+<%= render "header" %>
+<div class="row">
+	<%= render partial: 'user', collection: @fans %>
+</div>
+<style type="text/css">
+.starone{
+    margin: 4px 0;
+}
+.starone > a{
+    margin-right: 10px;
+}
+.starname{
+    height: 27px;
+}
+.link-outs a{
+    text-decoration: none;
+}
+.link-outs{
+    margin-top: 6px;
+}
+.link-outs .pin-count{
+    padding-left: 0;
+    border-left: 0;
+}
+.link-outs > div{
+    display: inline-block;
+    padding: 0 10px;
+    border-left: 1px solid #E8E8E8;
+}
+.link-outs strong, .link-outs span{
+    display: block;
+}
+</style>

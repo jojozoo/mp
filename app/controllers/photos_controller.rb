@@ -15,9 +15,12 @@ class PhotosController < ApplicationController
         # params[:q] = {
         #     recommend,
         #     choice
-        #     request
+        #     event_id
+        #     user_id
         #     tag
         # }
+
+        # 如果含有request_id就不显示活动名称 如果含有user_id 把喜欢和收藏换成删除编辑按钮
 
         @photos = load_data
     end

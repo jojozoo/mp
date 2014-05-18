@@ -4,7 +4,7 @@
 	<div class="col-md-12">
 		<div class="pic">
 			<%= link_to image_tag(@photo.picture(:big), style: 'max-width:100%;') %>
-			<%= render "/shared/actions", obj: @photo, as: :obj %>
+			<%#= render "/shared/actions", obj: @photo, as: :obj %>
 		</div>
 		<hr>
 		<ul class="list-unstyled clearfix">
@@ -35,8 +35,6 @@
 				<%= @photo.created_at.strftime("%m-%d %R") %>
 			</li>
 		</ul>
-		<hr>
-		<pre style="font-size: 14px;border: 0;background: #fff;padding: 0;"><code><%= @photo.desc.blank? ? '暂无描述' : @photo.desc %></code></pre>
 		<hr>
 		<div class="row">
 			<div class="col-md-8">

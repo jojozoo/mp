@@ -137,59 +137,12 @@ abbr[title] {
 .media-object > img{
     width: 100%;
 }
-.fadedown, .bgdown{
-    display: none;
-    position: absolute;
-    padding: 15px 10px;
-    color: white;
-}
-.ondown{
-    width: 200px;
-    height: 80px;
-    position: absolute;
-    cursor: pointer;
-    /*border: 1px solid #ccc;*/
-}
-.bgdown{
-    background: #000;
-    filter: alpha(opacity=30);
-    -moz-opacity: 0.3;
-    -kHTML-opacity: 0.3;
-    opacity: 0.3;
-}
-.on-left-top, .bgfade-left-top{
-    top: 0;
-    left: 0;
-}
-.on-right-top, .bgfade-right-top{
-    top: 0;
-    right: 0;
-}
-.on-left-bottom, .bgfade-left-bottom{
-    left: 0;
-    bottom: 0;
-}
-.on-right-bottom, .bgfade-right-bottom{
-    right: 0;
-    bottom: 0;
-}
-.bgfade-left-top{
-    width: 330px;
-}
-.bgfade-right-top{
-    width: 400px;
-}
-.bgfade-left-bottom{
-    width: 230px;
-}
-.bgfade-right-bottom{
-    width: 600px;
-    padding: 4px 10px;
-}
+/*原来的喜欢推荐收藏使用*/
 .fade-row{
   display: none;
   position: absolute;
 }
+/*原来的喜欢推荐收藏使用*/
 #mp_bg{
     width: 100%;
     height: 100%;
@@ -346,10 +299,6 @@ hr{
 }
 .box_con .media p{
     padding-bottom: 0;
-}
-
-.respond{
-	margin: 20px 0;
 }
 
 
@@ -512,48 +461,6 @@ hr{
     margin: 20px 0;
     list-style: none;
 }
-.share-i{
-    width: 18px;
-    height: 18px;
-    display: block;
-    background: url(/images/share_icon.png) 0 0 no-repeat;
-}
-.link-weibo:hover .share-i{
-    background-position: -40px 0;
-}
-.link-qzone:hover .share-i{
-    background-position: -40px -40px;
-}
-.link-qqmp:hover .share-i{
-    background-position: -40px -80px;
-}
-.link-qq:hover .share-i{
-    background-position: -40px -160px;
-}
-.link-douban:hover .share-i{
-    background-position: -40px -200px;
-}
-.link-rr:hover .share-i{
-    background-position: -40px -240px;
-}
-.link-weibo .share-i{
-    background-position: 0 0;
-}
-.link-qzone .share-i{
-    background-position: 0 -40px;
-}
-.link-qqmp .share-i{
-    background-position: 0 -80px;
-}
-.link-qq .share-i{
-    background-position: 0 -160px;
-}
-.link-douban .share-i{
-    background-position: 0 -200px;
-}
-.link-rr .share-i{
-    background-position: 0 -240px;
-}
 .logo{
     width: 140px;
     height: 50px;
@@ -581,30 +488,6 @@ form.sign-form .table{
 form.sign-form .table > tbody > tr > td{
     padding: 0;
     border-top: 0;
-}
-a.weibo:hover {
-    background-position: -456px -40px;
-}
-a.weibo {
-    background-position: -456px 0;
-}
-a.douban:hover {
-    background-position: -228px -40px;
-}
-a.douban {
-    background-position: -228px 0;
-}
-a.renren:hover {
-    background-position: 0 -40px;
-}
-a.renren {
-    background-position: 0 0;
-}
-a.qzone:hover {
-    background-position: -342px -40px;
-}
-a.qzone {
-    background-position: -342px 0;
 }
 .s300{
     max-width: 300px;

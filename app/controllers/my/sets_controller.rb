@@ -4,11 +4,11 @@ class My::SetsController < My::ApplicationController
     end
 
     def basic
-        # render '/my/shared/template'
+        
     end
 
     def avatar
-        # render '/my/shared/template'
+        
         if request.post?
             current_user.update_attributes!(avatar: params[:Filedata])
             width, height = Paperclip::Geometry.from_file(current_user.avatar.path).to_s.split('x').map(&:to_i) rescue [300, 300]
@@ -49,29 +49,29 @@ class My::SetsController < My::ApplicationController
     end
 
     def security
-        # render '/my/shared/template'
+        
     end
 
     def privacy
-        # render '/my/shared/template'
+        
     end
 
     def push
-        @accept = current_user.accept
-        if request.post?
-            @accept.update_attributes(params[:accept])
-            flash[:notice] = '数据修改成功！'
-            redirect_to action: :push
-        end
-        # render '/my/shared/template'
+        # @accept = current_user.accept
+        # if request.post?
+        #     @accept.update_attributes(params[:accept])
+        #     flash[:notice] = '数据修改成功！'
+        #     redirect_to action: :push
+        # end
+        
     end
 
     def dy
-        # render '/my/shared/template'
+        
     end
 
     def bg
-        # render '/my/shared/template'
+        
     end
     
     def others

@@ -29,13 +29,12 @@ Mp::Application.routes.draw do
       get :waterfall
       get :star
       post :upload
-      get :random
     end
     member do
       get :tui
     end
   end
-  resources :albums
+
   resources :topics do
     collection do
       get :excellent
@@ -47,10 +46,16 @@ Mp::Application.routes.draw do
       get :waterfall
     end
   end
-  resources :users, path: 'accounts'
+  resources :users, path: 'accounts' do
+    member do
+      get :fans
+      get :fols
+      get :like
+      get :store
+    end
+  end
   resources :works
   resources :collections, path: 'collection'
-  # resources :comments
   resources :sites, only: :create do
     collection do
       match ':action'

@@ -9,19 +9,12 @@ sets:
     /my/set/security: 安全设置
     #/my/set/privacy: 隐私设置
     /my/set/push: 推送设置
-    /my/set/socials: 同步网站
+    /my/set/others: 同步网站
   icons: {}
   smalls: {}
 albums:
   name: 我的相册
   icon: picture
-  small:
-  navs: {}
-  icons: {}
-  smalls: {}
-works:
-  name: 我的作品
-  icon: camera
   small:
   navs: {}
   icons: {}
@@ -42,13 +35,4 @@ msgs:
   icons: 
     new: edit
     notices: bullhorn
-  smalls: {}
-users:
-  name: 粉丝&关注
-  icon: ''
-  small:
-  navs: 
-    /my/users/follows: 关注
-    /my/users/fans: 粉丝
-  icons: {}
   smalls: {}

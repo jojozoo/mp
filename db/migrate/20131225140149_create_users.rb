@@ -23,7 +23,8 @@ class CreateUsers < ActiveRecord::Migration
 
 
       t.integer :nots_count, default: 0 # 通知数量
-      t.integer :fols_count, default: 0 # 粉丝数量
+      t.integer :fols_count, default: 0 # 关注数量
+      t.integer :fans_count, default: 0 # 粉丝数量
       t.integer :msgs_count, default: 0 # 私信数量
       t.integer :phos_count, default: 0 # 图片数量
       t.integer :albs_count, default: 0 # 相册数量

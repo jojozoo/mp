@@ -1,52 +1,40 @@
 <div class="row star">
     <div class="col-md-5">
-        <div class="white-col-md">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="starone">
-                        <%= link_to image_tag(user.avatar(:small), class: 'avatar-big'), user_path(user.id), class: 'pull-left' %>
-                        <div class="stardesc">
-                            <div class="starname">
-                                <%= link_to user.username, user_path(user), class: 'author' %>
-                            </div>
-                            <div class="link-outs">
-                                <div class="pin-count">
-                                    <%= link_to user_path(user) do %>
-                                        <strong><%= user.works.count %></strong>
-                                        <span>作品</span>
-                                    <% end %>
-                                </div>
-                                <div class="board-count">
-                                    <%= link_to user_path(user) do %>
-                                        <strong><%= user.albums.count %></strong>
-                                        <span>相册</span>
-                                    <% end %>
-                                </div>
-                                <div class="follower-count">
-                                    <%= link_to user_path(user) do %>
-                                        <strong><%= user.fols_count %></strong>
-                                        <span>粉丝</span>
-                                    <% end %>
-                                </div>
-                                <%= link_to_follow(user.id) %>
-                            </div>
-                        </div>
+        <div class="starone">
+            <%= link_to image_tag(user.avatar(:small), class: 'avatar-big'), user_path(user.id), class: 'pull-left' %>
+            <div class="stardesc">
+                <div class="starname">
+                    <%= link_to user.username, user_path(user), class: 'author' %>
+                </div>
+                <div class="link-outs">
+                    <div class="pin-count">
+                        <%= link_to user_path(user) do %>
+                            <strong><%= user.works.count %></strong>
+                            <span>作品</span>
+                        <% end %>
                     </div>
-                    <p class="gray-desc" style="height:54px;">
-                        <%= truncate(user.resume, length: 65) %>
-                    </p>
+                    <div class="board-count">
+                        <%= link_to user_path(user) do %>
+                            <strong><%= user.albums.count %></strong>
+                            <span>相册</span>
+                        <% end %>
+                    </div>
+                    <div class="follower-count">
+                        <%= link_to user_path(user) do %>
+                            <strong><%= user.fols_count %></strong>
+                            <span>粉丝</span>
+                        <% end %>
+                    </div>
+                    <%= link_to_follow(user.id) %>
                 </div>
             </div>
         </div>
+        <p class="gray-desc" style="height:54px;">
+            <%= truncate(user.resume, length: 65) %>
+        </p>
         
     </div>
     <div class="col-md-7">
-        <div class="white-col-md">
-            <div class="row">
-                <div class="col-md-12">
-                    ...
-                </div>
-            </div>
-        </div>
+        ...
     </div>
 </div>

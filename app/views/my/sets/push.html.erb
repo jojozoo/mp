@@ -2,9 +2,9 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label">邮件提醒</label>
 		<div class="col-sm-10">
-			<% Accept::TIP.each do |key, val| %>
+			<% User::ACCEPTTIP.each do |key, val| %>
 				<label class="checkbox-inline">
-					<input type="checkbox" name="accept[<%= key %>_mail]" <%= "checked='checked'" if @accept.try("#{key}_mail") %>>
+					<input type="checkbox" name="accept[<%= key %>_mail]" <%= "checked='checked'" if User::ACCEPT["#{key}_mail".to_sym] %>>
 					<span><%= val %></span>
 				</label>
 			<% end %>
@@ -13,9 +13,9 @@
 	<div class="form-group">
 		<label class="col-sm-2 control-label">站内通知</label>
 		<div class="col-sm-10">
-			<% Accept::TIP.each do |key, val| %>
+			<% User::ACCEPTTIP.each do |key, val| %>
 				<label class="checkbox-inline">
-					<input type="checkbox" name="accept[<%= key %>_notice]" <%= "checked='checked'" if @accept.try("#{key}_notice") %>>
+					<input type="checkbox" name="accept[<%= key %>_notice]" <%= "checked='checked'" if User::ACCEPT["#{key}_mail".to_sym] %>>
 					<span><%= val %></span>
 				</label>
 			<% end %>

@@ -1,158 +1,27 @@
-<style>
-    .profile-header-left{
-        position: absolute;
-        top: -128px;
-        left: 20px;
-        background: #fafafa;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        border-width: 1px\9;
-        border-style: solid\9;
-    }
-    .user_atten{
-        width: 204px;
-        padding: 0;
-        margin-top: 10px;
-    }
-    .user_atten li {
-        padding: 0 3px 3px;
-        float: left;
-        border-right-width: 1px;
-        border-right-style: solid;
-        border-color: #e3e4fb;
-        text-align: center;
-        width: 68px;
-        list-style: none;
-    }
-    .user_atten li a {
-        display: block;
-    }
-    li.W_no_border{
-        border: 0;
-    }
-    .user_atten li a:hover {
-        color: #53364c;
-        text-decoration: none;
-    }
-    .user_atten li strong {
-        line-height: 20px;
-        display: block;
-        margin-bottom: 5px;
-        font-family: Tahoma;
-        font-weight: 400;
-        font-size: 20px;
-    }
-    .pf_head_pic{
-        padding: 2px;
-        width: 200px;
-        height: 200px;
-        position: relative;
-    }
-    .profile-header-right{
-        margin-left: 225px;
-    }
-    .profile-header-right > div{
-        min-height: 32px;
-        padding-top: 10px;
-    }
-    .pf_name{
-        margin-top: 10px;
-        margin-bottom: 0;
-    }
-    .pf-url{
-        font-size: 12px;
-    }
-    .pf_resume{
-        color: #808080;
-    }
-</style>
+<%= render "header" %>
 <div class="row">
     <div class="col-md-12">
-        <img src="/images/profile.jpg" style="width:100%;">
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <div class="profile-header-left">
-            <div class="pf_head_pic">
-                <%= image_tag current_user.avatar(:thumb) %>
-            </div>
-            <ul class="user_atten">
-                <li>
-                    <a href="javascript:void(0);"> 
-                        <strong>58</strong>
-                        <span>作品</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0);"> 
-                        <strong>632</strong>
-                        <span>粉丝</span>
-                    </a>
-                </li>
-                <li class="W_no_border">
-                    <a href="javascript:void(0);"> 
-                        <strong>69</strong>
-                        <span>喜欢</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="profile-header-right" style="margin-bottom:10px;">
-            <h3 class="pf_name">
-                <%= @user.username %>
-                <small class="pf-url"><%= link_to user_url(@user.id), user_path(@user.id) %></small>
-            </h3>
-            <div class="pf_resume">
-                <%= @user.resume %>
-            </div>
-            <div class="pf_tags">
-                <%= @user.addr %>
-            </div>
-            <div class="pf_do">
-                <a href="" class="btn btn-default btn-xs">
-                    <i class="icon-plus"></i>
-                    关注
-                </a>
-                <a href="" class="btn btn-default btn-xs">
-                    <i class="icon-envelope"></i>
-                    私信
-                </a>
+        <script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
+        <div class="row photos" id="container">
+            <%= render partial: 'photos/thumb', collection: @photos, as: :photo %>
+            <div id="page_loading" page="2" state="static" url="<%= waterfall_photos_path(order: params[:order]) %>">
+                <img src="/images/ajax-loader.gif">
+                <span>加载中...</span>
             </div>
         </div>
     </div>
-    <div class="col-md-6" style="height: 134px;">
-        <ul class="nav nav-tabs" style="position: absolute;bottom: 0;">
-            <li class="active">
-                <a href="javascript:void(0);">作品</a>
-            </li>
-            <li class="">
-                <a href="javascript:void(0);">相册</a>
-            </li>
-            <!-- <li class="">
-                <a href="javascript:void(0);">简介</a>
-            </li> -->
-            <li class="">
-                <a href="javascript:void(0);">粉丝</a>
-            </li>
-            <li class="">
-                <a href="javascript:void(0);">关注</a>
-            </li>
-            <!-- <li class="">
-                <a href="javascript:void(0);">动态</a>
-            </li> -->
-            <li class="">
-                <a href="javascript:void(0);">喜欢</a>
-            </li>
-            <li class="">
-                <a href="javascript:void(0);">收藏</a>
-            </li>
-            <!-- <li class="">
-                <a href="javascript:void(0);">标签</a>
-            </li> -->
-        </ul>
-    </div>
 </div>
-
-<div class="row">
-
-</div>
+<script type="text/javascript">
+$(function(){
+    var container = $('#container');
+    container.imagesLoaded(function(){
+        container.masonry({
+            itemSelector : '.col-sm-6.col-md-3',
+            transitionDuration: '0.8s',
+            hiddenStyle: { opacity: 0 },
+            visibleStyle: { opacity: 1}
+        });
+        $('.col-sm-6.col-md-3').animate({'opacity': 1}, 500);
+    });
+})
+</script>
