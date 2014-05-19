@@ -72,6 +72,10 @@ class PhotosController < ApplicationController
         end
     end
 
+    def uploadnew
+        
+    end
+
     def create
         event = Event.find(params[:image_event_id])
 

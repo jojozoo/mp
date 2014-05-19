@@ -41,7 +41,7 @@ task :data => :environment do
 	end
 	puts "start photos"
 	# photos
-	125.times do |index|
+	120.times do |index|
 		hash = {
 			user_id: User.order("rand()").first.id,
 			event_id: Event.order("rand()").first.id,

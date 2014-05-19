@@ -29,6 +29,7 @@ Mp::Application.routes.draw do
       get :waterfall
       get :star
       post :upload
+      get :uploadnew
     end
     member do
       get :tui

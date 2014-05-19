@@ -221,7 +221,7 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
     t.datetime "emphasis_at"
     t.string   "title"
     t.string   "content"
-    t.integer  "coms_count",  :default => 0
+    t.integer  "coms_count",      :default => 0
     t.boolean  "del",             :default => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
@@ -293,14 +293,14 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
   create_table "works", :force => true do |t|
     t.integer  "user_id"
     t.integer  "cover_id"
-    t.integer  "photos_count",   :default => 0
-    t.integer  "coms_count", :default => 0
-    t.integer  "visit_count",    :default => 0
+    t.integer  "photos_count", :default => 0
+    t.integer  "coms_count",   :default => 0
+    t.integer  "visit_count",  :default => 0
     t.string   "title"
     t.string   "desc"
-    t.boolean  "del",            :default => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.boolean  "del",          :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
 end
