@@ -17,7 +17,7 @@
                 </a>
             </div>
         </div>
-        <%= link_to image_tag(photo.picture(:thumb), wh: '250x333'), photo_path(photo), target: '_blank' %>
+        <%= link_to image_tag(photo.picture(:thumb), wh: photo.wh), photo_path(photo), target: '_blank' %>
         <div class="details">
             <div class="inside">
                 <div class="info">

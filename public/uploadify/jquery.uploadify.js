@@ -220,6 +220,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 									'width'    : settings.width + 'px'
 								  }
 					});
+					// 此处产生一个swf的请求
 					$('#' + swfuploadify.movieName).wrap($wrapper);
 					// Recreate the reference to wrapper
 					$wrapper = $('#' + settings.id);
@@ -247,6 +248,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					$wrapper.append($button);
 
 					// Adjust the styles of the movie
+					// 此处产生一个swf的请求
 					$('#' + swfuploadify.movieName).css({
 						'position' : 'absolute',
 						'z-index'  : 1
