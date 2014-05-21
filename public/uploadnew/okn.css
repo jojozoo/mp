@@ -48,7 +48,7 @@
 .photo-details.active .wrapper .map .tag-textfield .tags_field_wrap .tag .name{max-width:358px}
 .photo-details.active .wrapper .map .tag-textfield .tag-changyong{margin: 10px 0 0 0}
 .photo-details.active .wrapper .map .tag-textfield .tag-changyong a{text-decoration: none;padding: 5px 5px 5px 0;display: inline-block;font-size: 12px}
-
+.photo-details.active .wrapper .map .tag-textfield .tag-changyong a.disabled{color: #8f8f8f}
 
 
 

@@ -58,28 +58,26 @@
 			<input class="button action finish" type="submit" value="完成上传"></div>
 	</div>
 	<div class="edit-container">
-		<div class="photo-details active" data-cid="c512">
+		<div class="photo-details active disabled">
 			<div class="wrapper clearfix">
 				<div class="exif">
-					<h4>标题</h4>
+					<h4 class="disabled">标题</h4>
 					<label class="ui small-badge" for="photo-name">编辑</label>
 					<div class="photo-title">
-						<input class="ui large-textfield bind-photo-name" data-bind="name" id="photo-name" name="name" placeholder="Untitled Image" type="text" value="exif"></div>
+						<input class="ui large-textfield bind-photo-name" id="photo-name" name="name" placeholder="Untitled Photo" type="text" disabled="disabled"></div>
 					<div class="photo-category">
-						<h4>活动</h4>
+						<h4 class="disabled">活动</h4>
 						<label class="ui select-label">
-							<select class="ui select bind-photo-category" data-bind="category" id="photo-category" name="category">
+							<select class="ui select bind-photo-category" id="photo-category" name="category" disabled="disabled">
 								<option value="10">Abstract</option>
 							</select>
 							<span class="ui select-arrow"></span>
 						</label>
 					</div>
 					<div class="place-photo">
-						<h4>相册</h4>
+						<h4 class="disabled">相册</h4>
 						<div class="create_new_set_wrap">
-							<label class="ui small-badge create-new-set" for="photo-create_new_set">
-								创建相册
-							</label>
+							<label class="ui small-badge create-new-set" for="photo-create_new_set">创建相册</label>
 						</div>
 						<div class="confirm_new_set_wrap">
 							<label class="ui small-badge confirm-new-set active" for="photo-confirm_new_set">创建</label>
@@ -88,7 +86,7 @@
 						<div class="place_selection_creation_wrap">
 							<div class="place_selection_wrap">
 								<label class="ui select-label">
-									<select class="ui select bind-photo-place_in" data-bind="place_in" id="photo-place_in" name="place_in">
+									<select class="ui select bind-photo-place_in" id="photo-place_in" name="place_in" disabled="disabled">
 										<option class="library" value="library">Library (private)</option>
 										<option class="proifle" value="profile">Profile (public)</option>
 									</select>
@@ -98,13 +96,13 @@
 							<div class="set_name_field_wrap">
 								<div class="set_name_field">
 									<div class="error_wrap"></div>
-									<input placeholder="相册名称..." type="text"></div>
+									<input placeholder="相册名称..." type="text" disabled="disabled"></div>
 								<div class="cf"></div>
 							</div>
 						</div>
 					</div>
 					<div class="photo-exif">
-						<h4>
+						<h4 class="disabled">
 							<span class="translation_missing" title="translation missing: en.v3.upload.photo_details.exif">Exif</span>
 						</h4>
 						<div class="set_defaults_wrap">
@@ -114,44 +112,37 @@
 							<div class="labels">
 								<label>
 									型号
-									<input class="ui small-invisible-textfield bind-photo-camera" data-bind="camera" id="photo-camera" name="camera" placeholder="Set Camera" type="text" value="iPhone 4S">
-								</label>
+									<input class="ui small-invisible-textfield bind-photo-camera" id="photo-camera" name="camera" placeholder="Set Camera" type="text" disabled="disabled"></label>
 								<label>
 									镜头
-									<input class="ui small-invisible-textfield bind-photo-lens" data-bind="lens" id="photo-lens" name="lens" placeholder="Set Lens" type="text">
-								</label>
+									<input class="ui small-invisible-textfield bind-photo-lens" id="photo-lens" name="lens" placeholder="Set Lens" type="text" disabled="disabled"></label>
 								<label>
 									焦距
-									<input class="ui small-invisible-textfield bind-photo-focal_length" data-bind="focal_length" id="photo-focal_length" name="focal_length" placeholder="Set Focal Length" type="text" value="4.28">
-								</label>
+									<input class="ui small-invisible-textfield bind-photo-focal_length" id="photo-focal_length" name="focal_length" placeholder="Set Focal Length" type="text" disabled="disabled"></label>
 								<label>
 									快门速度
-									<input class="ui small-invisible-textfield bind-photo-shutter_speed" data-bind="shutter_speed" id="photo-shutter_speed" name="shutter_speed" placeholder="Set Shutter Speed" type="text" value="1/270">
-								</label>
+									<input class="ui small-invisible-textfield bind-photo-shutter_speed" id="photo-shutter_speed" name="shutter_speed" placeholder="Set Shutter Speed" type="text" disabled="disabled"></label>
 								<label>
 									光圈
-									<input class="ui small-invisible-textfield bind-photo-aperture" data-bind="aperture" id="photo-aperture" name="aperture" placeholder="Set Aperture" type="text" value="2.4">
-								</label>
+									<input class="ui small-invisible-textfield bind-photo-aperture" id="photo-aperture" name="aperture" placeholder="Set Aperture" type="text" disabled="disabled"></label>
 								<label>
 									ISO
-									<input class="ui small-invisible-textfield bind-photo-iso" data-bind="iso" id="photo-iso" name="iso" placeholder="Set ISO" type="text" value="50">
-								</label>
+									<input class="ui small-invisible-textfield bind-photo-iso" id="photo-iso" name="iso" placeholder="Set ISO" type="text" disabled="disabled"></label>
 								<label>
 									拍摄时间
-									<input class="ui small-invisible-textfield bind-photo-taken_at" data-bind="taken_at" id="photo-taken_at" name="taken_at" placeholder="Set Date (dd/mm/yyyy)" type="text" value="2014:04:05 18:06:27">
-								</label>
+									<input class="ui small-invisible-textfield bind-photo-taken_at" id="photo-taken_at" name="taken_at" placeholder="Set Date (dd/mm/yyyy)" type="text" disabled="disabled"></label>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="description">
 					<div class="description-field">
-						<h4>描述</h4>
-						<textarea class="ui textarea bind-photo-description" cols="70" data-bind="description" id="photo-description" name="description" placeholder="照片描述"></textarea>
+						<h4 class="disabled">描述</h4>
+						<textarea class="ui textarea bind-photo-description" cols="70" id="photo-description" name="description" placeholder="照片描述" disabled="disabled"></textarea>
 					</div>
 					<div class="license-select">
 						<div>
-							<h4>授权声明</h4>
+							<h4 class="disabled">授权声明</h4>
 							<div class="license-icon icons-licenses_0"></div>
 							<div class="clear"></div>
 						</div>
@@ -215,7 +206,7 @@
 				</div>
 				<div class="map">
 					<div class="tag-textfield">
-						<h4>标签</h4>
+						<h4 class="disabled">标签</h4>
 						<div class="tag-tip">
 							标签作为关键词可以被搜索到
 						</div>
@@ -223,19 +214,19 @@
 						<div class="tags_field_wrap">
 							<div class="tags_input_wrap">
 								<div class="tag_field">
-									<input placeholder="添加标签让照片更容易找到..." type="text" autocomplete="off" style="width: 370px;"></div>
+									<input placeholder="添加标签让照片更容易找到..." type="text" autocomplete="off" disabled="disabled"></div>
 							</div>
 							<div class="cf"></div>
 						</div>
 						<div class="tag-changyong">
 							<% Tag.order('sum desc').limit(25).each do |tag| %>
-								<%= link_to tag.name, "javascript:void(0);" %>
+								<%= link_to tag.name, "javascript:void(0);", class: 'disabled' %>
 							<% end %>
 						</div>
-						<div class="tags_autocompletion_wrap" style="width: 388px; display: none;"></div>
+						<div class="tags_autocompletion_wrap" style="display: none;"></div>
 					</div>
 					<div class="geotagging">
-						<h4>坐标</h4>
+						<h4 class="disabled">坐标</h4>
 						<div class="map-wrapper">
 							<div class="maplet disabled_map_image"></div>
 						</div>
