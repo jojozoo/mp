@@ -568,8 +568,31 @@ form.sign-form .table > tbody > tr > td{
 .second-nav a{
     text-decoration: none;
 }
-
-
+/*首页登录*/
+a.weibo:hover {
+    background-position: -456px -40px;
+}
+a.weibo {
+    background-position: -456px 0;
+}
+a.douban:hover {
+    background-position: -228px -40px;
+}
+a.douban {
+    background-position: -228px 0;
+}
+a.renren:hover {
+    background-position: 0 -40px;
+}
+a.renren {
+    background-position: 0 0;
+}
+a.qzone:hover {
+    background-position: -342px -40px;
+}
+a.qzone {
+    background-position: -342px 0;
+}
 
 
 

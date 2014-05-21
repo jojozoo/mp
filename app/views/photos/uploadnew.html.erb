@@ -1,20 +1,22 @@
-<style type="text/css" src="/ok.css"></style>
+<link href="/uploadnew/ok.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
+<link href="/uploadnew/okn.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/uploadnew/upload.js"></script>
 <div class="uploader">
 	<div class="file_input">
 		<input class="upload" multiple="multiple" name="the-file" type="file">
 	</div>
 	<div class="photo-container">
 		<div class="crop-tooltip">
-			<p>Click and drag anywhere on your photo to set a crop size!</p>
+			<p>可直接拖动照片上传!</p>
 		</div>
-		<div class="active-photo-wrap" style="height: 235.5px;">
+		<div class="active-photo-wrap" style="height: 230px;">
 			<div class="loading-progress">
 				<div class="progress-bar-wrap">
 					<div class="ui progress-bar">
-						<span class="area green" style="width: 100%;"></span>
+						<span class="area" style="width: 0%;"></span>
 						<span class="label"></span>
 						<span class="percentage">
-							<span class="value">100</span>
+							<span class="value">0</span>
 							<small>%</small>
 						</span>
 					</div>
@@ -32,97 +34,63 @@
 					</div>
 				</div>
 			</div>
-			<div class="drag-info" style="display: table-cell;">
-				<h1>Drag photos from your computer in here.</h1>
+			<div class="drag-info">
+				<h1>从您的电脑中照片拖到此处</h1>
 				<div class="action_buttons">
-					<a class="button browse_files action" href="#">Choose photos</a>
-					<h1 class="or">or</h1>
-					<div class="import_files">
-						<a class="button submit browse_filepicker" data-client-id="AoH3It6vRbuUEst8cJ30vz" href="#">Import</a>
-					</div>
-
+					<a class="button browse_files action" href="javascript:void(0);">选择上传</a>
 				</div>
 			</div>
 			<div class="active-photo"></div>
 		</div>
 		<div class="photo-reel">
-			<div class="photos" style="left: 0px;"></div>
+			<div class="photos"></div>
 			<div class="previous-button"></div>
 			<div class="next-button"></div>
 		</div>
 		<div class="photo-actions">
 			<div class="remaining-photos">
 				<p>
-					You have 20 photos remaining to upload.
-					<a href="/upgrade" target="_blank">Upgrade now</a>
-					.
+					还可以再上传20张照片
 				</p>
 			</div>
-			<input class="button remove" type="submit" value="Remove">
-			<input class="button submit" type="submit" value="Save &amp; Continue">
-			<input class="button action finish" type="submit" value="Finish Upload"></div>
+			<input class="button remove" type="submit" value="删除本张">
+			<input class="button submit" type="submit" value="保存 &amp; 继续">
+			<input class="button action finish" type="submit" value="完成上传"></div>
 	</div>
 	<div class="edit-container">
-		<div class="photo-details disabled active">
+		<div class="photo-details active" data-cid="c512">
 			<div class="wrapper clearfix">
 				<div class="exif">
-					<h4 class="disabled">Title</h4>
-					<label class="ui small-badge" for="photo-name">edit</label>
+					<h4>标题</h4>
+					<label class="ui small-badge" for="photo-name">编辑</label>
 					<div class="photo-title">
-						<input class="ui large-textfield bind-photo-name" data-bind="name" id="photo-name" name="name" placeholder="Untitled Image" type="text" disabled="disabled"></div>
+						<input class="ui large-textfield bind-photo-name" data-bind="name" id="photo-name" name="name" placeholder="Untitled Image" type="text" value="exif"></div>
 					<div class="photo-category">
-						<h4 class="disabled">Category</h4>
+						<h4>活动</h4>
 						<label class="ui select-label">
-							<select class="ui select bind-photo-category" data-bind="category" id="photo-category" name="category" disabled="disabled">
+							<select class="ui select bind-photo-category" data-bind="category" id="photo-category" name="category">
 								<option value="10">Abstract</option>
-								<option value="11">Animals</option>
-								<option value="5">Black and White</option>
-								<option value="1">Celebrities</option>
-								<option value="9">City &amp; Architecture</option>
-								<option value="15">Commercial</option>
-								<option value="16">Concert</option>
-								<option value="20">Family</option>
-								<option value="14">Fashion</option>
-								<option value="2">Film</option>
-								<option value="24">Fine Art</option>
-								<option value="23">Food</option>
-								<option value="3">Journalism</option>
-								<option value="8">Landscapes</option>
-								<option value="12">Macro</option>
-								<option value="18">Nature</option>
-
-								<option value="7">People</option>
-								<option value="19">Performing Arts</option>
-								<option value="17">Sport</option>
-								<option value="6">Still Life</option>
-								<option value="21">Street</option>
-								<option value="26">Transportation</option>
-								<option value="13">Travel</option>
-								<option value="22">Underwater</option>
-								<option value="27">Urban Exploration</option>
-								<option value="25">Wedding</option>
-								<option value="0">Uncategorized</option>
 							</select>
 							<span class="ui select-arrow"></span>
 						</label>
 					</div>
 					<div class="place-photo">
-						<h4 class="disabled">Place Photo In</h4>
+						<h4>相册</h4>
 						<div class="create_new_set_wrap">
-							<label class="ui small-badge create-new-set" for="photo-create_new_set">Create New Set</label>
+							<label class="ui small-badge create-new-set" for="photo-create_new_set">
+								创建相册
+							</label>
 						</div>
 						<div class="confirm_new_set_wrap">
-							<label class="ui small-badge confirm-new-set active" for="photo-confirm_new_set">Create</label>
-							<label class="ui small-badge next-badge cancel-new-set" for="photo-cancel_new_set">Cancel</label>
+							<label class="ui small-badge confirm-new-set active" for="photo-confirm_new_set">创建</label>
+							<label class="ui small-badge next-badge cancel-new-set" for="photo-cancel_new_set">取消</label>
 						</div>
 						<div class="place_selection_creation_wrap">
 							<div class="place_selection_wrap">
 								<label class="ui select-label">
-									<select class="ui select bind-photo-place_in" data-bind="place_in" id="photo-place_in" name="place_in" disabled="disabled">
+									<select class="ui select bind-photo-place_in" data-bind="place_in" id="photo-place_in" name="place_in">
 										<option class="library" value="library">Library (private)</option>
 										<option class="proifle" value="profile">Profile (public)</option>
-										<optgroup class="profile_sets" label="Set"></optgroup>
-										<optgroup class="portfolio_sets" label="Portfolio"></optgroup>
 									</select>
 									<span class="ui select-arrow"></span>
 								</label>
@@ -130,130 +98,144 @@
 							<div class="set_name_field_wrap">
 								<div class="set_name_field">
 									<div class="error_wrap"></div>
-									<input placeholder="Name your new set here..." type="text" disabled="disabled"></div>
+									<input placeholder="相册名称..." type="text"></div>
 								<div class="cf"></div>
 							</div>
 						</div>
 					</div>
 					<div class="photo-exif">
-						<h4 class="disabled">
+						<h4>
 							<span class="translation_missing" title="translation missing: en.v3.upload.photo_details.exif">Exif</span>
 						</h4>
 						<div class="set_defaults_wrap">
-							<label class="ui small-badge set-defaults" for="photo-set_default">Use these as default</label>
+							<label class="ui small-badge set-defaults" for="photo-set_default">使用这些默认值</label>
 						</div>
 						<div class="metadata">
 							<div class="labels">
 								<label>
-									Camera
-									<input class="ui small-invisible-textfield bind-photo-camera" data-bind="camera" id="photo-camera" name="camera" placeholder="Set Camera" type="text" disabled="disabled"></label>
+									型号
+									<input class="ui small-invisible-textfield bind-photo-camera" data-bind="camera" id="photo-camera" name="camera" placeholder="Set Camera" type="text" value="iPhone 4S">
+								</label>
 								<label>
-									Lens
-									<input class="ui small-invisible-textfield bind-photo-lens" data-bind="lens" id="photo-lens" name="lens" placeholder="Set Lens" type="text" disabled="disabled"></label>
+									镜头
+									<input class="ui small-invisible-textfield bind-photo-lens" data-bind="lens" id="photo-lens" name="lens" placeholder="Set Lens" type="text">
+								</label>
 								<label>
-									Focal Length
-									<input class="ui small-invisible-textfield bind-photo-focal_length" data-bind="focal_length" id="photo-focal_length" name="focal_length" placeholder="Set Focal Length" type="text" disabled="disabled"></label>
+									焦距
+									<input class="ui small-invisible-textfield bind-photo-focal_length" data-bind="focal_length" id="photo-focal_length" name="focal_length" placeholder="Set Focal Length" type="text" value="4.28">
+								</label>
 								<label>
-									Shutter Speed
-									<input class="ui small-invisible-textfield bind-photo-shutter_speed" data-bind="shutter_speed" id="photo-shutter_speed" name="shutter_speed" placeholder="Set Shutter Speed" type="text" disabled="disabled"></label>
+									快门速度
+									<input class="ui small-invisible-textfield bind-photo-shutter_speed" data-bind="shutter_speed" id="photo-shutter_speed" name="shutter_speed" placeholder="Set Shutter Speed" type="text" value="1/270">
+								</label>
 								<label>
-									Aperture
-									<input class="ui small-invisible-textfield bind-photo-aperture" data-bind="aperture" id="photo-aperture" name="aperture" placeholder="Set Aperture" type="text" disabled="disabled"></label>
+									光圈
+									<input class="ui small-invisible-textfield bind-photo-aperture" data-bind="aperture" id="photo-aperture" name="aperture" placeholder="Set Aperture" type="text" value="2.4">
+								</label>
 								<label>
 									ISO
-									<input class="ui small-invisible-textfield bind-photo-iso" data-bind="iso" id="photo-iso" name="iso" placeholder="Set ISO" type="text" disabled="disabled"></label>
+									<input class="ui small-invisible-textfield bind-photo-iso" data-bind="iso" id="photo-iso" name="iso" placeholder="Set ISO" type="text" value="50">
+								</label>
 								<label>
-									Taken
-									<input class="ui small-invisible-textfield bind-photo-taken_at" data-bind="taken_at" id="photo-taken_at" name="taken_at" placeholder="Set Date (dd/mm/yyyy)" type="text" disabled="disabled"></label>
+									拍摄时间
+									<input class="ui small-invisible-textfield bind-photo-taken_at" data-bind="taken_at" id="photo-taken_at" name="taken_at" placeholder="Set Date (dd/mm/yyyy)" type="text" value="2014:04:05 18:06:27">
+								</label>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="description">
 					<div class="description-field">
-						<h4 class="disabled">Description</h4>
-						<textarea class="ui textarea bind-photo-description" cols="70" data-bind="description" id="photo-description" name="description" placeholder="Enter a description for your beautiful photo" disabled="disabled"></textarea>
+						<h4>描述</h4>
+						<textarea class="ui textarea bind-photo-description" cols="70" data-bind="description" id="photo-description" name="description" placeholder="照片描述"></textarea>
 					</div>
 					<div class="license-select">
-						<h4 class="disabled">License</h4>
-						<div class="license-icon photo-licenses_0"></div>
-						<label class="ui select-label">
-							<select class="ui select bind-photo-license_type" data-bind="license_type" id="photo-license_type" name="license_type" disabled="disabled">
-								<option value="0">500px License</option>
-								<option value="4">Attribution 3.0</option>
-								<option value="5">Attribution-NoDerivs 3.0</option>
-								<option value="6">Attribution-ShareAlike 3.0</option>
-								<option value="1">Attribution-NonCommercial 3.0</option>
-								<option value="2">Attribution-NonCommercial-NoDerivs 3.0</option>
-								<option value="3">Attribution-NonCommercial-ShareAlike 3.0</option>
-							</select>
-							<span class="ui select-arrow"></span>
-						</label>
-					</div>
-					<div class="tag-textfield">
-						<h4 class="disabled">Tags</h4>
-						<div class="tag-count"></div>
-						<div class="tags_field_wrap">
-							<div class="tags_input_wrap">
-								<div class="tag_field">
-									<input placeholder="Tag to make your photo easier to find..." type="text" disabled="disabled"></div>
-							</div>
-							<div class="cf"></div>
+						<div>
+							<h4>授权声明</h4>
+							<div class="license-icon icons-licenses_0"></div>
+							<div class="clear"></div>
 						</div>
-
+						<div>
+							<div class="warrant-row">
+								<input type="radio" id="warrant0" name="user[warrant]" value="0">						
+								<label for="warrant0">
+									<span class="cc-1"></span>
+									<span class="cc-2"></span>
+									<span class="cc-3"></span>
+									<span class="cc-h">署名-非商业使用-禁止演绎</span>
+								</label>
+							</div>
+							<div class="warrant-row">
+								<input type="radio" id="warrant1" name="user[warrant]" value="1">						
+								<label for="warrant1">
+									<span class="cc-1"></span>
+									<span class="cc-2"></span>
+									<span class="cc-4"></span>
+									<span class="cc-h">署名-非商业使用-相同方式共享</span>
+								</label>
+							</div>
+							<div class="warrant-row">
+								<input type="radio" id="warrant2" name="user[warrant]" value="2">						
+								<label for="warrant2">
+									<span class="cc-1"></span>
+									<span class="cc-2"></span>
+									<span class="cc-5"></span>
+									<span class="cc-h">署名-非商业使用</span>
+								</label>
+							</div>
+							<div class="warrant-row">
+								<input type="radio" id="warrant3" name="user[warrant]" value="3">						
+								<label for="warrant3">
+									<span class="cc-1"></span>
+									<span class="cc-3"></span>
+									<span class="cc-5"></span>
+									<span class="cc-h">署名-禁止演绎</span>
+								</label>
+							</div>
+							<div class="warrant-row">
+								<input type="radio" id="warrant4" name="user[warrant]" value="4">						
+								<label for="warrant4">
+									<span class="cc-1"></span>
+									<span class="cc-4"></span>
+									<span class="cc-5"></span>
+									<span class="cc-h">署名-相同方式共享</span>
+								</label>
+							</div>
+							<div class="warrant-row">
+								<input type="radio" id="warrant5" name="user[warrant]" value="5" checked="&quot;&quot;">						
+								<label for="warrant5">
+									<span class="cc-1"></span>
+									<span class="cc-5"></span>
+									<span class="cc-5"></span>
+									<span class="cc-h">署名</span>
+								</label>
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="map">
-					<div class="discoverability">
-						<h4 class="disabled">Discoverability</h4>
-						<p>Add metadata to improve your photo's discoverability.</p>
-						<div class="progress_bar_wrap">
-							<div class="ui progress-bar">
-								<span class="area disabled animation_paused" style="width: 40%;"></span>
-								<span class="label"></span>
-								<span class="percentage">
-									<span class="value">40</span>
-									<small>%</small>
-								</span>
-							</div>
+					<div class="tag-textfield">
+						<h4>标签</h4>
+						<div class="tag-tip">
+							标签作为关键词可以被搜索到
 						</div>
-					</div>
-					<div class="adult_fresh_wrap clearfix">
-						<div class="fresh_qualification_wrap">
-							<div class="fresh_title_wrap">
-								<h4 class="disabled">Publish to Fresh</h4>
-								<div class="fresh_qualification_icon" style="display: none;">
-									<div class="tooltip">
-										<p>
-											Fresh is where newly uploaded photos are displayed. To see your photo in this feed, be sure to add a title, category, and at least three tags to improve discoverability.
-										</p>
-									</div>
-								</div>
+						<div class="tag-count">最多3个, 还剩3个</div>
+						<div class="tags_field_wrap">
+							<div class="tags_input_wrap">
+								<div class="tag_field">
+									<input placeholder="添加标签让照片更容易找到..." type="text" autocomplete="off" style="width: 370px;"></div>
 							</div>
-							<div class="fresh_details_wrap">
-								<div class="fresh_private_warning">
-									<label>This photo will be private.</label>
-								</div>
-								<div class="fresh_checklist">
-									<div class="fresh_item_wrap">
-										<div class="fresh_checkmark" id="title"></div>
-										<label>Title</label>
-									</div>
-									<div class="fresh_item_wrap">
-										<div class="fresh_checkmark" id="category"></div>
-										<label>Category</label>
-									</div>
-									<div class="fresh_item_wrap">
-										<div class="fresh_checkmark" id="tags"></div>
-										<label>3 Tags</label>
-									</div>
-								</div>
-							</div>
+							<div class="cf"></div>
 						</div>
-
+						<div class="tag-changyong">
+							<% Tag.order('sum desc').limit(25).each do |tag| %>
+								<%= link_to tag.name, "javascript:void(0);" %>
+							<% end %>
+						</div>
+						<div class="tags_autocompletion_wrap" style="width: 388px; display: none;"></div>
 					</div>
 					<div class="geotagging">
-						<h4 class="disabled">Map</h4>
+						<h4>坐标</h4>
 						<div class="map-wrapper">
 							<div class="maplet disabled_map_image"></div>
 						</div>

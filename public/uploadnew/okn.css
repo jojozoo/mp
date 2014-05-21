@@ -1,0 +1,100 @@
+.uploader .edit-container{background:#f7f8fa;min-width:1200px;min-height:100%;width:100%;height:auto;padding:0 50px 50px 50px}
+.uploader .edit-container:before,.uploader .edit-container:after{content:"\0020";display:block;height:0;overflow:hidden}
+.uploader .edit-container:after{clear:both}
+.uploader .file_input{display:none}
+.uploader .file_input.error{border:10px solid #000}
+.uploader .crop-tooltip{z-index:1000;display:none;opacity:0;-webkit-transition:all 0.2s ease-in;-webkit-transition-delay:0;-webkit-transition:all 0.2s ease-in 0;transition:all 0.2s ease-in 0;position:absolute;top:300px;left:460px;width:206px;height:auto;padding:18px 15px;background:#222222;-o-border-radius:3px;border-radius:3px;-webkit-box-shadow:0px 4px 15px rgba(0,0,0,0.3);box-shadow:0px 4px 15px rgba(0,0,0,0.3)}
+.uploader .crop-tooltip.display{opacity:1;display:block}
+.uploader .crop-tooltip p{font-size:14px;line-height:22px;color:#d0d0d0;font-weight:200}
+.uploader .photo-container{position:relative;width:1070px;margin:30px auto 10px auto;padding:0;font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif}
+.uploader .photo-container:before,.uploader .photo-container:after{content:"\0020";display:block;height:0;overflow:hidden}
+.uploader .photo-container:after{clear:both}
+.uploader .photo-container .drag-info{display:table-cell;vertical-align:middle;position:relative}
+.uploader .photo-container .drag-info h1{text-align:center;font-size:20px;line-height:26px;font-weight:300;color:#02adea}
+.uploader .photo-container .drag-info h1 a{color:inherit;text-decoration:underline;-webkit-transition:all 0.15s ease-out;-webkit-transition-delay:0s;-webkit-transition:all 0.15s ease-out 0s;transition:all 0.15s ease-out 0s}
+.uploader .photo-container .drag-info h1 a:hover{color:#71767a}
+.uploader .photo-container .drag-info .or{color:#aeafb0;font-size:14px;margin:10px 0}
+.uploader .photo-container .drag-info .action_buttons{text-align:center;margin-top:35px}
+.uploader .photo-container .drag-info .action_buttons .browse_files{background:#02adea url(/uploadnew/choose_photo_X2.png) no-repeat 13px center;-webkit-background-size:14%;background-size:14%;padding-left:40px}
+/*.uploader .photo-container .drag-info .action_buttons .browse_filepicker{background:#34bf49 url(//500px.com/assets/v3/uploader/photo_details/import_X2-4fbe370bff9ea1db46c2d5849999cacf.png) no-repeat 13px center;-webkit-background-size:25%;background-size:25%;padding-left:45px}
+.uploader .photo-container .drag-info .action_buttons .browse_filepicker:hover{background-color:#41cb56}
+.uploader .photo-container .drag-info .action_buttons .import_files{margin-left:8px;display:inline-block;position:relative}
+.uploader .photo-container .drag-info .action_buttons .import_files:hover .tooltip{display:block}
+.uploader .photo-container .drag-info .action_buttons .import_files .tooltip{padding:8px;bottom:-42px;max-width:97px;left:0}
+.uploader .photo-container .drag-info .action_buttons .import_files .tooltip:before{border-bottom:5px solid rgba(0,0,0,0.8);top:-5px;border-top:none}
+.uploader .photo-container .drag-info .action_buttons .import_files .tooltip img{display:inline-block;width:16%;margin-right:1px}*/
+.uploader .photo-container .drag-info .filepicker,#pxLightbox .modal_wrap.prompt.lightbox .uploader .photo-container .drag-info h1.remove_cover,#pxLightbox .modal_wrap.prompt.lightbox .uploader .photo-container .drag-info h1.remove_cover{color:#71767a;font-size:13px;font-weight:500;margin:10px 0 0 0}
+.uploader .photo-container .drag-info .service_list{text-align:center}
+.uploader .photo-container .drag-info .service_list h2{color:#aeafb0;font-size:14px;margin:20px 0}
+.uploader .photo-container .drag-info .service_list h2:last-child{margin:20px 0 5px}
+.uploader .photo-container .drag-info .service_list .column{display:inline-block;padding:0 10px}
+.uploader .photo-container .drag-info .service_list .service{text-align:left;display:block;padding:7px 0}
+.uploader .photo-container .drag-info .service_list .service img{display:inline-block;width:25px;height:25px;vertical-align:middle}
+.uploader .photo-container .drag-info .service_list .service h2{display:inline-block;text-align:left;color:#aeafb0;font-size:14px;height:25px;line-height:25px;padding:0 0 0 8px}
+.uploader .photo-container .drag-info .service_list .service h2:last-child{margin:0}
+.uploader .photo-container .alternate-upload{display:none}
+.uploader .photo-container .active-photo-wrap{display:table;width:1070px;height:700px;position:relative}
+.uploader .photo-container .active-photo-wrap .finish-progress,.uploader .photo-container .active-photo-wrap .loading-progress{display:none}
+.uploader .photo-container .active-photo-wrap .active-photo{display:table-cell;vertical-align:middle}
+.uploader .photo-container .active-photo-wrap .active-photo .photo-preview.inactive{display:none}
+.uploader .photo-container .active-photo-wrap .active-photo .photo-preview{vertical-align:middle}
+.uploader .photo-container .active-photo-wrap .active-photo .photo-preview img{display:block;max-height:700px;max-width:1070px;margin:0 auto}
+.uploader .photo-container .photo-actions{position:relative;float:right;margin:30px 10px 0 0}
+.uploader .photo-container .photo-actions .remaining-photos{display:none}
+.photo-details.active .wrapper .map .tag-textfield{margin:25px 0 0 0}
+.photo-details.active .wrapper .map .tag-textfield .tag-tip{position:relative;float:left;top:-11px;left:35px;font-size:11px;color:#aeafb0}
+.photo-details.active .wrapper .map .tag-textfield .tag-count{position:relative;float:right;top:-11px;font-size:11px;color:#747a8b}
+.photo-details.active .wrapper .map .tag-textfield .tags_field_wrap{margin:20px 0 0 0}
+.photo-details.active .wrapper .map .tag-textfield .tags_field_wrap .tag .name{max-width:358px}
+.photo-details.active .wrapper .map .tag-textfield .tag-changyong{margin: 10px 0 0 0}
+.photo-details.active .wrapper .map .tag-textfield .tag-changyong a{text-decoration: none;padding: 5px 5px 5px 0;display: inline-block;font-size: 12px}
+
+
+
+
+
+.uploader .photo-container .drag-info .action_buttons .browse_files:hover{background-color:#09bdfd;text-decoration: none;color: #fff}
+
+.ui.select-arrow{background:url("/uploadnew/up-down-arrow@2x.png") no-repeat scroll 5px 8px #edeef0;border-radius:0 0 0 0;border-width:0;-webkit-box-shadow:none;box-shadow:none;color:white;height:29px;pointer-events:none;position:absolute;right:1px;text-shadow:none;top:22px;width:24px;z-index:20;outline:none;-moz-outline:none;outline-style:none}
+.ui.select-arrow.opaque{background:url("/uploadnew/up-down-arrow@2x.png") no-repeat scroll 5px 8px #f7f8fa;right:5px}
+.button.disabled{background:#e3e4e5;color:white;border:1px solid #d6d7d9;-webkit-transition:all 0.15s ease-out;-webkit-transition-delay:0s;-webkit-transition:all 0.15s ease-out 0s;transition:all 0.15s ease-out 0s;-webkit-box-shadow:inset 0px 1px 0px rgba(255,255,255,0.6);box-shadow:inset 0px 1px 0px rgba(255,255,255,0.6)}
+.button.submit{min-width:70px;background:#34bf49;border:1px solid #2fab41;-webkit-box-shadow:inset 0px 1px 0px rgba(255,255,255,0.2);box-shadow:inset 0px 1px 0px rgba(255,255,255,0.2)}
+.button.submit:hover{background:#41cb56;cursor:pointer}
+.button.submit:active{-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15);box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15)}
+.button.remove{min-width:70px;background:#e3e4e5;color:#71767a;border:1px solid #d6d7d9;-webkit-transition:all 0.15s ease-out;-webkit-transition-delay:0s;-webkit-transition:all 0.15s ease-out 0s;transition:all 0.15s ease-out 0s;-webkit-box-shadow:inset 0px 1px 0px rgba(255,255,255,0.6);box-shadow:inset 0px 1px 0px rgba(255,255,255,0.6)}
+.button.remove:hover{background:#d6d7d9}
+.button.remove:active{-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15);box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15)}
+.button.action,.v3button.action{background:#02adea;font-weight:500;border:1px solid #02a3de;-webkit-box-shadow:inset 0px 1px 0px rgba(255,255,255,0.2);box-shadow:inset 0px 1px 0px rgba(255,255,255,0.2)}
+.button.action:hover,.v3button.action:hover{background:#09bdfd}
+.button.action:active,.v3button.action:active{-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15);box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15)}
+.button.delete{background:#71767a;font-weight:500;border:1px solid #65696d;-webkit-box-shadow:inset 0px 1px 1px rgba(255,255,255,0.2);box-shadow:inset 0px 1px 1px rgba(255,255,255,0.2)}
+.button.delete:hover{background:#ff4c4c;border:1px solid #f33}
+.button.delete:active{-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15);box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15)}
+.button.cancel{min-width:70px;color:#71767a;border:1px solid #d6d7d9;-webkit-transition:all 0.15s ease-out;-webkit-transition-delay:0s;-webkit-transition:all 0.15s ease-out 0s;transition:all 0.15s ease-out 0s;-webkit-box-shadow:inset 0px 1px 0px rgba(255,255,255,0.6);box-shadow:inset 0px 1px 0px rgba(255,255,255,0.6)}
+.button.cancel:hover{background:#d6d7d9}
+.button.cancel:active{-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15);box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15)}
+.button{text-decoration:none;font-size:12px;display:inline-block;width:auto;height:32px;line-height:30px;padding:0px 15px;color:white;font-weight:500;border:none;cursor:pointer;outline:none;-o-border-radius:3px;border-radius:3px;-webkit-transition:all 0.15s ease-out;-webkit-transition-delay:0s;-webkit-transition:all 0.15s ease-out 0s;transition:all 0.15s ease-out 0s;-webkit-appearance:none;white-space:nowrap}
+.button:active{-webkit-box-shadow:inset 0px 1px 0px rgba(0,0,0,0.3);box-shadow:inset 0px 1px 0px rgba(0,0,0,0.3)}
+.button:hover{background:#7d8387}
+.photo-details.active .wrapper .description .license-icon{float:right}
+.icons-licenses_0{width:15px !important;height:15px !important;background:url("/uploadnew/icons.png") -334px -9px no-repeat}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_0{background:url("/uploadnew/icons@2x.png") -321px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+}
+.icons-licenses_1{width:31px !important;height:15px !important;background:url("/uploadnew/icons.png") -353px -9px no-repeat}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_1{background:url("/uploadnew/icons@2x.png") -338px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+}
+.icons-licenses_2{width:47px !important;height:15px !important;background:url("/uploadnew/icons.png") -388px -9px no-repeat}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_2{background:url("/uploadnew/icons@2x.png") -371px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+}
+.icons-licenses_3{width:47px !important;height:15px !important;background:url("/uploadnew/icons.png") -439px -9px no-repeat}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_3{background:url("/uploadnew/icons@2x.png") -420px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+}
+.icons-licenses_4{width:15px !important;height:15px !important;background:url("/uploadnew/icons.png") -490px -9px no-repeat}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_4{background:url("/uploadnew/icons@2x.png") -469px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+}
+.icons-licenses_5{width:31px !important;height:15px !important;background:url("/uploadnew/icons.png") -509px -9px no-repeat}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_5{background:url("/uploadnew/icons@2x.png") -486px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+}
+.icons-licenses_6{width:31px !important;height:15px !important;background:url("/uploadnew/icons.png") -544px -9px no-repeat}
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_6{background:url("/uploadnew/icons@2x.png") -519px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+}

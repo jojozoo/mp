@@ -14,7 +14,7 @@
 	<![endif]-->
 
 	<!--[if lt IE 9]>
-	<script src="/ie/html5.js"></script>
+	<script src="/ie/html5shiv.min.js"></script>
 	<script src="/ie/respond.min.js"></script>
 	<![endif]-->
 	<%= render 'shared/tongji' %>
@@ -26,6 +26,13 @@
 		<span class="logo"></span>
 		<% end %>
 		<%= yield %>
+		<!-- <div class="beian text-center" style="color: white;">
+			<p>
+				Copyright © 2014-2015　山东漫拍文化发展有限公司
+				<br>
+				<a target="_blank" href="http://www.miibeian.gov.cn" class="font_cl">鲁ICP备14011722号</a>
+			</p>
+		</div> -->
 	</div>
 	<div id="mp_bg">
 		<img id="mp_img" src="<%= sessionbackgrounds %>">
