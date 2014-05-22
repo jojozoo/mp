@@ -37,7 +37,7 @@
 		</ul>
 		<hr>
 		<div class="row">
-			<div class="col-md-8">
+			<div class="col-md-7">
 				<%= render "shared/respond", url: ajax_com_path('photo', @photo.id) if current_user %>
 				<hr>
 				<div class="comments">
@@ -47,7 +47,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-5">
 				<%= render 'exif' %>
 			</div>
 		</div>

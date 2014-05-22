@@ -1,0 +1,206 @@
+<html>
+<head>
+	<title>左右滚动</title>
+	<script src="jquery.js?body=1" type="text/javascript"></script>
+</head>
+<body>
+	<style type="text/css">
+	.thumb-scroll_wrap{
+		/*display: inline-block;*/
+	}
+	.thumb-scroll_wrap .thumb-prev-link{
+		background: url("./thumb-prev-link.png") no-repeat #666;
+		float: left;
+		margin: 0 5px 0 0;
+	}
+	.thumb-scroll_wrap .thumb-next-link{
+		/*float: right;*/
+		margin: 0 0 0 5px;
+		background: url("./thumb-next-link.png") no-repeat #666;
+	}
+	.thumb-scroll_wrap .thumb-prev-link, .thumb-scroll_wrap .thumb-next-link{
+		display: inline-block;
+		width: 25px;
+		height: 70px;
+		opacity: 0.2;
+		filter: alpha(opacity=20);
+		background-position: center center;
+
+	}
+	.thumb-scroll_wrap .thumb-prev-link:hover, .thumb-scroll_wrap .thumb-next-link:hover{
+		opacity: 0.6;
+		filter: alpha(opacity=60);
+	}
+
+	.thumb-scroll_wrap .hidden-thumbs{
+		margin: 0;
+		overflow: hidden;
+		height: 70px;
+		width: 370px;
+		position: relative;
+		float: left;
+	}
+	.thumb-scroll_wrap .hidden-thumbs ul{
+		position: absolute;
+		padding: 0;
+		margin: 0;
+		height: 70px;
+	}
+	.thumb-scroll_wrap .hidden-thumbs ul li{
+		list-style: none;
+		float: left;
+		margin: auto 5px auto auto;
+		width: 70px;
+		height: 70px;
+		opacity: 0.5;
+		filter: alpha(opacity=50);
+	}
+	.thumb-scroll_wrap .hidden-thumbs ul li.last{
+		margin: auto;
+	}
+	.thumb-scroll_wrap .hidden-thumbs ul li.no-photo{
+		background-color: #333;
+		line-height: 90px;
+	}
+	.thumb-scroll_wrap .hidden-thumbs ul li.no-photo span{
+		color: #999999;
+		display: inline-block;
+		font-size: 10px;
+		height: 56px;
+		line-height: 13px;
+		padding-top: 20px;
+		text-align: center;
+		width: 70px;
+	}
+	
+	.thumb-scroll_wrap .hidden-thumbs ul li.active, .thumb-scroll_wrap .hidden-thumbs ul li:hover{
+		opacity: 1;
+		filter: alpha(opacity=100);
+	}
+	</style>
+	<div class="thumb-scroll_wrap">
+		<a class="thumb-prev-link" href="javascript:void(0);"></a>
+		<div class="hidden-thumbs">
+			<ul style="width: 675px; left: 0px;">
+				<li class="browser no-photo">
+					<span>no thumb photo</span>
+				</li>
+				<li class="browser active">
+					<a href="http://eput.com/photo/29789">
+						<img src="http://eput.com/upload/photos/2014/0522/limb/61544664e6804f19266a4aaad8970a0f.jpg" alt="情绪盒子" height="70" width="70"></a>
+				</li>
+				<li class="browser">
+					<a href="http://eput.com/photo/29506">
+						<img src="http://eput.com/upload/photos/2014/0520/limb/b8398804705fe7a6b2c33a6410be9cfd.jpg" alt="rock 2" height="70" width="70"></a>
+				</li>
+				<li class="browser">
+					<a href="http://eput.com/photo/29505">
+						<img src="http://eput.com/upload/photos/2014/0520/limb/385071b361dfe3063a0d4af509251a10.jpg" alt="rock 1" height="70" width="70"></a>
+				</li>
+				<li class="browser">
+					<a href="http://eput.com/photo/27214">
+						<img src="http://eput.com/upload/photos/2014/0506/limb/a14ec9abba5ba7d553ad12db66bb0fab.jpg" alt="巷陌" height="70" width="70"></a>
+				</li>
+				<li class="browser">
+					<a href="http://eput.com/photo/26312">
+						<img src="http://eput.com/upload/photos/2014/0501/limb/c1b64f2596ed39254c3232776caea2fa.jpg" alt="阿德米" height="70" width="70"></a>
+				</li>
+				<li class="browser">
+					<a href="http://eput.com/photo/25883">
+						<img src="http://eput.com/upload/photos/2014/0430/limb/c907fc0eaa9f461070d37a2f133467c5.jpg" alt="黑泽与枝" height="70" width="70"></a>
+				</li>
+				<li class="browser">
+					<a href="http://eput.com/photo/25121">
+						<img src="http://eput.com/upload/photos/2014/0427/limb/e85bb6384d0dbd141c0c4cbca2568b41.jpg" alt="白露与霜" height="70" width="70"></a>
+				</li>
+				<li class="browser last">
+					<a href="http://eput.com/photo/24912">
+						<img src="http://eput.com/upload/photos/2014/0427/limb/a87e2b8dd014a74348f2dcdc88cc1cdb.jpg" alt="刺" height="70" width="70"></a>
+				</li>
+			</ul>
+		</div>
+		<a class="thumb-next-link" href="javascript:void(0);"></a>
+	</div>
+
+	<script type="text/javascript">
+		$(function() {
+			//获取焦点图的宽度（显示面积）
+			var lithumbswidth = $(".hidden-thumbs li").width() + 5;
+			var len = $(".hidden-thumbs li").length; //获取焦点图个数
+
+			/*
+			 * index: 当前所在三张图片中最左侧图片位置 - 1 ;
+			 */
+			var index = $(".hidden-thumbs li").index($(".hidden-thumbs li.active"));
+			index += 1;
+			
+			if (len > 5 && index > 3){
+				photo_scorll(index, false, "");
+			}
+			var picTimer;
+			
+			$(".thumb-prev-link").click(function() {
+				var vec = "";
+
+				if(index > 7){
+					index -= 5;
+				}else if (index == 7){
+					index -= 4;
+				}else if (index == 6){
+					index -= 3;
+				}else if (index == 5){
+					index -= 2;
+				}else if (index == 4){
+					index -= 1;
+				}else{
+					vec = "leftend";
+				}
+
+				photo_scorll(index,true,vec);
+			});
+
+			$(".thumb-next-link").click(function() {
+				var vec = "";
+
+				if(index < len - 6){
+					index += 5;
+				}else if (index == len - 6){
+					index += 4;
+				}else if (index == len - 5){
+					index += 3;
+				}else if (index == len - 4){
+					index += 2;
+				}else if (index == len - 3){
+					index += 1;
+				}else if (index == len - 2){
+					vec = "rightend";
+				}
+
+				photo_scorll(index,true,vec);
+			});
+			
+			//本例为左右滚动，即所有li元素都是在同一排向左浮动，所以这里需要计算出外围ul元素的宽度
+			$(".hidden-thumbs ul").css("width", lithumbswidth * (len));
+
+			//显示图片函数，根据接收的index值显示相应的内容
+			function photo_scorll(index, animate, vec) { //普通切换
+				var nowLeft = - (index-3) * lithumbswidth; //根据index值计算ul元素的left值
+
+				var $hidden_thumbs_ul = $(".hidden-thumbs ul");
+				if(animate == true){
+					if(vec == "leftend"){
+						$hidden_thumbs_ul.stop(true, false).animate({"left": 30 + "px"}, 50).animate({"left":0}, 300);
+					}else if (vec == "rightend"){
+						$hidden_thumbs_ul.stop(true, false).animate({"left":nowLeft - 30 + "px"},50).animate({"left":nowLeft},300);
+					}else {
+						$hidden_thumbs_ul.stop(true, false).animate({"left": nowLeft},500);
+						// 通过animate()调整ul元素滚动到计算出的position
+					}
+				}else{
+					$hidden_thumbs_ul.stop(true, false).css({"left": nowLeft});
+				}
+			}
+		});
+	</script>
+</body>
+</html>

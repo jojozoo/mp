@@ -19,11 +19,6 @@
 	<script src="/ie/respond.min.js"></script>
 	<![endif]-->
 	<%= render 'shared/tongji' %>
-	<script type="text/javascript">
-	$(function(){
-		$("body > .container.main").css({'min-height': document.body.clientHeight + 6});
-	})
-	</script>
 </head>
 <body class="v3">
 	<%= render 'shared/nav' %>
@@ -41,7 +36,6 @@
 		
 		<%= yield %>
 	</div>
-	<%= render 'shared/to_top' %>
 	<%= render 'shared/footer' %>
 
 	<% if flash[:notice].present? %>
