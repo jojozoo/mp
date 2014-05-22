@@ -50,7 +50,9 @@
 .photo-details.active .wrapper .map .tag-textfield .tag-changyong a{text-decoration: none;padding: 5px 5px 5px 0;display: inline-block;font-size: 12px}
 .photo-details.active .wrapper .map .tag-textfield .tag-changyong a.disabled{color: #8f8f8f}
 
-
+.dz-drag-hover{
+	border: 1px solid #000;
+}
 
 
 .uploader .photo-container .drag-info .action_buttons .browse_files:hover{background-color:#09bdfd;text-decoration: none;color: #fff}

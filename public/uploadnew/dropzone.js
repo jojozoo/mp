@@ -309,17 +309,17 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       autoQueue: true,
       addRemoveLinks: false,
       previewsContainer: null,
-      dictDefaultMessage: "Drop files here to upload",
-      dictFallbackMessage: "Your browser does not support drag'n'drop file uploads.",
-      dictFallbackText: "Please use the fallback form below to upload your files like in the olden days.",
-      dictFileTooBig: "File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.",
-      dictInvalidFileType: "You can't upload files of this type.",
+      dictDefaultMessage: "文件拖放此处上传",
+      dictFallbackMessage: "您的浏览器不支持拖放文件上传.",
+      dictFallbackText: "请使用下面的备用形式上传您的文件.",
+      dictFileTooBig: "文件过大 ({{filesize}}MiB). 最大: {{maxFilesize}}MiB.",
+      dictInvalidFileType: "你不能上传文件的类型.",
       dictResponseError: "Server responded with {{statusCode}} code.",
-      dictCancelUpload: "Cancel upload",
-      dictCancelUploadConfirmation: "Are you sure you want to cancel this upload?",
-      dictRemoveFile: "Remove file",
+      dictCancelUpload: "取消上传",
+      dictCancelUploadConfirmation: "确定要取消上传?",
+      dictRemoveFile: "删除文件",
       dictRemoveFileConfirmation: null,
-      dictMaxFilesExceeded: "You can not upload any more files.",
+      dictMaxFilesExceeded: "不能再上传文件.",
       accept: function(file, done) {
         return done();
       },
@@ -393,6 +393,12 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       You can overwrite them if you don't like the default behavior. If you just
       want to add an additional event handler, register it on the dropzone object
       and don't overwrite those options.
+      这些函数注册自己的初始化事件和处理所有 
+      用户界面具体的东西。覆盖它们不会打破上传 
+      但可以打破它的显示方式。 
+      您可以覆盖他们，如果你不喜欢默认的行为。如果你只是 
+      要添加一个额外的事件处理程序，它注册了悬浮窗对象 
+      而不会覆盖这些选项
        */
       drop: function(e) {
         return this.element.classList.remove("dz-drag-hover");
@@ -402,6 +408,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
         return this.element.classList.remove("dz-drag-hover");
       },
       dragenter: function(e) {
+        console.log(this.element.classList);
         return this.element.classList.add("dz-drag-hover");
       },
       dragover: function(e) {
@@ -592,7 +599,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
         this.options.url = this.element.getAttribute("action");
       }
       if (!this.options.url) {
-        throw new Error("No URL provided.");
+        throw new Error("没有提供网址.");
       }
       if (this.options.acceptedFiles && this.options.acceptedMimeTypes) {
         throw new Error("You can't provide both 'acceptedFiles' and 'acceptedMimeTypes'. 'acceptedMimeTypes' is deprecated.");
