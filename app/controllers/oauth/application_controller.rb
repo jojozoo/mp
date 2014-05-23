@@ -1,6 +1,6 @@
 require 'oauth2'
 class Oauth::ApplicationController < ApplicationController
-    layout 'sign'
+    layout 'sessions'
     before_filter :oauth
 
     def oauth

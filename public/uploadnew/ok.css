@@ -1876,63 +1876,7 @@ body.v3.membership_free .uploader .photo-container .photo-actions .remaining-pho
 body.v3.membership_free .uploader .photo-container .photo-actions .remaining-photos p a{color:#34bf49}
 body.v3 .uploader.no_file_reader .photo-preview.loading{width:1070px;height:700px;background:#f7f8fa;font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;font-size:18px;display:table-cell;text-align:center;color:#02adea}
 body.v3 .uploader.no_file_reader input[type=file]{position:absolute;visibility:hidden}
-body.v3 .photo-details{display:none}
-body.v3 .photo-details.active{display:block}
-body.v3 .photo-details.active h4{color:#0099e5;font-size:14px;font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:bold;text-transform:uppercase}
-body.v3 .photo-details.active .select{width:236px}
-body.v3 .photo-details.active .wrapper{width:1070px;height:auto;margin:0 auto;padding:30px 0 0 0}
-body.v3 .photo-details.active .wrapper .exif{float:left;overflow:visible;width:236px;margin-right:22px}
-body.v3 .photo-details.active .wrapper .exif h4{float:left}
-body.v3 .photo-details.active .wrapper .exif .small-badge{float:left;margin:0px 0 0 10px}
-body.v3 .photo-details.active .wrapper .exif .photo-title{width:400px}
-body.v3 .photo-details.active .wrapper .exif .photo-title .large-textfield{position:relative;margin:10px 0 0 -5px;padding:0 0 0 2px;float:left;width:644px}
-body.v3 .photo-details.active .wrapper .exif .photo-title .large-textfield:focus{margin:10px 0 0 -5px;padding:0 0 0 2px}
-body.v3 .photo-details.active .wrapper .exif .photo-category{float:left;margin:25px 0 0 0}
-body.v3 .photo-details.active .wrapper .exif .photo-category select{margin:20px 0 0 0}
-body.v3 .photo-details.active .wrapper .exif .place-photo{float:left;padding:25px 0 0 0}
-body.v3 .photo-details.active .wrapper .exif .place-photo .small-badge{float:left;margin:0 0 0 10px}
-body.v3 .photo-details.active .wrapper .exif .place-photo .small-badge.next-badge{margin:0 0 0 5px}
-body.v3 .photo-details.active .wrapper .exif .place-photo .small-badge.disabled{cursor:pointer;background:#edeef0;color:#a4a5a6}
-body.v3 .photo-details.active .wrapper .exif .place-photo .small-badge.disabled:hover{cursor:pointer;background:#edeef0;color:#a4a5a6}
-body.v3 .photo-details.active .wrapper .exif .place-photo .confirm_new_set_wrap{float:left;display:none}
-body.v3 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap{float:left;width:236px}
-body.v3 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .place_selection_wrap{margin-bottom:3px;position:relative}
-body.v3 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .place_selection_wrap select{margin:20px 0 0 0}
-body.v3 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap{margin:20px 0 0 0;width:100%;display:none;-o-border-radius:3px;border-radius:3px;border:1px solid #aeafb0;padding:2px 5px 0 5px;background:white}
-body.v3 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field{float:left;width:100%}
-body.v3 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field .error_wrap{float:left;background-image:url(//500px.com/assets/v3/uploader/photo_details/error@2x-942ddf2d2a2f404f63a7e74ffe732d8d.png);background-repeat:no-repeat;background-position:center;-webkit-background-size:100%;background-size:100%;width:16px;height:16px;margin:7px 4px 0 2px;display:none}
-body.v3 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field input{padding:0;text-overflow:ellipsis;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;-o-appearance:none;appearance:none;outline:none;border:none;background:none;font-size:12px;line-height:12px;font-weight:400;height:32px;font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;color:#666666;width:195px}
-body.v3 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field input.error{color:#ff4c4c}
-body.v3 .photo-details.active .wrapper .exif .photo-exif{float:left;margin:25px 0 0 0}
-body.v3 .photo-details.active .wrapper .exif .photo-exif h4{float:left}
-body.v3 .photo-details.active .wrapper .exif .photo-exif .small-badge{float:left;margin:0 0 0 10px}
-body.v3 .photo-details.active .wrapper .exif .photo-exif .metadata{float:left;clear:both;margin:20px 0 0 0}
-body.v3 .photo-details.active .wrapper .exif .photo-exif .metadata .labels label{width:100%;display:inline-block;font-weight:bold;font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;vertical-align:top;margin-bottom:8px}
-body.v3 .photo-details.active .wrapper .exif .photo-exif .metadata .labels .small-invisible-textfield{float:right;vertical-align:top;margin:0;padding:0 3px 0 3px;height:18px;width:auto}
-body.v3 .photo-details.active .wrapper .description{float:left;width:388px;margin-right:22px;margin-top:62px}
-body.v3 .photo-details.active .wrapper .description .description-field{margin:25px 0 0 0}
-body.v3 .photo-details.active .wrapper .description .description-field h4{padding:0 0 20px 0}
-body.v3 .photo-details.active .wrapper .description .description-field textarea{height:170px}
-body.v3 .photo-details.active .wrapper .description .license-select{margin:25px 0 0 0}
-body.v3 .photo-details.active .wrapper .description .license-select h4{float:left}
-body.v3 .photo-details.active .wrapper .description .license-select .select{margin:20px 0 0 0;width:100%}
-body.v3 .photo-details.active .wrapper .map{float:left;width:392px}
-body.v3 .photo-details.active .wrapper .map .discoverability p{margin:3px 0 9px 0;font-size:11px;color:#aeafb0;font-weight:400}
-body.v3 .photo-details.active .wrapper .map .discoverability .progress-bar{margin:0;height:20px}
-body.v3 .photo-details.active .wrapper .map .discoverability .progress-bar span.area{-webkit-animation:none 0s linear 0s;animation:none 0s linear 0s}
-body.v3 .photo-details.active .wrapper .map .discoverability .progress-bar span.label{top:5px;right:10px;font-size:11px;color:#aeafb0;font-weight:400}
-body.v3 .photo-details.active .wrapper .map .discoverability .progress-bar span.percentage{display:none}
-body.v3 .photo-details.active .wrapper .map .geotagging h4{margin:29px 0 0 0}
-body.v3 .photo-details.active .wrapper .map .geotagging .map-wrapper{position:relative;height:262px;width:392px;margin:20px 0 0 0}
-body.v3 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet{height:100%;width:392px}
-body.v3 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet.disabled_map_image{background:url(/uploadnew/disabled_map.jpg) no-repeat center}
-body.v3 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet .leaflet-control-mapbox-geocoder-results a{text-align:left}
-body.v3 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet .leaflet-control-mapbox-geocoder-results span{display:none}
-body.v3 .photo-details.has_default_exif .set-defaults{visibility:hidden}
-body.v3 .photo-details h4.disabled{color:#aeafb0 !important}
-body.v3 .photo-details.no_place_in_field .place-photo{display:none}
-body.v3 .photo-details.no_defaults .photo-exif h4{margin-bottom:7px}
-body.v3 .photo-details.no_defaults .photo-exif .set-defaults{display:none}
+
 .adult_fresh_wrap .adultcontent{margin:30px 0 0 0;float:left}
 .adult_fresh_wrap .adultcontent .on-off-wrapper{margin:19px 0 0 0;position:relative;width:90px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none}
 .adult_fresh_wrap .fresh_qualification_wrap{margin:30px 40px 0 0;float:left}

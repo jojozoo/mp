@@ -1,4 +1,10 @@
-.uploader .edit-container{background:#f7f8fa;min-width:1200px;min-height:100%;width:100%;height:auto;padding:0 50px 50px 50px}
+.uploader .edit-container{
+	background:#f7f8fa;
+	/*min-width:1200px;
+	padding:0 50px 50px 50px;*/
+	min-height:100%;
+	width:100%;
+	height:auto}
 .uploader .edit-container:before,.uploader .edit-container:after{content:"\0020";display:block;height:0;overflow:hidden}
 .uploader .edit-container:after{clear:both}
 .uploader .file_input{display:none}
@@ -41,6 +47,54 @@
 .uploader .photo-container .active-photo-wrap .active-photo .photo-preview img{display:block;max-height:700px;max-width:1070px;margin:0 auto}
 .uploader .photo-container .photo-actions{position:relative;float:right;margin:30px 10px 0 0}
 .uploader .photo-container .photo-actions .remaining-photos{display:none}
+
+.photo-details{display:none}
+.photo-details.active{display:block}
+.photo-details.active h4{color:#0099e5;font-size:14px;font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:bold;text-transform:uppercase}
+.photo-details.active .select{width:236px}
+.photo-details.active .wrapper{width:1070px;height:auto;margin:0 auto;padding:30px 0 0 0}
+.photo-details.active .wrapper .exif{float:left;overflow:visible;width:236px;margin-right:22px}
+.photo-details.active .wrapper .exif h4{float:left}
+.photo-details.active .wrapper .exif .small-badge{float:left;margin:0px 0 0 10px}
+.photo-details.active .wrapper .exif .photo-title{width:400px}
+.photo-details.active .wrapper .exif .photo-title .large-textfield{position:relative;margin:10px 0 0 -5px;padding:0 0 0 2px;float:left;width:644px}
+.photo-details.active .wrapper .exif .photo-title .large-textfield:focus{margin:10px 0 0 -5px;padding:0 0 0 2px}
+.photo-details.active .wrapper .exif .photo-category{float:left;margin:25px 0 0 0}
+.photo-details.active .wrapper .exif .photo-category select{margin:20px 0 0 0}
+.photo-details.active .wrapper .exif .place-photo{float:left;padding:25px 0 0 0}
+.photo-details.active .wrapper .exif .place-photo .small-badge{float:left;margin:0 0 0 10px}
+.photo-details.active .wrapper .exif .place-photo .small-badge.next-badge{margin:0 0 0 5px}
+.photo-details.active .wrapper .exif .place-photo .small-badge.disabled{cursor:pointer;background:#edeef0;color:#a4a5a6}
+.photo-details.active .wrapper .exif .place-photo .small-badge.disabled:hover{cursor:pointer;background:#edeef0;color:#a4a5a6}
+.photo-details.active .wrapper .exif .place-photo .confirm_new_set_wrap{float:left;display:none}
+.photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap{float:left;width:236px}
+.photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .place_selection_wrap{margin-bottom:3px;position:relative}
+.photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .place_selection_wrap select{margin:20px 0 0 0}
+.photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap{margin:20px 0 0 0;width:100%;display:none;-o-border-radius:3px;border-radius:3px;border:1px solid #aeafb0;padding:2px 5px 0 5px;background:white}
+.photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field{float:left;width:100%}
+.photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field .error_wrap{float:left;background-image:url(//500px.com/assets/v3/uploader/photo_details/error@2x-942ddf2d2a2f404f63a7e74ffe732d8d.png);background-repeat:no-repeat;background-position:center;-webkit-background-size:100%;background-size:100%;width:16px;height:16px;margin:7px 4px 0 2px;display:none}
+.photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field input{padding:0;text-overflow:ellipsis;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;-o-appearance:none;appearance:none;outline:none;border:none;background:none;font-size:12px;line-height:12px;font-weight:400;height:32px;font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;color:#666666;width:195px}
+.photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field input.error{color:#ff4c4c}
+.photo-details.active .wrapper .exif .photo-exif{float:left;margin:25px 0 0 0}
+.photo-details.active .wrapper .exif .photo-exif h4{float:left}
+.photo-details.active .wrapper .exif .photo-exif .small-badge{float:left;margin:0 0 0 10px}
+.photo-details.active .wrapper .exif .photo-exif .metadata{float:left;clear:both;margin:20px 0 0 0}
+.photo-details.active .wrapper .exif .photo-exif .metadata .labels label{width:100%;display:inline-block;font-weight:bold;font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;vertical-align:top;margin-bottom:8px}
+.photo-details.active .wrapper .exif .photo-exif .metadata .labels .small-invisible-textfield{float:right;vertical-align:top;margin:0;padding:0 3px 0 3px;height:18px;width:auto}
+.photo-details.active .wrapper .description{float:left;width:388px;margin-right:22px;margin-top:62px}
+.photo-details.active .wrapper .description .description-field{margin:25px 0 0 0}
+.photo-details.active .wrapper .description .description-field h4{padding:0 0 20px 0}
+.photo-details.active .wrapper .description .description-field textarea{height:170px}
+.photo-details.active .wrapper .description .license-select{margin:25px 0 0 0}
+.photo-details.active .wrapper .description .license-select h4{float:left}
+.photo-details.active .wrapper .description .license-select .select{margin:20px 0 0 0;width:100%}
+.photo-details.active .wrapper .map{float:left;width:392px}
+/*  进度条相关
+.photo-details.active .wrapper .map .discoverability p{margin:3px 0 9px 0;font-size:11px;color:#aeafb0;font-weight:400}
+.photo-details.active .wrapper .map .discoverability .progress-bar{margin:0;height:20px}
+.photo-details.active .wrapper .map .discoverability .progress-bar span.area{-webkit-animation:none 0s linear 0s;animation:none 0s linear 0s}
+.photo-details.active .wrapper .map .discoverability .progress-bar span.label{top:5px;right:10px;font-size:11px;color:#aeafb0;font-weight:400}
+.photo-details.active .wrapper .map .discoverability .progress-bar span.percentage{display:none}*/
 .photo-details.active .wrapper .map .tag-textfield{margin:25px 0 0 0}
 .photo-details.active .wrapper .map .tag-textfield .tag-tip{position:relative;float:left;top:-11px;left:35px;font-size:11px;color:#aeafb0}
 .photo-details.active .wrapper .map .tag-textfield .tag-count{position:relative;float:right;top:-11px;font-size:11px;color:#747a8b}
@@ -49,11 +103,23 @@
 .photo-details.active .wrapper .map .tag-textfield .tag-changyong{margin: 10px 0 0 0}
 .photo-details.active .wrapper .map .tag-textfield .tag-changyong a{text-decoration: none;padding: 5px 5px 5px 0;display: inline-block;font-size: 12px}
 .photo-details.active .wrapper .map .tag-textfield .tag-changyong a.disabled{color: #8f8f8f}
+.photo-details.active .wrapper .map .geotagging h4{margin:29px 0 0 0}
+.photo-details.active .wrapper .map .geotagging .map-wrapper{position:relative;height:262px;width:392px;margin:20px 0 0 0}
+.photo-details.active .wrapper .map .geotagging .map-wrapper .maplet{height:100%;width:392px}
+.photo-details.active .wrapper .map .geotagging .map-wrapper .maplet.disabled_map_image{background:url(/uploadnew/disabled_map.jpg) no-repeat center}
+.photo-details.active .wrapper .map .geotagging .map-wrapper .maplet .leaflet-control-mapbox-geocoder-results a{text-align:left}
+.photo-details.active .wrapper .map .geotagging .map-wrapper .maplet .leaflet-control-mapbox-geocoder-results span{display:none}
 
-.dz-drag-hover{
+.photo-details.has_default_exif .set-defaults{visibility:hidden}
+.photo-details h4.disabled{color:#aeafb0 !important}
+.photo-details.no_place_in_field .place-photo{display:none}
+.photo-details.no_defaults .photo-exif h4{margin-bottom:7px}
+.photo-details.no_defaults .photo-exif .set-defaults{display:none}
+
+.mpdz-drag-hover{
 	border: 1px solid #000;
 }
-
+/* dropzone 相关 */
 
 .uploader .photo-container .drag-info .action_buttons .browse_files:hover{background-color:#09bdfd;text-decoration: none;color: #fff}
 

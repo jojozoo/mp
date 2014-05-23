@@ -301,10 +301,10 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       thumbnailHeight: 100,
       maxFiles: null,
       params: {},
-      clickable: true,
+      clickable: true, // 如果 true,dropzone元素本身将是可点击的,如果false什么都不会被点击。否则,你可以通过一个HTML元素,一个CSS选择器(用于多个元素)或数组。
       ignoreHiddenFiles: true,
-      acceptedFiles: null,
-      acceptedMimeTypes: null,
+      acceptedFiles: 'image/*', // 指明允许上传的文件类型，格式是逗号分隔的 MIME type 或者扩展名。例如：image/*,application/pdf,.psd,.obj
+      // acceptedMimeTypes: null, // 官方将要舍弃
       autoProcessQueue: true,
       autoQueue: true,
       addRemoveLinks: false,
@@ -329,18 +329,18 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       forceFallback: false,
       fallback: function() {
         var child, messageElement, span, _i, _len, _ref;
-        this.element.className = "" + this.element.className + " dz-browser-not-supported";
+        this.element.className = "" + this.element.className + " mpdz-browser-not-supported";
         _ref = this.element.getElementsByTagName("div");
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           child = _ref[_i];
-          if (/(^| )dz-message($| )/.test(child.className)) {
+          if (/(^| )mpdz-message($| )/.test(child.className)) {
             messageElement = child;
-            child.className = "dz-message";
+            child.className = "mpdz-message";
             continue;
           }
         }
         if (!messageElement) {
-          messageElement = Dropzone.createElement("<div class=\"dz-message\"><span></span></div>");
+          messageElement = Dropzone.createElement("<div class=\"mpdz-message\"><span></span></div>");
           this.element.appendChild(messageElement);
         }
         span = messageElement.getElementsByTagName("span")[0];
@@ -401,47 +401,47 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       而不会覆盖这些选项
        */
       drop: function(e) {
-        return this.element.classList.remove("dz-drag-hover");
+        return this.element.classList.remove("mpdz-drag-hover");
       },
       dragstart: noop,
       dragend: function(e) {
-        return this.element.classList.remove("dz-drag-hover");
+        return this.element.classList.remove("mpdz-drag-hover");
       },
       dragenter: function(e) {
-        console.log(this.element.classList);
-        return this.element.classList.add("dz-drag-hover");
+        return this.element.classList.add("mpdz-drag-hover");
       },
       dragover: function(e) {
-        return this.element.classList.add("dz-drag-hover");
+        return this.element.classList.add("mpdz-drag-hover");
       },
       dragleave: function(e) {
-        return this.element.classList.remove("dz-drag-hover");
+        return this.element.classList.remove("mpdz-drag-hover");
       },
       paste: noop,
       reset: function() {
-        return this.element.classList.remove("dz-started");
+        return this.element.classList.remove("mpdz-started");
       },
       addedfile: function(file) {
+        console.log('addedfile');
         var node, removeFileEvent, removeLink, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
         if (this.element === this.previewsContainer) {
-          this.element.classList.add("dz-started");
+          this.element.classList.add("mpdz-started");
         }
         if (this.previewsContainer) {
           file.previewElement = Dropzone.createElement(this.options.previewTemplate.trim());
           file.previewTemplate = file.previewElement;
           this.previewsContainer.appendChild(file.previewElement);
-          _ref = file.previewElement.querySelectorAll("[data-dz-name]");
+          _ref = file.previewElement.querySelectorAll("[data-mpdz-name]");
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             node = _ref[_i];
             node.textContent = file.name;
           }
-          _ref1 = file.previewElement.querySelectorAll("[data-dz-size]");
+          _ref1 = file.previewElement.querySelectorAll("[data-mpdz-size]");
           for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
             node = _ref1[_j];
             node.innerHTML = this.filesize(file.size);
           }
           if (this.options.addRemoveLinks) {
-            file._removeLink = Dropzone.createElement("<a class=\"dz-remove\" href=\"javascript:undefined;\" data-dz-remove>" + this.options.dictRemoveFile + "</a>");
+            file._removeLink = Dropzone.createElement("<a class=\"mpdz-remove\" href=\"javascript:undefined;\" data-mpdz-remove>" + this.options.dictRemoveFile + "</a>");
             file.previewElement.appendChild(file._removeLink);
           }
           removeFileEvent = (function(_this) {
@@ -463,10 +463,11 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
               }
             };
           })(this);
-          _ref2 = file.previewElement.querySelectorAll("[data-dz-remove]");
+          _ref2 = file.previewElement.querySelectorAll("[data-mpdz-remove]");
           _results = [];
           for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
             removeLink = _ref2[_k];
+            // 此处可用于删除按钮
             _results.push(removeLink.addEventListener("click", removeFileEvent));
           }
           return _results;
@@ -484,9 +485,9 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       thumbnail: function(file, dataUrl) {
         var thumbnailElement, _i, _len, _ref, _results;
         if (file.previewElement) {
-          file.previewElement.classList.remove("dz-file-preview");
-          file.previewElement.classList.add("dz-image-preview");
-          _ref = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
+          file.previewElement.classList.remove("mpdz-file-preview");
+          file.previewElement.classList.add("mpdz-image-preview");
+          _ref = file.previewElement.querySelectorAll("[data-mpdz-thumbnail]");
           _results = [];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             thumbnailElement = _ref[_i];
@@ -499,11 +500,11 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       error: function(file, message) {
         var node, _i, _len, _ref, _results;
         if (file.previewElement) {
-          file.previewElement.classList.add("dz-error");
+          file.previewElement.classList.add("mpdz-error");
           if (typeof message !== "String" && message.error) {
             message = message.error;
           }
-          _ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");
+          _ref = file.previewElement.querySelectorAll("[data-mpdz-errormessage]");
           _results = [];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             node = _ref[_i];
@@ -515,7 +516,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       errormultiple: noop,
       processing: function(file) {
         if (file.previewElement) {
-          file.previewElement.classList.add("dz-processing");
+          file.previewElement.classList.add("mpdz-processing");
           if (file._removeLink) {
             return file._removeLink.textContent = this.options.dictCancelUpload;
           }
@@ -525,7 +526,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       uploadprogress: function(file, progress, bytesSent) {
         var node, _i, _len, _ref, _results;
         if (file.previewElement) {
-          _ref = file.previewElement.querySelectorAll("[data-dz-uploadprogress]");
+          _ref = file.previewElement.querySelectorAll("[data-mpdz-uploadprogress]");
           _results = [];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             node = _ref[_i];
@@ -539,7 +540,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       sendingmultiple: noop,
       success: function(file) {
         if (file.previewElement) {
-          return file.previewElement.classList.add("dz-success");
+          return file.previewElement.classList.add("mpdz-success");
         }
       },
       successmultiple: noop,
@@ -555,7 +556,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       completemultiple: noop,
       maxfilesexceeded: noop,
       maxfilesreached: noop,
-      previewTemplate: "<div class=\"dz-preview dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>"
+      previewTemplate: "<div class=\"mpdz-preview mpdz-file-preview\">\n  <div class=\"mpdz-details\">\n    <div class=\"mpdz-filename\"><span data-mpdz-name></span></div>\n    <div class=\"mpdz-size\" data-mpdz-size></div>\n    <img data-mpdz-thumbnail />\n  </div>\n  <div class=\"mpdz-progress\"><span class=\"mpdz-upload\" data-mpdz-uploadprogress></span></div>\n  <div class=\"mpdz-success-mark\"><span>✔</span></div>\n  <div class=\"mpdz-error-mark\"><span>✘</span></div>\n  <div class=\"mpdz-error-message\"><span data-mpdz-errormessage></span></div>\n</div>"
     };
 
     extend = function() {
@@ -574,44 +575,53 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
     function Dropzone(element, options) {
       var elementOptions, fallback, _ref;
       this.element = element;
-      this.version = Dropzone.version;
       this.defaultOptions.previewTemplate = this.defaultOptions.previewTemplate.replace(/\n*/g, "");
       this.clickableElements = [];
       this.listeners = [];
       this.files = [];
-      if (typeof this.element === "string") {
-        this.element = document.querySelector(this.element);
-      }
-      if (!(this.element && (this.element.nodeType != null))) {
-        throw new Error("Invalid dropzone element.");
-      }
-      if (this.element.dropzone) {
-        throw new Error("Dropzone already attached.");
-      }
+      // if (typeof this.element === "string") {
+      //   console.log(1);
+      //   this.element = document.querySelector(this.element);
+      // }
+      // if (!(this.element && (this.element.nodeType != null))) {
+      //   console.log(2);
+      //   throw new Error("Invalid dropzone element.");
+      // }
+      // if (this.element.dropzone) {
+      //   console.log(3);
+      //   throw new Error("Dropzone already attached.");
+      // }
       Dropzone.instances.push(this);
       this.element.dropzone = this;
       elementOptions = (_ref = Dropzone.optionsForElement(this.element)) != null ? _ref : {};
+      // 设置options 只需要一次设置即可
       this.options = extend({}, this.defaultOptions, elementOptions, options != null ? options : {});
       if (this.options.forceFallback || !Dropzone.isBrowserSupported()) {
+        // Fallback 是一种机制，当浏览器不支持此插件时，提供一个备选方案。默认为false。如果设为true，则强制 fallback。
         return this.options.fallback.call(this);
       }
-      if (this.options.url == null) {
-        this.options.url = this.element.getAttribute("action");
-      }
-      if (!this.options.url) {
-        throw new Error("没有提供网址.");
-      }
-      if (this.options.acceptedFiles && this.options.acceptedMimeTypes) {
-        throw new Error("You can't provide both 'acceptedFiles' and 'acceptedMimeTypes'. 'acceptedMimeTypes' is deprecated.");
-      }
-      if (this.options.acceptedMimeTypes) {
-        this.options.acceptedFiles = this.options.acceptedMimeTypes;
-        delete this.options.acceptedMimeTypes;
-      }
-      this.options.method = this.options.method.toUpperCase();
+      // if (this.options.url == null) {
+      //   this.options.url = this.element.getAttribute("action");
+      // }
+      // if (!this.options.url) {
+      //   throw new Error("没有提供网址.");
+      // }
+      // if (this.options.acceptedFiles && this.options.acceptedMimeTypes) {
+      //   throw new Error("不能同时使用'acceptedFiles' 和 'acceptedMimeTypes'. 'acceptedMimeTypes' 已舍弃.");
+      // }
+      // if (this.options.acceptedMimeTypes) {
+      //   this.options.acceptedFiles = this.options.acceptedMimeTypes;
+      //   delete this.options.acceptedMimeTypes;
+      // }
+      // 注释此行 method 必须小写
+      // this.options.method = this.options.method.toUpperCase();
+
+      // 查找到div或form中class含有fallback的元素并且删除
+      // TODO 不知道为啥
       if ((fallback = this.getExistingFallback()) && fallback.parentNode) {
         fallback.parentNode.removeChild(fallback);
       }
+      // 如果定义了预览的class 那么就检查是否有此class,如果未定义 就使用当前element
       if (this.options.previewsContainer !== false) {
         if (this.options.previewsContainer) {
           this.previewsContainer = Dropzone.getElement(this.options.previewsContainer, "previewsContainer");
@@ -619,6 +629,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
           this.previewsContainer = this.element;
         }
       }
+      // 可点击触发上传的数组
       if (this.options.clickable) {
         if (this.options.clickable === true) {
           this.clickableElements = [this.element];
@@ -629,74 +640,17 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       this.init();
     }
 
-    Dropzone.prototype.getAcceptedFiles = function() {
-      var file, _i, _len, _ref, _results;
-      _ref = this.files;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        file = _ref[_i];
-        if (file.accepted) {
-          _results.push(file);
-        }
-      }
-      return _results;
-    };
-
-    Dropzone.prototype.getRejectedFiles = function() {
-      var file, _i, _len, _ref, _results;
-      _ref = this.files;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        file = _ref[_i];
-        if (!file.accepted) {
-          _results.push(file);
-        }
-      }
-      return _results;
-    };
-
-    Dropzone.prototype.getFilesWithStatus = function(status) {
-      var file, _i, _len, _ref, _results;
-      _ref = this.files;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        file = _ref[_i];
-        if (file.status === status) {
-          _results.push(file);
-        }
-      }
-      return _results;
-    };
-
-    Dropzone.prototype.getQueuedFiles = function() {
-      return this.getFilesWithStatus(Dropzone.QUEUED);
-    };
-
-    Dropzone.prototype.getUploadingFiles = function() {
-      return this.getFilesWithStatus(Dropzone.UPLOADING);
-    };
-
-    Dropzone.prototype.getActiveFiles = function() {
-      var file, _i, _len, _ref, _results;
-      _ref = this.files;
-      _results = [];
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        file = _ref[_i];
-        if (file.status === Dropzone.UPLOADING || file.status === Dropzone.QUEUED) {
-          _results.push(file);
-        }
-      }
-      return _results;
-    };
-
     Dropzone.prototype.init = function() {
       var eventName, noPropagation, setupHiddenFileInput, _i, _len, _ref, _ref1;
-      if (this.element.tagName === "form") {
-        this.element.setAttribute("enctype", "multipart/form-data");
-      }
-      if (this.element.classList.contains("dropzone") && !this.element.querySelector(".dz-message")) {
-        this.element.appendChild(Dropzone.createElement("<div class=\"dz-default dz-message\"><span>" + this.options.dictDefaultMessage + "</span></div>"));
-      }
+      // 如果为form 设置form属性enctype=multipart/form-data
+      // if (this.element.tagName === "form") {
+      //   this.element.setAttribute("enctype", "multipart/form-data");
+      // }
+      // 如果含有这个 dropzone 并且没有这个 mpdz-message 就创建 按理说有了，是drag-info 下的h1
+      // if (this.element.classList.contains("dropzone") && !this.element.querySelector(".mpdz-message")) {
+      //   this.element.appendChild(Dropzone.createElement("<div class=\"mpdz-default mpdz-message\"><span>" + this.options.dictDefaultMessage + "</span></div>"));
+      // }
+      // 循环给this.clickableElements添加单击事件 end
       if (this.clickableElements.length) {
         setupHiddenFileInput = (function(_this) {
           return function() {
@@ -708,7 +662,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
             if ((_this.options.maxFiles == null) || _this.options.maxFiles > 1) {
               _this.hiddenFileInput.setAttribute("multiple", "multiple");
             }
-            _this.hiddenFileInput.className = "dz-hidden-input";
+            _this.hiddenFileInput.className = "mpdz-hidden-input " + Math.random();
             if (_this.options.acceptedFiles != null) {
               _this.hiddenFileInput.setAttribute("accept", _this.options.acceptedFiles);
             }
@@ -719,6 +673,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
             _this.hiddenFileInput.style.height = "0";
             _this.hiddenFileInput.style.width = "0";
             document.body.appendChild(_this.hiddenFileInput);
+            // 给input添加change事件
             return _this.hiddenFileInput.addEventListener("change", function() {
               var file, files, _i, _len;
               files = _this.hiddenFileInput.files;
@@ -728,13 +683,18 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
                   _this.addFile(file);
                 }
               }
+              // 为什么要return？ 难道一次调用事件后必须再重新创建添加事件才可以正常使用嘛？
               return setupHiddenFileInput();
             });
           };
         })(this);
+        // 上面已经调用，为啥还要再调用一次? 并且还没有传入任何参数
         setupHiddenFileInput();
       }
+      // 循环给this.clickableElements添加单击事件 end
+      // TODO 干嘛用的?
       this.URL = (_ref = window.URL) != null ? _ref : window.webkitURL;
+      // 干嘛用的? end
       _ref1 = this.events;
       for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
         eventName = _ref1[_i];
@@ -817,23 +777,100 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
           }
         }
       ];
-      this.clickableElements.forEach((function(_this) {
-        return function(clickableElement) {
-          return _this.listeners.push({
-            element: clickableElement,
-            events: {
-              "click": function(evt) {
-                if ((clickableElement !== _this.element) || (evt.target === _this.element || Dropzone.elementInside(evt.target, _this.element.querySelector(".dz-message")))) {
-                  return _this.hiddenFileInput.click();
-                }
-              }
+      // 给 clickableElements(element下面的子元素) 添加单击事件
+      // this.clickableElements.forEach((function(_this) {
+      //   return function(clickableElement) {
+      //     return _this.listeners.push({
+      //       element: clickableElement,
+      //       events: {
+      //         "click": function(evt) {
+      //           // 判断是否可以click
+      //           if ((clickableElement !== _this.element) || (evt.target === _this.element || Dropzone.elementInside(evt.target, _this.element.querySelector(".mpdz-message")))) {
+      //             return _this.hiddenFileInput.click();
+      //           }
+      //         }
+      //       }
+      //     });
+      //   };
+      // })(this));
+      // TODO 单独添加droplink点击事件
+      (function(_this){
+        var droplink = document.getElementsByClassName('droplink')[0];
+        _this.listeners.push({
+          element: droplink,
+          events: {
+            "click": function() {
+                return _this.hiddenFileInput.click();
             }
-          });
-        };
-      })(this));
+          }
+        });
+      })(this);
+      // 给 clickableElements(element下面的子元素) 添加单击事件 end
       this.enable();
       return this.options.init.call(this);
     };
+    // init end
+
+    Dropzone.prototype.getAcceptedFiles = function() {
+      var file, _i, _len, _ref, _results;
+      _ref = this.files;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        file = _ref[_i];
+        if (file.accepted) {
+          _results.push(file);
+        }
+      }
+      return _results;
+    };
+
+    Dropzone.prototype.getRejectedFiles = function() {
+      var file, _i, _len, _ref, _results;
+      _ref = this.files;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        file = _ref[_i];
+        if (!file.accepted) {
+          _results.push(file);
+        }
+      }
+      return _results;
+    };
+
+    Dropzone.prototype.getFilesWithStatus = function(status) {
+      var file, _i, _len, _ref, _results;
+      _ref = this.files;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        file = _ref[_i];
+        if (file.status === status) {
+          _results.push(file);
+        }
+      }
+      return _results;
+    };
+
+    Dropzone.prototype.getQueuedFiles = function() {
+      return this.getFilesWithStatus(Dropzone.QUEUED);
+    };
+
+    Dropzone.prototype.getUploadingFiles = function() {
+      return this.getFilesWithStatus(Dropzone.UPLOADING);
+    };
+
+    Dropzone.prototype.getActiveFiles = function() {
+      var file, _i, _len, _ref, _results;
+      _ref = this.files;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        file = _ref[_i];
+        if (file.status === Dropzone.UPLOADING || file.status === Dropzone.QUEUED) {
+          _results.push(file);
+        }
+      }
+      return _results;
+    };
+
 
     Dropzone.prototype.destroy = function() {
       var _ref;
@@ -879,7 +916,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       if (existingFallback = this.getExistingFallback()) {
         return existingFallback;
       }
-      fieldsString = "<div class=\"dz-fallback\">";
+      fieldsString = "<div class=\"mpdz-fallback\">";
       if (this.options.dictFallbackText) {
         fieldsString += "<p>" + this.options.dictFallbackText + "</p>";
       }
@@ -895,6 +932,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       return form != null ? form : fields;
     };
 
+    // Dropzone('element',{}) 查找element子集的form 或者div 如果class含有fallback 那么就返回该element
     Dropzone.prototype.getExistingFallback = function() {
       var fallback, getFallback, tagName, _i, _len, _ref;
       getFallback = function(elements) {
@@ -914,9 +952,11 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
         }
       }
     };
+    // Dropzone('element',{}) 查找element子集的form 或者div 如果class含有fallback 那么就返回该element end
 
+    // 设置事件监听器 init方法中的listeners
     Dropzone.prototype.setupEventListeners = function() {
-      var elementListeners, event, listener, _i, _len, _ref, _results;
+      var elementListeners, _event, listener, _i, _len, _ref, _results;
       _ref = this.listeners;
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -925,9 +965,9 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
           var _ref1, _results1;
           _ref1 = elementListeners.events;
           _results1 = [];
-          for (event in _ref1) {
-            listener = _ref1[event];
-            _results1.push(elementListeners.element.addEventListener(event, listener, false));
+          for (_event in _ref1) {
+            listener = _ref1[_event];
+            _results1.push(elementListeners.element.addEventListener(_event, listener, false));
           }
           return _results1;
         })());
@@ -935,6 +975,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       return _results;
     };
 
+    // 移除事件监听器
     Dropzone.prototype.removeEventListeners = function() {
       var elementListeners, event, listener, _i, _len, _ref, _results;
       _ref = this.listeners;
@@ -955,10 +996,11 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       return _results;
     };
 
+    // 停用
     Dropzone.prototype.disable = function() {
       var file, _i, _len, _ref, _results;
       this.clickableElements.forEach(function(element) {
-        return element.classList.remove("dz-clickable");
+        return element.classList.remove("mpdz-clickable");
       });
       this.removeEventListeners();
       _ref = this.files;
@@ -970,9 +1012,10 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       return _results;
     };
 
+    // 启用 所有可以触发上传的element都增加mpdz-clickable类
     Dropzone.prototype.enable = function() {
       this.clickableElements.forEach(function(element) {
-        return element.classList.add("dz-clickable");
+        return element.classList.add("mpdz-clickable");
       });
       return this.setupEventListeners();
     };
@@ -981,19 +1024,19 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       var string;
       if (size >= 1024 * 1024 * 1024 * 1024 / 10) {
         size = size / (1024 * 1024 * 1024 * 1024 / 10);
-        string = "TiB";
+        string = "TB";
       } else if (size >= 1024 * 1024 * 1024 / 10) {
         size = size / (1024 * 1024 * 1024 / 10);
-        string = "GiB";
+        string = "GB";
       } else if (size >= 1024 * 1024 / 10) {
         size = size / (1024 * 1024 / 10);
-        string = "MiB";
+        string = "MB";
       } else if (size >= 1024 / 10) {
         size = size / (1024 / 10);
-        string = "KiB";
+        string = "KB";
       } else {
         size = size * 10;
-        string = "b";
+        string = "B";
       }
       return "<strong>" + (Math.round(size) / 10) + "</strong> " + string;
     };
@@ -1003,9 +1046,9 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
         if (this.getAcceptedFiles().length === this.options.maxFiles) {
           this.emit('maxfilesreached', this.files);
         }
-        return this.element.classList.add("dz-max-files-reached");
+        return this.element.classList.add("mpdz-max-files-reached");
       } else {
-        return this.element.classList.remove("dz-max-files-reached");
+        return this.element.classList.remove("mpdz-max-files-reached");
       }
     };
 
@@ -1122,7 +1165,9 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       };
       this.files.push(file);
       file.status = Dropzone.ADDED;
+      console.log('addFile');
       this.emit("addedfile", file);
+      console.log('addFile1');
       this._enqueueThumbnail(file);
       return this.accept(file, (function(_this) {
         return function(error) {
@@ -1160,7 +1205,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
           })(this)), 0);
         }
       } else {
-        throw new Error("This file can't be queued because it has already been processed or was rejected.");
+        throw new Error("此文件无法进行排队，因为它已经被处理或被否决.");
       }
     };
 
@@ -1168,6 +1213,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
     Dropzone.prototype._processingThumbnail = false;
 
+    // 缩略图队列
     Dropzone.prototype._enqueueThumbnail = function(file) {
       if (this.options.createImageThumbnails && file.type.match(/image.*/) && file.size <= this.options.maxThumbnailFilesize * 1024 * 1024) {
         this._thumbnailQueue.push(file);
@@ -1218,6 +1264,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       return null;
     };
 
+    // 创建缩略图
     Dropzone.prototype.createThumbnail = function(file, callback) {
       var fileReader;
       fileReader = new FileReader;
@@ -1312,6 +1359,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       }).call(this);
     };
 
+    // 取消上传
     Dropzone.prototype.cancelUpload = function(file) {
       var groupedFile, groupedFiles, _i, _j, _len, _len1, _ref;
       if (file.status === Dropzone.UPLOADING) {
@@ -1344,6 +1392,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       return this.uploadFiles([file]);
     };
 
+    // 上传
     Dropzone.prototype.uploadFiles = function(files) {
       var file, formData, handleError, headerName, headerValue, headers, i, input, inputName, inputType, key, option, progressObj, response, updateProgress, value, xhr, _i, _j, _k, _l, _len, _len1, _len2, _len3, _m, _ref, _ref1, _ref2, _ref3, _ref4, _ref5;
       xhr = new XMLHttpRequest();
@@ -1488,6 +1537,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       }
       return xhr.send(formData);
     };
+    // 上传
 
     Dropzone.prototype._finished = function(files, responseText, e) {
       var file, _i, _len;
@@ -1527,7 +1577,6 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
   })(Em);
 
-  Dropzone.version = "3.10.1";
 
   Dropzone.options = {};
 
@@ -1589,6 +1638,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
   Dropzone.blacklistedBrowsers = [/opera.*Macintosh.*version\/12/i];
 
+  // 检查浏览器是否支持拖拽
   Dropzone.isBrowserSupported = function() {
     var capableBrowser, regex, _i, _len, _ref;
     capableBrowser = true;
@@ -1610,6 +1660,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
     }
     return capableBrowser;
   };
+  // 检查浏览器是否支持拖拽 end
 
   without = function(list, rejectedItem) {
     var item, _i, _len, _results;
@@ -1636,6 +1687,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
     return div.childNodes[0];
   };
 
+  // 元素中
   Dropzone.elementInside = function(element, container) {
     if (element === container) {
       return true;
@@ -1648,6 +1700,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
     return false;
   };
 
+  // TODO 查找元素 找不到就抛异常 name
   Dropzone.getElement = function(el, name) {
     var element;
     if (typeof el === "string") {
@@ -1656,11 +1709,13 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       element = el;
     }
     if (element == null) {
-      throw new Error("Invalid `" + name + "` option provided. Please provide a CSS selector or a plain HTML element.");
+      throw new Error("无效的 `" + name + "` 选项. 请提供一个CSS选择器或一个普通的HTML元素.");
     }
     return element;
   };
+  // TODO 查找元素 找不到就抛异常 end
 
+  // TODO 可删除(因为需求不想区域可点击，需要指定某一个button点击触发) 查找一组元素 暂时只有clickable用到，如果clickable为true，那么element下面的所有元素都是可点击触发上传的
   Dropzone.getElements = function(els, name) {
     var e, el, elements, _i, _j, _len, _len1, _ref;
     if (els instanceof Array) {
@@ -1685,10 +1740,11 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       elements = [els];
     }
     if (!((elements != null) && elements.length)) {
-      throw new Error("Invalid `" + name + "` option provided. Please provide a CSS selector, a plain HTML element or a list of those.");
+      throw new Error("无效的 `" + name + "` 选项. 请提供一个CSS选择器, 一个普通的HTML元素或List.");
     }
     return elements;
   };
+  // 查找一组元素 暂时只有clickable用到，如果clickable为true，那么element下面的所有元素都是可点击触发上传的
 
   Dropzone.confirm = function(question, accepted, rejected) {
     if (window.confirm(question)) {
@@ -1698,6 +1754,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
     }
   };
 
+  // 检查是否有效的文件
   Dropzone.isValidFile = function(file, acceptedFiles) {
     var baseMimeType, mimeType, validType, _i, _len;
     if (!acceptedFiles) {
@@ -1725,6 +1782,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
     }
     return false;
   };
+  // 检查是否有效的文件 end
 
   if (typeof jQuery !== "undefined" && jQuery !== null) {
     jQuery.fn.dropzone = function(options) {
