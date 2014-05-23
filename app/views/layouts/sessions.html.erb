@@ -18,49 +18,32 @@
 	<script src="/ie/respond.min.js"></script>
 	<![endif]-->
 	<%= render 'shared/tongji' %>
+	<script type="text/javascript">
+	var From = '<%= params[:m] || "none" %>';
+	</script>
+	<script type="text/javascript" src="/javascripts/sessions.js?v=<%= Time.now.to_i %>"></script>
 </head>
 <!--缺少跳转landingpage-->
-<body style="background:#fff;height:100%;">
+<body style="overflow: hidden;">
 	<div class="container">
-		<%= link_to root_path do %>
-		<span class="logo"></span>
-		<% end %>
+		<div class="toolbar">
+			<%= link_to root_path do %>
+				<span class="logo"></span>
+			<% end %>
+			<a href="javascript:void(0);" class="sign-up btn btn-success">注册</a>
+			<a href="javascript:void(0);" class="sign-in btn btn-primary">登录</a>
+		</div>
 		<%= yield %>
-		<!-- <div class="beian text-center" style="color: white;">
+		<div class="beian text-center">
 			<p>
 				Copyright © 2014-2015　山东漫拍文化发展有限公司
 				<br>
-				<a target="_blank" href="http://www.miibeian.gov.cn" class="font_cl">鲁ICP备14011722号</a>
+				鲁ICP备14011722号
 			</p>
-		</div> -->
+		</div>
 	</div>
-	<div id="mp_bg">
-		<img id="mp_img" src="<%= sessionbackgrounds %>">
+	<div class="background">
+		<img src="<%= sessionbackgrounds %>">
 	</div>
-	<style type="text/css">
-		#mp_bg{
-			width: 100%;
-			height: 100%;
-			position: absolute;
-			left: 0;
-			top: 0;
-			z-index: -1;
-			overflow: hidden;
-		}
-		#mp_img{
-			opacity: 0;
-			-webkit-transition: opacity .8s ease;
-			-moz-transition: opacity .8s ease;
-			transition: opacity .8s ease;
-		}
-	</style>
-	<script type="text/javascript">
-	$(function(){
-		var _h = $(window).height();
-		var _w = $(window).width();
-		$("#mp_bg").css({width: _w, height: _h});
-		$("#mp_img").css({width: _w, height: _h, opacity: 1});
-	});
-	</script>
 </body>
 </html>

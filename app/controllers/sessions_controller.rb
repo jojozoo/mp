@@ -1,12 +1,9 @@
 class SessionsController < ApplicationController
 
   # 其中 new 和 sign_up 的get请求去掉 路由也去掉 只有首页
+  # TODO 有些bug 如登录不成功 或者注册时的验证
   def index
     redirect_to home_path if sign_in?
-    @errors = {}
-  end
-
-  def new
     @errors = {}
   end
 
@@ -16,11 +13,11 @@ class SessionsController < ApplicationController
     @errors = {}
     if @user.blank?
       @errors[:username] = "请输入正确的帐号/邮箱/手机"
-      render action: :new and return
+      redirect_to root_path(m: 'sign_in')
     end
     unless @user.valid_password?(params[:password])
       @errors[:password] = "密码错误"
-      render action: :new and return
+      redirect_to root_path(m: 'sign_in')
     end
     set_sign_in_flag(@user.id)
     redirect_to root_path
@@ -28,37 +25,37 @@ class SessionsController < ApplicationController
 
   # GET /sign_up 注册
   def sign_up
-    if request.post?
-      # 为oauth 登录添加部分
-      param = params[:user].slice(:username, :email, :password, :password_confirmation, :province, :city, :resume, :domain, :gender, :site, :duty)
-      @user = User.new(param)
+    # 为oauth 登录添加部分
+    param = params[:user].slice(:username, :email, :password, :password_confirmation, :province, :city, :resume, :domain, :gender, :site, :duty)
+    @user = User.new(param)
 
-      
-      @user.avatar = begin if params[:avatar].present?
+    
+    @user.avatar = begin if params[:avatar].present?
         open(URI.parse(params[:avatar])) rescue nil
       else
-        avatar_path = "/tmp/#{SecureRandom.hex(20)}.jpg"
-        avatar_name = params[:user][:username].last
-        system("convert -size 300x300 -background '#269abc' -fill '#fff' -font public/fonts/zh.ttf -pointsize 300 -gravity center label:'#{avatar_name}' #{avatar_path}")
-        @user.avatar = File.open(avatar_path)
+        # avatar_path = "/tmp/#{SecureRandom.hex(20)}.jpg"
+        # avatar_name = params[:user][:username].last
+        # system("convert -size 300x300 -background '#269abc' -fill '#fff' -font public/fonts/zh.ttf -pointsize 300 -gravity center label:'#{avatar_name}' #{avatar_path}")
+        File.open(avatar_path)
       end
-      rescue => e
-        logger.info("user create avatar error: #{e.to_s}")
-        nil
-      end
-      if @user.save!
-        set_sign_in_flag(@user.id)
-        # 如果第三方登录
-        if params[:uid].present? and account = Account.find_by_id_and_uid(params[:a_id], params[:uid])
-          account.update_attributes!(user_id: @user.id)
-          redirect_to root_path
-        else
-          redirect_to '/validate'
-        end
+    rescue => e
+      logger.info("user create avatar error: #{e.to_s}")
+      nil
+    end
+
+    if @user.save!
+      set_sign_in_flag(@user.id)
+      # 如果第三方登录
+      if params[:uid].present? and account = Account.find_by_id_and_uid(params[:a_id], params[:uid])
+        account.update_attributes!(user_id: @user.id)
+        redirect_to root_path
       else
-        # TODO 如果oauth登录, 应该添加remote valid 这是个bug
-        render action: :sign_up
+        redirect_to '/validate'
       end
+    else
+      # TODO 如果oauth登录, 应该添加remote valid 这是个bug
+      # render action: :sign_up
+      redirect_to root_path
     end
   end
 
@@ -89,7 +86,7 @@ class SessionsController < ApplicationController
       if request.post? and params[:user][:password].present?
         @user.update_attributes(password: params[:user][:password], salt: nil)
         flash[:notice] = '密码修改成功'
-        redirect_to '/sign_in'
+        redirect_to root_path(m: 'sign_in')
       end
     else
       redirect_to '/'
@@ -99,7 +96,7 @@ class SessionsController < ApplicationController
   # DELETE /sign_out 退出
   def destroy
     sign_out_keeping_session
-    redirect_to action: :new
+    redirect_to root_path(m: 'sign_in')
   end
 
 end
