@@ -24,7 +24,7 @@
 	<script type="text/javascript" src="/javascripts/sessions.js?v=<%= Time.now.to_i %>"></script>
 </head>
 <!--缺少跳转landingpage-->
-<body style="overflow: hidden;">
+<body class="session">
 	<div class="container">
 		<div class="toolbar">
 			<%= link_to root_path do %>
@@ -34,13 +34,13 @@
 			<a href="javascript:void(0);" class="sign-in btn btn-primary">登录</a>
 		</div>
 		<%= yield %>
-		<div class="beian text-center">
-			<p>
-				Copyright © 2014-2015　山东漫拍文化发展有限公司
-				<br>
-				鲁ICP备14011722号
-			</p>
-		</div>
+	</div>
+	<div class="beian text-center">
+		<p>
+			Copyright © 2014-2015　山东漫拍文化发展有限公司
+			<br>
+			鲁ICP备14011722号
+		</p>
 	</div>
 	<div class="background">
 		<img src="<%= sessionbackgrounds %>">

@@ -447,30 +447,36 @@ hr{
     list-style: none;
 }
 /* session.html.erb */
-.toolbar{
+body.session{
+    overflow: hidden;
+}
+body.session .container{
+    position: relative;
+}
+body.session .container .toolbar{
     padding: 0 20px;
 }
-.toolbar > a {
+body.session .container .toolbar > a {
     display: inline-block;
 }
-.toolbar > a > span.logo{
+body.session .container .toolbar > a > span.logo{
     width: 140px;
     height: 50px;
     float: left;
     margin-top: 10px;
     background: url(/images/logo.png) no-repeat;
 }
-.toolbar > .sign-in, .toolbar > .sign-up {
+body.session .container .toolbar > .sign-in, body.session .container .toolbar > .sign-up {
     display: inline-block;
     float: right;
     margin: 30px 0 0 20px;
     width: 80px;
 }
-.sign-form{
+body.session .container .sign-form{
     opacity: 0;
     right: -500px;
     display: none;
-    margin: 80px 20px 0 0;
+    margin: 80px 0 0 0;
     background: #fff;
     padding: 10px;
     width: 320px;
@@ -478,27 +484,52 @@ hr{
     filter: alpha(opacity=0);
     _width: 320px;
 }
-.login-button{
+body.session .container .login-button{
     display: block;
     width: 114px;
     height: 36px;
     background: url(/images/outh-login.png) left top no-repeat;
     text-indent: -999999px;
 }
-form.sign-form .table{
+/*首页登录*/
+body.session .container .weibo:hover {
+    background-position: -456px -40px;
+}
+body.session .container .weibo {
+    background-position: -456px 0;
+}
+body.session .container .douban:hover {
+    background-position: -228px -40px;
+}
+body.session .container .douban {
+    background-position: -228px 0;
+}
+body.session .container .renren:hover {
+    background-position: 0 -40px;
+}
+body.session .container .renren {
+    background-position: 0 0;
+}
+body.session .container .qzone:hover {
+    background-position: -342px -40px;
+}
+body.session .container .qzone {
+    background-position: -342px 0;
+}
+body.session .container form.sign-form .table{
     margin-bottom: 0;
 }
-form.sign-form .table > tbody > tr > td{
+body.session .container form.sign-form .table > tbody > tr > td{
     padding: 0;
     border-top: 0;
 }
-.beian{
+body.session .beian{
     color: #fff;
     position: absolute;
     bottom: 20px;
     left: 40%;
 }
-.background{
+body.session .background{
     width: 100%;
     height: 100%;
     position: absolute;
@@ -507,12 +538,13 @@ form.sign-form .table > tbody > tr > td{
     z-index: -1;
     overflow: hidden;
 }
-.background img{
+body.session .background img{
     opacity: 0;
     -webkit-transition: opacity .8s ease;
     -moz-transition: opacity .8s ease;
     transition: opacity .8s ease;
 }
+
 /*session end*/
 .s300{
     max-width: 300px;
@@ -592,31 +624,6 @@ form.sign-form .table > tbody > tr > td{
 }
 .second-nav a{
     text-decoration: none;
-}
-/*首页登录*/
-a.weibo:hover {
-    background-position: -456px -40px;
-}
-a.weibo {
-    background-position: -456px 0;
-}
-a.douban:hover {
-    background-position: -228px -40px;
-}
-a.douban {
-    background-position: -228px 0;
-}
-a.renren:hover {
-    background-position: 0 -40px;
-}
-a.renren {
-    background-position: 0 0;
-}
-a.qzone:hover {
-    background-position: -342px -40px;
-}
-a.qzone {
-    background-position: -342px 0;
 }
 
 

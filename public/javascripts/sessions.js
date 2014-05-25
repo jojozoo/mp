@@ -33,20 +33,23 @@ $(function(){
 	$(document).on('click', 'a.sign-in', function(){
 		$("#sign-up").stop().animate({"opacity":0,"right":-500}, 300,function(){
 			$(this).css("display","none");
-			$("#sign-in").css("display","block").stop().animate({"opacity":1,"right":"8%"}, 300);
+			$("#sign-in").css("display","block").stop().animate({"opacity":1,"right":"35px"}, 300);
 		});
 	});
 
 	$(document).on('click', 'a.sign-up', function(){
 		$("#sign-in").stop().animate({"opacity":0,"right":-500}, 300,function(){
 			$(this).css("display","none");
-			$("#sign-up").css("display","block").stop().animate({"opacity":1,"right":"8%"}, 300);
+			$("#sign-up").css("display","block").stop().animate({"opacity":1,"right":"35px"}, 300);
 		});
 	});
-	var _h = $(window).height();
-	var _w = $(window).width();
-	$(".background").css({width: _w, height: _h});
-	$(".background img").css({width: _w, height: _h, opacity: 1});
+
+	$(".background").css({width: document.body.scrollWidth, height: document.body.scrollHeight});
+	// window.screen.width
+	// window.outerHeight
+	// window.screenTop
+	// window.screen.height
+	$(".background img").css({width: window.screen.width, height: window.outerHeight, opacity: 1});
 	if(From == 'sign_in'){
 		$("a.sign-in:first").click();
 	}
@@ -54,12 +57,12 @@ $(function(){
 		$("a.sign-up:first").click();
 	}
 	$(window).resize(function(){
-		var _h = $(window).height();
-		var _w = $(window).width();
 		var _b = $(".beian").width();
-		var _l = _w / 2 - _b / 2 - 40;
+		var _l = window.screen.width / 2 - _b / 2 - 40;
 		$(".beian").css({left: _l});
-		$(".background").css({width: _w, height: _h});
-		$(".background img").css({width: _w, height: _h, opacity: 1});
+		var _h = $(window).height();
+		$(".background").css({width: window.screen.width, height: _h});
+		var _t = _h - window.screen.height;
+		$(".background img").css({top: _t, opacity: 1});
 	});
 })
