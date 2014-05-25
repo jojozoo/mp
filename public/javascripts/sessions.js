@@ -57,7 +57,7 @@ $(function(){
 		var _h = $(window).height();
 		var _w = $(window).width();
 		var _b = $(".beian").width();
-		var _l = _w / 2 - _b / 2;
+		var _l = _w / 2 - _b / 2 - 40;
 		$(".beian").css({left: _l});
 		$(".background").css({width: _w, height: _h});
 		$(".background img").css({width: _w, height: _h, opacity: 1});

@@ -1,10 +1,6 @@
 $(function(){
-	// $(document).on('click', '.droplink', function(){
-	// 	$(".uploadfile").click();
-	// });
 	$(".active-photo-wrap").dropzone({
         url: "handle-upload.php",
-        addRemoveLinks: true,
         dictRemoveLinks: "O",
         dictCancelUpload: "x",
         maxFiles: 10,
@@ -18,7 +14,7 @@ $(function(){
                 console.log("File " + file.name + "uploaded");
             });
             this.on("removedfile", function(file) {
-                console.log("F.jsile " + file.name + "removed");
+                // console.log("F.jsile " + file.name + "removed");
             });
         }
     });

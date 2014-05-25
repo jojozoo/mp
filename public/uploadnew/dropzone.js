@@ -297,8 +297,9 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       paramName: "file",
       createImageThumbnails: true,
       maxThumbnailFilesize: 10,
-      thumbnailWidth: 100,
-      thumbnailHeight: 100,
+      thumbnailWidth: 70,
+      thumbnailHeight: 70, // 大图缩略图最高700
+      previewMaximum: 700, // 预览最大尺寸
       maxFiles: null,
       params: {},
       clickable: true, // 如果 true,dropzone元素本身将是可点击的,如果false什么都不会被点击。否则,你可以通过一个HTML元素,一个CSS选择器(用于多个元素)或数组。
@@ -307,9 +308,9 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       // acceptedMimeTypes: null, // 官方将要舍弃
       autoProcessQueue: true,
       autoQueue: true,
-      addRemoveLinks: false,
-      previewsContainer: null,
-      dictDefaultMessage: "文件拖放此处上传",
+      addRemoveLinks: true,  // 是否显示删除本张链接 默认false
+      previewsContainer: '.photos',
+      // dictDefaultMessage: "文件拖放此处上传",
       dictFallbackMessage: "您的浏览器不支持拖放文件上传.",
       dictFallbackText: "请使用下面的备用形式上传您的文件.",
       dictFileTooBig: "文件过大 ({{filesize}}MiB). 最大: {{maxFilesize}}MiB.",
@@ -317,8 +318,8 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       dictResponseError: "Server responded with {{statusCode}} code.",
       dictCancelUpload: "取消上传",
       dictCancelUploadConfirmation: "确定要取消上传?",
-      dictRemoveFile: "删除文件",
-      dictRemoveFileConfirmation: null,
+      dictRemoveFile: "删除本张",
+      // dictRemoveFileConfirmation: null, // 如果addRemoveLinks是真的,文本用于确认当取消上传 去掉本选项
       dictMaxFilesExceeded: "不能再上传文件.",
       accept: function(file, done) {
         return done();
@@ -328,6 +329,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       },
       forceFallback: false,
       fallback: function() {
+        // 不支持拖拽的回调函数
         var child, messageElement, span, _i, _len, _ref;
         this.element.className = "" + this.element.className + " mpdz-browser-not-supported";
         _ref = this.element.getElementsByTagName("div");
@@ -350,6 +352,10 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
         return this.element.appendChild(this.getFallbackForm());
       },
       resize: function(file) {
+        // 按比例或者规定比例缩放 大图缩略图最高700
+        // 这个是预览图 不应该是正方形
+        // previewMaximum = 700
+
         var info, srcRatio, trgRatio;
         info = {
           srcX: 0,
@@ -401,75 +407,91 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       而不会覆盖这些选项
        */
       drop: function(e) {
+        console.log(410);
         return this.element.classList.remove("mpdz-drag-hover");
       },
       dragstart: noop,
       dragend: function(e) {
+        console.log(415);
         return this.element.classList.remove("mpdz-drag-hover");
       },
       dragenter: function(e) {
+        console.log(418);
         return this.element.classList.add("mpdz-drag-hover");
       },
       dragover: function(e) {
+        console.log(423);
         return this.element.classList.add("mpdz-drag-hover");
       },
       dragleave: function(e) {
+        console.log(427);
         return this.element.classList.remove("mpdz-drag-hover");
       },
       paste: noop,
       reset: function() {
+        console.log(432);
         return this.element.classList.remove("mpdz-started");
       },
       addedfile: function(file) {
-        console.log('addedfile');
+        // 这个addfile是如何添加到页面中去
         var node, removeFileEvent, removeLink, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
-        if (this.element === this.previewsContainer) {
-          this.element.classList.add("mpdz-started");
-        }
+        // 这个判断 不知道有何用处 就为css？
+        // if (this.element === this.previewsContainer) {
+        //   this.element.classList.add("mpdz-started");
+        // }
         if (this.previewsContainer) {
+          // trim 去掉结尾的空格
           file.previewElement = Dropzone.createElement(this.options.previewTemplate.trim());
           file.previewTemplate = file.previewElement;
           this.previewsContainer.appendChild(file.previewElement);
-          _ref = file.previewElement.querySelectorAll("[data-mpdz-name]");
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            node = _ref[_i];
-            node.textContent = file.name;
-          }
-          _ref1 = file.previewElement.querySelectorAll("[data-mpdz-size]");
-          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-            node = _ref1[_j];
-            node.innerHTML = this.filesize(file.size);
-          }
-          if (this.options.addRemoveLinks) {
-            file._removeLink = Dropzone.createElement("<a class=\"mpdz-remove\" href=\"javascript:undefined;\" data-mpdz-remove>" + this.options.dictRemoveFile + "</a>");
-            file.previewElement.appendChild(file._removeLink);
-          }
+          // 填写文件名 _ref 其实只会存在一个
+          console.log("line: 436\nname: " + file.name + "\nsize: " + this.filesize(file.size));
+          // _ref = file.previewElement.querySelectorAll("[data-mpdz-name]");
+          // for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          //   node = _ref[_i];
+          //   node.textContent = file.name;
+          // }
+          // _ref1 = file.previewElement.querySelectorAll("[data-mpdz-size]");
+          // for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+          //   node = _ref1[_j];
+          //   node.innerHTML = this.filesize(file.size);
+          // }
+          // 插入删除本张链接
+          // if (this.options.addRemoveLinks) {
+          //   file._removeLink = Dropzone.createElement("<a class=\"mpdz-remove\" href=\"javascript:undefined;\" data-mpdz-remove>" + this.options.dictRemoveFile + "</a>");
+          //   file.previewElement.appendChild(file._removeLink);
+          // }
           removeFileEvent = (function(_this) {
             return function(e) {
               e.preventDefault();
               e.stopPropagation();
-              if (file.status === Dropzone.UPLOADING) {
-                return Dropzone.confirm(_this.options.dictCancelUploadConfirmation, function() {
-                  return _this.removeFile(file);
-                });
-              } else {
-                if (_this.options.dictRemoveFileConfirmation) {
-                  return Dropzone.confirm(_this.options.dictRemoveFileConfirmation, function() {
-                    return _this.removeFile(file);
-                  });
-                } else {
-                  return _this.removeFile(file);
-                }
-              }
+              if (window.confirm('您确定要删除这张照片？')) {
+                return _this.removeFile(file);
+              };
+              // if (file.status === Dropzone.UPLOADING) {
+              //   return Dropzone.confirm(_this.options.dictCancelUploadConfirmation, function() {
+              //     return _this.removeFile(file);
+              //   });
+              // } else {
+              //   if (_this.options.dictRemoveFileConfirmation) {
+              //     return Dropzone.confirm(_this.options.dictRemoveFileConfirmation, function() {
+              //       return _this.removeFile(file);
+              //     });
+              //   } else {
+              //     return _this.removeFile(file);
+              //   }
+              // }
             };
           })(this);
-          _ref2 = file.previewElement.querySelectorAll("[data-mpdz-remove]");
+          // _ref2 = file.previewElement.querySelectorAll("[data-mpdz-remove]");
           _results = [];
-          for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-            removeLink = _ref2[_k];
-            // 此处可用于删除按钮
-            _results.push(removeLink.addEventListener("click", removeFileEvent));
-          }
+          removeLink = document.getElementsByClassName("remove")[0];
+          // for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
+          //   removeLink = _ref2[_k];
+          //   // 此处可用于删除按钮
+          //   // 添加删除事件
+          _results.push(removeLink.addEventListener("click", removeFileEvent));
+          // }
           return _results;
         }
       },
@@ -483,19 +505,23 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
         return this._updateMaxFilesReachedClass();
       },
       thumbnail: function(file, dataUrl) {
-        var thumbnailElement, _i, _len, _ref, _results;
-        if (file.previewElement) {
-          file.previewElement.classList.remove("mpdz-file-preview");
-          file.previewElement.classList.add("mpdz-image-preview");
-          _ref = file.previewElement.querySelectorAll("[data-mpdz-thumbnail]");
-          _results = [];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            thumbnailElement = _ref[_i];
-            thumbnailElement.alt = file.name;
-            _results.push(thumbnailElement.src = dataUrl);
-          }
-          return _results;
-        }
+        // 查找最后一条，此处应该有pid,方便查找
+        var thumbnailElement = file.previewElement.querySelectorAll("img")[0];
+        thumbnailElement.alt = file.name;
+        thumbnailElement.src = dataUrl;
+        // var thumbnailElement, _i, _len, _ref, _results;
+        // if (file.previewElement) {
+        //   file.previewElement.classList.remove("mpdz-file-preview");
+        //   file.previewElement.classList.add("mpdz-image-preview");
+        //   _ref = file.previewElement.querySelectorAll("[data-mpdz-thumbnail]");
+        //   _results = [];
+        //   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        //     thumbnailElement = _ref[_i];
+        //     thumbnailElement.alt = file.name;
+        //     _results.push(thumbnailElement.src = dataUrl);
+        //   }
+        //   return _results;
+        // }
       },
       error: function(file, message) {
         var node, _i, _len, _ref, _results;
@@ -556,8 +582,11 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       completemultiple: noop,
       maxfilesexceeded: noop,
       maxfilesreached: noop,
-      previewTemplate: "<div class=\"mpdz-preview mpdz-file-preview\">\n  <div class=\"mpdz-details\">\n    <div class=\"mpdz-filename\"><span data-mpdz-name></span></div>\n    <div class=\"mpdz-size\" data-mpdz-size></div>\n    <img data-mpdz-thumbnail />\n  </div>\n  <div class=\"mpdz-progress\"><span class=\"mpdz-upload\" data-mpdz-uploadprogress></span></div>\n  <div class=\"mpdz-success-mark\"><span>✔</span></div>\n  <div class=\"mpdz-error-mark\"><span>✘</span></div>\n  <div class=\"mpdz-error-message\"><span data-mpdz-errormessage></span></div>\n</div>"
+      previewTemplate: "<div class='photo-reel-photo' data-pid=''><img width='50' height='50'></img></div>"
+      // previewTemplate: "<div class='photo-reel-photo' data-pid=''><canvas width='50' height='50'></canvas></div>"
+      // previewTemplate: "<div class=\"mpdz-preview mpdz-file-preview\">\n  <div class=\"mpdz-details\">\n    <div class=\"mpdz-filename\"><span data-mpdz-name></span></div>\n    <div class=\"mpdz-size\" data-mpdz-size></div>\n    <img data-mpdz-thumbnail />\n  </div>\n  <div class=\"mpdz-progress\"><span class=\"mpdz-upload\" data-mpdz-uploadprogress></span></div>\n  <div class=\"mpdz-success-mark\"><span>✔</span></div>\n  <div class=\"mpdz-error-mark\"><span>✘</span></div>\n  <div class=\"mpdz-error-message\"><span data-mpdz-errormessage></span></div>\n</div>"
     };
+    // defaultOptions end
 
     extend = function() {
       var key, object, objects, target, val, _i, _len;
@@ -691,6 +720,8 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
         // 上面已经调用，为啥还要再调用一次? 并且还没有传入任何参数
         setupHiddenFileInput();
       }
+      
+      
       // 循环给this.clickableElements添加单击事件 end
       // TODO 干嘛用的?
       this.URL = (_ref = window.URL) != null ? _ref : window.webkitURL;
@@ -701,6 +732,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
         this.on(eventName, this.options[eventName]);
       }
       this.on("uploadprogress", (function(_this) {
+        console.log(733);
         return function() {
           return _this.updateTotalUploadProgress();
         };
@@ -724,11 +756,20 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
           }
         };
       })(this));
+      // 此函数什么意思，不明白
       noPropagation = function(e) {
-        e.stopPropagation();
+        // drop事件中要用e.stopPropagation()阻止浏览器默认事件
+        // 在IE中可以用e.cancelBubble = true
+        if(e.stopPropagation){
+          e.stopPropagation();
+        } else {
+          e.cancelBubble = true;
+        }
         if (e.preventDefault) {
+          // 当拖动链接等有默认事件的元素时，要在dragover事件中用e.preventDefault()阻止默认事件。否则drop事件不会触发。
           return e.preventDefault();
         } else {
+          // 在IE中可以用e.returnValue = false
           return e.returnValue = false;
         }
       };
@@ -737,18 +778,25 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
           element: this.element,
           events: {
             "dragstart": (function(_this) {
+              console.log(769);
               return function(e) {
                 return _this.emit("dragstart", e);
               };
             })(this),
             "dragenter": (function(_this) {
+              console.log(775);
               return function(e) {
                 noPropagation(e);
                 return _this.emit("dragenter", e);
               };
             })(this),
             "dragover": (function(_this) {
+              console.log(782);
+              // 在被拖放在某元素内移动时触发
+              // effectAllowed拖拽的效果
               return function(e) {
+                // http://www.html5jscss.com/html-5-drag-drop.html
+                // 如果浏览器内的拖动 那么应该用move 浏览器外的用move也不会删除掉
                 var efct;
                 try {
                   efct = e.dataTransfer.effectAllowed;
@@ -759,17 +807,22 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
               };
             })(this),
             "dragleave": (function(_this) {
+              console.log(794);
               return function(e) {
                 return _this.emit("dragleave", e);
               };
             })(this),
             "drop": (function(_this) {
+              console.log("800");
               return function(e) {
                 noPropagation(e);
+                console.log(803);
+                // 此处调用的是Dropzone.prototype.drop函数
                 return _this.drop(e);
               };
             })(this),
             "dragend": (function(_this) {
+              console.log(807);
               return function(e) {
                 return _this.emit("dragend", e);
               };
@@ -884,6 +937,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       return Dropzone.instances.splice(Dropzone.instances.indexOf(this), 1);
     };
 
+    // 这是什么 在哪用到
     Dropzone.prototype.updateTotalUploadProgress = function() {
       var activeFiles, file, totalBytes, totalBytesSent, totalUploadProgress, _i, _len, _ref;
       totalBytesSent = 0;
@@ -956,10 +1010,15 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
     // 设置事件监听器 init方法中的listeners
     Dropzone.prototype.setupEventListeners = function() {
+      console.log(994);
       var elementListeners, _event, listener, _i, _len, _ref, _results;
+      // _ref 是需要监听的clickable
       _ref = this.listeners;
+      console.log(_ref);
       _results = [];
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        // elementListeners 是某个需要监听的, 共拖拽和点击7个函数
+        // 其中,不支持拖拽的时候，应该避开，避免引发异常
         elementListeners = _ref[_i];
         _results.push((function() {
           var _ref1, _results1;
@@ -1014,6 +1073,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
     // 启用 所有可以触发上传的element都增加mpdz-clickable类
     Dropzone.prototype.enable = function() {
+      console.log(1052);
       this.clickableElements.forEach(function(element) {
         return element.classList.add("mpdz-clickable");
       });
@@ -1053,15 +1113,23 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
     };
 
     Dropzone.prototype.drop = function(e) {
+      console.log(1099);
       var files, items;
+      // dataTransfer是拖拽中数据传输管道，如果没有值或者这个属性，说明拖拽失败，直接return
       if (!e.dataTransfer) {
         return;
       }
       this.emit("drop", e);
+      // dataTransfer.files属性是一个类数组的File对象
       files = e.dataTransfer.files;
+
+      // 如果拖动的是文本 那么此处会停止
       if (files.length) {
+        // drop事件处理程序将能遍历dataTransfer.items[]的元素去检查文件和非文件数据。
         items = e.dataTransfer.items;
+        // 添加文件夹时做的处理 暂时只chrome支持
         if (items && items.length && (items[0].webkitGetAsEntry != null)) {
+          console.log('directory');
           this._addFilesFromItems(items);
         } else {
           this.handleFiles(files);
@@ -1069,6 +1137,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       }
     };
 
+    // 暂时不知道哪个浏览器支持
     Dropzone.prototype.paste = function(e) {
       var items, _ref;
       if ((e != null ? (_ref = e.clipboardData) != null ? _ref.items : void 0 : void 0) == null) {
@@ -1081,6 +1150,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       }
     };
 
+    // 遍历files逐一addFile 拖拽的一种添加方法
     Dropzone.prototype.handleFiles = function(files) {
       var file, _i, _len, _results;
       _results = [];
@@ -1091,6 +1161,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       return _results;
     };
 
+    // 添加文件夹时做的处理 暂时只chrome支持
     Dropzone.prototype._addFilesFromItems = function(items) {
       var entry, item, _i, _len, _results;
       _results = [];
@@ -1100,6 +1171,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
           if (entry.isFile) {
             _results.push(this.addFile(item.getAsFile()));
           } else if (entry.isDirectory) {
+            // 如果是目录 继续下一步查找
             _results.push(this._addFilesFromDirectory(entry, entry.name));
           } else {
             _results.push(void 0);
@@ -1117,6 +1189,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       return _results;
     };
 
+    // 读取目录 只限chrome
     Dropzone.prototype._addFilesFromDirectory = function(directory, path) {
       var dirReader, entriesReader;
       dirReader = directory.createReader();
@@ -1158,6 +1231,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
     };
 
     Dropzone.prototype.addFile = function(file) {
+      console.log("1186");
       file.upload = {
         progress: 0,
         total: file.size,
@@ -1165,9 +1239,7 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       };
       this.files.push(file);
       file.status = Dropzone.ADDED;
-      console.log('addFile');
       this.emit("addedfile", file);
-      console.log('addFile1');
       this._enqueueThumbnail(file);
       return this.accept(file, (function(_this) {
         return function(error) {
@@ -1213,8 +1285,9 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
 
     Dropzone.prototype._processingThumbnail = false;
 
-    // 缩略图队列
+    // 缩略图队列 添加到队列
     Dropzone.prototype._enqueueThumbnail = function(file) {
+      // 配置创建缩略图为true并且类型匹配 并且文件小于配置最大数
       if (this.options.createImageThumbnails && file.type.match(/image.*/) && file.size <= this.options.maxThumbnailFilesize * 1024 * 1024) {
         this._thumbnailQueue.push(file);
         return setTimeout(((function(_this) {
@@ -1225,6 +1298,44 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       }
     };
 
+    // 创建缩略图
+    Dropzone.prototype.createThumbnail = function(file, callback) {
+      var fileReader;
+      fileReader = new FileReader;
+      fileReader.onload = (function(_this) {
+        return function() {
+          var img;
+          img = document.createElement("img");
+          img.onload = function() {
+            var canvas, ctx, resizeInfo, thumbnail, _ref, _ref1, _ref2, _ref3;
+            file.width = img.width;
+            file.height = img.height;
+            resizeInfo = _this.options.resize.call(_this, file);
+            if (resizeInfo.trgWidth == null) {
+              resizeInfo.trgWidth = resizeInfo.optWidth;
+            }
+            if (resizeInfo.trgHeight == null) {
+              resizeInfo.trgHeight = resizeInfo.optHeight;
+            }
+            canvas = document.createElement("canvas");
+            ctx = canvas.getContext("2d");
+            canvas.width = resizeInfo.trgWidth;
+            canvas.height = resizeInfo.trgHeight;
+            // ie的支持参考 http://www.oschina.net/question/12_31182
+            drawImageIOSFix(ctx, img, (_ref = resizeInfo.srcX) != null ? _ref : 0, (_ref1 = resizeInfo.srcY) != null ? _ref1 : 0, resizeInfo.srcWidth, resizeInfo.srcHeight, (_ref2 = resizeInfo.trgX) != null ? _ref2 : 0, (_ref3 = resizeInfo.trgY) != null ? _ref3 : 0, resizeInfo.trgWidth, resizeInfo.trgHeight);
+            thumbnail = canvas.toDataURL("image/png");
+            _this.emit("thumbnail", file, thumbnail);
+            if (callback != null) {
+              return callback();
+            }
+          };
+          return img.src = fileReader.result;
+        };
+      })(this);
+      return fileReader.readAsDataURL(file);
+    };
+
+    // 进程队列的缩略图 创建缩略图
     Dropzone.prototype._processThumbnailQueue = function() {
       if (this._processingThumbnail || this._thumbnailQueue.length === 0) {
         return;
@@ -1264,41 +1375,6 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
       return null;
     };
 
-    // 创建缩略图
-    Dropzone.prototype.createThumbnail = function(file, callback) {
-      var fileReader;
-      fileReader = new FileReader;
-      fileReader.onload = (function(_this) {
-        return function() {
-          var img;
-          img = document.createElement("img");
-          img.onload = function() {
-            var canvas, ctx, resizeInfo, thumbnail, _ref, _ref1, _ref2, _ref3;
-            file.width = img.width;
-            file.height = img.height;
-            resizeInfo = _this.options.resize.call(_this, file);
-            if (resizeInfo.trgWidth == null) {
-              resizeInfo.trgWidth = resizeInfo.optWidth;
-            }
-            if (resizeInfo.trgHeight == null) {
-              resizeInfo.trgHeight = resizeInfo.optHeight;
-            }
-            canvas = document.createElement("canvas");
-            ctx = canvas.getContext("2d");
-            canvas.width = resizeInfo.trgWidth;
-            canvas.height = resizeInfo.trgHeight;
-            drawImageIOSFix(ctx, img, (_ref = resizeInfo.srcX) != null ? _ref : 0, (_ref1 = resizeInfo.srcY) != null ? _ref1 : 0, resizeInfo.srcWidth, resizeInfo.srcHeight, (_ref2 = resizeInfo.trgX) != null ? _ref2 : 0, (_ref3 = resizeInfo.trgY) != null ? _ref3 : 0, resizeInfo.trgWidth, resizeInfo.trgHeight);
-            thumbnail = canvas.toDataURL("image/png");
-            _this.emit("thumbnail", file, thumbnail);
-            if (callback != null) {
-              return callback();
-            }
-          };
-          return img.src = fileReader.result;
-        };
-      })(this);
-      return fileReader.readAsDataURL(file);
-    };
 
     Dropzone.prototype.processQueue = function() {
       var i, parallelUploads, processingLength, queuedFiles;
@@ -1746,13 +1822,14 @@ require.register("dropzone/lib/dropzone.js", function (exports, module) {
   };
   // 查找一组元素 暂时只有clickable用到，如果clickable为true，那么element下面的所有元素都是可点击触发上传的
 
-  Dropzone.confirm = function(question, accepted, rejected) {
-    if (window.confirm(question)) {
-      return accepted();
-    } else if (rejected != null) {
-      return rejected();
-    }
-  };
+  // 只有addfile 463行左右用到了
+  // Dropzone.confirm = function(question, accepted, rejected) {
+  //   if (window.confirm(question)) {
+  //     return accepted();
+  //   } else if (rejected != null) {
+  //     return rejected();
+  //   }
+  // };
 
   // 检查是否有效的文件
   Dropzone.isValidFile = function(file, acceptedFiles) {
