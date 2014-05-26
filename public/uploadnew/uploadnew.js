@@ -1,22 +1,7 @@
 $(function(){
 	$(".active-photo-wrap").dropzone({
-        url: "handle-upload.php",
-        dictRemoveLinks: "O",
-        dictCancelUpload: "x",
-        maxFiles: 10,
-        maxFilesize: 20,
-        init: function() {
-            this.on('dragenter', function(file){
-                
-            });
-            this.on("success", function(file) {
-                console.log('message');
-                console.log("File " + file.name + "uploaded");
-            });
-            this.on("removedfile", function(file) {
-                // console.log("F.jsile " + file.name + "removed");
-            });
-        }
-    });
+		url: "handle-upload.php",
+		maxFiles: 10,
+		maxFilesize: 20
+	});
 })
-// $("div.drag-info").dropzone({ url: "/file/post" });

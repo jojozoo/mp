@@ -1,8 +1,7 @@
 <link href="/uploadnew/ok.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
 <link href="/uploadnew/okn.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="/uploadnew/angular.js?v=<%= Time.now.to_i %>"></script>
-<!--<script type="text/javascript" src="/uploadnew/mp-uploader.js?v=<%= Time.now.to_i %>"></script>-->
-<script type="text/javascript" src="/uploadnew/dropzone.js?v=<%= Time.now.to_i %>"></script>
+<!--<script type="text/javascript" src="/uploadnew/dropzone.js?v=<%= Time.now.to_i %>"></script>-->
+<script type="text/javascript" src="/uploadnew/mpuploader.js?v=<%= Time.now.to_i %>"></script>
 <script type="text/javascript" src="/uploadnew/uploadnew.js?v=<%= Time.now.to_i %>"></script>
 
 
@@ -42,7 +41,8 @@
 			</div>
 
 			<div class="drag-info">
-				<h1>可以从您电脑中的照片拖拽到此处</h1>
+				<h1>拖动您的照片到这</h1>
+				<p class="browser-not-supported"></p>
 				<div class="action_buttons">
 					<a class="button browse_files action droplink" href="javascript:void(0);">上传照片</a>
 				</div>

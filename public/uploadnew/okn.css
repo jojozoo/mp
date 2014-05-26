@@ -17,8 +17,9 @@
 .uploader .photo-container:after{clear:both}
 .uploader .photo-container .drag-info{display:table-cell;vertical-align:middle;position:relative}
 .uploader .photo-container .drag-info h1{text-align:center;font-size:20px;line-height:26px;font-weight:300;color:#02adea}
-.uploader .photo-container .drag-info h1 a{color:inherit;text-decoration:underline;-webkit-transition:all 0.15s ease-out;-webkit-transition-delay:0s;-webkit-transition:all 0.15s ease-out 0s;transition:all 0.15s ease-out 0s}
-.uploader .photo-container .drag-info h1 a:hover{color:#71767a}
+.uploader .photo-container .drag-info .browser-not-supported{text-align: center;margin: 10px auto 0 auto;color: orange}
+/*.uploader .photo-container .drag-info h1 a{color:inherit;text-decoration:underline;-webkit-transition:all 0.15s ease-out;-webkit-transition-delay:0s;-webkit-transition:all 0.15s ease-out 0s;transition:all 0.15s ease-out 0s}
+.uploader .photo-container .drag-info h1 a:hover{color:#71767a}*/
 .uploader .photo-container .drag-info .or{color:#aeafb0;font-size:14px;margin:10px 0}
 .uploader .photo-container .drag-info .action_buttons{text-align:center;margin-top:35px}
 .uploader .photo-container .drag-info .action_buttons .browse_files{background:#02adea url(/uploadnew/choose_photo_X2.png) no-repeat 13px center;-webkit-background-size:14%;background-size:14%;padding-left:40px}
