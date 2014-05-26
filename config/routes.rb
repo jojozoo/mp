@@ -30,6 +30,7 @@ Mp::Application.routes.draw do
       get :star
       post :upload
       get :uploadnew
+      get :uploadie
     end
     member do
       get :tui

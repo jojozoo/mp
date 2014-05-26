@@ -1,0 +1,126 @@
+/*
+Uploadify
+Copyright (c) 2012 Reactive Apps, Ronnie Garcia
+Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
+*/
+/*.hihi{
+	background: #ccc;
+	width: 300px;
+	height: 163px;
+	position: absolute;
+	top: 0;
+	z-index: 1;
+	opacity: 0.6;
+}*/
+.gkimg{
+	border-right: 1px solid #ccc;
+	min-height:300px;
+	position:relative;
+}
+.gkimg .uploadify-queue{
+	width: 300px;
+	height: 50px;
+	position: absolute;
+	bottom: 0;
+}
+.gkimg .uploadify-queue > .uploadify-queue-item{
+	height: auto;
+	position: static;
+}
+/*avatar end*/
+.thumbnail{
+	position: relative;
+}
+.js-image-cover, .fade-left{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.js-image-remove, .fade-right{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.thumbnail > a.bk-img{
+	height:164px;
+	display: block;
+	background: #ccc;
+}
+.thumbnail > a > img{
+	height: 100%;
+	width: auto;
+}
+.js-image-cover-page, .js-image-cover-page:hover{
+	background: orange;
+	border-color: orange;
+}
+.uploadify {
+	position: relative;
+	display: inline-block;
+}
+.uploadify-button {
+	/*透明或者白色*/
+	background-color: #fff;
+	color: #FFF;
+	text-align: center;
+}
+.uploadify:hover .uploadify-button .button.browse_files.action {
+	background-color:#09bdfd;
+}
+.uploadify-button.disabled {
+	background-color: #D0D0D0;
+	color: #808080;
+}
+/*.uploadify-queue {
+	margin-bottom: 1em;
+}*/
+.uploadify-queue-item {
+	/*background-color: #F5F5F5;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	font: 11px Verdana, Geneva, sans-serif;
+	margin-top: 5px;
+	max-width: 300px;
+	padding: 10px;*/
+	/*one*/
+	/*width: 90%;
+	padding: 10px;
+	position: absolute;
+	top: 50px;
+	left: 12px;
+	font-size: 12px;
+	background-color: #f5f5f5;*/
+	/*two*/
+	z-index: 2;
+	width: 100%;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	font-size: 12px;
+	background-color: #f5f5f5;
+	height: 164px;
+}
+.uploadify-error {
+	background-color: #FDE5DD !important;
+}
+.uploadify-queue-item .cancel a {
+	background: url('/uploadify/images/uploadify-cancel.png') 0 0 no-repeat;
+	float: right;
+	height:	16px;
+	text-indent: -9999px;
+	width: 16px;
+}
+.uploadify-queue-item.completed {
+	background-color: #E5E5E5;
+}
+.uploadify-progress {
+	background-color: #E5E5E5;
+	margin-top: 10px;
+	width: 100%;
+}
+.uploadify-progress-bar {
+	background-color: #0099FF;
+	height: 3px;
+	width: 1px;
+}
