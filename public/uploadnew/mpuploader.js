@@ -302,25 +302,25 @@
 				withCredentials: false,
 				parallelUploads: 2,
 				uploadMultiple: false,
-				maxFilesize: 256,
 				paramName: "file",
-				createImageThumbnails: true,
-				maxThumbnailFilesize: 10,
+				// createImageThumbnails: true, // 是否创建缩略图
+				maxThumbnailFilesize: 10, // 当文件超过10M就不创建缩略图
 				thumbnailWidth: 70,
 				thumbnailHeight: 70, // 缩略图宽高
 				largeMinHeight: 700, // 预览最小高度
-				maxFiles: null,
+				maxFiles: 2,
 				params: {},
 				clickable: true, // 如果 true,dropzone元素本身将是可点击的,如果false什么都不会被点击。否则,你可以通过一个HTML元素,一个CSS选择器(用于多个元素)或数组。
 				ignoreHiddenFiles: true,
 				acceptedFiles: 'image/*', // 指明允许上传的文件类型，格式是逗号分隔的 MIME type 或者扩展名。例如：image/*,application/pdf,.psd,.obj
 				// acceptedMimeTypes: null, // 官方将要舍弃
 				autoProcessQueue: true,
-				autoQueue: true,
+				// autoQueue: true, // 自动进入队列
 				addRemoveLinks: true,	// 是否显示删除本张链接 默认false
 				// dictDefaultMessage: "文件拖放此处上传",
 				dictFallbackText: "请使用下面的备用形式上传您的文件.",
-				dictFileTooBig: "文件过大 ({{filesize}}MiB). 最大: {{maxFilesize}}MiB.",
+				maxFilesize: 10,
+				dictFileTooBig: "文件过大 ({{filesize}}MB). 最大: {{maxFilesize}}MB.",
 				dictInvalidFileType: "你不能上传文件的类型.",
 				dictResponseError: "Server responded with {{statusCode}} code.",
 				dictCancelUpload: "取消上传",
@@ -435,68 +435,21 @@
 					return this.element.classList.remove("mpdz-started");
 				},
 				addedfile: function(file) {
-					// 这个addfile是如何添加到页面中去
-					var node, removeFileEvent, removeLink, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
-					// 这个判断 不知道有何用处 就为css？
-					// if (this.element === this.largeContainer) {
-					//	 this.element.classList.add("mpdz-started");
-					// }
-					// trim 去掉结尾的空格
-					file.largeElement = Dropzone.createElement(this.options.largeTemplate.trim());
-					file.largeTemplate = file.largeElement;
-					this.largeContainer.appendChild(file.largeElement);
-					// 缩略图的处理
-					file.thumbElement = Dropzone.createElement(this.options.thumbTemplate.trim());
-					file.thumbTemplate = file.thumbElement;
-					this.thumbContainer.appendChild(file.thumbElement);
-					// 填写文件名 _ref 其实只会存在一个
-					// _ref = file.largeElement.querySelectorAll("[data-mpdz-name]");
-					// for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-					//	 node = _ref[_i];
-					//	 node.textContent = file.name;
-					// }
-					// _ref1 = file.largeElement.querySelectorAll("[data-mpdz-size]");
-					// for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-					//	 node = _ref1[_j];
-					//	 node.innerHTML = this.filesize(file.size);
-					// }
-					// 插入删除本张链接
-					// if (this.options.addRemoveLinks) {
-					//	 file._removeLink = Dropzone.createElement("<a class=\"mpdz-remove\" href=\"javascript:undefined;\" data-mpdz-remove>" + this.options.dictRemoveFile + "</a>");
-					//	 file.largeElement.appendChild(file._removeLink);
-					// }
-					removeFileEvent = (function(_this) {
-					return function(e) {
-						e.preventDefault();
-						e.stopPropagation();
-						if (window.confirm('您确定要删除这张照片？')) {
-							return _this.removeFile(file);
-						};
-						// if (file.status === Dropzone.UPLOADING) {
-						//	 return Dropzone.confirm(_this.options.dictCancelUploadConfirmation, function() {
-						//		 return _this.removeFile(file);
-						//	 });
-						// } else {
-						//	 if (_this.options.dictRemoveFileConfirmation) {
-						//		 return Dropzone.confirm(_this.options.dictRemoveFileConfirmation, function() {
-						//			 return _this.removeFile(file);
-						//		 });
-						//	 } else {
-						//		 return _this.removeFile(file);
-						//	 }
-						// }
-					};
-					})(this);
-					// _ref2 = file.largeElement.querySelectorAll("[data-mpdz-remove]");
-					_results = [];
-					removeLink = document.getElementsByClassName("remove")[0];
-					// for (_k = 0, _len2 = _ref2.length; _k < _len2; _k++) {
-					//	 removeLink = _ref2[_k];
-					//	 // 此处可用于删除按钮
-					//	 // 添加删除事件
-					_results.push(removeLink.addEventListener("click", removeFileEvent));
-					// }
-					return _results;
+					// TODO 暂时不要删除 等完善了删除本张的方法后
+					// var node, removeFileEvent, removeLink, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _results;
+					// removeFileEvent = (function(_this) {
+					// 	return function(e) {
+					// 		e.preventDefault();
+					// 		e.stopPropagation();
+					// 		if (window.confirm('您确定要删除这张照片？')) {
+					// 			return _this.removeFile(file);
+					// 		};
+					// 	};
+					// })(this);
+					// _results = [];
+					// removeLink = document.getElementsByClassName("remove")[0];
+					// _results.push(removeLink.addEventListener("click", removeFileEvent));
+					// return _results;
 				},
 				removedfile: function(file) {
 					var _ref;
@@ -515,19 +468,6 @@
 					if(islast){
 						file.thumbElement.className = 'photo-reel-photo selected';
 					}
-					// var thumbnailElement, _i, _len, _ref, _results;
-					// if (file.largeElement) {
-					//	 file.largeElement.classList.remove("mpdz-file-preview");
-					//	 file.largeElement.classList.add("mpdz-image-preview");
-					//	 _ref = file.largeElement.querySelectorAll("[data-mpdz-thumbnail]");
-					//	 _results = [];
-					//	 for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-					//		 thumbnailElement = _ref[_i];
-					//		 thumbnailElement.alt = file.name;
-					//		 _results.push(thumbnailElement.src = dataUrl);
-					//	 }
-					//	 return _results;
-					// }
 				},
 				large: function(file, dataUrl, islast){
 					var largeElement = file.largeElement.querySelectorAll("img")[0];
@@ -595,10 +535,7 @@
 				},
 				completemultiple: noop,
 				maxfilesexceeded: noop,
-				maxfilesreached: noop,
-				// largeTemplate: "<div class='photo-reel-photo' data-pid=''><img width='50' height='50'></img></div>"
-				// largeTemplate: "<div class='photo-reel-photo' data-pid=''><canvas width='50' height='50'></canvas></div>"
-				// largeTemplate: "<div class=\"mpdz-preview mpdz-file-preview\">\n	<div class=\"mpdz-details\">\n		<div class=\"mpdz-filename\"><span data-mpdz-name></span></div>\n		<div class=\"mpdz-size\" data-mpdz-size></div>\n		<img data-mpdz-thumbnail />\n	</div>\n	<div class=\"mpdz-progress\"><span class=\"mpdz-upload\" data-mpdz-uploadprogress></span></div>\n	<div class=\"mpdz-success-mark\"><span>✔</span></div>\n	<div class=\"mpdz-error-mark\"><span>✘</span></div>\n	<div class=\"mpdz-error-message\"><span data-mpdz-errormessage></span></div>\n</div>"
+				maxfilesreached: noop
 			};
 			// defaultOptions end
 
@@ -619,19 +556,8 @@
 			function Dropzone(element, options) {
 				var elementOptions, fallback, _ref;
 				this.element = element;
-				this.defaultOptions.largeTemplate = this.defaultOptions.largeTemplate.replace(/\n*/g, "");
-				this.clickableElements = [];
 				this.listeners = [];
 				this.files = [];
-				// if (typeof this.element === "string") {
-				//	 this.element = document.querySelector(this.element);
-				// }
-				// if (!(this.element && (this.element.nodeType != null))) {
-				//	 throw new Error("Invalid dropzone element.");
-				// }
-				// if (this.element.dropzone) {
-				//	 throw new Error("Dropzone already attached.");
-				// }
 				Dropzone.instances.push(this);
 				this.element.dropzone = this;
 				elementOptions = (_ref = Dropzone.optionsForElement(this.element)) != null ? _ref : {};
@@ -642,97 +568,21 @@
 					// Fallback 是一种机制，当浏览器不支持此插件时，提供一个备选方案。默认为false。如果设为true，则强制 fallback。
 					return this.options.fallback.call(this);
 				}
-				// if (this.options.url == null) {
-				//	 this.options.url = this.element.getAttribute("action");
-				// }
-				// if (!this.options.url) {
-				//	 throw new Error("没有提供网址.");
-				// }
-				// if (this.options.acceptedFiles && this.options.acceptedMimeTypes) {
-				//	 throw new Error("不能同时使用'acceptedFiles' 和 'acceptedMimeTypes'. 'acceptedMimeTypes' 已舍弃.");
-				// }
-				// if (this.options.acceptedMimeTypes) {
-				//	 this.options.acceptedFiles = this.options.acceptedMimeTypes;
-				//	 delete this.options.acceptedMimeTypes;
-				// }
-				// 注释此行 method 必须小写
-				// this.options.method = this.options.method.toUpperCase();
-
-				// 查找到div或form中class含有fallback的元素并且删除
-				// TODO 不知道为啥
-				// if ((fallback = this.getExistingFallback()) && fallback.parentNode) {
-				// 	fallback.parentNode.removeChild(fallback);
-				// }
-				// 如果定义了预览的class 那么就检查是否有此class,如果未定义 就使用当前element
-				// if (this.options.largeContainer !== false) {
-				// 	if (this.options.largeContainer) {
-				// 		this.largeContainer = Dropzone.getElement(this.options.largeContainer, "largeContainer");
-				// 	} else {
-				// 		this.largeContainer = this.element;
-				// 	}
-				// }
-				this.largeContainer = Dropzone.getElement(this.options.largeContainer, "largeContainer");
-				this.thumbContainer = Dropzone.getElement(this.options.thumbContainer, "thumbContainer");
-				// 可点击触发上传的数组
-				// TODO 可注释
-				if (this.options.clickable) {
-					if (this.options.clickable === true) {
-						this.clickableElements = [this.element];
-					} else {
-						this.clickableElements = Dropzone.getElements(this.options.clickable, "clickable");
-					}
-				}
+				this.largeContainer = document.querySelector(this.options.largeContainer);
+				this.thumbContainer = document.querySelector(this.options.thumbContainer);
 				this.init();
 			}
 
 			Dropzone.prototype.init = function() {
-				var eventName, noPropagation, setupHiddenFileInput, _i, _len, _ref, _ref1;
-				// 如果为form 设置form属性enctype=multipart/form-data
-				// if (this.element.tagName === "form") {
-				//	 this.element.setAttribute("enctype", "multipart/form-data");
-				// }
-				// 如果含有这个 dropzone 并且没有这个 mpdz-message 就创建 按理说有了，是drag-info 下的h1
-				// if (this.element.classList.contains("dropzone") && !this.element.querySelector(".mpdz-message")) {
-				//	 this.element.appendChild(Dropzone.createElement("<div class=\"mpdz-default mpdz-message\"><span>" + this.options.dictDefaultMessage + "</span></div>"));
-				// }
-				// 循环给this.clickableElements添加单击事件 end
-				(function(_this) {
-					if (_this.hiddenFileInput) {
-						document.body.removeChild(_this.hiddenFileInput);
-					}
-					_this.hiddenFileInput = document.createElement("input");
-					_this.hiddenFileInput.setAttribute("type", "file");
-					_this.hiddenFileInput.setAttribute("multiple", "multiple");
-					_this.hiddenFileInput.className = "" + Math.random();
-					_this.hiddenFileInput.setAttribute("accept", _this.options.acceptedFiles);
-					_this.hiddenFileInput.style.visibility = "hidden";
-					_this.hiddenFileInput.style.position = "absolute";
-					_this.hiddenFileInput.style.top = "0";
-					_this.hiddenFileInput.style.left = "0";
-					_this.hiddenFileInput.style.height = "0";
-					_this.hiddenFileInput.style.width = "0";
-					document.body.appendChild(_this.hiddenFileInput);
-					// 给input添加change事件
-					return _this.hiddenFileInput.addEventListener("change", function() {
-						var file, files, _i, _len;
-						files = _this.hiddenFileInput.files;
-						if (files.length) {
-							for (_i = 0, _len = files.length; _i < _len; _i++) {
-								file = files[_i];
-								_this.addFile(file);
-							}
-						}
-					});
-				})(this);
+				var eventName, noPropagation, _i, _len, _ref, _events;
+				// 给hiddenFileInput添加单击上传事件
+				this.clickHiddenFileInput();
 				
-				
-				// 循环给this.clickableElements添加单击事件 end
 				// TODO 干嘛用的?
 				this.URL = (_ref = window.URL) != null ? _ref : window.webkitURL;
-				// 干嘛用的? end
-				_ref1 = this.events;
-				for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-					eventName = _ref1[_i];
+				_events = this.events;
+				for (_i = 0, _len = _events.length; _i < _len; _i++) {
+					eventName = _events[_i];
 					this.on(eventName, this.options[eventName]);
 				}
 				this.on("uploadprogress", (function(_this) {
@@ -825,40 +675,71 @@
 						}
 					}
 				];
-				// 给 clickableElements(element下面的子元素) 添加单击事件
-				// this.clickableElements.forEach((function(_this) {
-				//	 return function(clickableElement) {
-				//		 return _this.listeners.push({
-				//			 element: clickableElement,
-				//			 events: {
-				//				 "click": function(evt) {
-				//					 // 判断是否可以click
-				//					 if ((clickableElement !== _this.element) || (evt.target === _this.element || Dropzone.elementInside(evt.target, _this.element.querySelector(".mpdz-message")))) {
-				//						 return _this.hiddenFileInput.click();
-				//					 }
-				//				 }
-				//			 }
-				//		 });
-				//	 };
-				// })(this));
-				// TODO 单独添加droplink点击事件
-				(function(_this){
-					var droplink = document.getElementsByClassName('droplink')[0];
-					_this.listeners.push({
-						element: droplink,
-						events: {
-							"click": function() {
-									return _this.hiddenFileInput.click();
-							}
-						}
-					});
-				})(this);
-				// 给 clickableElements(element下面的子元素) 添加单击事件 end
-				this.enable();
+
+				this.uprmjxfi();
+				this.handlerEventListeners('add');
 				return this.options.init.call(this);
 			};
 			// init end
 
+			// TODO 会分为上传照片 删除本张 继续上传 完成上传 点击事件的初始化 都要在init里面去完成
+			Dropzone.prototype.uprmjxfi = function(){
+				var droplink, _this;
+				droplink = document.getElementsByClassName('droplink')[0];
+				_this = this;
+				this.listeners.push({
+					element: droplink,
+					events: {
+						"click": function() {
+								return _this.hiddenFileInput.click();
+						}
+					}
+				});
+			};
+
+			Dropzone.prototype.clickHiddenFileInput = function(){
+				if (this.hiddenFileInput) {
+					document.body.removeChild(this.hiddenFileInput);
+				}
+				this.hiddenFileInput = document.createElement("input");
+				this.hiddenFileInput.setAttribute("type", "file");
+				this.hiddenFileInput.setAttribute("multiple", "multiple");
+				this.hiddenFileInput.className = "" + Math.random();
+				this.hiddenFileInput.setAttribute("accept", this.options.acceptedFiles);
+				this.hiddenFileInput.style.visibility = "hidden";
+				this.hiddenFileInput.style.position = "absolute";
+				this.hiddenFileInput.style.top = "0";
+				this.hiddenFileInput.style.left = "0";
+				this.hiddenFileInput.style.height = "0";
+				this.hiddenFileInput.style.width = "0";
+				document.body.appendChild(this.hiddenFileInput);
+				// 给input添加change事件
+				return (function(_this){
+					_this.hiddenFileInput.addEventListener("change", function() {
+						var file, files, _i, _len;
+						files = _this.hiddenFileInput.files;
+						if (files.length) {
+							for (_i = 0, _len = files.length; _i < _len; _i++) {
+								file = files[_i];
+								_this.addFile(file);
+							}
+						}
+					});
+				})(this);
+				// var _this = this;
+				// this.hiddenFileInput.addEventListener("change", function() {
+				// 	var file, files, _i, _len;
+				// 	files = _this.hiddenFileInput.files;
+				// 	if (files.length) {
+				// 		for (_i = 0, _len = files.length; _i < _len; _i++) {
+				// 			file = files[_i];
+				// 			_this.addFile(file);
+				// 		}
+				// 	}
+				// });
+			};
+
+			// 获取总的文件数量
 			Dropzone.prototype.getAcceptedFiles = function() {
 				var file, _i, _len, _ref, _results;
 				_ref = this.files;
@@ -919,19 +800,6 @@
 				return _results;
 			};
 
-
-			Dropzone.prototype.destroy = function() {
-				var _ref;
-				this.disable();
-				this.removeAllFiles(true);
-				if ((_ref = this.hiddenFileInput) != null ? _ref.parentNode : void 0) {
-					this.hiddenFileInput.parentNode.removeChild(this.hiddenFileInput);
-					this.hiddenFileInput = null;
-				}
-				delete this.element.dropzone;
-				return Dropzone.instances.splice(Dropzone.instances.indexOf(this), 1);
-			};
-
 			// 这是什么 在哪用到
 			Dropzone.prototype.updateTotalUploadProgress = function() {
 				var activeFiles, file, totalBytes, totalBytesSent, totalUploadProgress, _i, _len, _ref;
@@ -960,118 +828,38 @@
 				}
 			};
 
-			// 不支持上传时生成的fallbackform
-			// Dropzone.prototype.getFallbackForm = function() {
-			// 	var existingFallback, fields, fieldsString, form;
-			// 	if (existingFallback = this.getExistingFallback()) {
-			// 		return existingFallback;
-			// 	}
-			// 	fieldsString = "<div class=\"mpdz-fallback\">";
-			// 	if (this.options.dictFallbackText) {
-			// 		fieldsString += "<p>" + this.options.dictFallbackText + "</p>";
-			// 	}
-			// 	fieldsString += "<input type=\"file\" name=\"" + (this._getParamName(0)) + "\" " + (this.options.uploadMultiple ? 'multiple="multiple"' : void 0) + " /><input type=\"submit\" value=\"Upload!\"></div>";
-			// 	fields = Dropzone.createElement(fieldsString);
-			// 	if (this.element.tagName !== "FORM") {
-			// 		form = Dropzone.createElement("<form action=\"" + this.options.url + "\" enctype=\"multipart/form-data\" method=\"" + this.options.method + "\"></form>");
-			// 		form.appendChild(fields);
-			// 	} else {
-			// 		this.element.setAttribute("enctype", "multipart/form-data");
-			// 		this.element.setAttribute("method", this.options.method);
-			// 	}
-			// 	return form != null ? form : fields;
-			// };
+			// 移除或者增加监听事件 active-photo-wrap的7个事件和droplink的click事件
+			// 合并了原来的setupEventListeners和removeEventListeners
+			// handler是move或者add
+			Dropzone.prototype.handlerEventListeners = function(handler){
+				var _row, _event, _events, listener, _i, _len, _ref;
+				_ref = this.listeners; // 需要监听的 在init函数里的this.listeners
+				for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+					_row = _ref[_i];
+					_events = _row.events;
+					for (_event in _events) {
+						listener = _events[_event];
+						if(handler === 'move'){
+							_row.element.removeEventListener(_event, listener, false);
+						} else {
+							_row.element.addEventListener(_event, listener, false);
+						}
+					}
+				}
+			}
 
-			// Dropzone('element',{}) 查找element子集的form 或者div 如果class含有fallback 那么就返回该element
-			// Dropzone.prototype.getExistingFallback = function() {
-			// 	var fallback, getFallback, tagName, _i, _len, _ref;
-			// 	getFallback = function(elements) {
-			// 		var el, _i, _len;
-			// 		for (_i = 0, _len = elements.length; _i < _len; _i++) {
-			// 			el = elements[_i];
-			// 			if (/(^| )fallback($| )/.test(el.className)) {
-			// 				return el;
-			// 			}
-			// 		}
-			// 	};
-			// 	_ref = ["div", "form"];
+			// // 停用
+			// Dropzone.prototype.disable = function() {
+			// 	var file, _i, _len, _ref, _results;
+			// 	this.handlerEventListeners('move');
+			// 	_ref = this.files;
+			// 	_results = [];
 			// 	for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-			// 		tagName = _ref[_i];
-			// 		if (fallback = getFallback(this.element.getElementsByTagName(tagName))) {
-			// 			return fallback;
-			// 		}
+			// 		file = _ref[_i];
+			// 		_results.push(this.cancelUpload(file));
 			// 	}
+			// 	return _results;
 			// };
-			// Dropzone('element',{}) 查找element子集的form 或者div 如果class含有fallback 那么就返回该element end
-
-			// 设置事件监听器 init方法中的listeners
-			Dropzone.prototype.setupEventListeners = function() {
-				var elementListeners, _event, listener, _i, _len, _ref, _results;
-				// _ref 是需要监听的clickable
-				_ref = this.listeners;
-				_results = [];
-				for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-					// elementListeners 是某个需要监听的, 共拖拽和点击7个函数
-					// 其中,不支持拖拽的时候，应该避开，避免引发异常
-					elementListeners = _ref[_i];
-					_results.push((function() {
-						var _ref1, _results1;
-						_ref1 = elementListeners.events;
-						_results1 = [];
-						for (_event in _ref1) {
-							listener = _ref1[_event];
-							_results1.push(elementListeners.element.addEventListener(_event, listener, false));
-						}
-						return _results1;
-					})());
-				}
-				return _results;
-			};
-
-			// 移除事件监听器
-			Dropzone.prototype.removeEventListeners = function() {
-				var elementListeners, event, listener, _i, _len, _ref, _results;
-				_ref = this.listeners;
-				_results = [];
-				for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-					elementListeners = _ref[_i];
-					_results.push((function() {
-						var _ref1, _results1;
-						_ref1 = elementListeners.events;
-						_results1 = [];
-						for (event in _ref1) {
-							listener = _ref1[event];
-							_results1.push(elementListeners.element.removeEventListener(event, listener, false));
-						}
-						return _results1;
-					})());
-				}
-				return _results;
-			};
-
-			// 停用
-			Dropzone.prototype.disable = function() {
-				var file, _i, _len, _ref, _results;
-				// this.clickableElements.forEach(function(element) {
-				// 	return element.classList.remove("mpdz-clickable");
-				// });
-				this.removeEventListeners();
-				_ref = this.files;
-				_results = [];
-				for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-					file = _ref[_i];
-					_results.push(this.cancelUpload(file));
-				}
-				return _results;
-			};
-
-			// 启用 所有可以触发上传的element都增加mpdz-clickable类
-			Dropzone.prototype.enable = function() {
-				// this.clickableElements.forEach(function(element) {
-				// 	return element.classList.add("mpdz-clickable");
-				// });
-				return this.setupEventListeners();
-			};
 
 			Dropzone.prototype.filesize = function(size) {
 				var string;
@@ -1209,8 +997,10 @@
 			};
 
 			Dropzone.prototype.accept = function(file, done) {
+				// 文件过大
 				if (file.size > this.options.maxFilesize * 1024 * 1024) {
 					return done(this.options.dictFileTooBig.replace("{{filesize}}", Math.round(file.size / 1024 / 10.24) / 100).replace("{{maxFilesize}}", this.options.maxFilesize));
+				// 无效文件
 				} else if (!Dropzone.isValidFile(file, this.options.acceptedFiles)) {
 					return done(this.options.dictInvalidFileType);
 				} else if ((this.options.maxFiles != null) && this.getAcceptedFiles().length >= this.options.maxFiles) {
@@ -1221,6 +1011,7 @@
 				}
 			};
 
+			// 添加文件
 			Dropzone.prototype.addFile = function(file) {
 				file.upload = {
 					progress: 0,
@@ -1229,8 +1020,8 @@
 				};
 				this.files.push(file);
 				file.status = Dropzone.ADDED;
-				this.emit("addedfile", file);
-				this._enqueueThumbnail(file);
+				// this.emit("addedfile", file);
+				
 				return this.accept(file, (function(_this) {
 					return function(error) {
 						if (error) {
@@ -1238,27 +1029,18 @@
 							_this._errorProcessing([file], error);
 						} else {
 							file.accepted = true;
-							if (_this.options.autoQueue) {
-								_this.enqueueFile(file);
-							}
+							_this.enqueueFile(file);
 						}
 						return _this._updateMaxFilesReachedClass();
 					};
 				})(this));
 			};
 
-			Dropzone.prototype.enqueueFiles = function(files) {
-				var file, _i, _len;
-				for (_i = 0, _len = files.length; _i < _len; _i++) {
-					file = files[_i];
-					this.enqueueFile(file);
-				}
-				return null;
-			};
-
 			// 进入队列的文件 enqueue入队
 			Dropzone.prototype.enqueueFile = function(file) {
 				if (file.status === Dropzone.ADDED && file.accepted === true) {
+					// 只有进入队列才可以生成缩略图
+					this._enqueueThumbnail(file);
 					file.status = Dropzone.QUEUED;
 					if (this.options.autoProcessQueue) {
 						return setTimeout(((function(_this) {
@@ -1278,6 +1060,13 @@
 
 			// 缩略图队列 添加到队列
 			Dropzone.prototype._enqueueThumbnail = function(file) {
+				
+				// // 大图处理
+				// file.largeElement = Dropzone.createElement(this.options.largeTemplate.trim());
+				// this.largeContainer.appendChild(file.largeElement);
+				// // 缩略图的处理
+				// file.thumbElement = Dropzone.createElement(this.options.thumbTemplate.trim());
+				// this.thumbContainer.appendChild(file.thumbElement);
 				// 配置创建缩略图为true并且类型匹配 并且文件小于配置最大数
 				if (this.options.createImageThumbnails && file.type.match(/image.*/) && file.size <= this.options.maxThumbnailFilesize * 1024 * 1024) {
 					this._thumbnailQueue.push(file);
@@ -1306,7 +1095,6 @@
 							} else {
 								resizeInfo = _this.options.resize.call(_this, file);
 							}
-							// resizeInfo = _this.options.resize.call(_this, file);
 							if (resizeInfo.trgWidth == null) {
 								resizeInfo.trgWidth = resizeInfo.optWidth;
 							}
@@ -1358,21 +1146,6 @@
 				if (this.files.length === 0) {
 					return this.emit("reset");
 				}
-			};
-
-			Dropzone.prototype.removeAllFiles = function(cancelIfNecessary) {
-				var file, _i, _len, _ref;
-				if (cancelIfNecessary == null) {
-					cancelIfNecessary = false;
-				}
-				_ref = this.files.slice();
-				for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-					file = _ref[_i];
-					if (file.status !== Dropzone.UPLOADING || cancelIfNecessary) {
-						this.removeFile(file);
-					}
-				}
-				return null;
 			};
 
 
@@ -1777,88 +1550,34 @@
 			return false;
 		};
 
-		// TODO 查找元素 找不到就抛异常 name
-		Dropzone.getElement = function(el, name) {
-			var element;
-			if (typeof el === "string") {
-				element = document.querySelector(el);
-			} else if (el.nodeType != null) {
-				element = el;
-			}
-			if (element == null) {
-				throw new Error("无效的 `" + name + "` 选项. 请提供一个CSS选择器或一个普通的HTML元素.");
-			}
-			return element;
-		};
-		// TODO 查找元素 找不到就抛异常 end
-
-		// TODO 可删除(因为需求不想区域可点击，需要指定某一个button点击触发) 查找一组元素 暂时只有clickable用到，如果clickable为true，那么element下面的所有元素都是可点击触发上传的
-		Dropzone.getElements = function(els, name) {
-			var e, el, elements, _i, _j, _len, _len1, _ref;
-			if (els instanceof Array) {
-				elements = [];
-				try {
-					for (_i = 0, _len = els.length; _i < _len; _i++) {
-						el = els[_i];
-						elements.push(this.getElement(el, name));
-					}
-				} catch (_error) {
-					e = _error;
-					elements = null;
-				}
-			} else if (typeof els === "string") {
-				elements = [];
-				_ref = document.querySelectorAll(els);
-				for (_j = 0, _len1 = _ref.length; _j < _len1; _j++) {
-					el = _ref[_j];
-					elements.push(el);
-				}
-			} else if (els.nodeType != null) {
-				elements = [els];
-			}
-			if (!((elements != null) && elements.length)) {
-				throw new Error("无效的 `" + name + "` 选项. 请提供一个CSS选择器, 一个普通的HTML元素或List.");
-			}
-			return elements;
-		};
-		// 查找一组元素 暂时只有clickable用到，如果clickable为true，那么element下面的所有元素都是可点击触发上传的
-
-		// 只有addfile 463行左右用到了
-		// Dropzone.confirm = function(question, accepted, rejected) {
-		//	 if (window.confirm(question)) {
-		//		 return accepted();
-		//	 } else if (rejected != null) {
-		//		 return rejected();
-		//	 }
-		// };
-
 		// 检查是否有效的文件
 		Dropzone.isValidFile = function(file, acceptedFiles) {
-			var baseMimeType, mimeType, validType, _i, _len;
-			if (!acceptedFiles) {
-				return true;
-			}
-			acceptedFiles = acceptedFiles.split(",");
-			mimeType = file.type;
-			baseMimeType = mimeType.replace(/\/.*$/, "");
-			for (_i = 0, _len = acceptedFiles.length; _i < _len; _i++) {
-				validType = acceptedFiles[_i];
-				validType = validType.trim();
-				if (validType.charAt(0) === ".") {
-					if (file.name.toLowerCase().indexOf(validType.toLowerCase(), file.name.length - validType.length) !== -1) {
-						return true;
-					}
-				} else if (/\/\*$/.test(validType)) {
-					if (baseMimeType === validType.replace(/\/.*$/, "")) {
-						return true;
-					}
-				} else {
-					if (mimeType === validType) {
-						return true;
-					}
-				}
-			}
-			return false;
+			return file.type.indexOf('image') !== -1;
+			// var baseMimeType, mimeType, validType, _i, _len;
+			// if (!acceptedFiles) {
+			// 	return true;
+			// }
+			// acceptedFiles = acceptedFiles.split(",");
+			// mimeType = file.type;
+			// baseMimeType = mimeType.replace(/\/.*$/, "");
+			// for (_i = 0, _len = acceptedFiles.length; _i < _len; _i++) {
+			// 	validType = acceptedFiles[_i];
+			// 	validType = validType.trim();
+			// 	if (validType.charAt(0) === ".") {
+			// 		if (file.name.toLowerCase().indexOf(validType.toLowerCase(), file.name.length - validType.length) !== -1) {
+			// 			return true;
+			// 		}
+			// 	} else if (/\/\*$/.test(validType)) {
+			// 		if (baseMimeType === validType.replace(/\/.*$/, "")) {
+			// 			return true;
+			// 		}
+			// 	} else {
+			// 		if (mimeType === validType) {
+			// 			return true;
+			// 		}
+			// 	}
+			// }
+			// return false;
 		};
 		// 检查是否有效的文件 end
 
