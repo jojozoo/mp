@@ -49,6 +49,18 @@
 .uploader .photo-container .photo-actions{position:relative;float:right;margin:30px 10px 0 0}
 .uploader .photo-container .photo-actions .remaining-photos{display:none}
 
+.uploader.loading .photo-container .active-photo-wrap input.browse_files{display:none}
+.uploader.loading .photo-container .active-photo-wrap .active-photo{display:none}
+.uploader.loading .photo-container .active-photo-wrap .loading-progress{display:table-cell}
+.uploader.loading .photo-container .active-photo-wrap .loading-progress .progress-bar{margin:100px auto;background-color:#f1f1f1}
+.uploader.loading .photo-container .active-photo-wrap .loading-progress .progress-bar:after{position:absolute;content:"正在上传.";font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;color:#9c9c9c;bottom:-25px;left:97px}
+.uploader.finishing .photo-container .active-photo-wrap input.browse_files{display:none}
+.uploader.finishing .photo-container .active-photo-wrap .active-photo{display:none}
+.uploader.finishing .photo-container .active-photo-wrap .finish-progress{display:table-cell}
+.uploader.finishing .photo-container .active-photo-wrap .finish-progress .progress-bar{margin:100px auto;background-color:#f1f1f1}
+.uploader.finishing .photo-container .active-photo-wrap .finish-progress .progress-bar:after{position:absolute;content:"正在提交.";font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;color:#9c9c9c;bottom:-25px;left:97px}
+
+
 .photo-details{display:none}
 .photo-details.active{display:block}
 .photo-details.active h4{color:#0099e5;font-size:14px;font-family:"Helvetica Neue",Helvetica Neue,Helvetica,Arial,sans-serif;font-weight:bold;text-transform:uppercase}

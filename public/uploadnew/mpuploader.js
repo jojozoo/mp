@@ -1061,12 +1061,12 @@
 			// 缩略图队列 添加到队列
 			Dropzone.prototype._enqueueThumbnail = function(file) {
 				
-				// // 大图处理
-				// file.largeElement = Dropzone.createElement(this.options.largeTemplate.trim());
-				// this.largeContainer.appendChild(file.largeElement);
-				// // 缩略图的处理
-				// file.thumbElement = Dropzone.createElement(this.options.thumbTemplate.trim());
-				// this.thumbContainer.appendChild(file.thumbElement);
+				// 大图处理
+				file.largeElement = Dropzone.createElement(this.options.largeTemplate.trim());
+				this.largeContainer.appendChild(file.largeElement);
+				// 缩略图的处理
+				file.thumbElement = Dropzone.createElement(this.options.thumbTemplate.trim());
+				this.thumbContainer.appendChild(file.thumbElement);
 				// 配置创建缩略图为true并且类型匹配 并且文件小于配置最大数
 				if (this.options.createImageThumbnails && file.type.match(/image.*/) && file.size <= this.options.maxThumbnailFilesize * 1024 * 1024) {
 					this._thumbnailQueue.push(file);

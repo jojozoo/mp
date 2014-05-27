@@ -1,35 +1,14 @@
 /*
-<!-- 基本状态：默认为登录、保持登录状态为默认选中 -->
-<a href="http://www.mp.com/p" class="popup-login">基本状态：默认为登录、保持登录状态为默认选中</a>
-<!--默认为登录、保持登录状态为默认不选中，成功跳转链接为job.mp.com -->    
-<a href="http://job.mp.com/" class="popup-login" data-checked="false" data-target="http://job.mp.com/">登录，默认不选中登录状态，成功跳转链接为job.mp.com</a>
-<!--默认为注册、保持登录状态为默认选中，注册成功后跳转至首页 -->    
-<a href="http://www.mp.com/home" class="popup-login" data-init="register" data-target="http://www.mp.com/home">默认为注册、保持登录状态为默认选中，注册成功后跳转至首页</a>
-<!--默认为注册、保持登录状态为默认不选中 -->    
-<a href="javascript:void(0);" class="popup-login" data-init="register" data-checked="false">默认为注册、保持登录状态为默认不选中</a>
-//可选属性列表：
-{
-    "data-checked": true,   //保持登录状态checkbox是否默认勾选，可选值：true|false，默认值：true
-    "data-init": "login",   //点击打开弹窗登录默认显示登录或者注册，可选值："login"|"register"，默认值："login"
-    "data-target": ""       //注册或登录后的跳转链接，默认为跳转回当前页，可指定任意URL，请以http开头
-}
+popup login
  */
- /*
 $(function() {
     var userLoginInfo = null;
-    var isIE6 = ($.browser.msie && $.browser.version == 6.0);
+    var isIE6 = false;
     var lastAccountValue = '';
     var targetLocation = window.location.href;
     var hostname = window.location.hostname;
     var passwordReg = /^\s*[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,16}\s*$/;
     var isJobPage = targetLocation.indexOf('job.mp.com') !== -1;
-    //GA检测
-    function addGaTrackEventNewHeader(ga_category, ga_action, ga_area) {
-        if (typeof _gaq == 'undefined') {
-            _gaq = [];
-        }
-        _gaq.push(['_trackEvent', ga_category, ga_action, ga_area]);
-    }
     //创建登录框
     //样式表
     window.popupFrameCreate = function(gotoPage, $obj) {
@@ -44,15 +23,16 @@ $(function() {
         var arrRegPlaceHolder = ['真实姓名', '邮箱/手机', '密码'];
         var arrDataPlaceHolder = $obj.attr('data-reg-placeholder') ? $obj.attr('data-reg-placeholder').split(',') : arrRegPlaceHolder;
         gotoPage = gotoPage || targetLocation;
+        gotoPage = encodeURI(gotoPage);
         //已经存在
         if ($('#mp-popup-login').length != 0) {
             frameShow();
         }
         //不存在，创建
         else {
-            var styleCode = '<style type="text/css">html {height: 100%;}#mp-popup-login,#mp-popup-login-outer-shade {width:640px;height:336px;position:fixed;background:#fff;left:50%;top:50%;margin-left:-320px;margin-top:-168px;z-index:9999999;_position:absolute;_margin-top:0;_top:0;}#mp-popup-login-outer-shade {width:650px;height:346px;border-radius:5px;background:#000;opacity:0.3;filter:alpha(opacity=30);margin-top:-173px;_margin-top:-5px;margin-left:-325px;z-index:9999998;}#mp-popup-login-shade {width:100%;height:100%;position:fixed;background:#000;z-index:9999997; opacity:0.45; filter:alpha(opacity=45); _position:absolute;top:0;left:0;}#mp-popup-login .pop-left,#mp-popup-login .pop-right {width:425px;height:335px;overflow:hidden;float:left;position:relative;}#mp-popup-login .pop-left .pop-left-con {position:absolute;left:0;top:0;}#mp-popup-login .pop-reg,#mp-popup-login .pop-login {width:385px;float:left;height:315px;padding-left:35px;padding-top:20px;overflow:hidden;}#mp-popup-login .pop-reg{display:none;}#mp-popup-login .pop-left-con ul li label,#mp-popup-login b.close,#mp-popup-login-btn,#mp-popup-reg-btn {background:url(http://image.mp.com/tjs/popup-login/images/pop-up-btns.png) no-repeat;*margin-left:8px;}#mp-popup-login .pop-left-con{width:255px;height:315px;}#mp-popup-login .pop-left-con h3 {font:normal 20px/50px "Microsoft Yahei","SimHei";color:#555;}#mp-popup-login .pop-left-con ul li {height:62px; font-size:12px;color:#d20000;position:relative;*left: -7px;}#mp-popup-login .pop-left-con ul li input.txt {height:35px;line-height:35px;border:1px solid #ddd;text-indent:8px;width:280px;outline:none;border-radius:3px;color:#999;overflow:hidden;}#mp-popup-login .pop-left-con ul li input.focus {border-color:#e55942;box-shadow:0 0 3px #ccc;}#mp-popup-login .pop-left-con ul li span.inputTip {position:absolute;top:12px;left:10px;color:#999;z-index:0;*left:15px;}#mp-popup-login .pop-left-con ul li label {margin-right:135px;*margin-left: 8px;color:#333;padding-left:20px;background-position:0 -28px;display:inline-block; height:20px;line-height:20px;_background-position:0 -30px;}#mp-popup-login .pop-left-con ul li label.checked {background-position:0 -66px;}#mp-popup-login .pop-left-con ul li a {color:#999;text-decoration:none;}#mp-popup-login .pop-left-con ul li a.fblue {color:#152f9f;}#mp-popup-login .pop-left-con .popup-error { padding:5px 0 3px 15px;background:url(http://www.mp.com/images/case1/login/false.jpg) 0 6px no-repeat;*margin-left:10px;}#mp-popup-login-btn,#mp-popup-reg-btn {width:126px;height:36px;cursor:pointer;background-position:0 -108px;border:none;vertical-align:middle;}#mp-popup-reg-btn {background-position:0 -164px;}#mp-popup-login .pop-right {background:#f8f8f8;width:215px}#mp-popup-login .pop-right .pop-right-con {font-size:12px; color:#999;text-align:center;padding-top:70px;}#mp-popup-login .pop-right a.weiboLogin{display:block; margin:15px auto 0; background:url(http://image.mp.com/tjs/popup-login/images/btn_weibologin.png) no-repeat; width:176px; height:44px;text-indent:-300px;overflow:hidden;}#mp-popup-login b.close {position:absolute;right:-15px;top:-15px;background-position:8px 8px;background-color:#5f5f5f;border-radius:13px;width:26px;height:26px;text-align:center;cursor:pointer;z-index:9999;display:block; *right:0; *top:0; right:0\0;top:0\0;}:root #mp-popup-login b.close {right:-15px;top:-15px;}#mp-popup-login b.close{_right:0;_top:0;} #mp-popup-login .pop-left-con ul li .h_length{position:absolute; width:43px; height:26px; top:6px; left:234px; text-align:center; color:#fff; line-height:26px; background:#df4949;}</style>';
+            var styleCode = '<style type="text/css"></style>';
             $('head').append(styleCode);
-            frameHtml += '<div id="mp-popup-login" data-target="' + gotoPage + '"><div class="pop-left"><div class="pop-left-con"><div class="pop-login"><h3>立即登录</h3><form method="post" action="http://www.mp.com/index/login" id="mp-pop-login-form"><ul><li><span class="inputTip">输入登录邮箱/手机号</span><input type="text" place-holder="正确邮箱或者手机号" name="account[email_or_mobile]" class="txt" regtype="email_mobile,notnull" id="mp-login-email_or_mobile" tabindex="100" /></li><li><span class="inputTip">输入登录密码</span><input type="password" place-holder="密码" name="account[password]" class="txt" regtype="notnull" maxlength="16" tabindex="101" /></li><li><input type="hidden" name="remember" /><input type="hidden" name="return_to" value="' + gotoPage + '" /><label class="checked">保持登录状态</label> <a href="http://www.mp.com/account/account_password_backs/new" class="get-back-password" target="_blank" title="找回密码">找回密码</a></li><li><input type="button" id="mp-popup-login-btn" class="mp-submit-btn" value="" tabindex="102" />　　　　<a href="http://www.mp.com/join" class="fblue reg-now" target="_blank">没有帐号，立即注册</a></li></ul></form></div><div class="pop-reg"><h3>' + regTitle + '</h3><form method="post" action="http://www.mp.com/account/accounts" id="mp-pop-reg-form"><ul><li><span class="inputTip">' + arrDataPlaceHolder[0] + '</span><input type="text" place-holder="真实姓名" name="account[name_native_display]" class="txt" regType="chinese,notnull" tabindex="200" /></li><li><span class="inputTip">' + arrDataPlaceHolder[1] + '</span><input type="text" place-holder="正确邮箱或者手机号" name="account[email_or_mobile]" class="txt" regtype="email_mobile,notnull" id="mp-reg-email_or_mobile" tabindex="201" /></li><li><span class="inputTip">' + arrDataPlaceHolder[2] + '</span><input type="password" place-holder="密码" name="account[password]" class="txt" regtype="notnull" maxlength="16" tabindex="202" /></li><li><input type="button" id="mp-popup-reg-btn" class="mp-submit-btn" value="" tabindex="203" />　　　　<a href="http://www.mp.com/join" class="fblue login-now" target="_blank">已有帐号，直接登录</a></li></ul><input type="hidden" name="landing_page" value="popup" /><input type="hidden" name="parameters" /><input type="hidden" name="keyword" /><input type="hidden" name="data-target" /></form></div></div></div><div class="pop-right"><div class="pop-right-con"><p>使用社交帐号登录</p><a href="http://www.mp.com/auth/weibo" class="weiboLogin" title="用新浪微博登录">用新浪微博登录</a></div></div><div style="clear:both;"></div><b class="close" title="关闭"></b></div><div id="mp-popup-login-outer-shade"></div><div id="mp-popup-login-shade"><iframe src="about:blank" border="0" frameborder="0" scrolling="no" style="width:100%;height:' + $(document).height() + 'px;background:transparent;"></iframe></div>';
+            frameHtml += '<div id="mp-popup-login" data-target="' + gotoPage + '"><div class="pop-left"><div class="pop-left-con"><div class="pop-login"><h3>立即登录</h3><form method="post" action="http://www.mp.com/index/login" id="mp-pop-login-form"><ul><li><span class="inputTip">输入登录邮箱/手机号</span><input type="text" place-holder="正确邮箱或者手机号" name="account[email_or_mobile]" class="txt" regtype="email_mobile,notnull" id="mp-login-email_or_mobile" tabindex="100" /></li><li><span class="inputTip">输入登录密码</span><input type="password" place-holder="密码" name="account[password]" class="txt" regtype="notnull" maxlength="16" tabindex="101" /></li><li><input type="hidden" name="remember" /><input type="hidden" name="return_to" value="' + gotoPage + '" /><label class="checked">保持登录状态</label> <a href="http://www.mp.com/account/account_password_backs/new" class="get-back-password" target="_blank" title="找回密码">找回密码</a></li><li><input type="button" id="mp-popup-login-btn" class="mp-submit-btn" value="" tabindex="102" />　　　　<a href="http://www.mp.com/join" class="fblue reg-now" target="_blank">没有帐号，立即注册</a></li></ul></form></div><div class="pop-reg"><h3>' + regTitle + '</h3><form method="post" action="http://www.mp.com/account/accounts" id="mp-pop-reg-form"><ul><li><span class="inputTip">' + arrDataPlaceHolder[0] + '</span><input type="text" place-holder="真实姓名" name="account[name_native_display]" class="txt" regType="chinese,notnull" tabindex="200" /></li><li><span class="inputTip">' + arrDataPlaceHolder[1] + '</span><input type="text" place-holder="正确邮箱或者手机号" name="account[email_or_mobile]" class="txt" regtype="email_mobile,notnull" id="mp-reg-email_or_mobile" tabindex="201" /></li><li><span class="inputTip">' + arrDataPlaceHolder[2] + '</span><input type="password" place-holder="密码" name="account[password]" class="txt" regtype="notnull" maxlength="16" tabindex="202" /></li><li><input type="button" id="mp-popup-reg-btn" class="mp-submit-btn" value="" tabindex="203" />　　　　<a href="http://www.mp.com/join" class="fblue login-now" target="_blank">已有帐号，直接登录</a></li></ul><input type="hidden" name="landing_page" value="popup" /><input type="hidden" name="parameters" /><input type="hidden" name="keyword" /><input type="hidden" name="data-target" /></form></div></div></div><div class="pop-right"><div class="pop-right-con"><p>使用社交帐号登录</p><a href="/oauth/weibo" class="weiboLogin" title="用新浪微博登录">用新浪微博登录</a></div></div><div style="clear:both;"></div><b class="close" title="关闭"></b></div><div id="mp-popup-login-outer-shade"></div><div id="mp-popup-login-shade"><iframe src="about:blank" border="0" frameborder="0" scrolling="no" style="width:100%;height:' + $(document).height() + 'px;background:transparent;"></iframe></div>';
             $('body').append(frameHtml);
             if (isIE6) {
                 $('#mp-popup-login,#mp-popup-login-outer-shade').css({
@@ -176,12 +156,10 @@ $(function() {
 
     //已有帐号立即登录
     $('body').on('click', '#mp-popup-login .login-now', function() {
-        addGaTrackEventNewHeader('Pop_up', 'GoToLogin', 'Register');
         return frameMove('#mp-popup-login .pop-reg', '#mp-popup-login .pop-login', 'login');
     });
     //没有帐号，转到注册
     $('body').on('click', '#mp-popup-login .reg-now', function() {
-        addGaTrackEventNewHeader('Pop_up', 'GoToRegister', 'Login');
         return frameMove('#mp-popup-login .pop-login', '#mp-popup-login .pop-reg', 'reg');
     });
 
@@ -216,6 +194,20 @@ $(function() {
         });
         return false;
     }
+    //cross domain
+    /*function getUserInfo($$) {
+        if ( !! $$) {
+            //用户信息
+            $$.ajax({
+                url: 'http://www.mp.com/front/nav/user',
+                success: function(data) {
+                    userLoginInfo = data;
+                },
+                rsync: false,
+                cache: false
+            });
+        }
+    }*/
     if ($('#crossdomain-iframe').length === 0 && !! hostname && hostname.indexOf('mp.com') != -1) {
         var config = {
             domain: hostname.substring(hostname.indexOf('.') + 1),
@@ -250,7 +242,9 @@ $(function() {
                     //getUserInfo(__$);
                 }
             }
-        }
+        }/* else {
+            getUserInfo($);
+        }*/
     }
     if (!window.__$) {
         window.__$ = $;
@@ -287,22 +281,12 @@ $(function() {
                                 $this.attr('disabled', false);
                             }, 2000);
                         } else {
-                            if (isJobPage) {
-                                addGaTrackEventNewHeader('JobPosition', 'Login', 'Apply');
-                            } else {
-                                addGaTrackEventNewHeader('Pop_up', 'Login', 'Login');
-                            }
                             //window.location.href = returnTarget;
                             $thisForm.submit();
                         }
                     }
                 });
             } else {
-                if (isJobPage) {
-                    addGaTrackEventNewHeader('JobPosition', 'Registration', 'Apply');
-                } else {
-                    addGaTrackEventNewHeader('Pop_up', 'Register', 'Register');
-                }
                 $('#mp-popup-login .pop-reg input[name="parameters"]').val(window.location.search.substring(1));
                 $thisForm.find('input[name="data-target"]').val(returnTarget);
                 if ($('meta[name="Keywords"]')) {
@@ -316,7 +300,7 @@ $(function() {
     $('body').on('click', '.popup-login', function() {
         var $this = $(this);
         __$.ajax({
-            url: 'http://www.mp.com/front/nav/user',
+            url: '/ajax/is_sign_in',
             success: function(data) {
                 if (!data['error']) {
                     if ($this.is('a')) {
@@ -362,10 +346,8 @@ $(function() {
                         popupFrameCreate(target, $this);
                         $('#mp-popup-login .pop-login').hide();
                         $('#mp-popup-login .pop-reg').show();
-                        addGaTrackEventNewHeader('notification_bar', 'GoToPopUp', 'Register');
                     } else {
                         popupFrameCreate(returnTarget, $this);
-                        addGaTrackEventNewHeader('notification_bar', 'GoToPopUp', 'Login');
                     }
                     if ($this.attr('data-checked') && $this.attr('data-checked') === 'false') {
                         $('#mp-popup-login .pop-left-con label').removeClass('checked');
@@ -378,15 +360,15 @@ $(function() {
             },
             cache: false
         });
-        __$.ajax({
-            url: 'http://www.mp.com/popup_signup_log',
-            type: 'post'
-        });
+        // __$.ajax({
+        //     url: 'http://www.mpwang.cn/popup_signup_log',
+        //     type: 'post'
+        // });
         return false;
     });
 
     //检测帐号是否存在
-    $('body').on('blur', 'input:[name="account[email_or_mobile]"]', function() {
+    $('body').on('blur', 'input[name="account[email_or_mobile]"]', function() {
         var $this = $(this),
             thisVal = $.trim($(this).val());
         if (thisVal !== '' && $this.next('div.popup-error').length == 0) {
@@ -398,7 +380,7 @@ $(function() {
                 },
                 statusCode: {
                     200: function() {
-                        $('input:[name="account[email_or_mobile]"]').prev('span.inputTip').hide().end().val($this.val()).next('div.popup-error').remove();
+                        $('input[name="account[email_or_mobile]"]').prev('span.inputTip').hide().end().val($this.val()).next('div.popup-error').remove();
                         if ($this.attr('id') === 'mp-login-email_or_mobile') {
                             if ($this.next('div.popup-error').length !== 0) {
                                 $this.next('div.popup-error').html('你所输入的帐号不存在，请 <a href="javascript:void(0);" class="fblue reg-now">注册</a>');
@@ -408,7 +390,7 @@ $(function() {
                         }
                     },
                     201: function() {
-                        $('input:[name="account[email_or_mobile]"]').prev('span.inputTip').hide().end().val($this.val()).next('div.popup-error').remove();
+                        $('input[name="account[email_or_mobile]"]').prev('span.inputTip').hide().end().val($this.val()).next('div.popup-error').remove();
                         if ($this.attr('id') === 'mp-reg-email_or_mobile') {
                             if ($this.next('div.popup-error').length !== 0) {
                                 $this.next('div.popup-error').html('该帐号已存在，请更换帐号或 <a href="javascript:void(0);" class="fblue login-now">登录</a>');
@@ -422,10 +404,6 @@ $(function() {
         }
     });
 
-    $('body').on('click', '#mp-popup-login .pop-right a.weiboLogin', function() {
-        addGaTrackEventNewHeader('Pop_up', 'GoToWeiboLogin', 'Weibologin');
-    });
-
     //自动弹出登录框
     $('.popup-login[data-auto-popup=true]').each(function() {
         $(this).trigger('click');
@@ -437,4 +415,3 @@ $(function() {
         return false;
     });
 });
-*/

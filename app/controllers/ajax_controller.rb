@@ -1,5 +1,11 @@
 class AjaxController < ApplicationController
 	before_filter :ajax_login
+
+    def is_sign_in
+        user = current_user
+        render json: { data: { id: user.id, name: user.username, avatar: user.avatar(:small) } }
+    end
+
     def tui
         @obj = params[:source].classify.constantize.find(params[:id])
         @obj.send('tui' + params[:push].pluralize).create(user_id: current_user.id)
@@ -76,7 +82,8 @@ class AjaxController < ApplicationController
 
     def ajax_login
         # 一个patial 弹出登录框
-        render js: "alert('请先登录')" and return unless sign_in?
+        # render js: "alert('请先登录')" and return unless sign_in?
+        render json: { error: 1 } and return unless sign_in?
     end
 	
 end

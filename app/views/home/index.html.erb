@@ -132,7 +132,7 @@
 <div class="row photos" id="container">
 	<%= render partial: 'photos/thumb', collection: @photos, as: :photo %>
 	<div id="page_loading" page="2" state="static" url="<%= waterfall_photos_path(order: params[:order]) %>">
-		<img src="/images/ajax-loader.gif">
+		<img src="/images/loading.gif">
 		<span>加载中...</span>
 	</div>
 </div>

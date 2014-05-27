@@ -3,19 +3,19 @@
  */
 
 .imgareaselect-border1 {
-	background: url(/uploadify/images/border-anim-v.gif) repeat-y left top;
+	background: url(/images/border-anim-v.gif) repeat-y left top;
 }
 
 .imgareaselect-border2 {
-    background: url(/uploadify/images/border-anim-h.gif) repeat-x left top;
+    background: url(/images/border-anim-h.gif) repeat-x left top;
 }
 
 .imgareaselect-border3 {
-    background: url(/uploadify/images/border-anim-v.gif) repeat-y right top;
+    background: url(/images/border-anim-v.gif) repeat-y right top;
 }
 
 .imgareaselect-border4 {
-    background: url(/uploadify/images/border-anim-h.gif) repeat-x left bottom;
+    background: url(/images/border-anim-h.gif) repeat-x left bottom;
 }
 
 .imgareaselect-border1, .imgareaselect-border2,
@@ -44,19 +44,19 @@
 /*
  * imgAreaSelect default style
 .imgareaselect-border1 {
-    background: url(/uploadify/images/border-v.gif) repeat-y left top;
+    background: url(/images/border-v.gif) repeat-y left top;
 }
 
 .imgareaselect-border2 {
-    background: url(/uploadify/images/border-h.gif) repeat-x left top;
+    background: url(/images/border-h.gif) repeat-x left top;
 }
 
 .imgareaselect-border3 {
-    background: url(/uploadify/images/border-v.gif) repeat-y right top;
+    background: url(/images/border-v.gif) repeat-y right top;
 }
 
 .imgareaselect-border4 {
-    background: url(/uploadify/images/border-h.gif) repeat-x left bottom;
+    background: url(/images/border-h.gif) repeat-x left bottom;
 }
 
 .imgareaselect-border1, .imgareaselect-border2,

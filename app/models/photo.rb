@@ -84,6 +84,8 @@ class Photo < ActiveRecord::Base
     big: "960x600>",
     thumb: '250>',
     cover: '250x160#',
+    iethumb: '>700',
+    iesmall: '>100',
     small: '100x100>'
   }
 

@@ -15,6 +15,7 @@ Mp::Application.routes.draw do
   get    '/profile'       => 'users#profile'
   get    '/pg/:id'        => 'users#pg', as: :pg # 摄影师地址
   get    '/search'        => 'search#index'
+  match '/ajax/is_sign_in'            => 'ajax#is_sign_in', via: :get, as: :ajax_is_sign_in # 验证登录
   match '/ajax/tui/:push/:source/:id' => 'ajax#tui', via: :post, as: :ajax_tui # 推
   match '/ajax/del/:source/:id'       => 'ajax#del', via: :post, as: :ajax_del # 删除
   match '/ajax/com/:source/:id'       => 'ajax#com', via: :post, as: :ajax_com # 评论

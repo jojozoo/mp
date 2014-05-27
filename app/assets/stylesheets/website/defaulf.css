@@ -308,14 +308,6 @@ hr{
     color: #CCCCCC;
     padding: 0px 7px;
 }
-#footer .footer_icon {
-    width: 34px;
-    height: 42px;
-    position: absolute;
-    right: 89px;
-    top: 40px;
-    _right: 100px;
-}
 .float_to{
 	position: fixed;
 	z-index: 50;
