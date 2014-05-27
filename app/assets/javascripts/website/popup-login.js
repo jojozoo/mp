@@ -7,8 +7,7 @@ $(function() {
     var lastAccountValue = '';
     var targetLocation = window.location.href;
     var hostname = window.location.hostname;
-    var passwordReg = /^\s*[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{6,16}\s*$/;
-    var isJobPage = targetLocation.indexOf('job.mp.com') !== -1;
+    var passwordReg = /^\s*[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{5,16}\s*$/;
     //创建登录框
     //样式表
     window.popupFrameCreate = function(gotoPage, $obj) {
@@ -19,8 +18,8 @@ $(function() {
             regNameTip = '',
             regAcountTip = '',
             regPassTip = '';
-        var regTitle = $obj.attr('data-reg-html') || '快速注册天际网';
-        var arrRegPlaceHolder = ['真实姓名', '邮箱/手机', '密码'];
+        var regTitle = $obj.attr('data-reg-html') || '快速注册漫拍网';
+        var arrRegPlaceHolder = ['帐号', '邮箱', '密码'];
         var arrDataPlaceHolder = $obj.attr('data-reg-placeholder') ? $obj.attr('data-reg-placeholder').split(',') : arrRegPlaceHolder;
         gotoPage = gotoPage || targetLocation;
         gotoPage = encodeURI(gotoPage);
@@ -32,7 +31,7 @@ $(function() {
         else {
             var styleCode = '<style type="text/css"></style>';
             $('head').append(styleCode);
-            frameHtml += '<div id="mp-popup-login" data-target="' + gotoPage + '"><div class="pop-left"><div class="pop-left-con"><div class="pop-login"><h3>立即登录</h3><form method="post" action="http://www.mp.com/index/login" id="mp-pop-login-form"><ul><li><span class="inputTip">输入登录邮箱/手机号</span><input type="text" place-holder="正确邮箱或者手机号" name="account[email_or_mobile]" class="txt" regtype="email_mobile,notnull" id="mp-login-email_or_mobile" tabindex="100" /></li><li><span class="inputTip">输入登录密码</span><input type="password" place-holder="密码" name="account[password]" class="txt" regtype="notnull" maxlength="16" tabindex="101" /></li><li><input type="hidden" name="remember" /><input type="hidden" name="return_to" value="' + gotoPage + '" /><label class="checked">保持登录状态</label> <a href="http://www.mp.com/account/account_password_backs/new" class="get-back-password" target="_blank" title="找回密码">找回密码</a></li><li><input type="button" id="mp-popup-login-btn" class="mp-submit-btn" value="" tabindex="102" />　　　　<a href="http://www.mp.com/join" class="fblue reg-now" target="_blank">没有帐号，立即注册</a></li></ul></form></div><div class="pop-reg"><h3>' + regTitle + '</h3><form method="post" action="http://www.mp.com/account/accounts" id="mp-pop-reg-form"><ul><li><span class="inputTip">' + arrDataPlaceHolder[0] + '</span><input type="text" place-holder="真实姓名" name="account[name_native_display]" class="txt" regType="chinese,notnull" tabindex="200" /></li><li><span class="inputTip">' + arrDataPlaceHolder[1] + '</span><input type="text" place-holder="正确邮箱或者手机号" name="account[email_or_mobile]" class="txt" regtype="email_mobile,notnull" id="mp-reg-email_or_mobile" tabindex="201" /></li><li><span class="inputTip">' + arrDataPlaceHolder[2] + '</span><input type="password" place-holder="密码" name="account[password]" class="txt" regtype="notnull" maxlength="16" tabindex="202" /></li><li><input type="button" id="mp-popup-reg-btn" class="mp-submit-btn" value="" tabindex="203" />　　　　<a href="http://www.mp.com/join" class="fblue login-now" target="_blank">已有帐号，直接登录</a></li></ul><input type="hidden" name="landing_page" value="popup" /><input type="hidden" name="parameters" /><input type="hidden" name="keyword" /><input type="hidden" name="data-target" /></form></div></div></div><div class="pop-right"><div class="pop-right-con"><p>使用社交帐号登录</p><a href="/oauth/weibo" class="weiboLogin" title="用新浪微博登录">用新浪微博登录</a></div></div><div style="clear:both;"></div><b class="close" title="关闭"></b></div><div id="mp-popup-login-outer-shade"></div><div id="mp-popup-login-shade"><iframe src="about:blank" border="0" frameborder="0" scrolling="no" style="width:100%;height:' + $(document).height() + 'px;background:transparent;"></iframe></div>';
+            frameHtml += '<div id="mp-popup-login" data-target="' + gotoPage + '"><div class="pop-left"><div class="pop-left-con"><div class="pop-login"><h3>立即登录</h3><form method="post" action="http://mpwang.cn/sign_in" id="mp-pop-login-form"><ul><li><span class="inputTip">输入帐号/邮箱/手机</span><input type="text" place-holder="正确帐号邮箱或手机" name="account[email_or_mobile]" class="txt" regtype="email_mobile,notnull" id="mp-login-email_or_mobile" tabindex="100" /></li><li><span class="inputTip">输入登录密码</span><input type="password" place-holder="密码" name="account[password]" class="txt" regtype="notnull" maxlength="16" tabindex="101" /></li><li><input type="hidden" name="remember" /><input type="hidden" name="return_to" value="' + gotoPage + '" /><label class="checked">保持登录状态</label> <a href="http://mpwang.cn/find_pwd" class="get-back-password" target="_blank" title="找回密码">找回密码</a></li><li><input type="button" id="mp-popup-login-btn" class="mp-submit-btn" value="" tabindex="102" />      <a href="http://mpwang.cn/sign_up" class="fblue reg-now" target="_blank">没有帐号，立即注册</a></li></ul></form></div><div class="pop-reg"><h3>' + regTitle + '</h3><form method="post" action="http://mpwang.cn/account/accounts" id="mp-pop-reg-form"><ul><li><span class="inputTip">' + arrDataPlaceHolder[0] + '</span><input type="text" place-holder="帐号" name="account[name_native_display]" class="txt" regType="chinese,notnull" tabindex="200" /></li><li><span class="inputTip">' + arrDataPlaceHolder[1] + '</span><input type="text" place-holder="正确邮箱" name="account[email_or_mobile]" class="txt" regtype="email_mobile,notnull" id="mp-reg-email_or_mobile" tabindex="201" /></li><li><span class="inputTip">' + arrDataPlaceHolder[2] + '</span><input type="password" place-holder="密码" name="account[password]" class="txt" regtype="notnull" maxlength="16" tabindex="202" /></li><li><input type="button" id="mp-popup-reg-btn" class="mp-submit-btn" value="" tabindex="203" /><a href="http://mpwang.cn/sing_in" class="fblue login-now" target="_blank">已有帐号，直接登录</a></li></ul><input type="hidden" name="landing_page" value="popup" /><input type="hidden" name="parameters" /><input type="hidden" name="keyword" /><input type="hidden" name="data-target" /></form></div></div></div><div class="pop-right"><div class="pop-right-con"><p>使用社交帐号登录</p><a href="/oauth/weibo" class="weiboLogin" title="用新浪微博登录">用新浪微博登录</a></div></div><div style="clear:both;"></div><b class="close" title="关闭"></b></div><div id="mp-popup-login-outer-shade"></div><div id="mp-popup-login-shade"><iframe src="about:blank" border="0" frameborder="0" scrolling="no" style="width:100%;height:' + $(document).height() + 'px;background:transparent;"></iframe></div>';
             $('body').append(frameHtml);
             if (isIE6) {
                 $('#mp-popup-login,#mp-popup-login-outer-shade').css({
@@ -199,7 +198,7 @@ $(function() {
         if ( !! $$) {
             //用户信息
             $$.ajax({
-                url: 'http://www.mp.com/front/nav/user',
+                url: 'http://mpwang.cn/front/nav/user',
                 success: function(data) {
                     userLoginInfo = data;
                 },
@@ -208,21 +207,21 @@ $(function() {
             });
         }
     }*/
-    if ($('#crossdomain-iframe').length === 0 && !! hostname && hostname.indexOf('mp.com') != -1) {
+    if ($('#crossdomain-iframe').length === 0 && !! hostname && hostname.indexOf('mpwang.cn') != -1) {
         var config = {
             domain: hostname.substring(hostname.indexOf('.') + 1),
-            crossDomainFrameUrl: 'http://www.mp.com/crossdomain.html',
+            crossDomainFrameUrl: 'http://mpwang.cn/crossdomain.html',
             crossDomainFrameId: 'crossdomain-iframe'
         };
-        if (hostname == 'mp.com') {
-            config.crossDomainFrameUrl = 'http://mp.com/crossdomain.html'
+        if (hostname == 'mpwang.cn') {
+            config.crossDomainFrameUrl = 'http://mpwang.cn/crossdomain.html'
         }
         var thisDomain = hostname.match(/[a-z]+/)[0];
         var ridDomain = config.crossDomainFrameUrl.match(/[a-z]+/g)[1];
         var crossDom;
         //set domain
-        if (hostname != 'www.mp.com' && hostname != 'mp.com') {
-            document.domain = 'mp.com';
+        if (hostname != 'www.mpwang.cn' && hostname != 'mpwang.cn') {
+            document.domain = 'mpwang.cn';
         }
         if (thisDomain != ridDomain) {
             var frame = document.createElement('iframe'),
@@ -269,7 +268,7 @@ $(function() {
                 __$.ajax({
                     dataType: "json",
                     type: "post",
-                    url: "http://www.mp.com/index/login",
+                    url: "http://mpwang.cn/index/login",
                     data: {
                         "account[email_or_mobile]": $thisForm.find('[name="account[email_or_mobile]"]').val(),
                         "account[password]": $thisForm.find('[name="account[password]"]').val()
@@ -342,7 +341,7 @@ $(function() {
                         }
                     }
                     if ($this.attr('data-init') && $this.attr('data-init') === 'register') {
-                        var target = returnTarget || 'http://www.mp.com/home';
+                        var target = returnTarget || 'http://mpwang.cn/home';
                         popupFrameCreate(target, $this);
                         $('#mp-popup-login .pop-login').hide();
                         $('#mp-popup-login .pop-reg').show();
@@ -361,7 +360,7 @@ $(function() {
             cache: false
         });
         // __$.ajax({
-        //     url: 'http://www.mpwang.cn/popup_signup_log',
+        //     url: 'http://mpwang.cn/popup_signup_log',
         //     type: 'post'
         // });
         return false;
@@ -373,7 +372,7 @@ $(function() {
             thisVal = $.trim($(this).val());
         if (thisVal !== '' && $this.next('div.popup-error').length == 0) {
             __$.ajax({
-                url: 'http://www.mp.com/validators/account_unique',
+                url: 'http://mpwang.cn/validators/account_unique',
                 type: 'get',
                 data: {
                     email_or_mobile: $this.val()

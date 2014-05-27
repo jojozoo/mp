@@ -2,11 +2,11 @@
 	<h4>登录漫拍网，看精致图片</h4>
 	<hr>
 	<div class="form-group <%= 'has-error' if @errors[:username].present? %>">
-		<input type="text" class="form-control" id="username" name="username" placeholder="帐号/邮箱/手机" value="<%= params[:username] %>">
+		<input type="text" class="form-control" id="username" name="username" placeholder="输入帐号/邮箱/手机" value="<%= params[:username] %>">
 		<p class="help-block"><%= @errors[:username] %></p>
 	</div>
 	<div class="form-group <%= 'has-error' if @errors[:password].present? %>">
-		<input type="password" name= "password" class="form-control" id="password" placeholder="密码">
+		<input type="password" name= "password" class="form-control" id="password" placeholder="输入登录密码">
 		<p class="help-block"><%= @errors[:password] %></p>
 	</div>
 	<input type="submit" value="登录漫拍" id="submit-push" class="btn btn-info btn-block">
@@ -26,10 +26,10 @@
 	<h4>注册漫拍网，分享精致图片</h4>
 	<hr>
 	<div class="form-group">
-		<%= f.text_field :username, class: 'form-control', placeholder: '汉字/字母/数字/下划线组成' %>
+		<%= f.text_field :username, class: 'form-control', placeholder: '账号' %>
 	</div>
 	<div class="form-group">
-		<%= f.email_field :email, class: 'form-control', placeholder: '5-32位长度的邮箱地址' %>
+		<%= f.email_field :email, class: 'form-control', placeholder: '邮箱' %>
 	</div>
 	<div class="form-group">
 		<%= f.password_field :password, class: 'form-control', placeholder: '密码' %>
