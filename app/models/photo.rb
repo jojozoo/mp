@@ -81,11 +81,11 @@ class Photo < ActiveRecord::Base
 
   # 必须要在 public/images/water/目录存在相对应key的水印图
   Water = {
-    big: "960x600>",
+    big: "1140x>", # 根据bootstrap最宽
     thumb: '250>',
     cover: '250x160#',
-    iethumb: '>700',
-    iesmall: '>100',
+    ielarge: 'x700',
+    iethumb: 'x100',
     small: '100x100>'
   }
 
@@ -221,13 +221,15 @@ class Photo < ActiveRecord::Base
       # 'gps_time_stamp'          => 'gps_time_stamp',
       'gps_img_direction_ref'     => 'GPS图像方向参考',
       'gps_img_direction'         => 'GPS图像方向'
-    }
-    EXIFLETH = ['make', 'model', 'date_time', 'exposure_time', 'gps_latitude', 'gps_longitude']
+    }.symbolize_keys!
+    EXIFLETH = ['model', 'les', 'focal_length', 'shutter_speed_value', 'aperture_value', 'iso_speed_ratings', 'date_time', 'gps_latitude', 'gps_longitude'].map(&:to_sym)
+    EXIFREVERT = {
 
+    }
     def load_exif
       original_filename = picture.original_filename
       attachment        = picture.queued_for_write[:original].path # picture.path
-      self.exif = begin
+      exif = begin
           hash = case original_filename
           when /\.(jpg|jpeg)$/i
               EXIFR::JPEG.new(attachment).to_hash
@@ -253,7 +255,14 @@ class Photo < ActiveRecord::Base
           hash
       rescue
           {}
-      end.to_json
+      end
+      # 根据字符串转换成当地时间javascript
+      exif = exif.slice(*EXIFLETH)
+      Water.keys.each do |item|
+        w, h = Paperclip::Geometry.from_file(picture.queued_for_write[item].path).to_s.split("x") rescue ['', '']
+        exif.merge!("#{item}_width".to_sym => w, "#{item}_height" => h )
+      end
+      self.exif = exif.to_json
       self.wh = Paperclip::Geometry.from_file(picture.queued_for_write[:thumb].path).to_s rescue '250x160'
     end
 

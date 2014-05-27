@@ -26,14 +26,18 @@ $(function(){
             'fileTypeExts'    : '*.gif; *.jpg; *.png; *.jpeg',          //允许的后缀
             'fileTypeDesc'    : 'Image Files',                          //允许的格式，详见文档
             'itemTemplate'    : '',
-            'onUploadStart'   : function(){
-                // console.log('start');
+            onDialogClose     : function(queueData){
+                // 更新总量
+                $(".drag-info").hide().parents(".uploader").addClass("loading").find(".wheels-bar .total-wheel").text(queueData.filesQueued);
             },
-            'onUploadComplete': function(){
-                // console.log('onUploadComplete');
+            onUploadStart     : function(){
+                console.log('start');
             },
-            'onUploadSuccess' : function(file, data, response) {        //上传成功后的触发事件
-                // console.log('success');
+            onUploadComplete  : function(){
+                console.log('onUploadComplete');
+            },
+            onUploadSuccess   : function(file, data, response) {        //上传成功后的触发事件
+                console.log('success');
             }
         });
     }; // 判断是否需要初始化upload end

@@ -34,7 +34,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					buttonText      : 'SELECT FILES',     // The text to use for the browse button
 					checkExisting   : false,              // The path to a server-side script that checks for existing files on the server
 					debug           : false,              // Turn on swfUpload debugging mode
-					fileObjName     : 'Filedata',         // The name of the file object to use in your server-side script
+					fileObjName     : 'filedata',         // The name of the file object to use in your server-side script
 					fileSizeLimit   : 0,                  // The maximum size of an uploadable file in KB (Accepts units B KB MB GB if string, 0 for no limit)
 					fileTypeDesc    : 'All Files',        // The description for file types in the browse dialog
 					fileTypeExts    : '*.*',              // Allowed extensions in the browse dialog (server-side validation should also be used)
@@ -57,24 +57,24 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					// Events
 					overrideEvents  : []             // (Array) A list of default event handlers to skip
 					/*
-					onCancel         // Triggered when a file is cancelled from the queue
-					onClearQueue     // Triggered during the 'clear queue' method
-					onDestroy        // Triggered when the uploadify object is destroyed
-					onDialogClose    // Triggered when the browse dialog is closed
-					onDialogOpen     // Triggered when the browse dialog is opened
-					onDisable        // Triggered when the browse button gets disabled
-					onEnable         // Triggered when the browse button gets enabled
-					onFallback       // Triggered is Flash is not detected    
-					onInit           // Triggered when Uploadify is initialized
-					onQueueComplete  // Triggered when all files in the queue have been uploaded
-					onSelectError    // Triggered when an error occurs while selecting a file (file size, queue size limit, etc.)
-					onSelect         // Triggered for each file that is selected
+					onCancel         // 当一个文件被从队列中取消触发Triggered when a file is cancelled from the queue
+					onClearQueue     // '清除队列“方法时 Triggered during the 'clear queue' method
+					onDestroy        // uploadify对象被销毁时 Triggered when the uploadify object is destroyed
+					onDialogClose    // 浏览对话框关闭 Triggered when the browse dialog is closed
+					onDialogOpen     // 打开浏览对话框时 Triggered when the browse dialog is opened
+					onDisable        // 浏览按钮被禁用时 Triggered when the browse button gets disabled
+					onEnable         // 浏览按钮被启用时 Triggered when the browse button gets enabled
+					onFallback       // 闪光灯未检测到时 Triggered is Flash is not detected    
+					onInit           // Uploadify初始化时 Triggered when Uploadify is initialized
+					onQueueComplete  // 在队列中的所有文件已被上传 Triggered when all files in the queue have been uploaded
+					onSelectError    // 当同时选择一个文件（文件大小，队列的大小限制等）发生错误 Triggered when an error occurs while selecting a file (file size, queue size limit, etc.)
+					onSelect         // 被选中的每个文件 Triggered for each file that is selected
 					onSWFReady       // Triggered when the SWF button is loaded
 					onUploadComplete // Triggered when a file upload completes (success or error)
-					onUploadError    // Triggered when a file upload returns an error
-					onUploadSuccess  // Triggered when a file is uploaded successfully
-					onUploadProgress // Triggered every time a file progress is updated
-					onUploadStart    // Triggered immediately before a file upload starts
+					onUploadError    // 当一个文件上传返回一个错误 Triggered when a file upload returns an error
+					onUploadSuccess  // 当一个文件被成功上传 Triggered when a file is uploaded successfully
+					onUploadProgress // 当一个文件的进展更新时间 Triggered every time a file progress is updated
+					onUploadStart    // 当一个文件上传开始前 Triggered immediately before a file upload starts
 					*/
 				}, options);
 
@@ -238,13 +238,15 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 		},
 
-		// Stop a file upload and remove it from the queue 
+		// 停止一个文件的上传和从队列中删除
+		// 没有调用的机会
 		cancel : function(fileID, supressEvent) {
 
 			var args = arguments;
 
 			this.each(function() {
 				// Create a reference to the jQuery DOM object
+				// 创建一个引用到jQuery的DOM对象
 				var $this        = $(this),
 					swfuploadify = $this.data('uploadify'),
 					settings     = swfuploadify.settings,
@@ -308,6 +310,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 		},
 
 		// Revert the DOM object back to its original state
+		// 恢复DOM对象恢复到原来的状态
 		destroy : function() {
 
 			this.each(function() {
@@ -518,7 +521,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			var settings = this.settings;
 
 			// Reset some queue info
-			this.queueData.errorMsg       = 'Some files were not added to the queue:';
+			this.queueData.errorMsg       = '一些文件不能添加到队列:';
 			this.queueData.filesReplaced  = 0;
 			this.queueData.filesCancelled = 0;
 
@@ -527,6 +530,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 		},
 
 		// Triggered when the browse dialog is closed
+		// 当浏览对话框关闭触发
 		onDialogClose :  function(filesSelected, filesQueued, queueLength) {
 			// Load the swfupload settings
 			var settings = this.settings;

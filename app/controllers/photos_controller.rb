@@ -108,12 +108,13 @@ class PhotosController < ApplicationController
     def upload
         redirect_to '/' and return unless sign_in?
 
-        @image = current_user.photos.create(picture: params[:Filedata], name: params[:Filename])
+        @image = current_user.photos.create(picture: params[:filedata], name: params[:filename])
         data = {
-                time: @image.created_at.to_s(:db),
-                url: @image.picture(:cover),
-                id: @image.id
-            }
+            id: @image.id, 
+            exif: exif, 
+            large: @image.picture(:ielarge), 
+            thumb: @image.picture(:iethumb)
+        }
         render json: data.to_json
     end
 

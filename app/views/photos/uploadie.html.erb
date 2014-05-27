@@ -20,6 +20,14 @@
 		<div class="active-photo-wrap" style="height: 230px;">
 			<div class="loading-progress">
 				<div class="progress-bar-wrap">
+					<div class="wheels-bar">
+						<img src="/images/loading.gif">
+						<span>
+							<strong class="curr-wheel">0</strong>
+							/
+							<strong class="total-wheel">0</strong>
+						</span>
+					</div>
 					<div class="ui progress-bar">
 						<span class="area green" style="width: 88%;"></span>
 						<span class="label"></span>
@@ -42,22 +50,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="upload-menu-queue" class="uploadify-queue">
-				<div class="uploadify-queue-loading">
-					<img src="/images/loading.gif">
-				</div>
-				<div id="SWFUpload_0_1" class="uploadify-queue-item">
-					<div class="cancel">
-						<a href="javascript:$('#upload-menu').uploadify('cancel', 'SWFUpload_0_1')">X</a>
-					</div>
-					<span class="fileName">IMG_0087.JPG (2MB)</span>
-					<span class="data">上传成功</span>
-					<div class="uploadify-progress">
-						<div class="uploadify-progress-bar" style="width: 100%;">		
-						</div>
-					</div>
-				</div>
-			</div>
+			<div id="upload-menu-queue" class="uploadify-queue"></div>
 
 			<div class="drag-info">
 				<h1>拖动您的照片到这</h1>

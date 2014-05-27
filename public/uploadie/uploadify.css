@@ -3,20 +3,12 @@ Uploadify
 Copyright (c) 2012 Reactive Apps, Ronnie Garcia
 Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
-.gkimg{
-	border-right: 1px solid #ccc;
-	min-height:300px;
-	position:relative;
-}
-.gkimg .uploadify-queue{
-	width: 300px;
+.uploadify-queue{
+	/*width: 300px;
 	height: 50px;
 	position: absolute;
-	bottom: 0;
-}
-.gkimg .uploadify-queue > .uploadify-queue-item{
-	height: auto;
-	position: static;
+	bottom: 0;*/
+	display: none;
 }
 .uploadify {
 	position: relative;
@@ -70,4 +62,15 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	background-color: #0099FF;
 	height: 3px;
 	width: 1px;
+}
+
+.wheels-bar{
+	text-align: center;
+	margin: 0 0 -70px 0;
+}
+.wheels-bar img{
+	margin: 0 250px 0 0;
+}
+.wheels-bar span{
+	display:inline-block;font-weight: bold;font-size: 40px;
 }
