@@ -111,7 +111,7 @@ class PhotosController < ApplicationController
         @image = current_user.photos.create(picture: params[:filedata], name: params[:filename])
         data = {
             id: @image.id, 
-            exif: exif, 
+            exif: @image.exif, 
             large: @image.picture(:ielarge), 
             thumb: @image.picture(:iethumb)
         }

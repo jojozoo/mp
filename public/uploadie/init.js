@@ -27,8 +27,20 @@ $(function(){
             'fileTypeDesc'    : 'Image Files',                          //允许的格式，详见文档
             'itemTemplate'    : '',
             onDialogClose     : function(queueData){
-                // 更新总量
-                $(".drag-info").hide().parents(".uploader").addClass("loading").find(".wheels-bar .total-wheel").text(queueData.filesQueued);
+                var sum = queueData.queueLength;
+                if(sum > 0){
+                    // 更新总量 TODO [2014-05-28 00:35:24] ERROR invalid body size.
+                    $(".uploader").addClass("loading").find(".wheels-bar .total-wheel").text(sum);
+                    document.getElementById("upload-menu").style.width = 80;
+                    document.getElementById("upload-menu-button").style.width = 80;
+                    document.getElementById("SWFUpload_0").width = 80;
+
+                    $("#upload-menu-button a").attr("class", "button submit").text("继续上传");
+                    // 把按钮挪到继续上传上去
+                    var uploadMenu = document.getElementById('upload-menu');
+                    // uploadMenu.remove();
+                    // $(".button.submit").replaceWith(uploadMenu);
+                }
             },
             onUploadStart     : function(){
                 console.log('start');
