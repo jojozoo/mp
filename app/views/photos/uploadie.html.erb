@@ -1,10 +1,18 @@
 <link href="/uploadnew/ok.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
 <link href="/uploadnew/okn.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
 <link href="/uploadie/uploadify.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
-
+<link href="/uploadie/jcrop.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	var albumId, albumName, requestId, requestName;
+	albumId     = "<%= @album.try(:id) %>";
+	albumName   = "<%= @album.try(:name) %>";
+	requestId   = "<%= @request.try(:id) %>";
+	requestName = "<%= @request.try(:name) %>";
+</script>
 <script type="text/javascript" src="/uploadie/swfobject.js?v=<%= Time.now.to_i %>"></script>
 <script type="text/javascript" src="/uploadie/swfupload.js?v=<%= Time.now.to_i %>"></script>
 <script type="text/javascript" src="/uploadie/uploadify.js?v=<%= Time.now.to_i %>"></script>
+<script type="text/javascript" src="/uploadie/jcrop.js?v=<%= Time.now.to_i %>"></script>
 <script type="text/javascript" src="/uploadie/init.js?v=<%= Time.now.to_i %>"></script>
 
 
@@ -22,17 +30,18 @@
 				<div class="progress-bar-wrap">
 					<div class="wheels-bar">
 						<img src="/images/loading.gif">
+						<span class="wheel-bar-filename"></span>
 						<span>
-							<strong class="curr-wheel">0</strong>
+							<strong class="curr-wheel">1</strong>
 							/
-							<strong class="total-wheel">0</strong>
+							<strong class="total-wheel"></strong>
 						</span>
 					</div>
 					<div class="ui progress-bar">
-						<span class="area green" style="width: 88%;"></span>
+						<span class="area green"></span>
 						<span class="label"></span>
 						<span class="percentage">
-							<span class="value">88</span>
+							<span class="value">0</span>
 							<small>%</small>
 						</span>
 					</div>
@@ -50,13 +59,21 @@
 					</div>
 				</div>
 			</div>
-			<div id="upload-menu-queue" class="uploadify-queue"></div>
-
+			<div id="flashMenu-queue" class="uploadify-queue">
+				<div id="SWFUpload_0_9" class="uploadify-queue-item">
+					<span class="fileName">IMG_0329.JPG (4MB)</span>
+					<span class="data"></span>
+					<div class="uploadify-progress">
+						<div class="uploadify-progress-bar">
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="drag-info">
 				<h1>拖动您的照片到这</h1>
 				<p class="browser-not-supported"></p>
 				<div class="action_buttons">
-					<a id="upload-menu" class="button browse_files action" href="javascript:void(0);">上传照片</a>
+					<a class="button browse_files action" href="javascript:void(0);">上传照片</a>
 				</div>
 			</div>
 			<div class="active-photo"></div>
@@ -68,9 +85,7 @@
 		</div>
 		<div class="photo-actions">
 			<div class="remaining-photos">
-				<p>
-					还可以再上传20张照片
-				</p>
+				<p>还可以再上传20张照片</p>
 			</div>
 			<input class="button remove" type="submit" value="删除本张">
 			<input class="button submit" type="submit" value="继续上传">
@@ -84,11 +99,11 @@
 					<label class="ui small-badge" for="photo-name">编辑</label>
 					<div class="photo-title">
 						<input class="ui large-textfield bind-photo-name" id="photo-name" name="name" placeholder="Untitled Photo" type="text" disabled="disabled"></div>
-					<div class="photo-category">
+					<div class="photo-request">
 						<h4 class="disabled">活动</h4>
 						<label class="ui select-label">
-							<select class="ui select bind-photo-category" id="photo-category" name="category" disabled="disabled">
-								<option value="10">Abstract</option>
+							<select class="ui select bind-photo-request" id="photo-request" name="request" disabled="disabled">
+								<option>选择活动</option>
 							</select>
 							<span class="ui select-arrow"></span>
 						</label>
@@ -105,7 +120,8 @@
 						<div class="place_selection_creation_wrap">
 							<div class="place_selection_wrap">
 								<label class="ui select-label">
-									<select class="ui select bind-photo-place_in" id="photo-place_in" name="place_in" disabled="disabled">
+									<select class="ui select bind-photo-album" id="photo-album" name="album" disabled="disabled">
+										<option>选择相册</option>
 										<option class="library" value="library">Library (private)</option>
 										<option class="proifle" value="profile">Profile (public)</option>
 									</select>

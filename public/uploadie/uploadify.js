@@ -144,7 +144,9 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 						'class' : 'uploadify',
 						'css'   : {
 									'height'   : settings.height + 'px',
-									'width'    : settings.width + 'px'
+									'width'    : settings.width + 'px',
+									'top'      : $(".button.browse_files.action").offset().top + 'px',
+									'left'     : $(".button.browse_files.action").offset().left + 'px'
 								  }
 					});
 					// 此处产生一个swf的请求
@@ -165,8 +167,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 							'text-indent'      : '-9999px'
 						});
 					}
-					$button.html('<a class="button browse_files action" href="javascript:void(0);">' + settings.buttonText + '</a>')
-					.css({
+					$button.html('<a href="javascript:void(0);">' + settings.buttonText + '</a>').css({
 						'height'      : settings.height + 'px',
 						'line-height' : settings.height + 'px',
 						'width'       : settings.width + 'px'
@@ -664,7 +665,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					case SWFUpload.QUEUE_ERROR.ZERO_BYTE_FILE:
 						this.queueData.errorMsg += '\nThe file "' + file.name + '" is empty.';
 						break;
-					case SWFUpload.QUEUE_ERROR.FILE_EXCEEDS_SIZE_LIMIT:
+					case SWFUpload.QUEUE_ERROR.INVALID_FILETYPE:
 						this.queueData.errorMsg += '\nThe file "' + file.name + '" is not an accepted file type (' + settings.fileTypeDesc + ').';
 						break;
 				}
@@ -679,6 +680,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 
 		// Triggered when all the files in the queue have been processed
 		onQueueComplete : function() {
+
 			if (this.settings.onQueueComplete) this.settings.onQueueComplete.call(this, this.settings.queueData);
 		},
 
@@ -823,6 +825,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 		},
 
 		// Triggered periodically during a file upload
+		// 更新上传进度
 		onUploadProgress : function(file, fileBytesLoaded, fileTotalBytes) {
 			// Load the swfupload settings
 			var settings = this.settings;
@@ -857,7 +860,10 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			
 			// Call the default event handler
 			if ($.inArray('onUploadProgress', settings.overrideEvents) < 0) {
+				
 				if (settings.progressData == 'percentage') {
+					$(".loading-progress .area.green").css("width", percentage + '%');
+					$(".loading-progress .percentage .value").text(percentage);
 					$('#' + file.id).find('.data').html(' - ' + percentage + '%');
 				} else if (settings.progressData == 'speed' && lapsedTime > 500) {
 					$('#' + file.id).find('.data').html(' - ' + this.queueData.averageSpeed + suffix);

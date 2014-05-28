@@ -4,21 +4,25 @@ Copyright (c) 2012 Reactive Apps, Ronnie Garcia
 Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
 .uploadify-queue{
-	/*width: 300px;
-	height: 50px;
-	position: absolute;
-	bottom: 0;*/
 	display: none;
 }
 .uploadify {
-	position: relative;
+	position: absolute;
+	left: 0;
+	top: 0;
 	display: inline-block;
 }
 .uploadify-button {
 	/*透明或者白色*/
-	background-color: #fff;
-	color: #FFF;
+	/*background-color: #fff;*/
+	/*color: #FFF;*/
 	text-align: center;
+	position: absolute;
+	left: 0px;
+}
+.uploadify-button a{
+	position: absolute;
+	left: 0;
 }
 .uploadify:hover .uploadify-button .button.browse_files.action {
 	background-color:#09bdfd;
@@ -69,8 +73,15 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 	margin: 0 0 -70px 0;
 }
 .wheels-bar img{
-	margin: 0 250px 0 0;
+	margin: 0 90px 0 0;
 }
 .wheels-bar span{
 	display:inline-block;font-weight: bold;font-size: 40px;
+}
+.wheels-bar span.wheel-bar-filename{
+	font-size: 14px;
+	margin: auto 100px auto auto;
+	width: 80px;
+	min-height: 10px;
+	_min-height: 10px;
 }
