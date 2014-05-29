@@ -52,7 +52,6 @@ Mpupload.initExif = function(id){
     var details = $(Mpupload.photo_details).appendTo(".edit-container").removeClass("disabled").attr("data-pid", id);
     for(var key in Mpupload.serviceClientHash){
         var v = exif[key];
-        console.log(key + v);
         details.find("#photo-"+Mpupload.serviceClientHash[key]+"").val(v);
     }
     
@@ -130,7 +129,6 @@ $(function(){
                 $(".wheel-bar-filename").text(file.name);
             },
             onUploadComplete  : function(file){
-                console.log(Mpupload);
                 // 
                 $(".loading-progress .area.green").css("width", '0%');
                 $(".loading-progress .percentage .value").text(0);
@@ -144,11 +142,9 @@ $(function(){
                 if(this.queueData.queueLength === 0){
                     $(".uploader").removeClass("loading").find(".wheels-bar .total-wheel").text(0);
                 }
-                console.log(Mpupload);
             },
             onUploadSuccess   : function(file, data, response) {        //上传成功后的触发事件
                 data = JSON.parse(data);
-                console.log(data);
                 Mpupload.length = Mpupload.length + 1;
                 Mpupload.currentId = data.id;
                 Mpupload.queue[data.id] = data.exif;
@@ -173,5 +169,4 @@ $(function(){
 });
 
 Mpupload.crop = function(){
-    console.log(1);
 }
