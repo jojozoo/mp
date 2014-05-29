@@ -16,7 +16,13 @@ class ApplicationController < ActionController::Base
   end
 
   def must_login
-    redirect_to '/sign_in' unless sign_in?
+    unless sign_in?
+      if request.xhr?
+        # 弹登录框
+      else
+        redirect_to root_path(m: 'sign_in', redirect: request.url)
+      end and return
+    end
   end
 
   def current_user

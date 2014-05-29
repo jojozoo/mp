@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   # TODO 有些bug 如登录不成功 或者注册时的验证
   def index
     redirect_to home_path if sign_in?
+    session[:url] = params[:redirect] if params[:redirect].present?
     @errors = {}
   end
 
@@ -20,7 +21,7 @@ class SessionsController < ApplicationController
       redirect_to root_path(m: 'sign_in')
     end
     set_sign_in_flag(@user.id)
-    redirect_to root_path
+    redirect_to session.delete(:url) || home_path
   end
 
   # GET /sign_up 注册

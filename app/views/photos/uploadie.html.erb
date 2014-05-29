@@ -3,11 +3,12 @@
 <link href="/uploadie/uploadify.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
 <link href="/uploadie/jcrop.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-	var albumId, albumName, requestId, requestName;
+	var albumId, albumName, requestId, requestName, cookieSK;
 	albumId     = "<%= @album.try(:id) %>";
 	albumName   = "<%= @album.try(:name) %>";
 	requestId   = "<%= @request.try(:id) %>";
 	requestName = "<%= @request.try(:name) %>";
+	cookieSK    = "<%= cookies['_mp_session'] %>";
 </script>
 <script type="text/javascript" src="/uploadie/swfobject.js?v=<%= Time.now.to_i %>"></script>
 <script type="text/javascript" src="/uploadie/swfupload.js?v=<%= Time.now.to_i %>"></script>
@@ -92,182 +93,6 @@
 			<input class="button action finish" type="submit" value="完成上传"></div>
 	</div>
 	<div class="edit-container">
-		<div class="photo-details active disabled">
-			<div class="wrapper clearfix">
-				<div class="exif">
-					<h4 class="disabled">标题</h4>
-					<label class="ui small-badge" for="photo-name">编辑</label>
-					<div class="photo-title">
-						<input class="ui large-textfield bind-photo-name" id="photo-name" name="name" placeholder="Untitled Photo" type="text" disabled="disabled"></div>
-					<div class="photo-request">
-						<h4 class="disabled">活动</h4>
-						<label class="ui select-label">
-							<select class="ui select bind-photo-request" id="photo-request" name="request" disabled="disabled">
-								<option>选择活动</option>
-							</select>
-							<span class="ui select-arrow"></span>
-						</label>
-					</div>
-					<div class="place-photo">
-						<h4 class="disabled">相册</h4>
-						<div class="create_new_set_wrap">
-							<label class="ui small-badge create-new-set" for="photo-create_new_set">创建相册</label>
-						</div>
-						<div class="confirm_new_set_wrap">
-							<label class="ui small-badge confirm-new-set active" for="photo-confirm_new_set">创建</label>
-							<label class="ui small-badge next-badge cancel-new-set" for="photo-cancel_new_set">取消</label>
-						</div>
-						<div class="place_selection_creation_wrap">
-							<div class="place_selection_wrap">
-								<label class="ui select-label">
-									<select class="ui select bind-photo-album" id="photo-album" name="album" disabled="disabled">
-										<option>选择相册</option>
-										<option class="library" value="library">Library (private)</option>
-										<option class="proifle" value="profile">Profile (public)</option>
-									</select>
-									<span class="ui select-arrow"></span>
-								</label>
-							</div>
-							<div class="set_name_field_wrap">
-								<div class="set_name_field">
-									<div class="error_wrap"></div>
-									<input placeholder="相册名称..." type="text" disabled="disabled"></div>
-								<div class="cf"></div>
-							</div>
-						</div>
-					</div>
-					<div class="photo-exif">
-						<h4 class="disabled">
-							<span class="translation_missing" title="translation missing: en.v3.upload.photo_details.exif">Exif</span>
-						</h4>
-						<div class="set_defaults_wrap">
-							<label class="ui small-badge set-defaults" for="photo-set_default">使用这些默认值</label>
-						</div>
-						<div class="metadata">
-							<div class="labels">
-								<label>
-									型号
-									<input class="ui small-invisible-textfield bind-photo-camera" id="photo-camera" name="camera" placeholder="Set Camera" type="text" disabled="disabled"></label>
-								<label>
-									镜头
-									<input class="ui small-invisible-textfield bind-photo-lens" id="photo-lens" name="lens" placeholder="Set Lens" type="text" disabled="disabled"></label>
-								<label>
-									焦距
-									<input class="ui small-invisible-textfield bind-photo-focal_length" id="photo-focal_length" name="focal_length" placeholder="Set Focal Length" type="text" disabled="disabled"></label>
-								<label>
-									快门速度
-									<input class="ui small-invisible-textfield bind-photo-shutter_speed" id="photo-shutter_speed" name="shutter_speed" placeholder="Set Shutter Speed" type="text" disabled="disabled"></label>
-								<label>
-									光圈
-									<input class="ui small-invisible-textfield bind-photo-aperture" id="photo-aperture" name="aperture" placeholder="Set Aperture" type="text" disabled="disabled"></label>
-								<label>
-									ISO
-									<input class="ui small-invisible-textfield bind-photo-iso" id="photo-iso" name="iso" placeholder="Set ISO" type="text" disabled="disabled"></label>
-								<label>
-									拍摄时间
-									<input class="ui small-invisible-textfield bind-photo-taken_at" id="photo-taken_at" name="taken_at" placeholder="Set Date (dd/mm/yyyy)" type="text" disabled="disabled"></label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="description">
-					<div class="description-field">
-						<h4 class="disabled">描述</h4>
-						<textarea class="ui textarea bind-photo-description" cols="70" id="photo-description" name="description" placeholder="照片描述" disabled="disabled"></textarea>
-					</div>
-					<div class="license-select">
-						<div>
-							<h4 class="disabled">授权声明</h4>
-							<div class="license-icon icons-licenses_0"></div>
-							<div class="clear"></div>
-						</div>
-						<div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant0" name="user[warrant]" value="0" disabled="disabled">
-								<label for="warrant0">
-									<span class="cc-1"></span>
-									<span class="cc-2"></span>
-									<span class="cc-3"></span>
-									<span class="cc-h">署名-非商业使用-禁止演绎</span>
-								</label>
-							</div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant1" name="user[warrant]" value="1" disabled="disabled">
-								<label for="warrant1">
-									<span class="cc-1"></span>
-									<span class="cc-2"></span>
-									<span class="cc-4"></span>
-									<span class="cc-h">署名-非商业使用-相同方式共享</span>
-								</label>
-							</div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant2" name="user[warrant]" value="2" disabled="disabled">
-								<label for="warrant2">
-									<span class="cc-1"></span>
-									<span class="cc-2"></span>
-									<span class="cc-5"></span>
-									<span class="cc-h">署名-非商业使用</span>
-								</label>
-							</div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant3" name="user[warrant]" value="3" disabled="disabled">
-								<label for="warrant3">
-									<span class="cc-1"></span>
-									<span class="cc-3"></span>
-									<span class="cc-5"></span>
-									<span class="cc-h">署名-禁止演绎</span>
-								</label>
-							</div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant4" name="user[warrant]" value="4" disabled="disabled">
-								<label for="warrant4">
-									<span class="cc-1"></span>
-									<span class="cc-4"></span>
-									<span class="cc-5"></span>
-									<span class="cc-h">署名-相同方式共享</span>
-								</label>
-							</div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant5" name="user[warrant]" value="5" checked="checked" disabled="disabled">
-								<label for="warrant5">
-									<span class="cc-1"></span>
-									<span class="cc-5"></span>
-									<span class="cc-5"></span>
-									<span class="cc-h">署名</span>
-								</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="map">
-					<div class="tag-textfield">
-						<h4 class="disabled">标签</h4>
-						<div class="tag-tip">
-							标签作为关键词可以被搜索到
-						</div>
-						<div class="tag-count">最多3个, 还剩3个</div>
-						<div class="tags_field_wrap">
-							<div class="tags_input_wrap">
-								<div class="tag_field">
-									<input placeholder="添加标签让照片更容易找到..." type="text" autocomplete="off" disabled="disabled"></div>
-							</div>
-							<div class="cf"></div>
-						</div>
-						<div class="tag-changyong">
-							<% Tag.order('sum desc').limit(25).each do |tag| %>
-								<%= link_to tag.name, "javascript:void(0);", class: 'disabled' %>
-							<% end %>
-						</div>
-						<div class="tags_autocompletion_wrap" style="display: none;"></div>
-					</div>
-					<div class="geotagging">
-						<h4 class="disabled">坐标</h4>
-						<div class="map-wrapper">
-							<div class="maplet disabled_map_image"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		<%= render 'details' %>
 	</div>
 </div>

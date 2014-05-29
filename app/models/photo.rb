@@ -239,7 +239,9 @@ class Photo < ActiveRecord::Base
           else
               {}
           end
-
+          [:date_time_digitized, :date_time_original, :exposure_time, :date_time].each do |time|
+            hash[time] = hash[time].to_time.to_s(:db) rescue nil
+          end
           if hash[:gps_latitude].present? and hash[:gps_longitude].present?
             lat = hash[:gps_latitude]
             log = hash[:gps_longitude]
@@ -256,6 +258,7 @@ class Photo < ActiveRecord::Base
       rescue
           {}
       end
+      ap exif
       # 根据字符串转换成当地时间javascript
       exif = exif.slice(*EXIFLETH)
       Water.keys.each do |item|

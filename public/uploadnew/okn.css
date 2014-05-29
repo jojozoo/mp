@@ -4,6 +4,7 @@
 	padding:0 50px 50px 50px;*/
 	min-height:100%;
 	width:100%;
+	min-height: 100px;
 	height:auto}
 .uploader .edit-container:before,.uploader .edit-container:after{content:"\0020";display:block;height:0;overflow:hidden}
 .uploader .edit-container:after{clear:both}
@@ -149,7 +150,7 @@
 .photo-details.active .wrapper .map .geotagging h4{margin:29px 0 0 0}
 .photo-details.active .wrapper .map .geotagging .map-wrapper{position:relative;height:262px;width:392px;margin:20px 0 0 0}
 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet{height:100%;width:392px}
-.photo-details.active .wrapper .map .geotagging .map-wrapper .maplet.disabled_map_image{background:url(/uploadnew/disabled_map.jpg) no-repeat center}
+.photo-details.active .wrapper .map .geotagging .map-wrapper .maplet.hidden_map_image{background:url(/uploadnew/disabled_map.jpg) no-repeat center}
 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet .leaflet-control-mapbox-geocoder-results a{text-align:left}
 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet .leaflet-control-mapbox-geocoder-results span{display:none}
 

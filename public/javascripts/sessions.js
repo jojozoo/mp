@@ -44,7 +44,7 @@ $(function(){
 		});
 	});
 
-	$(".background").css({width: document.body.scrollWidth, height: document.body.scrollHeight});
+	$(".background").css({width: window.screen.width, height: window.outerHeight});
 	// window.screen.width
 	// window.outerHeight
 	// window.screenTop

@@ -1,46 +1,13 @@
 class PhotosController < ApplicationController
+    before_filter :must_login, only: [:new, :upload, :uploadnew, :uploadie, :create]
     def index
-
-        # params[:time]
-        # mine
-        # params[:o] = {
-        #     id desc最新上传
-        #     updated_at desc,
-        #     recommend_at desc,
-        #     coms_count desc,
-        #     random asc
-        #     liks_count
-
-        # }
-        # params[:q] = {
-        #     recommend,
-        #     choice
-        #     event_id
-        #     user_id
-        #     tag
-        # }
-
         # 如果含有request_id就不显示活动名称 如果含有user_id 把喜欢和收藏换成删除编辑按钮
-
         @photos = load_data
     end
-
+    # loading 把load_data挪到这里来
     def waterfall
         @photos = load_data
         render 'waterfall', layout: false
-    end
-
-    def load_data
-        params[:order] = params[:order] || 'push'
-        con, order = {
-            'news'   => [{}, 'id desc'],
-            'likes'  => [{}, 'liks_count desc'],
-            'push'   => [{recommend: true}, 'recommend_at desc'],
-            'hot'    => [{}, 'coms_count desc'],
-            'choice' => [{choice: true}, 'choice_at desc'],
-            'random' => [{}, 'randomhex desc'] # TODO 缺少算法
-        }[params[:order]]
-        Photo.where(state: true).where(con).paginate(:page => params[:page], per_page: 12).order(order)
     end
 
     def star
@@ -64,7 +31,6 @@ class PhotosController < ApplicationController
     end
     
     def new
-        redirect_to photos_path, notice: '请先登录' and return unless sign_in?
         # TODO 应该加上event_id 或者 album_id 索引条件
         @photos = current_user.photos.where(state: false, del: false)
         unless @event  = Event.ongoing.find_by_id(params[:eid])
@@ -73,11 +39,9 @@ class PhotosController < ApplicationController
     end
 
     def uploadnew
-        
     end
 
     def uploadie
-        
     end
 
     def create
@@ -106,8 +70,6 @@ class PhotosController < ApplicationController
     end
 
     def upload
-        render json: {error: 1} and return unless sign_in?
-
         @photo = current_user.photos.create(picture: params[:filedata], name: params[:filename])
         data = {
             id: @photo.id, 
@@ -120,5 +82,20 @@ class PhotosController < ApplicationController
 
     def destroy
 
+    end
+
+    private
+
+    def load_data
+        params[:order] = params[:order] || 'push'
+        con, order = {
+            'news'   => [{}, 'id desc'],
+            'likes'  => [{}, 'liks_count desc'],
+            'push'   => [{recommend: true}, 'recommend_at desc'],
+            'hot'    => [{}, 'coms_count desc'],
+            'choice' => [{choice: true}, 'choice_at desc'],
+            'random' => [{}, 'randomhex desc'] # TODO 缺少算法
+        }[params[:order]]
+        Photo.where(state: true).where(con).paginate(:page => params[:page], per_page: 12).order(order)
     end
 end
