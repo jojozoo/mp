@@ -258,7 +258,7 @@ class Photo < ActiveRecord::Base
       rescue
           {}
       end
-      ap exif
+      # ap exif
       # 根据字符串转换成当地时间javascript
       exif = exif.slice(*EXIFLETH)
       Water.keys.each do |item|
