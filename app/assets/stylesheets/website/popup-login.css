@@ -158,16 +158,29 @@ html {
     font-size:12px;
     color:#999;
     text-align:center;
-    padding-top:70px;
+    padding-top:40px;
 }
-#mp-popup-login .pop-right a.weiboLogin {
-    display:block;
-    margin:15px auto 0;
-    background:url(/images/btn_weibologin.png) no-repeat;
+#mp-popup-login .pop-right a{
+    display: block;
+    margin: 15px auto 0;
+    background-image: url(/images/thumb-login.png);
+    background-repeat: no-repeat;
     width:176px;
     height:44px;
     text-indent:-300px;
     overflow:hidden;
+}
+#mp-popup-login .pop-right a.qzoneLogin {
+    background-position: 0px 0px;
+}
+#mp-popup-login .pop-right a.weiboLogin {
+    background-position: 0px -44px;
+}
+#mp-popup-login .pop-right a.renrenLogin {
+    background-position: 0px -88px;
+}
+#mp-popup-login .pop-right a.doubanLogin {
+    background-position: 0px -132px;
 }
 #mp-popup-login b.close {
     opacity: 0.8;

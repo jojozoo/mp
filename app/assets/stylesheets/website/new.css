@@ -8,7 +8,7 @@ opacity: 0.9;
 filter: alpha(opacity=90);
 }*/
 .thumbnail a{
-	text-decoration: none;
+    text-decoration: none;
 }
 .photo:hover .details .rating {
     opacity:1;
@@ -48,8 +48,7 @@ filter: alpha(opacity=90);
     background:center center no-repeat;
     -webkit-background-size:20px 20px;
     background-size:20px 20px;
-    margin-left:1px;
-    cursor:pointer;
+    /*margin-left:1px;*/
     display:inline-block;
     width:40px;
     height:40px;
@@ -63,29 +62,29 @@ filter: alpha(opacity=90);
     position:relative;
     cursor:pointer
 }
- .photo .buttons .action:hover,  .photo .buttons .action.hover {
-    background-color:rgba(34, 34, 34, 0.4)
+ .photo .buttons .action:hover, .photo .buttons .action.hover {
+    background-color:rgba(34, 34, 34, 0.4);
 }
- .photo .buttons .action:hover .icon-heart,  .photo .buttons .action.hover .icon-heart {
+ .photo .buttons .action:hover .icon-heart, .photo .buttons .action.hover .icon-heart {
     top:-15px;
     opacity:0;
 }
-.photo .buttons .action:hover .icon-star,  .photo .buttons .action.hover .icon-star {
+.photo .buttons .action:hover .icon-star,   .photo .buttons .action.hover .icon-star {
     top:-15px;
     opacity:0;
 }
- .photo .buttons .action:hover .count,  .photo .buttons .action.hover .count {
+ .photo .buttons .action:hover .count, .photo .buttons .action.hover .count {
     top:0px;
     opacity:1;
 }
-.photo .buttons .action.like.active,  .photo .buttons .action.like.active:hover {
+.photo .buttons .action.like.active, .photo .buttons .action.like.active:hover {
     background-color:#02adea;
 }
-.photo .buttons .action.star.active,  .photo .buttons .action.star.active:hover {
+.photo .buttons .action.star.active, .photo .buttons .action.star.active:hover {
     background-color:#02adea;
 }
 /*点喜欢后*/
- .photo .buttons .action.favorite.active,  .photo .buttons .action.favorite.active:hover {
+ .photo .buttons .action.favorite.active, .photo .buttons .action.favorite.active:hover {
     background-color:#ff4c4c;
 }
  .photo .buttons .action.active {
@@ -93,11 +92,11 @@ filter: alpha(opacity=90);
     -ms-animation:pulse 0.6s 0.15s ease-in-out;
     animation:pulse 0.6s 0.15s ease-in-out;
 }
- .photo .buttons .action.animate .icon,  .photo .buttons .action.animate:hover .icon {
+ .photo .buttons .action.animate .icon, .photo .buttons .action.animate:hover .icon {
     top:0px;
     opacity:1 !important;
 }
- .photo .buttons .action.animate .count,  .photo .buttons .action.animate:hover .count {
+ .photo .buttons .action.animate .count,    .photo .buttons .action.animate:hover .count {
     top:15px;
     opacity:0 !important;
 }
@@ -131,8 +130,7 @@ filter: alpha(opacity=90);
 
 
 .photo .buttons .facebook {
-    /*background: rgba(34, 34, 34, 0.2) url("/images/share_icon.png") no-repeat -29px 10px;*/
-    background-image:url("/images/facebook.svg");
+    background-image:url("/images/thumb-icon.png");
 }
  .photo .buttons .twitter {
     background-image:url("/images/twitter.svg");
