@@ -14,11 +14,11 @@ class SessionsController < ApplicationController
     @errors = {}
     if @user.blank?
       @errors[:username] = "请输入正确的帐号/邮箱/手机"
-      redirect_to root_path(m: 'sign_in')
+      redirect_to root_path(m: 'sign_in') and return
     end
     unless @user.valid_password?(params[:password])
       @errors[:password] = "密码错误"
-      redirect_to root_path(m: 'sign_in')
+      redirect_to root_path(m: 'sign_in') and return
     end
     set_sign_in_flag(@user.id)
     redirect_to session.delete(:url) || home_path
@@ -34,9 +34,9 @@ class SessionsController < ApplicationController
     @user.avatar = begin if params[:avatar].present?
         open(URI.parse(params[:avatar])) rescue nil
       else
-        # avatar_path = "/tmp/#{SecureRandom.hex(20)}.jpg"
-        # avatar_name = params[:user][:username].last
-        # system("convert -size 300x300 -background '#269abc' -fill '#fff' -font public/fonts/zh.ttf -pointsize 300 -gravity center label:'#{avatar_name}' #{avatar_path}")
+        avatar_path = "/tmp/#{SecureRandom.hex(20)}.jpg"
+        avatar_name = params[:user][:username].last
+        system("convert -size 300x300 -background '#269abc' -fill '#fff' -font public/fonts/zh.ttf -pointsize 300 -gravity center label:'#{avatar_name}' #{avatar_path}")
         File.open(avatar_path)
       end
     rescue => e

@@ -1,4 +1,4 @@
-<div class="photo-details active disabled">
+<div class="photo-details active disabled" data-pid="">
 	<div class="wrapper clearfix">
 		<div class="exif">
 			<h4 class="disabled">标题</h4>
@@ -150,19 +150,48 @@
 					标签作为关键词可以被搜索到
 				</div>
 				<div class="tag-count">最多3个, 还剩3个</div>
-				<div class="tags_field_wrap">
+				<div class="tags_field_wrap focused ac_attached">
 					<div class="tags_input_wrap">
+						<div class="tag" data-cid="c540">
+							<div class="name" data-bind="name">wood</div>
+							<div class="remove">×</div>
+						</div>
 						<div class="tag_field">
-							<input placeholder="添加标签让照片更容易找到..." type="text" autocomplete="off" disabled="disabled" style="width:380px;">
+							<input placeholder="添加标签让照片更容易找到..." type="text" autocomplete="off" disabled="disabled" style="width:320px;">
 						</div>
 					</div>
 					<div class="cf"></div>
+				</div>
+				<div class="tags_autocompletion_wrap" style="width: 392px; display: block;">
+					<div class="tag_suggestion first">
+						<span class="matched" data-bind="tag_matched">wo</span><span data-bind="tag_remaining">man</span>
+					</div>
+					<div class="tag_suggestion">
+						<span class="matched" data-bind="tag_matched">wo</span><span data-bind="tag_remaining"></span>
+					</div>
+					<div class="tag_suggestion_separator">
+						<div class="separator_hline"></div>
+						<span>热门标签</span>
+					</div>
+					<div class="tag_suggestion selected">
+						<span class="matched" data-bind="tag_matched">wo</span><span data-bind="tag_remaining">od</span>
+					</div>
+					<div class="tag_suggestion">
+						<span class="matched" data-bind="tag_matched">wo</span><span data-bind="tag_remaining">men</span>
+					</div>
+					<div class="tag_suggestion">
+						<span class="matched" data-bind="tag_matched">wo</span><span data-bind="tag_remaining">ods</span>
+					</div>
+					<div class="tag_suggestion last">
+						<span class="matched" data-bind="tag_matched">wo</span><span data-bind="tag_remaining">rld</span>
+					</div>
 				</div>
 				<div class="tag-changyong">
 					<% Tag.order('sum desc').limit(25).each do |tag| %>
 						<%= link_to tag.name, "javascript:void(0);", class: 'disabled' %>
 					<% end %>
 				</div>
+				<div class="tags_autocompletion_wrap" style="display: none;"></div>
 			</div>
 			<div class="geotagging">
 				<h4 class="disabled">坐标</h4>

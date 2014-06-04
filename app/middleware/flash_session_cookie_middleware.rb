@@ -7,7 +7,8 @@ class FlashSessionCookieMiddleware
   end 
 
   def call(env)
-    if env["REQUEST_PATH"] == "/photos/upload" # env['HTTP_USER_AGENT'] =~ /^(Adobe|Shockwave) Flash/
+    # if env["REQUEST_PATH"] == "/photos/upload" # 
+    if env['HTTP_USER_AGENT'] =~ /^(Adobe|Shockwave) Flash/
       # Rails.logger.debug "===== (before frozen) env['HTTP_COOKIE']: #{env['HTTP_COOKIE'].inspect}"
       req = Rack::Request.new(env)
       unless req.params[@session_key].nil?

@@ -11,6 +11,7 @@ Mp::Application.routes.draw do
   get    '/forgotdb'      => 'sessions#forgotdb'
   get    '/findpwd'       => 'sessions#findpwd'
   post   '/findpwd'       => 'sessions#findpwd'
+  get    '/tags'          => 'home#tags', as: :tags
 
   get    '/profile'       => 'users#profile'
   get    '/pg/:id'        => 'users#pg', as: :pg # 摄影师地址

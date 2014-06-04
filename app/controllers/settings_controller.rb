@@ -15,8 +15,8 @@ class SettingsController < ApplicationController
 
     def avatar
         if request.post?
-            current_user.update_attributes!(avatar: params[:filedata])
-            width, height = Paperclip::Geometry.from_file(current_user.avatar.path).to_s.split('x').map(&:to_i) rescue [300, 300]
+            current_user.update_attributes!(avatar: params[:Filedata])
+            width, height = Paperclip::Geometry.from_file(current_user.avatar.path).to_s.split('x').map(&:to_i)# rescue [300, 300]
             data = {
                 width: width,
                 height: height,

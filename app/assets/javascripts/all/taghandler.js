@@ -242,7 +242,7 @@ along with this program.  If not, see < http://www.gnu.org/licenses/ >.
                 // input field
                 tagContainerObject.addClass(opts.className + "Container");
                 if (opts.allowEdit) {
-                    tagContainerObject.html('<li class="tagInput"><input class="tagInputField form-control" type="text" /></li>');
+                    tagContainerObject.html('<li class="tagInput"><input class="tagInputField" type="text" placeholder="添加标签让照片更容易找到..." /></li>');
                 }
                 var inputField = tagContainerObject.find(".tagInputField");
 
@@ -542,11 +542,11 @@ along with this program.  If not, see < http://www.gnu.org/licenses/ >.
         debug: false,
         delimiter: '',
         getData: {},
-        getURL: '',
+        getURL: '/tags',
         initLoad: true,
         maxTags: 0,
         minChars: 0,
-        msgNoNewTag: "You don't have permission to create a new tag.",
+        msgNoNewTag: "您没有权限创建一个新的标签.",
         msgError: "There was an error getting the tag list.",
         onAdd: {},
         onDelete: {},
