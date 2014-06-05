@@ -82,11 +82,10 @@ class Photo < ActiveRecord::Base
   # 必须要在 public/images/water/目录存在相对应key的水印图
   Water = {
     big: "1140x>", # 根据bootstrap最宽
-    thumb: '250>',
-    cover: '250x160#',
+    thumb: '255>',
+    cover: '255x255#',
     ielarge: 'x700',
-    iethumb: 'x100',
-    small: '100x100>'
+    iethumb: 'x100'
   }
 
   has_attached_file :picture,

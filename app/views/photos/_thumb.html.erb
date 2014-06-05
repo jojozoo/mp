@@ -6,6 +6,7 @@
                 <a class="action share renren"></a>
                 <a class="action share douban"></a>
             </div>
+            <% if sign_in? %>
             <div class="states">
                 <a class="action state like">
                     <span class="iconheart"></span>
@@ -16,6 +17,7 @@
                     <span class="count">20</span>
                 </a>
             </div>
+            <% end %>
         </div>
         <%= link_to image_tag(photo.picture(:thumb), wh: photo.wh), photo_path(photo), target: '_blank' %>
         <div class="details">

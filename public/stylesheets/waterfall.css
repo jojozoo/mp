@@ -1,11 +1,5 @@
-.mp-photos{
-    margin: auto;
-    position: relative;
-}
 .mp-photos .mp-photo{
-    margin: 0 10px 10px 0;
-    display: inline-block;
-    position: relative;
+    margin: 0 0 10px 0;
 }
 .mp-photos .mp-photo a{
     text-decoration: none;
@@ -15,7 +9,7 @@
 .mp-photos .mp-photo img {
     width:100%;
     height:100%;
-    display:inline-block;
+    display:block;
 }
 .mp-photos .mp-photo:hover .details .inside-right {
     opacity:1;
