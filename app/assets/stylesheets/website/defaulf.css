@@ -221,9 +221,6 @@ textarea.form-control{
 .main{
 	margin: 10px auto 0;
 }
-body > .container {
-    width: 90%;
-}
 .col-md-9{
     padding-right: 0;
 }

@@ -1,10 +1,10 @@
 var container;
+var mpPhotos  = document.getElementById("mp-photos");
+var totalWidth = mpPhotos.offsetWidth;
+var colRow = 4; // 几列
+var gutterWidth = 5; // 间距
+var itemWidth = (totalWidth - 30 - ((colRow - 1) * gutterWidth)) / colRow;
 function initMasonry(){
-	var mpPhotos  = document.getElementById("mp-photos");
-	var totalWidth = mpPhotos.offsetWidth;
-	var colRow = 4; // 几列
-	var gutterWidth = 5; // 间距
-	var itemWidth = (totalWidth - 30 - ((colRow - 1) * gutterWidth)) / colRow;
 	$("#mp-photo-sidenav").css({width: itemWidth - 20});
 	var url = $("#page_loading").attr('url');
 	$.ajax( {
@@ -92,7 +92,7 @@ $(function(){
 					var img       = $(row).find('img[wh]').attr('wh').split('x');
 						imgWidth  = parseInt(img[0] || 250),
 						imgHeight = parseInt(img[1] || 160),
-						eleWidth  = Math.round((container.width() / 4) - 30);
+						eleWidth  = Math.round((totalWidth / 4) - 30);
 						eleHeight = Math.round(imgHeight / (Math.round((imgWidth / eleWidth) * 10) / 10));
 					$(row).find('img[wh]').css({width: eleWidth, height: eleHeight});
 					$(row).find('.details').css({width: eleWidth});

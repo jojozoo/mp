@@ -1,4 +1,3 @@
-<script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
 <div class="row mp-photos" id="mp-photos">
 	<%= render 'sidenav' %>
 	<div id="page_loading" page="2" state="static" url="<%= waterfall_photos_path(order: params[:order] || 'push') %>">
@@ -6,3 +5,4 @@
 		<span>加载中...</span>
 	</div>
 </div>
+<script type="text/javascript" src="/javascripts/masload.js?v=<%= Time.now.to_i %>"></script>
