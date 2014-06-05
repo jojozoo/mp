@@ -60,7 +60,6 @@ filter: alpha(opacity=90);
     background-color:rgba(34, 34, 34, 0.2);
     overflow:hidden;
     position:relative;
-    
     cursor:pointer
 }
  .photo .buttons .action:hover, .photo .buttons .action.hover {
