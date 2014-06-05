@@ -1,51 +1,48 @@
 // $(function(){
 
-// 	var Loading;
-// 	if (Loading == undefined) {
-// 		Loading = function (settings) {
-// 			this.initLoading(settings);
+// 	var MPJS;
+// 	if (MPJS == undefined) {
+// 		MPJS = function (settings) {
+// 			this.initMPJS(settings);
 // 		};
 // 	}
 // 	// 初始化
-// 	Loading.prototype.initLoading = function(settings){
+// 	MPJS.prototype.initMPJS = function(settings){
 
+// 	}
+
+// 	// 自动加载图片 par 是否是初始化加载
+// 	MPJS.autoLoad = function(){
+// 		this.page = 1;
+// 		this.loading = 0;
+// 		this.nextPage = 1;
+// 		this.loadItem = "mp-photos";
+
+		
+// 	};
+// 	var autoload = new MPJS.autoload();
+
+// 	MPJS.autoLoad.prototype.init = function(isinit){
+// 		if(isinit){
+
+// 		}
 // 	}
 
 // });
 
-function initLoading(){
-	var url = $("#page_loading").attr('url');
-	$.ajax( {
-		url: url + '&page=1',
-		type: "get",
-		beforeSend: function(){
-			// 显示正在加载模块
-			$("#page_loading").show("slow").attr('state', 'load');
-		},
-		success: function(data){
-			$('#mp-photos').append($(data).html());
-		},
-		complete: function(){
-			// 隐藏正在加载模块
-			$("#page_loading").hide("slow").attr('state', 'staic');
-		}
-	});
-}
-
 $(function(){
-	initLoading();
 	// start
 	// page_loading
 	// page 第几页
 	// state = 'staic/load' 静止/加载
-	var loadImage = function(isbottonfalse){
+	var loadImage = function(isinit){
 		// 判断窗口的滚动条是否接近页面底部
 		var isBottom = $(document).scrollTop() + $(window).height() > $(document).height() - 10;
 		// 查看load元素是否存在，如果不存在说明是已经加载完所有并且删除了ele
 		var eleLoad = $("#page_loading");
 		// 是否正在进行上次加载
 		var isLoading = eleLoad.attr('state') == 'load';
-		if(!isBottom || eleLoad.length < 1 || isLoading){
+		if(!isinit || !isBottom || isLoading){
 			return;
 		}
 		// 判断是否还有下一页
@@ -89,5 +86,6 @@ $(function(){
 	// loadImage(true);
 
 	$(window).bind("scroll", loadImage);
+	loadImage(true);
 
 })

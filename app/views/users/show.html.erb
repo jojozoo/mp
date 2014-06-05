@@ -4,7 +4,7 @@
         <script type="text/javascript" src="/javascripts/photos.js?v=<%= Time.now.to_i %>"></script>
         <div class="row mp-photos" id="mp-photos">
             <%= render partial: 'photos/thumb', collection: @photos, as: :photo %>
-            <div id="page_loading" page="2" state="static" url="<%= waterfall_photos_path(order: params[:order] || 'news') %>">
+            <div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(order: params[:order] || 'news') %>">
                 <img src="/images/loading.gif">
                 <span>加载中...</span>
             </div>
