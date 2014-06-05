@@ -1,29 +1,29 @@
-.mp-photos .sidenav {
+.mp-photos .sidenav.mp-photo {
     background-color: #f7f8fa;
     border: 1px solid #eeeff2;
     -webkit-transition: opacity 0.2s 0.2s ease-in-out;
     transition: opacity 0.2s 0.2s ease-in-out;
     height: 560px;
 }
-.mp-photos .sidenav .main-orders{
+.mp-photos .sidenav.mp-photo .main-orders{
     padding: 10px 0;
     border-bottom: 1px solid #eeeff2;
 }
-.mp-photos .sidenav .main-orders a{
+.mp-photos .sidenav.mp-photo .main-orders a{
     width: 49%;
 }
-.mp-photos .sidenav .sub .title{
+.mp-photos .sidenav.mp-photo .sub .title{
     color: #525558;
     font-weight: bold;
     padding: 3px 0;
 }
-.mp-photos .sidenav .sub {
+.mp-photos .sidenav.mp-photo .sub {
     padding: 3px 0 10px 0;
 }
-.mp-photos .sidenav .mp-tags > a{
+.mp-photos .sidenav.mp-photo .mp-tags > a{
     width: 32%;
 }
-.mp-photos .sidenav .hint {
+.mp-photos .sidenav.mp-photo .hint {
     bottom: 0;
     border-top: 1px solid #eeeff2;
     font-size: 12px;
@@ -32,7 +32,7 @@
     padding: 8px 0px 10px 20px;
     line-height: 1.2em;
 }
-.mp-photos .sidenav .hint span {
+.mp-photos .sidenav.mp-photo .hint span {
     border-radius: 10px;
     border: 1px solid #9ba2a7;
     display: inline-block;
@@ -41,7 +41,7 @@
     text-align: center;
     margin-right: 2px;
 }
-.mp-photos .sidenav a{
+.mp-photos .sidenav.mp-photo a{
     position: relative;
     line-height: 1em;
     color: #71767a;
@@ -54,7 +54,7 @@
     font-size: 13px;
     padding: 4px 6px 5px 8px;
 }
-.mp-photos .sidenav a:hover {
+.mp-photos .sidenav.mp-photo a:hover {
     background-color: rgba(82,85,88,0.075);
 }
 /*slidenav end */

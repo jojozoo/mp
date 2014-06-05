@@ -1,6 +1,6 @@
 <script type="text/javascript" src="/javascripts/photos.js?v=<%= Time.now.to_i %>"></script>
 <div class="row mp-photos" id="mp-photos">
-	<%= render partial: 'thumb', collection: @photos, as: :photo %>
+	<%= render 'sidenav' %>
 	<div id="page_loading" page="2" state="static" url="<%= waterfall_photos_path(order: params[:order] || 'push') %>">
 		<img src="/images/loading.gif">
 		<span>加载中...</span>
