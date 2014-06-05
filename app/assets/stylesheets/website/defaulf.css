@@ -1,3 +1,49 @@
+#msgbox {
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    margin-left: -300px;
+    top: -37px;
+    z-index: 99999;
+    color: #FFFFFF;
+    height: 36px;
+    line-height: 36px;
+    overflow: hidden;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: #1C556D solid 1px;
+    border-top-width: 0px;
+    background: #539CBB;
+    background: linear-gradient(#4da4db,#2c83d2);
+    background: -webkit-linear-gradient(#4da4db,#2c83d2);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6CABC5', endColorstr='#378CB0', GradientType='0');
+    box-shadow: 0 2px 3px rgba(0,0,0,0.8);
+}
+.msg-success p {
+    padding-left: 38px !important;
+    padding-right: 6px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    background: url(/images/info_success.png) 11px 11px no-repeat !important;
+}
+.msg-error p {
+    padding-left: 42px !important;
+    padding-right: 6px !important;
+    height: 36px !important;
+    line-height: 36px;
+    background: url(/images/info_error.png) 11px 8px no-repeat !important;
+}
+#msgbox .closeb {
+    background: url(/images/close_message.png) 0 -24px no-repeat;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    z-index: 100000;
+}
+
 .topics-no{
     margin: 20px auto;
     padding: 10px;

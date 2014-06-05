@@ -1,29 +1,25 @@
-/*a.thumbnail:hover {
--webkit-box-shadow: 0 1px 4px rgba(0,105,214,0.25);
--moz-box-shadow: 0 1px 4px rgba(0,105,214,0.25);
-box-shadow: 0 1px 4px rgba(0,105,214,0.25);
+.mp-photos .mp-photo{
+    margin: 0 0 10px 0;
 }
-.thumbnails a:hover {
-opacity: 0.9;
-filter: alpha(opacity=90);
-}*/
-.thumbnail a, .thumbnail img{
+.mp-photos .mp-photo a{
     text-decoration: none;
     display:block;
     cursor:pointer;
+}
+.mp-photos .mp-photo img {
     width:100%;
     height:100%;
     display:block;
 }
-.photo:hover .details .rating {
+.mp-photos .mp-photo:hover .details .rating {
     opacity:1;
     bottom:0px
 }
- .photo:hover .buttons {
+.mp-photos .mp-photo:hover .buttons {
     opacity:1;
     top:10px
 }
- .photo .buttons {
+.mp-photos .mp-photo .buttons {
     -webkit-touch-callout:none;
     -webkit-user-select:none;
     -khtml-user-select:none;
@@ -36,20 +32,20 @@ filter: alpha(opacity=90);
     position:absolute;
     z-index:2;
     top:-10px;
-    right:25px;
+    right:15px;
     width:auto;
     opacity:0;
     -webkit-transition:all 0.2s ease-in-out;
     transition:all 0.2s ease-in-out;
 }
-.photo .buttons .shares {
+.mp-photos .mp-photo .buttons .shares {
     display:inline-block;
 }
-.photo .buttons .states {
+.mp-photos .mp-photo .buttons .states {
     display:inline-block;
     margin-left:10px;
 }
- .photo .buttons .action {
+.mp-photos .mp-photo .buttons .action {
     display:inline-block;
     width:34px;
     height:34px;
@@ -63,86 +59,86 @@ filter: alpha(opacity=90);
     position:relative;
     cursor:pointer
 }
-.photo .buttons .shares a,.photo .buttons .states a .iconheart,.photo .buttons .states a .iconstar{
+.mp-photos .mp-photo .buttons .shares a,.mp-photos .mp-photo .buttons .states a .iconheart,.mp-photos .mp-photo .buttons .states a .iconstar{
     background-image: url(/images/thumb-icon.png);
     background-repeat: no-repeat;
 }
-.photo .buttons .action .iconheart{
+.mp-photos .mp-photo .buttons .action .iconheart{
     background-position:  7px -143px;
 }
-.photo .buttons .action .iconstar{
+.mp-photos .mp-photo .buttons .action .iconstar{
     background-position:  7px 7px;
 }
-.photo .buttons .weibo {
+.mp-photos .mp-photo .buttons .weibo {
     background-position:  7px -23px;
 }
- .photo .buttons .qzone {
+ .mp-photos .mp-photo .buttons .qzone {
     background-position:  7px -54px;
 }
-.photo .buttons .renren {
+.mp-photos .mp-photo .buttons .renren {
     background-position:  7px -83px;
 }
-.photo .buttons .douban {
+.mp-photos .mp-photo .buttons .douban {
     background-position:  7px -113px;
 }
-.photo .buttons .shares a.weibo:hover {
+.mp-photos .mp-photo .buttons .shares a.weibo:hover {
     background-color:#cc2127;
 }
-.photo .buttons .shares a.qzone:hover {
+.mp-photos .mp-photo .buttons .shares a.qzone:hover {
     background-color:#00aced;
 }
-.photo .buttons .shares a.renren:hover {
+.mp-photos .mp-photo .buttons .shares a.renren:hover {
     background-color:#3b5998;
 }
-.photo .buttons .shares a.douban:hover{
+.mp-photos .mp-photo .buttons .shares a.douban:hover{
     background-color: #072;
 }
 
 
-.photo .buttons .action:hover, .photo .buttons .action.hover {
+.mp-photos .mp-photo .buttons .action:hover, .mp-photos .mp-photo .buttons .action.hover {
     background-color:rgba(34, 34, 34, 0.4);
 }
-.photo .buttons .action:hover .iconheart, .photo .buttons .action.hover .iconheart {
+.mp-photos .mp-photo .buttons .action:hover .iconheart, .mp-photos .mp-photo .buttons .action.hover .iconheart {
     top:-15px;
     opacity:0;
 }
-.photo .buttons .action:hover .iconstar, .photo .buttons .action.hover .iconstar {
+.mp-photos .mp-photo .buttons .action:hover .iconstar, .mp-photos .mp-photo .buttons .action.hover .iconstar {
     top:-15px;
     opacity:0;
 }
-.photo .buttons .action:hover .count, .photo .buttons .action.hover .count {
+.mp-photos .mp-photo .buttons .action:hover .count, .mp-photos .mp-photo .buttons .action.hover .count {
     top:0px;
     opacity:1;
 }
-.photo .buttons .action.animate .count, .photo .buttons .action.animate:hover .count {
+.mp-photos .mp-photo .buttons .action.animate .count, .mp-photos .mp-photo .buttons .action.animate:hover .count {
     top:15px;
     opacity:0 !important;
 }
-.photo .buttons .action .count {
+.mp-photos .mp-photo .buttons .action .count {
     top:15px;
     opacity:0;
 }
-.photo .buttons .action.like.active, .photo .buttons .action.like.active:hover {
+.mp-photos .mp-photo .buttons .action.like.active, .mp-photos .mp-photo .buttons .action.like.active:hover {
     background-color:#02adea;
 }
-.photo .buttons .action.star.active, .photo .buttons .action.star.active:hover {
+.mp-photos .mp-photo .buttons .action.star.active, .mp-photos .mp-photo .buttons .action.star.active:hover {
     background-color:#02adea;
 }
 /*点喜欢后*/
- .photo .buttons .action.favorite.active, .photo .buttons .action.favorite.active:hover {
+.mp-photos .mp-photo .buttons .action.favorite.active, .mp-photos .mp-photo .buttons .action.favorite.active:hover {
     background-color:#ff4c4c;
 }
- .photo .buttons .action.active {
+ .mp-photos .mp-photo .buttons .action.active {
     -webkit-animation:pulse 0.6s 0.15s ease-in-out;
     -ms-animation:pulse 0.6s 0.15s ease-in-out;
     animation:pulse 0.6s 0.15s ease-in-out;
 }
- .photo .buttons .action.animate .icon, .photo .buttons .action.animate:hover .icon {
+.mp-photos .mp-photo .buttons .action.animate .icon, .mp-photos .mp-photo .buttons .action.animate:hover .icon {
     top:0px;
     opacity:1 !important;
 }
 
- .photo .buttons .action span {
+.mp-photos .mp-photo .buttons .action span {
     position:absolute;
     top:0;
     left:0;
@@ -155,16 +151,11 @@ filter: alpha(opacity=90);
     -webkit-transition:all 0.15s ease-in-out;
     transition:all 0.15s ease-in-out;
 }
-
-
-.photo img {
-    
-}
- .photo .details {
+.mp-photos .mp-photo .details {
     position: absolute;
     overflow: hidden;
     white-space: nowrap;
-    bottom: 10px;
+    bottom: 0px;
     color: white;
     background: black;
     background: rgba(0,0,0,0.6);
@@ -178,19 +169,19 @@ filter: alpha(opacity=90);
     -webkit-transition: 0.2s opacity;
     transition: 0.2s opacity;
 }
- .photo .details a {
+.mp-photos .mp-photo .details a {
     overflow:hidden;
     white-space:word-wrap;
     text-overflow:ellipsis;
     color:white;
 }
- .photo .details a:before {
+.mp-photos .mp-photo .details a:before {
     -webkit-box-sizing:content-box;
     -moz-box-sizing:content-box;
     box-sizing:content-box;
     content:" ";
     width:100%;
-    padding:1px 3px;
+    padding:0px 3px;
     border-radius:3px;
     height:100%;
     position:absolute;
@@ -202,16 +193,16 @@ filter: alpha(opacity=90);
     -webkit-transition:0.1s;
     transition:0.1s;
 }
- .photo .details a:hover:before {
+.mp-photos .mp-photo .details a:hover:before {
     background-color:rgba(255, 255, 255, 0.2);
 }
-.photo .details .inside{
+.mp-photos .mp-photo .details .inside{
     position: relative;
     height: 100%;
     -webkit-transition: 0.2s bottom;
     transition: 0.2s bottom;
 }
- .photo .details .title {
+.mp-photos .mp-photo .details .title {
     max-width:192px;
     height:22px;
     font-size:18px;
@@ -225,10 +216,10 @@ filter: alpha(opacity=90);
     -webkit-transition:0.1s;
     transition:0.1s;
 }
- .photo .details .title a {
+.mp-photos .mp-photo .details .title a {
     height:22px;
 }
- .photo .details .info {
+.mp-photos .mp-photo .details .info {
     max-width:200px;
     font-size:13px;
     line-height:13px;
@@ -237,11 +228,11 @@ filter: alpha(opacity=90);
     bottom:8px;
     left:13px;
 }
- .photo .details .info a {
+.mp-photos .mp-photo .details .info a {
     height:15px;
     display: inline-block;
 }
- .photo .details .rating {
+.mp-photos .mp-photo .details .rating {
     position:absolute;
     font-weight:300;
     font-size:30px;

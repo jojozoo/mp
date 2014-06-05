@@ -1,15 +1,13 @@
 $(function(){
 
-	var container = $('#container');
-	container.imagesLoaded(function(){
-        container.masonry({
-            itemSelector : '.col-sm-6.col-md-3',
-            transitionDuration: '0.8s',
-            hiddenStyle: { opacity: 0 },
-            visibleStyle: { opacity: 1}
-        });
-        $('.col-sm-6.col-md-3').animate({'opacity': 1}, 500);
+	var container = $('#mp-photos');
+	container.masonry({
+        itemSelector : '.mp-photo',
+        transitionDuration: '0.8s',
+        hiddenStyle: { opacity: 0 },
+        visibleStyle: { opacity: 1}
     });
+    $('.mp-photo').animate({'opacity': 1}, 500);
 
 	// start
 	// page_loading
@@ -53,7 +51,7 @@ $(function(){
 					eleLoad.attr("page", nextPage);
 				}
 				// 插入数据
-				result = $(data).find(".col-sm-6.col-md-3").map(function(index, row){
+				result = $(data).find(".mp-photo").map(function(index, row){
 					var img       = $(row).find('img[wh]').attr('wh').split('x');
 						imgWidth  = parseInt(img[0] || 250),
 						imgHeight = parseInt(img[1] || 160),

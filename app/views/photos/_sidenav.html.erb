@@ -1,93 +1,92 @@
-<div class="col-sm-6 col-md-3">
-	<div class="thumbnail sidenav">
-		<ul class="main">
-			<%
-				data = {
-					'news'   => ['upload', '最新上传'],
-					'likes'  => ['heart', '喜欢最多'],
-					'hot'    => ['comments', '评论最多'],
-					'push'   => ['ok-circle', '编辑推荐'],
-					'choice' => ['time', '每日精选'],
-					'random' => ['random', '随机浏览']
-				}
-			%>
-			<% data.each do |key, val| %>
-			<li>
-				<% if params[:order].eql?(key) %>
-					<%= link_to 'javascript:void(0);', style: 'color:orange;' do %>
-						<i class="icon-<%= val[0] %>"></i>
-						<%= val[1] %>
-					<% end %>
-				<% else %>
-					<%= link_to photos_path(order: key) do %>
-						<i class="icon-<%= val[0] %>"></i>
-						<%= val[1] %>
-					<% end %>
+<div class="mp-photo sidenav">
+	<ul class="main">
+		<%
+			data = {
+				'news'   => ['upload', '最新上传'],
+				'likes'  => ['heart', '喜欢最多'],
+				'hot'    => ['comments', '评论最多'],
+				'push'   => ['ok-circle', '编辑推荐'],
+				'choice' => ['time', '每日精选'],
+				'random' => ['random', '随机浏览']
+			}
+		%>
+		<% data.each do |key, val| %>
+		<li>
+			<% if params[:order].eql?(key) %>
+				<%= link_to 'javascript:void(0);', style: 'color:orange;' do %>
+					<i class="icon-<%= val[0] %>"></i>
+					<%= val[1] %>
+				<% end %>
+			<% else %>
+				<%= link_to photos_path(order: key) do %>
+					<i class="icon-<%= val[0] %>"></i>
+					<%= val[1] %>
 				<% end %>
 			<% end %>
+		<% end %>
+		</li>
+	</ul>
+	<div class="sub clearfix">
+		<ul class="all">
+			<li>
+				<a class="active all_categories" href="?">标签</a>
 			</li>
 		</ul>
-		<div class="sub clearfix">
-			<ul class="all">
-				<li>
-					<a class="active all_categories" href="?">标签</a>
-				</li>
-			</ul>
-			<div class="clear"></div>
-			<div class="photo-tags">
-				<% Tag.all.each do |tag| %>
-				<%= link_to tag.name, '' %>
-				<% end %>
-			</div>
+		<div class="clear"></div>
+		<div class="photo-tags">
+			<% Tag.all.each do |tag| %>
+			<%= link_to tag.name, '' %>
+			<% end %>
 		</div>
-		<div class="hint">
-			<span>?</span>
-			按住Shift可以选择多个类别
-		</div>
+	</div>
+	<div class="hint">
+		<span>?</span>
+		按住Shift可以选择多个类别
 	</div>
 
 </div>
 <style type="text/css">
-.sidenav {
+.mp-photos .sidenav {
 	background-color: #f7f8fa;
 	border: 1px solid #eeeff2;
 	-webkit-transition: opacity 0.2s 0.2s ease-in-out;
 	transition: opacity 0.2s 0.2s ease-in-out;
+	width: 25%;
 }
-.sidenav ul {
+.mp-photos .sidenav ul {
 	width: 100%;
 	list-style: none;
 }
-.sidenav ul.main {
+.mp-photos .sidenav ul.main {
 	font-size: 20px;
 	padding: 10px 0 10px 0;
 	border-bottom: 1px solid #eeeff2;
 	height: auto;
 	margin: 0;
 }
-.sidenav .sub ul.all {
+.mp-photos .sidenav .sub ul.all {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	margin: 0;
 }
-.sidenav .sub ul.all li {
+.mp-photos .sidenav .sub ul.all li {
 	width: initial;
 }
-.sidenav .sub {
+.mp-photos .sidenav .sub {
 	padding: 3px 0 10px 0;
 }
-.sidenav ul {
+.mp-photos .sidenav ul {
 	float: left;
 	font-size: 0;
 	padding: 0;
 }
-.sidenav ul li {
+.mp-photos .sidenav ul li {
 	position: relative;
 	float: left;
 	display: block;
 	width: 130px; /*调整两排还是三排*/
 }
-.sidenav ul li a {
+.mp-photos .sidenav ul li a {
 	display: block;
 	padding: 4px 6px 5px 8px;
 	font-size: 13px;
@@ -95,10 +94,10 @@
 	white-space: nowrap;
 	text-overflow: ellipsis;
 }
-.sidenav .photo-tags > a{
+.mp-photos .sidenav .photo-tags > a{
 	width: 82px;
 }
-.sidenav .hint {
+.mp-photos .sidenav .hint {
 	bottom: 0;
 	border-top: 1px solid #eeeff2;
 	font-size: 12px;
@@ -107,7 +106,7 @@
 	padding: 8px 0px 10px 20px;
 	line-height: 1.2em;
 }
-.sidenav .hint span {
+.mp-photos .sidenav .hint span {
 	border-radius: 10px;
 	border: 1px solid #9ba2a7;
 	display: inline-block;
@@ -116,7 +115,7 @@
 	text-align: center;
 	margin-right: 2px;
 }
-.sidenav a{
+.mp-photos .sidenav a{
 	position: relative;
 	line-height: 1em;
 	color: #71767a;
@@ -129,10 +128,10 @@
 	font-size: inherit;
 	padding: 4px 6px 5px 8px;
 }
-.sidenav a:hover {
+.mp-photos .sidenav a:hover {
 	background-color: rgba(82,85,88,0.075);
 }
-.sidenav ul li a.active {
+.mp-photos .sidenav ul li a.active {
 	color: #525558;
 	font-weight: bold;
 	line-height: 19px;

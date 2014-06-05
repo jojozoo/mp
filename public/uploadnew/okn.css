@@ -27,7 +27,7 @@
 .uploader .photo-container .drag-info h1 a:hover{color:#71767a}*/
 .uploader .photo-container .drag-info .or{color:#aeafb0;font-size:14px;margin:10px 0}
 .uploader .photo-container .drag-info .action_buttons{text-align:center;margin-top:35px}
-.uploader .photo-container .drag-info .action_buttons .browse_files{background:#02adea url(/uploadnew/choose_photo_X2.png) no-repeat 13px center;-webkit-background-size:14%;background-size:14%;padding-left:40px}
+.uploader .photo-container .drag-info .action_buttons .browse_files{background:#02adea url(/images/choose_photo.png) no-repeat 13px center;padding-left:40px}
 /*.uploader .photo-container .drag-info .action_buttons .browse_filepicker{background:#34bf49 url(//500px.com/assets/v3/uploader/photo_details/import_X2-4fbe370bff9ea1db46c2d5849999cacf.png) no-repeat 13px center;-webkit-background-size:25%;background-size:25%;padding-left:45px}
 .uploader .photo-container .drag-info .action_buttons .browse_filepicker:hover{background-color:#41cb56}
 .uploader .photo-container .drag-info .action_buttons .import_files{margin-left:8px;display:inline-block;position:relative}
@@ -121,7 +121,7 @@
 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .place_selection_wrap select{margin:20px 0 0 0}
 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap{margin:20px 0 0 0;width:100%;display:none;-o-border-radius:3px;border-radius:3px;border:1px solid #aeafb0;padding:2px 5px 0 5px;background:white}
 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field{float:left;width:100%}
-.photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field .error_wrap{float:left;background-image:url(//500px.com/assets/v3/uploader/photo_details/error@2x-942ddf2d2a2f404f63a7e74ffe732d8d.png);background-repeat:no-repeat;background-position:center;-webkit-background-size:100%;background-size:100%;width:16px;height:16px;margin:7px 4px 0 2px;display:none}
+.photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field .error_wrap{float:left;background-image:url(/images/errormark.png);background-repeat:no-repeat;background-position:center;-webkit-background-size:100%;background-size:100%;width:16px;height:16px;margin:7px 4px 0 2px;display:none}
 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field input{padding:0;text-overflow:ellipsis;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;-o-appearance:none;appearance:none;outline:none;border:none;background:none;font-size:12px;line-height:12px;font-weight:400;height:32px;color:#666666;width:195px}
 .photo-details.active .wrapper .exif .place-photo .place_selection_creation_wrap .set_name_field_wrap .set_name_field input.error{color:#ff4c4c}
 .photo-details.active .wrapper .exif .photo-exif{float:left;margin:25px 0 0 0}
@@ -178,7 +178,7 @@
 .photo-details.active .wrapper .map .geotagging h4{margin:29px 0 0 0}
 .photo-details.active .wrapper .map .geotagging .map-wrapper{position:relative;height:262px;width:392px;margin:20px 0 0 0}
 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet{height:100%;width:392px}
-.photo-details.active .wrapper .map .geotagging .map-wrapper .maplet.hidden_map_image{background:url(/uploadnew/disabled_map.jpg) no-repeat center}
+.photo-details.active .wrapper .map .geotagging .map-wrapper .maplet.hidden_map_image{background:url(/images/disabled_map.jpg) no-repeat center}
 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet .leaflet-control-mapbox-geocoder-results a{text-align:left}
 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet .leaflet-control-mapbox-geocoder-results span{display:none}
 
@@ -195,8 +195,8 @@
 
 .uploader .photo-container .drag-info .action_buttons .browse_files:hover{background-color:#09bdfd;text-decoration: none;color: #fff}
 
-.ui.select-arrow{background:url("/uploadnew/up-down-arrow@2x.png") no-repeat scroll 5px 8px #edeef0;border-radius:0 0 0 0;border-width:0;-webkit-box-shadow:none;box-shadow:none;color:white;height:29px;pointer-events:none;position:absolute;right:1px;text-shadow:none;top:22px;width:24px;z-index:20;outline:none;-moz-outline:none;outline-style:none}
-.ui.select-arrow.opaque{background:url("/uploadnew/up-down-arrow@2x.png") no-repeat scroll 5px 8px #f7f8fa;right:5px}
+.ui.select-arrow{background:url("/images/up-down-arrow.png") no-repeat scroll 5px 8px #edeef0;border-radius:0 0 0 0;border-width:0;-webkit-box-shadow:none;box-shadow:none;color:white;height:29px;pointer-events:none;position:absolute;right:1px;text-shadow:none;top:22px;width:24px;z-index:20;outline:none;-moz-outline:none;outline-style:none}
+.ui.select-arrow.opaque{background:url("/images/up-down-arrow.png") no-repeat scroll 5px 8px #f7f8fa;right:5px}
 .button.disabled{background:#e3e4e5;color:white;border:1px solid #d6d7d9;-webkit-transition:all 0.15s ease-out;-webkit-transition-delay:0s;-webkit-transition:all 0.15s ease-out 0s;transition:all 0.15s ease-out 0s;-webkit-box-shadow:inset 0px 1px 0px rgba(255,255,255,0.6);box-shadow:inset 0px 1px 0px rgba(255,255,255,0.6)}
 .button.submit{min-width:70px;background:#34bf49;border:1px solid #2fab41;-webkit-box-shadow:inset 0px 1px 0px rgba(255,255,255,0.2);box-shadow:inset 0px 1px 0px rgba(255,255,255,0.2)}
 .button.submit:hover{background:#41cb56;cursor:pointer}
@@ -217,26 +217,26 @@
 .button:active{-webkit-box-shadow:inset 0px 1px 0px rgba(0,0,0,0.3);box-shadow:inset 0px 1px 0px rgba(0,0,0,0.3)}
 .button:hover{background:#7d8387}
 .photo-details.active .wrapper .description .license-icon{float:right}
-.icons-licenses_0{width:15px !important;height:15px !important;background:url("/uploadnew/icons.png") -334px -9px no-repeat}
-/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_0{background:url("/uploadnew/icons@2x.png") -321px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+.icons-licenses_0{width:15px !important;height:15px !important;background:url("/images/icons.png") -2px -9px no-repeat}
+/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_0{background:url("/images/icons@2x.png") -321px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_1{width:31px !important;height:15px !important;background:url("/uploadnew/icons.png") -353px -9px no-repeat}
-/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_1{background:url("/uploadnew/icons@2x.png") -338px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+.icons-licenses_1{width:31px !important;height:15px !important;background:url("/images/icons.png") -353px -9px no-repeat}
+/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_1{background:url("/images/icons@2x.png") -338px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_2{width:47px !important;height:15px !important;background:url("/uploadnew/icons.png") -388px -9px no-repeat}
-/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_2{background:url("/uploadnew/icons@2x.png") -371px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+.icons-licenses_2{width:47px !important;height:15px !important;background:url("/images/icons.png") -388px -9px no-repeat}
+/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_2{background:url("/images/icons@2x.png") -371px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_3{width:47px !important;height:15px !important;background:url("/uploadnew/icons.png") -439px -9px no-repeat}
-/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_3{background:url("/uploadnew/icons@2x.png") -420px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+.icons-licenses_3{width:47px !important;height:15px !important;background:url("/images/icons.png") -439px -9px no-repeat}
+/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_3{background:url("/images/icons@2x.png") -420px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_4{width:15px !important;height:15px !important;background:url("/uploadnew/icons.png") -490px -9px no-repeat}
-/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_4{background:url("/uploadnew/icons@2x.png") -469px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+.icons-licenses_4{width:15px !important;height:15px !important;background:url("/images/icons.png") -490px -9px no-repeat}
+/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_4{background:url("/images/icons@2x.png") -469px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_5{width:31px !important;height:15px !important;background:url("/uploadnew/icons.png") -509px -9px no-repeat}
-/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_5{background:url("/uploadnew/icons@2x.png") -486px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+.icons-licenses_5{width:31px !important;height:15px !important;background:url("/images/icons.png") -509px -9px no-repeat}
+/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_5{background:url("/images/icons@2x.png") -486px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_6{width:31px !important;height:15px !important;background:url("/uploadnew/icons.png") -544px -9px no-repeat}
-/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_6{background:url("/uploadnew/icons@2x.png") -519px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
+.icons-licenses_6{width:31px !important;height:15px !important;background:url("/images/icons.png") -544px -9px no-repeat}
+/*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_6{background:url("/images/icons@2x.png") -519px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
 
 .ui.progress-bar{position:relative;height:32px;width:392px;background-color:white;-o-border-radius:3px;border-radius:3px}
