@@ -32,7 +32,6 @@ Mp::Application.routes.draw do
       get :star
       post :upload
       get :uploadnew
-      get :uploadie
     end
     member do
       get :tui
@@ -45,11 +44,8 @@ Mp::Application.routes.draw do
       get :explore  
     end
   end
-  resources :events, path: 'requests', only: [:index, :show] do
-    collection do
-      get :waterfall
-    end
-  end
+  resources :events, path: 'requests', only: [:index, :show]
+  
   resources :users, path: 'accounts' do
     member do
       get :fans

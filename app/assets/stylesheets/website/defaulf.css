@@ -211,9 +211,6 @@ textarea.form-control{
     margin-bottom: 0;
     min-height: 60px;
 }
-.thumbnail .caption a{
-    text-decoration: none;
-}
 .help-block {
     margin: 0;
     font-size: 12px;
@@ -412,58 +409,6 @@ hr{
 .box_con{
     padding: 10px;
 }
-/*.tag:before{
-    content: "";
-    float: left;
-    position: absolute;
-    top: 0;
-    left: -12px;
-    width: 0;
-    height: 0;
-    border-color: transparent #e1e1e6 transparent transparent;
-    border-style: solid;
-    border-width: 12px 12px 12px 0;
-}
-.tag:after {
-    content: "";
-    position: absolute;
-    top: 10px;
-    left: 0;
-    float: left;
-    width: 4px;
-    height: 4px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
-    border-radius: 2px;
-    background: #fff;
-    -webkit-box-shadow: -1px -1px 2px #bbbbc5;
-    -moz-box-shadow: -1px -1px 2px #bbbbc5;
-    box-shadow: -1px -1px 2px #bbbbc5;
-}
-.tag:hover {
-    background-color: #567189;
-    color: white;
-    text-shadow: none;
-    text-decoration: none;
-}
-.tag:hover:before {
-    border-color: transparent #567189 transparent transparent;
-}
-.tag{
-    margin: 0 5px 5px 10px;
-    padding: 0 10px;
-    background: #e1e1e6;
-    text-decoration: none;
-    text-shadow: 1px 1px 0px #fff;
-    box-shadow: 1px 1px 1px rgba(119, 119, 119, 0.5);
-    display: inline-block;
-    height: 24px;
-    line-height: 24px;
-    position: relative;
-    font-size: 10px;
-}*/
 .page-header{
     margin: 15px 0;
     padding-bottom: 0;

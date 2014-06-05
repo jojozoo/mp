@@ -36,13 +36,8 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		@photos = load_data
+		@event = Event.find(params[:id])
 	end
-
-	def waterfall
-        @photos = load_data
-        render 'waterfall', layout: false
-    end
 
     def load_data
     	@event = Event.find(params[:id])

@@ -26,15 +26,15 @@ function initMasonry(){
 				return row;
 			});
 			$('#mp-photos').append(result);
-			// container = $('#mp-photos');
-			// container.masonry({
-			// 	itemSelector : '.mp-photo',
-			// 	transitionDuration: '0.8s',
-			// 	columnWidth: itemWidth,
-			// 	hiddenStyle: { opacity: 0 },
-			// 	visibleStyle: { opacity: 1}
-			// });
-			// $('.mp-photo').animate({'opacity': 1}, 500);
+			container = $('#mp-photos');
+			container.masonry({
+				itemSelector : '.mp-photo',
+				transitionDuration: '0.8s',
+				columnWidth: itemWidth,
+				hiddenStyle: { opacity: 0 },
+				visibleStyle: { opacity: 1}
+			});
+			$('.mp-photo').animate({'opacity': 1}, 500);
 		},
 		complete: function(){
 			// 隐藏正在加载模块
@@ -96,9 +96,8 @@ $(function(){
 					$(row).find('img[wh]').css({width: eleWidth, height: eleHeight});
 					return row;
 				});
-				// container.append(result);
-				// container.masonry( 'appended', result );
-				$('#mp-photos').append(result);
+				container.append(result);
+				container.masonry( 'appended', result );
 			},
 			complete: function(){
 				// 隐藏正在加载模块

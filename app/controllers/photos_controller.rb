@@ -94,6 +94,6 @@ class PhotosController < ApplicationController
             'choice' => [{choice: true}, 'choice_at desc'],
             'random' => [{}, 'randomhex desc'] # TODO 缺少算法
         }[params[:order]]
-        Photo.where(state: true).where(con).paginate(:page => params[:page], per_page: 12).order(order)
+        Photo.where(state: true).where(con).paginate(:page => params[:page], per_page: 16).order(order)
     end
 end

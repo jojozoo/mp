@@ -19,7 +19,7 @@
             </div>
             <% end %>
         </div>
-        <%= link_to image_tag(photo.picture(:thumb), wh: photo.wh), photo_path(photo), target: '_blank' %>
+        <%= link_to image_tag(photo.picture(:thumb)), photo_path(photo), target: '_blank', class: 'thumb' %>
         <div class="details">
             <div class="inside-left">
                 <div class="account">
