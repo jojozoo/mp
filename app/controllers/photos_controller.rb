@@ -2,7 +2,6 @@ class PhotosController < ApplicationController
     before_filter :must_login, only: [:new, :upload, :uploadnew, :uploadie, :create]
     def index
         # 如果含有request_id就不显示活动名称 如果含有user_id 把喜欢和收藏换成删除编辑按钮
-        @photos = load_data
     end
     # loading 把load_data挪到这里来
     def waterfall
@@ -87,7 +86,6 @@ class PhotosController < ApplicationController
     private
 
     def load_data
-        params[:order] = params[:order] || 'push'
         con, order = {
             'news'   => [{}, 'id desc'],
             'likes'  => [{}, 'liks_count desc'],
