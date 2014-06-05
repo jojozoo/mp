@@ -11,7 +11,7 @@
     height:100%;
     display:block;
 }
-.mp-photos .mp-photo:hover .details .rating {
+.mp-photos .mp-photo:hover .details .inside-right {
     opacity:1;
     bottom:0px
 }
@@ -152,97 +152,50 @@
     transition:all 0.15s ease-in-out;
 }
 .mp-photos .mp-photo .details {
-    position: absolute;
-    overflow: hidden;
-    white-space: nowrap;
-    bottom: 0px;
-    color: white;
-/*    background: black;
-    background: rgba(0,0,0,0.6);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.6)));
-    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.6)));*/
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 100%);
-    background: url(/images/photo-details.png?v=1) repeat-x 0 0;
-    width: 90%;
-    height: 50px;
-    text-shadow: 0px 0px 1px #000;
     -webkit-transition: 0.2s opacity;
     transition: 0.2s opacity;
+    position: absolute;
+    padding: 8px 8px 5px 8px;
+    width: 274px;
+    bottom: 0;
+    bottom: 0\9;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.6)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.6)));
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.6) 100%);
 }
 .mp-photos .mp-photo .details a {
-    overflow:hidden;
-    white-space:word-wrap;
-    text-overflow:ellipsis;
-    color:white;
+    color: #fff;
+    padding: 1px 5px;
+    font-size: 16px;
+    display: inline-block;
+    max-width: 210px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
-.mp-photos .mp-photo .details a:before {
-    -webkit-box-sizing:content-box;
-    -moz-box-sizing:content-box;
-    box-sizing:content-box;
-    content:" ";
-    width:100%;
-    padding:0px 3px;
-    border-radius:3px;
-    height:100%;
-    position:absolute;
-    top:-1px;
-    left:-3px;
-    display:block;
-    background-color:rgba(255, 255, 255, 0);
-    z-index:1;
-    -webkit-transition:0.1s;
-    transition:0.1s;
+.mp-photos .mp-photo .details .inside-left .account{
+    line-height: 16px;
 }
-.mp-photos .mp-photo .details a:hover:before {
-    background-color:rgba(255, 255, 255, 0.2);
-}
-.mp-photos .mp-photo .details .inside{
-    position: relative;
-    height: 100%;
-    -webkit-transition: 0.2s bottom;
-    transition: 0.2s bottom;
-}
-.mp-photos .mp-photo .details .title {
-    max-width:192px;
-    height:22px;
-    font-size:18px;
-    line-height:20px;
-    font-weight:500;
-    position:absolute;
-    white-space:word-wrap;
-    text-overflow:ellipsis;
-    top: 0px;
-    left: 12px;
-    -webkit-transition:0.1s;
-    transition:0.1s;
+.mp-photos .mp-photo .details .inside-left .title{
+    line-height: 12px;
 }
 .mp-photos .mp-photo .details .title a {
-    height:22px;
+    font-size: 12px;
 }
-.mp-photos .mp-photo .details .info {
-    max-width:200px;
-    font-size:13px;
-    line-height:13px;
-    font-weight:200;
-    position:absolute;
-    bottom:8px;
-    left:13px;
+.mp-photos .mp-photo .details a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
 }
-.mp-photos .mp-photo .details .info a {
-    height:15px;
-    display: inline-block;
+.mp-photos .mp-photo .details .inside-left {
+    float: left;
 }
-.mp-photos .mp-photo .details .rating {
-    position:absolute;
-    font-weight:300;
-    font-size:30px;
-    line-height:46px;
-    height:100%;
-    bottom:-10px;
-    right:10px;
-    text-align:right;
-    opacity:0;
-    -webkit-transition:0.2s;
-    transition:0.2s;
+.mp-photos .mp-photo .details .inside-right {
+    float: right;
+    font-size: 30px;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+    opacity: 0;
+    bottom: 0px;
 }

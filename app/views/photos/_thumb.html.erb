@@ -19,19 +19,15 @@
         </div>
         <%= link_to image_tag(photo.picture(:thumb), wh: photo.wh), photo_path(photo), target: '_blank' %>
         <div class="details">
-            <div class="inside">
-                <div class="info">
-                    <a href="/">每日精选</a>
+            <div class="inside-left">
+                <div class="account">
+                    <!-- 如果有活动ID 就不应该显示活动了 -->
+                    <a href="javascript:void(0);">每日精选</a>
                 </div>
                 <div class="title">
-                    <!-- 如果有活动ID 就不应该显示活动了 -->
-                    <% if photo.event_id %>
-                        <%= link_to "##{photo.event.name}", event_path(photo.event), class: 'photo_title' %>
-                    <% else %>
-                        <%= link_to photo.user.username, user_path(photo.user), class: 'photo_title' %>
-                    <% end %>
+                    <a href="javascript:void(0);">安一然ROG</a>
                 </div>
-                <div class="rating">99.8</div>
             </div>
+            <div class="inside-right">48.1</div>
         </div>
 </div>
