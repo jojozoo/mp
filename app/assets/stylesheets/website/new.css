@@ -9,6 +9,8 @@ filter: alpha(opacity=90);
 }*/
 .thumbnail a{
     text-decoration: none;
+    display:block;
+    cursor:pointer;
 }
 .photo:hover .details .rating {
     opacity:1;
@@ -45,10 +47,6 @@ filter: alpha(opacity=90);
     margin-left:10px;
 }
  .photo .buttons .action {
-    background:center center no-repeat;
-    -webkit-background-size:20px 20px;
-    background-size:20px 20px;
-    /*margin-left:1px;*/
     display:inline-block;
     width:40px;
     height:40px;
@@ -62,11 +60,46 @@ filter: alpha(opacity=90);
     position:relative;
     cursor:pointer
 }
- .photo .buttons .action:hover, .photo .buttons .action.hover {
-    background-color:rgba(34, 34, 34, 0.4);
+.photo .buttons .shares a,.photo .buttons .states a .iconheart,.photo .buttons .states a .iconstar{
+    background-image: url(/images/thumb-icon.png);
+    background-repeat: no-repeat;
+}
+.photo .buttons .action .iconheart{
+    background-position:  10px -140px;
+}
+.photo .buttons .action .iconstar{
+    background-position:  10px 10px;
+}
+.photo .buttons .weibo {
+    background-position:  10px -20px;
+}
+ .photo .buttons .qzone {
+    background-position:  10px -50px;
+}
+.photo .buttons .renren {
+    background-position:  10px -80px;
+}
+.photo .buttons .douban {
+    background-position:  10px -110px;
+}
+.photo .buttons .shares a.weibo:hover {
+    background-color:#cc2127;
+}
+.photo .buttons .shares a.qzone:hover {
+    background-color:#00aced;
+}
+.photo .buttons .shares a.renren:hover {
+    background-color:#3b5998;
+}
+.photo .buttons .shares a.douban:hover{
+    background-color: #072;
 }
 
- .photo .buttons .action:hover .iconheart, .photo .buttons .action.hover .iconheart {
+
+.photo .buttons .action:hover, .photo .buttons .action.hover {
+    background-color:rgba(34, 34, 34, 0.4);
+}
+.photo .buttons .action:hover .iconheart, .photo .buttons .action.hover .iconheart {
     top:-15px;
     opacity:0;
 }
@@ -74,7 +107,7 @@ filter: alpha(opacity=90);
     top:-15px;
     opacity:0;
 }
- .photo .buttons .action:hover .count, .photo .buttons .action.hover .count {
+.photo .buttons .action:hover .count, .photo .buttons .action.hover .count {
     top:0px;
     opacity:1;
 }
@@ -111,7 +144,6 @@ filter: alpha(opacity=90);
     height:100%;
     text-align:center;
     line-height:48px;
-    background:center center no-repeat;
     -webkit-transition:all 0.15s ease-in-out;
     transition:all 0.15s ease-in-out;
 }
@@ -119,41 +151,8 @@ filter: alpha(opacity=90);
     top:15px;
     opacity:0;
 }
- .photo .buttons .facebook:hover {
-    background-color:#3b5998;
-}
- .photo .buttons .twitter:hover {
-    background-color:#00aced;
-}
- .photo .buttons .pinterest:hover {
-    background-color:#cc2127;
-}
-.photo .buttons .action .iconheart{
-    background-image: url(/images/like.png);
-    -webkit-background-size:20px 20px;
-    background-size:20px 20px;
-}
-.photo .buttons .action .iconstar{
-    background-image: url(/images/star.png);
-    -webkit-background-size:20px 20px;
-    background-size:20px 20px;
-}
 
-.photo .buttons .facebook {
-    background-image:url("/images/weibo.png");
-}
- .photo .buttons .twitter {
-    background-image:url("/images/qq.png");
-}
-.photo .buttons .pinterest {
-    background-image:url("/images/renren.png");
-}
-
- .photo a {
-    display:block;
-    cursor:pointer;
-}
- .photo img {
+.photo img {
     width:100%;
     height:100%;
     display:block;
