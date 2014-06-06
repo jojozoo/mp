@@ -25,7 +25,7 @@ $(function() {
                         '<div class="mppopup-box-left mppopup-box-item pop-left">' +
                             '<div class="mppopup-box-sign mppopup-box-sign_in pop-login" style="display: '+ (POPBox.isInitSignIn ? 'block' : 'none') +'">' +
                                 '<h3>立即登录</h3>' +
-                                '<form method="post" action="/sign_in" id="mp-pop-login-form">' +
+                                '<form method="post" action="/sign_in" id="mppopup-box-sing_in-form">' +
                                     '<ul>' +
                                         '<li>' +
                                             '<span class="inputTip">输入帐号/邮箱/手机</span>' +
@@ -50,7 +50,7 @@ $(function() {
                             '</div>' +
                             '<div class="mppopup-box-sign mppopup-box-sign_up pop-reg" style="display: '+ (POPBox.isInitSignIn ? 'block' : 'none') +'">' +
                                 '<h3>快速注册漫拍网</h3>' +
-                                '<form method="post" action="/sign_up" id="mp-pop-reg-form">' +
+                                '<form method="post" action="/sign_up" id="mppopup-box-sing_up-form">' +
                                     '<ul>' +
                                         '<li>' +
                                             '<span class="inputTip">帐号</span>' +
@@ -143,7 +143,7 @@ $(function() {
             }
             if(obj.attr('type') === 'password'){
                 if(value === '' && type === 'notnull'){
-                    if(obj.parents("form").hasClass('mppopup-box-sign_up')){
+                    if(obj.parents("form").is('[id=mppopup-box-sing_up-form]')){
                         console.log(4);
                         obj.after('<div class="popup-error">请输入6-16位英文字母，数字，符号密码</div>');
                     } else {
@@ -153,7 +153,7 @@ $(function() {
                 }
                 if(value !== '' && type === 'password'){
                     console.log(1);
-                    if(obj.parents("form").hasClass('mppopup-box-sign_up')){
+                    if(obj.parents("form").is('[id=mppopup-box-sing_up-form]')){
                         console.log(2);
                         obj.after('<div class="popup-error">请输入6-16位英文字母，数字，符号密码</div>');
                     } else {
