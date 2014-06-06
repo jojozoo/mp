@@ -133,7 +133,7 @@ $(function() {
                 bFail = chineseReg.test(value) && chineseReg1.test(value);
                 break;
             case 'password':
-                bFail = POPBox.passwordRegexp.test(value);
+                bFail = !POPBox.passwordRegexp.test(value);
                 break;
         }
         obj.next('div.popup-error').remove();
@@ -144,33 +144,27 @@ $(function() {
             if(obj.attr('type') === 'password'){
                 if(value === '' && type === 'notnull'){
                     if(obj.parents("form").is('[id=mppopup-box-sing_up-form]')){
-                        console.log(4);
                         obj.after('<div class="popup-error">请输入6-16位英文字母，数字，符号密码</div>');
                     } else {
-                        console.log(5);
                         obj.after('<div class="popup-error">请输入密码</div>');
                     }
                 }
                 if(value !== '' && type === 'password'){
-                    console.log(1);
                     if(obj.parents("form").is('[id=mppopup-box-sing_up-form]')){
-                        console.log(2);
                         obj.after('<div class="popup-error">请输入6-16位英文字母，数字，符号密码</div>');
                     } else {
-                        console.log(3);
                         obj.after('<div class="popup-error">密码长度应该在6-16位之间</div>');
-                        console.log(8);
                     }
                 }
             } else {
-                console.log(11);
                 obj.after('<div class="popup-error">请输入' + msg + '</div>');
             }
         }
     }
-    // 手机、邮箱
+    // 手机、邮箱 校验有一定的问题
     $(document).on('blur', '.mppopup-box input:text,.mppopup-box input:password', function() {
         var aReg = $(this).attr('regtype').split(',');
+        $(this).nextAll('div.popup-error').remove();
         for (var i = 0; i < aReg.length; i++) {
             regInput($(this), $.trim($(this).val()), $(this).attr('place-holder'), aReg[i]);
         }
