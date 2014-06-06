@@ -18,18 +18,6 @@ Mpupload = {
     // thumbTemplate: "<div class='photo-reel-photo' data-pid='{{id}}'><img width='50' height='50' src='{{src}}'></img></div>"
     thumbTemplate: "<div class='photo-reel-photo' data-pid='{{id}}'><span class='img-canvas' style='background-image: url({{src}});'></img></div>"
 }
-Mpupload.extend = function() {
-    var key, object, objects, target, val, _i, _len;
-    target = arguments[0], objects = 2 <= arguments.length ? ([].slice).call(arguments, 1) : [];
-    for (_i = 0, _len = objects.length; _i < _len; _i++) {
-        object = objects[_i];
-        for (key in object) {
-            val = object[key];
-            target[key] = val;
-        }
-    }
-    return target;
-};
 
 Mpupload.serviceClientHash = {
     'model'               : 'camera',
