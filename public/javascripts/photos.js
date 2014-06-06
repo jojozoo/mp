@@ -35,15 +35,17 @@ $(function(){
 	// page_loading
 	// page 第几页
 	// state = 'staic/load' 静止/加载
-	var loadImage = function(isinit){
+	function loadImage(isinit){
 		// 判断窗口的滚动条是否接近页面底部
 		var isBottom = $(document).scrollTop() + $(window).height() > $(document).height() - 10;
 		// 查看load元素是否存在，如果不存在说明是已经加载完所有并且删除了ele
 		var eleLoad = $("#page_loading");
 		// 是否正在进行上次加载
 		var isLoading = eleLoad.attr('state') == 'load';
-		if(!isinit || !isBottom || isLoading){
-			return;
+		if(isinit !== 'init'){
+			if(!isBottom || isLoading){
+				return false;
+			}
 		}
 		// 判断是否还有下一页
 		var nextPage = eleLoad.attr("page");
@@ -86,6 +88,6 @@ $(function(){
 	// loadImage(true);
 
 	$(window).bind("scroll", loadImage);
-	loadImage(true);
+	loadImage('init');
 
 })
