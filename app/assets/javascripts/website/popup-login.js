@@ -215,14 +215,14 @@ $(function() {
     });
 
 
-    $('body').on('click', '#mppopup-box b.close', function() {
-        frameHide();
+    $(document).on('click', '#mppopup-box b.close', function() {
+        POPBox.mppopupBoxRemove();
     });
     //esc hide the box
     $(document).keydown(function(e) {
         e = e || window.event;
         if (e.keyCode === 27) {
-            frameHide();
+            POPBox.mppopupBoxRemove();
         }
     });
 
