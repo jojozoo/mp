@@ -1,15 +1,15 @@
-<%= form_for User.new, url: '/sign_in', method: :post, html: {id: 'sign-in', class: 'sign-form'} do |f| %>
+<%= form_for User.new, url: '/sign_in', method: :post, html: {id: 'sign-in', class: "sign-form #{'showform' if params[:m].eql?('sign_in') }"} do |f| %>
 	<h4>登录漫拍网，看精致图片</h4>
 	<hr>
-	<div class="form-group <%= 'has-error' if @errors[:username].present? %>">
+	<div class="form-group">
 		<input type="text" class="form-control" id="username" name="username" placeholder="输入帐号/邮箱/手机" value="<%= params[:username] %>">
-		<p class="help-block"><%= @errors[:username] %></p>
+		<p class="help-block"></p>
 	</div>
-	<div class="form-group <%= 'has-error' if @errors[:password].present? %>">
+	<div class="form-group">
 		<input type="password" name= "password" class="form-control" id="password" placeholder="输入登录密码">
-		<p class="help-block"><%= @errors[:password] %></p>
+		<p class="help-block"></p>
 	</div>
-	<input type="submit" value="登录漫拍" id="submit-push" class="btn btn-info btn-block">
+	<input type="submit" value="登录漫拍" class="btn btn-info btn-block">
 	<hr>
 	<div class="checkbox">
 		<input type="checkbox" name="remember_me" id="remember_me">
@@ -22,7 +22,7 @@
 	<%= render "oauth" %>
 <% end %>
 
-<%= form_for @user || User.new, url: '/sign_up', validate: true, html: {id: 'sign-up', class: 'sign-form'} do |f| %>
+<%= form_for @user || User.new, url: '/sign_up', validate: true, html: {id: 'sign-up', class: "sign-form #{'showform' if params[:m].eql?('sign_up') }"} do |f| %>
 	<h4>注册漫拍网，分享精致图片</h4>
 	<hr>
 	<div class="form-group">

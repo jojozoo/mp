@@ -5,19 +5,15 @@ class SessionsController < ApplicationController
   def index
     redirect_to home_path if sign_in?
     session[:url] = params[:redirect] if params[:redirect].present?
-    @errors = {}
   end
 
   # POST /sign_in 登录
   def create
-    @user = User.where(["username = ? or email = ?", params[:username], params[:username]]).first
-    @errors = {}
+    @user = User.where(["username = ? or email = ? or mobile = ?", params[:username], params[:username], params[:username]]).first
     if @user.blank?
-      @errors[:username] = "请输入正确的帐号/邮箱/手机"
       redirect_to root_path(m: 'sign_in') and return
     end
     unless @user.valid_password?(params[:password])
-      @errors[:password] = "密码错误"
       redirect_to root_path(m: 'sign_in') and return
     end
     set_sign_in_flag(@user.id)
@@ -29,20 +25,18 @@ class SessionsController < ApplicationController
     # 为oauth 登录添加部分
     param = params[:user].slice(:username, :email, :password, :password_confirmation, :province, :city, :resume, :domain, :gender, :site, :duty)
     @user = User.new(param)
-
-    
-    @user.avatar = begin if params[:avatar].present?
-        open(URI.parse(params[:avatar])) rescue nil
-      else
-        avatar_path = "/tmp/#{SecureRandom.hex(20)}.jpg"
-        avatar_name = params[:user][:username].last
-        system("convert -size 300x300 -background '#269abc' -fill '#fff' -font public/fonts/zh.ttf -pointsize 300 -gravity center label:'#{avatar_name}' #{avatar_path}")
-        File.open(avatar_path)
-      end
-    rescue => e
-      logger.info("user create avatar error: #{e.to_s}")
-      nil
-    end
+    # @user.avatar = begin if params[:avatar].present?
+    #     open(URI.parse(params[:avatar])) rescue nil
+    #   else
+    #     avatar_path = "/tmp/#{SecureRandom.hex(20)}.jpg"
+    #     avatar_name = params[:user][:username].last
+    #     system("convert -size 300x300 -background '#269abc' -fill '#fff' -font public/fonts/zh.ttf -pointsize 300 -gravity center label:'#{avatar_name}' #{avatar_path}")
+    #     File.open(avatar_path)
+    #   end
+    # rescue => e
+    #   logger.info("user create avatar error: #{e.to_s}")
+    #   nil
+    # end
 
     if @user.save!
       set_sign_in_flag(@user.id)
@@ -61,7 +55,7 @@ class SessionsController < ApplicationController
   end
 
   # 验证邮箱
-  def validate
+  def verif
 
   end
 
@@ -78,11 +72,8 @@ class SessionsController < ApplicationController
     end
   end
 
-  def forgotdb
-  end
-
-  # reset
-  def findpwd
+  # 重置密码
+  def reset
     if params[:code].present? and @user = User.find_by_salt(params[:code])
       if request.post? and params[:user][:password].present?
         @user.update_attributes(password: params[:user][:password], salt: nil)

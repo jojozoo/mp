@@ -1,6 +1,6 @@
 $(function(){
     // 下拉按钮， hover显示
-    $('li.dropdown').hover(function(){
+    $('.navbar li.dropdown').hover(function(){
         $(this).find('.dropdown-menu').show();
     }, function(){
         $(this).find('.dropdown-menu').hide();
@@ -26,8 +26,5 @@ $(function(){
 		minView: 2,
 		forceParse: 0
 	})
-	// .on('changeDate', function(ev){
-	// 	$(ev.target).find('input').change().focusout();
-	// });
 
 })

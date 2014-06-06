@@ -542,7 +542,7 @@ along with this program.  If not, see < http://www.gnu.org/licenses/ >.
         debug: false,
         delimiter: '',
         getData: {},
-        getURL: '/tags',
+        getURL: '/ajax/tag/source/1',
         initLoad: true,
         maxTags: 0,
         minChars: 0,

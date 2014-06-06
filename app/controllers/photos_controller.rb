@@ -9,11 +9,6 @@ class PhotosController < ApplicationController
         render 'waterfall', layout: false
     end
 
-    def star
-        @users = User.order("rand()").limit(10)
-        # @tuis = Push.star.paginate(:page => params[:page], per_page: 20).order('id desc')
-    end
-
     def show
         @photo = Photo.find_by_id_and_state(params[:id], true)
         @photo.visits.create(user_id: current_user.try(:id))
@@ -38,9 +33,6 @@ class PhotosController < ApplicationController
     end
 
     def uploadnew
-    end
-
-    def uploadie
     end
 
     def create

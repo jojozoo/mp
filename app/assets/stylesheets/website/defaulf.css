@@ -454,6 +454,11 @@ body.session .container .toolbar > .sign-in, body.session .container .toolbar > 
     margin: 30px 0 0 20px;
     width: 80px;
 }
+body.session .container .sign-form.showform{
+    opacity: 1;
+    right: 35px;
+    display: block;
+}
 body.session .container .sign-form{
     opacity: 0;
     right: -500px;

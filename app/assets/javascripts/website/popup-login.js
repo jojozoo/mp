@@ -6,7 +6,7 @@ $(function() {
     var isIE6 = false;
     var lastAccountValue = '';
     var targetLocation = window.location.href;
-    var hostname = window.location.hostname;
+    var hostname = window.location.host;
     var passwordReg = /^\s*[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{5,16}\s*$/;
     //创建登录框
     //样式表
@@ -187,69 +187,18 @@ $(function() {
         $(this).hide().next('input').focus();
     });
 
-    //注册、登录移动
+    // 注册、登录移动
     function frameMove(target1, target2, type) {
         $(target1).fadeOut(function() {
             $(target2).show();
         });
         return false;
     }
-    //cross domain
-    /*function getUserInfo($$) {
-        if ( !! $$) {
-            //用户信息
-            $$.ajax({
-                url: 'http://mpwang.cn/front/nav/user',
-                success: function(data) {
-                    userLoginInfo = data;
-                },
-                rsync: false,
-                cache: false
-            });
-        }
-    }*/
-    if ($('#crossdomain-iframe').length === 0 && !! hostname && hostname.indexOf('mpwang.cn') != -1) {
-        var config = {
-            domain: hostname.substring(hostname.indexOf('.') + 1),
-            crossDomainFrameUrl: 'http://mpwang.cn/crossdomain.html',
-            crossDomainFrameId: 'crossdomain-iframe'
-        };
-        if (hostname == 'mpwang.cn') {
-            config.crossDomainFrameUrl = 'http://mpwang.cn/crossdomain.html'
-        }
-        var thisDomain = hostname.match(/[a-z]+/)[0];
-        var ridDomain = config.crossDomainFrameUrl.match(/[a-z]+/g)[1];
-        var crossDom;
-        //set domain
-        if (hostname != 'www.mpwang.cn' && hostname != 'mpwang.cn') {
-            document.domain = 'mpwang.cn';
-        }
-        if (thisDomain != ridDomain) {
-            var frame = document.createElement('iframe'),
-                frameQuery;
-            frame.src = config.crossDomainFrameUrl;
-            frame.id = config.crossDomainFrameId;
-            frame.style.display = 'none';
-            document.body.appendChild(frame);
-            if (isIE6 || frame.attachEvent) {
-                frame.attachEvent('onload', function() {
-                    window.__$ = document.getElementById(config.crossDomainFrameId).contentWindow.$;
-                    //getUserInfo(__$);
-                });
-            } else {
-                frame.onload = function() {
-                    window.__$ = document.getElementById(config.crossDomainFrameId).contentWindow.$;
-                    //getUserInfo(__$);
-                }
-            }
-        }/* else {
-            getUserInfo($);
-        }*/
-    }
+    // 
     if (!window.__$) {
         window.__$ = $;
     }
-    //submit button click
+    // submit button click
     $('body').on('click', '#mp-popup-login .mp-submit-btn', function() {
         var $thisForm = $(this).parents('form');
         var $this = $(this);
@@ -296,11 +245,11 @@ $(function() {
             }
         }
     });
-    //添加事件
+    // 检查是否已登录
     $('body').on('click', '.popup-login', function() {
         var $this = $(this);
         __$.ajax({
-            url: '/ajax/is_sign_in',
+            url: '/validations/is_sign_in',
             success: function(data) {
                 if (!data['error']) {
                     if ($this.is('a')) {
@@ -360,20 +309,17 @@ $(function() {
             },
             cache: false
         });
-        // __$.ajax({
-        //     url: 'http://mpwang.cn/popup_signup_log',
-        //     type: 'post'
-        // });
         return false;
     });
 
-    //检测帐号是否存在
+    // 检测帐号是否存在
     $('body').on('blur', 'input[name="account[email_or_mobile]"]', function() {
         var $this = $(this),
             thisVal = $.trim($(this).val());
         if (thisVal !== '' && $this.next('div.popup-error').length == 0) {
             __$.ajax({
-                url: 'http://mpwang.cn/validators/account_unique',
+                // /validators/uniqueness?case_sensitive=true&user%5Busername%5D=%E6%9C%B1%E6%99%93%E6%AD%A6
+                url: '/validators/uniqueness',
                 type: 'get',
                 data: {
                     email_or_mobile: $this.val()
@@ -402,16 +348,5 @@ $(function() {
                 }
             });
         }
-    });
-
-    //自动弹出登录框
-    $('.popup-login[data-auto-popup=true]').each(function() {
-        $(this).trigger('click');
-        //popupFrameCreate($(this).attr('data-target'), $(this));
-        if ($(this).attr('data-init') == 'register') {
-            $('#mp-popup-login .pop-login').hide();
-            $('#mp-popup-login .pop-reg').show();
-        }
-        return false;
     });
 });

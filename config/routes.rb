@@ -1,28 +1,29 @@
 Mp::Application.routes.draw do
   get    '/home'          => 'home#index', as: :home
-  get    '/sign_in'       => 'sessions#new'
   post   '/sign_in'       => 'sessions#create'
-  get    '/sign_out'      => 'sessions#destroy'
-  get    '/sign_up'       => 'sessions#sign_up'
   post   '/sign_up'       => 'sessions#sign_up'
-  get    '/validate'      => 'sessions#validate'
+  get    '/sign_out'      => 'sessions#destroy'
   get    '/forgot'        => 'sessions#forgot'
   post   '/forgot'        => 'sessions#forgot'
-  get    '/forgotdb'      => 'sessions#forgotdb'
-  get    '/findpwd'       => 'sessions#findpwd'
-  post   '/findpwd'       => 'sessions#findpwd'
-  get    '/tags'          => 'home#tags', as: :tags
+  get    '/reset'         => 'sessions#reset'
+  get    '/verif'         => 'sessions#verif'
 
-  get    '/profile'       => 'users#profile'
+  # get    '/profile'       => 'users#profile'
   get    '/pg/:id'        => 'users#pg', as: :pg # 摄影师地址
   get    '/search'        => 'search#index'
-  match '/ajax/is_sign_in'            => 'ajax#is_sign_in', via: :get, as: :ajax_is_sign_in # 验证登录
-  match '/ajax/tui/:push/:source/:id' => 'ajax#tui', via: :post, as: :ajax_tui # 推
+  get    '/validations/:action'       => 'validations#:action'
+  
+  # match '/ajax/tui/:push/:source/:id' => 'ajax#tui', via: :post, as: :ajax_tui # 推
+  # match '/ajax/editer/:source/:id'    => 'ajax#editer', via: :post, as: :ajax_editer # 编辑推荐
+  match '/ajax/lik/:source/:id'       => 'ajax#lik', via: :post, as: :ajax_lik # 喜欢
+  match '/ajax/sto/:source/:id'       => 'ajax#sto', via: :post, as: :ajax_sto # 收藏
   match '/ajax/del/:source/:id'       => 'ajax#del', via: :post, as: :ajax_del # 删除
   match '/ajax/com/:source/:id'       => 'ajax#com', via: :post, as: :ajax_com # 评论
   match '/ajax/fol/:source/:id'       => 'ajax#fol', via: :post, as: :ajax_fol # 关注
   match '/ajax/ufl/:source/:id'       => 'ajax#ufl', via: :post, as: :ajax_ufl # 取消关注
-  match '/ajax/editer/:source/:id'    => 'ajax#editer', via: :post, as: :ajax_editer # 取消关注
+  match '/ajax/tag/:source/:id'       => 'ajax#tag', via: :post, as: :ajax_tag # 获取标签
+  match '/ajax/tui/:source/:id'       => 'ajax#tui', via: :post, as: :ajax_tui # 编辑推荐
+  match '/ajax/cho/:source/:id'       => 'ajax#cho', via: :post, as: :ajax_cho # 每日精选
   
 
   # gallery
@@ -32,9 +33,6 @@ Mp::Application.routes.draw do
       get :star
       post :upload
       get :uploadnew
-    end
-    member do
-      get :tui
     end
   end
 

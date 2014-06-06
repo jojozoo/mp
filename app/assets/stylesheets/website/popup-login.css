@@ -63,7 +63,7 @@ html {
     display:none;
 }
 #mp-popup-login .pop-left-con ul li label, #mp-popup-login b.close, #mp-popup-login-btn, #mp-popup-reg-btn {
-    background:url(/images/popup-btns.png) no-repeat;
+    background:url(/images/popup-login-btns.png) no-repeat;
     *margin-left:8px;
 }
 #mp-popup-login .pop-left-con {
@@ -136,7 +136,7 @@ html {
 }
 #mp-popup-login .pop-left-con .popup-error {
     padding:5px 0 3px 15px;
-    background:url(/images/false.jpg) 0 6px no-repeat;
+    background:url(/images/popup-login-false.jpg) 0 6px no-repeat;
     *margin-left:10px;
 }
 #mp-popup-login-btn, #mp-popup-reg-btn {
@@ -163,7 +163,7 @@ html {
 #mp-popup-login .pop-right a{
     display: block;
     margin: 15px auto 0;
-    background-image: url(/images/thumb-login.png);
+    background-image: url(/images/popup-login-thumb.png);
     background-repeat: no-repeat;
     width:176px;
     height:44px;
