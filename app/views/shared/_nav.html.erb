@@ -1,5 +1,6 @@
 <div class="header">
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<div style="width:1140px;margin: auto;">
 		<div class="navbar-header">
 			<%= link_to image_tag("/images/logo.png"), root_path, class: 'navbar-brand', style: 'padding:0' %></div>
 		<div class="collapse navbar-collapse">
@@ -81,8 +82,12 @@
 					<%= link_to '注册', root_path(m: 'sign_up') %>
 				</li>
 				<% end %>
+				<li>
+					<%= link_to '更多', 'javascript:void(0);', class: 'nav-more' %>
+				</li>
 			</ul>
 		</div>
+	</div>
 		<!-- /.navbar-collapse -->
 	</div>
 </div>

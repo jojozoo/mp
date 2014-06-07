@@ -197,7 +197,7 @@ $(function() {
         })();
     });
     // 输入密码按回车就提交
-    $('body').on('keyup', '#mppopup-box input:password', function(e) {
+    $(document).on('keyup', '.mppopup-box input:password', function(e) {
         e = e || window.event;
         if (e.keyCode == 13) {
             $(this).parents('form').find('.mppopup-submit-btn').trigger('click');
@@ -249,8 +249,8 @@ $(function() {
     if (!window.__$) {
         window.__$ = $;
     }
-    // submit button click
-    $('body').on('click', '#mppopup-box .mppopup-submit-btn', function() {
+    // 登录或注册提交按钮 submit button click
+    $(document).on('click', '.mppopup-box .mppopup-submit-btn', function() {
         var $thisForm = $(this).parents('form');
         var $this = $(this);
         var canSubmit = true;

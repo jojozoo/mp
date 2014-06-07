@@ -275,6 +275,17 @@ textarea.form-control{
 .navbar-default .navbar-nav > li > a{
 	color: #fff;
 }
+.navbar-default .navbar-collapse ul.navbar-right > li > a.nav-more{
+    text-indent: -9999px;
+    padding: 0;
+    margin: 0 15px;
+    width: 12px;
+    height: 50px;
+    background: transparent url(/images/navs-right.png) -90px 0px no-repeat;
+}
+.navbar-default .navbar-collapse ul.navbar-right > li > a.nav-more:hover{
+    background-position: -90px -50px;
+}
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .active > a:focus{
