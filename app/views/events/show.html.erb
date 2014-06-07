@@ -7,7 +7,7 @@
 					<a class="text-success"><%= @event.photos_count %></a>张图片&nbsp;&nbsp;
 					<a class="text-success"><%= @event.members_count %></a>人参加
 				</small>
-				<%= link_to '上传到本活动', new_photo_path(eid: @event.id), class: 'btn btn-success btn-sm pull-right', style: 'margin-top:-4px;' %>
+				<%= link_to '上传到本活动', new_photo_path(request_id: @event.id), class: 'btn btn-success btn-sm pull-right popup-login', style: 'margin-top:-4px;' %>
 			</h4>
 		</div>
 		<div class="mp-page">
@@ -53,8 +53,8 @@
 		</ul>
 		<script type="text/javascript" src="/javascripts/photos.js?v=<%= Time.now.to_i %>"></script>
 		<div class="row mp-photos" id="mp-photos">
-			<%= render partial: '/photos/image', collection: @photos, as: :image %>
-			<div id="page_loading" page="1" state="static" url="<%= waterfall_events_path(id: @event.id, order: params[:order]) %>">
+			<%= render partial: '/photos/thumb', collection: @photos, as: :photo %>
+			<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(request_id: @event.id, order: params[:order] || 'push') %>">
 				<img src="/images/loading.gif">
 				<span>加载中...</span>
 			</div>

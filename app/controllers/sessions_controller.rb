@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       redirect_to root_path(m: 'sign_in') and return
     end
     set_sign_in_flag(@user.id)
-    redirect_to session.delete(:url) || home_path
+    redirect_to params[:redirect] || session.delete(:url) || home_path
   end
 
   # GET /sign_up 注册

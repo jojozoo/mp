@@ -2,9 +2,10 @@
 <hr style="margin: 0 auto 30px auto;">
 <div class="row">
 	<div class="col-md-12">
-		<div class="pic">
-			<%= link_to image_tag(@photo.picture(:big), style: 'max-width:100%;') %>
-			<%#= render "/shared/actions", obj: @photo, as: :obj %>
+		<div class="mp-large-picture">
+			<%= link_to image_tag(@photo.picture(:big)) %>
+			<a href="javascript:void(0);" class="prev-photo">上一张</a>
+			<a href="javascript:void(0);" class="next-photo">下一张</a>
 		</div>
 		<hr>
 		<ul class="list-unstyled clearfix">

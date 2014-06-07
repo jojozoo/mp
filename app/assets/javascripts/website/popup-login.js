@@ -9,8 +9,8 @@ $(function() {
         isInitSignIn: true,
         isChecked: true,
         emailRegexp: /^(?:\w+\.?)*\w+@(?:\w+\.)+\w+$/,
-        phonePhoneReg: /^(([0\+]\d{2,3}-)?(0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/,
-        usernameRegexp: /[\w\.\@\u4e00-\u9fa5]{2,}/,
+        phonePhoneRegexp: /^(([0\+]\d{2,3}-)?(0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/,
+        usernameRegexp: /[\w\u4e00-\u9fa5]{2,10}/,
         passwordRegexp: /^\s*[\@A-Za-z0-9\!\#\$\%\^\&\*\.\~]{5,16}\s*$/,
         redirectUrl: window.location.href
     };
@@ -21,7 +21,7 @@ $(function() {
         if ($('.mppopup-box').length != 0) {
             POPBox.mppopupBoxShow();
         } else {
-            box = '<div class="mppopup-box" id="mppopup-box" data-target="' + POPBox.redirectUrl + '">' +
+            box = '<div class="mppopup-box" id="mppopup-box">' +
                         '<div class="mppopup-box-left mppopup-box-item pop-left">' +
                             '<div class="mppopup-box-sign mppopup-box-sign_in pop-login" style="display: '+ (POPBox.isInitSignIn ? 'block' : 'none') +'">' +
                                 '<h3>立即登录</h3>' +
@@ -29,11 +29,11 @@ $(function() {
                                     '<ul>' +
                                         '<li>' +
                                             '<span class="inputTip">输入帐号/邮箱/手机</span>' +
-                                            '<input type="text" place-holder="正确帐号邮箱或手机" name="account[username]" class="txt" regtype="notnull,username,email,phone" id="mp-login-username" tabindex="100" />' +
+                                            '<input type="text" place-holder="正确帐号邮箱或手机" name="user[username]" class="txt" tabindex="100" />' +
                                         '</li>' +
                                         '<li>' +
                                             '<span class="inputTip">输入登录密码</span>' +
-                                            '<input type="password" place-holder="密码" name="account[password]" class="txt" regtype="notnull,password" maxlength="16" tabindex="101" />' +
+                                            '<input type="password" place-holder="密码" name="user[password]" class="txt" maxlength="16" tabindex="101" />' +
                                         '</li>' +
                                         '<li>' +
                                             '<input type="hidden" name="remember" value="on" />' +
@@ -43,36 +43,33 @@ $(function() {
                                         '</li>' +
                                         '<li>' +
                                             '<input type="button" id="mppopup-box-btn" class="pboxtb mppopup-submit-btn" value="" tabindex="102" />' +
-                                            '<a href="http://mpwang.cn/sign_up" class="fblue reg-now" target="_blank">没有帐号，立即注册</a>' +
+                                            '<a href="javascript:void(0);" class="left40_blue fblue sign-up_now" target="_blank">没有帐号，立即注册</a>' +
                                         '</li>' +
                                     '</ul>' +
                                 '</form>' +
                             '</div>' +
-                            '<div class="mppopup-box-sign mppopup-box-sign_up pop-reg" style="display: '+ (POPBox.isInitSignIn ? 'block' : 'none') +'">' +
+                            '<div class="mppopup-box-sign mppopup-box-sign_up pop-reg" style="display: '+ (POPBox.isInitSignIn ? 'none' : 'block') +'">' +
                                 '<h3>快速注册漫拍网</h3>' +
                                 '<form method="post" action="/sign_up" id="mppopup-box-sing_up-form">' +
                                     '<ul>' +
                                         '<li>' +
                                             '<span class="inputTip">帐号</span>' +
-                                            '<input type="text" place-holder="帐号" name="account[username]" class="txt" regtype="notnull,username" tabindex="200" />' +
+                                            '<input type="text" place-holder="帐号" name="user[username]" class="txt" tabindex="200" />' +
                                         '</li>' +
                                         '<li>' +
                                             '<span class="inputTip">邮箱</span>' +
-                                            '<input type="text" place-holder="正确邮箱" name="account[email]" class="txt" regtype="notnull,email" id="mp-reg-username" tabindex="201" />' +
+                                            '<input type="text" place-holder="邮箱" name="user[email]" class="txt" tabindex="201" />' +
                                         '</li>' +
                                         '<li>' +
                                             '<span class="inputTip">密码</span>' +
-                                            '<input type="password" place-holder="密码" name="account[password]" class="txt" regtype="notnull,password" maxlength="16" tabindex="202" />' +
+                                            '<input type="password" place-holder="密码" name="user[password]" class="txt" maxlength="16" tabindex="202" />' +
                                         '</li>' +
                                         '<li>' +
                                             '<input type="button" id="mp-popup-reg-btn" class="pboxtb mppopup-submit-btn" value="" tabindex="203" />' +
-                                            '<a href="http://mpwang.cn/sing_in" class="fblue login-now" target="_blank">已有帐号，直接登录</a>' +
+                                            '<a href="javascript:void(0);" class="left40_blue fblue sign-in_now" target="_blank">已有帐号，直接登录</a>' +
                                         '</li>' +
                                     '</ul>' +
-                                    '<input type="hidden" name="landing_page" value="popup" />' +
-                                    '<input type="hidden" name="parameters" />' +
-                                    '<input type="hidden" name="keyword" />' +
-                                    '<input type="hidden" name="data-target" />' +
+                                    '<input type="hidden" name="redirect" />' +
                                 '</form>' +
                             '</div>' +
                         '</div>' +
@@ -112,61 +109,64 @@ $(function() {
     POPBox.mppopupBoxShow = function() {
         $('.mppopup-box,.mppopup-box-background,.mppopup-box-outerboder').show();
     }
-    // 前端校验
-    POPBox.validItem = function(){
+    // 手机、邮箱 blur 校验
+    $(document).on('blur', '.mppopup-box input:text,.mppopup-box input:password', function() {
+        var _val, _type, _tip, _item, _isSignIn;
+        _val  = $.trim($(this).val());
+        _tip  = $(this).attr('place-holder');
+        _type = $(this).attr('type');
+        _item = $(this).attr('name');
+        _isSignIn = $(this).parents('form').is('[id=mppopup-box-sing_in-form]');
 
-    }
-
-    
-    function regInput(obj, value, msg, type) {
-        var bFail = false;
-        switch (type) {
-            case 'notnull':
-                bFail = (value !== '');
-                break;
-            case 'email':
-                bFail = POPBox.emailRegexp.test(value);
-                break;
-            case 'chinese':
-                var chineseReg = /^\s*([\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*|[a-zA-Z]{2,20}(\s+[a-zA-Z]{2,20})+)\s*$/;
-                var chineseReg1 = /^\s*([\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})*|[a-zA-Z][\sa-zA-Z]{3,63})\s*$/;
-                bFail = chineseReg.test(value) && chineseReg1.test(value);
-                break;
-            case 'password':
-                bFail = !POPBox.passwordRegexp.test(value);
-                break;
+        $(this).nextAll('div.popup-error').remove();
+        // nextAll
+        if(_val === ''){
+            $(this).prev('span.inputTip').show();
         }
-        obj.next('div.popup-error').remove();
-        if (!bFail) {
-            if (obj.val() === '') {
-                obj.prev('span.inputTip').show();
-            }
-            if(obj.attr('type') === 'password'){
-                if(value === '' && type === 'notnull'){
-                    if(obj.parents("form").is('[id=mppopup-box-sing_up-form]')){
-                        obj.after('<div class="popup-error">请输入6-16位英文字母，数字，符号密码</div>');
-                    } else {
-                        obj.after('<div class="popup-error">请输入密码</div>');
-                    }
-                }
-                if(value !== '' && type === 'password'){
-                    if(obj.parents("form").is('[id=mppopup-box-sing_up-form]')){
-                        obj.after('<div class="popup-error">请输入6-16位英文字母，数字，符号密码</div>');
-                    } else {
-                        obj.after('<div class="popup-error">密码长度应该在6-16位之间</div>');
-                    }
+        if(_type === 'password'){
+            if(_val === ''){
+                if(_isSignIn){
+                    $(this).after('<div class="popup-error">请输入密码</div>');
+                } else {
+                    $(this).after('<div class="popup-error">请设置5-16位英文字母，数字，符号密码</div>');
                 }
             } else {
-                obj.after('<div class="popup-error">请输入' + msg + '</div>');
+                if(!POPBox.passwordRegexp.test(_val)){
+                    if(_isSignIn){
+                        $(this).after('<div class="popup-error">密码长度应该在5-16位之间</div>');
+                    } else {
+                        $(this).after('<div class="popup-error">请a设置5-16位英文字母，数字，符号密码</div>');
+                    }
+                }
             }
-        }
-    }
-    // 手机、邮箱 校验有一定的问题
-    $(document).on('blur', '.mppopup-box input:text,.mppopup-box input:password', function() {
-        var aReg = $(this).attr('regtype').split(',');
-        $(this).nextAll('div.popup-error').remove();
-        for (var i = 0; i < aReg.length; i++) {
-            regInput($(this), $.trim($(this).val()), $(this).attr('place-holder'), aReg[i]);
+        } else {
+            // 如果是其他
+            if(_isSignIn){
+                if(_val === '' || (!POPBox.emailRegexp.test(_val) && !POPBox.phonePhoneRegexp.test(_val) && !POPBox.usernameRegexp.test(_val))){
+                    $(this).after('<div class="popup-error">' + _tip + '</div>');
+                }
+            } else {
+                // 如果是注册并且是用户
+                if(_item === 'user[username]') {
+                    if(_val === ''){
+                        $(this).after('<div class="popup-error">请输入' + _tip + '</div>');
+                    } else {
+                        if(!POPBox.usernameRegexp.test(_val)){
+                            $(this).after('<div class="popup-error">2-10位汉字/字母/数字/_组成</div>');
+                        }
+                    }
+                }
+                // 如果是注册并且是邮箱
+                if(_item === 'user[email]'){
+                    if(_val === ''){
+                        $(this).after('<div class="popup-error">请输入' + _tip + '</div>');
+                    } else {
+                        if(!POPBox.emailRegexp.test(_val)){
+                            $(this).after('<div class="popup-error">邮箱格式不正确</div>');
+                        }
+                    }
+                }
+            }
         }
     });
     // 保持登录状态 Checkbox
@@ -206,19 +206,23 @@ $(function() {
 
 
     // 已有帐号立即登录
-    $('body').on('click', '#mppopup-box .login-now', function() {
-        return frameMove('#mppopup-box .pop-reg', '#mppopup-box .pop-login', 'login');
+    $(document).on('click', '.mppopup-box .sign-in_now', function() {
+        $('.mppopup-box .mppopup-box-sign_up').fadeOut(function(){
+            $('.mppopup-box .mppopup-box-sign_in').show();
+        });
     });
     // 没有帐号，转到注册
-    $('body').on('click', '#mppopup-box .reg-now', function() {
-        return frameMove('#mppopup-box .pop-login', '#mppopup-box .pop-reg', 'reg');
+    $(document).on('click', '.mppopup-box .sign-up_now', function() {
+        $('.mppopup-box .mppopup-box-sign_in').fadeOut(function(){
+            $('.mppopup-box .mppopup-box-sign_up').show();
+        });
     });
 
-
+    // 关闭box
     $(document).on('click', '#mppopup-box b.close', function() {
         POPBox.mppopupBoxRemove();
     });
-    //esc hide the box
+    // esc 关闭box
     $(document).keydown(function(e) {
         e = e || window.event;
         if (e.keyCode === 27) {
@@ -226,90 +230,68 @@ $(function() {
         }
     });
 
-    //input box focus
-    $('body').on('focus', '#mppopup-box .mppopup-box-sign ul li input.txt', function() {
+    // input box focus
+    $(document).on('focus', '.mppopup-box .mppopup-box-sign ul li input.txt', function() {
         $(this).addClass('focus');
         $(this).prev('span.inputTip').hide();
     });
-    $('body').on('blur', '#mppopup-box .mppopup-box-sign ul li input.txt', function() {
+    $(document).on('blur', '.mppopup-box .mppopup-box-sign ul li input.txt', function() {
         $(this).removeClass('focus');
     });
-    $('body').on('click', '#mppopup-box span.inputTip', function() {
+    $(document).on('click', '.mppopup-box span.inputTip', function() {
         $(this).hide().next('input').focus();
     });
-
-    // 注册、登录移动
-    function frameMove(target1, target2, type) {
-        $(target1).fadeOut(function() {
-            $(target2).show();
-        });
-        return false;
-    }
-    // 
-    if (!window.__$) {
-        window.__$ = $;
-    }
     // 登录或注册提交按钮 submit button click
     $(document).on('click', '.mppopup-box .mppopup-submit-btn', function() {
-        var $thisForm = $(this).parents('form');
-        var $this = $(this);
-        var canSubmit = true;
-        var returnTarget = $('#mppopup-box').attr('data-target');
-        $thisForm.find('input.txt[name!="account[username]"]').trigger('blur');
+        var _form = $(this).parents('form');
+        var _this = $(this);
+        _form.find('input.txt').trigger('blur');
 
-        if ($thisForm.find('[name="account[username]"]').next('div.popup-error').length == 0) {
-            $thisForm.find('[name="account[username]"]').trigger('blur');
-        }
-        if ($thisForm.find('div.popup-error').length != 0) {
+        if (_form.find('div.popup-error').length != 0) {
             return false;
         } else {
             if ($(this).is('[id="mppopup-box-btn"]')) {
-                $(this).attr('disabled', true);
-                __$.ajax({
+                $.ajax({
                     dataType: "json",
                     type: "post",
-                    url: "http://mpwang.cn/index/login",
+                    url: "/sign_in",
                     data: {
-                        "account[username]": $thisForm.find('[name="account[username]"]').val(),
-                        "account[password]": $thisForm.find('[name="account[password]"]').val()
+                        username: _form.find('[name="user[username]"]').val(),
+                        password: _form.find('[name="user[password]"]').val()
+                    },
+                    beforeSend: function(){
+                        _this.attr('disabled', true);
                     },
                     success: function(result) {
                         if (result.status == -1) {
-                            $thisForm.find('[name="account[password]"]').after('<div class="popup-error">' + result.msg + '</div>');
+                            _form.find('[name="user[password]"]').after('<div class="popup-error">' + result.msg + '</div>');
                             setTimeout(function() {
-                                $this.attr('disabled', false);
+                                _this.attr('disabled', false);
                             }, 2000);
                         } else {
-                            //window.location.href = returnTarget;
-                            $thisForm.submit();
+                            _form.submit();
                         }
                     }
                 });
             } else {
-                $('#mppopup-box .pop-reg input[name="parameters"]').val(window.location.search.substring(1));
-                $thisForm.find('input[name="data-target"]').val(returnTarget);
-                if ($('meta[name="Keywords"]')) {
-                    $('#mppopup-box .pop-reg input[name="keyword"]').val($('meta[name="Keywords"]').attr('content'));
-                }
-                $thisForm.submit();
+                _form.find('input[name="redirect"]').val(POPBox.redirectUrl);
+                _form.submit();
             }
         }
     });
     // 检查是否已登录
     $(document).on('click', '.popup-login', function() {
-        var _this = $(this);
-        // 如果是javascript:void(0);类型的a,应看有没有data-url或者window.location.reload()
-        // 暂定:含有popup-login的必须是a,并且有href
-        // 应该写个函数获取redirectUrl:包含不是a的情况或a href='javascript:void(0);'的情况
-        var redirectUrl = $(this).attr("href") || $(this).attr("data-url") || window.location.href;
-        __$.ajax({
+        POPBox.redirectUrl  = $(this).attr("data-url") || $(this).attr("href") || 'javascript';
+        POPBox.redirectUrl  = POPBox.redirectUrl.indexOf('javascript') == -1 ? POPBox.redirectUrl : window.location.href;
+        POPBox.redirectUrl  = encodeURI(POPBox.redirectUrl);
+        POPBox.isInitSignIn = !($(this).attr('data-init') === "sign_up");
+
+        $.ajax({
             url: '/validations/is_sign_in',
             success: function(data) {
-                if(!data['error']) {
-                    window.location.href = redirectUrl;
+                if(data == 'true') {
+                    window.location.href = POPBox.redirectUrl;
                 } else {
-                    POPBox.redirectUrl  = encodeURI(redirectUrl);
-                    POPBox.isInitSignIn = !(_this.attr('data-init') === "sign_up");
                     POPBox.mppopupBox();
                 }
             },
@@ -319,40 +301,47 @@ $(function() {
     });
 
     // 检测帐号是否存在
-    $('body').on('blur', 'input[name="account[username]"]', function() {
-        var $this = $(this),
-            thisVal = $.trim($(this).val());
-        if (thisVal !== '' && $this.next('div.popup-error').length == 0) {
-            __$.ajax({
-                // /validators/uniqueness?case_sensitive=true&user%5Busername%5D=%E6%9C%B1%E6%99%93%E6%AD%A6
-                url: '/validators/uniqueness',
-                type: 'get',
-                data: {
-                    username: $this.val()
+    $(document).on('blur', 'input[name="user[username]"], input[name="user[email]"]', function() {
+        var _this     = $(this),
+            _val      = $.trim($(this).val()),
+            _isSignIn = $(this).parents("form").is('[id=mppopup-box-sing_in-form]'),
+            _data     = {
+                'case_sensitive' : 'true',
+                '_'              : Math.random()
+            },
+            _name     = $(this).attr('name'),
+            _url      = _isSignIn ? '/validations/uniqueness' : '/validators/uniqueness'
+            _isEmail  = _name === 'user[email]';
+
+        _data[_name] = _val;
+        
+        if(_val === '' || _this.next('div.popup-error').length != 0){
+            return;
+        }
+        $.ajax({
+            url: _url,
+            type: 'get',
+            data: _data,
+            statusCode: {
+                404: function() {
+                    if (_isSignIn) {
+                        _this.nextAll('div.popup-error').remove();
+                        _this.after('<div class="popup-error">你所输入的帐号不存在，请 <a href="javascript:void(0);" class="fblue sign-up_now">注册</a></div>');
+                    }
                 },
-                statusCode: {
-                    200: function() {
-                        $('input[name="account[username]"]').prev('span.inputTip').hide().end().val($this.val()).next('div.popup-error').remove();
-                        if ($this.attr('id') === 'mp-login-username') {
-                            if ($this.next('div.popup-error').length !== 0) {
-                                $this.next('div.popup-error').html('你所输入的帐号不存在，请 <a href="javascript:void(0);" class="fblue reg-now">注册</a>');
-                            } else {
-                                $this.after('<div class="popup-error">你所输入的帐号不存在，请 <a href="javascript:void(0);" class="fblue reg-now">注册</a></div>');
-                            }
+                200: function() {
+                    if (!_isSignIn) {
+                        if(_isEmail){
+                            _this.nextAll('div.popup-error').remove();
+                            _this.after('<div class="popup-error">该邮箱已存在，请更换邮箱或 <a href="javascript:void(0);" class="fblue sign-in_now">登录</a></div>');
+                        } else {
+                            _this.nextAll('div.popup-error').remove();
+                            _this.after('<div class="popup-error">该帐号已存在，请更换帐号或 <a href="javascript:void(0);" class="fblue sign-in_now">登录</a></div>');
                         }
-                    },
-                    201: function() {
-                        $('input[name="account[username]"]').prev('span.inputTip').hide().end().val($this.val()).next('div.popup-error').remove();
-                        if ($this.attr('id') === 'mp-reg-username') {
-                            if ($this.next('div.popup-error').length !== 0) {
-                                $this.next('div.popup-error').html('该帐号已存在，请更换帐号或 <a href="javascript:void(0);" class="fblue login-now">登录</a>');
-                            } else {
-                                $this.after('<div class="popup-error">该帐号已存在，请更换帐号或 <a href="javascript:void(0);" class="fblue login-now">登录</a></div>');
-                            }
-                        }
+                        // end
                     }
                 }
-            });
-        }
+            }
+        });
     });
 });

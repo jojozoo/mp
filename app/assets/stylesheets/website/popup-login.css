@@ -114,10 +114,6 @@
     width:425px;
     padding: 20px 35px;
 }
-
-.mppopup-box .mppopup-box-sign_up{
-    display: none;
-}
 .mppopup-box .mppopup-box-sign h3 {
     font:normal 20px/50px"Microsoft Yahei", "SimHei";
     color:#555;
@@ -198,6 +194,8 @@
 }
 .mppopup-box .mppopup-box-sign ul li a.fblue {
     color:#152f9f;
+}
+.mppopup-box .mppopup-box-sign ul li a.left40_blue {
     margin: auto auto auto 40px;
 }
 .mppopup-box .mppopup-box-sign .popup-error {

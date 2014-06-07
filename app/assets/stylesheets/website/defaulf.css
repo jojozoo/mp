@@ -395,11 +395,13 @@ hr{
 	text-decoration: none;
 }
 
-.pic{
-    position: relative;
+.mp-large-picture{
     width: 100%;
     height: 100%;
     background: #f1f1f1;
+}
+.mp-large-picture a{
+    display: block;
 }
 .radbox{
     background-color: #fff;

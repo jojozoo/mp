@@ -228,7 +228,7 @@ class User < ActiveRecord::Base
     end    
   end
 
-  # 加密
+  # 加密  5-16位 但这里必须是32位
   def password=(new_password)
     write_attribute(:password, Digest::MD5.hexdigest(new_password)) if new_password.present?
   end
