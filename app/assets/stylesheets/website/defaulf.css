@@ -278,8 +278,8 @@ textarea.form-control{
 .navbar-default .navbar-collapse ul.navbar-right > li > a.nav-more{
     text-indent: -9999px;
     padding: 0;
-    margin: 0 15px;
-    width: 12px;
+    margin: 0 8px;/* ie8 bug */
+    width: 18px;
     height: 50px;
     background: transparent url(/images/navs-right.png) -90px 0px no-repeat;
 }
@@ -295,14 +295,11 @@ textarea.form-control{
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
   color: #f78927;
-  /*background-color: transparent;*/
   background: #3a3f46;
 }
 .navbar-default .navbar-nav > li > a.btn-warning:hover,
 .navbar-default .navbar-nav > li > a.btn-warning:focus {
   color: #ffffff;
-  /*background-color: #47a447;
-  border-color: #398439; success */
   background-color: #ed9c28;
   border-color: #d58512;
 }
