@@ -11,7 +11,7 @@ $(function(){
 
 	$(document).on("blur", "#sign-in input[name=username]", function(){
 		var value = $(this).val();
-		var reg = /[\w\.\@\u4e00-\u9fa5]{2,}/;
+		var reg = /[\w\u4e00-\u9fa5]{2,10}/;
 		if(!(reg.test(value))){
 			$(this).next().text("请输入正确的帐号/邮箱/手机").parent().addClass('has-error');
 			return false;

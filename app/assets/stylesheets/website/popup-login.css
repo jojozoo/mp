@@ -37,7 +37,7 @@
     left:0;
 }
 .mppopup-box .pboxtb{
-    background:url(/images/popup-login-btns.png) no-repeat;
+    background:url(/images/mp-sign-btns.png) no-repeat;
     *margin-left:8px;
 }
 .mppopup-box b.close {
@@ -89,7 +89,7 @@
 .mppopup-box .mppopup-box-right .socials a{
     display: block;
     margin: 15px auto 0;
-    background-image: url(/images/popup-login-thumb.png);
+    background-image: url(/images/mp-sign-social.png);
     background-repeat: no-repeat;
     width:176px;
     height:44px;
@@ -144,6 +144,22 @@
     background:#df4949;
 }
 .mppopup-box .mppopup-box-sign ul li input.txt {
+/*    display: block;
+    width: 280px;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555555;
+    vertical-align: middle;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;*/
     height:35px;
     line-height:35px;
     border:1px solid #ddd;
@@ -162,6 +178,7 @@
 }
 .mppopup-box .mppopup-box-sign ul li input.focus {
     border-color:#e55942;
+    -webkit-box-shadow: 0 0 3px #ccc;
     box-shadow:0 0 3px #ccc;
 }
 .mppopup-box .mppopup-box-sign ul li span.inputTip {
@@ -200,7 +217,7 @@
 }
 .mppopup-box .mppopup-box-sign .popup-error {
     padding:5px 0 3px 15px;
-    background:url(/images/popup-login-close.jpg) 0 6px no-repeat;
+    background:url(/images/mp-sign-close.jpg) 0 6px no-repeat;
     *margin-left:10px;
 }
 #mppopup-box-btn, #mp-popup-reg-btn {

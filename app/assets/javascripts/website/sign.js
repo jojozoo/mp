@@ -25,7 +25,7 @@ $(function() {
                         '<div class="mppopup-box-left mppopup-box-item pop-left">' +
                             '<div class="mppopup-box-sign mppopup-box-sign_in pop-login" style="display: '+ (POPBox.isInitSignIn ? 'block' : 'none') +'">' +
                                 '<h3>立即登录</h3>' +
-                                '<form method="post" action="/sign_in" id="mppopup-box-sing_in-form">' +
+                                '<form method="post" action="/sign_in" id="mp-sign_in-form">' +
                                     '<ul>' +
                                         '<li>' +
                                             '<span class="inputTip">输入帐号/邮箱/手机</span>' +
@@ -50,7 +50,7 @@ $(function() {
                             '</div>' +
                             '<div class="mppopup-box-sign mppopup-box-sign_up pop-reg" style="display: '+ (POPBox.isInitSignIn ? 'none' : 'block') +'">' +
                                 '<h3>快速注册漫拍网</h3>' +
-                                '<form method="post" action="/sign_up" id="mppopup-box-sing_up-form">' +
+                                '<form method="post" action="/sign_up" id="mp-sign_up-form">' +
                                     '<ul>' +
                                         '<li>' +
                                             '<span class="inputTip">帐号</span>' +
@@ -109,14 +109,15 @@ $(function() {
     POPBox.mppopupBoxShow = function() {
         $('.mppopup-box,.mppopup-box-background,.mppopup-box-outerboder').show();
     }
-    // 手机、邮箱 blur 校验
+    // 手机、邮箱 blur 校验 input.mp-sign-blur mp-sign
+    // ie8应该支持:focus 所以可以去掉focus函数
     $(document).on('blur', '.mppopup-box input:text,.mppopup-box input:password', function() {
         var _val, _type, _tip, _item, _isSignIn;
         _val  = $.trim($(this).val());
         _tip  = $(this).attr('place-holder');
         _type = $(this).attr('type');
         _item = $(this).attr('name');
-        _isSignIn = $(this).parents('form').is('[id=mppopup-box-sing_in-form]');
+        _isSignIn = $(this).parents('form').is('[id=mp-sign_in-form]');
 
         $(this).nextAll('div.popup-error').remove();
         // nextAll
@@ -197,12 +198,12 @@ $(function() {
         })();
     });
     // 输入密码按回车就提交
-    $(document).on('keyup', '.mppopup-box input:password', function(e) {
-        e = e || window.event;
-        if (e.keyCode == 13) {
-            $(this).parents('form').find('.mppopup-submit-btn').trigger('click');
-        }
-    });
+    // $(document).on('keyup', '.mppopup-box input:password', function(e) {
+    //     e = e || window.event;
+    //     if (e.keyCode == 13) {
+    //         $(this).parents('form').find('.mppopup-submit-btn').trigger('click');
+    //     }
+    // });
 
 
     // 已有帐号立即登录
@@ -219,18 +220,18 @@ $(function() {
     });
 
     // 关闭box
-    $(document).on('click', '#mppopup-box b.close', function() {
+    $(document).on('click', '.mppopup-box b.close', function() {
         POPBox.mppopupBoxRemove();
     });
-    // esc 关闭box
-    $(document).keydown(function(e) {
+    // esc 关闭box 如何解除事件
+    $(document).on('keydown', function(e) {
         e = e || window.event;
         if (e.keyCode === 27) {
             POPBox.mppopupBoxRemove();
         }
     });
 
-    // input box focus
+    // 必须保留 因为ie8不支持placehodler input box focus
     $(document).on('focus', '.mppopup-box .mppopup-box-sign ul li input.txt', function() {
         $(this).addClass('focus');
         $(this).prev('span.inputTip').hide();
@@ -280,7 +281,7 @@ $(function() {
         }
     });
     // 检查是否已登录
-    $(document).on('click', '.popup-login', function() {
+    $(document).on('click', '.mp-sign', function() {
         POPBox.redirectUrl  = $(this).attr("data-url") || $(this).attr("href") || 'javascript';
         POPBox.redirectUrl  = POPBox.redirectUrl.indexOf('javascript') == -1 ? POPBox.redirectUrl : window.location.href;
         POPBox.redirectUrl  = encodeURI(POPBox.redirectUrl);
@@ -304,7 +305,7 @@ $(function() {
     $(document).on('blur', 'input[name="user[username]"], input[name="user[email]"]', function() {
         var _this     = $(this),
             _val      = $.trim($(this).val()),
-            _isSignIn = $(this).parents("form").is('[id=mppopup-box-sing_in-form]'),
+            _isSignIn = $(this).parents("form").is('[id=mp-sign_in-form]'),
             _data     = {
                 'case_sensitive' : 'true',
                 '_'              : Math.random()

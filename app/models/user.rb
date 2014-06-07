@@ -41,14 +41,14 @@
 #
 
 class User < ActiveRecord::Base
-  attr_accessor :password_confirmation
+  # attr_accessor :password_confirmation
   attr_accessible :avatar, 
   :email,
   :username, 
   :nickname, 
   :mobile, 
   :password, 
-  :password_confirmation,
+  # :password_confirmation,
   :salt, 
   :isblock,
   :province, 
@@ -156,9 +156,9 @@ class User < ActiveRecord::Base
                             :within => 5..32,
                             :message => '长度5..32位'
 
-  validates_confirmation_of :password,
-                            :message => "密码不一致",
-                            :on => :create
+  # validates_confirmation_of :password,
+  #                           :message => "密码不一致",
+  #                           :on => :create
 
   validates_presence_of     :username,
                             :message => '不能为空'
@@ -232,9 +232,9 @@ class User < ActiveRecord::Base
   def password=(new_password)
     write_attribute(:password, Digest::MD5.hexdigest(new_password)) if new_password.present?
   end
-  def password_confirmation=(new_password)
-    write_attribute(:password_confirmation, Digest::MD5.hexdigest(new_password)) if new_password.present?
-  end
+  # def password_confirmation=(new_password)
+  #   write_attribute(:password_confirmation, Digest::MD5.hexdigest(new_password)) if new_password.present?
+  # end
 
   def valid_password?(new_password)
     self.password == Digest::MD5.hexdigest(new_password)

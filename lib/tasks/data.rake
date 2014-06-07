@@ -7,7 +7,7 @@ task :data => :environment do
 		email: "1@q.com",
 		mobile: "18611149191",
 		password: 'work123',
-		password_confirmation: 'work123',
+		# password_confirmation: 'work123',
 		admin: true
 	}
 	User.create(user)
@@ -19,7 +19,7 @@ task :data => :environment do
 			email: "tmp#{index}@q.com",
 			mobile: '186' + (11149191 + index).to_s[0..7],
 			password: 'work123',
-			password_confirmation: 'work123' 
+			# password_confirmation: 'work123' 
 		}
 		hash.merge!(photographer: true) if index < 30
 		User.create(hash)

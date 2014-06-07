@@ -23,7 +23,8 @@ class SessionsController < ApplicationController
   # GET /sign_up 注册
   def sign_up
     # 为oauth 登录添加部分
-    param = params[:user].slice(:username, :email, :password, :password_confirmation, :province, :city, :resume, :domain, :gender, :site, :duty)
+    # , :password_confirmation
+    param = params[:user].slice(:username, :email, :password, :province, :city, :resume, :domain, :gender, :site, :duty)
     @user = User.new(param)
     # @user.avatar = begin if params[:avatar].present?
     #     open(URI.parse(params[:avatar])) rescue nil
@@ -54,7 +55,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  # 验证邮箱
+  # 验证邮箱 / 忘记密码已发送跳转页
   def verif
 
   end
@@ -64,8 +65,8 @@ class SessionsController < ApplicationController
     redirect_to root_path if sign_in?
     if request.post?
       if @user = User.where(["username = ? or email = ?", params[:login], params[:login]]).first
-        @user.update_attribute(:salt, Digest::MD5.hexdigest(Time.now.to_s(:db)))
-        redirect_to '/forgotdb'
+        @user.update_attribute(:salt, Digest::MD5.hexdigest(Time.now.to_f.to_s))
+        redirect_to '/forgotdb' # 已发送
       else
         @error = "找不到对应帐号"
       end

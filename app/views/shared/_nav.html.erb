@@ -17,7 +17,7 @@
 			</form> -->
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<%= link_to new_photo_path, class: 'btn btn-warning popup-login' do %>
+					<%= link_to new_photo_path, class: 'btn btn-warning mp-sign' do %>
 						<i class="icon-camera"></i>
 							上传作品
 					<% end %>
@@ -79,7 +79,7 @@
 					<%= link_to '登录', root_path(m: 'sign_in') %>
 				</li>
 				<li>
-					<%= link_to '注册', 'javascript:void(0);', class: 'popup-login', 'data-init' => 'sign_up' %>
+					<%= link_to '注册', 'javascript:void(0);', class: 'mp-sign', 'data-init' => 'sign_up' %>
 				</li>
 				<% end %>
 				<li>
