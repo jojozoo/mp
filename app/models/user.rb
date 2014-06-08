@@ -153,8 +153,8 @@ class User < ActiveRecord::Base
                             :if => :password_changed?
 
   validates_length_of       :password,
-                            :within => 5..32,
-                            :message => '长度5..32位'
+                            :within => 6..32,
+                            :message => '长度6..32位'
 
   # validates_confirmation_of :password,
   #                           :message => "密码不一致",
@@ -228,7 +228,7 @@ class User < ActiveRecord::Base
     end    
   end
 
-  # 加密  5-16位 但这里必须是32位
+  # 加密  6-16位 但这里必须是32位
   def password=(new_password)
     write_attribute(:password, Digest::MD5.hexdigest(new_password)) if new_password.present?
   end

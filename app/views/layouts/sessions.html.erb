@@ -18,17 +18,16 @@
 	<script src="/ie/respond.min.js"></script>
 	<![endif]-->
 	<%= render 'shared/tongji' %>
-	<script type="text/javascript" src="/javascripts/sessions.js?v=<%= Time.now.to_i %>"></script>
 </head>
 <!--缺少跳转landingpage-->
 <body class="session">
-	<div class="container">
+	<div class="container mp-session-sign">
 		<div class="toolbar">
 			<%= link_to home_path do %>
 				<span class="logo"></span>
 			<% end %>
-			<a href="javascript:void(0);" class="sign-up btn btn-success">注册</a>
-			<a href="javascript:void(0);" class="sign-in btn btn-primary">登录</a>
+			<a href="javascript:void(0);" class="sign-up_now btn btn-success">注册</a>
+			<a href="javascript:void(0);" class="sign-in_now btn btn-primary">登录</a>
 		</div>
 		<%= yield %>
 	</div>
@@ -41,6 +40,21 @@
 	</div>
 	<div class="background">
 		<img src="<%= sessionbackgrounds %>">
+		<script type="text/javascript">
+		$(function(){
+			$(".background").css({width: window.screen.width, height: window.outerHeight});
+			$(".background img").css({width: window.screen.width, height: window.outerHeight, opacity: 1});
+			$(window).resize(function(){
+				var _b = $(".beian").width();
+				var _l = window.screen.width / 2 - _b / 2 - 40;
+				$(".beian").css({left: _l});
+				var _h = $(window).height();
+				$(".background").css({width: window.screen.width, height: _h});
+				var _t = _h - window.screen.height;
+				$(".background img").css({top: _t, opacity: 1});
+			});
+		})
+		</script>
 	</div>
 </body>
 </html>

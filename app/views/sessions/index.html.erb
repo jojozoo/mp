@@ -1,51 +1,53 @@
-<%= form_for User.new, url: '/sign_in', method: :post, html: {id: 'sign-in', class: "sign-form #{'showform' if params[:m].eql?('sign_in') }"} do |f| %>
+<form action="/sign_in" class="mp-sign-form mp-sign-form-sign_in <%= 'falde-out-form' if params[:m].eql?('sign_in') %>" method="post">
 	<h4>登录漫拍网，看精致图片</h4>
 	<hr>
-	<div class="form-group">
-		<input type="text" class="form-control" id="username" name="username" placeholder="输入帐号/邮箱/手机" value="<%= params[:username] %>">
-		<p class="help-block"></p>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">输入帐号/邮箱/手机</span>
+		<input type="text" name="user[username]" class="mp-sign-blur form-control" place-holder="正确帐号邮箱或手机">
 	</div>
-	<div class="form-group">
-		<input type="password" name= "password" class="form-control" id="password" placeholder="输入登录密码">
-		<p class="help-block"></p>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">输入登录密码</span>
+		<input type="password" name="user[password]" class="mp-sign-blur form-control" place-holder="密码">
 	</div>
-	<input type="submit" value="登录漫拍" class="btn btn-info btn-block">
-	<hr>
-	<div class="checkbox">
-		<input type="checkbox" name="remember_me" id="remember_me">
-		<label for="remember_me">记住我</label>
+	<div style="width: 280px; *width: 300px; _width: 300px; height: 34px;">
+		<input type="submit" id="sign-form-submit-sign_in-btn" value="登录漫拍" class="pull-left btn btn-info sing-form-submit-btn">
+		<a class="sign-up_now pull-right" href="javascript:void(0);">去注册</a>
+	</div>
+	<hr style="margin: 2px auto 10px auto;">
+	<div class="mp-sign-form-div-session">
+		<input name="authenticity_token" type="hidden" value="">
+		<input type="hidden" name="remember" value="on" />
+		<input type="hidden" name="redirect" />
+		<label class="remember_me checked">保持登录状态</label>
 		<a href="/forgot">忘记密码</a>
-		<a class="pull-right sign-up" href="javascript:void(0);">去注册</a>
 	</div>
 	<hr>
 	<h5>快捷登录，无需注册</h5>
 	<%= render "oauth" %>
-<% end %>
+</form>
 
-<%= form_for @user || User.new, url: '/sign_up', validate: true, html: {id: 'sign-up', class: "sign-form #{'showform' if params[:m].eql?('sign_up') }"} do |f| %>
+<form action="/sign_up" class="mp-sign-form mp-sign-form-sign_up <%= 'falde-out-form' if params[:m].eql?('sign_up') %>" method="post">
+	<input name="authenticity_token" type="hidden" value="">
+	<input type="hidden" name="redirect" />
 	<h4>注册漫拍网，分享精致图片</h4>
 	<hr>
-	<div class="form-group">
-		<%= f.text_field :username, class: 'form-control', placeholder: '账号' %>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">帐号</span>
+		<input type="text" place-holder="帐号" name="user[username]" class="mp-sign-blur form-control" tabindex="200">
 	</div>
-	<div class="form-group">
-		<%= f.email_field :email, class: 'form-control', placeholder: '邮箱' %>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">邮箱</span>
+		<input type="text" place-holder="邮箱" name="user[email]" class="mp-sign-blur form-control" tabindex="201">
 	</div>
-	<div class="form-group">
-		<%= f.password_field :password, class: 'form-control', placeholder: '密码' %>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">密码</span>
+		<input type="password" place-holder="密码" name="user[password]" class="mp-sign-blur form-control" maxlength="16" tabindex="202">
 	</div>
-	<!-- <div class="form-group">
-		<%#= f.password_field :password_confirmation, class: 'form-control', placeholder: '重复密码' %>
-	</div> -->
-	<input type="submit" value="注册为漫拍帐户" class="btn btn-info btn-block">
-	<hr>
-	<div class="checkbox">
-		<input type="checkbox" id="agree">
-		<label for="agree">同意</label>
-		<a href="">协议</a>
-		<a class="pull-right sign-in" href="javascript:void(0);">去登录</a>
+	<div style="width: 280px; *width: 300px; _width: 300px; height: 34px;">
+		<input type="submit" value="注册帐户" id="sign-form-submit-sign_up-btn" class="pull-left btn btn-info sing-form-submit-btn">
+		<a class="sign-in_now pull-right" href="javascript:void(0);">去登录</a>
 	</div>
-	<hr>
+	<hr style="margin: 2px auto 10px auto;">
 	<h5>快捷登录，无需注册</h5>
 	<%= render "oauth" %>
-<% end %>
+</form>

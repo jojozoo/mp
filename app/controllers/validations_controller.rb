@@ -20,7 +20,11 @@ class ValidationsController < ApplicationController
       end
     end
 
-    def sign_in_or_up
-
+    def sign_in
+      @user = User.where(["username = ? or email = ? or mobile = ?", params[:username], params[:username], params[:username]]).first
+      tip = '1'
+      tip = '2' if @user.blank?
+      tip = '3' if @user and !@user.valid_password?(params[:password])
+      render text: tip, status: 200
     end
 end

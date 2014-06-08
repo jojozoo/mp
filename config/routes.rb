@@ -11,7 +11,7 @@ Mp::Application.routes.draw do
   # get    '/profile'       => 'users#profile'
   get    '/pg/:id'        => 'users#pg', as: :pg # 摄影师地址
   get    '/search'        => 'search#index'
-  get    '/validations/:action'       => 'validations#:action'
+  match  '/validations/:action'       => 'validations#:action'
   
   # match '/ajax/tui/:push/:source/:id' => 'ajax#tui', via: :post, as: :ajax_tui # 推
   # match '/ajax/editer/:source/:id'    => 'ajax#editer', via: :post, as: :ajax_editer # 编辑推荐
@@ -21,7 +21,7 @@ Mp::Application.routes.draw do
   match '/ajax/com/:source/:id'       => 'ajax#com', via: :post, as: :ajax_com # 评论
   match '/ajax/fol/:source/:id'       => 'ajax#fol', via: :post, as: :ajax_fol # 关注
   match '/ajax/ufl/:source/:id'       => 'ajax#ufl', via: :post, as: :ajax_ufl # 取消关注
-  match '/ajax/tag/:source/:id'       => 'ajax#tag', via: :post, as: :ajax_tag # 获取标签
+  match '/ajax/tag/:source/:id'       => 'ajax#tag', via: :get , as: :ajax_tag # 获取标签
   match '/ajax/tui/:source/:id'       => 'ajax#tui', via: :post, as: :ajax_tui # 编辑推荐
   match '/ajax/cho/:source/:id'       => 'ajax#cho', via: :post, as: :ajax_cho # 每日精选
   
