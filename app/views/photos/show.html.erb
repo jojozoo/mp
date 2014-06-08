@@ -4,8 +4,12 @@
 	<div class="col-md-12">
 		<div class="mp-large-picture">
 			<%= link_to image_tag(@photo.picture(:big)) %>
-			<a href="javascript:void(0);" class="prev-photo">上一张</a>
-			<a href="javascript:void(0);" class="next-photo">下一张</a>
+			<% if prev = @photo.prev %>
+				<a href="<%= photo_path(prev) %>" class="pn-photo prev-photo"><span></span></a>
+			<% end %>
+			<% if nexp = @photo.next %>
+				<a href="<%= photo_path(nexp) %>" class="pn-photo next-photo"><span></span></a>
+			<% end %>
 		</div>
 		<hr>
 		<ul class="list-unstyled clearfix">

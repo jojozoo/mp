@@ -96,7 +96,7 @@ class Event < ActiveRecord::Base
   
   # 参与活动的人 如何需要显示后期再加，现在是editor编辑者
   # has_many :members
-  has_many :editors, foreign_key: :editor_id
+  has_many :editors#, foreign_key: :editor_id
   # event_id, user_id, images_count, winner, auth(editor, other)
   # 活动获奖的人 大于0 asc排序: 0参与 1等奖 2等奖
   has_many :photos

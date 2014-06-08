@@ -285,6 +285,7 @@ textarea.form-control{
 }
 .navbar-default .navbar-collapse ul.navbar-right > li > a.nav-more:hover{
     background-position: -90px -50px;
+    background-color: #3a3f46;
 }
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
@@ -395,14 +396,6 @@ hr{
 	text-decoration: none;
 }
 
-.mp-large-picture{
-    width: 100%;
-    height: 100%;
-    background: #f1f1f1;
-}
-.mp-large-picture a{
-    display: block;
-}
 .radbox{
     background-color: #fff;
     margin-bottom: 20px;

@@ -1,7 +1,7 @@
 <div class="row" style="height:180px;">
 	<div class="col-md-8" style="border-right: 1px solid #F8F8F8;">
-		<h3>
-			<%= '标题未填写' %>
+		<h4>
+			<%= photo.title || '标题未填写' %>
 			<small>
 				<%= '组图' %>照片
 			</small>
@@ -29,10 +29,8 @@
 					<% end %>
 				<% end %>
 			</div>
-		</h3>
-		<p class="gray-desc">
-			<%= @photo.desc %>
-		</p>
+		</h4>
+		<p class="gray-desc"><%= @photo.desc %>述图描述图片的一些一些描述图片的一些一些描述图片的一些一些描述图片的一些一些描述图片的一些一些描述图片的一些一些描述图片的一些一些描述图片的一些一些描述图片的一些一些描述图片的一些一些描述图片的一些一些描述</p>
 		<p>
 			标签:
 			<a href="">摄影</a>
@@ -73,6 +71,12 @@
 		<p>
 			浏览:
 			<%= photo.visit_count %>
+			<br>
+			喜欢:
+			<%= photo.liks_count %>
+			<br>
+			收藏:
+			<%= photo.stos_count %>
 			<br>
 			时间:
 			<%= humanize(photo.updated_at) %>

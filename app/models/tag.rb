@@ -14,7 +14,9 @@
 
 class Tag < ActiveRecord::Base
   attr_accessible :name, :channel, :sum, :desc, :del
-  # TODO 添加is_hot是否常用标签 catgegory:图片,活动,文章
+  # TODO 添加is_hot是否常用标签
+  # channel应该=图片,活动,文章
+  # cate应该是类别 ['常用', '器材', '题材', '风格技巧', '活动']
   CHANNEL = ['常用', '器材', '题材', '风格技巧', '活动']
   
   validates_presence_of     :name, 

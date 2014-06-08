@@ -34,6 +34,7 @@ $(function() {
                                     '<input type="password" place-holder="密码" name="user[password]" class="mp-sign-blur form-control" maxlength="16" tabindex="101" />' +
                                 '</div>' +
                                 '<div class="mp-sign-form-div">' +
+                                    '<input name="authenticity_token" type="hidden" value="'+ $('meta[name=csrf-token]').attr('content') +'">' +
                                     '<input type="hidden" name="remember" value="on" />' +
                                     '<input type="hidden" name="redirect" value="' + POPBox.redirectUrl + '" />' +
                                     '<label class="pboxtb checked">保持登录状态</label>' +
@@ -46,6 +47,7 @@ $(function() {
                             '</form>' +
                             '<form method="post" action="/sign_up" class="mp-sign-form mp-sign-form-sign_up" style="display: '+ (POPBox.isInitSignIn ? 'none' : 'block') +'">' +
                                 '<h3>快速注册漫拍网</h3>' +
+                                '<input name="authenticity_token" type="hidden" value="'+ $('meta[name=csrf-token]').attr('content') +'">' + 
                                 '<div class="mp-sign-form-div">' +
                                     '<span class="sign-placeholder">帐号</span>' +
                                     '<input type="text" place-holder="帐号" name="user[username]" class="mp-sign-blur form-control" tabindex="200" />' +
@@ -254,7 +256,7 @@ $(function() {
         })();
     });
     // 输入密码按回车就提交
-    $(document).on('keyup', '.mppopup-box input:password', function(e) {
+    $(document).on('keyup', '.mp-sign-form input:password', function(e) {
         e = e || window.event;
         if (e.keyCode == 13) {
             $(this).parents('form').find('.sing-form-submit-btn').trigger('click');
