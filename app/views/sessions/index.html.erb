@@ -17,7 +17,9 @@
 	<div class="mp-sign-form-div-session">
 		<input name="authenticity_token" type="hidden" value="">
 		<input type="hidden" name="remember" value="on" />
-		<input type="hidden" name="redirect" />
+		<% if params[:redirect].present? %>
+			<input type="hidden" name="redirect" value="<%= params[:redirect] %>"/>
+		<% end %>
 		<label class="remember_me checked">保持登录状态</label>
 		<a href="/forgot">忘记密码</a>
 	</div>

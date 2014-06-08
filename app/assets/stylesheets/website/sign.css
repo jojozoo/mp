@@ -22,7 +22,7 @@
     margin-top: 10px;
     background: url(/images/logo.png) no-repeat;
 }
-.mp-session-sign .toolbar > .sign-in_now, .mp-session-sign .toolbar > .sign-up_now {
+.mp-session-sign .toolbar > .btn {
     display: inline-block;
     float: right;
     margin: 30px 0 0 20px;
@@ -341,7 +341,7 @@ body.session .background img{
     background:url(/images/mp-sign-close.jpg) 0 6px no-repeat;
     /**margin-left:10px;*/
 }
-#mppopup-box-btn, #mp-popup-reg-btn {
+.mppopup-box .sing-form-submit-btn {
     width:126px;
     height:36px;
     cursor:pointer;
@@ -349,7 +349,7 @@ body.session .background img{
     border:none;
     vertical-align:middle;
 }
-#mp-popup-reg-btn {
+.mppopup-box #sign-form-submit-sign_up-btn {
     background-position:0 -164px;
 }
 

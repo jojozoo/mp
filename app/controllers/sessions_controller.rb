@@ -1,23 +1,24 @@
 class SessionsController < ApplicationController
 
+  before_filter :if_sign_redirect, except: [:destroy]
   # 其中 new 和 sign_up 的get请求去掉 路由也去掉 只有首页
   # TODO 有些bug 如登录不成功 或者注册时的验证
   def index
     redirect_to home_path if sign_in?
-    session[:url] = params[:redirect] if params[:redirect].present?
   end
 
   # POST /sign_in 登录
   def create
-    @user = User.where(["username = ? or email = ? or mobile = ?", params[:username], params[:username], params[:username]]).first
+    username = params[:user][:username]
+    @user = User.where(["username = ? or email = ? or mobile = ?", username, username, username]).first
     if @user.blank?
       redirect_to root_path(m: 'sign_in') and return
     end
-    unless @user.valid_password?(params[:password])
+    unless @user.valid_password?(params[:user][:password])
       redirect_to root_path(m: 'sign_in') and return
     end
     set_sign_in_flag(@user.id)
-    redirect_to params[:redirect] || session.delete(:url) || home_path
+    redirect_to params[:redirect] || home_path
   end
 
   # GET /sign_up 注册
@@ -40,13 +41,13 @@ class SessionsController < ApplicationController
     # end
 
     if @user.save!
-      set_sign_in_flag(@user.id)
+      # set_sign_in_flag(@user.id)
       # 如果第三方登录
       if params[:uid].present? and account = Account.find_by_id_and_uid(params[:a_id], params[:uid])
         account.update_attributes!(user_id: @user.id)
         redirect_to root_path
       else
-        redirect_to '/validate'
+        redirect_to '/verif?callback=sign_in'
       end
     else
       # TODO 如果oauth登录, 应该添加remote valid 这是个bug
@@ -62,13 +63,12 @@ class SessionsController < ApplicationController
 
   # 忘记密码
   def forgot
-    redirect_to root_path if sign_in?
+    redirect_to home_path if sign_in?
     if request.post?
-      if @user = User.where(["username = ? or email = ?", params[:login], params[:login]]).first
-        @user.update_attribute(:salt, Digest::MD5.hexdigest(Time.now.to_f.to_s))
-        redirect_to '/forgotdb' # 已发送
+      if User.forgot_password?(params[:username])
+        redirect_to '/verif?callback=forgot' # 已发送
       else
-        @error = "找不到对应帐号"
+        redirect_to '/forgot'
       end
     end
   end
@@ -82,7 +82,7 @@ class SessionsController < ApplicationController
         redirect_to root_path(m: 'sign_in')
       end
     else
-      redirect_to '/'
+      render text: '无效链接', status: 404 and return
     end
   end
 
@@ -90,6 +90,14 @@ class SessionsController < ApplicationController
   def destroy
     sign_out_keeping_session
     redirect_to root_path(m: 'sign_in')
+  end
+
+  private
+  def if_sign_redirect
+    if sign_in?
+      # render text: 'not found', status: 404 and return
+      redirect_to params[:redirect] || home_path and return
+    end
   end
 
 end

@@ -26,8 +26,13 @@
 			<%= link_to home_path do %>
 				<span class="logo"></span>
 			<% end %>
+			<% if action_name.eql?('index') %>
 			<a href="javascript:void(0);" class="sign-up_now btn btn-success">注册</a>
 			<a href="javascript:void(0);" class="sign-in_now btn btn-primary">登录</a>
+			<% else %>
+			<a href="/?m=sign_up" class="btn btn-success">注册</a>
+			<a href="/?m=sign_in" class="btn btn-primary">登录</a>
+			<% end %>
 		</div>
 		<%= yield %>
 	</div>

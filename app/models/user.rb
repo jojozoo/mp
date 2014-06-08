@@ -237,7 +237,15 @@ class User < ActiveRecord::Base
   # end
 
   def valid_password?(new_password)
-    self.password == Digest::MD5.hexdigest(new_password)
+    self.password == Digest::MD5.hexdigest(new_password.to_s)
+  end
+
+  def self.forgot_password?(username)
+    user = self.where(["username = ? or email = ? or mobile = ?", username, username, username]).first
+    if user
+      # 如果是手机
+      user.update_attribute(:salt, Digest::MD5.hexdigest(Time.now.to_f.to_s))
+    end
   end
 
   # 常驻地

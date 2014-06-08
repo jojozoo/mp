@@ -6,8 +6,8 @@
 	</div>
 	<%= form_tag '/forgot', method: :post, class: 'form-inline' %>
 		<div class="form-group <%= 'has-error' if @error %>">
-			<label class="sr-only" for="login">帐户</label>
-			<input type="text" id="login" name="login" class="form-control" placeholder="邮箱" style="width:300px;" value="<%= params[:login] %>">
+			<label class="sr-only" for="username">帐户</label>
+			<input type="text" id="username" name="username" class="form-control" placeholder="邮箱" style="width:300px;" value="<%= params[:username] %>">
 			<p class="help-block"><%= @error %></p>
 		</div>
 		<div class="form-group">
@@ -19,16 +19,18 @@
 <script>
 	$(function(){
 		$("#submit-push-forgot").click(function(){
-			var login = $(this).parents("form").find("#login");
-			if(login.val().length <= 0){
-				login.parent().addClass('has-error');
-				login.next().text('不能为空');
-				return false
-			}
-			if(login.val().length < 5){
-				login.parent().addClass('has-error');
-				login.next().text('帐号格式不正确');
-				return false
+			var username = $(this).parents("form").find("#username");
+			var value    = $.trim(username.val());
+			if(value === ''){
+				username.parent().addClass('has-error');
+				username.next().text('不能为空');
+				return false;
+			} else {
+				if(!/^(?:\w+\.?)*\w+@(?:\w+\.)+\w+$/.test(value) && !/^(([0\+]\d{2,3}-)?(0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/.test(value) && !/[\w\u4e00-\u9fa5]{2,10}/.test(value)){
+					username.parent().addClass('has-error');
+					username.next().text('帐号格式不正确');
+					return false;
+				}
 			}
 		});
 	})

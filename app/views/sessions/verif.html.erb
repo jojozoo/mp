@@ -1,10 +1,23 @@
+<% if params[:callback].eql?('sign_in') %>
 <div class="validate" style="margin-top:160px;background:#fff;padding:10px;">
-	<div class="page-header text-primary">
+	<div class="page-header">
+		<h3>
+			<i class="icon-email"></i>
+			验证邮箱
+			<small>邮箱验证可方便通知到您</small>
+		</h3>
+	</div>
+	<p>注册成功，请验证邮箱，或者先 <a href="/home">直接访问</a></p>
+</div>
+<% else %>
+<div class="validate" style="margin-top:160px;background:#fff;padding:10px;">
+	<div class="page-header">
 		<h3>
 			<i class="icon-email"></i>
 			找回密码
-			<small>验证链接已发送到您邮箱</small>
+			<small>找回链接已发送到您邮箱</small>
 		</h3>
 	</div>
-	<p>请到邮箱进行密码找回步骤 。<a href="/">去首页</a></p>
+	<p>请到邮箱进行密码找回步骤</p>
 </div>
+<% end %>
