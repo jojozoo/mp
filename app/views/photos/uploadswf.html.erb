@@ -1,0 +1,98 @@
+<!-- <link href="/uploadnew/ok.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css"> -->
+<link href="/uploadnew/okn.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
+<link href="/uploadswf/uploadify.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
+<link href="/uploadswf/jcrop.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+	var albumId, albumName, requestId, requestName, cookieSK;
+	albumId     = "<%= @album.try(:id) %>";
+	albumName   = "<%= @album.try(:name) %>";
+	requestId   = "<%= @request.try(:id) %>";
+	requestName = "<%= @request.try(:name) %>";
+	cookieSK    = "<%= cookies['_mp_session'] %>";
+</script>
+<script type="text/javascript" src="/uploadswf/swfobject.js?v=<%= Time.now.to_i %>"></script>
+<script type="text/javascript" src="/uploadswf/swfupload.js?v=<%= Time.now.to_i %>"></script>
+<script type="text/javascript" src="/uploadswf/uploadify.js?v=<%= Time.now.to_i %>"></script>
+<script type="text/javascript" src="/uploadswf/jcrop.js?v=<%= Time.now.to_i %>"></script>
+<script type="text/javascript" src="/uploadswf/init.js?v=<%= Time.now.to_i %>"></script>
+
+
+
+<div class="uploader">
+	<div class="file_input">
+		<input class="uploadfile" multiple="multiple" name="the-file" type="file" accept="image/*">
+	</div>
+	<div class="photo-container">
+		<div class="crop-tooltip">
+			<p>可裁剪照片做缩略图!</p>
+		</div>
+		<div class="active-photo-wrap" style="height: 230px;">
+			<div class="loading-progress">
+				<div class="progress-bar-wrap">
+					<div class="wheels-bar">
+						<img src="/images/loading.gif">
+						<span class="wheel-bar-filename"></span>
+						<span>
+							<strong class="curr-wheel">1</strong>
+							/
+							<strong class="total-wheel"></strong>
+						</span>
+					</div>
+					<div class="ui progress-bar">
+						<span class="area green"></span>
+						<span class="label"></span>
+						<span class="percentage">
+							<span class="value">0</span>
+							<small>%</small>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="finish-progress">
+				<div class="progress-bar-wrap">
+					<div class="ui progress-bar">
+						<span class="area" style="width: 0%;"></span>
+						<span class="label"></span>
+						<span class="percentage">
+							<span class="value">0</span>
+							<small>%</small>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div id="flashMenu-queue" class="uploadify-queue">
+				<div id="SWFUpload_0_9" class="uploadify-queue-item">
+					<span class="fileName">IMG_0329.JPG (4MB)</span>
+					<span class="data"></span>
+					<div class="uploadify-progress">
+						<div class="uploadify-progress-bar">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="drag-info">
+				<h1>拖动您的照片到这</h1>
+				<p class="browser-not-supported"></p>
+				<div class="action_buttons">
+					<a class="button browse_files action" href="javascript:void(0);">上传照片</a>
+				</div>
+			</div>
+			<div class="active-photo"></div>
+		</div>
+		<div class="photo-reel">
+			<div class="photos"></div>
+			<div class="previous-button"></div>
+			<div class="next-button"></div>
+		</div>
+		<div class="photo-actions">
+			<div class="remaining-photos">
+				<p>还可以再上传20张照片</p>
+			</div>
+			<input class="button remove" type="submit" value="删除本张">
+			<input class="button submit" type="submit" value="继续上传">
+			<input class="button action finish" type="submit" value="完成上传"></div>
+	</div>
+	<div class="edit-container">
+		<%= render 'details' %>
+	</div>
+</div>

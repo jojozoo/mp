@@ -33,6 +33,7 @@ Mp::Application.routes.draw do
       get :star
       post :upload
       get :uploadnew
+      get :uploadswf
     end
   end
 
