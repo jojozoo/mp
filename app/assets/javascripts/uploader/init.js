@@ -272,8 +272,8 @@ $(function(){
             e.keyCode = 9;
         }
         if(e.keyCode == 9 || e.keyCode == 13){
-            if(val.length > 5){
-                alert("最长5个字符");
+            if(val.length > 10){
+                alert("最长10个字符");
                 event.returnValue = false;
                 event.cancel = true;
                 return;
