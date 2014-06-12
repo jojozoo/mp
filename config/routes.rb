@@ -25,7 +25,7 @@ Mp::Application.routes.draw do
   match '/ajax/tui/:source/:id'       => 'ajax#tui', via: :post, as: :ajax_tui # 编辑推荐
   match '/ajax/cho/:source/:id'       => 'ajax#cho', via: :post, as: :ajax_cho # 每日精选
   
-
+  resources :tps, only: [:create, :show]
   # gallery
   resources :photos do
     collection do
@@ -209,7 +209,8 @@ Mp::Application.routes.draw do
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
   # 图片访问权限
-  get "/system/:class/:id/:up/:one/:two/:three/:style/:random.:format" => 'photos#browse'
+  get "/system/photos/:id/:up/:one/:two/:three/:style/:random.:format" => 'photos#browse'
+  get "/system/tps/:id/:one/:two/:three/:style/:random.:format"    => 'tps#show'
   root :to => 'sessions#index'
 
   # See how all your routes lay out with "rake routes"

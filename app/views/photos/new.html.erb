@@ -1,20 +1,10 @@
-<!-- <link href="/uploadnew/ok.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css"> -->
 <link href="/uploadnew/okn.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
-<link href="/uploadie/uploadify.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
 <link href="/uploadie/jcrop.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
 <script type="text/javascript">
-	var albumId, albumName, requestId, requestName, cookieSK;
-	albumId     = "<%= @album.try(:id) %>";
-	albumName   = "<%= @album.try(:name) %>";
-	requestId   = "<%= @request.try(:id) %>";
-	requestName = "<%= @request.try(:name) %>";
-	cookieSK    = "<%= cookies['_mp_session'] %>";
+	var cookieSK = "<%= cookies['_mp_session'] %>";
 </script>
-<script type="text/javascript" src="/uploadie/swfobject.js?v=<%= Time.now.to_i %>"></script>
-<script type="text/javascript" src="/uploadie/swfupload.js?v=<%= Time.now.to_i %>"></script>
-<script type="text/javascript" src="/uploadie/uploadify.js?v=<%= Time.now.to_i %>"></script>
-<script type="text/javascript" src="/uploadie/jcrop.js?v=<%= Time.now.to_i %>"></script>
-<script type="text/javascript" src="/uploadie/init.js?v=<%= Time.now.to_i %>"></script>
+<%= javascript_include_tag "uploader" %>
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821"></script>
 
 
 
@@ -24,7 +14,7 @@
 	</div>
 	<div class="photo-container">
 		<div class="crop-tooltip">
-			<p>可裁剪照片做缩略图!</p>
+			<p>可裁剪照片做缩略图</p>
 		</div>
 		<div class="active-photo-wrap" style="height: 230px;">
 			<div class="loading-progress">
@@ -57,16 +47,6 @@
 							<span class="value">0</span>
 							<small>%</small>
 						</span>
-					</div>
-				</div>
-			</div>
-			<div id="flashMenu-queue" class="uploadify-queue">
-				<div id="SWFUpload_0_9" class="uploadify-queue-item">
-					<span class="fileName">IMG_0329.JPG (4MB)</span>
-					<span class="data"></span>
-					<div class="uploadify-progress">
-						<div class="uploadify-progress-bar">
-						</div>
 					</div>
 				</div>
 			</div>

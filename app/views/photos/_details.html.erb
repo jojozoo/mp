@@ -2,14 +2,21 @@
 	<div class="wrapper clearfix">
 		<div class="exif">
 			<h4 class="disabled">标题</h4>
-			<label class="ui small-badge" for="photo-name">编辑</label>
+			<label class="ui small-badge" for="photo-{{id}}-title">编辑</label>
 			<div class="photo-title">
-				<input class="ui large-textfield bind-photo-name" id="photo-name" name="name" placeholder="Untitled Photo" type="text" disabled="disabled"></div>
+				<input class="ui large-textfield" id="photo-{{id}}-title" name="photo[{{id}}][title]" placeholder="Untitled Photo" type="text" disabled="disabled"></div>
 			<div class="photo-request">
 				<h4 class="disabled">活动</h4>
 				<label class="ui select-label">
-					<select class="ui select bind-photo-request" id="photo-request" name="request" disabled="disabled">
-						<option>选择活动</option>
+					<select class="ui select" id="photo-{{id}}-request" name="photo[{{id}}][request_id]" disabled="disabled" readonly="readonly">
+						<option value="">选择活动</option>
+						<% Event.select("id, name").each do |event| %>
+							<% if params[:rid].eql?(event.id.to_s) %>
+							<option value="<%= event.id %>" selected="selected"><%= event.name %></option>
+							<% else %>
+							<option value="<%= event.id %>"><%= event.name %></option>
+							<% end %>
+						<% end %>
 					</select>
 					<span class="ui select-arrow"></span>
 				</label>
@@ -17,7 +24,7 @@
 			<div class="place-photo">
 				<h4 class="disabled">相册</h4>
 				<div class="create_new_set_wrap">
-					<label class="ui small-badge create-new-set" for="photo-create_new_set">创建相册</label>
+					<label class="ui small-badge create-new-set disabled" for="photo-create_new_set">创建相册</label>
 				</div>
 				<div class="confirm_new_set_wrap">
 					<label class="ui small-badge confirm-new-set active" for="photo-confirm_new_set">创建</label>
@@ -26,7 +33,7 @@
 				<div class="place_selection_creation_wrap">
 					<div class="place_selection_wrap">
 						<label class="ui select-label">
-							<select class="ui select bind-photo-album" id="photo-album" name="album" disabled="disabled">
+							<select class="ui select" id="photo-{{id}}-album_id" name="photo[{{id}}][album_id]" disabled="disabled">
 								<option>选择相册</option>
 							</select>
 							<span class="ui select-arrow"></span>
@@ -42,7 +49,7 @@
 			</div>
 			<div class="photo-exif">
 				<h4 class="disabled">
-					<span class="translation_missing" title="translation missing: en.v3.upload.photo_details.exif">Exif</span>
+					<span class="translation_missing" title="照片Exif信息">Exif</span>
 				</h4>
 				<div class="set_defaults_wrap">
 					<label class="ui small-badge set-defaults" for="photo-set_default">使用这些默认值</label>
@@ -51,25 +58,25 @@
 					<div class="labels">
 						<label>
 							型号
-							<input class="ui small-invisible-textfield bind-photo-camera" id="photo-camera" name="camera" placeholder="Set Camera" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-camera" name="photo[{{id}}][exif][camera]" placeholder="Set Camera" type="text" disabled="disabled"></label>
 						<label>
 							镜头
-							<input class="ui small-invisible-textfield bind-photo-lens" id="photo-lens" name="lens" placeholder="Set Lens" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-lens" name="photo[{{id}}][exif][lens]" placeholder="Set Lens" type="text" disabled="disabled"></label>
 						<label>
 							焦距
-							<input class="ui small-invisible-textfield bind-photo-focal_length" id="photo-focal_length" name="focal_length" placeholder="Set Focal Length" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-focal_length" name="photo[{{id}}][exif][focal_length]" placeholder="Set Focal Length" type="text" disabled="disabled"></label>
 						<label>
 							快门速度
-							<input class="ui small-invisible-textfield bind-photo-shutter_speed" id="photo-shutter_speed" name="shutter_speed" placeholder="Set Shutter Speed" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-shutter_speed" name="photo[{{id}}][exif][shutter_speed]" placeholder="Set Shutter Speed" type="text" disabled="disabled"></label>
 						<label>
 							光圈
-							<input class="ui small-invisible-textfield bind-photo-aperture" id="photo-aperture" name="aperture" placeholder="Set Aperture" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-aperture" name="photo[{{id}}][exif][aperture]" placeholder="Set Aperture" type="text" disabled="disabled"></label>
 						<label>
 							ISO
-							<input class="ui small-invisible-textfield bind-photo-iso" id="photo-iso" name="iso" placeholder="Set ISO" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-iso" name="photo[{{id}}][exif][iso]" placeholder="Set ISO" type="text" disabled="disabled"></label>
 						<label>
 							拍摄时间
-							<input class="ui small-invisible-textfield bind-photo-taken_at" id="photo-taken_at" name="taken_at" placeholder="Set Date (dd/mm/yyyy)" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-taken_at" name="photo[{{id}}][exif][taken_at]" placeholder="Set Date (dd/mm/yyyy)" type="text" disabled="disabled"></label>
 					</div>
 				</div>
 			</div>
@@ -77,7 +84,7 @@
 		<div class="description">
 			<div class="description-field">
 				<h4 class="disabled">描述</h4>
-				<textarea class="ui textarea bind-photo-description" cols="70" id="photo-description" name="description" placeholder="照片描述" disabled="disabled"></textarea>
+				<textarea class="ui textarea" cols="70" id="photo-{{id}}-description" name="photo[{{id}}][description]" placeholder="照片描述" disabled="disabled"></textarea>
 			</div>
 			<div class="license-select">
 				<div>
@@ -87,8 +94,8 @@
 				</div>
 				<div>
 					<div class="warrant-row">
-						<input type="radio" id="warrant0" name="user[warrant]" value="0" disabled="disabled">
-						<label for="warrant0">
+						<input type="radio" id="photo-{{id}}-warrant0" name="photo[{{id}}][warrant]" value="0" disabled="disabled">
+						<label for="photo-{{id}}-warrant0">
 							<span class="cc-1"></span>
 							<span class="cc-2"></span>
 							<span class="cc-3"></span>
@@ -96,8 +103,8 @@
 						</label>
 					</div>
 					<div class="warrant-row">
-						<input type="radio" id="warrant1" name="user[warrant]" value="1" disabled="disabled">
-						<label for="warrant1">
+						<input type="radio" id="photo-{{id}}-warrant1" name="photo[{{id}}][warrant]" value="1" disabled="disabled">
+						<label for="photo-{{id}}-warrant1">
 							<span class="cc-1"></span>
 							<span class="cc-2"></span>
 							<span class="cc-4"></span>
@@ -105,8 +112,8 @@
 						</label>
 					</div>
 					<div class="warrant-row">
-						<input type="radio" id="warrant2" name="user[warrant]" value="2" disabled="disabled">
-						<label for="warrant2">
+						<input type="radio" id="photo-{{id}}-warrant2" name="photo[{{id}}][warrant]" value="2" disabled="disabled">
+						<label for="photo-{{id}}-warrant2">
 							<span class="cc-1"></span>
 							<span class="cc-2"></span>
 							<span class="cc-5"></span>
@@ -114,8 +121,8 @@
 						</label>
 					</div>
 					<div class="warrant-row">
-						<input type="radio" id="warrant3" name="user[warrant]" value="3" disabled="disabled">
-						<label for="warrant3">
+						<input type="radio" id="photo-{{id}}-warrant3" name="photo[{{id}}][warrant]" value="3" disabled="disabled">
+						<label for="photo-{{id}}-warrant3">
 							<span class="cc-1"></span>
 							<span class="cc-3"></span>
 							<span class="cc-5"></span>
@@ -123,8 +130,8 @@
 						</label>
 					</div>
 					<div class="warrant-row">
-						<input type="radio" id="warrant4" name="user[warrant]" value="4" disabled="disabled">
-						<label for="warrant4">
+						<input type="radio" id="photo-{{id}}-warrant4" name="photo[{{id}}][warrant]" value="4" disabled="disabled">
+						<label for="photo-{{id}}-warrant4">
 							<span class="cc-1"></span>
 							<span class="cc-4"></span>
 							<span class="cc-5"></span>
@@ -132,8 +139,8 @@
 						</label>
 					</div>
 					<div class="warrant-row">
-						<input type="radio" id="warrant5" name="user[warrant]" value="5" checked="checked" disabled="disabled">
-						<label for="warrant5">
+						<input type="radio" id="photo-{{id}}-warrant5" name="photo[{{id}}][warrant]" value="5" checked="checked" disabled="disabled">
+						<label for="photo-{{id}}-warrant5">
 							<span class="cc-1"></span>
 							<span class="cc-5"></span>
 							<span class="cc-5"></span>
@@ -149,11 +156,11 @@
 				<div class="tag-tip">
 					标签作为关键词可以被搜索到
 				</div>
-				<div class="tag-count">最多3个, 还剩3个</div>
+				<div class="tag-count">最多5个标签</div>
 				<div class="tags_field_wrap">
 					<div class="tags_input_wrap">
 						<div class="tag_field">
-							<input placeholder="添加标签让照片更容易找到..." type="text" autocomplete="off" disabled="disabled" style="width:380px;">
+							<input placeholder="添加标签让照片更容易找到..." disabled="disabled" type="text" autocomplete="off" style="width:370px;">
 						</div>
 					</div>
 					<div class="cf"></div>
@@ -167,7 +174,7 @@
 			<div class="geotagging">
 				<h4 class="disabled">坐标</h4>
 				<div class="map-wrapper">
-					<div class="maplet hidden_map_image"></div>
+					<div class="maplet hidden_map_image" id="GDMAP-{{id}}"></div>
 				</div>
 			</div>
 		</div>

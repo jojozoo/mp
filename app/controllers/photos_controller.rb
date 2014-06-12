@@ -65,17 +65,6 @@ class PhotosController < ApplicationController
         redirect_to event_path(event.id, order: 'myse')
     end
 
-    def upload
-        @photo = current_user.photos.create(picture: params[:filedata], name: params[:filename])
-        data = {
-            id: @photo.id, 
-            exif: JSON.parse(@photo.exif),
-            large: @photo.picture(:ielarge), 
-            thumb: @photo.picture(:iethumb)
-        }
-        render json: data.to_json
-    end
-
     def destroy
 
     end

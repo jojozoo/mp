@@ -26,7 +26,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			var settings = $.extend({
 				// Required Settings
 				id       : $this.attr('id'), // The ID of the DOM object
-				swf      : '/uploadie/uploadify.swf',  // The path to the uploadify SWF file
+				swf      : '/uploadify.swf',  // The path to the uploadify SWF file
 				uploader : '/tps',  // The path to the server-side upload script
 				
 				// Options

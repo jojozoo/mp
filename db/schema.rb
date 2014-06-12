@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140510111440) do
+ActiveRecord::Schema.define(:version => 20140610093242) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -225,6 +225,18 @@ ActiveRecord::Schema.define(:version => 20140510111440) do
     t.boolean  "del",             :default => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+  end
+
+  create_table "tps", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.text     "exif"
+    t.string   "randomstr"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "tuis", :force => true do |t|

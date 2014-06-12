@@ -11,7 +11,7 @@ module Paperclip
 
         def randomp(attachment, style)
             obj = attachment.instance
-            hex = obj.is_a?(Photo) ? obj.randomstr.to_s : 'mp_server' # 别的类用不到randomp
+            hex = (obj.is_a?(Photo) or obj.is_a?(Tp)) ? obj.randomstr.to_s : 'mp_server' # 别的类用不到randomp
             ori = style && style.to_sym == :original
             Digest::MD5.hexdigest(ori ? obj.id.to_s + hex + "server" : hex + obj.id.to_s)
         end

@@ -3,7 +3,7 @@ Uploadify v3.2.1
 Copyright (c) 2012 Reactive Apps, Ronnie Garcia
 Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
 */
-
+// 不再需要这个文件 但按照生成的样式修改一下
 (function($) {
 
 	// These methods can be called by adding them as the first argument in the uploadify plugin call
@@ -150,6 +150,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 								  }
 					});
 					// 此处产生一个swf的请求
+					// swfuploadify.movieName => SWFUpload_0
 					$('#' + swfuploadify.movieName).wrap($wrapper);
 					// Recreate the reference to wrapper
 					$wrapper = $('#' + settings.id);
