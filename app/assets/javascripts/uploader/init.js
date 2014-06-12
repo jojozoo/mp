@@ -30,10 +30,8 @@ Mpupload.initMap = function(id, lat, lon){
     // 应该点击移动到点击位置
     var mapObj,
         param = {level: 12};
-    alert(lat);
-    alert(lon);
-    if(!lat || !lon){
-        param = $.extend(param,{center: AMap.LngLat(lon, lat), level: 10});
+    if(lat && lon){
+        param = $.extend(param, {center: new AMap.LngLat(lon, lat), level: 10});
     }
     mapObj = new AMap.Map("GDMAP-" + id, param);
     var marker = new AMap.Marker({  
