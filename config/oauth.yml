@@ -1,6 +1,6 @@
 weibo:
-  key: 3167481927
-  secret: 9d51bc64809281211735f0eef681f3e9
+  key: 3912918179
+  secret: 309c013025328e773827253c3f332a76
   url: https://api.weibo.com
   callback: http://mpwang.cn/oauth/weibo/callback
 qq:

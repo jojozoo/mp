@@ -1,4 +1,6 @@
 weibo : http://open.weibo.com/webmaster/build?siteid=3167481927 http://open.weibo.com/webmaster/console?siteid=3167481927
+key: 3167481927
+secret: 9d51bc64809281211735f0eef681f3e9
 qq    : http://op.open.qq.com/index.php?mod=appinfo&act=main&appid=1101192136
 qqmp  : http://dev.t.qq.com/development/appinfo?appid=1101192136&comefrom=1
 在用
