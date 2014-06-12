@@ -43,7 +43,7 @@
 	</div>
 	<div class="col-md-4" style="margin-top:10px;">
 		<div class="basic-info">
-			<%= link_to image_tag(photo.user.avatar(:s50), class: 'img-circle'), user_path(photo.user_id), style: 'float:left;margin-right:10px;' %>
+			<%= link_to image_tag(photo.user.avatar(:s50), class: 'img-circle avatar'), user_path(photo.user_id), style: 'float:left;margin-right:10px;' %>
 			<div>
 				<%= link_to photo.user.username, user_path(photo.user_id) %></div>
 			<div class="basic-tui" style="margin-top:8px;">
