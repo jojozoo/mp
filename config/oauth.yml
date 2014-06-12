@@ -2,29 +2,29 @@ weibo:
   key: 3167481927
   secret: 9d51bc64809281211735f0eef681f3e9
   url: https://api.weibo.com
-  callback: http://shanpro.com/oauth/weibo/callback
+  callback: http://mpwang.cn/oauth/weibo/callback
 qq:
   key: 1101192136
   secret: gf5C2Cq3CYnlm28r
   url: https://graph.qq.com/
-  callback: http://shanpro.com/oauth/qq/callback
+  callback: http://mpwang.cn/oauth/qq/callback
 qqmp:
   key: 1101192136
   secret: gf5C2Cq3CYnlm28r
   url: https://open.t.qq.com
-  callback: http://shanpro.com/oauth/qqmp/callback
+  callback: http://mpwang.cn/oauth/qqmp/callback
 qzone:
   key: 101016368
   secret: f88dc6fd8ad16173d5ccaf8e87b7b9fd
   url: https://graph.qq.com/
-  callback: http://shanpro.com/oauth/qzone/callback
+  callback: http://mpwang.cn/oauth/qzone/callback
 douban:
-  key: 0f93aa3e2a7d10ad2ebafeba7f773207
-  secret: 7a6cdcda9c8c6391
+  key: 061bbf25d19eb8b012533d7174dc2a10
+  secret: c622106232d360bc
   url: https://www.douban.com
-  callback: http://shanpro.com/oauth/douban/callback
+  callback: http://mpwang.cn/oauth/douban/callback
 renren:
   key: 62951685558a4fb993cbf31d78b875e8
   secret: 0a5e7ce048a5442dbff7247c7eae392b
   url: https://graph.renren.com
-  callback: http://shanpro.com/oauth/renren/callback
+  callback: http://mpwang.cn/oauth/renren/callback
