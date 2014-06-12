@@ -310,7 +310,7 @@ $(function(){
                 $(".photos").html('');
                 $(".active-photo").html('');
                 $(".photo-details.disabled").siblings().remove();
-                window.location.href = "/photos";
+                window.location.href = "/photos?order=news";
             }
         });
         item = Mpupload.queue[key];
