@@ -23,7 +23,7 @@ Mpupload.initDetails = function(id){
         var v = exif[key];
         details.find("#photo-exif-" + id + "-" + key).val(v);
     }
-    $(".photo-details[data-pid=" + id + "]").find('input, textarea').placeholder();
+    // $(".photo-details[data-pid=" + id + "]").find('input, textarea').placeholder();
 };
 // 初始化地图
 Mpupload.initMap = function(id, lat, lon){
@@ -176,7 +176,7 @@ Mpupload.flashMoveButton = function(){
 $(function(){
     $('input, textarea').placeholder();
     var clone = $(".edit-container").clone();
-    Mpupload.photo_details = clone.find("[disabled]").removeAttr("disabled").end().find("input, textarea").val("").end().find(".disabled").removeClass("disabled").end().html();
+    Mpupload.photo_details = clone.find("[disabled]").removeAttr("disabled").end().find("input[type=text], textarea").val("").end().find(".disabled").removeClass("disabled").end().html();
     // 配置uploadify
     $('#flashMenu').uploadify();
 
