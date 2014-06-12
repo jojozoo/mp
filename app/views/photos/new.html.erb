@@ -1,13 +1,8 @@
-<link href="/uploadnew/okn.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
-<link href="/uploadie/jcrop.css?v=<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css">
-<script type="text/javascript">
+\<script type="text/javascript">
 	var cookieSK = "<%= cookies['_mp_session'] %>";
 </script>
 <%= javascript_include_tag "uploader" %>
 <script language="javascript" src="http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821"></script>
-
-
-
 <div class="uploader">
 	<div class="file_input">
 		<input class="uploadfile" multiple="multiple" name="the-file" type="file" accept="image/*">
