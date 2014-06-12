@@ -8,7 +8,7 @@
 			<div class="photo-request">
 				<h4 class="disabled">活动</h4>
 				<label class="ui select-label">
-					<select class="ui select" id="photo-{{id}}-request" name="photo[{{id}}][request_id]" disabled="disabled" readonly="readonly">
+					<select class="ui select" id="photo-{{id}}-request_id" name="photo[{{id}}][request_id]" disabled="disabled" readonly="readonly">
 						<option value="">选择活动</option>
 						<% Event.select("id, name").each do |event| %>
 							<% if params[:rid].eql?(event.id.to_s) %>
@@ -58,25 +58,25 @@
 					<div class="labels">
 						<label>
 							型号
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-camera" name="photo[{{id}}][exif][camera]" placeholder="Set Camera" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-camera" name="photo[{{id}}][exif][camera]" placeholder="Set Camera" type="text" disabled="disabled"></label>
 						<label>
 							镜头
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-lens" name="photo[{{id}}][exif][lens]" placeholder="Set Lens" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-lens" name="photo[{{id}}][exif][lens]" placeholder="Set Lens" type="text" disabled="disabled"></label>
 						<label>
 							焦距
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-focal_length" name="photo[{{id}}][exif][focal_length]" placeholder="Set Focal Length" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-focal_length" name="photo[{{id}}][exif][focal_length]" placeholder="Set Focal Length" type="text" disabled="disabled"></label>
 						<label>
 							快门速度
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-shutter_speed" name="photo[{{id}}][exif][shutter_speed]" placeholder="Set Shutter Speed" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-shutter_speed" name="photo[{{id}}][exif][shutter_speed]" placeholder="Set Shutter Speed" type="text" disabled="disabled"></label>
 						<label>
 							光圈
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-aperture" name="photo[{{id}}][exif][aperture]" placeholder="Set Aperture" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-aperture" name="photo[{{id}}][exif][aperture]" placeholder="Set Aperture" type="text" disabled="disabled"></label>
 						<label>
 							ISO
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-iso" name="photo[{{id}}][exif][iso]" placeholder="Set ISO" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-iso" name="photo[{{id}}][exif][iso]" placeholder="Set ISO" type="text" disabled="disabled"></label>
 						<label>
 							拍摄时间
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-taken_at" name="photo[{{id}}][exif][taken_at]" placeholder="Set Date (dd/mm/yyyy)" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-taken_at" name="photo[{{id}}][exif][taken_at]" placeholder="Set Date (dd/mm/yyyy)" type="text" disabled="disabled"></label>
 					</div>
 				</div>
 			</div>
@@ -84,7 +84,7 @@
 		<div class="description">
 			<div class="description-field">
 				<h4 class="disabled">描述</h4>
-				<textarea class="ui textarea" cols="70" id="photo-{{id}}-description" name="photo[{{id}}][description]" placeholder="照片描述" disabled="disabled"></textarea>
+				<textarea class="ui textarea" cols="70" id="photo-{{id}}-desc" name="photo[{{id}}][desc]" placeholder="照片描述" disabled="disabled"></textarea>
 			</div>
 			<div class="license-select">
 				<div>

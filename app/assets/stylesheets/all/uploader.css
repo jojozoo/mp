@@ -139,6 +139,7 @@
 
 
 .photo-details{display:none}
+.photo-details .ui.has-error{border: 1px solid red}
 .photo-details.active{display:block}
 .photo-details.active h4{color:#0099e5;font-size:14px;font-weight:bold;text-transform:uppercase}
 .photo-details.active .select{width:236px}

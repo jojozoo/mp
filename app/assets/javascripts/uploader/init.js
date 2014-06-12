@@ -86,6 +86,7 @@ Mpupload.initQueue = function(data){
         rh = 700 * (1070 / lw);
     }
     Mpupload.queue[data.id] = {
+        tpid: data.id,
         title: null,
         desc: null,
         request_id: null,
@@ -157,8 +158,40 @@ Mpupload.details = function(id){
     });
 }
 
-Mpupload.getValues = function(){
-    
+Mpupload.getValues = function(id){
+    var details = $(".photo-details[data-pid="+id+"]"),
+        finish = true;
+    details.find("input:text[name^=photo-exif]").each(function(index, item){
+        var _key = this.id.replace("photo-"+id+"-exif", ""),
+            _val = this.value;
+        Mpupload.queue[id].exif[_key] = _val;
+    });
+    var title      = $("#photo-"+id+"-title").val(), 
+        desc       = $("#photo-"+id+"-desc").val(), 
+        request_id = $("#photo-"+id+"-request_id").val(), 
+        warrant    = $("input[name='photo["+id+"][warrant]']:checked").val(),
+        tags       = details.find(".tag .name").map(function(){return this.textContent}).get();
+    if(title){
+        Mpupload.queue[id].title = title;
+    } else {
+        finish = false;
+        $("#photo-"+id+"-title").addClass("has-error");
+    }
+    if(desc){
+        Mpupload.queue[id].desc = desc;
+    } else {
+        finish = false;
+        $("#photo-"+id+"-desc").addClass("has-error");
+    }
+    if(request_id){
+        Mpupload.queue[id].request_id = request_id;
+    } else {
+        finish = false;
+        $("#photo-"+id+"-request_id").addClass("has-error");
+    }
+    Mpupload.queue[id].warrant    = warrant;
+    Mpupload.queue[id].tags       = tags;
+    return finish ? Mpupload.queue[id] : false;
 }
 
 // flash移动按钮
@@ -235,7 +268,7 @@ $(function(){
                 } else if(_this.prev() > 0){
                     _this.prev().click();
                 } else if($(".photo-reel-photo").length > 0){
-                    $(".photo-reel-photo:last").click();   
+                    $(".photo-reel-photo:last").click();
                 } else {
                     // 移除继续上传的mouse事件
                     $(".button.browse_files.action").on("mouseover", Mpupload.flashMoveButton);
@@ -254,10 +287,34 @@ $(function(){
     $(document).on("click", ".button.action.finish", function(){
         if($(".photo-reel .photos").length < 1 || Mpupload.totalLength < 1 || $.isEmptyObject(Mpupload.queue)){
             return false;
+        };
+        var key, item;
+        for(key in Mpupload.queue){
+            item = Mpupload.getValues(key);
+            if(!item){
+                $(".photo-reel-photo[data-pid=" + key + "]").click();
+                alert("缺少必填数据");
+                return;
+            }
         }
-        // 有数据实现上传
-        // 获取数据
         // 上传数据
+        $.ajax({
+            type: "post",
+            url: "/photos",
+            data: {tps: Mpupload.queue},
+            beforeSend: function(){
+                $(".uploader").addClass("finishing");
+            },
+            success: function(result) {
+                Mpupload.queue = {};
+                $(".photos").html('');
+                $(".active-photo").html('');
+                $(".photo-details.disabled").siblings().remove();
+                window.location.href = "/photos";
+            }
+        });
+        item = Mpupload.queue[key];
+        
     });
     // 选择标签
     $(document).on("keydown", ".tag_field input", function(e){
