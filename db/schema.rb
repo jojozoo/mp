@@ -235,8 +235,9 @@ ActiveRecord::Schema.define(:version => 20140610093242) do
     t.datetime "picture_updated_at"
     t.text     "exif"
     t.string   "randomstr"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.boolean  "del",                  :default => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   create_table "tuis", :force => true do |t|

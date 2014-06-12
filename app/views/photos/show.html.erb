@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="mp-large-picture">
-			<%= link_to image_tag(@photo.picture(:big)) %>
+			<%= link_to image_tag(@photo.picture(:large)) %>
 			<% if prev = @photo.prev %>
 				<a href="<%= photo_path(prev) %>" class="pn-photo prev-photo"><span></span></a>
 			<% end %>
