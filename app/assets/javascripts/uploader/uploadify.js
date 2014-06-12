@@ -429,6 +429,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 				Mpupload.totalLength += 1;
 				Mpupload.initQueue(data); // 初始化队列
 				Mpupload.initDetails(data.id); // 初始化details
+				
 				Mpupload.initMap(data.id, data.exif.gps_latitude, data.exif.gps_longitude); // 初始化地图
 				$(Mpupload.largeContainer).append(Mpupload.largeTemplate.replace("{{id}}", data.id).replace("{{src}}", data.large));
 				$(Mpupload.thumbContainer).append(Mpupload.thumbTemplate.replace("{{id}}", data.id).replace("{{src}}", data.thumb));
