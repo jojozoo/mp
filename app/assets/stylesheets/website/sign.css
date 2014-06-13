@@ -15,12 +15,12 @@
 .mp-session-sign .toolbar > a {
     display: inline-block;
 }
-.mp-session-sign .toolbar > a > span.logo{
-    width: 140px;
-    height: 50px;
-    float: left;
-    margin-top: 10px;
-    background: url(/images/logo.png) no-repeat;
+.mp-session-sign .toolbar > a > img{
+    width: 100px;
+    height: 100px;
+    /*float: left;*/
+    /*margin-top: 10px;*/
+    /*background: url(/images/logo.png) no-repeat;*/
 }
 .mp-session-sign .toolbar > .btn {
     display: inline-block;
@@ -37,7 +37,7 @@
     opacity: 0;
     right: -500px;
     display: none;
-    margin: 80px 0 0 0;
+    margin: 50px 0 0 0;
     background: #fff;
     padding: 10px;
     width: 300px;

@@ -8,6 +8,9 @@
 .mp-large-picture a{
     display: block;
 }
+.mp-large-picture a img{
+	max-width: 1140px;
+}
 .mp-large-picture .pn-photo{
     position: absolute;
 	top: 0;
