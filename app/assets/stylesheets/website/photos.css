@@ -136,11 +136,11 @@
     transition:all 0.1s ease-in-out;
     background-color:rgba(34, 34, 34, 0.2);
     /*兼容ie8颜色*/
-    /*background-color: #999\9;
+    background-color: #999\9;
     margin-right: 4px;
-    float: left;*/
+    float: left;
 
-    overflow:hidden;
+    /*overflow:hidden;*/
     position:relative;
     cursor:pointer
 }
