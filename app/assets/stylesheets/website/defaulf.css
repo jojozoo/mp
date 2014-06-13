@@ -26,6 +26,16 @@
     line-height: 36px !important;
     background: url(/images/info_success.png) 11px 11px no-repeat !important;
 }
+.msg-error{
+    border-color: #560000 !important;
+    background: #AA0000 !important;
+    background: linear-gradient(#c74746,#af3e3e) !important;
+    background: -webkit-linear-gradient(#c74746,#af3e3e) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#E80000', endColorstr='#A00000', GradientType='0') !important;
+}
+#msgbox.msg-success .closeb{
+    background: url(/images/close_message.png) 0 -24px no-repeat;
+}
 .msg-error p {
     padding-left: 42px !important;
     padding-right: 6px !important;

@@ -166,7 +166,7 @@
 					<div class="cf"></div>
 				</div>
 				<div class="tag-changyong">
-					<% Tag.order('sum desc').limit(25).each do |tag| %>
+					<% Tag.order('sum desc').limit(40).each do |tag| %>
 						<%= link_to tag.name, "javascript:void(0);", class: 'disabled' %>
 					<% end %>
 				</div>

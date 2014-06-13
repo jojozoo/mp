@@ -8,10 +8,14 @@
 			<div class="photo-request">
 				<h4 class="disabled">活动</h4>
 				<label class="ui select-label">
-					<select class="ui select" id="photo-{{id}}-request" name="photo[{{id}}][request_id]" disabled="disabled">
+					<select class="ui select" id="photo-{{id}}-request_id" name="photo[{{id}}][request_id]" disabled="disabled" readonly="readonly">
 						<option value="">选择活动</option>
-						<% Event.limit(10).each do |event| %>
+						<% Event.select("id, name").each do |event| %>
+							<% if params[:rid].eql?(event.id.to_s) %>
+							<option value="<%= event.id %>" selected="selected"><%= event.name %></option>
+							<% else %>
 							<option value="<%= event.id %>"><%= event.name %></option>
+							<% end %>
 						<% end %>
 					</select>
 					<span class="ui select-arrow"></span>
@@ -54,25 +58,25 @@
 					<div class="labels">
 						<label>
 							型号
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-camera" name="photo[{{id}}][exif][camera]" placeholder="Set Camera" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-camera" name="photo[{{id}}][exif][camera]" placeholder="Set Camera" type="text" disabled="disabled"></label>
 						<label>
 							镜头
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-lens" name="photo[{{id}}][exif][lens]" placeholder="Set Lens" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-lens" name="photo[{{id}}][exif][lens]" placeholder="Set Lens" type="text" disabled="disabled"></label>
 						<label>
 							焦距
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-focal_length" name="photo[{{id}}][exif][focal_length]" placeholder="Set Focal Length" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-focal_length" name="photo[{{id}}][exif][focal_length]" placeholder="Set Focal Length" type="text" disabled="disabled"></label>
 						<label>
 							快门速度
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-shutter_speed" name="photo[{{id}}][exif][shutter_speed]" placeholder="Set Shutter Speed" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-shutter_speed" name="photo[{{id}}][exif][shutter_speed]" placeholder="Set Shutter Speed" type="text" disabled="disabled"></label>
 						<label>
 							光圈
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-aperture" name="photo[{{id}}][exif][aperture]" placeholder="Set Aperture" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-aperture" name="photo[{{id}}][exif][aperture]" placeholder="Set Aperture" type="text" disabled="disabled"></label>
 						<label>
 							ISO
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-iso" name="photo[{{id}}][exif][iso]" placeholder="Set ISO" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-iso" name="photo[{{id}}][exif][iso]" placeholder="Set ISO" type="text" disabled="disabled"></label>
 						<label>
 							拍摄时间
-							<input class="ui small-invisible-textfield" id="photo-exif-{{id}}-taken_at" name="photo[{{id}}][exif][taken_at]" placeholder="Set Date (dd/mm/yyyy)" type="text" disabled="disabled"></label>
+							<input class="ui small-invisible-textfield" id="photo-{{id}}-exif-taken_at" name="photo[{{id}}][exif][taken_at]" placeholder="Set Date (dd/mm/yyyy)" type="text" disabled="disabled"></label>
 					</div>
 				</div>
 			</div>
@@ -80,7 +84,7 @@
 		<div class="description">
 			<div class="description-field">
 				<h4 class="disabled">描述</h4>
-				<textarea class="ui textarea" cols="70" id="photo-{{id}}-description" name="photo[{{id}}][description]" placeholder="照片描述" disabled="disabled"></textarea>
+				<textarea class="ui textarea" cols="70" id="photo-{{id}}-desc" name="photo[{{id}}][desc]" placeholder="照片描述" disabled="disabled"></textarea>
 			</div>
 			<div class="license-select">
 				<div>
@@ -135,7 +139,7 @@
 						</label>
 					</div>
 					<div class="warrant-row">
-						<input type="radio" id="photo-{{id}}-warrant5" name="photo[{{id}}][warrant]" value="5" checked="checked" disabled="disabled">
+						<input type="radio" id="photo-{{id}}-warrant5" name="photo[{{id}}][warrant]" value="5" checked='checked' disabled="disabled">
 						<label for="photo-{{id}}-warrant5">
 							<span class="cc-1"></span>
 							<span class="cc-5"></span>
@@ -147,6 +151,54 @@
 			</div>
 		</div>
 		<div class="map">
+			<div class="discoverability">
+				<h4 class="disabled">可发现性</h4>
+				<div style="position: relative; float: left; top: -13px; left: 60px; font-size: 11px; color: #aeafb0; margin: 0;">添加元数据，以提高您的照片的可发现性 。</div>
+				<div class="clearfix"></div>
+				<div class="progress_bar_wrap">
+					<div class="ui progress-bar">
+						<span class="area disabled" style="width: 30%;"></span>
+						<span class="label"></span>
+						<span class="percentage">
+							<span class="value">30</span>
+							<small>%</small>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="adult_fresh_wrap clearfix">
+				<div class="fresh_qualification_wrap">
+					<div class="fresh_details_wrap">
+						<div class="fresh_checklist">
+							<div class="fresh_item_wrap">
+								<div class="fresh_checkmark" id="title"></div>
+								<label>标题</label>
+							</div>
+							<div class="fresh_item_wrap">
+								<div class="fresh_checkmark" id="category"></div>
+								<label>活动</label>
+							</div>
+							<div class="fresh_item_wrap">
+								<div class="fresh_checkmark" id="tags"></div>
+								<label>3个标签</label>
+							</div>
+						</div>
+					</div>
+					<div class="fresh_title_wrap">
+						<h4 class="disabled">
+							发布到最新上传
+							<div class="tooltip_icon">
+								<div class="tooltip">
+									<p>
+										新鲜的是显示最新上传照片的地方 。要在此模块查看您的照片，一定要加一个标题，活动，和至少三个标签，以提高可发现性。
+									</p>
+								</div>
+							</div>
+						</h4>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
 			<div class="tag-textfield">
 				<h4 class="disabled">标签</h4>
 				<div class="tag-tip">
@@ -167,26 +219,32 @@
 				</div>
 				<div class="tags_autocompletion_wrap" style="width: 392px; display: block;">
 					<div class="tag_suggestion first">
-						<span class="matched">wo</span><span>man</span>
+						<span class="matched">wo</span>
+						<span>man</span>
 					</div>
 					<div class="tag_suggestion">
-						<span class="matched">wo</span><span></span>
+						<span class="matched">wo</span>
+						<span></span>
 					</div>
 					<div class="tag_suggestion_separator">
 						<div class="separator_hline"></div>
 						<span>热门标签</span>
 					</div>
 					<div class="tag_suggestion selected">
-						<span class="matched">wo</span><span>od</span>
+						<span class="matched">wo</span>
+						<span>od</span>
 					</div>
 					<div class="tag_suggestion">
-						<span class="matched">wo</span><span>men</span>
+						<span class="matched">wo</span>
+						<span>men</span>
 					</div>
 					<div class="tag_suggestion">
-						<span class="matched">wo</span><span>ods</span>
+						<span class="matched">wo</span>
+						<span>ods</span>
 					</div>
 					<div class="tag_suggestion last">
-						<span class="matched">wo</span><span>rld</span>
+						<span class="matched">wo</span>
+						<span>rld</span>
 					</div>
 				</div>
 				<div class="tag-changyong">

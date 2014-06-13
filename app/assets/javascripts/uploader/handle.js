@@ -29,9 +29,9 @@ Mpupload.initDetails = function(id){
 Mpupload.initMap = function(id, lat, lon){
     // 应该点击移动到点击位置
     var mapObj,
-        param = {level: 12};
+        param = {};
     if(lat && lon){
-        param = $.extend(param, {center: new AMap.LngLat(lon, lat), level: 10});
+        param = {center: new AMap.LngLat(lon, lat), level: 10};
     }
     mapObj = new AMap.Map("GDMAP-" + id, param);
     var marker = new AMap.Marker({  
@@ -293,7 +293,7 @@ $(function(){
             item = Mpupload.getValues(key);
             if(!item){
                 $(".photo-reel-photo[data-pid=" + key + "]").click();
-                alert("缺少必填数据");
+                MPMSG('error', '请填写标题、活动、描述');
                 return;
             }
         }
