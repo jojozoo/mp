@@ -68,9 +68,7 @@ class Photo < ActiveRecord::Base
   :exif,
   :wh,
   :del
-  # state 状态 (上传完成: 作品/相册上传过程中跳转了,回来应该接着显示,如果不完成,那么就不显示到活动页或者相册页) 
-  # state 改变注定album_id 或event_id有值
-  # TODO state 上传过程中存在相册id或者活动id就应该为state true
+  
   # 几种水印图, 原图无水印,原图水印,大图水印, 中图水印, 小图中间水印, 头像, 50x50无水印
   # cover 封面
   # 如果是图片后缀, 但不是图片, 那么图片会加载不起来, 要想办法统计到, 现在的方式是通过日志分析
@@ -107,8 +105,6 @@ class Photo < ActiveRecord::Base
   has_many   :recoms, class_name: 'Tui', conditions: {channel: 'recom'}, as: :obj
   has_many   :tuis, as: :obj, conditions: {editor: true}
 
-  # 有效的 state 为true的
-  scope :effective, -> { where(state: true) }
   scope :choice,    -> { where(choice: true)}
 
   # ['like', 'store', 'recom'].each do |item|

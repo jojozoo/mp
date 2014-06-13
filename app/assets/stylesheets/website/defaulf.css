@@ -1,6 +1,6 @@
 #msgbox {
     width: 600px;
-    position: absolute;
+    position: fixed;
     left: 50%;
     margin-left: -300px;
     top: -37px;

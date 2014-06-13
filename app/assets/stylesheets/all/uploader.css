@@ -92,7 +92,7 @@
 .uploader .photo-container .photo-reel .photos .photo-reel-photo{float:left;width:50px;height:60px;margin-right:5px;cursor:pointer;position:relative;text-align:center}
 /*.uploader .photo-container .photo-reel .photos .photo-reel-photo img{margin:0;padding:0;max-width:50px;max-height:50px}*/
 .uploader .photo-container .photo-reel .photos .selected:before{content:"";position:absolute;top:58px;width:50px;height:2px;background:#02adea}
-.uploader .photo-container .photo-reel .photos .has-error.selected:before{background:red}
+.uploader .photo-container .photo-reel .photos .has-error:before{background:red}
 .uploader .photo-container .photo-reel .photos .low_discoverability:after{content:"";position:absolute;top:0;width:50px;height:50px;background:rgba(0,0,0,0.75);left:0}
 .uploader .photo-container .photo-reel .photos .checked:after{content:"";position:absolute;top:0;width:50px;height:50px;background:black;background:rgba(0,0,0,0.5);background-image:url("/images/checkmark.png");background-repeat:no-repeat;background-position:center;left:0}
 .uploader .photo-container .photo-reel.scrollable:hover .previous-button,.uploader .photo-container .photo-reel.scrollable:hover .next-button{filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);opacity:1;display:block}
