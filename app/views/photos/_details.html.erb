@@ -8,10 +8,10 @@
 			<div class="photo-request">
 				<h4 class="disabled">活动</h4>
 				<label class="ui select-label">
-					<select class="ui select" id="photo-{{id}}-request_id" name="photo[{{id}}][request_id]" disabled="disabled" readonly="readonly">
+					<select class="ui select" id="photo-{{id}}-request_id" name="photo[{{id}}][request_id]" disabled="disabled">
 						<option value="">选择活动</option>
-						<% Event.select("id, name").each do |event| %>
-							<% if params[:rid].eql?(event.id.to_s) %>
+						<% Event.ongoing.select('id, name').each do |event| %>
+							<% if @event and @event.id.eql?(event.id) %>
 							<option value="<%= event.id %>" selected="selected"><%= event.name %></option>
 							<% else %>
 							<option value="<%= event.id %>"><%= event.name %></option>
