@@ -5,9 +5,6 @@
 			<%= link_to event_path(event), target: '_blank' do %>
 				<h5>#<%= event.name %></h5>
 			<% end %>
-			<p>
-				<%= truncate(event.desc.gsub("<br>", "\r\n"), length: 50) %>
-			</p>
 			<span>人数/图片:<%= event.members_count %>/<%= event.photos_count %></span>
 			<span>结束时间:<%= event.end_time %></span>
 		</div>

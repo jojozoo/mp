@@ -106,6 +106,7 @@ class Event < ActiveRecord::Base
   belongs_to :user
 
   scope :request, -> {where(request: true)}
+  scope :totop, -> {where(totop: true).order('updated_at desc').limit(4)}
 
   STATE = {
     audit:   '审核中', # 0

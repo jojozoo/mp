@@ -1,0 +1,52 @@
+.mp-home{
+	margin: 20px auto 0;
+}
+.banner-row{
+	margin: 20px -15px;
+}
+.ad {
+	margin-bottom: 10px;
+}
+.ad img{
+	width: 100%;
+}
+.flexslider{
+	border: 0;
+}
+.slides > li {
+	height: 450px;
+}
+
+/*.nav-filter > li {
+	margin-right: 20px;
+}
+.nav-filter > li > a {
+	padding: 5px 15px;
+	background: #f7f7f7;
+}
+.nav-filter{
+	margin-bottom: 15px;
+	border-bottom: 1px solid #f7f7f7;
+	padding-bottom: 5px;
+}
+.home-tip-name{
+	font-size: 24px;
+	margin-right: 10px;
+	padding-right: 20px;
+	border-right: 1px solid #ddd;
+	line-height: 30px;
+	color: #ccc;
+}
+.home-tui-div {
+	margin-bottom: 20px;
+}
+.home-tui-div a {
+	margin-bottom: 4px;
+	float: left;
+	width: 8%;
+	margin-right: 0.33%;
+	display: inline-block;
+}
+.home-tui-div a img{
+	width: 100%;
+}*/

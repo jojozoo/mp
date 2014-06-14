@@ -20,22 +20,6 @@
 	<%# end %>
 </ul>
 <div class="row">
-	<% @events.each do |event| %>
-		<div class="col-sm-6 col-md-3">
-			<div class="thumbnail">
-				<%= link_to image_tag(event.logo(:thumb)), event_path(event), target: '_blank' %>
-				<div class="caption">
-					<%= link_to event_path(event), target: '_blank' do %>
-						<h5>#<%= event.name %>#</h5>
-					<% end %>
-					<p>
-						<%= truncate(event.desc.gsub("<br>", "\r\n"), length: 50) %>
-					</p>
-					<span>人数/图片:<%= event.members_count %>/<%= event.photos_count %></span>
-					<span>结束时间:<%= event.end_time %></span>
-				</div>
-			</div>
-		</div>
-	<% end %>
+	<%= render partial: 'thumb', collection: @events, as: :event %>
 </div>
 <%= will_paginate @events %>

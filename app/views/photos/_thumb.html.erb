@@ -1,35 +1,35 @@
 <div class="mp-photo">
-        <div class="buttons">
-            <div class="shares">
-                <a class="action share weibo"></a>
-                <a class="action share qzone"></a>
-                <a class="action share renren"></a>
-                <a class="action share douban"></a>
-            </div>
-            <% if sign_in? %>
-            <div class="states">
-                <a class="action state like">
-                    <span class="iconheart"></span>
-                    <span class="count">8868</span>
-                </a>
-                <a class="action state star">
-                    <span class="iconstar"></span>
-                    <span class="count">20</span>
-                </a>
-            </div>
-            <% end %>
+    <div class="buttons">
+        <div class="shares">
+            <a class="action share weibo"></a>
+            <a class="action share qzone"></a>
+            <a class="action share renren"></a>
+            <a class="action share douban"></a>
         </div>
-        <%= link_to image_tag(photo.picture(:cover)), photo_path(photo), target: '_blank', class: 'thumb' %>
-        <div class="details">
-            <div class="inside-left">
-                <div class="account">
-                    <!-- 如果有活动ID 就不应该显示活动了 -->
-                    <a href="javascript:void(0);">每日精选</a>
-                </div>
-                <div class="title">
-                    <a href="javascript:void(0);">安一然ROG</a>
-                </div>
-            </div>
-            <div class="inside-right">48.1</div>
+        <% if sign_in? %>
+        <div class="states">
+            <a class="action state like">
+                <span class="iconheart"></span>
+                <span class="count">8868</span>
+            </a>
+            <a class="action state star">
+                <span class="iconstar"></span>
+                <span class="count">20</span>
+            </a>
         </div>
+        <% end %>
+    </div>
+    <%= link_to image_tag(photo.picture(:thumb)), photo_path(photo), target: '_blank', class: 'thumb' %>
+    <div class="details">
+        <div class="inside-left">
+            <div class="account">
+                <!-- 如果有活动ID 就不应该显示活动了 -->
+                <a href="javascript:void(0);">每日精选</a>
+            </div>
+            <div class="title">
+                <a href="javascript:void(0);">安一然ROG</a>
+            </div>
+        </div>
+        <div class="inside-right">48.1</div>
+    </div>
 </div>
