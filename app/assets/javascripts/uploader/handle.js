@@ -97,7 +97,7 @@ Mpupload.initQueue = function(data){
         album_id: null,
         album_name: null,
         warrant: '5',
-        tags: [],
+        tags: '',
         exif: exif,
         gdMap: null,
         gdMark: null,
@@ -173,7 +173,7 @@ Mpupload.getValues = function(id){
         desc       = $("#photo-"+id+"-desc").val(), 
         request_id = $("#photo-"+id+"-request_id").val(), 
         warrant    = $("input[name='photo["+id+"][warrant]']:checked").val(),
-        tags       = details.find(".tag .name").map(function(){return this.textContent}).get();
+        tags       = details.find(".tag .name").map(function(){return this.textContent}).get().join(',');
     if(title){
         Mpupload.queue[id].title = title;
     } else {
@@ -224,6 +224,13 @@ Mpupload.flashMoveButton = function(){
     document.getElementById("flashMenu").style.width = width + 'px';
     document.getElementById("flashMenu-button").style.width = width + 'px';
 }
+// 暂时一次上差只能一个活动吧
+Mpupload.changeRequest = function(){
+    var val = $(this).val(),
+        w = $($('<div />')).html(Mpupload.photo_details);
+    Mpupload.photo_details = w.find(".mpchooserequest option[value='"+ val +"']").attr("selected", true).end().html();
+    $(".mpchooserequest option[value='"+ val +"']").attr("selected", true);
+}
 
 
 
@@ -231,10 +238,11 @@ $(function(){
     $('input, textarea').placeholder();
     var clone = $(".edit-container").clone();
     var tmpDetails = clone.find("[disabled]").removeAttr("disabled").end().find("input[type=text], textarea").val("").end().find(".disabled").removeClass("disabled").end();
-    if($(".select-label:first select").val() == ""){
+    if($("select.mpchooserequest").val() == ""){
         Mpupload.photo_details = tmpDetails.html();
+        $(document).on("change", ".mpchooserequest", Mpupload.changeRequest)
     } else {
-        Mpupload.photo_details = tmpDetails.find(".select-label:first select").attr("disabled", "disabled").end().html();
+        Mpupload.photo_details = tmpDetails.find("select.mpchooserequest").attr("disabled", "disabled").end().html();
     }
     
     // 配置uploadify
@@ -323,7 +331,7 @@ $(function(){
 
     // 完成上传
     $(document).on("click", ".button.action.finish", function(){
-        if($(".photo-reel .photos").length < 1 || Mpupload.totalLength < 1 || $.isEmptyObject(Mpupload.queue)){
+        if($(this).hasClass("disabled") || $(".photo-reel .photos").length < 1 || Mpupload.totalLength < 1 || $.isEmptyObject(Mpupload.queue)){
             return false;
         };
         var key, item;
@@ -336,16 +344,33 @@ $(function(){
             }
         }
         // 上传数据
-        var tps = {tps: Mpupload.queue};
+        var arr = [],
+            item;
+        for(var _id in Mpupload.queue){
+            item = Mpupload.queue[_id];
+            arr.push({
+                event_id: item['request_id'],
+                album_id: item['album_id'],
+                warrant: item['warrant'],
+                title: item['title'],
+                desc: item['desc'],
+                exif: item['exif'],
+                crop: item['crop'],
+                tags: item['tags'],
+                tpid: item['tpid']
+            })
+        }
+        var data = {'items': arr};
         if(Mpupload.groupUpload){
-            $.extend(tps, {gtitle: Mpupload.groupTitle, gdesc: Mpupload.groupDesc})
+            $.extend(data, {group: {title: Mpupload.groupTitle, desc: Mpupload.groupDesc}})
         }
         $.ajax({
             type: "post",
             url: "/photos",
-            data: tps,
+            data: data,
             beforeSend: function(){
                 $(".uploader").addClass("finishing");
+                $(".button.finish").addClass('disabled');
             },
             success: function(result) {
                 Mpupload.queue = {};
@@ -355,7 +380,6 @@ $(function(){
                 window.location.href = "/photos?order=news";
             }
         });
-        item = Mpupload.queue[key];
         
     });
     // 选择标签

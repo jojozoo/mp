@@ -68,6 +68,9 @@ class Photo < ActiveRecord::Base
   :randomhex,
   :randomstr,
   :exif,
+  :tags,
+  :crop,
+  :tpid,
   :wh,
   :del
   
@@ -139,6 +142,49 @@ class Photo < ActiveRecord::Base
 
   def next(offset = 0)
     self.class.first(:conditions => ['user_id = ? and id > ?', self.user_id, self.id], :limit => 1, :offset => offset, :order => "id ASC")
+  end
+
+  def self.create_items items, uid, parent = nil
+    tpid = nil
+    pattr = {user_id: uid, state: true}.merge(parent ? {isgroup: true, parent_id: parent.id} : {})
+    items.each do |item|
+      photo = Photo.create(item.merge(pattr))
+      move_picture(photo)
+      # 为更新parent的图
+      tpid = photo.tpid
+
+      if event = Event.find_by_id(item['event_id'])
+        image_count = Photo.where(event_id: event.id).count
+        membe_count = Photo.uniq.where(event_id: event.id).pluck(:user_id).length
+        event.update_attributes(photos_count: image_count, members_count: membe_count)
+      end
+    end
+    # TODO
+    if parent
+      last = items.last
+      parent.update_attributes({event_id: last['event_id'], state: true, warrant: last['warrant']})
+      move_picture(parent, tpid)
+    end
+  end
+
+  def self.move_picture photo, tpid = nil
+    tp = Tp.find(tpid || photo.tpid)
+    ['file_name', 'content_type', 'file_size', 'updated_at'].each do |atr|
+      photo.update_attribute("picture_#{atr}", tp.try("picture_#{atr}".to_sym))
+    end
+    extname = File.extname(tp.picture_file_name)
+    orstr = Digest::MD5.hexdigest("#{photo.id}#{photo.randomstr}server")
+    otstr = Digest::MD5.hexdigest("#{photo.randomstr}#{photo.id}")
+    spath = "public/system/photos/#{photo.id}"
+    system("mkdir #{spath}")
+    system("mkdir #{spath}/original")
+    system("mkdir #{spath}/large")
+    system("mkdir #{spath}/thumb")
+    system("mkdir #{spath}/cover")
+    system("cp #{tp.picture.path(:original)} #{spath}/original/#{orstr}#{extname}")
+    system("cp #{tp.picture.path(:plarge)} #{spath}/large/#{otstr}#{extname}")
+    system("cp #{tp.picture.path(:pthumb)} #{spath}/thumb/#{otstr}#{extname}")
+    system("cp #{tp.picture.path(:pcover)} #{spath}/cover/#{otstr}#{extname}")
   end
   
 end

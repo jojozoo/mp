@@ -8,7 +8,7 @@
 			<div class="photo-request">
 				<h4 class="disabled">活动</h4>
 				<label class="ui select-label">
-					<select class="ui select" id="photo-{{id}}-request_id" name="photo[{{id}}][request_id]" disabled="disabled">
+					<select class="ui select mpchooserequest" id="photo-{{id}}-request_id" name="photo[{{id}}][request_id]" disabled="disabled">
 						<option value="">选择活动</option>
 						<% Event.ongoing.select('id, name').each do |event| %>
 							<% if @event and @event.id.eql?(event.id) %>
