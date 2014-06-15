@@ -31,6 +31,9 @@ class CreatePhotos < ActiveRecord::Migration
       t.string :randomhex  # 用于随机浏览使用
       t.string :randomstr  # 用于原图加密使用
       t.text   :exif       # 可能要单独建表
+      t.string :tags
+      t.string :crop
+      t.integer :tpid
       t.string :wh
       t.boolean :del, default: false
       t.timestamps

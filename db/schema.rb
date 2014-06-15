@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140610093242) do
+ActiveRecord::Schema.define(:version => 20140615163011) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -71,6 +71,14 @@ ActiveRecord::Schema.define(:version => 20140610093242) do
     t.integer  "event_id"
     t.integer  "editor_id"
     t.integer  "sum"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "emphases", :force => true do |t|
+    t.string   "title"
+    t.string   "link"
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
@@ -186,6 +194,9 @@ ActiveRecord::Schema.define(:version => 20140610093242) do
     t.string   "randomhex"
     t.string   "randomstr"
     t.text     "exif"
+    t.string   "tags"
+    t.string   "crop"
+    t.integer  "tpid"
     t.string   "wh"
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                              :null => false

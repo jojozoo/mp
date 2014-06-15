@@ -32,6 +32,9 @@
 #  randomhex            :string(255)
 #  randomstr            :string(255)
 #  exif                 :text
+#  tags                 :string(255)
+#  crop                 :string(255)
+#  tpid                 :integer
 #  wh                   :string(255)
 #  del                  :boolean          default(FALSE)
 #  created_at           :datetime         not null

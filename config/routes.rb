@@ -135,6 +135,7 @@ Mp::Application.routes.draw do
     post '/msg' => 'sessions#msg'
     
     resources :feedbacks
+    resources :emphases
     resources :banners
     resources :users
     resources :editors
