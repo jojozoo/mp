@@ -16,7 +16,7 @@
 #  members_count     :integer          default(0)
 #  photos_count      :integer          default(0)
 #  state             :integer          default(0)
-#  totop             :boolean          default(0)
+#  totop             :boolean          default(FALSE)
 #  request           :boolean          default(FALSE)
 #  request_at        :datetime
 #  del               :boolean          default(FALSE)

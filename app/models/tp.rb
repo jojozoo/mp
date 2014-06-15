@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: tps
+#
+#  id                   :integer          not null, primary key
+#  user_id              :integer
+#  picture_file_name    :string(255)
+#  picture_content_type :string(255)
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
+#  exif                 :text
+#  randomstr            :string(255)
+#  del                  :boolean          default(FALSE)
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
 class Tp < ActiveRecord::Base
   attr_accessible :picture, :user_id
   

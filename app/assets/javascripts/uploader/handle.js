@@ -11,6 +11,8 @@ Mpupload = {
     tipCutInfo: false,
     requestName: null,
     groupUpload: false,
+    groupTitle: null,
+    groupDesc: null,
     largeContainer: ".active-photo",
     largeTemplate: "<div class='photo-preview inactive' data-pid='{{id}}'><img src='{{src}}'></div>", // inactive
     thumbContainer: ".photos",
@@ -100,8 +102,6 @@ Mpupload.initQueue = function(data){
         gdMap: null,
         gdMark: null,
         jcrop: null,
-        group_title: null,
-        group_desc: null,
         cropAttr: {
             oscale: ow / (lw > 1070 ? 1070 : lw),
             oh: parseFloat(data.exif.original_height),
@@ -197,15 +197,15 @@ Mpupload.getValues = function(id){
     // 添加组的上传和验证
     if(Mpupload.groupUpload){
         var gtitle = $("#photo_group_title").val(),
-              gdesc = $("#photo_group_desc").val();
+            gdesc = $("#photo_group_desc").val();
         if(gtitle){
-            Mpupload.queue[id].group_title = gtitle;
+            Mpupload.groupTitle = gtitle;
         } else {
             finish = false;
             $("#photo_group_title").addClass("has-error");
         }
         if(gdesc){
-            Mpupload.queue[id].group_desc = gdesc;
+            Mpupload.groupDesc = gdesc;
         } else {
             finish = false;
             $("#photo_group_desc").addClass("has-error");
@@ -336,10 +336,14 @@ $(function(){
             }
         }
         // 上传数据
+        var tps = {tps: Mpupload.queue};
+        if(Mpupload.groupUpload){
+            $.extend(tps, {gtitle: Mpupload.groupTitle, gdesc: Mpupload.groupDesc})
+        }
         $.ajax({
             type: "post",
             url: "/photos",
-            data: {tps: Mpupload.queue},
+            data: tps,
             beforeSend: function(){
                 $(".uploader").addClass("finishing");
             },

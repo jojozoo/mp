@@ -5,7 +5,8 @@ class CreatePhotos < ActiveRecord::Migration
       t.integer :event_id
       t.integer :work_id # 为用户分作品时用到
       t.integer :album_id
-      t.integer :groupid # 不好看 但也不知道怎么换
+      t.boolean :isgroup, default: false # 是否是组图
+      t.integer :parent_id # 组图级别 不好看 但也不知道怎么换
       t.boolean :state, default: 0 # 状态
       t.boolean :editor, default: 0 # 是否被编辑查看
 

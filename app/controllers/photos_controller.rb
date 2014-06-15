@@ -38,6 +38,7 @@ class PhotosController < ApplicationController
     end
 
     def create
+        
         params[:tps].values.each do |item|
             event   = Event.find(item[:request_id])
             tp      = Tp.find(item[:tpid])

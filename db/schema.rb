@@ -161,7 +161,8 @@ ActiveRecord::Schema.define(:version => 20140610093242) do
     t.integer  "event_id"
     t.integer  "work_id"
     t.integer  "album_id"
-    t.integer  "groupid"
+    t.boolean  "isgroup",              :default => false
+    t.integer  "parent_id"
     t.boolean  "state",                :default => false
     t.boolean  "editor",               :default => false
     t.integer  "score",                :default => 0

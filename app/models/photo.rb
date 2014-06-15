@@ -7,7 +7,8 @@
 #  event_id             :integer
 #  work_id              :integer
 #  album_id             :integer
-#  groupid              :integer
+#  isgroup              :boolean          default(FALSE)
+#  parent_id            :integer
 #  state                :boolean          default(FALSE)
 #  editor               :boolean          default(FALSE)
 #  score                :integer          default(0)

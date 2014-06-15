@@ -2,17 +2,17 @@
 #
 # Table name: works
 #
-#  id             :integer          not null, primary key
-#  user_id        :integer
-#  cover_id       :integer
-#  photos_count   :integer          default(0)
-#  coms_count     :integer          default(0)
-#  visit_count    :integer          default(0)
-#  title          :string(255)
-#  desc           :string(255)
-#  del            :boolean          default(FALSE)
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  cover_id     :integer
+#  photos_count :integer          default(0)
+#  coms_count   :integer          default(0)
+#  visit_count  :integer          default(0)
+#  title        :string(255)
+#  desc         :string(255)
+#  del          :boolean          default(FALSE)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 class Work < ActiveRecord::Base
