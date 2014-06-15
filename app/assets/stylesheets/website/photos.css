@@ -1,3 +1,24 @@
+.mp-photos .mp-photo .types{
+    position: absolute;
+    height: 20px;
+    top: 0;
+    right: 0;
+}
+.mp-photos .mp-photo .types a{
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    color: white;
+}
+.mp-photos .mp-photo .types a.type-group{
+    background: red;
+}
+.mp-photos .mp-photo .types a.type-push{
+    background: green;
+}
+.mp-photos .mp-photo .types a.type-choice{
+    background: orange;
+}
 .mp-photos .sidenav.mp-photo {
     background-color: #f7f8fa;
     border: 1px solid #eeeff2;

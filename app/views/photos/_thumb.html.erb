@@ -1,4 +1,15 @@
 <div class="mp-photo">
+    <div class="types">
+        <% if photo.isgroup and photo.parent_id.nil? %>
+        <a class="type-group">组</a>
+        <% end %>
+        <% if photo.recommend and params[:order] != 'push' %>
+        <a class="type-push">推</a>
+        <% end %>
+        <% if photo.choice %>
+        <a class="type-choice">精</a>
+        <% end %>
+    </div>
     <div class="buttons">
         <div class="shares">
             <a class="action share weibo"></a>

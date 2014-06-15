@@ -38,9 +38,14 @@ class PhotosController < ApplicationController
     end
 
     def create
-        lastphoto = nil
+        result = []
         if params[:gtitle].present? and params[:gdesc].present?
-            parent = Photo.create!()
+            parent = Photo.create!(
+                title: params[:gtitle],
+                desc: params[:gdesc],
+                user_id: current_user.id,
+                isgroup: true
+                )
         end
         params[:tps].values.each do |item|
             event   = Event.find(item[:request_id])
@@ -57,8 +62,10 @@ class PhotosController < ApplicationController
                 user_id: current_user.id,
                 state: true,
                 warrant: warrant,
+                isgroup: parent ? true : false,
+                parent_id: parent ? parent.id : nil,
                 exif: exif)
-
+            result.push(photo)
             oh      = item[:cropAttr][:oh].to_i
             w       = item[:crop][:w].to_i
             h       = item[:crop][:h].to_i
@@ -75,7 +82,15 @@ class PhotosController < ApplicationController
             membe_count = Photo.uniq.where(event_id: event.id).pluck(:user_id).length
             event.update_attributes(photos_count: image_count, members_count: membe_count)
         end
-
+        if parent
+            last = result.last
+            parent.update_attributes!(
+                picture: File.open(last.picture.path),
+                event_id: last.event_id,
+                state: true,
+                warrant: last.warrant
+                )
+        end
         render text: 'success'
     end
 
@@ -94,6 +109,6 @@ class PhotosController < ApplicationController
             'choice' => [{choice: true}, 'choice_at desc'],
             'random' => [{}, 'randomhex desc'] # TODO 缺少算法
         }[params[:order]]
-        Photo.where(con).paginate(:page => params[:page], per_page: 16).order(order)
+        Photo.where(con.merge(parent_id: nil)).paginate(:page => params[:page], per_page: 16).order(order)
     end
 end
