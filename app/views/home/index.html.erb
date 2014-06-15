@@ -5,13 +5,49 @@
 		</div>
 		<%= render 'flexslider' %>
 	</div>
-	<div class="col-md-3">
-		<div class="breadcrumb">
+	<div class="col-md-3 emphasis-topic">
+		<div class="breadcrumb" style="margin-bottom:0px;">
 			<span>每日重点</span>
 		</div>
 		<div class="radbox">
 			<div class="box_con">
 				<ul class="list-unstyled">
+					<li>
+						<a target="_blank" href="javascript:void(0);">#拍个球 世界杯特别活动开始啦~</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">明天父亲节，发起#我爱老爸小赛！</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">快拍快拍网招新版主啦~</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">月月都有千元奖六月主题“友善”</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">聊聊怎样拍出你心中的西湖</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">公主号邮轮济州摄影之旅报名啦~</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">快推荐：快拍城市10+1计划</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">06月14日快拍图选(上午版)</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">快推荐：宁波老外滩的世界杯风</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">快拍开化的春天6月截稿，传这里</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">6月13日快拍之星：应亭</a>
+					</li>
+					<li>
+						<a target="_blank" href="javascript:void(0);">06月13日快拍图选(晚上版)</a>
+					</li>
 					<% Topic.emphasis.order('id desc').limit(12).each do |topic| %>
 						<li>
 							<%= link_to topic.title, topic_path(topic.id) %>
@@ -22,16 +58,35 @@
 		</div>
 	</div>
 </div>
-
-<div class="row">
+<ul class="breadcrumb mp-ul-nav">
+	<li>
+		<a href="javascript:void(0);">
+			<i class="icon-flag"></i>
+			推荐活动
+		</a>
+	</li>
+</ul>
+<div class="row" style="margin: 10px -15px auto;">
 	<%= render partial: 'events/home_thumb', collection: Event.totop, as: :event %>
 </div>
 
-<ul class="breadcrumb mp-home">
+<ul class="breadcrumb mp-ul-nav">
 	<li>
 		<a href="/photos?order=news" style="color:orange;">
 			<i class="icon-upload"></i>
 			最新上传
+		</a>
+	</li>
+	<li>
+		<a href="/photos?order=choice">
+			<i class="icon-time"></i>
+			每日精选
+		</a>
+	</li>
+	<li>
+		<a href="/photos?order=push">
+			<i class="icon-ok-circle"></i>
+			编辑推荐
 		</a>
 	</li>
 	<li>
@@ -47,18 +102,6 @@
 		</a>
 	</li>
 	<li>
-		<a href="/photos?order=push">
-			<i class="icon-ok-circle"></i>
-			编辑推荐
-		</a>
-	</li>
-	<li>
-		<a href="/photos?order=choice">
-			<i class="icon-time"></i>
-			每日精选
-		</a>
-	</li>
-	<li>
 		<a href="/photos?order=random">
 			<i class="icon-random"></i>
 			随机浏览
@@ -66,8 +109,99 @@
 	</li>
 </ul>
 <div class="row mp-photos">
-	<%= render partial: 'photos/thumb', collection: Photo.limit(12).order('id desc'), as: :photo %>
+	<%= render partial: 'photos/thumb', collection: Photo.limit(8).order('id desc'), as: :photo %>
 </div>
+
+<ul class="breadcrumb mp-ul-nav">
+	<li>
+		<a href="javascript:void(0);">
+			<i class="icon-tag"></i>
+			选择您最感兴趣的标签
+		</a>
+	</li>
+</ul>
+
+<div class="category_thumbs">
+	<div class="row">
+		<a class="category people" target="_blank" href="/photos?tag=人文">
+			<div class="overlay">
+				<span>We like humans, too.</span>
+			</div>
+			<div class="gradient">
+				<span class="name">人文</span>
+			</div>
+		</a>
+		<a class="category city-and-architecture" target="_blank" href="/photos?tag=城市&amp;建筑">
+			<div class="overlay">
+				<span>Beauty can be found in the everyday, the man-made.</span>
+			</div>
+			<div class="gradient">
+				<span class="name">城市 &amp; 建筑</span>
+			</div>
+		</a>
+		<a class="animals category last-child" target="_blank" href="/photos?tag=动物">
+			<div class="overlay">
+				<span>最好的时光是意外捕获.</span>
+			</div>
+			<div class="gradient">
+				<span class="name">动物</span>
+			</div>
+		</a>
+	</div>
+	<div class="row">
+		<a class="category landscapes" target="_blank" href="/photos?tag=风景">
+			<div class="overlay">
+				<span>从成千上万个像素，远闻到清新的空气.</span>
+			</div>
+			<div class="gradient">
+				<span class="name">风景、山水</span>
+			</div>
+		</a>
+		<a class="black-and-white category" target="_blank" href="/photos?tag=黑白">
+			<div class="overlay">
+				<span>摄影在其最纯粹的形式.</span>
+			</div>
+			<div class="gradient">
+				<span class="name">黑白</span>
+			</div>
+		</a>
+		<a class="category nature last-child" target="_blank" href="/photos?tag=大自然">
+			<div class="overlay">
+				<span>自然情感的流露使得整个世界的亲属,远离北京才有.</span>
+			</div>
+			<div class="gradient">
+				<span class="name">大自然</span>
+			</div>
+		</a>
+	</div>
+	<div class="row">
+		<a class="abstract category" target="_blank" href="/photos?tag=抽象">
+			<div class="overlay">
+				<span>不只是形状漂亮？反正小编欣赏不了</span>
+			</div>
+			<div class="gradient">
+				<span class="name">抽象</span>
+			</div>
+		</a>
+		<a class="category concert" target="_blank" href="/photos?tag=音乐会">
+			<div class="overlay">
+				<span>捕捉音乐的奇迹.</span>
+			</div>
+			<div class="gradient">
+				<span class="name">音乐会</span>
+			</div>
+		</a>
+		<a class="category macro last-child" target="_blank" href="/photos?tag=微距">
+			<div class="overlay">
+				<span>美在于细节.</span>
+			</div>
+			<div class="gradient">
+				<span class="name">微距</span>
+			</div>
+		</a>
+	</div>
+</div>
+
 <!-- <div class="row">
 	<div class="col-md-12">
 		<span class="pull-left home-tip-name">推荐</span>

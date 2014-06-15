@@ -209,7 +209,13 @@ Mpupload.flashMoveButton = function(){
 $(function(){
     $('input, textarea').placeholder();
     var clone = $(".edit-container").clone();
-    Mpupload.photo_details = clone.find("[disabled]").removeAttr("disabled").end().find("input[type=text], textarea").val("").end().find(".disabled").removeClass("disabled").end().html();
+    var tmpDetails = clone.find("[disabled]").removeAttr("disabled").end().find("input[type=text], textarea").val("").end().find(".disabled").removeClass("disabled").end();
+    if($(".select-label:first select").val() == ""){
+        Mpupload.photo_details = tmpDetails.html();
+    } else {
+        Mpupload.photo_details = tmpDetails.find(".select-label:first select").attr("disabled", "disabled").end().html();
+    }
+    
     // 配置uploadify
     $('#flashMenu').uploadify();
 

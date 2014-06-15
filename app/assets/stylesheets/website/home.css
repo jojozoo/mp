@@ -1,5 +1,9 @@
-.mp-home{
+.mp-ul-nav{
 	margin: 20px auto 0;
+}
+.mp-ul-nav a{
+	text-decoration: none;
+	color: #2a6496;
 }
 .banner-row{
 	margin: 20px -15px;
@@ -15,6 +19,133 @@
 }
 .slides > li {
 	height: 450px;
+}
+.emphasis-topic .breadcrumb{
+	margin-bottom: 0px;
+}
+.emphasis-topic li{
+	line-height: 25px;
+}
+
+.category_thumbs{
+    margin:20px 0
+}
+.category_thumbs .row{
+	margin: auto 0 40px 0;
+    overflow:hidden
+}
+.category_thumbs .row .category{
+    position:relative;
+    border-radius:3px;
+    display:inline-block;
+    float:left;
+    height:245px;
+    width:350px;
+    margin-right:45px;
+}
+.category_thumbs .row .category.last-child{
+    margin-right:0
+}
+.category_thumbs .row .category.people{
+    background:url(/images/tags/people.jpg) center center no-repeat;
+    -webkit-background-size:100%;
+    background-size:100%
+}
+.category_thumbs .row .category.city-and-architecture{
+    background:url(/images/tags/city_and_architecture.jpg) center center no-repeat;
+    -webkit-background-size:100%;
+    background-size:100%
+}
+.category_thumbs .row .category.animals{
+    background:url(/images/tags/animals.jpg) center center no-repeat;
+    -webkit-background-size:100%;
+    background-size:100%
+}
+.category_thumbs .row .category.landscapes{
+    background:url(/images/tags/landscapes.jpg) center center no-repeat;
+    -webkit-background-size:100%;
+    background-size:100%
+}
+.category_thumbs .row .category.black-and-white{
+    background:url(/images/tags/black_and_white.jpg) center center no-repeat;
+    -webkit-background-size:100%;
+    background-size:100%
+}
+.category_thumbs .row .category.nature{
+    background:url(/images/tags/nature.jpg) center center no-repeat;
+    -webkit-background-size:100%;
+    background-size:100%
+}
+.category_thumbs .row .category.abstract{
+    background:url(/images/tags/abstract.jpg) center center no-repeat;
+    -webkit-background-size:100%;
+    background-size:100%
+}
+.category_thumbs .row .category.concert{
+    background:url(/images/tags/concert.jpg) center center no-repeat;
+    -webkit-background-size:100%;
+    background-size:100%
+}
+.category_thumbs .row .category.macro{
+    background:url(/images/tags/macro.jpg) center center no-repeat;
+    -webkit-background-size:100%;
+    background-size:100%
+}
+.category_thumbs .row .category:hover .overlay{
+    opacity:0.5;
+    filter:alpha(opacity=50);
+}
+.category_thumbs .row .category.checked .overlay{
+    /*opacity:0.8;*/
+    /*background:#000 url(/images/check.png) center 80px no-repeat*/
+}
+.category_thumbs .row .category.checked .overlay span{
+    display:block
+}
+.category_thumbs .row .category .overlay{
+    opacity:0;
+    filter:alpha(opacity=0);
+    width:100%;
+    height:100%;
+    background-color:#000;
+    text-align:center;
+    transition:opacity 0.2s;
+    -webkit-transition:opacity 0.2s;
+    -ms-transition:opacity 0.2s;
+    -moz-transition:opacity 0.2s;
+    -o-transition:opacity 0.2s
+}
+.category_thumbs .row .category .overlay span{
+    font-size:14px;
+    font-weight:300;
+    text-align:center;
+    position:relative;
+    top:140px;
+    color:#fff;
+    display:none
+}
+.category_thumbs .row .category .gradient{
+    display:table;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:70px;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.6)));
+    background:-webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    background:-webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.6)));
+    background:linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#99000000', GradientType=0)
+}
+.category_thumbs .row .category .gradient .name{
+    display:table-cell;
+    vertical-align:middle;
+    position:relative;
+    top:8px;
+    padding-left:15px;
+    font-size:24px;
+    color:#fff;
+    font-weight:300;
+    text-shadow:0 0 1px rgba(0, 0, 0, 0.6)
 }
 
 /*.nav-filter > li {

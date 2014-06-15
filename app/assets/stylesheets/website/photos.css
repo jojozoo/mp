@@ -137,6 +137,7 @@
     background-color:rgba(34, 34, 34, 0.2);
     /*兼容ie8颜色*/
     background-color: #999\9;
+    /*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#66000000', GradientType=0);*/
     margin-right: 4px;
     float: left;
 
