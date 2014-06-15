@@ -38,7 +38,10 @@ class PhotosController < ApplicationController
     end
 
     def create
-        
+        lastphoto = nil
+        if params[:gtitle].present? and params[:gdesc].present?
+            parent = Photo.create!()
+        end
         params[:tps].values.each do |item|
             event   = Event.find(item[:request_id])
             tp      = Tp.find(item[:tpid])
