@@ -27,7 +27,6 @@ class PhotosController < ApplicationController
     
     def new
         # TODO 应该加上event_id 或者 album_id 索引条件
-        @photos = current_user.photos.where(state: false, del: false)
         @event  = Event.ongoing.find_by_id(params[:request_id])
     end
 
