@@ -12,42 +12,11 @@
 		<div class="radbox">
 			<div class="box_con">
 				<ul class="list-unstyled">
+					<% Emphasis.all.each do |em| %>
 					<li>
-						<a target="_blank" href="javascript:void(0);">#拍个球 世界杯特别活动开始啦~</a>
+						<%= link_to em.title, em.link, target: '_blank' %>
 					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">明天父亲节，发起#我爱老爸小赛！</a>
-					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">快拍快拍网招新版主啦~</a>
-					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">月月都有千元奖六月主题“友善”</a>
-					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">聊聊怎样拍出你心中的西湖</a>
-					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">公主号邮轮济州摄影之旅报名啦~</a>
-					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">快推荐：快拍城市10+1计划</a>
-					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">06月14日快拍图选(上午版)</a>
-					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">快推荐：宁波老外滩的世界杯风</a>
-					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">快拍开化的春天6月截稿，传这里</a>
-					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">6月13日快拍之星：应亭</a>
-					</li>
-					<li>
-						<a target="_blank" href="javascript:void(0);">06月13日快拍图选(晚上版)</a>
-					</li>
+					<% end %>
 					<% Topic.emphasis.order('id desc').limit(12).each do |topic| %>
 						<li>
 							<%= link_to topic.title, topic_path(topic.id) %>
