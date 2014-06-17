@@ -5,10 +5,11 @@
     min-height: 300px;
     position: relative;
 }
-.mp-large-picture a{
+.mp-large-picture .mp-large-link{
     display: block;
+	text-align: center;
 }
-.mp-large-picture a img{
+.mp-large-picture .mp-large-link img{
 	max-width: 1140px;
 }
 .mp-large-picture .pn-photo{

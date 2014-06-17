@@ -1,12 +1,13 @@
 class TopicsController < ApplicationController
+    before_filter :must_login, only: [:new, :create, :edit, :update, :destroy]
 
     def index
-        if params[:tag].present? and @tag = Tag.find_by_name(params[:tag])
-            @topics = Topic.where(tag_id: @tag.id).paginate(:page => params[:page], per_page: 20).order('id desc')
-            render 'index_tag' and return
-        else
-            @topics = Topic.order('coms_count desc, id desc').limit(20)
-        end
+        @topics = Topic.order('coms_count desc, id desc').limit(20)
+    end
+
+    def cate
+        @cate = Tag.find(params[:cate_id])
+        @topics = Topic.where(cate_id: @cate.id).paginate(:page => params[:page], per_page: 20).order('id desc')
     end
 
     def explore
@@ -18,19 +19,16 @@ class TopicsController < ApplicationController
     end
 
     def new
-        unless sign_in?
-            redirect_to action: :index
-            flash[:notice] = '请先登录'
-            return
-        else
-            @owner = Event.find_by_name(params[:tag]) if params[:tag].present?
-            @topic = Topic.new
+        if params[:cate].present?
+            @owner = Event.find_by_name(params[:cate])
+            @cate  = Tag.find_by_name(params[:cate])
         end
+        @topic = Topic.new
     end
 
     def create
         params[:topic][:owner_id] = params[:topic_owner_id]
-        if @topic = Topic.create!(params[:topic].slice(:title, :content, :tag_id).merge(user_id: current_user.id))
+        if @topic = Topic.create!(params[:topic].slice(:title, :content, :cate_id, :original).merge(user_id: current_user.id))
             redirect_to action: :show, id: @topic.id
         else
             render action: :new
@@ -38,20 +36,14 @@ class TopicsController < ApplicationController
     end
 
     def edit
-        unless sign_in?
-            redirect_to action: :index
-            flash[:notice] = '请先登录'
-            return
-        else
-            @topic = current_user.topics.find(params[:id])
-            @owner = @topic.owner
-        end
+        @topic = current_user.topics.find(params[:id])
+        @owner = @topic.owner
+        @cate  = @topic.cate
     end
 
     def update
         @topic = current_user.topics.find(params[:id])
-        # 防止串改 group_id
-        if @topic.update_attributes!(params[:topic].slice(:title, :content))
+        if @topic.update_attributes!(params[:topic].slice(:title, :content, :cate_id, :original))
             redirect_to action: :show, id: @topic.id
         else
             render action: :edit

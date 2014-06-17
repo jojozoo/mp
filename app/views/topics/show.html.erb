@@ -1,55 +1,53 @@
 <div class="row">
     <div class="col-md-9">
-        <div class="white-col-md">
-            <div class="row">
-                <div class="infos breadcrumb" style="">
-                    <div class="pull-left">
-                        <%= link_to image_tag(@topic.user.avatar(:s50), class: 'avatar'), user_path(@topic.user_id) %>
-                    </div>
-                    <h4 class="entry-title" style="font-size: 22px;color: #333;margin: 0 auto 8px 60px;">
-                        <%= @topic.title %>
-                        <small class="pull-right" style="font-size:12px;">
-                            <a href="">关注TA</a> &nbsp;&nbsp;
-                            <a href="">推荐</a> &nbsp;&nbsp;
-                            <a href="">喜欢</a> &nbsp;&nbsp;
-                        </small>
-                    </h4>
-                    <div class="info leader">
-                        <%= link_to '标签', topics_path(tag: '标签'), class: 'node' %>
-                        •
-                        <%= link_to @topic.user.username, user_path(@topic.user_id) %>
-                        • 于 <abbr class="timeago" title=""><%=  humanize(@topic.created_at) %></abbr>
-                        发布
-                        <% if last_user = @topic.last_user %>
-                        •
-                        最后由
-                        <%= link_to last_user.username, user_path(@topic.last_user_id) %>
-                        于 <abbr class="timeago" title=""><%= humanize(@topic.last_updated_at) %></abbr>
-                        回复
-                        <% end %>
-                        •
-                        710次阅读
-                        <% if sign_in? and (current_user.id.eql?(@topic.id) or current_user.admin) %>
-                        •
-                        <%= link_to '编辑', edit_topic_path(@topic.id) %>
-                        <% end %>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="kindeditor">
-                        <%= raw @topic.content %>
-                    </div>
-                    <hr>
-                    <%= render "shared/respond", url: ajax_com_path('topic', @topic.id) if current_user %>
-                    <hr>
-                    <div class="comments">
-                        <h5>所有回应</h5>
-                        <ul class="media-list">
-                            <%= render partial: 'shared/comment', collection: @topic.comments %>
-                        </ul>
-                    </div>
-
-                </div>
+        <div class="infos breadcrumb" style="">
+            <div class="pull-left">
+                <%= link_to image_tag(@topic.user.avatar(:s50), class: 'avatar'), user_path(@topic.user_id) %>
+            </div>
+            <h4 class="entry-title" style="font-size: 22px;color: #333;margin: 0 auto 8px 60px;">
+                <%= @topic.title %>
+                <small class="pull-right" style="font-size:12px;">
+                    <a href="">关注TA</a> &nbsp;&nbsp;
+                    <a href="">推荐</a> &nbsp;&nbsp;
+                    <a href="">喜欢</a> &nbsp;&nbsp;
+                </small>
+            </h4>
+            <div class="info leader">
+                <%= link_to @topic.cate.name, cate_topics_path(@topic.cate_id), class: 'node' %>
+                •
+                <%= link_to @topic.user.username, user_path(@topic.user_id) %>
+                • 于 <abbr class="timeago" title=""><%=  humanize(@topic.created_at) %></abbr>
+                发布
+                <% if last_user = @topic.last_user %>
+                •
+                最后由
+                <%= link_to last_user.username, user_path(@topic.last_user_id) %>
+                于 <abbr class="timeago" title=""><%= humanize(@topic.last_updated_at) %></abbr>
+                回复
+                <% end %>
+                •
+                710次阅读
+                <% if sign_in? and (current_user.id.eql?(@topic.id) or current_user.admin) %>
+                •
+                <%= link_to '编辑', edit_topic_path(@topic.id) %>
+                <% end %>
+            </div>
+        </div>
+        <div class="cccccc">
+            <div class="kindeditor">
+                <%= @topic.content.html_safe %>
+                <div class="clearfix hihihi"></div>
+            </div>
+            <% if current_user %>
+            <hr>
+            <%= render "shared/respond", url: ajax_com_path('topic', @topic.id) %>
+            <% end %>
+            <hr>
+            <div class="comments">
+                <h5>所有回应</h5>
+                <ul class="media-list">
+                    <%= render partial: 'shared/comment', collection: @topic.comments %>
+                </ul>
             </div>
         </div>
     </div>

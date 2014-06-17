@@ -1,28 +1,9 @@
 <%= simple_form_for @topic, validate: true do |f| %>
     <%= f.input :title %>
     <%= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
-    <!-- <div class="form-group string optional topic_tag">
-        <label class="string optional col-sm-2 control-label" for="topic_tag">标签</label>
-        <div class="col-sm-6 input-text-add">
-            <ul id="topic_tag"></ul>
-            <p class="help-block">标签作为关键词可以被用户搜索到。</p>
-        </div>
-    </div> -->
-<!--     <div class="form-group string optional">
-        <label class="string optional col-sm-2 control-label"></label>
-        <div class="col-sm-6 input-text-add">
-            <span class="checkbox">
-                <input id="form_agreement" name="form_agreement" type="checkbox">
-                <label for="form_agreement">
-                    我已认真阅读并同意《
-                    <a href="/sites" target="_blank">漫拍指导原则</a>
-                    》和《
-                    <a href="/sites" target="_blank">免责声明</a>
-                    》。
-                </label>
-            </span>
-        </div>
-    </div> -->
+    <%= f.input :cate_id, collection: Tag.where(channel: '文章').select('id,name'), include_blank: false %>
+    
+    
     <div class="form-group select required topic_owner_id">
         <label class="select required col-sm-2 control-label" for="topic_owner_id">
             <abbr title="required">*</abbr>
@@ -57,17 +38,31 @@
             </div>
         </div>
     </div>
-    
+    <%= f.input :original, :collection => [['原创', true], ['转载', false]], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
+    <div class="form-group string optional">
+        <label class="string optional col-sm-2 control-label"></label>
+        <div class="col-sm-6 input-text-add">
+            <span class="checkbox">
+                <input id="form_agreement" name="form_agreement" type="checkbox">
+                <label for="form_agreement">
+                    我已认真阅读并同意《
+                    <a href="/sites" target="_blank">漫拍指导原则</a>
+                    》和《
+                    <a href="/sites" target="_blank">免责声明</a>
+                    》。
+                </label>
+            </span>
+        </div>
+    </div>
 
     <div class="form-group">
         <input class="btn btn-info col-sm-offset-2 col-md-offset-2" name="commit" type="submit" value="发布话题">
     </div>
 <% end %>
-<script src="/javascripts/jquery.taghandler.js" type="text/javascript"></script>
-<link href="/stylesheets/jquery.taghandler.css" media="all" rel="stylesheet" type="text/css">
+
 <script type="text/javascript">
 $(function(){
-    TAGS = <%= Tag.select('id,name,channel').group_by{|t| t.channel}.to_json.html_safe %>;
+    TAGS = <%= Tag.where(channel: '文章').select('id,name,cate').group_by{|t| t.cate}.to_json.html_safe %>;
     for(var p in TAGS){
         $(".taglabel").append("<a href='javascript:void(0);' class='tlb10 taglabelrow'>"+p+"</a>");
     }

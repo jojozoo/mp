@@ -1,3 +1,6 @@
+.kindeditor{
+    min-height: 500px;
+}
 #msgbox {
     width: 600px;
     position: fixed;
@@ -226,7 +229,7 @@ textarea.form-control{
     font-size: 12px;
 }
 .main{
-	margin: 10px auto 0;
+	margin: 30px auto 0;
 }
 .col-md-9{
     padding-right: 0;
@@ -412,7 +415,7 @@ hr{
 }
 .box_top{
     border-bottom: 1px solid #e2e2e2;
-    padding: 10px;
+    margin: 0 10px;
 }
 .radbox .title {
     color: #acacac;

@@ -205,7 +205,9 @@ ActiveRecord::Schema.define(:version => 20140615163011) do
 
   create_table "tags", :force => true do |t|
     t.string   "name"
+    t.string   "pinyin"
     t.string   "channel"
+    t.string   "cate"
     t.integer  "sum",        :default => 0
     t.string   "desc"
     t.boolean  "del",        :default => false
@@ -226,13 +228,15 @@ ActiveRecord::Schema.define(:version => 20140615163011) do
 
   create_table "topics", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "cate_id"
     t.integer  "owner_id"
     t.integer  "last_user_id"
     t.datetime "last_updated_at"
     t.boolean  "emphasis",        :default => false
     t.datetime "emphasis_at"
+    t.boolean  "original",        :default => true
     t.string   "title"
-    t.string   "content"
+    t.text     "content"
     t.integer  "coms_count",      :default => 0
     t.boolean  "del",             :default => false
     t.datetime "created_at",                         :null => false

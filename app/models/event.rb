@@ -87,11 +87,11 @@ class Event < ActiveRecord::Base
                             :message => '不能为空'
 
   # 修改活动 增加tag
-  after_save :add_to_tag, if: Proc.new{|r| r.state_changed? }
-  def add_to_tag
-    tag = Tag.unscoped.find_or_create_by_name_and_channel(self.name, '活动')
-    tag.update_attributes(del: !self.ongoing?)
-  end
+  # after_save :add_to_tag, if: Proc.new{|r| r.state_changed? }
+  # def add_to_tag
+  #   tag = Tag.unscoped.find_or_create_by_name_and_channel(self.name, '活动')
+  #   tag.update_attributes(del: !self.ongoing?)
+  # end
 
   
   # 参与活动的人 如何需要显示后期再加，现在是editor编辑者

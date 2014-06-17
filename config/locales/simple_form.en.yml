@@ -68,6 +68,14 @@ en:
         title: '标题'
         content: '内容'
         owner_id: '所属活动'
+        cate_id: '类别'
+        original: '原创'
+      tag:
+        name: '名称'
+        pinyin: '拼音'
+        channel: '所属资源'
+        cate: '类别'
+        desc: '标签描述'
     hints:
       defaults:
       user:
@@ -78,6 +86,10 @@ en:
         tag: '同城、年度、手机等等'
       topic:
         owner_id: '活动ID，关联后会显示到相应活动的推荐栏目'
+      tag:
+        name: '不可填写特殊字符'
+        pinyin: '系统自动生成'
+        cate: '目前有: 常用, 器材, 题材, 风格技巧, 活动(可随意添加)'
     placeholders:
       defaults:
         username: 帐户

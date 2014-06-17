@@ -32,12 +32,12 @@
                 </div>
                 <div class="col-md-12 topic-all-tags">
                     <ul>
-                        <% Tag.order('id desc').group_by{|t| t.channel}.each do |key, val| %>
+                        <% Tag.where(channel: '文章').order('id desc').group_by{|t| t.cate}.each do |key, val| %>
                         <li>
                             <label><%= key %></label>
                             <span>
                                 <% val.each do |t| %>
-                                <%= link_to t.name, topics_path(tag: t.name) %>
+                                <%= link_to t.name, cate_topics_path(t.id) %>
                                 <% end %>
                             </span>
                         </li>

@@ -1,7 +1,9 @@
 <%= simple_form_for ['admin', @tag], validate: true do |f| %>
 	<%= f.error_notification %>
 	<%= f.input :name %>
-	<%= f.input :channel, collection: Tag::CHANNEL, include_blank: false %>
+	<%= f.input :pinyin, disabled: true %>
+	<%= f.input :cate %>
+	<%= f.input :channel, :collection => Tag::CHANNEL, :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
 	<%= f.input :desc, as: :text %>
 	<div class="form-group">
 		<div class="col-sm-8 col-sm-offset-2">

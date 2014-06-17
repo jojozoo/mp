@@ -14,8 +14,8 @@
                 <% end %>
             </div>
             <div class="info">
-                <% unless @tag %>
-                <%= link_to '标签', topics_path(tag: '标签'), class: 'node' %>
+                <% if action_name.eql?('index') %>
+                <%= link_to topic.cate.name, cate_topics_path(topic.cate_id), class: 'node' %>
                 •
                 <% end %>
                 <%= link_to topic.user.username, user_path(topic.user_id) %>

@@ -41,6 +41,7 @@ Mp::Application.routes.draw do
     collection do
       get :excellent
       get :explore  
+      get 'cate/:cate_id', action: :cate, as: :cate
     end
   end
   resources :events, path: 'requests', only: [:index, :show]

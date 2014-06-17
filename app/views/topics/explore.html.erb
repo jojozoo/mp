@@ -1,21 +1,17 @@
 <div class="row">
     <div class="col-md-9">
-        <div class="white-col-md">
-            <div class="row">
-                <ul class="breadcrumb">
-                    <% ['默认', '优质话题', '无人问津', '最新创建'].each do |sort| %>
-                    <li>
-                        <%= link_to sort, topics_path(sort: sort) %>
-                    </li>
-                    <% end %>
-                </ul>
-                <div class="col-md-12">
-                    <div class="topics">
-                        <%= render partial: 'topic', collection: @topics %>
-                    </div>
-                    <%= will_paginate @topics %>
-                </div>
+        <ul class="breadcrumb">
+            <% ['默认', '优质话题', '无人问津', '最新创建'].each do |sort| %>
+            <li>
+                <%= link_to sort, explore_topics_path(sort: sort) %>
+            </li>
+            <% end %>
+        </ul>
+        <div class="col-md-12">
+            <div class="topics">
+                <%= render partial: 'topic', collection: @topics %>
             </div>
+            <%= will_paginate @topics %>
         </div>
     </div>
     <div class="col-md-3">
@@ -24,7 +20,7 @@
                 <span class="title light">发布</span>
             </div>
             <div class="box_con text-center">
-                <%= link_to '发布', new_topic_path, class: 'btn btn-success', style: 'width:100%;' %>
+                <%= link_to '发布', new_topic_path, class: 'btn btn-success btn-block mp-sign' %>
             </div>
         </div>
     </div>
