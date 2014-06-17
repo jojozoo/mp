@@ -5,20 +5,13 @@
     <%= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
 
     
-    <% if @event %>
-    <%= f.input :owner_id, readonly: true, input_html: {value: @event.id} %>
-    <% else %>
-    <%= f.input :owner_id, as: :string %>
-    <% end %>
-    <div class="form-group select optional tag">
-        <label class="select optional col-sm-2 control-label" for="tag">
-            标签
-        </label>
-        <div class="col-sm-6 input-text-add">
-            <input class="string required form-control" id="tag" name="tag" size="50" type="text" data-validate="true">
-            <p class="help-block">此处为tag</p>
-        </div>
-    </div>
+    <%# if @event %>
+    <%#= f.input :owner_id, readonly: true, input_html: {value: @event.id} %>
+    <%# else %>
+    <%#= f.input :owner_id, as: :string %>
+    <%# end %>
+    <%= f.input :cate_id, collection: Tag.where(channel: '文章').select('id,name'), include_blank: false %>
+    <%= f.input :original, :collection => [['原创', true], ['转载', false]], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
 	<div class="form-group">
 		<div class="col-sm-8 col-sm-offset-2">
 			<input type="submit" value="保存topic" class="btn btn-default">

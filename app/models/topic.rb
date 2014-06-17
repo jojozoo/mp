@@ -55,4 +55,9 @@ class Topic < ActiveRecord::Base
 
   validates_presence_of     :cate_id,
                             message: '不能为空'
+
+  # after_save :download_image, if {|r| r.content_changed?}
+  # def download_image
+    
+  # end
 end
