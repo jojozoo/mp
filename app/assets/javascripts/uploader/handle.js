@@ -161,9 +161,8 @@ Mpupload.details = function(id){
     });
 }
 
-Mpupload.getValues = function(id){
-    var details = $(".photo-details[data-pid="+id+"]"),
-        finish = true;
+Mpupload.getValues = function(id, finish){
+    var details = $(".photo-details[data-pid="+id+"]");
     details.find("input:text[name^=photo-exif]").each(function(index, item){
         var _key = this.id.replace("photo-"+id+"-exif", ""),
             _val = this.value;
@@ -174,41 +173,24 @@ Mpupload.getValues = function(id){
         request_id = $("#photo-"+id+"-request_id").val(), 
         warrant    = $("input[name='photo["+id+"][warrant]']:checked").val(),
         tags       = details.find(".tag .name").map(function(){return this.textContent}).get().join(',');
-    if(title){
-        Mpupload.queue[id].title = title;
-    } else {
-        finish = false;
-        $("#photo-"+id+"-title").addClass("has-error");
-    }
-    if(desc){
-        Mpupload.queue[id].desc = desc;
-    } else {
-        finish = false;
-        $("#photo-"+id+"-desc").addClass("has-error");
-    }
-    if(request_id){
-        Mpupload.queue[id].request_id = request_id;
-    } else {
-        finish = false;
-        $("#photo-"+id+"-request_id").addClass("has-error");
-    }
+    // $("#photo-"+id+"-title").addClass("has-error");
+    Mpupload.queue[id].title = title;
+    Mpupload.queue[id].desc = desc;
+    Mpupload.queue[id].request_id = request_id;
     Mpupload.queue[id].warrant    = warrant;
     Mpupload.queue[id].tags       = tags;
+    if(!title || !desc || !request_id || !tags){
+        finish = finish ? false : finish;
+    }
     // 添加组的上传和验证
     if(Mpupload.groupUpload){
         var gtitle = $("#photo_group_title").val(),
             gdesc = $("#photo_group_desc").val();
-        if(gtitle){
-            Mpupload.groupTitle = gtitle;
-        } else {
-            finish = false;
-            $("#photo_group_title").addClass("has-error");
-        }
-        if(gdesc){
-            Mpupload.groupDesc = gdesc;
-        } else {
-            finish = false;
-            $("#photo_group_desc").addClass("has-error");
+        Mpupload.groupTitle = gtitle;
+        Mpupload.groupDesc = gdesc;
+        
+        if(!gtitle || ! gdesc){
+            finish = finish ? false : finish;
         }
     }
     // 添加组的上传和验证 end
@@ -329,20 +311,8 @@ $(function(){
 
     });
 
-    // 完成上传
-    $(document).on("click", ".button.action.finish", function(){
-        if($(this).hasClass("disabled") || $(".photo-reel .photos").length < 1 || Mpupload.totalLength < 1 || $.isEmptyObject(Mpupload.queue)){
-            return false;
-        };
-        var key, item;
-        for(key in Mpupload.queue){
-            item = Mpupload.getValues(key);
-            if(!item){
-                $(".photo-reel-photo[data-pid=" + key + "]").click();
-                MPMSG('error', '请填写标题、活动、描述');
-                return;
-            }
-        }
+    // 确认上传
+    $(document).on("click", ".confirm_finish", function(){
         // 上传数据
         var arr = [],
             item;
@@ -380,6 +350,30 @@ $(function(){
                 window.location.href = "/photos?order=news";
             }
         });
+    });
+    // 取消上传
+    $(document).on("click", ".confirm_close", function(){
+        $('#custom-modal').modal('hide');
+    });
+    // 完成上传
+    $(document).on("click", ".button.action.finish", function(){
+        if($(this).hasClass("disabled") || $(".photo-reel .photos").length < 1 || Mpupload.totalLength < 1 || $.isEmptyObject(Mpupload.queue)){
+            return false;
+        };
+        var key, finish = true;
+        for(key in Mpupload.queue){
+            finish = Mpupload.getValues(key, finish);
+            // if(!item){
+            //     $(".photo-reel-photo[data-pid=" + key + "]").click();
+            //     MPMSG('error', '请填写标题、活动、描述');
+            //     return;
+            // }
+        }
+        if(finish){
+            $(".confirm_finish").click();
+        } else {
+            $('#custom-modal').modal('show');
+        }
         
     });
     // 选择标签

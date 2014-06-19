@@ -8,27 +8,9 @@
     <li id="js-nav-events">
         <%= link_to '活动', events_path %>
     </li>
-    <li class="dropdown" id="js-nav-collections">
-        <%= link_to collections_path do %>
-            推荐
-            <b class="caret"></b>
-        <% end %>
-        <ul class="dropdown-menu">
-            <li>
-                <%= link_to '每天看世界最好的照片', collections_path %>
-            </li>
-            <li>
-                <%= link_to '月月评', collections_path %>
-            </li>
-            <li>
-                <%= link_to '影展', collections_path %>
-            </li>
-            <li>
-                <%= link_to '摄影师', collections_path %>
-            </li>
-        </ul>
+    <li id="js-nav-collections">
+        <%= link_to '专集', collections_path %>
     </li>
-
     <li id="js-nav-topics">
         <%= link_to '话题', topics_path %>
     </li>

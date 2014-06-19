@@ -9,8 +9,7 @@
 <ul class="breadcrumb mp-ul-nav">
 	<li>
 		<a href="javascript:void(0);">
-			<i class="icon-flag"></i>
-			推荐活动
+			今日重点
 		</a>
 	</li>
 </ul>
@@ -66,7 +65,7 @@
 	</li>
 </ul>
 <div class="row mp-photos">
-	<%= render partial: 'photos/thumb', collection: Photo.limit(8).order('id desc'), as: :photo %>
+	<%= render partial: 'photos/thumb', collection: Photo.where(parent_id: nil).limit(8).order('id desc'), as: :photo %>
 </div>
 
 <ul class="breadcrumb mp-ul-nav">
