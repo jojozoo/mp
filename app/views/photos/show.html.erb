@@ -1,5 +1,65 @@
-<%= render 'photos/header', photo: @photo %>
-<hr style="margin: 0 auto 30px auto;">
+<div class="photo-show">
+	<div class="photo-header">
+		<div class="photo-header-left">
+			<%= link_to image_tag(@photo.user.avatar(:s50), class: 'avatar'), user_path(@photo.user_id), class: 'author' %>
+			<h4>
+				<%= @photo.title.blank? ? '标题未填写' : @photo.title %>
+				<small>组图照片</small>
+			</h4>
+			<div class="photo-header-author-link">
+				<%= link_to @photo.user.username, user_path(@photo.user_id) %>
+				<a href="javascript:void(0);" class="btn btn-primary btn-xs fol">关注</a>
+			</div>
+		</div>
+		<div class="photo-header-right">
+			<div class="sharelizers">
+				<div class="share-group">
+					<a href="javascript:void(0);" class="share weibo"></a>
+					<a href="javascript:void(0);" class="share qq"></a>
+					<a href="javascript:void(0);" class="share renren"></a>
+					<a href="javascript:void(0);" class="share douban"></a>
+					<a href="javascript:void(0);" class="share email"></a>
+				</div>
+				<div class="status">
+					<span class="status-tip">
+						浏览:
+					</span>
+					<span class="status-count">
+						<%= @photo.visit_count %>
+					</span>
+					<span class="status-tip">
+						喜欢:
+					</span>
+					<span class="status-count">
+						<%= @photo.liks_count %>
+					</span>
+					<span class="status-tip">
+						收藏:
+					</span>
+					<span>
+						<%= @photo.stos_count %>
+					</span>
+				</div>
+			</div>
+			<div class="photo-store">
+				<a href="photo-store-link">
+					<span class="store-bg"></span>
+					<span class="store-text">收藏</span>
+				</a>
+			</div>
+			<div class="photo-like">
+				<a href="photo-like-link">
+					<span class="like-bg"></span>
+					<span class="like-text">喜欢</span>
+				</a>
+			</div>
+			
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<hr>
+
 <div class="row">
 	<div class="col-md-12">
 		<div class="mp-large-picture">
@@ -11,51 +71,23 @@
 				<a href="<%= photo_path(nexp) %>" class="pn-photo next-photo"><span></span></a>
 			<% end %>
 		</div>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-7">
+		<%= render "shared/respond", url: ajax_com_path('photo', @photo.id) if current_user %>
 		<hr>
-		<ul class="list-unstyled clearfix">
-			<li class="opt-b">
-				<i class="icon-heart"></i>
-				<%= link_to_push 'like', @photo, false %>
-			</li>
-			<li class="opt-b">
-				<i class="icon-bookmark"></i>
-				<%= link_to_push 'store', @photo, false %>
-			</li>
-			<li class="opt-b">
-				<i class="icon-ok-circle"></i>
-				<%= link_to_push 'recom', @photo, false %>
-			</li>
-			<li class="opt-b">
-				<i class="icon-comment"></i>
-				<a href="#comment_content" title="回应">回应(<%= @photo.coms_count %>)</a>
-			</li>
-			<li class="opt-b">
-				<i class="icon-flag"></i>
-				<% if @photo.event %>
-					<%= link_to @photo.event.name, event_path(@photo.event_id) %>
-				<% end %>
-			</li>
-			<li class="opt-b">
-				<i class="icon-time"></i>
-				<%= @photo.created_at.strftime("%m-%d %R") %>
-			</li>
-		</ul>
-		<hr>
-		<div class="row">
-			<div class="col-md-7">
-				<%= render "shared/respond", url: ajax_com_path('photo', @photo.id) if current_user %>
-				<hr>
-				<div class="comments">
-					<h5>所有回应</h5>
-					<ul class="media-list">
-						<%= render partial: 'shared/comment', collection: @photo.comments %>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-5">
-				<%= render 'exif' %>
-			</div>
+		<div class="comments">
+			<h5>所有回应</h5>
+			<ul class="media-list">
+				<%= render partial: 'shared/comment', collection: @photo.comments %>
+			</ul>
 		</div>
-		
+	</div>
+	<div class="col-md-5">
+		<%#= render partial: 'left_right', collection: @photos, as: :photo, check_id: 1 %>
+		<%= render 'left_right' %>
+		<%= render 'exif' %>
 	</div>
 </div>

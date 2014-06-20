@@ -11,7 +11,17 @@ class PhotosController < ApplicationController
 
     def show
         # 有几种组的方式 默认以人为单位 其次是某天 其次是推荐 其次是精选 其次是某一集合
-        @photo = Photo.find_by_id_and_state(params[:id], true)
+        @photo  = Photo.find_by_id(params[:id])
+        @photos = case params[:sn]
+        when 'group' # 组 应该有个组id
+            Photo.where(parent_id: params[:sid])
+        when 'choice' # 如果是精选 应该有个日期
+            Photo.where(user_id: params[:sid], choice: true)
+        when 'recom' # 如果是推荐 应该有个日期
+            Photo.where(user_id: params[:sid], recommend: true)
+        else # 个人作品
+            Photo.where(user_id: params[:sid]).order("id desc")
+        end.limit(10)
         @photo.visits.create(user_id: current_user.try(:id))
     end
 

@@ -6,7 +6,7 @@
         <% if photo.recommend and params[:order] != 'push' %>
         <a class="type-push">荐</a>
         <% end %>
-        <% if photo.choice %>
+        <% if photo.choice and params[:order] != 'choice' %>
         <a class="type-choice">精</a>
         <% end %>
     </div>
@@ -30,7 +30,7 @@
         </div>
         <% end %>
     </div>
-    <%= link_to image_tag(photo.picture(:thumb)), photo_path(photo), target: '_blank', class: 'thumb' %>
+    <%= link_to_photo photo %>
     <div class="details">
         <div class="inside-left">
             <div class="account">

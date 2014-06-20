@@ -283,8 +283,8 @@ textarea.form-control{
 }
 
 .navbar-default{
-	/*background: #26292e;*/
-    background: #46485f;
+	background: #26292e;
+    /*background: #46485f;*/
 }
 .navbar-default .navbar-nav > li > a{
 	color: #fff;
