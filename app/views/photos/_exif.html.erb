@@ -1,86 +1,147 @@
-<div id="pic_menu">
-	<!-- 图片预览 -->
-	
-	<!-- 图片预览 -->
-	<div class="description">
-		<h2>作品描述</h2>
-		<div class="hr_line"></div>
-		<p>阿妈不是在工作，是在抚琴。那么优雅而从容～</p>
-	</div>
-	<!-- 图片预览 END -->
-	<div class="exif_m">
-		<h2>EXIF信息</h2>
-		<div class="hr_line"></div>
-		<div class="buy right tst">
-			<a href="#"></a>
+<div class="photo-box">
+	<h4>作品描述</h4>
+	<div class="description_text_wrap">
+		<div class="description" style="font-size:12px;">
+			<%= @photo.desc %>
+			一个漂亮的图，需要各种点缀
+			<br>
+			可以再多描述一些
 		</div>
-		<div class="ex1 ex">
-			<div class="ll">品牌：</div>
-			<span>Canon</span>
-			<div class="clear"></div>
-		</div>
-		<div class="ex2 ex">
-			<div class="ll">型号：</div>
-			<span>Canon EOS 5D Mark II</span>
-			<div class="clear"></div>
-		</div>
-		<div class="ex3 ex">
-			<div class="ll">焦距：</div>
-			<span>16.0mm</span>
-			<div class="clear"></div>
-		</div>
-		<div class="ex4 ex">
-			<div class="ll">光圈：</div>
-			<span>F3.6</span>
-			<div class="clear"></div>
-		</div>
-		<div class="ex5 ex">
-			<div class="ll">快门速度：</div>
-			<span>1/215s</span>
-			<div class="clear"></div>
-		</div>
-		<div class="ex6 ex">
-			<div class="ll">ISO：</div>
-			<span>1000</span>
-			<div class="clear"></div>
-		</div>
-		<div class="ex7 ex">
-			<div class="ll">曝光补偿：</div>
-			<span>0.0EV</span>
-			<div class="clear"></div>
-		</div>
-		<div class="ex8 ex">
-			<div class="ll">拍摄时间：</div>
-			<span>2014:02:11 12:50:51</span>
-			<div class="clear"></div>
-		</div>
-		<div class="ex9 ex">
-			<div class="ll">镜头：</div>
-			<span>unknown data</span>
-			<div class="clear"></div>
+		<style type="text/css">
+		.photo-box h4{
+			margin-top: 30px;
+		}
+		.photo-box a{
+			text-decoration: none;
+			cursor: pointer;
+		}
+		.photo-show-tag a{
+			font-size: 12px;
+			color: #0099e5;
+		}
+		.photo-show-tag a:hover{
+			color:#02adea;
+		}
+		</style>
+		<div class="photo-show-tags">
+			<span class="photo-show-tag">
+				<a href="javascript:void(0);">#人文</a>
+			</span>
+			<span class="photo-show-tag">
+				<a href="javascript:void(0);">#焦点</a>
+			</span>
+			<span class="photo-show-tag">
+				<a href="javascript:void(0);">#胶片</a>
+			</span>
+			<span class="photo-show-tag">
+				<a href="javascript:void(0);">#北京</a>
+			</span>
+			<span class="photo-show-tag">
+				<a href="javascript:void(0);">#爱</a>
+			</span>
+			<span class="photo-show-tag">
+				<a href="javascript:void(0);">#生活</a>
+			</span>
+			
 		</div>
 	</div>
-	<div class="pic_map exif_m">
-		<h2>拍摄地点</h2>
-		<a target="_blank" href="">
-			<div class="map_plagins">
-				<img alt="拍摄地点" src="">
-			</div>
-		</a>
+</div>
+<div class="photo-box">
+	<h4>EXIF信息</h4>
+	<div class="exif_wrap">
+		<img src="/images/exif_info.png" style="margin-left:-12px;">
 	</div>
-	<div class="description purchase">
-		<div class="thumb_wrap">
-			<img src="" alt="Eput 授权" width="150" height="150">
-			<div class="cover"></div>
-		</div>
-		<div class="right">
-			<p>我需要商业使用该图</p>
-			<a href="" target="_blank" title="授权">个人授权</a>
-			<a href="" target="_blank" title="授权">企业授权</a>
-		</div>
-		<div class="clear"></div>
+</div>
+<div class="photo-box">
+	<h4>拍摄地点</h4>
+	<div class="map_wrap">
+		<img src="/images/disabled_map.jpg">
 	</div>
-	<div class="pic_map">
-		<p>支持键盘左右键“← →”翻页</p>
+</div>
+<div class="photo-box">
+	<style type="text/css">
+	.shortcuts_wrap{
+		padding: 31px 0px 0px 0px;
+		color: #71767a;
+		margin: 0;
+	}
+	.shortcuts_wrap li{
+		display: inline-block;
+	}
+	.shortcuts_wrap li a.key{
+		display: inline-block;
+		font-size: 12px;
+		width: 21px;
+		height: 21px;
+		border-radius: 3px;
+		text-align: center;
+		line-height: 20px;
+		color: #7f8387;
+		font-weight: bold;
+		background: #eeeff2 center center no-repeat;
+		-webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.75) inset,0px 0px 1px 1px rgba(255,255,255,0.4);
+		box-shadow: 0px 1px 0px rgba(255,255,255,0.75) inset,0px 0px 1px 1px rgba(255,255,255,0.4);
+		border: 1px solid #b9c1c7;
+		position: relative;
+		-webkit-transition: all 0.05s ease-in-out;
+		transition: all 0.05s ease-in-out;
+
+	}
+	.shortcuts_wrap li span{
+		color: #71767a;
+		font-weight: normal;
+		padding: 0 15px 0 0;
+	}
+	li .key[data-key=left]:before {
+		content: "";
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 0;
+		height: 0;
+		border-top: 4px solid transparent;
+		border-right: 6px solid #7f8387;
+		border-bottom: 4px solid transparent;
+	}
+	li .key[data-key=right]:before {
+		content: "";
+		position: absolute;
+		top: 6px;
+		right: 6px;
+		width: 0;
+		height: 0;
+		border-top: 4px solid transparent;
+		border-left: 6px solid #7f8387;
+		border-bottom: 4px solid transparent;
+	}
+	</style>
+	<div class="shortcuts_wrap">
+		<ul class="list-unstyled">
+			<li>
+				<a class="key" data-key="l">L</a>
+				<span class="label">喜欢</span>
+			</li>
+			<li>
+				<a class="key index-finger" data-key="f">F</a>
+				<span class="label">收藏</span>
+			</li>
+			<li>
+				<a class="key" data-key="m">M</a>
+				<span class="label">放大</span>
+			</li>
+			<li>
+				<a class="key" data-key="h">H</a>
+				<span class="label">聚焦</span>
+			</li>
+			<li>
+				<a class="key" data-key="left">&nbsp;</a>
+				<span class="label">上一张</span>
+			</li>
+			<li>
+				<a class="key" data-key="right">&nbsp;</a>
+				<span class="label">下一张</span>
+			</li>
+		</ul>
+		<a href="">举报</a>
 	</div>
 </div>
