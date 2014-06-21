@@ -27,9 +27,9 @@ gem 'oauth2'
 # mailer Sidekiq
 gem 'redis'
 gem 'resque'
+gem 'awesome_print'
 
 group :development do
-    gem 'awesome_print'
     gem 'annotate', ">=2.6.0"
     gem 'pry'
     gem 'pry-remote'
