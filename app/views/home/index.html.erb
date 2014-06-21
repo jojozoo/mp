@@ -1,28 +1,41 @@
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-9">
 		<div class="ad">
 			<%= image_tag '/images/ads/wfqmsyj.jpg', alt: '潍坊全民摄影节' %>
 		</div>
 		<%= render 'flexslider' %>
 	</div>
+	<div class="col-md-3 emphasis-topic">
+		<div class="breadcrumb" style="margin-bottom:0px;">
+			<span>每日重点</span>
+		</div>
+		<div class="radbox">
+			<div class="box_con">
+				<ul class="list-unstyled">
+					<% Emphasis.all.each do |em| %>
+					<li>
+						<%= link_to em.title, em.link, target: '_blank' %>
+					</li>
+					<% end %>
+					<% Topic.emphasis.order('id desc').limit(12).each do |topic| %>
+						<li>
+							<%= link_to topic.title, topic_path(topic.id) %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
 <ul class="breadcrumb mp-ul-nav">
 	<li>
 		<a href="javascript:void(0);">
-			今日重点
+			<i class="icon-flag"></i>
+			推荐活动
 		</a>
 	</li>
 </ul>
 <div class="row" style="margin: 10px -15px auto;">
-	<div class="col-md-3">
-		<ul class="list-unstyled">
-			<% Emphasis.all.each do |em| %>
-			<li>
-				<%= link_to em.title, em.link, target: '_blank' %>
-			</li>
-			<% end %>
-		</ul>
-	</div>
 	<%= render partial: 'events/home_thumb', collection: Event.totop, as: :event %>
 </div>
 
@@ -157,66 +170,3 @@
 		</a>
 	</div>
 </div>
-
-<!-- <div class="row">
-	<div class="col-md-12">
-		<span class="pull-left home-tip-name">推荐</span>
-		<ul class="nav nav-pills nav-filter">
-			<li class="active">
-				<a href="/#home-photographers" data-toggle="tab">摄影师</a>
-			</li>
-			<li>
-				<a href="/#home-stars" data-toggle="tab">漫拍之星</a>
-			</li>
-		</ul>
-	</div>
-</div>
-<div class="row home-tui-div tab-content">
-	<div class="col-md-12 tab-pane fade in active" id="home-photographers">
-		<%# User.where(photographer: true).order("updated_at desc").limit(24).each do |user| %>
-			<%#= link_to image_tag(user.avatar(:small)), user_path(user), title: user.username %>
-		<%# end %>
-	</div>
-	<div class="col-md-12 tab-pane fade" id="home-stars">
-		<%# User.where(photographer: false).order("updated_at desc").limit(24).each do |user| %>
-			<%#= link_to image_tag(user.avatar(:small)), user_path(user), title: user.username %>
-		<%# end %>
-	</div>
-</div>
-<div class="row">
-	<div class="col-md-12">
-		<span class="pull-left home-tip-name">活动</span>
-		<ul class="nav nav-pills nav-filter">
-			<li class="dropdown">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-					所有活动 <b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<%# '上班途中 我的办公桌 宠物乐园 最喜欢的图片 我的第一台相机'.split(" ").each do |event| %>
-					<li>
-						<a class="home-search" href="/"><%#= event %></a>
-					</li>
-					<%# end %>
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-					所有图片 <b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<%# '所有图片 编辑推荐 评论最多 最新上传'.split(" ").each do |type| %>
-					<li>
-						<a class="home-order" href="/"><%#= type %></a>
-					</li>
-					<%# end %>
-				</ul>
-			</li>
-			<li>
-				<a href="">
-					选择日期 <i class="ttc icon-calendar"></i>
-				</a>
-			</li>
-			
-		</ul>
-	</div>
-</div> -->
