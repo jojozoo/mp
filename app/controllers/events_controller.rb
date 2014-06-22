@@ -36,6 +36,8 @@ class EventsController < ApplicationController
 	end
 
 	def show
+		params[:order] = params[:order] || 'news'
+		params[:style] = params[:style] || 'four'
 		@event = Event.find(params[:id])
 	end
 

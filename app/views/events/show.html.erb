@@ -33,9 +33,16 @@
 				<%= sanitize @event.desc %>
 			</div>
 		</div>
-
-		<ul class="breadcrumb" style="margin-bottom: 10px;">
-			<a href="javascript:void(0);" style="color:#999;">
+		<style type="text/css">
+		.breadcrumb {margin-bottom: 10px;}
+		.breadcrumb a{
+			text-decoration: none;
+		}
+		.breadcrumb .pull-right a{
+			font-size: 20px;
+		}
+		</style>
+		<ul class="breadcrumb">
 			<% {
 				'news' => '最新上传',
 				'vist' => '人气最高',
@@ -50,6 +57,14 @@
 				<% end %>
 			</li>
 			<% end %>
+			<div class="pull-right">
+				<%= link_to event_path(style: :line, order: params[:order]) do %>
+					<span class="icon-align-justify"></span>
+				<% end %>
+				<%= link_to event_path(style: :cols, order: params[:order]) do %>
+					<span class="icon-th"></span>
+				<% end %>
+			</div>
 		</ul>
 		<script type="text/javascript" src="/javascripts/photos.js?v=<%= Time.now.to_i %>"></script>
 		<div class="row mp-photos" id="mp-photos">
