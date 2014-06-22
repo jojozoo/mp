@@ -195,6 +195,7 @@ class Photo < ActiveRecord::Base
     system("mkdir #{spath}/large")
     system("mkdir #{spath}/thumb")
     system("mkdir #{spath}/cover")
+    system("mkdir #{spath}/small")
     system("cp #{tp.picture.path(:original)} #{spath}/original/#{orstr}#{extname}")
     system("cp #{tp.picture.path(:plarge)} #{spath}/large/#{otstr}#{extname}")
     system("cp #{tp.picture.path(:pthumb)} #{spath}/thumb/#{otstr}#{extname}")
