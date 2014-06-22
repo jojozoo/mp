@@ -21,11 +21,11 @@
         <div class="states">
             <a class="action state like">
                 <span class="iconheart"></span>
-                <span class="count">8868</span>
+                <span class="count"><%= photo.liks_count %></span>
             </a>
             <a class="action state star">
                 <span class="iconstar"></span>
-                <span class="count">20</span>
+                <span class="count"><%= photo.stos_count %></span>
             </a>
         </div>
         <% end %>
@@ -35,12 +35,16 @@
         <div class="inside-left">
             <div class="account">
                 <!-- 如果有活动ID 就不应该显示活动了 -->
-                <a href="javascript:void(0);">每日精选</a>
+                <%= link_to photo.title.present? ? photo.title : '标题', photo_path(photo) %>
             </div>
             <div class="title">
-                <a href="javascript:void(0);">安一然ROG</a>
+                <%= link_to photo.user.username, user_path(photo.user_id) %>
             </div>
         </div>
-        <div class="inside-right">48.1</div>
+        <div class="inside-right">
+            <!-- <a href="">编辑推荐</a>
+            <br>
+            <a href="">每日精选</a> -->
+        </div>
     </div>
 </div>

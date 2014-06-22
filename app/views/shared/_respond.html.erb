@@ -19,11 +19,14 @@
 				<%= f.input_field :content, as: :text %>
 			</div>
 		</div>
-		<input class="btn btn-default pull-right" name="commit" type="submit" value="回应">
+		<input style="width: 100px;" class="btn btn-primary pull-right btn-sm" name="commit" type="submit" value="回应">
 	<% end %>
 	<div class="clearfix"></div>
 </div>
 <style type="text/css">
+.new_comment{
+	margin: 0 5px;
+}
 .form-error-tip{
 	position: absolute;
 }

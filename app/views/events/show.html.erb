@@ -21,9 +21,9 @@
 					</h4>
 					<hr>
 					<ul>
-						<% 5.times do %>
+						<% Emphasis.where(cate: @event.id).each do |em| %>
 						<li>
-							<a href="">活动里的推荐</a>
+							<%= link_to em.title, em.link, target: '_blank' %>
 						</li>
 						<% end %>
 					</ul>

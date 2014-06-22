@@ -12,15 +12,10 @@
 		<div class="radbox">
 			<div class="box_con">
 				<ul class="list-unstyled">
-					<% Emphasis.all.each do |em| %>
+					<% Emphasis.where(cate: 0).each do |em| %>
 					<li>
 						<%= link_to em.title, em.link, target: '_blank' %>
 					</li>
-					<% end %>
-					<% Topic.emphasis.order('id desc').limit(12).each do |topic| %>
-						<li>
-							<%= link_to topic.title, topic_path(topic.id) %>
-						</li>
 					<% end %>
 				</ul>
 			</div>
@@ -92,12 +87,12 @@
 
 <div class="category_thumbs">
 	<div class="row">
-		<a class="category people" target="_blank" href="/photos?tag=人文">
+		<a class="category people" target="_blank" href="/photos?tag=人">
 			<div class="overlay">
 				<span>We like humans, too.</span>
 			</div>
 			<div class="gradient">
-				<span class="name">人文</span>
+				<span class="name">人</span>
 			</div>
 		</a>
 		<a class="category city-and-architecture" target="_blank" href="/photos?tag=城市建筑">
@@ -134,12 +129,12 @@
 				<span class="name">黑白</span>
 			</div>
 		</a>
-		<a class="category nature last-child" target="_blank" href="/photos?tag=大自然">
+		<a class="category nature last-child" target="_blank" href="/photos?tag=自然">
 			<div class="overlay">
 				<span>自然情感的流露使得整个世界的亲属,远离北京才有.</span>
 			</div>
 			<div class="gradient">
-				<span class="name">大自然</span>
+				<span class="name">自然</span>
 			</div>
 		</a>
 	</div>

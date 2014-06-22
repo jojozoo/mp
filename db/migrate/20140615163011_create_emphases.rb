@@ -3,6 +3,7 @@ class CreateEmphases < ActiveRecord::Migration
     create_table :emphases do |t|
       t.string :title
       t.string :link
+      t.integer :cate, default: 0
       t.boolean :del, default: false
 
       t.timestamps

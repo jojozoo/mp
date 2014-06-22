@@ -71,15 +71,23 @@
 				<a href="<%= photo_path(nexp) %>" class="pn-photo next-photo"><span></span></a>
 			<% end %>
 		</div>
+		<p class="editor_opt">
+			<a href="javascript:void(0);">
+				<span id="elite_text">编辑推荐</span>(<span id="elite_num">0</span>)
+			</a>
+			<a href="javascript:void(0);">
+				<span id="click_text">今日精选</span>(<span id="click_num">0</span>)
+			</a>
+		</p>
 	</div>
 </div>
 <hr>
 <div class="row photo-show-bottom">
 	<div class="col-md-7">
 		<%= render "shared/respond", url: ajax_com_path('photo', @photo.id) if current_user %>
-		<hr>
+		<!-- <hr> -->
 		<div class="comments">
-			<h5>所有回应</h5>
+			<h5>所有回应(<%= @photo.coms_count %>)</h5>
 			<ul class="media-list">
 				<%= render partial: 'shared/comment', collection: @photo.comments %>
 			</ul>

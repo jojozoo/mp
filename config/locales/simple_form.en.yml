@@ -76,6 +76,10 @@ en:
         channel: '所属资源'
         cate: '类别'
         desc: '标签描述'
+      emphasis:
+        title: '标题'
+        link: '链接'
+        cate: '类别'
     hints:
       defaults:
       user:

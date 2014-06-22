@@ -334,7 +334,7 @@
 .photo-details.active .wrapper .map .geotagging .map-wrapper{position:relative;height:262px;width:392px;margin:20px 0 0 0}
 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet{height:100%;width:392px}
 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet.hidden_map_image{background:url(/images/disabled_map.jpg) no-repeat center}
-.photo-details.active .wrapper .map .geotagging .map-wrapper .maplet.amap-container{border: 1px solid #ccc;}
+.amap-container{border: 1px solid #ccc;}
 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet .leaflet-control-mapbox-geocoder-results a{text-align:left}
 .photo-details.active .wrapper .map .geotagging .map-wrapper .maplet .leaflet-control-mapbox-geocoder-results span{display:none}
 
