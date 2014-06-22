@@ -24,7 +24,7 @@ Mpupload.initDetails = function(id){
     var details = $(Mpupload.details(id)).appendTo(".edit-container").removeClass("disabled").attr("data-pid", id);
     for(var key in exif){
         var v = exif[key];
-        details.find("#photo-exif-" + id + "-" + key).val(v);
+        details.find("#photo-" + id + "-exif-" + key).val(v);
     }
     // $(".photo-details[data-pid=" + id + "]").find('input, textarea').placeholder();
 };
