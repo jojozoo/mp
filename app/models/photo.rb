@@ -89,7 +89,8 @@ class Photo < ActiveRecord::Base
   Water = {
     large: "1140x>", # 根据bootstrap最宽
     thumb: '280>',
-    cover: '280x280#'
+    cover: '280x280#',
+    small: '100x100#'
   }
 
   has_attached_file :picture,
@@ -114,6 +115,16 @@ class Photo < ActiveRecord::Base
   has_many   :tuis, as: :obj, conditions: {editor: true}
 
   scope :choice,    -> { where(choice: true)}
+
+  EXIF = {
+  "camera"        => "型号",
+  "lens"          => "镜头",
+  "focal_length"  => "焦距",
+  "shutter_speed" => "快门速度",
+  "aperture"      => "光圈",
+  "iso"           => "ISO",
+  "taken_at"      => "拍摄时间"
+  }
 
   # ['like', 'store', 'recom'].each do |item|
   #   define_method "#{item}?(obj)" do
@@ -188,6 +199,7 @@ class Photo < ActiveRecord::Base
     system("cp #{tp.picture.path(:plarge)} #{spath}/large/#{otstr}#{extname}")
     system("cp #{tp.picture.path(:pthumb)} #{spath}/thumb/#{otstr}#{extname}")
     system("cp #{tp.picture.path(:pcover)} #{spath}/cover/#{otstr}#{extname}")
+    system("cp #{tp.picture.path(:psmall)} #{spath}/small/#{otstr}#{extname}")
   end
   
 end

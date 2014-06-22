@@ -1,120 +1,46 @@
 <div class="photo-box">
 	<h4>作品描述</h4>
 	<div class="description_text_wrap">
-		<div class="description" style="font-size:12px;">
-			<%= @photo.desc %>
-			一个漂亮的图，需要各种点缀
-			<br>
-			可以再多描述一些
-		</div>
-		<style type="text/css">
-		.photo-box h4{
-			margin-top: 30px;
-		}
-		.photo-box a{
-			text-decoration: none;
-			cursor: pointer;
-		}
-		.photo-show-tag a{
-			font-size: 12px;
-			color: #0099e5;
-		}
-		.photo-show-tag a:hover{
-			color:#02adea;
-		}
-		</style>
+		<div class="description" style="font-size:12px;"><%= @photo.desc.blank? ? '描述未填写' : @photo.desc %></div>
 		<div class="photo-show-tags">
+			<% @photo.tags.to_s.split(",").each do |tag| %>
 			<span class="photo-show-tag">
-				<a href="javascript:void(0);">#人文</a>
+				<a href="javascript:void(0);" target="_blank">#<%= tag %></a>
 			</span>
+			<% end %>
+			<% if event = @photo.event %>
 			<span class="photo-show-tag">
-				<a href="javascript:void(0);">#焦点</a>
+				<%= link_to '#' + event.name, event_path(event.id), target: '_blank' %>
 			</span>
-			<span class="photo-show-tag">
-				<a href="javascript:void(0);">#胶片</a>
-			</span>
-			<span class="photo-show-tag">
-				<a href="javascript:void(0);">#北京</a>
-			</span>
-			<span class="photo-show-tag">
-				<a href="javascript:void(0);">#爱</a>
-			</span>
-			<span class="photo-show-tag">
-				<a href="javascript:void(0);">#生活</a>
-			</span>
-			
+			<% end %>
 		</div>
 	</div>
 </div>
 <div class="photo-box">
 	<h4>EXIF信息</h4>
 	<div class="exif_wrap">
-		<img src="/images/exif_info.png" style="margin-left:-12px;">
+		<ul class="list-unstyled">
+			<% exif_hash = JSON.parse(@photo.exif) rescue {} %>
+			<% Photo::EXIF.each do |key, val| %>
+			<li class="exif_<%= key %>">
+				<div>
+					<%= val %>
+				</div>
+				<span>
+					<%= exif_hash[key] || '--' %>
+				</span>
+			</li>	
+			<% end %>
+		</ul>
 	</div>
 </div>
 <div class="photo-box">
 	<h4>拍摄地点</h4>
-	<div class="map_wrap">
-		<img src="/images/disabled_map.jpg">
+	<div class="map_wrap" id="map">
+		<img src="/images/disabled_map.jpg" class="hidemap">
 	</div>
 </div>
 <div class="photo-box">
-	<style type="text/css">
-	.shortcuts_wrap{
-		padding: 31px 0px 0px 0px;
-		color: #71767a;
-		margin: 0;
-	}
-	.shortcuts_wrap li{
-		display: inline-block;
-	}
-	.shortcuts_wrap li a.key{
-		display: inline-block;
-		font-size: 12px;
-		width: 21px;
-		height: 21px;
-		border-radius: 3px;
-		text-align: center;
-		line-height: 20px;
-		color: #7f8387;
-		font-weight: bold;
-		background: #eeeff2 center center no-repeat;
-		-webkit-box-shadow: 0px 1px 0px rgba(255,255,255,0.75) inset,0px 0px 1px 1px rgba(255,255,255,0.4);
-		box-shadow: 0px 1px 0px rgba(255,255,255,0.75) inset,0px 0px 1px 1px rgba(255,255,255,0.4);
-		border: 1px solid #b9c1c7;
-		position: relative;
-		-webkit-transition: all 0.05s ease-in-out;
-		transition: all 0.05s ease-in-out;
-
-	}
-	.shortcuts_wrap li span{
-		color: #71767a;
-		font-weight: normal;
-		padding: 0 15px 0 0;
-	}
-	li .key[data-key=left]:before {
-		content: "";
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 0;
-		height: 0;
-		border-top: 4px solid transparent;
-		border-right: 6px solid #7f8387;
-		border-bottom: 4px solid transparent;
-	}
-	li .key[data-key=right]:before {
-		content: "";
-		position: absolute;
-		top: 6px;
-		right: 6px;
-		width: 0;
-		height: 0;
-		border-top: 4px solid transparent;
-		border-left: 6px solid #7f8387;
-		border-bottom: 4px solid transparent;
-	}
-	</style>
 	<div class="shortcuts_wrap">
 		<ul class="list-unstyled">
 			<li>
@@ -145,3 +71,27 @@
 		<a href="">举报</a>
 	</div>
 </div>
+<% lat, lon = exif_hash['lat'], exif_hash['lon'] %>
+<% if lat.present? and lon.present? %>
+	<script type="text/javascript">
+	function initMap() {
+		mapObj = new AMap.Map("map", {
+			center: new AMap.LngLat(<%= lon %>, <%= lat %>),
+			level: 12
+		});
+		var marker = new AMap.Marker({
+			position: mapObj.getCenter(),
+			draggable: false, //点标记可拖拽
+			cursor: 'move',  //鼠标悬停点标记时的鼠标样式
+		});
+		marker.setMap(mapObj);
+	}
+	function loadScript() {
+		var script = document.createElement("script");
+		script.type = "text/javascript";
+		script.src = "http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821&callback=initMap";
+		document.body.appendChild(script);
+	}
+	window.onload = loadScript;
+	</script>
+<% end %>

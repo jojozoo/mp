@@ -22,9 +22,10 @@ class Tp < ActiveRecord::Base
     styles: {
       large: { quality: :better, geometry: 'x700>' },
       thumb: { quality: :better, geometry: 'x100>' },
-      plarge: { quality: :better, geometry: '1140x500>' },
+      plarge: { quality: :better, geometry: '1140x>' },
       pthumb: { quality: :better, geometry: '280x280>' },
-      pcover: { quality: :better, geometry: '280x280#'}
+      pcover: { quality: :better, geometry: '280x280#'},
+      psmall: { quality: :better, geometry: '100x100#'}
     },
     url: "/system/:class/:id/:id_partition/:style/:random.:extension",
     path: ":rails_root/public/system/:class/:id/:style/:randomp.:extension"
