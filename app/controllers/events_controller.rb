@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+	before_filter :must_login, only: [:new, :create, :edit, :update]
 	def index
 		@events = case params[:t]
 		when 'ongoing'
@@ -12,18 +13,10 @@ class EventsController < ApplicationController
 	end
 
 	def new
-		unless sign_in?
-			flash[:notice] = "登录用户才可以创建活动"
-			redirect_to action: :index and return
-		end
 		@event = Event.new
 	end
 
 	def create
-		unless sign_in?
-			flash[:notice] = "登录用户才可以创建活动"
-			redirect_to action: :index and return
-		end
 		params[:event][:desc] = params[:event][:desc].gsub(/<\/?.*?>/, "").gsub(/\r\n|\n/,"<br>") if params[:event][:desc].present?
 		@event = Event.new(params[:event].slice(:name, :logo, :title, :end_time, :tag, :desc).merge(user_id: current_user.id))
 		if @event.save!
@@ -37,33 +30,9 @@ class EventsController < ApplicationController
 
 	def show
 		params[:order] = params[:order] || 'news'
-		params[:style] = params[:style] || 'four'
+		params[:style] = params[:style] || 'line'
 		@event = Event.find(params[:id])
 	end
-
-    def load_data
-    	@event = Event.find(params[:id])
-    	if current_user
-	    	stime = Date.today.to_s + ' 00:00:00'
-			etime = Date.today.to_s + ' 23:59:59'
-			@tuis = Tui.where(obj_type: 'Photo', user_id: current_user.id, channel: 'choice').where(["updated_at between ? and ?", stime, etime])
-    	end
-		order, cond = case params[:order]
-		when 'news'
-			['id desc', {}]
-		when 'vist'
-			['liks_count desc', {}]
-		when 'coms'
-			['coms_count desc', {}]
-		when 'myse'
-			c = sign_in? ? {user_id: current_user.id} : {}
-			['id desc', c]
-		else
-			params[:order] = 'news'
-			['id desc', {}]
-		end
-		@photos = @event.photos.where(cond).paginate(:page => params[:page], per_page: 24).order(order)
-    end
 
 	def edit
 

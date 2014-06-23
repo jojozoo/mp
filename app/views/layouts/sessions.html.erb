@@ -35,15 +35,25 @@
 		</div>
 		<%= yield %>
 	</div>
-	<div class="beian text-center">
-		<p>
-			Copyright © 2014-2015　山东漫拍文化发展有限公司
-			<br>
-			鲁ICP备14011722号
-		</p>
+	<div class="beian">
+		<table>
+			<tr>
+				<td>
+
+				</td>
+				<td>
+					Copyright © 2014-2015　山东漫拍文化发展有限公司
+					<br>
+					鲁ICP备14011722号
+				</td>
+				<td>
+					© 2014 <%= link_to 'Photography By ' + 'zhuxiaowu', user_path(1) %>
+				</td>
+			</tr>
+		</table>
 	</div>
 	<div class="background">
-		<img src="<%= sessionbackgrounds %>">
+		<%= link_to image_tag(sessionbackgrounds), home_path, title: '点击进入首页' %>
 		<script type="text/javascript">
 		$(function(){
 			$(".background").css({width: window.screen.width, height: window.screen.height});
@@ -51,7 +61,6 @@
 			$(window).resize(function(){
 				var _b = $(".beian").width();
 				var _l = window.screen.width / 2 - _b / 2 - 40;
-				$(".beian").css({left: _l});
 				var _h = $(window).height();
 				$(".background").css({width: window.screen.width, height: _h});
 				var _t = _h - window.screen.height;

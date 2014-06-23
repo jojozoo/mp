@@ -112,12 +112,33 @@
 body.session{
     overflow: hidden;
 }
-body.session .beian{
+/*body.session .beian{
     color: #fff;
     position: absolute;
     bottom: 20px;
     left: 40%;
+}*/
+body.session .beian{
+    width: 100%;
+    position: fixed;
+    color: #fff;
+    bottom: 20px;
 }
+body.session .beian a{
+    color: #fff;
+    text-decoration: none;
+}
+body.session .beian a:hover{
+    color: #55A6FC;
+}
+body.session .beian table{
+    width: 100%;
+}
+body.session .beian td{
+    width: 33%;
+    text-align: center;
+}
+
 body.session .background{
     width: 100%;
     height: 100%;

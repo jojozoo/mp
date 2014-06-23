@@ -1,0 +1,31 @@
+<div class="item-line">
+	<p>
+		<%= link_to photo.user.username, user_path(photo.user_id) %> 上传于 <%= photo.created_at.to_s(:db) %>  查看 (<%= photo.visit_count %>)   评论 (<%= photo.coms_count %>)   喜欢(<%= photo.liks_count %>)   收藏(<%= photo.stos_count %>)
+		<span class="pull-right editor_opt">
+			<a class="opt" href="javascript:void(0);">作品修改</a>
+			<a class="opt" href="javascript:void(0);">继续上传</a>
+		</span>
+	</p>
+	<p>
+		<%= link_to image_tag(photo.picture.url(:large)), photo_path(photo, sid: photo.user_id) %>
+	</p>
+	<p>
+		<%= photo.title.blank? ? '未填写标题' : photo.title %>    <span style="color:red;">组图(20)</span>
+		<span class="pull-right editor_opt">
+			<a href="javascript:void(0);">
+				<span id="elite_text">编辑推荐</span>(<span id="elite_num">0</span>)
+			</a>
+			<a href="javascript:void(0);">
+				<span id="click_text">今日精选</span>(<span id="click_num">0</span>)
+			</a>
+			<a href="javascript:void(0);">
+				查看原图
+			</a>
+			<a href="javascript:void(0);">
+				<span>删除</span>
+			</a>
+		</span>
+	</p>
+	<div class="clearfix"></div>
+	<hr>
+</div>

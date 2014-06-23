@@ -38,41 +38,55 @@
 		.breadcrumb a{
 			text-decoration: none;
 		}
+		.breadcrumb a.activity{
+			color: #999;
+		}
 		.breadcrumb .pull-right a{
 			font-size: 20px;
+		}
+		.line-photos .item-line hr{
+			margin: 10px auto 30px auto;
 		}
 		</style>
 		<ul class="breadcrumb">
 			<% {
 				'news' => '最新上传',
+				'choice' => '精选图片',
 				'vist' => '人气最高',
 				'coms' => '评论最多',
-				'myse' => '只看自己'
+				'myse' => '只看自己',
+				'comments' => '留言'
 			}.each do |key, val|%>
 			<li>
-				<% if params[:order].eql?(key) %>
-				<%= link_to val, 'javascript:void(0);', style: 'color: #999;' %>
-				<% else %>
-				<%= link_to val, event_path(@event.id, order: key) %>
-				<% end %>
+				<%= link_to val, event_path(@event.id, order: key), class: params[:order].eql?(key) ? 'activity' : '' %>
 			</li>
 			<% end %>
 			<div class="pull-right">
-				<%= link_to event_path(style: :line, order: params[:order]) do %>
+				<%= link_to event_path(style: :line, order: params[:order]), class: params[:style].eql?('line') ? 'activity' : '' do %>
 					<span class="icon-align-justify"></span>
 				<% end %>
-				<%= link_to event_path(style: :cols, order: params[:order]) do %>
+				<%= link_to event_path(style: :cols, order: params[:order]), class: params[:style].eql?('cols') ? 'activity' : '' do %>
 					<span class="icon-th"></span>
 				<% end %>
 			</div>
 		</ul>
 		<script type="text/javascript" src="/javascripts/photos.js?v=<%= Time.now.to_i %>"></script>
+		<% if params[:style].eql?('line') %>
+		<div class="row line-photos">
+			<div class="col-md-12" id="mp-photos">
+				<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(request_id: @event.id, order: params[:order] || 'push', style: params[:style]) %>">
+					<img src="/images/loading.gif">
+					<span>加载中...</span>
+				</div>
+			</div>
+		</div>
+		<% else %>
 		<div class="row mp-photos" id="mp-photos">
-			<%= render partial: '/photos/thumb', collection: @photos, as: :photo %>
-			<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(request_id: @event.id, order: params[:order] || 'push') %>">
+			<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(request_id: @event.id, order: params[:order] || 'push', style: params[:style]) %>">
 				<img src="/images/loading.gif">
 				<span>加载中...</span>
 			</div>
 		</div>
+		<% end %>
 	</div>
 </div>
