@@ -1,0 +1,197 @@
+<style type="text/css">
+.mp-home-center-new{
+	background-color: #F8F8F8;
+	/*padding: 10px;*/
+}
+.cl.line-one{
+	margin-bottom: 10px;
+}
+.cl .item{
+	border: 1px solid #dedede;
+	float: left;
+	margin-right: 10px;
+	padding: 10px;
+	background-color: #fff;
+}
+.cl .item.last{
+	padding: 20px 10px;
+	width: 50%;
+	height: 218px;
+	margin-right: 0;
+	position: relative;
+}
+.cl .item p{
+	text-align: center;
+	margin: 0;
+}
+.cl .item hr{
+	border-color: #dedede;
+}
+.cl a img{
+	/*width: 245px;*/
+	width: 253px;
+	height: 155px;
+}
+.top-left-pos{
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	background: transparent url(/images/home-top-left-pos-fol.png) no-repeat 0 0;
+	left: -1px;
+	top: -1px;
+}
+.line-two .last .top-left-pos{
+	background: transparent url(/images/home-top-left-pos-eve.png) no-repeat 0 0;
+}
+.cl .item.last h4{
+	margin: 30px 30px 10px;
+	font-weight: bold;
+}
+.cl .item.last .tip-text-left{
+	float: left;
+	/*width: 150px;*/
+	width: 148px;
+	text-align: center;
+}
+.cl .item.last .tip-right-once{
+	float: left;
+}
+.cl .item.last .tip-right-once .userlineitem.userlineone{
+	margin-bottom: 10px;
+}
+.line-one.cl .item.last .tip-right-once img{
+	width: 89px;
+	height: 89px;
+}
+.cl .item.last .tip-right-once .userlineitem div.last{
+	margin-right: 0;
+}
+.cl .item.last .tip-right-once .userlineitem div{
+	margin-right: 10px;
+	display: inline-block;
+	position: relative;
+}
+.cl .item.last .tip-right-once .userlineitem div:hover .tofolbg,.cl .item.last .tip-right-once .userlineitem div:hover .tofol{
+	display: block;
+}
+.cl .item.last .tip-right-once .userlineitem .tofolbg{
+	display: none;
+	position: absolute;
+	bottom: 0;
+	background: #000;
+	width: 89px;
+	height: 20px;
+	opacity: 0.2;
+	filter: alpha(opacity=20);
+}
+.cl .item.last .tip-right-once .userlineitem .tofol{
+	display: none;
+	width: 89px;
+	padding: 0 5px;
+	text-align: right;
+	position: absolute;
+	bottom: 0;
+	color: #fff;
+	text-decoration: none;
+}
+</style>
+<div class="row">
+	<div class="col-md-12">
+		<div class="mp-home-center-new">
+			<div class="line-one cl">
+				<div class="item">
+					<a href="">
+						<img src="/images/tags/abstract.jpg">
+					</a>
+					<hr>
+					<p>2014年5月22日 精选照片</p>
+				</div>
+				<div class="item">
+					<a href="">
+						<img src="/images/tags/animals.jpg">
+					</a>
+					<hr>
+					<p>2014年5月周赛精选</p>
+				</div>
+				<div class="item last">
+					<span class="top-left-pos"></span>
+					<div class="tip-text-left">
+						<h4>关注摄影师</h4>
+						<p>
+							你关注的漫友太少，
+							<br>
+							关注一些活跃的摄影师吧！
+						</p>
+						<a href="" class="btn btn-warning btn-sm" style="margin-top:20px;">更换推荐</a>
+					</div>
+					<div class="tip-right-once">
+						<div class="userlineone userlineitem">
+							<% User.limit(4).each_with_index do |u, index| %>
+								<div class="<%= 'last' if index.eql?(3) %>">
+									<%= link_to image_tag(u.avatar.url(:small)), user_path(u) %>
+									<div class="tofolbg"></div>
+									<a href="" class="tofol">+关注</a>
+								</div>
+							<% end %>
+						</div>
+						<div class="userlinetwo userlineitem">
+							<% User.order('id desc').limit(4).each_with_index do |u, index| %>
+								<div class="<%= 'last' if index.eql?(3) %>">
+									<%= link_to image_tag(u.avatar.url(:small)), user_path(u) %>
+									<div class="tofolbg"></div>
+									<a href="" class="tofol">+关注</a>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="line-two cl">
+				<div class="item">
+					<a href="">
+						<img src="/images/tags/city_and_architecture.jpg">
+					</a>
+					<hr>
+					<p>漫技巧: 浅谈曝光技巧</p>
+				</div>
+				<div class="item">
+					<a href="">
+						<img src="/images/tags/people.jpg">
+					</a>
+					<hr>
+					<p>漫拍活动： 最好玩的照片</p>
+				</div>
+				<div class="item last">
+					<span class="top-left-pos"></span>
+					<div class="tip-text-left">
+						<h4>漫拍活动</h4>
+						<p>漫拍网各种活动--文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</p>
+					</div>
+					<div class="tip-right-once">
+						<img src="/images/events-hot.png" style="width: 400px;" usemap="#map">
+						<map name="map" id="map"  onmouseover="document.body.style.cursor='Hand'" onmouseout="document.body.style.cursor='Default'">
+							<area shape="rect" coords="15,9,162,40" href="#meitianzuihaowandezhaopian" />
+							<area shape="rect" coords="182,9,284,40" href="#mpdaxueshenghuo" />
+							<area shape="rect" coords="302,9,389,40" href="#mpjiezhen" />
+
+							<area shape="rect" coords="17,56,106,87" href="#qixingmanpai" />
+							<area shape="rect" coords="129,56,221,87" href="#huwaimanpai" />
+							<area shape="rect" coords="254,56,342,87" href="#manxingtianxia" />
+
+							<area shape="rect" coords="22,102,90,135" href="#renwen" />
+							<area shape="rect" coords="119,102,187,135" href="#fenguang" />
+							<area shape="rect" coords="209,102,278,135" href="#jianzhu" />
+							<area shape="rect" coords="302,102,370,135" href="#heibai" />
+
+							<area shape="rect" coords="22,150,90,183" href="#dongwu" />
+							<area shape="rect" coords="117,150,205,183" href="#gengduohuodong" />
+						</map>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</div>

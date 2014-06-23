@@ -55,7 +55,7 @@
 				'vist' => '人气最高',
 				'coms' => '评论最多',
 				'myse' => '只看自己',
-				'comments' => '留言'
+				'comments' => '评论'
 			}.each do |key, val|%>
 			<li>
 				<%= link_to val, event_path(@event.id, order: key), class: params[:order].eql?(key) ? 'activity' : '' %>

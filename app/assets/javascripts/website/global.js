@@ -1,4 +1,4 @@
-window.console&&window.console.info("喜欢看漫拍的代码，还是发现了什么bug？不如和我们一起为漫拍添砖加瓦吧！\nmail 1@mpwang.com.cn");
+window.console&&window.console.info("俩月的苦战,急需一位小伙伴。\nemail hr@mpwang.com.cn");
 $(function(){
 	// bgdown ondown fade-row fadedown choose-ok
 	// 以上class 都是 移动显示，移出隐藏 需要整合

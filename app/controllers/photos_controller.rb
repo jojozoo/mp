@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
     before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create]
     def index
+        params[:order] = params[:order] || 'news'
         # 如果含有request_id就不显示活动名称 如果含有user_id 把喜欢和收藏换成删除编辑按钮
     end
     # loading 把load_data挪到这里来
