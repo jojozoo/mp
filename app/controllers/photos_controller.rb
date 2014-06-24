@@ -58,52 +58,6 @@ class PhotosController < ApplicationController
 
         Photo.create_items(items, current_user.id, parent)
         render text: 'success'
-
-        # params[:tps].values.each do |item|
-        #     event   = Event.find(item[:request_id])
-        #     tp      = Tp.find(item[:tpid])
-        #     title   = item[:title]
-        #     desc    = item[:desc]
-        #     warrant = item[:warrant]
-        #     exif    = item[:exif].to_json
-        #     photo = Photo.create!(
-        #         picture: File.open(tp.picture.path), 
-        #         event_id: event.try(:id),
-        #         title: title,
-        #         desc: desc,
-        #         user_id: current_user.id,
-        #         state: true,
-        #         warrant: warrant,
-        #         isgroup: parent ? true : false,
-        #         parent_id: parent ? parent.id : nil,
-        #         exif: exif)
-        #     result.push(photo)
-        #     oh      = item[:cropAttr][:oh].to_i
-        #     w       = item[:crop][:w].to_i
-        #     h       = item[:crop][:h].to_i
-        #     x       = item[:crop][:x].to_i
-        #     y       = item[:crop][:y].to_i
-        #     h = oh if h > oh
-        #     if w.zero? or h.zero?
-        #         w = h = oh
-        #         x = y = 0
-        #     end
-        #     # TODO xy bug
-        #     # system ("convert -crop #{w}x#{h}+#{x}+#{y} #{photo.picture.path} #{photo.picture.path(:cover)}")
-        #     image_count = Photo.where(event_id: event.id).count
-        #     membe_count = Photo.uniq.where(event_id: event.id).pluck(:user_id).length
-        #     event.update_attributes(photos_count: image_count, members_count: membe_count)
-        # end
-        # if parent
-        #     last = result.last
-        #     parent.update_attributes!(
-        #         picture: File.open(last.picture.path),
-        #         event_id: last.event_id,
-        #         state: true,
-        #         warrant: last.warrant
-        #         )
-        # end
-        # render text: 'success'
     end
 
     def destroy
