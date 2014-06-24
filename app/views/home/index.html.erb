@@ -1,25 +1,21 @@
-<div class="row">
-	<div class="col-md-9">
+<div class="row mp-home-top">
+	<div class="col-md-8">
 		<!-- <div class="ad">
 			<%#= image_tag '/images/ads/wfqmsyj.jpg', alt: '潍坊全民摄影节' %>
 		</div> -->
 		<%= render 'flexslider' %>
 	</div>
-	<div class="col-md-3 emphasis-topic">
+	<div class="col-md-4 emphasis-topic">
 		<div class="breadcrumb" style="margin-bottom:0px;">
 			<span>每日重点</span>
 		</div>
-		<div class="radbox">
-			<div class="box_con">
-				<ul class="list-unstyled">
-					<% Emphasis.where(cate: 0).each do |em| %>
-					<li>
-						<%= link_to em.title, em.link, target: '_blank' %>
-					</li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
+		<ul class="list-unstyled" style="margin: 10px 0 0 0;">
+			<% Emphasis.where(cate: 0).limit(17).each do |em| %>
+			<li>
+				<%= link_to em.title, em.link, target: '_blank' %>
+			</li>
+			<% end %>
+		</ul>
 	</div>
 </div>
 <%= render "add_row" %>

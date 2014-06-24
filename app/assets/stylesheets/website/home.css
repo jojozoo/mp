@@ -11,19 +11,25 @@
 .ad img{
 	width: 100%;
 }
-.flexslider{
-	border: 0;
-}
-.slides > li {
-	height: 450px;
-}
+
 /*.emphasis-topic .breadcrumb{
 	margin-bottom: 0px;
 }
 .emphasis-topic li{
 	line-height: 25px;
 }*/
-
+.mp-home-top{
+    margin-bottom: 10px;
+}
+.mp-home-top .col-md-8{
+    width: 870px;
+}
+.mp-home-top .col-md-4{
+    width: 300px;
+}
+.mp-home-top .col-md-4 ul li{
+    line-height: 20px;
+}
 .category_thumbs{
     margin:20px 0
 }

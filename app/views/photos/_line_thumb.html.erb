@@ -9,7 +9,7 @@
 		<% end %>
 	</p>
 	<p>
-		<%= link_to image_tag(photo.picture.url(:large)), photo_path(photo, sid: photo.user_id) %>
+		<%= link_to image_tag(photo.picture.url(:large)), photo_path(photo, sid: photo.user_id), title: '点击查看详细内容' %>
 	</p>
 	<p>
 		<%= photo.title.blank? ? '未填写标题' : photo.title %>    <span style="color:red;">组图(20)</span>
