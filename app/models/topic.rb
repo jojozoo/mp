@@ -5,7 +5,6 @@
 #  id              :integer          not null, primary key
 #  user_id         :integer
 #  cate_id         :integer
-#  owner_id        :integer
 #  last_user_id    :integer
 #  last_updated_at :datetime
 #  emphasis        :boolean          default(FALSE)
@@ -20,14 +19,12 @@
 #
 
 class Topic < ActiveRecord::Base
-  attr_accessible :user_id, :cate_id, :owner_id, :last_user_id, :last_updated_at, :emphasis, :emphasis_at, :original, :title, :content, :coms_count, :del
-  # owner_id 属于某个活动的文章 但是创建文章的时候应该如何关联？ 只在后台有权限关联好了，前台只可以添加活动标签
-  # 
+  attr_accessible :user_id, :cate_id, :last_user_id, :last_updated_at, :emphasis, :emphasis_at, :original, :title, :content, :coms_count, :del
+  
   has_many :comments, as: :obj
   has_many :tagships, as: :obj
   
   belongs_to :user
-  belongs_to :owner, class_name: 'Event', foreign_key: :owner_id
   belongs_to :last_user, class_name: 'User', foreign_key: :last_user_id
   has_many :visits, as: :obj
 

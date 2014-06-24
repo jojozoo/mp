@@ -65,9 +65,9 @@ en:
       photo:
         event_id: '选择活动'
       topic:
+        user_id: '发起人'
         title: '标题'
         content: '内容'
-        owner_id: '所属活动'
         cate_id: '类别'
         original: '原创'
       tag:
@@ -88,8 +88,6 @@ en:
       event:
         end_time: '活动期限'
         tag: '同城、年度、手机等等'
-      topic:
-        owner_id: '活动ID，关联后会显示到相应活动的推荐栏目'
       tag:
         name: '不可填写特殊字符'
         pinyin: '系统自动生成'

@@ -220,20 +220,18 @@
 							<table class="table table-bordered table12 table-condensed table-hover">
 								<tr>
 									<th>标题</th>
-									<th>内容</th>
-									<th>发布人</th>
+									<th>链接</th>
 									<th>创建于</th>
 									<th>操作</th>
 								</tr>
-								<% @event.topics.each do |topic| %>
+								<% Emphasis.where(cate: @event.id).each do |em| %>
 								<tr>
-									<td><%= topic.title %></td>
-									<td><%= truncate(topic.content, length: 20) %></td>
-									<td><%= topic.user.username %></td>
-									<td><%= topic.created_at.to_date %></td>
+									<td><%= em.title %></td>
+									<td><%= em.link %></td>
+									<td><%= em.created_at.to_date %></td>
 									<td>
-										<%= link_to '详细', admin_topic_path(topic) %>
-										<%= link_to '删除', admin_topic_path(topic), data: {confirm: '确定删除？不可恢复操作!' } %>
+										<%#= link_to '详细', em.link %>
+										<%#= link_to '删除', admin_topic_path(topic), data: {confirm: '确定删除？不可恢复操作!' } %>
 									</td>
 								</tr>
 								<% end %>

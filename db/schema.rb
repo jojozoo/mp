@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20140615163011) do
   create_table "emphases", :force => true do |t|
     t.string   "title"
     t.string   "link"
+    t.integer  "cate",       :default => 0
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
@@ -229,7 +230,6 @@ ActiveRecord::Schema.define(:version => 20140615163011) do
   create_table "topics", :force => true do |t|
     t.integer  "user_id"
     t.integer  "cate_id"
-    t.integer  "owner_id"
     t.integer  "last_user_id"
     t.datetime "last_updated_at"
     t.boolean  "emphasis",        :default => false
@@ -259,16 +259,14 @@ ActiveRecord::Schema.define(:version => 20140615163011) do
   create_table "tuis", :force => true do |t|
     t.integer  "obj_id"
     t.string   "obj_type"
-    t.integer  "source_id"
-    t.string   "source_type"
     t.string   "channel"
     t.integer  "user_id"
     t.integer  "editor"
     t.integer  "editor_id"
     t.string   "mark"
-    t.boolean  "del",         :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "users", :force => true do |t|

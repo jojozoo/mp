@@ -71,22 +71,32 @@
 				<a href="<%= photo_path(nexp) %>" class="pn-photo next-photo"><span></span></a>
 			<% end %>
 		</div>
+		<% if current_user %>
 		<div class="editor_opt mp-large-picture-bottom">
+			<% if current_user.id.eql?(@photo.user_id) %>
 			<a class="opt" href="javascript:void(0);">作品修改</a>
 			<a class="opt" href="javascript:void(0);">继续上传</a>
+			<% end %>
+			<% if current_user.admin or Editor.exists?(event_id: @photo.event_id, editor_id: current_user.id) %>
 			<a href="javascript:void(0);">
-				<span id="elite_text">编辑推荐</span>(<span id="elite_num">0</span>)
+				编辑推荐
 			</a>
+			<% end %>
+			<% if current_user.admin %>
 			<a href="javascript:void(0);">
-				<span id="click_text">今日精选</span>(<span id="click_num">0</span>)
+				今日精选
 			</a>
+			<% end %>
+			<% if current_user.admin || current_user.id.eql?(@photo.user_id) %>
 			<a href="javascript:void(0);">
 				查看原图
 			</a>
 			<a href="javascript:void(0);">
-				<span>删除</span>
+				删除
 			</a>
+			<% end %>
 		</div>
+		<% end %>
 	</div>
 </div>
 <hr>
@@ -102,7 +112,6 @@
 		</div>
 	</div>
 	<div class="col-md-5">
-		<%#= render partial: 'left_right', collection: @photos, as: :photo, check_id: 1 %>
 		<%= render 'left_right' %>
 		<%= render 'exif' %>
 	</div>

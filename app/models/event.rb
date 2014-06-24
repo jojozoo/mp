@@ -39,6 +39,7 @@ class Event < ActiveRecord::Base
    :request,
    :request_at,  
    :del
+   # TODO request, request_at, totop可以删除
   # user_id 发起人
   # state 审核中 未通过 进行中 已结束(0,1,2,3)
   # channel 暂时有同城,年度,手机
@@ -100,8 +101,6 @@ class Event < ActiveRecord::Base
   # event_id, user_id, images_count, winner, auth(editor, other)
   # 活动获奖的人 大于0 asc排序: 0参与 1等奖 2等奖
   has_many :photos
-  # 活动的文章 但是创建文章的时候应该如何关联？ 只在后台有权限关联好了，前台只可以添加活动标签
-  has_many :topics, foreign_key: :owner_id
   # 发起活动的人 publisher
   belongs_to :user
 

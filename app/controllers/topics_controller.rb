@@ -20,14 +20,12 @@ class TopicsController < ApplicationController
 
     def new
         if params[:cate].present?
-            @owner = Event.find_by_name(params[:cate])
             @cate  = Tag.find_by_name(params[:cate])
         end
         @topic = Topic.new
     end
 
     def create
-        params[:topic][:owner_id] = params[:topic_owner_id]
         if @topic = Topic.create!(params[:topic].slice(:title, :content, :cate_id, :original).merge(user_id: current_user.id))
             redirect_to action: :show, id: @topic.id
         else
@@ -37,7 +35,6 @@ class TopicsController < ApplicationController
 
     def edit
         @topic = current_user.topics.find(params[:id])
-        @owner = @topic.owner
         @cate  = @topic.cate
     end
 

@@ -4,25 +4,19 @@
     <%= f.input :cate_id, collection: Tag.where(channel: '文章').select('id,name'), include_blank: false %>
     
     
-    <div class="form-group select required topic_owner_id">
-        <label class="select required col-sm-2 control-label" for="topic_owner_id">
+    <div class="form-group select required topic_tags">
+        <label class="select required col-sm-2 control-label" for="topic_tags">
             <abbr title="required">*</abbr>
             标签
         </label>
-        <!-- TODO 某一活动标签， owner_id应该不存在 -->
         <div class="col-sm-6 input-text-add">
-            <% if @owner %>
-            <%= f.input_field :owner_id, as: :string, value: @owner.name %>
-            <input id="topicownerid" name="topic_owner_id" type="hidden" value="<%= @owner.id %>">
-            <% else %>
             <div class="input-group">
-                <%= f.input_field :owner_id, as: :string %>
-                <input id="topicownerid" name="topic_owner_id" type="hidden" value="">
+                <input class="string optional form-control" id="topic_tags" maxlength="4" name="topic[tags]" size="4" type="text" data-validate="true">
+                <input id="topic_tags_id" name="topic_tags_id" type="hidden" value="">
                 <span class="input-group-addon custom-modal"> 
                     <i class="icon-tag"></i>
                 </span>
             </div>
-            <% end %>
             <div class="modal fade" id="custom-modal" style="display: none;" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -79,19 +73,12 @@ $(function(){
         var _id, name;
         _id = $(this).attr("tid");
         name = $(this).text();
-        $("#topic_owner_id").val(name);
-        $("#topicownerid").val(_id);
+        $("#topic_tags").val(name);
+        $("#topic_tags_id").val(_id);
         $('#custom-modal').modal('hide');
     });
     
     $(".taglabel a:eq(0)").trigger('click');
-    
-    // $("#topic_tag").tagHandler({
-    //     assignedTags: ['单反'],
-    //     availableTags: ['单反', '莱卡', '胶片'],
-    //     autocomplete: true,
-    //     maxTags: 1
-    // });
 })
 </script>
 <style type="text/css">

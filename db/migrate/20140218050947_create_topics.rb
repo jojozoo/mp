@@ -3,7 +3,6 @@ class CreateTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.integer :user_id
       t.integer :cate_id
-      t.integer :owner_id
       t.integer :last_user_id
       t.datetime :last_updated_at
       t.boolean :emphasis, default: false

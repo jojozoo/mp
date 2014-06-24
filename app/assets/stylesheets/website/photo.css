@@ -404,8 +404,11 @@
 	background-image: url(/images/photo-browse-next.png);
 }
 .mp-large-picture-bottom {
-	margin-top:10px;
+	/*margin-top:10px;*/
 	text-align: right;
+}
+.mp-large-picture-bottom a{
+	margin-top: 10px;
 }
 
 /*.editor_opt {

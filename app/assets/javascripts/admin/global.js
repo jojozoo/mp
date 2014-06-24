@@ -9,7 +9,7 @@ $(function() {
 	zhu_nav_mouseover.init();
 	//* to top
 	$().UItoTop({inDelay:200,outDelay:200,scrollSpeed: 500});
-	gebo_tag_handler.init();
+	// gebo_tag_handler.init();
 });
 function is_touch_device() {
 	return !!('ontouchstart' in window);
