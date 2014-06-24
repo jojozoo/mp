@@ -20,11 +20,11 @@
 			<a href="javascript:void(0);">
 				今日精选
 			</a>
-			<a href="javascript:void(0);">
-				喜欢(<span class="choice_sum">0</span>)
+			<a href="/ajax/lik/photo/<%= photo.id %>", class="mp-ajax-tui", data-type="lik">
+				喜欢(<span class="count">0</span>)
 			</a>
-			<a href="javascript:void(0);">
-				收藏(<span class="recomment_sum">0</span>)
+			<a href="/ajax/sto/photo/<%= photo.id %>", class="mp-ajax-tui", data-type="sto">
+				收藏(<span class="count">0</span>)
 			</a>
 			<a href="javascript:void(0);">
 				查看原图

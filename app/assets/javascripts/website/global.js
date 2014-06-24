@@ -64,6 +64,9 @@ $(function(){
 			success: function(result) {
 				$(_this).removeAttr("state");
 				MPMSG(result.type, result.text);
+				if(result.type === 'error'){
+					return;
+				}
 				if(_type === "lik" || _type === "sto"){
 					var _count = parseInt($(_this).find(".count").text());
 					if($(_this).hasClass('active')){
