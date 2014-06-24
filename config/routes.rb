@@ -13,6 +13,7 @@ Mp::Application.routes.draw do
   get    '/search'        => 'search#index'
   match  '/validations/:action'       => 'validations#:action'
   
+
   # match '/ajax/tui/:push/:source/:id' => 'ajax#tui', via: :post, as: :ajax_tui # 推
   # match '/ajax/editer/:source/:id'    => 'ajax#editer', via: :post, as: :ajax_editer # 编辑推荐
   match '/ajax/lik/:source/:id'       => 'ajax#lik', via: :post, as: :ajax_lik # 喜欢
@@ -22,7 +23,10 @@ Mp::Application.routes.draw do
   match '/ajax/fol/:source/:id'       => 'ajax#fol', via: :post, as: :ajax_fol # 关注
   match '/ajax/ufl/:source/:id'       => 'ajax#ufl', via: :post, as: :ajax_ufl # 取消关注
   match '/ajax/tag/:source/:id'       => 'ajax#tag', via: :get , as: :ajax_tag # 获取标签
-  match '/ajax/tui/:source/:id'       => 'ajax#tui', via: :post, as: :ajax_tui # 编辑推荐
+  
+  # match '/ajax/tui/:source/:id'       => 'ajax#tui', via: :post, as: :ajax_tui # 编辑推荐
+  
+  match '/ajax/rec/:source/:id'      => 'ajax#rec', via: :post, as: :ajax_rec # 编辑推荐
   match '/ajax/cho/:source/:id'       => 'ajax#cho', via: :post, as: :ajax_cho # 每日精选
   
   resources :tps, only: [:create, :show]

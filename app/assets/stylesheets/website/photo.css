@@ -432,7 +432,7 @@
 	background: #f05d18;
 	color: #fff;
 }
-.editor_opt a:hover{
+.editor_opt a:hover, .editor_opt a.active{
 	background: #666666;
 	color: #fff;
 }

@@ -32,9 +32,9 @@ class Tui < ActiveRecord::Base
   belongs_to :obj, polymorphic: true#, counter_cache: true
   belongs_to :user
 
-  validates_uniqueness_of :editor_id, 
-                          :scope => [:obj_type, :obj_id],
-                          :message => '重复操作'
+  # validates_uniqueness_of :editor_id, 
+  #                         :scope => [:obj_type, :obj_id],
+  #                         :message => '重复操作'
 
   # TIP = {
   #   followd: '被关注',
@@ -47,7 +47,7 @@ class Tui < ActiveRecord::Base
   
   RECOMMENDEDTYPE = {
     'like'          => '喜欢',
-    'store'         => '收藏',
+    'stos'         => '收藏',
     'recommend'     => '编辑推荐',
     'selfrecommend' => '自荐',
     'choice'        => '精选',
@@ -60,6 +60,32 @@ class Tui < ActiveRecord::Base
     # 对应的obj_type和id找到对应的资源
     # (obj_type.downcase + '_path').to_sym(obj_id)
     scope key, -> {where(channel: key)}
+  end
+
+  def self.cho_or_rec cate, pid, user
+    return {text: "资源错误", type: 'error'} unless photo = Photo.find_by_id(pid)
+    auth = user.admin
+    auth = auth or Editor.exists?(event_id: photo.event_id, editor_id: user.id) if cate.eql?('recommend')
+    return {text: "您没有权限", type: 'error'} unless auth
+    time = Date.today.to_s(:number)
+    attrs = {
+                    obj_id: photo.id,
+                    obj_type: 'Photo',
+                    channel: cate,
+                    user_id: photo.user_id,
+                    editor: true,
+                    editor_id: user.id
+                }
+    if tui = Tui.where(attrs).first
+      tui.destroy
+      photo.update_attributes(cate => false)
+      {text: "取消成功", type: 'success'}
+    else
+      Tui.create!(attrs)
+      photo.update_attributes(cate => true, "#{cate}_at" => Time.now)
+      {text: "操作成功", type: 'success'}
+    end
+
   end
   
 

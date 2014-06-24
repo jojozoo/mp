@@ -1,4 +1,11 @@
 window.console&&window.console.info("俩月的苦战,急需一位小伙伴。\nemail hr@mpwang.com.cn");
+function MPMSG(glass, msg){
+    var glass = 'msg-' + glass;
+    $("#msgbox").attr('class', glass).find("p").text(msg).end().animate({'opacity': 1, 'top': 0}, 500);
+    setTimeout(function(){
+        $("#msgbox").animate({'opacity': 0, 'top': -37}, 500);
+    }, 3000);
+}
 $(function(){
 	// bgdown ondown fade-row fadedown choose-ok
 	// 以上class 都是 移动显示，移出隐藏 需要整合
@@ -18,16 +25,58 @@ $(function(){
 	// });
 
 	// 回应 评论
-	$(".reply-link").on("click", function(){
+	$(document).on("click", ".reply-link", function(){
 		var _id   = $(this).data("id"),
 		_name = $(this).data("name")
 		$("#comment_reply_id").val(_id);
 		$("#replywho").find("small").text(_name).end().show();
 	});
-	$("#link-remove").click(function(){
+	$(document).on("click", "#link-remove", function(){
 		$("#comment_reply_id").removeAttr('value');
 		$("#replywho").hide();
 	});
+
+	// 关注
+
+	// 编辑推荐, 今日精选
+	$(document).on("click", ".mp-ajax-tui", function(){
+		res = {
+			rec: ['编辑推荐', '取消推荐'],
+			cho: ['今日精选', '取消精选'],
+			like: ['喜欢', '喜欢'],
+			store: ['收藏', '收藏']
+		}[$(this).data('type')]
+		var _this = this,
+			_url = $(_this).attr("href"),
+			_state = $(_this).attr("state");
+		
+		if(_state === "loading"){
+			return false;
+		}
+		$.ajax({
+			type: "post",
+			url: _url,
+			// data: {},
+			beforeSend: function(){
+				$(_this).attr("state", "loading");
+			},
+			success: function(result) {
+				$(_this).removeAttr("state");
+				MPMSG(result.type, result.text);
+				if($(_this).hasClass('active')){
+					$(_this).removeClass('active').text(res[0]);
+				} else {
+					$(_this).addClass('active').text(res[1]);
+				}
+			}
+		});
+		return false;
+	});
+	
+	// 喜欢
+	// 收藏
+	// 查看原图
+	// 删除
 
 	// 选为封面
 	// $(document).on("click", ".js-image-cover", function(){
@@ -45,12 +94,12 @@ $(function(){
 	// });
 
 	// 删除本张
-	$(document).on("click", ".js-image-remove", function(){
-		var _tid = $(this).attr('tid');
-		var url = '/ajax/del/image/' + _tid;
-		$(this).parents(".col-md-3.col-sm-6").fadeOut(function(){
-			$(this).remove();
-			$.post(url, '', '', 'script');
-		});
-	});
+	// $(document).on("click", ".js-image-remove", function(){
+	// 	var _tid = $(this).attr('tid');
+	// 	var url = '/ajax/del/image/' + _tid;
+	// 	$(this).parents(".col-md-3.col-sm-6").fadeOut(function(){
+	// 		$(this).remove();
+	// 		$.post(url, '', '', 'script');
+	// 	});
+	// });
 })

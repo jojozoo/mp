@@ -1,12 +1,45 @@
 class AjaxController < ApplicationController
-	before_filter :ajax_login
+    before_filter :ajax_login
     
-
-    def tui
-        @obj = params[:source].classify.constantize.find(params[:id])
-        @obj.send('tui' + params[:push].pluralize).create(user_id: current_user.id)
-        @count = @obj.send(params[:push].pluralize + '_count')
+    # 推荐
+    def rec
+        res = Tui.cho_or_rec('recommend', params[:id], current_user)
+        render json: res.to_json
     end
+
+    def cho
+        res = Tui.cho_or_rec('choice', params[:id], current_user)
+        render json: res.to_json
+    end
+
+    # 关注 
+    # 取消关注
+    def fol
+
+    end
+
+    def like
+
+    end
+
+    def store
+
+    end
+
+    def selfrecommend
+
+    end
+
+    def choice
+
+    end
+
+
+    # def tui
+    #     @obj = params[:source].classify.constantize.find(params[:id])
+    #     @obj.send('tui' + params[:push].pluralize).create(user_id: current_user.id)
+    #     @count = @obj.send(params[:push].pluralize + '_count')
+    # end
 
     def tag
         render json: {availableTags: Tag.limit(10).map(&:name), assignedTags: []}.to_json
@@ -64,6 +97,8 @@ class AjaxController < ApplicationController
             Topic.find(params[:id])
         when 'work'
             Work.find(params[:id])
+        when 'collection'
+            Collection.find(params[:id])
         end
         @comment = obj.comments.create!(params[:comment].merge(user_id: current_user.id))
         obj.update_attributes(last_user_id: current_user.id, last_updated_at: Time.now) if params[:obj].eql?('topic')
@@ -82,8 +117,13 @@ class AjaxController < ApplicationController
 
     def ajax_login
         # 一个patial 弹出登录框
-        # render js: "alert('请先登录')" and return unless sign_in?
-        render json: { error: 1 } and return unless sign_in?
+        unless sign_in?
+            if request.xhr?
+                render json: {text: "请先登录", type: 'error'}.to_json
+            else
+                flash[:notice] = "请先登录"
+            end and return
+        end
     end
 	
 end

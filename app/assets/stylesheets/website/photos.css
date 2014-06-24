@@ -202,22 +202,22 @@
 }
 
 
-.mp-photos .mp-photo .buttons .action:hover, .mp-photos .mp-photo .buttons .action.hover {
+.mp-photos .mp-photo .buttons .action:hover {
     background-color:rgba(34, 34, 34, 0.4);
 }
-.mp-photos .mp-photo .buttons .action:hover .iconheart, .mp-photos .mp-photo .buttons .action.hover .iconheart {
+.mp-photos .mp-photo .buttons .action:hover .iconheart{
     top:-15px;
     opacity:0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity = 0);
 }
-.mp-photos .mp-photo .buttons .action:hover .iconstar, .mp-photos .mp-photo .buttons .action.hover .iconstar {
+.mp-photos .mp-photo .buttons .action:hover .iconstar{
     top:-15px;
     opacity:0;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity = 0);
 }
-.mp-photos .mp-photo .buttons .action:hover .count, .mp-photos .mp-photo .buttons .action.hover .count {
+.mp-photos .mp-photo .buttons .action:hover .count{
     top:0px;
     opacity:1;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
@@ -235,16 +235,18 @@
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity = 0);
 }
+/* 喜欢或者收藏后添加active样式 */
 .mp-photos .mp-photo .buttons .action.like.active, .mp-photos .mp-photo .buttons .action.like.active:hover {
-    background-color:#02adea;
-}
-.mp-photos .mp-photo .buttons .action.star.active, .mp-photos .mp-photo .buttons .action.star.active:hover {
-    background-color:#02adea;
-}
-/*点喜欢后*/
-.mp-photos .mp-photo .buttons .action.favorite.active, .mp-photos .mp-photo .buttons .action.favorite.active:hover {
     background-color:#ff4c4c;
 }
+.mp-photos .mp-photo .buttons .action.star.active, .mp-photos .mp-photo .buttons .action.star.active:hover {
+    /*background-color: #FFC028;*/
+    background-color: #02adea;
+}
+/*点喜欢后*/
+/*.mp-photos .mp-photo .buttons .action.favorite.active, .mp-photos .mp-photo .buttons .action.favorite.active:hover {
+    background-color:#ff4c4c;
+}*/
  .mp-photos .mp-photo .buttons .action.active {
     -webkit-animation:pulse 0.6s 0.15s ease-in-out;
     -ms-animation:pulse 0.6s 0.15s ease-in-out;

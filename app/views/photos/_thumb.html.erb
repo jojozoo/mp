@@ -3,7 +3,7 @@
         <% if photo.isgroup and photo.parent_id.nil? %>
         <a class="type-group">组</a>
         <% end %>
-        <% if photo.recommend and params[:order] != 'push' %>
+        <% if photo.recommend and params[:order] != 'push' and !photo.choice %>
         <a class="type-push">荐</a>
         <% end %>
         <% if photo.choice and params[:order] != 'choice' %>

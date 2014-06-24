@@ -12,12 +12,7 @@
 	width: 100%;
 }
 
-/*.emphasis-topic .breadcrumb{
-	margin-bottom: 0px;
-}
-.emphasis-topic li{
-	line-height: 25px;
-}*/
+
 .mp-home-top{
     margin-bottom: 10px;
 }
@@ -30,6 +25,11 @@
 .mp-home-top .col-md-4 ul li{
     line-height: 20px;
 }
+.mp-home-top .col-md-4 .breadcrumb{
+    margin-bottom:0px;
+}
+
+
 .category_thumbs{
     margin:20px 0
 }
@@ -151,36 +151,98 @@
     text-shadow:0 0 1px rgba(0, 0, 0, 0.6)
 }
 
-/*.nav-filter > li {
-	margin-right: 20px;
+.mp-home-center-new{
+    background-color: #F8F8F8;
+    /*padding: 10px;*/
 }
-.nav-filter > li > a {
-	padding: 5px 15px;
-	background: #f7f7f7;
+.cl.line-one{
+    margin-bottom: 10px;
 }
-.nav-filter{
-	margin-bottom: 15px;
-	border-bottom: 1px solid #f7f7f7;
-	padding-bottom: 5px;
+.cl .item{
+    border: 1px solid #dedede;
+    float: left;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: #fff;
 }
-.home-tip-name{
-	font-size: 24px;
-	margin-right: 10px;
-	padding-right: 20px;
-	border-right: 1px solid #ddd;
-	line-height: 30px;
-	color: #ccc;
+.cl .item.last{
+    padding: 20px 10px;
+    width: 50%;
+    height: 218px;
+    margin-right: 0;
+    position: relative;
 }
-.home-tui-div {
-	margin-bottom: 20px;
+.cl .item p{
+    text-align: center;
+    margin: 0;
 }
-.home-tui-div a {
-	margin-bottom: 4px;
-	float: left;
-	width: 8%;
-	margin-right: 0.33%;
-	display: inline-block;
+.cl .item hr{
+    border-color: #dedede;
 }
-.home-tui-div a img{
-	width: 100%;
-}*/
+.cl a img{
+    /*width: 245px;*/
+    width: 253px;
+    height: 155px;
+}
+.top-left-pos{
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    background: transparent url(/images/home-top-left-pos-fol.png) no-repeat 0 0;
+    left: -1px;
+    top: -1px;
+}
+.line-one .last .top-left-pos{
+    background: transparent url(/images/home-top-left-pos-eve.png) no-repeat 0 0;
+}
+.cl .item.last h4{
+    margin: 30px 30px 10px;
+    font-weight: bold;
+}
+.cl .item.last .tip-text-left{
+    float: left;
+    /*width: 150px;*/
+    width: 148px;
+    text-align: center;
+}
+.cl .item.last .tip-right-once{
+    float: left;
+}
+.cl .item.last .tip-right-once .userlineitem.userlineone{
+    margin-bottom: 10px;
+}
+.line-two.cl .item.last .tip-right-once img{
+    width: 89px;
+    height: 89px;
+}
+.cl .item.last .tip-right-once .userlineitem div.last{
+    margin-right: 0;
+}
+.cl .item.last .tip-right-once .userlineitem div{
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+}
+.cl .item.last .tip-right-once .userlineitem div:hover .tofolbg,.cl .item.last .tip-right-once .userlineitem div:hover .tofol{
+    display: block;
+}
+.cl .item.last .tip-right-once .userlineitem .tofolbg{
+    display: none;
+    position: absolute;
+    bottom: 0;
+    background: #000;
+    width: 89px;
+    height: 20px;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+.cl .item.last .tip-right-once .userlineitem .tofol{
+    display: none;
+    width: 89px;
+    padding: 0 5px;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    color: #fff;
+    text-decoration: none;
+}

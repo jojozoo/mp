@@ -5,11 +5,11 @@
 		</div> -->
 		<%= render 'flexslider' %>
 	</div>
-	<div class="col-md-4 emphasis-topic">
-		<div class="breadcrumb" style="margin-bottom:0px;">
+	<div class="col-md-4">
+		<div class="breadcrumb">
 			<span>每日重点</span>
 		</div>
-		<ul class="list-unstyled" style="margin: 10px 0 0 0;">
+		<ul class="list-unstyled">
 			<% Emphasis.where(cate: 0).limit(17).each do |em| %>
 			<li>
 				<%= link_to em.title, em.link, target: '_blank' %>
