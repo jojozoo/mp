@@ -19,11 +19,11 @@
         </div>
         <% if sign_in? %>
         <div class="states">
-            <a class="action state like">
+            <a href="/ajax/lik/photo/<%= photo.id %>" class="action state like mp-ajax-tui" data-type="lik">
                 <span class="iconheart"></span>
                 <span class="count"><%= photo.liks_count %></span>
             </a>
-            <a class="action state star">
+            <a href="/ajax/sto/photo/<%= photo.id %>" class="action state star mp-ajax-tui" data-type="sto">
                 <span class="iconstar"></span>
                 <span class="count"><%= photo.stos_count %></span>
             </a>

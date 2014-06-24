@@ -3,12 +3,20 @@ class AjaxController < ApplicationController
     
     # 推荐
     def rec
-        res = Tui.cho_or_rec('recommend', params[:id], current_user)
+        res = unless current_user.admin or Editor.exists?(event_id: @photo.event_id, editor_id: current_user.id)
+            {text: "您没有权限", type: 'error'}
+        else
+            Tui.cho_or_rec('recommend', @photo, current_user)
+        end
         render json: res.to_json
     end
 
     def cho
-        res = Tui.cho_or_rec('choice', params[:id], current_user)
+        res = unless current_user.admin
+            {text: "您没有权限", type: 'error'}
+        else
+            Tui.cho_or_rec('choice', @photo, current_user)
+        end
         render json: res.to_json
     end
 
@@ -18,19 +26,17 @@ class AjaxController < ApplicationController
 
     end
 
-    def like
-
+    def lik
+        res = Tui.cho_or_rec('liks', @photo, current_user)
+        render json: res.to_json
     end
 
-    def store
-
+    def sto
+        res = Tui.cho_or_rec('stos', @photo, current_user)
+        render json: res.to_json
     end
 
     def selfrecommend
-
-    end
-
-    def choice
 
     end
 
@@ -46,31 +52,7 @@ class AjaxController < ApplicationController
     end
 
     def editer
-        @obj = Image.find(params[:id])
-        attrs = {
-          obj_id: @obj.id,
-          obj_type: 'Image',
-          channel: '编辑推荐',
-          source_id: @obj.id,
-          source_type: 'Image',
-          user_id: current_user.id
-        }
-        push = Push.where(attrs).first
-        if params[:cancel] == 'true'
-            push.destroy if push
-        else
-            unless push
-                stime = Date.today.to_s + ' 00:00:00'
-                etime = Date.today.to_s + ' 23:59:59'
-                tuiids = Push.where(obj_type: 'Image', user_id: current_user.id, channel: '编辑推荐').where(["updated_at between ? and ?", stime, etime]).map(&:obj_id)
-                @member = Member.find_by_event_id_and_user_id(params[:eid], current_user.id)
-                if tuiids.length < @member.sum
-                    push = Push.create!(attrs.merge(mark: '暂无备注'))
-                else
-                    @alert = true
-                end    
-            end
-        end
+        
     end
 
     # 关注
@@ -124,6 +106,9 @@ class AjaxController < ApplicationController
                 flash[:notice] = "请先登录"
             end and return
         end
+        unless @photo = Photo.find_by_id(params[:id])
+            render json: {text: "资源错误", type: 'error'}.to_json
+        end and return
     end
 	
 end

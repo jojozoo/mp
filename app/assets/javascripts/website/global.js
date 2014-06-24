@@ -40,12 +40,13 @@ $(function(){
 
 	// 编辑推荐, 今日精选
 	$(document).on("click", ".mp-ajax-tui", function(){
+		var _type = $(this).data('type');
 		res = {
 			rec: ['编辑推荐', '取消推荐'],
 			cho: ['今日精选', '取消精选'],
-			like: ['喜欢', '喜欢'],
-			store: ['收藏', '收藏']
-		}[$(this).data('type')]
+			lik: ['喜欢', '喜欢'],
+			sto: ['收藏', '收藏']
+		}[_type];
 		var _this = this,
 			_url = $(_this).attr("href"),
 			_state = $(_this).attr("state");
@@ -63,10 +64,19 @@ $(function(){
 			success: function(result) {
 				$(_this).removeAttr("state");
 				MPMSG(result.type, result.text);
-				if($(_this).hasClass('active')){
-					$(_this).removeClass('active').text(res[0]);
+				if(_type === "lik" || _type === "sto"){
+					var _count = parseInt($(_this).find(".count").text());
+					if($(_this).hasClass('active')){
+						$(_this).removeClass('active').find(".count").text(_count - 1);
+					} else {
+						$(_this).addClass('active').find(".count").text(_count + 1);
+					}
 				} else {
-					$(_this).addClass('active').text(res[1]);
+					if($(_this).hasClass('active')){
+						$(_this).removeClass('active').text(res[0]);
+					} else {
+						$(_this).addClass('active').text(res[1]);
+					}
 				}
 			}
 		});

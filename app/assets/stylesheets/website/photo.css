@@ -122,6 +122,12 @@
 .photo-show .photo-header .photo-header-right .photo-like:hover{
 	background-color: #FF6469;
 }
+.photo-show .photo-header .photo-header-right .photo-like.active,
+.photo-show .photo-header .photo-header-right .photo-like.active:hover,
+.photo-show .photo-header .photo-header-right .photo-store.active,
+.photo-show .photo-header .photo-header-right .photo-store.active:hover{
+	background-color: #525558;
+}
 
 
 .photo-show .photo-header .photo-header-right .photo-store{

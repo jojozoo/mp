@@ -62,30 +62,31 @@ class Tui < ActiveRecord::Base
     scope key, -> {where(channel: key)}
   end
 
-  def self.cho_or_rec cate, pid, user
-    return {text: "资源错误", type: 'error'} unless photo = Photo.find_by_id(pid)
-    auth = user.admin
-    auth = auth or Editor.exists?(event_id: photo.event_id, editor_id: user.id) if cate.eql?('recommend')
-    return {text: "您没有权限", type: 'error'} unless auth
+  # 推荐 精选 喜欢 收藏
+  def self.cho_or_rec cate, photo, user
+    tip = ''
     time = Date.today.to_s(:number)
-    attrs = {
-                    obj_id: photo.id,
-                    obj_type: 'Photo',
-                    channel: cate,
-                    user_id: photo.user_id,
-                    editor: true,
-                    editor_id: user.id
-                }
-    if tui = Tui.where(attrs).first
+    attrs = {obj_id: photo.id, obj_type: 'Photo', channel: cate, user_id: photo.user_id, editor: true, editor_id: user.id }
+    upattrs = if tui = Tui.where(attrs).first
+      tip = '取消成功'
       tui.destroy
-      photo.update_attributes(cate => false)
-      {text: "取消成功", type: 'success'}
+      res_attrs(cate, true, photo)
     else
+      tip = '操作成功'
       Tui.create!(attrs)
-      photo.update_attributes(cate => true, "#{cate}_at" => Time.now)
-      {text: "操作成功", type: 'success'}
+      res_attrs(cate, false, photo)
     end
+    photo.update_attributes(upattrs)
+    {text: tip, type: 'success'}
+  end
 
+  def self.res_attrs cate, real, photo
+    {
+      'recommend' => {recommend: real, recommend_at: Time.now},
+      'choice'    => {choice: real, choice_at: Time.now},
+      'liks'      => {liks_count: real ? photo.liks_count - 1 : photo.liks_count + 1},
+      'stos'      => {stos_count: real ? photo.stos_count - 1 : photo.stos_count + 1}
+    }[cate]
   end
   
 
