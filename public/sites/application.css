@@ -14,7 +14,7 @@ audio:not([controls]) {
 html {
     background:#fff;
     color:#000;
-    font-family:sans-serif;
+    font-family:'Microsoft YaHei';
     -ms-text-size-adjust:100%;
     -webkit-text-size-adjust:100%
 }
@@ -50,7 +50,7 @@ mark {
     color:#000
 }
 code, kbd, pre, samp {
-    font-family:monospace, serif;
+    font-family:'Microsoft YaHei';
     font-size:1em
 }
 pre {
@@ -93,7 +93,7 @@ legend {
     padding:0
 }
 button, input, select, textarea {
-    font-family:inherit;
+    font-family:'Microsoft YaHei';
     font-size:100%;
     margin:0
 }
@@ -491,7 +491,7 @@ ul.list-nav-right li {
 .navbar-search .search-query {
     padding:26px 34px 24px 38px !important;
     margin-bottom:0;
-    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:18px !important;
     font-weight:normal;
     line-height:1;
@@ -1073,7 +1073,7 @@ body.full-width-layout .row-fluid, body.full-width-layout .sw-content-wrapper {
     }
 }
 body {
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#262b31;
     font-size-adjust:0.508;
     font-weight:normal;
@@ -1090,33 +1090,33 @@ h1, h2, h3, h4, h5, h6, p {
     -webkit-font-smoothing:antialiased
 }
 h1, h2, h3, h4, h5 {
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     line-height:1.2
 }
 h1.normal, h2.normal, h3.normal, h4.normal, h5.normal {
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:normal
 }
 h1.normalgray, h2.normalgray, h3.normalgray, h4.normalgray, h5.normalgray {
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#9b9a99;
     font-weight:normal
 }
 h1.light, h2.light, h3.light, h4.light, h5.light {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:200
 }
 h1.lightgray, h2.lightgray, h3.lightgray, h4.lightgray, h5.lightgray {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#9b9a99;
     font-weight:200
 }
 h1.medium, h2.medium, h3.medium, h4.medium, h5.medium {
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600
 }
 h1.mediumgray, h2.mediumgray, h3.mediumgray, h4.mediumgray, h5.mediumgray {
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#9b9a99;
     font-weight:600
 }
@@ -1170,7 +1170,7 @@ a, a:visited, a:hover {
 }
 strong {
     font-weight:normal;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 .page-header {
     text-align:center;
@@ -1230,7 +1230,7 @@ ol.standard-list {
     height:34px;
     padding:0 12px;
     color:#fff !important;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:0.9em !important;
     line-height:36px;
     text-align:center;
@@ -1348,7 +1348,7 @@ ol.standard-list {
     line-height:34px;
     padding:0px 25px;
     font-weight:bold;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     transition:0.3s
 }
 .sw-btn-outline:hover {
@@ -1413,7 +1413,7 @@ ol.standard-list {
 .sw-btn-rounded {
     box-shadow:none;
     font-size:1.1em !important;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:bold;
     border-radius:30px
 }
@@ -1448,18 +1448,18 @@ input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, inp
     background:#e9e9e9
 }
 input[type=text]::-webkit-input-placeholder, input[type=email]::-webkit-input-placeholder, input[type=password]::-webkit-input-placeholder, input[type=select]::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:200;
     color:#9b9a99;
     opacity:0.85
 }
 input[type=text]:-moz-placeholder, input[type=email]:-moz-placeholder, input[type=password]:-moz-placeholder, input[type=select]:-moz-placeholder, textarea:-moz-placeholder {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:200;
     color:#dad9d4
 }
 input[type=text]:-ms-input-placeholder, input[type=email]:-ms-input-placeholder, input[type=password]:-ms-input-placeholder, input[type=select]:-ms-input-placeholder, textarea:-ms-input-placeholder {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:200;
     color:#dad9d4
 }
@@ -1508,7 +1508,7 @@ label {
 .helper {
     margin-left:10px;
     color:#9b9a99;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:normal;
     line-height:1.3em;
     font-size:0.9em;
@@ -1567,7 +1567,7 @@ label.sr-only {
 }
 .ui-autocomplete.ui-menu .ui-menu-item a {
     padding:8px 10px;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 .ui-autocomplete.ui-menu .ui-menu-item a.ui-state-hover {
     color:#000;
@@ -1655,7 +1655,7 @@ label.sr-only {
 .sw-badge {
     display:block;
     color:#fff;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:bold;
     font-size:0.6em;
     letter-spacing:0px;
@@ -1807,7 +1807,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
 .sw-badge-float {
     display:inline-block;
     color:#dad9d4;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:bold;
     position:absolute;
     bottom:0px;
@@ -1839,7 +1839,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
 .sw-badge-inline {
     margin-right:0px;
     color:#dad9d4;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:bold;
     padding:39px 9px 9px 9px;
     z-index:10;
@@ -1880,7 +1880,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     padding-left:8px;
     line-height:53px;
     background:url("../images/banner-side-request.png") 0 0 no-repeat;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     background-size:80px
 }
 .vertical-flag {
@@ -1936,7 +1936,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     display:inline-block;
     text-align:right;
     font-size:0.8em;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:normal;
     text-transform:uppercase;
     line-height:1.9em;
@@ -1977,7 +1977,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     font-size:0.8em;
     padding:5px 8px;
     background:#f15f5e;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:bold;
     color:#fff;
     text-transform:uppercase;
@@ -2059,7 +2059,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     background:none
 }
 .breadcrumb li {
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600;
     font-size:1em;
     color:#9b9a99;
@@ -2109,7 +2109,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     font-size:0.9em;
     line-height:0.9em;
     display:inline-block;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#252b33;
     font-weight:normal;
     margin-top:10px;
@@ -2183,7 +2183,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     text-align:center
 }
 .sw-card-photo-image .click-wrapper .hover-info .info-text {
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 .sw-card-photo-image .click-wrapper .hover-info .info-text .buy-price {
     display:none
@@ -2299,7 +2299,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     line-height:23px;
     color:#9b9a99;
     font-weight:bold;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 .sw-photo-card-request .request-title:hover {
     color:#000
@@ -2339,7 +2339,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
 .sw-card-photographer-user .info .sw-card-name {
     float:none;
     font-size:1.2em;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600
 }
 .sw-card-photographer-user .stats .sw-badge {
@@ -2505,7 +2505,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
 }
 .sw-card-photographer-featured .sw-card-photographer-user .sw-card-name {
     font-size:1.9em;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-family:'Microsoft YaHei';
     color:#fff
 }
 @media (min-width: 1024px) {
@@ -2585,7 +2585,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     color:#dad9d4
 }
 .sw-card-request .request-title {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:1.7em;
     font-weight:200;
     position:absolute;
@@ -2616,7 +2616,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
 .sw-card-request .request-user {
     position:relative;
     font-size:1em;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#fff;
     opacity:0.95;
     font-weight:600;
@@ -2638,7 +2638,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     height:50px;
     width:50px;
     background:transparent;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:bold;
     color:#fff;
     text-align:center;
@@ -2651,7 +2651,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
 }
 .sw-card-request .request-time {
     float:left;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:bold;
     text-transform:uppercase;
     position:relative;
@@ -2686,7 +2686,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
 .sw-card-request .request-stats-right {
     position:relative;
     float:right;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:bold;
     padding:0 0 0 10px
 }
@@ -2784,7 +2784,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     color:#71726e;
     margin:0 0 5px 5px;
     padding:6px 24px 5px 10px;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:12px;
     font-weight:200;
     text-transform:uppercase;
@@ -2799,7 +2799,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     height:24px;
     padding:0 10px;
     margin-bottom:5px;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:17px;
     font-weight:200;
     color:#9b9a99;
@@ -2824,7 +2824,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     padding:2px 0 30px 0
 }
 .comment-box h4 {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#71726e !important;
     font-weight:normal
 }
@@ -3182,7 +3182,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     background:#f5f5f5
 }
 .picker__button--today, .picker__button--clear {
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 .picker__button--today:hover, .picker__button--clear:hover {
     cursor:pointer;
@@ -3230,12 +3230,12 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
     text-align:center
 }
 .promo-request h2 {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 .promo-request h4 {
     color:#71726e;
     margin-bottom:20px;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:1.2em
 }
 .search-header .search-box {
@@ -3283,7 +3283,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
 }
 .search-filters .search-result-title {
     margin:3px 0;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:1.2em
 }
 .search-filters .bootstrap-select {
@@ -3297,7 +3297,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
 .sw-tabs li {
     display:inline-block;
     margin:0 10px 0 0;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:1em;
     text-transform:uppercase;
     letter-spacing:1px;
@@ -3343,7 +3343,7 @@ h1 .sw-badge, h2 .sw-badge, h3 .sw-badge, h4 .sw-badge {
 .sw-tabs.sw-tabs-subnav li {
     text-transform:none;
     margin:0px 20px;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:1.3em;
     letter-spacing:0px
 }
@@ -3687,7 +3687,7 @@ body.white-bg #sw-main {
     right:0;
     left:0;
     padding:15px;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#fff;
     font-size:20px;
     letter-spacing:0px;
@@ -3746,7 +3746,7 @@ body.white-bg #sw-main {
 .photo-header .header-content h1 {
     margin-bottom:0.1em;
     font-size:4.3em;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:200;
     letter-spacing:-1px
 }
@@ -3754,7 +3754,7 @@ body.white-bg #sw-main {
     max-width:900px;
     margin:0 auto;
     font-size:1.2em;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600
 }
 .sidr {
@@ -3885,7 +3885,7 @@ body.white-bg #sw-main {
 .sidebar-header .name {
     display:block;
     font-weight:600;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     letter-spacing:0px;
     font-size:1.1em
 }
@@ -3900,7 +3900,7 @@ body.white-bg #sw-main {
     padding:6px 24px;
     font-size:1em;
     color:#afb3ba !important;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     border-top:0px solid #222
 }
 .sidebar-item:hover, .sidebar-item.active {
@@ -3941,7 +3941,7 @@ body.white-bg #sw-main {
 .sidebar-label {
     display:block;
     padding:0 24px 4px;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:0.9em;
     color:#9b9a99
 }
@@ -4038,7 +4038,7 @@ body.white-bg #sw-main {
     text-transform:none;
     font-size:0.7em;
     font-weight:normal;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     float:left;
     letter-spacing:0px
 }
@@ -4123,7 +4123,7 @@ body.white-bg #sw-main {
     color:#9b9a99;
     padding:0px;
     margin-right:30px;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600;
     font-size:1em;
     vertical-align:middle
@@ -4165,7 +4165,7 @@ body.white-bg #sw-main {
 }
 #sw-toolbar-primary nav .nav-text {
     margin-right:30px;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600;
     font-size:1em;
     vertical-align:middle
@@ -4323,11 +4323,11 @@ footer {
 }
 footer .site-links h5 {
     margin-bottom:10px;
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 footer .site-links a, footer .site-links a:visited {
     color:#000;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 footer .site-links a:hover {
     color:rgba(0, 0, 0, 0.5)
@@ -4414,7 +4414,7 @@ footer .app-links a.disabled {
 }
 .activity-item a {
     text-decoration:underline;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#262b31
 }
 .activity-item .activity-icon {
@@ -4928,7 +4928,7 @@ body#requests.detail .sw-btn-big {
     color:#fff;
     text-align:center;
     border-radius:100px;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600;
     letter-spacing:-1px;
     float:right
@@ -4950,7 +4950,7 @@ body#requests.detail .sw-btn-big {
     color:#dad9d4;
     display:inline;
     font-size:1.2em;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     opacity:0.85
 }
 .request-action-center .request-brief-date {
@@ -5140,7 +5140,7 @@ body#requests.detail .sw-btn-big {
 }
 .request-brief-intro .request-brief-price .price {
     color:#fff;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600;
     font-size:2.4em;
     text-align:left;
@@ -5174,7 +5174,7 @@ body#requests.detail .sw-btn-big {
 }
 .request-brief-title h1 {
     padding:0px 0;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:2.1em;
     text-align:left;
     font-weight:600;
@@ -5199,7 +5199,7 @@ body#requests.detail .sw-btn-big {
     color:#71726e !important;
     opacity:1;
     font-weight:normal;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     letter-spacing:-1px
 }
 @media (min-width: 1024px) {
@@ -5289,7 +5289,7 @@ body#requests.detail .sw-btn-big {
     position:relative;
     margin:0 0 5px;
     font-size:3em;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:200;
     padding-left:0px;
     letter-spacing:-3px;
@@ -5424,7 +5424,7 @@ body#requests.detail .sw-btn-big {
 }
 .request-brief-creator .name {
     font-size:1.1em;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#71726e
 }
 .request-brief-creator .company {
@@ -5464,7 +5464,7 @@ body#requests.detail .sw-btn-big {
     text-align:center
 }
 .request-brief-price .date, .request-brief-price .price {
-    font-family:"Apercu Bold", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:bold;
     font-size:2em;
     line-height:1;
@@ -5626,7 +5626,7 @@ body#requests.detail .sw-btn-big {
     margin-right:18px;
     font-size:1.2em;
     text-transform:uppercase;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     letter-spacing:0px;
     color:#9b9a99
 }
@@ -5687,12 +5687,12 @@ body#requests.detail .sw-btn-big {
     text-align:center
 }
 .request-empty-message h4 {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:1.9em;
     margin-bottom:20px
 }
 .request-empty-message h4 small {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:0.8em
 }
 .request-brief-archived .request-brief-date-price {
@@ -5727,7 +5727,7 @@ body#requests.detail .sw-btn-big {
     border:3px solid #000;
     text-align:center;
     border-radius:50%;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600;
     letter-spacing:-1px
 }
@@ -5746,7 +5746,7 @@ body#requests.detail .sw-btn-big {
     color:#9b9a99;
     text-transform:uppercase;
     font-weight:normal;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     opacity:0.8
 }
 .statsbox .well .quickprice {
@@ -5829,7 +5829,7 @@ body#request.create-intro .tier-pricing .heading {
     text-align:center
 }
 body#request.create-intro .tier-pricing .heading h2, body#request.create-intro .tier-pricing .heading h4 {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 body#request.create-intro .tier-pricing .heading h3 {
     margin-top:10px
@@ -5837,7 +5837,7 @@ body#request.create-intro .tier-pricing .heading h3 {
 body#request.create-intro .tier-pricing .heading h3 small {
     color:#000;
     font-size:0.6em;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 body#request.create-intro .tier-pricing .heading .sw-icon {
     color:#9b9a99;
@@ -6064,7 +6064,7 @@ body#request.create .popover.left .arrow, body#request.create .popover.left .arr
     font-size:1.2em;
     margin:0 27px;
     text-transform:none;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600;
     letter-spacing:0
 }
@@ -6105,7 +6105,7 @@ body#request.create .popover.left .arrow, body#request.create .popover.left .arr
 #request-builder .buy-info {
     position:relative;
     bottom:-30px;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:0.9em;
     opacity:0.75;
     text-align:center
@@ -6207,7 +6207,7 @@ body#request.create .popover.left .arrow, body#request.create .popover.left .arr
 }
 .createform section label {
     font-weight:normal;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:0.85em;
     color:#9b9a99;
     margin-top:1%;
@@ -6501,7 +6501,7 @@ a.rank-link {
 }
 .sw-card-leaderboard-photographer .name {
     font-size:1.4em;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif !important
+    font-family:'Microsoft YaHei't
 }
 .sw-card-leaderboard-photographer .name:hover {
     text-decoration:underline
@@ -6816,7 +6816,7 @@ body#mockups.level_detail #sw-main {
     margin:0 !important;
     font-size:17px;
     color:#333 !important;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600
 }
 #photo-detail .photographer .photographer-info .sw-badge {
@@ -6941,7 +6941,7 @@ body#photographers.detail .sw-content-wrapper {
 .profile-header .user-about .user-data {
     color:#9b9a99;
     margin-right:12px;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:normal;
     font-size:0.9em;
     position:relative;
@@ -7235,7 +7235,7 @@ body#request.intro .photo-header .header-content {
     margin-bottom:0;
     font-size:1.1em;
     color:#71726e;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:200
 }
 .request-intro-steps .step .sw-icon {
@@ -7254,7 +7254,7 @@ body#request.intro .photo-header .header-content {
     display:inline;
     width:50%;
     font-weight:600;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     border-bottom:1px solid #e9e9e9
 }
 .request-intro-answers li.last {
@@ -7431,7 +7431,7 @@ body#request.intro .photo-header .header-content {
     border:0px;
     font-size:1.1em;
     font-weight:600;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#9b9a99
 }
 #sw-static-page .content .nav-tabs>.active>a {
@@ -8150,7 +8150,7 @@ body#ourstory.index .story-detail-wrapper p {
     font-size:1.1em;
     line-height:1.7em;
     font-weight:normal;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#71726e
 }
 body#ourstory.index .story-detail-wrapper a {
@@ -8170,7 +8170,7 @@ body#ourstory.index .story-detail-wrapper .normalheader {
 body#ourstory.index .story-detail-wrapper h3 {
     margin-top:0px;
     font-size:1.6em;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:600
 }
 body#ourstory.index .story-detail-wrapper .story-section {
@@ -8189,7 +8189,7 @@ body#ourstory.index .story-detail-wrapper .story-purpose {
     background-color:#f7f7f7
 }
 body#ourstory.index .story-detail-wrapper .story-purpose h3 {
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-family:'Microsoft YaHei';
     font-weight:normal !important;
     color:#252b33;
     font-size:1.6
@@ -8205,7 +8205,7 @@ body#ourstory.index .story-detail-wrapper .story-question {
 body#ourstory.index .story-detail-wrapper .story-question p {
     color:#e9e9e9;
     font-size:1.2em;
-    font-family:"Apercu Regular", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:normal
 }
 body#ourstory.index .story-detail-wrapper .story-header {
@@ -8228,7 +8228,7 @@ body#ourstory.index .story-detail-wrapper .story-header .back {
     z-index:10;
     position:relative;
     font-weight:600 !important;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    font-family:'Microsoft YaHei';
     margin:120px 0px;
     text-align:center
 }
@@ -8242,7 +8242,7 @@ body#home.index .search-header .search-box {
 body#home.index .search-header h3 {
     line-height:48px;
     font-size:18px;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     text-transform:uppercase
 }
 body#home.index .search-header .sw-btn-big {
@@ -8327,7 +8327,7 @@ body#home.index .section-white {
     background:#fff
 }
 body#home.index .section-white h2 {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:normal
 }
 body#home.index .section-opacity {
@@ -8336,7 +8336,7 @@ body#home.index .section-opacity {
     background:rgba(0, 0, 0, 0.7)
 }
 body#home.index .section-opacity h2, body#home.index .section-opacity h3, body#home.index .section-opacity h4 {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:normal
 }
 body#home.index .about-graphic {
@@ -8392,7 +8392,7 @@ body#home.index .requests a, body#home.index .process a {
     color:#7ccfbf
 }
 body#home.index .testimonials p, body#home.index .testimonials h4 {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-family:'Microsoft YaHei';
 }
 body#home.index .testimonials p {
     font-size:1.5em
@@ -8443,7 +8443,7 @@ body#getapp .intro {
     margin-bottom:40px
 }
 body#getapp .intro h2 {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:normal
 }
 body#getapp .iphone-app {
@@ -8486,7 +8486,7 @@ body#team .team-member {
 }
 body#team .team-member h4 small {
     display:block;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     color:#000;
     font-size:15px;
     line-height:20px
@@ -8517,7 +8517,7 @@ body#press .photo-header .header-content {
     padding:150px 50px
 }
 body#press .press-intro h2 {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     padding-bottom:40px;
     border-bottom:1px solid #e9e9e9;
     margin-bottom:40px
@@ -8557,14 +8557,14 @@ body#press .press-action {
     font-size:4.3em;
     line-height:0.9em;
     letter-spacing:-1px;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:200;
     margin-bottom:0.1em
 }
 #error-page h2 {
     font-size:2.3em;
     letter-spacing:-1px;
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-weight:200;
     margin-bottom:0.1em
 }
@@ -8578,7 +8578,7 @@ body#search .photo-header .header-content {
     padding:67px 50px 45px 50px
 }
 body#search .section h4.search-title {
-    font-family:"Apercu Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     font-size:1.1em;
     padding-bottom:10px;
     border-bottom:1px solid #dad9d4;
@@ -8586,7 +8586,7 @@ body#search .section h4.search-title {
 }
 body#search .section h4.search-title small {
     float:right;
-    font-family:"Apercu Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:'Microsoft YaHei';
     margin-top:3px
 }
 body#search.index .search-sidebar h4.lightgray {

@@ -41,7 +41,7 @@ textarea.form-control{
 	
 	/* main headings*/
 		.heading {border-bottom: 1px solid #dcdcdc;margin-bottom: 18px;padding-bottom: 5px}
-		.heading h1,.heading h2,.heading h3,h1.heading,h2.heading,h3.heading,.modal-header h3,.modal-header h4 {font-family: 'PT Sans', sans-serif;font-weight:400}
+		.heading h1,.heading h2,.heading h3,h1.heading,h2.heading,h3.heading,.modal-header h3,.modal-header h4 {font-family: 'Microsoft YaHei';font-weight:400}
 		.heading .btn {vertical-align:bottom;margin-left:10px}
     
 	/* fix for .label position */
@@ -66,7 +66,7 @@ textarea.form-control{
 
 	/* Bootstrap adjustments */
 		
-		h1,h2,h3,h4,h5,h6{font-family:inherit;font-weight:700;color:inherit;text-rendering:optimizelegibility;margin:0}
+		h1,h2,h3,h4,h5,h6{font-family:'Microsoft YaHei';font-weight:700;color:inherit;text-rendering:optimizelegibility;margin:0}
 		h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-weight:400;color:#999}
 		h1{font-size:30px;line-height:36px}
 		h2{font-size:24px;line-height:36px}
@@ -240,7 +240,7 @@ textarea.form-control{
 	/* error pages */
 		.error_page {background:#eee}
 		.error_page,.error_page body,.error_page .error_box {height:100%}
-		.error_page h1 {font-family: 'Jockey One', sans-serif;font-size: 52px;line-height:1.1;text-transform: uppercase;color: #067ead;text-shadow: 2px 2px 0px rgba(255,255,255,.5), 4px 4px 0px rgba(0,0,0,.1);margin-bottom:10px;padding:40px 0 0 300px}
+		.error_page h1 {font-family: 'Microsoft YaHei';font-size: 52px;line-height:1.1;text-transform: uppercase;color: #067ead;text-shadow: 2px 2px 0px rgba(255,255,255,.5), 4px 4px 0px rgba(0,0,0,.1);margin-bottom:10px;padding:40px 0 0 300px}
 		.error_page p {color:inherit;font-size:16px;line-height:24px;font-weight:200;margin-left:300px}
 		.error_page .back_link {margin-left:300px}
 		.error_page .error_box {background: url(/admin/images/error_big.png) no-repeat 0 0;padding:0;width:72%;margin: 0 auto}    
@@ -285,7 +285,7 @@ textarea.form-control{
 		.f_legend {font-size:16px;line-height:16px;padding-bottom:10px;margin-bottom:22px;border-bottom:1px solid #dcdcdc}
 		.radio.inline, .checkbox.inline {margin-left:0 !important;margin-right:10px}
 		
-        .f_req {font-size:13px;color:#ff0000;font-family: helvetica, arial, sans-serif}
+        .f_req {font-size:13px;color:#ff0000;font-family: 'Microsoft YaHei'}
 		.form-horizontal .controls.text_line {line-height:25px}
 		
 		.row input[class*="span"],.row textarea[class*="span"],.row select[class*="span"] {display:inline-block}
@@ -667,7 +667,7 @@ textarea.form-control{
         .blog_content { padding: 10px }
         .blog_content .blog_item + .blog_item { margin-top: 30px }
         .blog_content .blog_item + .pagination { margin-top: 40px }
-        .blog_content h1 { font-size: 26px; font-family: "PT Sans",sans-serif; font-weight: 300; margin-bottom: 10px; }
+        .blog_content h1 { font-size: 26px; font-family: 'Microsoft YaHei'; font-weight: 300; margin-bottom: 10px; }
         .blog_content .media + p { margin-top: 10px }
         .blog_content .toolbar { padding: 4px; margin-bottom: 20px; }
 
@@ -721,7 +721,7 @@ textarea.form-control{
     .editable-input .tt-query {padding-left:12px}
 	
 	/* invoice */
-		.invoice_heading {font-size:32px;font-family: "PT Sans",sans-serif;}
+		.invoice_heading {font-size:32px;font-family: 'Microsoft YaHei';}
 		td.invoice_tar,th.invoice_tar {text-align:right}
 		
 	/* media queries */
