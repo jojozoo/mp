@@ -33,8 +33,15 @@
 				<div class="place_selection_creation_wrap">
 					<div class="place_selection_wrap">
 						<label class="ui select-label">
-							<select class="ui select" id="photo-{{id}}-album_id" name="photo[{{id}}][album_id]" disabled="disabled">
-								<option>选择相册</option>
+							<select class="ui select mpchoosealbum" id="photo-{{id}}-album_id" name="photo[{{id}}][album_id]" disabled="disabled">
+								<option value="">选择相册</option>
+								<% current_user.albums.select('id, name').each do |album| %>
+									<% if @album and @album.id.eql?(album.id) %>
+									<option value="<%= album.id %>" selected="selected"><%= album.name %></option>
+									<% else %>
+									<option value="<%= album.id %>"><%= album.name %></option>
+									<% end %>
+								<% end %>
 							</select>
 							<span class="ui select-arrow"></span>
 						</label>

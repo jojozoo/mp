@@ -41,7 +41,7 @@ class My::AlbumsController < My::ApplicationController
         if image = current_user.photos.find_by_id(params[:id])
             image.update_attributes desc: params[:desc]
         end
-        render text: 'success'
+        render json: {text: '编辑成功', type: 'success'}.to_json
     end
 
     # 移动到的相册ID album_id or ids
@@ -76,6 +76,6 @@ class My::AlbumsController < My::ApplicationController
                 album.update_attributes logo: File.open(image.picture.path)
             end
         end
-        render js: "alert('设置成功');" 
+        render json: {text: '设置成功', type: 'success'}.to_json
     end
 end

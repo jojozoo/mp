@@ -47,6 +47,10 @@
         height: 200px;
         position: relative;
     }
+    .pf_head_pic img{
+        max-width: 200px;
+        max-height: 200px;
+    }
     .profile-header-right{
         margin-left: 225px;
     }
@@ -92,7 +96,7 @@
                 <li class="W_no_border">
                     <a href="javascript:void(0);"> 
                         <strong>69</strong>
-                        <span>喜欢</span>
+                        <span>专集</span>
                     </a>
                 </li>
             </ul>
@@ -175,11 +179,12 @@
         <ul class="nav nav-tabs" style="position: absolute;bottom: 0;width:555px;">
             <% 
             navs = {
-                'show' =>  ['作品', user_path(@user)],
-                'fans' =>  ['粉丝', fans_user_path(@user)],
-                'fols' =>  ['关注', fols_user_path(@user)],
-                'like' =>  ['喜欢', like_user_path(@user)],
-                'store' => ['收藏', store_user_path(@user)]
+                'albums' => ['相册', albums_user_path(@user)],
+                'show'   => ['作品', user_path(@user)],
+                'fans'   => ['粉丝', fans_user_path(@user)],
+                'fols'   => ['关注', fols_user_path(@user)],
+                'like'   => ['喜欢', like_user_path(@user)],
+                'store'  => ['收藏', store_user_path(@user)]
             }.each do |key, val|
              %>
             <li class="<%= 'active' if action_name.eql?(key) %>">

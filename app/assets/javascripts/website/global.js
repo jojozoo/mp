@@ -54,7 +54,7 @@ $(function(){
 				$(_this).removeAttr("state");
 				MPMSG(result.type, result.text);
 				if(result.type === 'error'){
-					return;
+					return false;
 				}
 				if($(_this).hasClass('btn-fold')){
 					$(_this).removeClass('btn-fold').text("关注");
@@ -92,7 +92,7 @@ $(function(){
 				$(_this).removeAttr("state");
 				MPMSG(result.type, result.text);
 				if(result.type === 'error'){
-					return;
+					return false;
 				}
 				if(_type === "lik" || _type === "sto"){
 					var _count = parseInt($(_this).find(".count").text());
@@ -117,6 +117,7 @@ $(function(){
 	// 收藏
 	// 查看原图
 	// 删除
+
 
 	// 选为封面
 	// $(document).on("click", ".js-image-cover", function(){

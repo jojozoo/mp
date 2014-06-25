@@ -171,12 +171,14 @@ Mpupload.getValues = function(id, finish){
     var title      = $("#photo-"+id+"-title").val(), 
         desc       = $("#photo-"+id+"-desc").val(), 
         request_id = $("#photo-"+id+"-request_id").val(), 
+        album_id   = $("#photo-"+id+"-album_id").val(),
         warrant    = $("input[name='photo["+id+"][warrant]']:checked").val(),
         tags       = details.find(".tag .name").map(function(){return this.textContent}).get().join(',');
     // $("#photo-"+id+"-title").addClass("has-error");
     Mpupload.queue[id].title = title;
     Mpupload.queue[id].desc = desc;
     Mpupload.queue[id].request_id = request_id;
+    Mpupload.queue[id].album_id   = album_id;
     Mpupload.queue[id].warrant    = warrant;
     Mpupload.queue[id].tags       = tags;
     if(!title || !desc || !request_id || !tags){
@@ -221,11 +223,14 @@ $(function(){
     var clone = $(".edit-container").clone();
     var tmpDetails = clone.find("[disabled]").removeAttr("disabled").end().find("input[type=text], textarea").val("").end().find(".disabled").removeClass("disabled").end();
     if($("select.mpchooserequest").val() == ""){
-        Mpupload.photo_details = tmpDetails.html();
         $(document).on("change", ".mpchooserequest", Mpupload.changeRequest)
     } else {
-        Mpupload.photo_details = tmpDetails.find("select.mpchooserequest").attr("disabled", "disabled").end().html();
+        tmpDetails.find("select.mpchooserequest").attr("disabled", "disabled");
     }
+    if($("select.mpchoosealbum").val() != ""){
+        tmpDetails.find("select.mpchoosealbum").attr("disabled", "disabled");
+    }
+    Mpupload.photo_details = tmpDetails.html();
     
     // 配置uploadify
     $('#flashMenu').uploadify();

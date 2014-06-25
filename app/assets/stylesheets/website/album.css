@@ -1,0 +1,35 @@
+.hide-cap{display: none;}
+.album-menu{
+    margin-bottom: 10px;
+}
+.hide-cap, .album-tool, .js-image-desc-edit-textarea{
+	display: none;
+}
+.checkbox-image{
+	position: absolute;top: -5px;
+	right: 0;
+}
+.js-image-desc-edit{
+	/*margin: 6px auto;*/
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 40px;
+	cursor: pointer;
+}
+.album-tool, .album-menu{
+	margin-bottom:10px;
+}
+.album-all-checkbox-label{
+	margin: 0 60px 0 0;
+}
+.thumbnail{
+	position: relative;
+}
+.checkbox-layer{
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -10;
+}

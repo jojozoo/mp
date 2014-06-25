@@ -92,8 +92,10 @@ class AjaxController < ApplicationController
     def del
         if photo = current_user.photos.find_by_id(params[:id])
             photo.update_attributes(del: true)
+            render json: {text: "删除成功", type: 'success'}.to_json
+        else
+            render json: {text: "资源错误", type: 'error'}.to_json
         end
-        render text: 'success'
     end
 
     private

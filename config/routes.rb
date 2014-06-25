@@ -56,6 +56,7 @@ Mp::Application.routes.draw do
       get :fols
       get :like
       get :store
+      get :albums
     end
   end
   resources :works
@@ -78,11 +79,11 @@ Mp::Application.routes.draw do
     
   end
   
-  ['information', 'avatar', 'security', 'push', 'socials'].each do |r|
-    match "/settings/#{r}" => "settings##{r}", via: [:get, :post], as: "settings_#{r}".to_sym
-  end
-  match "/settings"    => "settings#index"
-  post "/settings/cut" => "settings#cut"
+  # ['information', 'avatar', 'security', 'push', 'socials'].each do |r|
+  #   match "/settings/#{r}" => "settings##{r}", via: [:get, :post], as: "settings_#{r}".to_sym
+  # end
+  # match "/settings"    => "settings#index"
+  # post "/settings/cut" => "settings#cut"
   ##### my star #####
   scope '/my', module: 'my', as: 'my' do
     get '/' => 'sets#index'
@@ -109,23 +110,15 @@ Mp::Application.routes.draw do
         get 'notices'
       end
     end
-    resources :timelines
     resources :albums do
-      collection do
-        match :upload, via: [:get, :post], as: :upload
-      end
+      # collection do
+      #   match :upload, via: [:get, :post], as: :upload
+      # end
       member do
         match 'cover/:image_id' => 'albums#cover', via: :post, as: :cover
         post :move
         post :move_modal
         post :desc
-      end
-    end
-    resources :works
-    resources :users do
-      collection do
-        get 'fans'
-        get 'follows'
       end
     end
   end

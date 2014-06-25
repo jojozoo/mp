@@ -1,29 +1,33 @@
 class UsersController < ApplicationController
+	before_filter :get_user
 
 	def show
-		@user   = User.find(params[:id])
 		params[:order] = "id desc"
 		@photos = @user.photos.where(state: true).paginate(:page => params[:page], per_page: 12).order(params[:order])
 	end
 
 	def fans
-		@user = User.find(params[:id])
 		@fans = @user.fans.paginate(:page => params[:page], per_page: 12)
 	end
 
 	def fols
-		@user = User.find(params[:id])
 		@fols = @user.fols.paginate(:page => params[:page], per_page: 12)
 	end
 
 	def like
-		@user = User.find(params[:id])
-		@tuis = Tui.where(editor_id: @user.id, obj_type: 'Photo').like.paginate(:page => params[:page], per_page: 12)
+		@tuis = Tui.where(editor_id: @user.id, obj_type: 'Photo').liks.paginate(:page => params[:page], per_page: 12)
 	end
 
 	def store
-		@user = User.find(params[:id])
-		@tuis = Tui.where(editor_id: @user.id, obj_type: 'Photo').store.paginate(:page => params[:page], per_page: 12)
+		@tuis = Tui.where(editor_id: @user.id, obj_type: 'Photo').stos.paginate(:page => params[:page], per_page: 12)
+	end
+
+	def albums
+		if current_user.id.eql?(@user.id)
+			redirect_to my_albums_path
+		else
+			@albums = @user.albums.paginate(:page => params[:page], per_page: 12)
+		end
 	end
 
 	def messages
@@ -36,5 +40,11 @@ class UsersController < ApplicationController
 
 	def notices
 
+	end
+
+	private
+	def get_user
+		@user = User.find_by_id(params[:id])
+		render text: 'not found', status: 404 and return unless @user
 	end
 end

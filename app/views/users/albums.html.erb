@@ -1,0 +1,29 @@
+<%= render "header" %>
+<div class="row">
+	<% if @albums.total_entries < 1 %>
+	<div class="col-md-12">
+		<div class="text-center" style="height: 300px; padding-top: 140px;">
+			主人还没有相册
+		</div>
+	</div>
+	<% else %>
+		<% @albums.each do |album| %>
+		<div class="col-md-3">
+			<div class="thumbnail">
+				<%= link_to image_tag(album.logo(:thumb)), my_album_path(album) %>		
+				<div class="caption caption-border">
+					<%= link_to album.name, my_album_path(album) %>		
+					<span class="pull-right">
+						<%= album.publish_name %></span>
+					<p>
+						<%= album.desc %></p>
+					<span>
+						共
+						<%= album.photos.count %>张</span>
+				</div>
+			</div>
+		</div>
+		<% end %>
+		<%= will_paginate @albums %>
+	<% end %>
+</div>

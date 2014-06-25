@@ -1,2 +1,0 @@
-$("#js-follow-<%= params[:id] %>").replaceWith('<%= link_to "<i class=\"icon-plus\"></i> 关注".html_safe, ajax_fol_path("user", params[:id], isglass: params[:isglass]), remote: true, method: :post, class: @glass, id: "js-follow-#{params[:id]}" %>');
-$("#js-follow-<%= params[:id] %>").effect( "highlight", 3000 );

@@ -1,5 +1,0 @@
-$("<%= j render 'form' %>").appendTo("body").modal('show').on('shown.bs.modal', function(){
-	$(this).find('input:visible:first').focus().end().find('form').enableClientSideValidations();
-}).on('hidden.bs.modal', function(){
-	$(this).off().remove();
-});
