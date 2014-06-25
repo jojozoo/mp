@@ -39,43 +39,50 @@ module ApplicationHelper
   end
 
   # TODO 重写remote js diabled时不请求
-  def link_to_push name, obj, isblock = true
-    type, method, icon, str = case name
-    when 'like'
-      ['liks', 'like?', 'heart', '喜欢']
-    when 'store'
-      ['stos', 'store?', 'star', '收藏']
-    when 'recom'
-      ['recs', 'recom?', 'ok-circle', '推荐']
-    else
-      ['liks', 'like?', 'heart', '喜欢']
-    end
-    class_str = "push-#{type}-#{obj.id}-link"
-    class_str += isblock ? ' btn btn-success btn-xs' : ''
+  def link_to_tui name, obj, isblock = true
+
+  end
+  
+  def link_to_fol user_id
     if current_user
-      if obj.try(method, current_user)
-        class_str += ' disabled'
-      else
-        class_str += ' btn-ajax'
-      end
-    end
-    options = {remote: true, method: :post, class: class_str}
-    if isblock
-      link_to ajax_tui_path(type, 'image', obj.id), options do
-        "<i class='icon-#{icon}'></i>#{str}".html_safe
+      unless current_user.id == user_id
+        if current_user.fol?(user_id)
+          link_to '取消关注', ajax_fol_path('user', user_id), class: 'btn btn-primary btn-xs btn-fol btn-fold mp-ajax-fol'
+        else
+          link_to '关注', ajax_fol_path('user', user_id), class: 'btn btn-primary btn-xs btn-fol mp-ajax-fol'
+        end
       end
     else
-      options[:class] = options[:class] + " push-#{type}-#{obj.id}-effect"
-      link_to str + "(#{obj.try(type + '_count')})", ajax_tui_path(type, 'image', obj.id), options.merge(title: str)
+      link_to '关注', 'javascript:void(0);', class: 'btn btn-primary btn-xs btn-fol mp-sign'
     end
   end
 
-  def link_to_follow user_id
-    if current_user and current_user.fol?(user_id)
-      link_to '取消关注', ajax_ufl_path('user', user_id), remote: true, method: :post, class: 'btn btn-default btn-xs', id: "js-follow-#{user_id}"
+  def link_to_msg user_id
+    if current_user and current_user.id != user_id
+      unless current_user.id == user_id
+        link_to "<i class='icon-envelope'></i> 私信".html_safe, "/ajax/msg/user/#{user_id}", class: 'btn btn-default btn-xs btn-msg'
+      end
     else
-      link_to '<i class="icon-plus"></i> 关注'.html_safe, ajax_fol_path('user', user_id), remote: true, method: :post, class: 'btn btn-default btn-xs', id: "js-follow-#{user_id}"
+      link_to "<i class='icon-envelope'></i> 私信".html_safe, 'javascript:void(0);', class: 'btn btn-default btn-xs btn-msg mp-sign'
     end
+  end
+
+  def link_to_like
+  end
+
+  def link_to_store
+  end
+
+  def link_to_recommend
+  end
+
+  def link_to_choice
+  end
+
+  def link_to_original
+  end
+
+  def link_to_destroy
   end
 
   def sessionbackgrounds

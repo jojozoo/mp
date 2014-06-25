@@ -8,7 +8,7 @@
 			</h4>
 			<div class="photo-header-author-link">
 				<%= link_to @photo.user.username, user_path(@photo.user_id) %>
-				<a href="javascript:void(0);" class="btn btn-primary btn-xs fol">关注</a>
+				<%= link_to_fol @photo.user_id %>
 			</div>
 		</div>
 		<div class="photo-header-right">
@@ -41,11 +41,11 @@
 					</span>
 				</div>
 			</div>
-			<a href="/ajax/sto/photo/<%= @photo.id %>" class="photo-store mp-ajax-tui" data-type="sto">
+			<a href="/ajax/sto/photo/<%= @photo.id %>" class="photo-store mp-ajax-tui <%= 'active' if current_user and @photo.stos?(current_user) %>" data-type="sto">
 				<span class="store-bg"></span>
 				<span class="store-text">收藏</span>
 			</a>
-			<a href="/ajax/lik/photo/<%= @photo.id %>" class="photo-like mp-ajax-tui" data-type="lik">
+			<a href="/ajax/lik/photo/<%= @photo.id %>" class="photo-like mp-ajax-tui <%= 'active' if current_user and @photo.liks?(current_user) %>" data-type="lik">
 				<span class="like-bg"></span>
 				<span class="like-text">喜欢</span>
 			</a>

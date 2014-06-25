@@ -3,10 +3,19 @@ class AjaxController < ApplicationController
     
     # 推荐
     def rec
-        res = unless current_user.admin or Editor.exists?(event_id: @photo.event_id, editor_id: current_user.id)
-            {text: "您没有权限", type: 'error'}
+        res = if current_user.admin
+            Tui.cho_or_rec('recommend', @photo, current_user, true)
+        # elsif current_user.editor?   # 如果不针对活动的推荐，再加判断
+        elsif editor = Editor.where(event_id: @photo.event_id, editor_id: current_user.id).first
+            day = Date.today.to_s(:number)
+            sum = Tui.where(editor_id: current_user.id, day: day, event_id: @photo.event_id).count
+            if editor.sum > sum
+                Tui.cho_or_rec('recommend', @photo, current_user, true)
+            else
+                {text: "您对此活动的推荐已到上限", type: 'error'}
+            end
         else
-            Tui.cho_or_rec('recommend', @photo, current_user)
+        {text: "您没有权限", type: 'error'}
         end
         render json: res.to_json
     end
@@ -15,7 +24,7 @@ class AjaxController < ApplicationController
         res = unless current_user.admin
             {text: "您没有权限", type: 'error'}
         else
-            Tui.cho_or_rec('choice', @photo, current_user)
+            Tui.cho_or_rec('choice', @photo, current_user, true)
         end
         render json: res.to_json
     end
@@ -23,7 +32,18 @@ class AjaxController < ApplicationController
     # 关注 
     # 取消关注
     def fol
-
+        res = if user = User.find_by_id(params[:id])
+            if fol = current_user.folships.find_by_user_id(user.id)
+                fol.destroy
+                {text: "取消成功", type: 'success'}
+            else
+                current_user.folships.create(user_id: user.id)
+                {text: "关注成功", type: 'success'}
+            end
+        else
+           {text: "没有此用户", type: 'error'}
+        end
+        render json: res.to_json 
     end
 
     def lik
@@ -49,25 +69,6 @@ class AjaxController < ApplicationController
 
     def tag
         render json: {availableTags: Tag.limit(10).map(&:name), assignedTags: []}.to_json
-    end
-
-    def editer
-        
-    end
-
-    # 关注
-    def fol
-        if user = User.find_by_id(params[:id])
-            user.folships.create(fol_id: current_user.id)
-        end
-    end
-
-    # 取消关注
-    def ufl
-        if user = User.find_by_id(params[:id])
-            fol = user.folships.find_by_fol_id(current_user.id)
-            fol.destroy if fol
-        end
     end
 
     # comment

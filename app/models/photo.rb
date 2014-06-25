@@ -110,10 +110,10 @@ class Photo < ActiveRecord::Base
   belongs_to :album
   has_many   :visits, as: :obj
   has_many   :comments, as: :obj, order: 'id desc'
-  has_many   :likes, class_name: 'Tui', conditions: {channel: 'like'}, as: :obj
-  has_many   :stores, class_name: 'Tui', conditions: {channel: 'store'}, as: :obj
-  has_many   :recoms, class_name: 'Tui', conditions: {channel: 'recom'}, as: :obj
-  has_many   :tuis, as: :obj, conditions: {editor: true}
+  has_many   :liks, class_name: 'Tui', conditions: {channel: 'liks'}, as: :obj
+  has_many   :stos, class_name: 'Tui', conditions: {channel: 'stos'}, as: :obj
+  has_many   :recs, class_name: 'Tui', conditions: {channel: 'recs'}, as: :obj
+  # has_many   :tuis, as: :obj, conditions: {editor: true}
 
   scope :choice,    -> { where(choice: true)}
 
@@ -138,16 +138,16 @@ class Photo < ActiveRecord::Base
     self.randomstr = SecureRandom.hex(6)
   end
 
-  def like?(obj)
-    likes.exists?(user_id: obj.id)
+  def liks?(obj)
+    liks.exists?(editor_id: obj.id)
   end
 
-  def store?(obj)
-    stores.exists?(user_id: obj.id)
+  def stos?(obj)
+    stos.exists?(editor_id: obj.id)
   end
 
-  def recom?(obj)
-    recoms.exists?(user_id: obj.id)
+  def recs?(obj)
+    recs.exists?(editor_id: obj.id)
   end
 
   def prev(offset = 0)

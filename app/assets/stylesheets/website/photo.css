@@ -22,13 +22,18 @@
 .photo-show .photo-header .photo-header-left .photo-header-author-link{
 	height: 23px;
 }
-.photo-show .photo-header .photo-header-left .photo-header-author-link .fol{
+.btn-fol, .btn-msg{
 	line-height: 20px;
 	width: 60px;
 	padding: 0;
 	text-align: center;
-	margin: 0 10px;
+	/*margin: 0 10px;*/
 	border-radius: 3px;
+}
+.btn-fol.btn-fold, 
+.btn-fol.btn-fold:hover{
+	background: #7f7f7f;
+	border-color: #7f7f7f;
 }
 .photo-show .photo-header .photo-header-right a{
 	text-decoration: none;

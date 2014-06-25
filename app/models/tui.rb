@@ -2,17 +2,19 @@
 #
 # Table name: tuis
 #
-#  id          :integer          not null, primary key
-#  obj_id      :integer
-#  obj_type    :string(255)
-#  channel     :string(255)
-#  user_id     :integer
-#  editor      :integer
-#  editor_id   :integer
-#  mark        :string(255)
-#  del         :boolean          default(FALSE)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :integer          not null, primary key
+#  obj_id     :integer
+#  obj_type   :string(255)
+#  channel    :string(255)
+#  user_id    :integer
+#  editor     :integer
+#  editor_id  :integer
+#  event_id   :integer
+#  day        :string(255)
+#  mark       :string(255)
+#  del        :boolean          default(FALSE)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 class Tui < ActiveRecord::Base
@@ -22,6 +24,8 @@ class Tui < ActiveRecord::Base
   :user_id,
   :editor,
   :editor_id,
+  :event_id,
+  :day,
   :mark, 
   :del
 
@@ -46,7 +50,7 @@ class Tui < ActiveRecord::Base
   # }
   
   RECOMMENDEDTYPE = {
-    'like'          => '喜欢',
+    'liks'          => '喜欢',
     'stos'         => '收藏',
     'recommend'     => '编辑推荐',
     'selfrecommend' => '自荐',
@@ -63,17 +67,19 @@ class Tui < ActiveRecord::Base
   end
 
   # 推荐 精选 喜欢 收藏
-  def self.cho_or_rec cate, photo, user
-    tip = ''
-    time = Date.today.to_s(:number)
-    attrs = {obj_id: photo.id, obj_type: 'Photo', channel: cate, user_id: photo.user_id, editor: true, editor_id: user.id }
-    upattrs = if tui = Tui.where(attrs).first
+  def self.cho_or_rec cate, photo, editer, iseditor = false
+    attrs = {obj_id: photo.id, obj_type: 'Photo', channel: cate, editor: iseditor }
+    # 如果是推荐或者精选,这里不限制谁做的操作
+    # 编辑的3次推荐机会有点问题，别人撤销了推荐，那么此用户还有一次推荐
+    attrs.merge!(editor_id: editer.id) unless iseditor
+    tui = Tui.where(attrs).first
+    upattrs = if tui
       tip = '取消成功'
       tui.destroy
       res_attrs(cate, true, photo)
     else
       tip = '操作成功'
-      Tui.create!(attrs)
+      Tui.create!(attrs.merge({user_id: photo.user_id, event_id: photo.event_id, day: Date.today.to_s(:number), editor_id: editer.id}))
       res_attrs(cate, false, photo)
     end
     photo.update_attributes(upattrs)
@@ -82,8 +88,8 @@ class Tui < ActiveRecord::Base
 
   def self.res_attrs cate, real, photo
     {
-      'recommend' => {recommend: real, recommend_at: Time.now},
-      'choice'    => {choice: real, choice_at: Time.now},
+      'recommend' => {recommend: !real, recommend_at: Time.now},
+      'choice'    => {choice: !real, choice_at: Time.now},
       'liks'      => {liks_count: real ? photo.liks_count - 1 : photo.liks_count + 1},
       'stos'      => {stos_count: real ? photo.stos_count - 1 : photo.stos_count + 1}
     }[cate]

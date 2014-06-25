@@ -7,6 +7,8 @@ class CreateTuis < ActiveRecord::Migration
       t.integer :user_id   # 原用于推荐者id，阻止编辑二次推荐 现为obj所属用户ID
       t.integer :editor    # 管理员 编辑 普通用户 是否诗编辑操作
       t.integer :editor_id # 管理员 编辑 普通用户ID
+      t.integer :event_id
+      t.string :day
       t.string :mark
       t.boolean :del, default: false
 

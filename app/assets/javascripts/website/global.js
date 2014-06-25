@@ -37,7 +37,34 @@ $(function(){
 	});
 
 	// 关注
-
+	$(document).on("click", ".mp-ajax-fol", function(){
+		var _this = this,
+			_state = $(this).attr("state"),
+			_url = $(this).attr("href");
+		if(_state === "loading"){
+			return false;
+		}
+		$.ajax({
+			type: "post",
+			url: _url,
+			beforeSend: function(){
+				$(_this).attr("state", "loading");
+			},
+			success: function(result) {
+				$(_this).removeAttr("state");
+				MPMSG(result.type, result.text);
+				if(result.type === 'error'){
+					return;
+				}
+				if($(_this).hasClass('btn-fold')){
+					$(_this).removeClass('btn-fold').text("关注");
+				} else {
+					$(_this).addClass('btn-fold').text("取消关注");
+				}
+			}
+		});
+		return false;
+	})
 	// 编辑推荐, 今日精选
 	$(document).on("click", ".mp-ajax-tui", function(){
 		var _type = $(this).data('type');

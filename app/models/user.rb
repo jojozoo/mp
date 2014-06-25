@@ -252,6 +252,7 @@ class User < ActiveRecord::Base
   def addr
     province.eql?(city) ? province : province + ' ' + city
   end
+  
   # 是否已关注
   def fol? user_id
     self.folships.exists?(user_id: user_id)
