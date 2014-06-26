@@ -12,10 +12,10 @@
     </div>
     <div class="buttons">
         <div class="shares">
-            <a class="action share weibo"></a>
-            <a class="action share qzone"></a>
-            <a class="action share renren"></a>
-            <a class="action share douban"></a>
+            <a href="<%= link_to_share 'weibo', photo %>" class="action share weibo" target="_blank"></a>
+            <a href="<%= link_to_share 'qzone', photo %>" class="action share qzone" target="_blank"></a>
+            <a href="<%= link_to_share 'renren', photo %>" class="action share renren" target="_blank"></a>
+            <a href="<%= link_to_share 'douban', photo %>" class="action share douban" target="_blank"></a>
         </div>
         <% if sign_in? %>
         <div class="states">

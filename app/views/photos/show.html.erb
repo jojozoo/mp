@@ -14,10 +14,10 @@
 		<div class="photo-header-right">
 			<div class="sharelizers">
 				<div class="share-group">
-					<a href="javascript:void(0);" class="share weibo"></a>
-					<a href="javascript:void(0);" class="share qq"></a>
-					<a href="javascript:void(0);" class="share renren"></a>
-					<a href="javascript:void(0);" class="share douban"></a>
+					<a href="<%= link_to_share 'weibo', @photo %>" class="share weibo" target="_blank"></a>
+					<a href="<%= link_to_share 'qzone', @photo %>" class="share qzone" target="_blank"></a>
+					<a href="<%= link_to_share 'renren', @photo %>" class="share renren" target="_blank"></a>
+					<a href="<%= link_to_share 'douban', @photo %>" class="share douban" target="_blank"></a>
 					<a href="javascript:void(0);" class="share email"></a>
 				</div>
 				<div class="status">

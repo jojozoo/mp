@@ -59,11 +59,11 @@
 .photo-show .photo-header .photo-header-right .sharelizers .share-group .weibo:hover{
 	background-color: #ee574c;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .qq{
+.photo-show .photo-header .photo-header-right .sharelizers .share-group .qzone{
 	background-position: 6px -57px;
 	background-color: #00aced;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .qq:hover{
+.photo-show .photo-header .photo-header-right .sharelizers .share-group .qzone:hover{
 	background-color: #6ed0f5;
 }
 .photo-show .photo-header .photo-header-right .sharelizers .share-group .renren{

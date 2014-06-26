@@ -38,10 +38,10 @@ module Mp
     # paperclip
     config.paperclip_defaults = {
         # url: "/system/:class/:id/:updated_at/:id_partition/:style/:random.:extension",
-        url:                    "/system/:class/:id/:style/:random.:extension",
+        url:                    "http://#{Rails.env.eql?('development') ? 'localhost:3000' : 'mpwang.cn'}/system/:class/:id/:style/:random.:extension",
         path: ":rails_root/public/system/:class/:id/:style/:random.:extension",
         # path: "/system/:class/:id/:style/:random.:extension", 为/systen 地址做个软连接到public下 不知道是否可行
-        default_url: "/images/defaults/:class.jpg"
+        default_url: "http://#{Rails.env.eql?('development') ? 'localhost:3000' : 'mpwang.cn'}/images/defaults/:class.jpg"
     }
 
     # Configure the default encoding used in templates for Ruby 1.9.

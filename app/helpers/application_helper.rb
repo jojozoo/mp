@@ -85,6 +85,59 @@ module ApplicationHelper
   def link_to_destroy
   end
 
+  def link_to_share type, photo
+    title = photo.title.to_s + ' - mpwang.cn（漫拍网摄影作品分享）'
+    desc = photo.desc
+    case type
+    when 'qq'
+    when 'weibo'
+      p = {
+        appkey: 3912918179,
+        url: photo_url(photo),
+        title: title,
+        source: '',
+        sourceUrl: '',
+        pic: photo.picture.url(:large),
+        content: 'utf-8'
+      }.to_param
+      "http://service.weibo.com/share/share.php?#{p}".html_safe
+    when 'qzone'
+      p = {
+        url: photo_url(photo),
+        # to: 'qzone',
+        desc: '',
+        summary: desc,
+        title: title,
+        site: 'mpwang.cn',
+        pics: photo.picture.url(:large)
+      }.to_param
+      "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?#{p}".html_safe
+    when 'tx'
+
+    when 'weixin'
+
+    when 'renren'
+    p = {
+      resourceUrl: photo_url(photo), #分享的资源Url
+      # srcUrl: photo_url(photo),  # 分享的资源来源Url,默认为header中的Referer,如果分享失败可以调整此值为resourceUrl试试
+      pic: photo.picture.url(:large),   # 分享的主题图片Url
+      title: title,                   # 分享的标题
+      description: desc  # 分享的详细描述
+    }.to_param
+    "http://widget.renren.com/dialog/share?#{p}".html_safe
+    when 'douban'
+      p = {
+        image: photo.picture.url(:large),
+        name: title,
+        text: desc,
+        href: photo_url(photo)
+      }.to_param
+      "http://www.douban.com/share/service?#{p}".html_safe
+    else
+
+    end
+  end
+
   def sessionbackgrounds
     url = ["1679091c5a.jpg", "45c48cce2e.jpg", "8f14e45fce.jpg", "a87ff679a2.jpg", "c4ca4238a0.jpg", "c81e728d9d.jpg", "c9f0f895fb.jpg", "eccbc87e4b.jpg"].sort_by{rand}[0]
     "/images/backgrounds/#{url}?1394877273"
