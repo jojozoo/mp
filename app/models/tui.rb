@@ -30,7 +30,7 @@ class Tui < ActiveRecord::Base
   :del
 
   # TODO 管理员推荐存在重复性 即一个管理员一次推荐会记录一次，哪怕是重复资源
-  # TODO 一次取消推荐说明照片不值得推荐，那么就应该删除对应的推荐属性
+  # TODO 一次取消精选说明照片不值得推荐，那么就应该删除对应的推荐属性
   
   # 推荐数 喜欢数之类的
   belongs_to :obj, polymorphic: true#, counter_cache: true
@@ -52,12 +52,11 @@ class Tui < ActiveRecord::Base
   RECOMMENDEDTYPE = {
     'liks'          => '喜欢',
     'stos'         => '收藏',
-    'recommend'     => '编辑推荐',
+    'recommend'     => '推荐精选',
     'selfrecommend' => '自荐',
     'choice'        => '精选',
     # 'star'          => '慢拍之星',
     # 'photographer'  => '推荐摄影师',
-    # 'emphasis'      => '推荐重点',
     'request'       => '推荐活动'
   }
   RECOMMENDEDTYPE.each do |key, value|

@@ -502,7 +502,10 @@ hr{
     border-color: #ccc;
 }
 .thumbnail > a > img{
-    width: 100%;
+    /*width: 100%;*/
+    /*专门为活动设置的宽高*/
+    width: 264px;
+    height: 176px;
 }
 .thumbnail a > img.avatar-mini{
     height: 34px;

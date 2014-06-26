@@ -5,8 +5,6 @@ class CreateTopics < ActiveRecord::Migration
       t.integer :cate_id
       t.integer :last_user_id
       t.datetime :last_updated_at
-      t.boolean :emphasis, default: false
-      t.datetime :emphasis_at
       t.boolean :original, default: true
       t.string :title
       t.text :content

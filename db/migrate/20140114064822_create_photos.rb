@@ -20,7 +20,7 @@ class CreatePhotos < ActiveRecord::Migration
       # 推荐是编辑或者管理员行为 不记录数量
       t.boolean :recommend, default: false # 是否推荐 
       t.datetime :recommend_at
-      t.boolean :choice, default: false    # 是否精选 -> 每日一图
+      t.boolean :choice, default: false    # 是否精选
       t.datetime :choice_at
       
       t.attachment :picture

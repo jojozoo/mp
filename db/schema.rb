@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140615163011) do
+ActiveRecord::Schema.define(:version => 20140626084057) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -71,15 +71,6 @@ ActiveRecord::Schema.define(:version => 20140615163011) do
     t.integer  "event_id"
     t.integer  "editor_id"
     t.integer  "sum"
-    t.boolean  "del",        :default => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-  end
-
-  create_table "emphases", :force => true do |t|
-    t.string   "title"
-    t.string   "link"
-    t.integer  "cate",       :default => 0
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
@@ -152,6 +143,19 @@ ActiveRecord::Schema.define(:version => 20140615163011) do
     t.integer  "del",        :default => 0
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+  end
+
+  create_table "mp_sets", :force => true do |t|
+    t.string   "title"
+    t.string   "link"
+    t.string   "src"
+    t.integer  "cate"
+    t.integer  "cate_id"
+    t.integer  "user_id"
+    t.string   "desc"
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "notices", :force => true do |t|
@@ -232,8 +236,6 @@ ActiveRecord::Schema.define(:version => 20140615163011) do
     t.integer  "cate_id"
     t.integer  "last_user_id"
     t.datetime "last_updated_at"
-    t.boolean  "emphasis",        :default => false
-    t.datetime "emphasis_at"
     t.boolean  "original",        :default => true
     t.string   "title"
     t.text     "content"
@@ -263,6 +265,8 @@ ActiveRecord::Schema.define(:version => 20140615163011) do
     t.integer  "user_id"
     t.integer  "editor"
     t.integer  "editor_id"
+    t.integer  "event_id"
+    t.string   "day"
     t.string   "mark"
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false

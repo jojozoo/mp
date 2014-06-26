@@ -1,0 +1,37 @@
+<div class="w-box">
+	<div class="w-box-header">
+		<div class="pull-right sort-disabled">
+			<%= link_to '新建set', new_admin_mp_set_path %>
+		</div>
+	</div>
+	<div class="w-box-content">
+		<table class="table table-striped table12 table-condensed table-hover text-center">
+			<tr>
+				<th>标题</th>
+				<th>链接</th>
+				<th>图片</th>
+				<th>描述</th>
+				<th>类型</th>
+				<th>所属资源</th>
+				<th>时间</th>
+				<th>操作</th>
+			</tr>
+		<% @mpsets.each do |set| %>
+			<tr>
+				<td><%= truncate(set.title, length: 10) %></td>
+				<td><%= link_to set.link, set.link, target: '_blank' %></td>
+				<td><%= set.src.blank? ? '没有图片' : image_tag(set.src, style: 'max-width: 80px;') %></td>
+				<td><%= truncate(set.desc, length: 10) %></td>
+				<td><%= MpSet::Cate[set.cate] %></td>
+				<td><%= set.cate_id.zero? ? '首页' : '活动' %></td>
+				<td><%= set.created_at.to_date %></td>
+				<td>
+					<%= link_to '编辑', edit_admin_mp_set_path(set), class: 'btn btn-info btn-xs' %>
+					<%= link_to '删除', admin_mp_set_path(set), method: :delete, data: {confirm: '确定删除？不可恢复操作!' }, class: 'btn btn-danger btn-xs' %>
+				</td>
+			</tr>
+		<% end %>
+		</table>
+	</div>
+	<%= will_paginate @mpsets %>
+</div>

@@ -7,8 +7,6 @@
 #  cate_id         :integer
 #  last_user_id    :integer
 #  last_updated_at :datetime
-#  emphasis        :boolean          default(FALSE)
-#  emphasis_at     :datetime
 #  original        :boolean          default(TRUE)
 #  title           :string(255)
 #  content         :text
@@ -19,7 +17,7 @@
 #
 
 class Topic < ActiveRecord::Base
-  attr_accessible :user_id, :cate_id, :last_user_id, :last_updated_at, :emphasis, :emphasis_at, :original, :title, :content, :coms_count, :del
+  attr_accessible :user_id, :cate_id, :last_user_id, :last_updated_at, :original, :title, :content, :coms_count, :del
   
   has_many :comments, as: :obj
   has_many :tagships, as: :obj
@@ -29,8 +27,6 @@ class Topic < ActiveRecord::Base
   has_many :visits, as: :obj
 
   belongs_to :cate, class_name: 'Tag', foreign_key: :cate_id
-
-  scope :emphasis, -> {where(emphasis: true)}
 
 
   validates_presence_of     :user_id, 

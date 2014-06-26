@@ -21,7 +21,7 @@
 					</h4>
 					<hr>
 					<ul>
-						<% Emphasis.where(cate: @event.id).each do |em| %>
+						<% MpSet.where(cate_id: @event.id).each do |em| %>
 						<li>
 							<%= link_to em.title, em.link, target: '_blank' %>
 						</li>

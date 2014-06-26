@@ -57,7 +57,8 @@ class Event < ActiveRecord::Base
   has_attached_file :logo,
     styles: {
       big: '800x600>',
-      thumb: '280x210#'
+      # thumb: '280x210#'
+      thumb: '282x188#'
     }
 
   validates_presence_of     :name, 

@@ -161,14 +161,14 @@
 .cl .item{
     border: 1px solid #dedede;
     float: left;
-    margin-right: 10px;
+    margin-right: 11px;
     padding: 10px;
     background-color: #fff;
 }
 .cl .item.last{
     padding: 20px 10px;
     width: 50%;
-    height: 218px;
+    height: 231px;
     margin-right: 0;
     position: relative;
 }
@@ -179,10 +179,19 @@
 .cl .item hr{
     border-color: #dedede;
 }
-.cl a img{
-    /*width: 245px;*/
-    width: 253px;
-    height: 155px;
+.cl a.thua{
+    width: 252px;
+    height: 168px;
+    display: block;
+    text-align: center;
+    /*display: table-cell;
+    vertical-align: middle;*/
+}
+.cl a.thua img{
+    max-height: 100%;
+    max-width: 100%;
+    /*width: 100%;
+    height: 100%;*/
 }
 .top-left-pos{
     width: 60px;

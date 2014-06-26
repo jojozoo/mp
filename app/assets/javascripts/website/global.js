@@ -65,12 +65,12 @@ $(function(){
 		});
 		return false;
 	})
-	// 编辑推荐, 今日精选
+	// 推荐精选, 每日一图
 	$(document).on("click", ".mp-ajax-tui", function(){
 		var _type = $(this).data('type');
 		res = {
-			rec: ['编辑推荐', '取消推荐'],
-			cho: ['今日精选', '取消精选'],
+			rec: ['推荐精选', '取消精选'],
+			cho: ['每日一图', '取消每日一图'],
 			lik: ['喜欢', '喜欢'],
 			sto: ['收藏', '收藏']
 		}[_type];

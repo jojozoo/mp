@@ -16,7 +16,7 @@
 						<li>
 							<span class="item-key">所属活动</span>
 							<div class="vcard-item">
-								<% if obj = Emphasis.find_by_cate(@topic.id) %>
+								<% if obj = MpSet.find_by_cate_id(@topic.id) %>
 								<% event = Event.find_by_id(topic.id) %>
 								<%= link_to event.name, admin_event_path(event.id), target: '_blank' %>
 								<% else %>
@@ -27,21 +27,6 @@
 						<li>
 							<span class="item-key">标题</span>
 							<div class="vcard-item"><%= @topic.title %></div>
-						</li>
-						<li>
-							<span class="item-key">推荐</span>
-							<div class="vcard-item">
-								<%= link_to '推荐重点', admin_ajax_path('tui', {
-									source: 'Topic',
-									id: @topic.id,
-									channel: 'emphasis',
-									user_id: @topic.user_id
-								}) %>
-								<% if true %>
-									<%= link_to '推荐到此活动', '/' %>
-									会在活动右侧边栏的推荐重点显示/如果tags中含有某个活动标签就显示此推荐
-								<% end %>
-							</div>
 						</li>
 						<li>
 							<span class="item-key">描述</span>

@@ -10,7 +10,7 @@
 			<span>每日重点</span>
 		</div>
 		<ul class="list-unstyled">
-			<% Emphasis.where(cate: 0).limit(17).each do |em| %>
+			<% MpSet.where(cate_id: 0, cate: 5).limit(17).each do |em| %>
 			<li>
 				<%= link_to em.title, em.link, target: '_blank' %>
 			</li>
@@ -47,7 +47,7 @@
 	<li>
 		<a href="/photos?order=push">
 			<i class="icon-ok-circle"></i>
-			编辑推荐
+			推荐精选
 		</a>
 	</li>
 	<li>

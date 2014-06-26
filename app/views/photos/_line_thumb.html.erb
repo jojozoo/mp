@@ -18,22 +18,22 @@
 				<% if current_user.admin or Editor.exists?(event_id: photo.event_id, editor_id: current_user.id) %>
 					<% if photo.recommend %>
 					<a href="/ajax/rec/photo/<%= photo.id %>" class="mp-ajax-tui active" data-type="rec">
-						取消推荐
+						取消精选
 					</a>
 					<% else %>
 					<a href="/ajax/rec/photo/<%= photo.id %>" class="mp-ajax-tui" data-type="rec">
-						编辑推荐
+						推荐精选
 					</a>
 					<% end %>
 				<% end %>
 				<% if current_user.admin %>
 					<% if photo.choice %>
 					<a href="/ajax/cho/photo/<%= photo.id %>" class="mp-ajax-tui active" data-type="cho">
-						取消精选
+						取消每日一图
 					</a>
 					<% else %>
 					<a href="/ajax/cho/photo/<%= photo.id %>" class="mp-ajax-tui" data-type="cho">
-						今日精选
+						每日一图
 					</a>
 					<% end %>
 				<% end %>

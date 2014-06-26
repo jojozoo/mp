@@ -76,16 +76,22 @@ en:
         channel: '所属资源'
         cate: '类别'
         desc: '标签描述'
-      emphasis:
+      mp_set:
         title: '标题'
         link: '链接'
+        src: '图片路径'
+        desc: '描述'
         cate: '类别'
+        cate_id: '所属资源'
     hints:
       defaults:
+      mp_set:
+        cate_id: '类别为活动公告时选择活动 其余默认即可'
       user:
         domain: '申请成功将不可修改,成为摄影师才可以拥有二级域名'
         province: '直辖市只填写省即可'
       event:
+        logo: '3:2比例'
         end_time: '活动期限'
         tag: '同城、年度、手机等等'
       tag:

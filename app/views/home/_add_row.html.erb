@@ -3,18 +3,23 @@
 		<div class="mp-home-center-new">
 			<div class="line-one cl">
 				<div class="item">
-					<a href="">
-						<img src="/images/tags/abstract.jpg">
-					</a>
+					<!--<% 
+						#time              = Time.now > "#{Date.today} 18:00:00".to_time ? Date.today.to_s(:number) : Date.today.yesterday.to_s(:number)
+						#recommend = Tui.recommend.where(day: time, obj_type: 'Photo').last || Tui.recommend.where(obj_type: 'Photo').last
+					%>
+					<%#= link_to image_tag(recommend.obj.picture.url(:thumb)), photos_path(order: 'push', tl: time), class: 'thua', target: '_blank' %>
 					<hr>
-					<p>2014年5月22日 精选照片</p>
+					<p><%#= time.to_date.strftime("%Y年%m月%d日") %>精选照片</p>-->
+					<% day = MpSet.where(cate: 1).last %>
+					<%= link_to image_tag(day.src), day.link, class: 'thua', target: '_blank' %>
+					<hr>
+					<p><%= day.title %></p>
 				</div>
 				<div class="item">
-					<a href="">
-						<img src="/images/tags/animals.jpg">
-					</a>
+					<% zhou = MpSet.where(cate: 2).last %>
+					<%= link_to image_tag(zhou.src), zhou.link, class: 'thua', target: '_blank' %>
 					<hr>
-					<p>2014年5月周赛精选</p>
+					<p><%= zhou.title %></p>
 				</div>
 				<div class="item last">
 					<span class="top-left-pos"></span>
@@ -47,18 +52,20 @@
 			</div>
 			<div class="line-two cl">
 				<div class="item">
-					<a href="">
-						<img src="/images/tags/city_and_architecture.jpg">
-					</a>
+					<% topic = MpSet.where(cate: 3).last %>
+					<%= link_to image_tag(topic.src), topic.link, class: 'thua', target: '_blank' %>
 					<hr>
-					<p>漫技巧: 浅谈曝光技巧</p>
+					<p><%= topic.title %></p>
 				</div>
 				<div class="item">
-					<a href="">
-						<img src="/images/tags/people.jpg">
-					</a>
+					<!-- <%# event = Event.totop.last %>
+					<%#= link_to image_tag(event.logo.url(:thumb)), event_path(event), class: 'thua', target: '_blank' %>
 					<hr>
-					<p>漫拍活动： 最好玩的照片</p>
+					<p>漫拍活动： <%#= event.name %></p> -->
+					<% request = MpSet.where(cate: 4).last %>
+					<%= link_to image_tag(request.src), request.link, class: 'thua', target: '_blank' %>
+					<hr>
+					<p><%= request.title %></p>
 				</div>
 				<div class="item last">
 					<span class="top-left-pos"></span>
@@ -72,8 +79,9 @@
 						<a href="" class="btn btn-warning btn-sm" style="margin-top:20px;">更换推荐</a>
 					</div>
 					<div class="tip-right-once">
+						<% users = User.order("rand()").limit(8) %>
 						<div class="userlineone userlineitem">
-							<% User.limit(4).each_with_index do |u, index| %>
+							<% users[0..3].each_with_index do |u, index| %>
 								<div class="<%= 'last' if index.eql?(3) %>">
 									<%= link_to image_tag(u.avatar.url(:small)), user_path(u) %>
 									<div class="tofolbg"></div>
@@ -82,7 +90,7 @@
 							<% end %>
 						</div>
 						<div class="userlinetwo userlineitem">
-							<% User.order('id desc').limit(4).each_with_index do |u, index| %>
+							<% users[4..8].each_with_index do |u, index| %>
 								<div class="<%= 'last' if index.eql?(3) %>">
 									<%= link_to image_tag(u.avatar.url(:small)), user_path(u) %>
 									<div class="tofolbg"></div>

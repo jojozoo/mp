@@ -224,7 +224,7 @@
 									<th>创建于</th>
 									<th>操作</th>
 								</tr>
-								<% Emphasis.where(cate: @event.id).each do |em| %>
+								<% MpSet.where(cate_id: @event.id).each do |em| %>
 								<tr>
 									<td><%= em.title %></td>
 									<td><%= em.link %></td>
