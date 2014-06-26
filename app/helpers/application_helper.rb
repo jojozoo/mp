@@ -88,12 +88,13 @@ module ApplicationHelper
   def link_to_share type, photo
     title = photo.title.to_s + ' - mpwang.cn（漫拍网摄影作品分享）'
     desc = photo.desc
+    url = photo_url(photo, sf: type)
     case type
     when 'qq'
     when 'weibo'
       p = {
         appkey: 3912918179,
-        url: photo_url(photo),
+        url: url,
         title: title,
         source: '',
         sourceUrl: '',
@@ -103,7 +104,7 @@ module ApplicationHelper
       "http://service.weibo.com/share/share.php?#{p}".html_safe
     when 'qzone'
       p = {
-        url: photo_url(photo),
+        url: url,
         # to: 'qzone',
         desc: '',
         summary: desc,
@@ -118,8 +119,8 @@ module ApplicationHelper
 
     when 'renren'
     p = {
-      resourceUrl: photo_url(photo), #分享的资源Url
-      # srcUrl: photo_url(photo),  # 分享的资源来源Url,默认为header中的Referer,如果分享失败可以调整此值为resourceUrl试试
+      resourceUrl: url, #分享的资源Url
+      # srcUrl: url,  # 分享的资源来源Url,默认为header中的Referer,如果分享失败可以调整此值为resourceUrl试试
       pic: photo.picture.url(:large),   # 分享的主题图片Url
       title: title,                   # 分享的标题
       description: desc  # 分享的详细描述
@@ -130,7 +131,7 @@ module ApplicationHelper
         image: photo.picture.url(:large),
         name: title,
         text: desc,
-        href: photo_url(photo)
+        href: url
       }.to_param
       "http://www.douban.com/share/service?#{p}".html_safe
     else
