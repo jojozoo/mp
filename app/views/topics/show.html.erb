@@ -27,7 +27,7 @@
                 <% end %>
                 •
                 710次阅读
-                <% if sign_in? and (current_user.id.eql?(@topic.id) or current_user.admin) %>
+                <% if sign_in? and current_user.id.eql?(@topic.id) %>
                 •
                 <%= link_to '编辑', edit_topic_path(@topic.id) %>
                 <% end %>
