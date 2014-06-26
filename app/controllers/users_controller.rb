@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 	end
 
 	def albums
-		if current_user.id.eql?(@user.id)
+		if current_user and current_user.id.eql?(@user.id)
 			redirect_to my_albums_path
 		else
 			@albums = @user.albums.paginate(:page => params[:page], per_page: 12)
