@@ -36,8 +36,8 @@ class Topic < ActiveRecord::Base
                             message: '不能为空'
 
   validates_length_of       :title,
-                            within: 3..20,
-                            message: '长度3..20字'
+                            within: 3..50,
+                            message: '长度3..50字'
 
   validates_presence_of     :content,
                             message: '不能为空'
