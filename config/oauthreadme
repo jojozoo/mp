@@ -9,3 +9,5 @@ douban: http://developers.douban.com/apikey/apply
 renren: http://app.renren.com/developers/newapp/264179/audit/appHome
 
 qq 和 qqmp不行
+
+日志地址 /var/log/mysql的地址 /opt/nginx/logs/nginx的地址

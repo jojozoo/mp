@@ -58,7 +58,7 @@ class SessionsController < ApplicationController
 
   # 验证邮箱 / 忘记密码已发送跳转页
   def verif
-
+    
   end
 
   # 忘记密码
@@ -68,7 +68,7 @@ class SessionsController < ApplicationController
       if User.forgot_password?(params[:username])
         redirect_to '/verif?callback=forgot' # 已发送
       else
-        redirect_to '/forgot'
+        redirect_to '/forgot?callback=notfound'
       end
     end
   end
