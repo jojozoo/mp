@@ -9,6 +9,28 @@
 	</div>
 	<p>注册成功，请验证邮箱，或者先 <a href="/home">直接登录访问</a></p>
 </div>
+<% elsif @user %>
+<div class="validate" style="margin-top:160px;background:#fff;padding:10px;">
+	<div class="page-header">
+		<h3>
+			<i class="icon-email"></i>
+			邮箱 验证成功
+			<small></small>
+		</h3>
+	</div>
+	<p><a href="/?m=sign_in">去登录</a></p>
+</div>
+<% elsif params[:callback].eql?("reset") %>
+<div class="validate" style="margin-top:160px;background:#fff;padding:10px;">
+	<div class="page-header">
+		<h3>
+			<i class="icon-email"></i>
+			重置密码
+			<small>密码重置成功</small>
+		</h3>
+	</div>
+	<p><a href="/?m=sign_in">去登录</a></p>
+</div>
 <% else %>
 <div class="validate" style="margin-top:160px;background:#fff;padding:10px;">
 	<div class="page-header">

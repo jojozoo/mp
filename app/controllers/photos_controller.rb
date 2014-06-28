@@ -12,7 +12,7 @@ class PhotosController < ApplicationController
 
     def show
         # 有几种组的方式 默认以人为单位 其次是某天 其次是推荐 其次是精选 其次是某一集合
-        @photo  = Photo.find_by_id(params[:id])
+        @photo  = Photo.find(params[:id])
         @photos = case params[:sn]
         when 'group' # 组 应该有个组id
             Photo.where(parent_id: params[:sid])

@@ -192,8 +192,15 @@ class User < ActiveRecord::Base
   
   
   before_save  :check_not_v_attr
+  before_create :gsalt
+  after_create :send_sign_mail
+  def send_sign_mail
+    Resque.enqueue(MailerResque, self.id)
+  end
 
-  # after_create :basic_build
+  def gsalt
+    self.salt = Digest::MD5.hexdigest(SecureRandom.hex(10))
+  end
   # def basic_build
   #   self.albums.create(name: '默认相册')
   # end
@@ -245,6 +252,7 @@ class User < ActiveRecord::Base
     if user
       # 如果是手机
       user.update_attribute(:salt, Digest::MD5.hexdigest(Time.now.to_f.to_s))
+      Resque.enqueue(MailerResque, user.id, true)
     end
   end
 

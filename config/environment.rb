@@ -13,6 +13,6 @@ ActionMailer::Base.smtp_settings = {
     :address => 'smtp.exmail.qq.com',
     :port => 25,
     :authentication => :login,
-    :user_name => 'service@shanpro.com',
+    :user_name => 'service@mpwang.com.cn',
     :password => 'mpwang123'
 }

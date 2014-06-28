@@ -1,0 +1,13 @@
+<% if @forgot %>
+<p>你好 <%= @user.username %></p>
+<p>以下是密码重置链接</p>
+<p>
+	<%= link_to reset_url(code: @user.salt), reset_url(code: @user.salt) %>
+</p>
+<% else %>
+<p>你好 <%= @user.username %> 欢迎注册漫拍</p>
+<p>以下是验证链接</p>
+<p>
+	<%= link_to verif_url(code: @user.salt), verif_url(code: @user.salt) %>
+</p>
+<% end %>

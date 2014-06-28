@@ -27,6 +27,9 @@ gem 'oauth2'
 # mailer Sidekiq
 gem 'redis'
 gem 'resque'
+# 定时轮循，如1小时后发送，三天后再发送. 依赖 eventmachine
+gem 'resque-scheduler', :require => 'resque_scheduler'
+gem 'eventmachine'
 
 group :development do
     gem 'awesome_print'

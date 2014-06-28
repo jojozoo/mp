@@ -5,8 +5,9 @@ Mp::Application.routes.draw do
   get    '/sign_out'      => 'sessions#destroy'
   get    '/forgot'        => 'sessions#forgot'
   post   '/forgot'        => 'sessions#forgot'
-  get    '/reset'         => 'sessions#reset'
-  get    '/verif'         => 'sessions#verif'
+  get    '/reset'         => 'sessions#reset', as: :reset
+  post    '/reset'         => 'sessions#reset'
+  get    '/verif'         => 'sessions#verif', as: :verif
 
   # get    '/profile'       => 'users#profile'
   get    '/pg/:id'        => 'users#pg', as: :pg # 摄影师地址
@@ -211,7 +212,7 @@ Mp::Application.routes.draw do
   get "/system/photos/:id/:up/:one/:two/:three/:style/:random.:format" => 'photos#browse'
   get "/system/tps/:id/:one/:two/:three/:style/:random.:format"    => 'tps#show'
   root :to => 'sessions#index'
-
+  match '*path', to: redirect {|pms, req| Logger.new(STDOUT).info("route_error path: #{req.url}, ip: #{req.remote_ip}");"/404"}
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

@@ -1,1 +1,19 @@
-reset.html.erb
+<div class="reset_password" style="margin-top:160px;background:#fff;padding:10px;">
+	<div class="page-header">
+		<h3> <i class="icon-email"></i>
+			重置密码
+		</h3>
+	</div>
+	<%= form_tag '/reset', method: :post, class: 'form-inline' %>
+		<div class="form-group">
+			<label class="sr-only" for="password">新密码</label>
+			<input type="password" id="password" name="password" class="form-control" placeholder="新密码" style="width:300px;">
+			<input type="hidden" name="code" value="<%= params[:code] %>">
+			<p class="help-block"></p>
+		</div>
+		<div class="form-group">
+			<input type="submit" id="submit-push-forgot" class="btn btn-info" value="重置">
+		</div>
+	<%# end %>
+	</form>
+</div>

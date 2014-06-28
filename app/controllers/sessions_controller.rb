@@ -58,7 +58,9 @@ class SessionsController < ApplicationController
 
   # 验证邮箱 / 忘记密码已发送跳转页
   def verif
-    
+    if params[:code].present? and @user = User.find_by_salt(params[:code])
+      @user.update_attributes(salt: nil)
+    end
   end
 
   # 忘记密码
@@ -76,10 +78,9 @@ class SessionsController < ApplicationController
   # 重置密码
   def reset
     if params[:code].present? and @user = User.find_by_salt(params[:code])
-      if request.post? and params[:user][:password].present?
-        @user.update_attributes(password: params[:user][:password], salt: nil)
-        flash[:notice] = '密码修改成功'
-        redirect_to root_path(m: 'sign_in')
+      if request.post? and params[:password].present?
+        @user.update_attributes(password: params[:password], salt: nil)
+        redirect_to '/verif?callback=reset' # 重置
       end
     else
       render text: '无效链接', status: 404 and return
