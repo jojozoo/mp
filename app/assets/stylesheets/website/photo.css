@@ -374,6 +374,7 @@
 }
 .mp-large-picture .mp-large-link img{
 	max-width: 1140px;
+	max-height: 700px;
 }
 .mp-large-picture .pn-photo{
     position: absolute;

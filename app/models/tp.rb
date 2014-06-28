@@ -22,7 +22,7 @@ class Tp < ActiveRecord::Base
     styles: {
       large: { quality: :better, geometry: 'x700>' },
       thumb: { quality: :better, geometry: 'x100>' },
-      plarge: { quality: :better, geometry: '1140x>' },
+      plarge: { quality: :better, geometry: '1140x700>' },
       pthumb: { quality: :better, geometry: '280x280>' },
       pcover: { quality: :better, geometry: '280x280#'},
       psmall: { quality: :better, geometry: '100x100#'}

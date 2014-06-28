@@ -5,9 +5,9 @@
 # 第5列星期0～6（0表示星期天）
 # 第6列要运行的命令
 queue_everyday_choice:
-  cron: "*/1 * * * *"
+  # cron: "*/1 * * * *"
   # cron: "0 18 * * 1-5" # 周一到周五每天下午 6:00
-  # cron: "0 18 * * *" # 每天下午 6:00
+  cron: "0 18 * * *" # 每天下午 6:00
   class: "ChoiceResque"
   queue: choice
   args:
