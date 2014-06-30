@@ -28,17 +28,14 @@
 .flexslider .slides > li {
 	display: none; 
 	-webkit-backface-visibility: hidden;
-	height: 400px;
-	} /* Hide the slides before the JS is loaded. Avoids image jumping */
-/*.flexslider .slides img {width: 100%; display: block;}*/
+	text-align: center;
+}
 .flexslider .slides img{
 	max-width: 100%;
 	max-height: 100%;
 }
 .flexslider .slides > li a{
 	display: block;
-	width: 840px;
-	height: 400px;
 	text-align: center;
 }
 
@@ -58,12 +55,13 @@ html[xmlns] .slides {display: block;}
 *********************************/
 .flexslider { 
 	height: 400px;
-	padding: 0;
+	padding: 10px;
 	overflow: hidden; 
 	margin: 0; 
 	border: 0;
 	position: relative; 
 	zoom: 1; 
+	border: 1px solid #dedede;
 }
 /*box-shadow: 0 1px 4px rgba(0,0,0,.2);*/
 .flex-viewport {/* max-height: 380px;*/ -webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease; }
