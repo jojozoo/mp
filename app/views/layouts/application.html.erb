@@ -41,10 +41,11 @@
 	</div>
 	<%= render 'shared/footer' %>
 
-	<% if flash[:notice].present? %>
+	<% if flash[:notice].present? or flash[:error].present? %>
 		<script type="text/javascript">
-			var str = '<div class="alert alert-success" style="display:none;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><%= flash[:notice] %></div>';
-			$(str).prependTo('.main-tip > .col-md-12').slideDown(500);
+			var _type = '<%= flash[:notice].present? ? "success" : "error" %>',
+				_str    = '<%= flash[:notice] || flash[:error] %>';
+			MPMSG(_type, _str);
 		</script>
 	<% end %>
 

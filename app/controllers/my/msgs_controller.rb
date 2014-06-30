@@ -20,9 +20,11 @@ class My::MsgsController < My::ApplicationController
     def create
         if iboxer = User.find_by_id(params[:user_id])
             msg = current_user.send_msg(iboxer, params[:message][:content])
-            redirect_to my_msg_path(msg.user_id)
+            flash[:notice] = "发送成功"
+            redirect_to params[:redirect] || my_msg_path(msg.user_id)
         else
-            redirect_to my_msgs_path
+            flash[:error] = "发送失败"
+            redirect_to params[:redirect] || my_msgs_path
         end
     end
 
@@ -40,7 +42,7 @@ class My::MsgsController < My::ApplicationController
     def destroy
         if @talk = current_user.iboxs.find_by_id(params[:id])
             if params[:mid].present?
-                @talk.messages.find_by_id(params[:mid]).update_attributes(del: true)
+                @talk.inners.find_by_id(params[:mid]).update_attributes(del: true)
             else
                 @talk.update_attributes(del: true)
             end

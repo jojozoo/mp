@@ -1,0 +1,20 @@
+<div class="modal fade">
+	<div class="modal-dialog">
+		<%= form_for Message.new, url: my_msgs_path, validate: true do |f| %>
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">给 <%= @user.username %> 发送私信</h4>
+				<input type="hidden" name='user_id' value='<%= @user.id %>' />
+				<input type="hidden" name='redirect' value='<%= user_path(@user) %>' />
+			</div>
+			<div class="modal-body">
+				<%= f.text_area :content, class: 'form-control' %>
+			</div>
+			<div class="modal-footer">
+				<%= f.submit '发送', class: 'btn btn-primary pull-right btn-sm', style: 'width: 120px;' %>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

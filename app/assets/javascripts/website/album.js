@@ -52,7 +52,7 @@ $(function(){
 	$("#image-all-move").on('click', function(){
 		var checkboxs = $("input[type=checkbox][id!=album-all-checkbox]:checked");
 		if(checkboxs.length < 1){
-			alert('至少选中1张图片');
+			MPMSG('error', '至少选中1张图片');
 			return false;
 		} else {
 			var url = $(this).attr('href'),

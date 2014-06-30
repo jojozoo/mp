@@ -1,0 +1,5 @@
+$("<%= j render 'msg_box' %>").appendTo("body").modal('show').on('shown.bs.modal', function(){
+	$(this).find('form').enableClientSideValidations();
+}).on('hidden.bs.modal', function(){
+	$(this).off().remove();
+});

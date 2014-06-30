@@ -30,7 +30,18 @@
 	-webkit-backface-visibility: hidden;
 	height: 400px;
 	} /* Hide the slides before the JS is loaded. Avoids image jumping */
-.flexslider .slides img {width: 100%; display: block;}
+/*.flexslider .slides img {width: 100%; display: block;}*/
+.flexslider .slides img{
+	max-width: 100%;
+	max-height: 100%;
+}
+.flexslider .slides > li a{
+	display: block;
+	width: 840px;
+	height: 400px;
+	text-align: center;
+}
+
 .flex-pauseplay span {text-transform: capitalize;}
 
 /* Clearfix for the .slides element */

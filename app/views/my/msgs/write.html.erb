@@ -7,7 +7,7 @@
 		<%= form_for Message.new, url: my_msgs_path, validate: true do |f| %>
 		<input type="hidden" name='user_id' value='<%= @user.id %>'>
 		<%= f.text_area :content, class: 'form-control' %>
-		<%= f.submit '发送', class: 'btn btn-default pull-right' %>
+		<%= f.submit '发送', class: 'btn btn-primary pull-right', style: "width:120px;" %>
 		<% end %>
 	</div>
 </div>

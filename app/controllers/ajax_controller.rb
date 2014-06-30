@@ -60,6 +60,10 @@ class AjaxController < ApplicationController
 
     end
 
+    def msg
+        @user = User.find(params[:id])
+    end
+
 
     # def tui
     #     @obj = params[:source].classify.constantize.find(params[:id])

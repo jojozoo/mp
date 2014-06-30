@@ -27,6 +27,6 @@ form.new_message{
 	<input type="hidden" name='user_id' value='<%= @user.id %>'>
 	<%= f.text_area :content, class: 'form-control' %>
 	<div class="text-right">
-		<%= f.submit '发送', class: 'btn btn-default' %>
+		<%= f.submit '发送', class: 'btn btn-primary', style: 'width: 120px;' %>
 	</div>
 <% end %>

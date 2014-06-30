@@ -60,7 +60,7 @@ module ApplicationHelper
   def link_to_msg user_id
     if current_user
       unless current_user.id == user_id
-        link_to "<i class='icon-envelope'></i> 私信".html_safe, "/ajax/msg/user/#{user_id}", class: 'btn btn-default btn-xs btn-msg'
+        link_to "<i class='icon-envelope'></i> 私信".html_safe, "/ajax/msg/user/#{user_id}", class: 'btn btn-default btn-xs btn-msg', remote: true
       end
     else
       link_to "<i class='icon-envelope'></i> 私信".html_safe, 'javascript:void(0);', class: 'btn btn-default btn-xs btn-msg mp-sign'
