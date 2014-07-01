@@ -33,40 +33,40 @@
 
 <ul class="breadcrumb mp-ul-nav">
 	<li>
-		<a href="/photos?order=news" style="color:orange;">
-			<i class="icon-upload"></i>
+		<%= link_to photos_path(q: {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}), style: 'color:orange' do %>
+		<i class="icon-upload"></i>
 			最新上传
-		</a>
+		<% end %>
 	</li>
 	<li>
-		<a href="/photos?order=choice">
-			<i class="icon-time"></i>
+		<%= link_to photos_path(q: {n: 'choi', o: 'choice_at desc', s: 'cols', w: {tag_id: []}}) do %>
+		<i class="icon-time"></i>
 			每日精选
-		</a>
+		<% end %>
 	</li>
 	<li>
-		<a href="/photos?order=push">
-			<i class="icon-ok-circle"></i>
+		<%= link_to photos_path(q: {n: 'recs', o: 'recommend_at desc', s: 'cols', w: {tag_id: []}}) do %>
+		<i class="icon-ok-circle"></i>
 			推荐精选
-		</a>
+		<% end %>
 	</li>
 	<li>
-		<a href="/photos?order=likes">
-			<i class="icon-heart"></i>
+		<%= link_to photos_path(q: {n: 'liks', o: 'liks_count desc', s: 'cols', w: {tag_id: []}}) do %>
+		<i class="icon-heart"></i>
 			喜欢最多
-		</a>
+		<% end %>
 	</li>
 	<li>
-		<a href="/photos?order=hot">
-			<i class="icon-comments"></i>
+		<%= link_to photos_path(q: {n: 'coms', o: 'coms_count desc', s: 'cols', w: {tag_id: []}}) do %>
+		<i class="icon-comments"></i>
 			评论最多
-		</a>
+		<% end %>
 	</li>
 	<li>
-		<a href="/photos?order=random">
-			<i class="icon-random"></i>
+		<%= link_to photos_path(q: {n: 'radm', o: 'randomhex desc', s: 'cols', w: {tag_id: []}}) do %>
+		<i class="icon-random"></i>
 			随机浏览
-		</a>
+		<% end %>
 	</li>
 </ul>
 <div class="row mp-photos">
