@@ -1,0 +1,13 @@
+<div class="col-sm-6 col-md-3">
+	<div class="thumbnail">
+		<%= link_to image_tag(choice.src), choice.link, target: '_blank' %>
+		<div class="caption">
+			<%= link_to choice.link, target: '_blank' do %>
+				<h5>#<%= choice.title %></h5>
+			<% end %>
+			<p style="height: 34px;">
+				<%= truncate(choice.desc.gsub("<br>", "\r\n"), length: 42) %>
+			</p>
+		</div>
+	</div>
+</div>

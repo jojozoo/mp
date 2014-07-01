@@ -3,7 +3,7 @@ function MPMSG(glass, msg){
     var glass = 'msg-' + glass;
     $("#msgbox").attr('class', glass).find("p").text(msg).end().animate({'opacity': 1, 'top': 0}, 500);
     setTimeout(function(){
-        $("#msgbox").animate({'opacity': 0, 'top': -37}, 500);
+        $("#msgbox").animate({'opacity': 0, 'top': -40}, 500);
     }, 3000);
 }
 $(function(){

@@ -62,6 +62,7 @@ Mp::Application.routes.draw do
   end
   resources :works
   resources :collections, path: 'collection'
+  resources :choices
   resources :sites, only: :create do
     collection do
       match ':action'
