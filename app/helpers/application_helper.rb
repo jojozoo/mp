@@ -42,6 +42,20 @@ module ApplicationHelper
   def link_to_tui name, obj, isblock = true
 
   end
+
+  def lin_to_fol_j user_id
+    if current_user
+      unless current_user.id == user_id
+        if current_user.fol?(user_id)
+          link_to '取消关注', ajax_fol_path('user', user_id), class: 'tofol btn-fold mp-ajax-fol'
+        else
+          link_to '+关注', ajax_fol_path('user', user_id), class: 'tofol mp-ajax-fol'
+        end
+      end
+    else
+      link_to '+关注', 'javascript:void(0);', class: 'tofol mp-sign'
+    end
+  end
   
   def link_to_fol user_id
     if current_user
@@ -140,7 +154,7 @@ module ApplicationHelper
   end
 
   def sessionbackgrounds
-    url = ["1679091c5a.jpg", "45c48cce2e.jpg", "8f14e45fce.jpg", "a87ff679a2.jpg", "c4ca4238a0.jpg", "c81e728d9d.jpg", "c9f0f895fb.jpg", "eccbc87e4b.jpg"].sort_by{rand}[0]
+    url = ["1679091c5a.jpg", "45c48cce2e.jpg", "8f14e45fce.jpg", "c9f0f895fb.jpg", "eccbc87e4b.jpg"].sort_by{rand}[0]
     "/images/backgrounds/#{url}?1394877273"
   end
 

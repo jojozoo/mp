@@ -76,7 +76,7 @@
 							<br>
 							关注一些活跃的摄影师吧！
 						</p>
-						<a href="javascript:void(0);" class="btn btn-warning btn-sm" style="margin-top:20px;">更换推荐</a>
+						<!-- <a href="javascript:void(0);" class="btn btn-warning btn-sm" style="margin-top:20px;">更换推荐</a> -->
 					</div>
 					<div class="tip-right-once">
 						<% users = User.order("rand()").limit(8) %>
@@ -85,7 +85,7 @@
 								<div class="<%= 'last' if index.eql?(3) %>">
 									<%= link_to image_tag(u.avatar.url(:small)), user_path(u) %>
 									<div class="tofolbg"></div>
-									<a href="" class="tofol">+关注</a>
+									<%= lin_to_fol_j u.id %>
 								</div>
 							<% end %>
 						</div>
@@ -94,7 +94,7 @@
 								<div class="<%= 'last' if index.eql?(3) %>">
 									<%= link_to image_tag(u.avatar.url(:small)), user_path(u) %>
 									<div class="tofolbg"></div>
-									<a href="" class="tofol">+关注</a>
+									<%= lin_to_fol_j u.id %>
 								</div>
 							<% end %>
 						</div>
