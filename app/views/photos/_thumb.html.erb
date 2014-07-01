@@ -3,10 +3,10 @@
         <% if photo.isgroup and photo.parent_id.nil? %>
         <a class="type-group">组</a>
         <% end %>
-        <% if photo.recommend and params[:q][:n] != 'recs' and !photo.choice %>
+        <% if photo.recommend and params[:q] and params[:q][:n] != 'recs' and !photo.choice %>
         <a class="type-push">荐</a>
         <% end %>
-        <% if photo.choice and params[:q][:n] != 'choi' %>
+        <% if photo.choice and params[:q] and params[:q][:n] != 'choi' %>
         <a class="type-choice">精</a>
         <% end %>
     </div>
