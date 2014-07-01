@@ -16,11 +16,7 @@
     display: inline-block;
 }
 .mp-session-sign .toolbar > a > img{
-    width: 100px;
-    height: 100px;
-    /*float: left;*/
-    /*margin-top: 10px;*/
-    /*background: url(/images/logo.png) no-repeat;*/
+    margin-top: 30px;
 }
 .mp-session-sign .toolbar > .btn {
     display: inline-block;

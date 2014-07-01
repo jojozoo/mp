@@ -70,7 +70,7 @@
 	</li>
 </ul>
 <div class="row mp-photos">
-	<%= render partial: 'photos/thumb', collection: Photo.where(parent_id: nil).limit(8).order('id desc'), as: :photo %>
+	<%= render partial: 'photos/thumb', collection: Photo.where(parent_id: nil).limit(8).group(:user_id).order('id desc'), as: :photo %>
 </div>
 
 <ul class="breadcrumb mp-ul-nav">

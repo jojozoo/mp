@@ -126,6 +126,17 @@ class Photo < ActiveRecord::Base
   "iso"           => "ISO",
   "taken_at"      => "拍摄时间"
   }
+  ORDER = {
+      'news'  => ['id desc', 'upload', '最新上传'],
+      'choi'  => ['choice_at desc','choi', '精选图片'],
+      'liks'  => ['liks_count desc','heart', '喜欢最多'],
+      'coms'  => ['coms_count desc','comments', '评论最多'],
+      'recs'  => ['recommend_at desc','ok-circle', '编辑推荐'],
+      'choi'  => ['choice_at desc','time', '精选作品'],
+      'radm'  => ['randomhex desc','random', '随机浏览'],
+      'vist'  => ['visit_count desc', '', '人气最高'],
+      'myse'  => ['visit_count desc','', '只看自己']
+  }
 
   # ['like', 'store', 'recom'].each do |item|
   #   define_method "#{item}?(obj)" do

@@ -2,8 +2,10 @@ class UsersController < ApplicationController
 	before_filter :get_user
 
 	def show
-		params[:order] = "id desc"
-		@photos = @user.photos.where(state: true).paginate(:page => params[:page], per_page: 12).order(params[:order])
+		@user = User.find(params[:id])
+		params[:q] ||= {n: 'news', o: 'id desc', s: 'cols', w: {user_id: @user.id}}
+        		params[:q][:s] = 'cols'
+		# @photos = @user.photos.where(state: true).paginate(:page => params[:page], per_page: 12).order(params[:order])
 	end
 
 	def fans

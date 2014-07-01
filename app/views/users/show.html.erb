@@ -1,10 +1,8 @@
 <%= render "header" %>
 <div class="row">
     <div class="col-md-12">
-        <script type="text/javascript" src="/javascripts/photos.js?v=<%= Time.now.to_i %>"></script>
         <div class="row mp-photos" id="mp-photos">
-            <%= render partial: 'photos/thumb', collection: @photos, as: :photo %>
-            <div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(order: params[:order] || 'news') %>">
+            <div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(q: params[:q]) %>">
                 <img src="/images/loading.gif">
                 <span>加载中...</span>
             </div>

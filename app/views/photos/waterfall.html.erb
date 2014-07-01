@@ -1,3 +1,3 @@
 <div <%= "page=#{@photos.next_page}" if @photos.next_page %>>
-	<%= render partial: params[:style].eql?('line') ? 'photos/line_thumb' : 'photos/thumb', collection: @photos, as: :photo %>
+	<%= render partial: params[:q][:s].eql?('line') ? 'photos/line_thumb' : 'photos/thumb', collection: @photos, as: :photo %>
 </div>

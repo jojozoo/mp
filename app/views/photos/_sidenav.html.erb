@@ -1,25 +1,16 @@
 <div class="mp-photo sidenav" id="mp-photo-sidenav">
 	<div class="main-orders">
-		<%
-			data = {
-				'news'   => ['upload', '最新上传'],
-				'likes'  => ['heart', '喜欢最多'],
-				'hot'    => ['comments', '评论最多'],
-				'push'   => ['ok-circle', '编辑推荐'],
-				'choice' => ['time', '每日精选'],
-				'random' => ['random', '随机浏览']
-			}
-		%>
-		<% data.each do |key, val| %>
-			<% if params[:order].eql?(key) %>
+		<% ["news", "liks", "coms", "recs", "choi", "radm"].each do |name| %>
+			<% item = Photo::ORDER[name] %>
+			<% if params[:q][:n].eql?(name) %>
 				<%= link_to 'javascript:void(0);', style: 'color:orange;' do %>
-					<i class="icon-<%= val[0] %>"></i>
-					<%= val[1] %>
+					<i class="icon-<%= item[1] %>"></i>
+					<%= item[-1] %>
 				<% end %>
 			<% else %>
-				<%= link_to photos_path(order: key) do %>
-					<i class="icon-<%= val[0] %>"></i>
-					<%= val[1] %>
+				<%= link_to photos_path(q: params[:q].merge(n: name, o: item[0])) do %>
+					<i class="icon-<%= item[1] %>"></i>
+					<%= item[-1] %>
 				<% end %>
 			<% end %>
 		<% end %>
@@ -29,13 +20,26 @@
 			<a href="javascript:void(0);">标签</a>
 		</div>
 		<div class="mp-tags">
+			<% tts = params[:q][:w][:tag_id] rescue [] %>
 			<% Tag.limit(54).each do |tag| %>
-			<%= link_to tag.name, '' %>
+				<% if tts.member?(tag.id.to_s) %>
+					<% 
+						t = tts - [tag.id.to_s]
+						query = params[:q][:w].merge(tag_id: t)
+					 %>
+					<%= link_to tag.name, photos_path(q: params[:q].merge(w: query)), style: 'color: orange;' %>
+				<% else %>
+					<%
+						t = (params[:q][:w][:tag_id] rescue []) + [tag.id]
+					 %>
+					<%= link_to tag.name, photos_path(q: params[:q].merge(w: (params[:q][:w] || {}).merge(tag_id: t)) ) %>
+				<% end %>
 			<% end %>
 		</div>
 	</div>
 	<div class="hint">
 		<span>?</span>
-		按住Shift可以选择多个类别
+		再次单击选择标签就取消
+		<!-- 按住Shift可以选择多个类别 -->
 	</div>
 </div>

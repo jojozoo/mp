@@ -29,9 +29,8 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		params[:order] = params[:order] || 'news'
-		params[:style] = params[:style] || 'line'
 		@event = Event.find(params[:id])
+		params[:q] ||= {n: 'news', o: 'id desc', w: {request_id: @event.id}, s: 'line'}
 	end
 
 	def edit

@@ -49,42 +49,55 @@
 		}
 		</style>
 		<ul class="breadcrumb">
-			<% {
-				'news' => '最新上传',
-				'choice' => '精选图片',
-				'vist' => '人气最高',
-				'coms' => '评论最多',
-				'myse' => '只看自己',
-				'comments' => '评论'
-			}.each do |key, val|%>
+			<% ["news", "choi", "vist", "coms", "myse"].each do |name|%>
+			<% item = Photo::ORDER[name] %>
 			<li>
-				<%= link_to val, event_path(@event.id, order: key), class: params[:order].eql?(key) ? 'activity' : '' %>
+				<% if params[:q][:n].eql?(name) %>
+					<%= link_to item[-1], 'javascript:void(0);', class: 'activity' %>
+				<% else %>
+					<%= link_to item[-1], event_path(@event.id, q: params[:q].merge(n: name, o: item[0])) %>
+				<% end %>
 			</li>
 			<% end %>
-			<div class="pull-right">
-				<%= link_to event_path(style: :line, order: params[:order]), class: params[:style].eql?('line') ? 'activity' : '' do %>
-					<span class="icon-align-justify"></span>
+			<li>
+				<% if action_name.eql?('comment') %>
+					<%= link_to '活动留言', comment_event_path(@event.id), class: 'activity' %>
+				<% else %>
+					<%= link_to '活动留言', 'javascript:void(0);' %>
 				<% end %>
-				<%= link_to event_path(style: :cols, order: params[:order]), class: params[:style].eql?('cols') ? 'activity' : '' do %>
-					<span class="icon-th"></span>
+			</li>
+			<div class="pull-right">
+				<% if params[:q][:s].eql?('cols') %>
+					<%= link_to event_path(q: params[:q].merge(s: :line)) do %>
+						<span class="icon-align-justify"></span>
+					<% end %>
+					<%= link_to 'javascript:void(0);', class: 'activity' do %>
+						<span class="icon-th"></span>
+					<% end %>
+				<% else %>
+					<%= link_to 'javascript:void(0);', class: 'activity' do %>
+						<span class="icon-align-justify"></span>
+					<% end %>
+					<%= link_to event_path(q: params[:q].merge(s: :cols)) do %>
+						<span class="icon-th"></span>
+					<% end %>
 				<% end %>
 			</div>
 		</ul>
-		<script type="text/javascript" src="/javascripts/photos.js?v=<%= Time.now.to_i %>"></script>
-		<% if params[:style].eql?('line') %>
-		<div class="row line-photos">
-			<div class="col-md-12" id="mp-photos">
-				<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(request_id: @event.id, order: params[:order] || 'push', style: params[:style]) %>">
-					<img src="/images/loading.gif">
-					<span>加载中...</span>
-				</div>
+		<% if params[:q][:s].eql?('cols') %>
+		<div class="row mp-photos" id="mp-photos">
+			<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(q: params[:q]) %>">
+				<img src="/images/loading.gif">
+				<span>加载中...</span>
 			</div>
 		</div>
 		<% else %>
-		<div class="row mp-photos" id="mp-photos">
-			<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(request_id: @event.id, order: params[:order] || 'push', style: params[:style]) %>">
-				<img src="/images/loading.gif">
-				<span>加载中...</span>
+		<div class="row line-photos">
+			<div class="col-md-12" id="mp-photos">
+				<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(q: params[:q]) %>">
+					<img src="/images/loading.gif">
+					<span>加载中...</span>
+				</div>
 			</div>
 		</div>
 		<% end %>
