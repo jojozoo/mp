@@ -81,11 +81,11 @@ Mp::Application.routes.draw do
     
   end
   
-  # ['information', 'avatar', 'security', 'push', 'socials'].each do |r|
-  #   match "/settings/#{r}" => "settings##{r}", via: [:get, :post], as: "settings_#{r}".to_sym
-  # end
-  # match "/settings"    => "settings#index"
-  # post "/settings/cut" => "settings#cut"
+  ['information', 'avatar', 'security', 'push', 'socials'].each do |r|
+    match "/settings/#{r}" => "settings##{r}", via: [:get, :post], as: "settings_#{r}".to_sym
+  end
+  match "/settings"    => "settings#index"
+  post "/settings/cut" => "settings#cut"
   ##### my star #####
   scope '/my', module: 'my', as: 'my' do
     get '/' => 'sets#index'
