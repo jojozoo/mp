@@ -17,7 +17,7 @@ $(function(){
 				}
 			}
 			if(isNoNextPage){
-				MPMSG('error', '最后一页了');
+				// MPMSG('error', '最后一页了');
 				$("#page_loading").remove();
 				return;
 			}
