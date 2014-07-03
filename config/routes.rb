@@ -58,6 +58,7 @@ Mp::Application.routes.draw do
       get :like
       get :store
       get :albums
+      get '/:album_id/photos', action: :photos, as: :photos_album
     end
   end
   resources :works

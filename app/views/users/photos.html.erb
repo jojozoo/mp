@@ -1,0 +1,6 @@
+<%= render 'header' %>
+<p class="text-right">
+	<%= link_to '返回相册', albums_user_path(@user), class: 'btn btn-primary' %>
+</p>
+<%= render partial: 'photos/line_thumb', collection: @photos, as: :photo %>
+<%= will_paginate @photos %>
