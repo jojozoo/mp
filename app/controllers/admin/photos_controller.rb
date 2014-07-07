@@ -4,7 +4,7 @@ class Admin::PhotosController < Admin::ApplicationController
 		params[:date] = params[:date] || Date.today.to_s
 		params[:time] = params[:time] || '全天'
 		s_dt, e_dt = datetime_merge(params[:date], params[:time])
-		@images = Photo.where(['created_at >= ? and created_at <= ?', s_dt, e_dt]).paginate(:page => params[:page], per_page: 24)
+		@photos = Photo.where(['created_at >= ? and created_at <= ?', s_dt, e_dt]).paginate(:page => params[:page], per_page: 24).order("id desc")
 	end
 
 	def datetime_merge date, time
@@ -22,16 +22,16 @@ class Admin::PhotosController < Admin::ApplicationController
 	end
 
 	def basic
-		@image = Photo.find(params[:id])
+		@photo = Photo.find(params[:id])
 		render :basic, layout: false
 	end
 
 	def all
-		@images = Photo.where(params[:con]).paginate(:page => params[:page], per_page: 20).includes([:user, :event, :work, :album])
+		@photos = Photo.where(params[:con]).paginate(:page => params[:page], per_page: 20).includes([:user, :event, :work, :album]).order("id desc")
 	end
 
 	def show
-		@image = Photo.find(params[:id])
+		@photo = Photo.find(params[:id])
 	end
 
 	def destroy

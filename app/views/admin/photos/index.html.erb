@@ -52,7 +52,8 @@ this.title_two = '<a class="btn btn-info btn-xs jp" href="/admin/push/推荐精�
                   <a class="btn btn-info btn-xs jp" href="/admin/push/推荐摄影师/' + obj.jsid + '"> \
                     推荐摄影师 \
                   </a> \
-                  '
+                  ';
+            // this.title_two = '前台管理';
             // request
             $.get("/admin/photos/" + obj.jsid + "/basic", function(data){
                 $(".fancybox-title-over-wrap").html(data);
@@ -139,23 +140,14 @@ this.title_two = '<a class="btn btn-info btn-xs jp" href="/admin/push/推荐精�
             </small>
         </h3>
         <div class="row admin">
-            <% @images.each do |image| %>
+            <% @photos.each do |photo| %>
             <div class="col-md-2">
                 <div class="thumbnail">
-                    <%= link_to image_tag(image.picture(:cover)), image.picture(:big), class: 'fancybox', data:{'fancybox-group' => "gallery"}, jsid: image.id %>
-                    <!-- <div class="caption">
-                        <a href="javascript:void(0)" title="删除"> 
-                            <i class="icon-trash"></i>
-                        </a>
-                        <a href="javascript:void(0)" title="编辑">
-                            <i class="icon-pencil"></i>
-                        </a>
-                        <%#= link_to image.user.username, 'javascript:void(0);' %>
-                    </div> -->
+                    <%= link_to image_tag(photo.picture(:cover)), photo.picture(:large), class: 'fancybox', data:{'fancybox-group' => "gallery"}, jsid: photo.id %>
                 </div>
             </div>
             <% end %>
         </div>
-        <%= will_paginate @images %>
+        <%= will_paginate @photos %>
     </div>
 </div>

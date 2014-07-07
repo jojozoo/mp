@@ -92,18 +92,4 @@ class PhotosController < ApplicationController
     def destroy
 
     end
-
-    private
-
-    def load_data
-        con, order = {
-            'news'   => [{}, 'id desc'],
-            'likes'  => [{}, 'liks_count desc'],
-            'push'   => [{recommend: true}, 'recommend_at desc'],
-            'hot'    => [{}, 'coms_count desc'],
-            'choice' => [{choice: true}, 'choice_at desc'],
-            'random' => [{}, 'randomhex desc'] # TODO 缺少算法
-        }[params[:order]] || [{}, 'id desc']
-        Photo.where(con.merge(parent_id: nil)).paginate(:page => params[:page], per_page: 16).order(order)
-    end
 end

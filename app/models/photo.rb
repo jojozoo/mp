@@ -182,6 +182,10 @@ class Photo < ActiveRecord::Base
         image_count = Photo.where(event_id: event.id).count
         membe_count = Photo.uniq.where(event_id: event.id).pluck(:user_id).length
         event.update_attributes(photos_count: image_count, members_count: membe_count)
+        if item['album_id'].blank?
+          album = Album.find_or_create_by_user_id_and_name(uid, event.name)
+          photo.update_attributes(album_id: album.id)
+        end
       end
     end
     # TODO

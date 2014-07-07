@@ -40,6 +40,7 @@
     position: absolute;
     filter: alpha(opacity=0);
     _width: 300px;
+    z-index:9;
 }
 .mp-session-sign .login-button{
     display: block;
