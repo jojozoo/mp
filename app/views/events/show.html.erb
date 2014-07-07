@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-12 mp-request-show">
 		<div class="page-header">
 			<h4>
 				<%= @event.title %>
@@ -33,21 +33,6 @@
 				<%= sanitize @event.desc %>
 			</div>
 		</div>
-		<style type="text/css">
-		.breadcrumb {margin-bottom: 10px;}
-		.breadcrumb a{
-			text-decoration: none;
-		}
-		.breadcrumb a.activity{
-			color: #999;
-		}
-		.breadcrumb .pull-right a{
-			font-size: 20px;
-		}
-		.line-photos .item-line hr{
-			margin: 10px auto 30px auto;
-		}
-		</style>
 		<ul class="breadcrumb">
 			<% ["news", "choi", "vist", "coms", "myse"].each do |name|%>
 			<% item = Photo::ORDER[name] %>
