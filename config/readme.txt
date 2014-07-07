@@ -69,3 +69,6 @@ resque-web -p 8282
 重启机器需要 启动nginx redis resque
 
 定时任务失败
+
+
+标签搜索 组图浏览 继续上传
