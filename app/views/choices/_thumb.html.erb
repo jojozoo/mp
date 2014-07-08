@@ -2,7 +2,7 @@
 	<p>
 		<%= link_to photo.user.username, user_path(photo.user_id) %> 上传于 <%= photo.created_at.to_s(:db) %>  查看 (<%= photo.visit_count %>)   评论 (<%= photo.coms_count %>)   喜欢(<%= photo.liks_count %>)   收藏(<%= photo.stos_count %>)
 	</p>
-	<p>
+	<p class="mp-picture-text-center">
 		<%= link_to image_tag(photo.picture.url(:large)), photo_path(photo, sid: photo.user_id), title: '点击查看详细内容' %>
 	</p>
 	<p>

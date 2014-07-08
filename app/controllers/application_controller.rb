@@ -1,9 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :site_config, :current_user
+  before_filter :site_config, :current_user, :prepare_for_mobile
 
-  helper_method :current_user, :sign_in?
+  helper_method :current_user, :sign_in?, :is_mobile?
+
+  def prepare_for_mobile
+    request.format = :mobile if is_mobile?
+  end
+
+  def is_mobile?
+    request.user_agent =~ /Mobile|webOS/ || params[:mobile].eql?('1')
+  end
 
   def site_config
     @title ||= $site_config[:title]

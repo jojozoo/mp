@@ -6,7 +6,7 @@
 				<h5>#<%= choice.title %></h5>
 			<% end %>
 			<p style="height: 34px;">
-				<%= truncate(choice.desc.gsub("<br>", "\r\n"), length: 42) %>
+				<%= truncate(choice.desc.to_s.gsub("<br>", "\r\n"), length: 42) %>
 			</p>
 		</div>
 	</div>

@@ -14,13 +14,15 @@
 
 
 .mp-home-top{
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 .mp-home-top .col-md-8{
-    width: 870px;
+    /*width: 870px;*/
+    width: 800px;
 }
 .mp-home-top .col-md-4{
-    width: 300px;
+    /*width: 300px;*/
+    width: 370px;
 }
 .mp-home-top .col-md-4 ul li{
     line-height: 20px;

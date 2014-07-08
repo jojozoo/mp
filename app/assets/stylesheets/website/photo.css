@@ -436,8 +436,15 @@
 .mp-request-show .line-photos .item-line hr{
 	margin: 10px auto 30px auto;
 }
-.mp-request-show .line-photos .item-line p a img{
+
+.item-line p.mp-picture-text-center{
+	text-align: center;
+}
+.item-line p a img{
 	max-height: 700px;
+	min-height: 600px;
+	max-width: 700px;
+	min-width: 600px;
 }
 /*.editor_opt {
 	margin-top: 10px;

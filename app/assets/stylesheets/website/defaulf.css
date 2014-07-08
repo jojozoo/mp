@@ -229,7 +229,7 @@ textarea.form-control{
     font-size: 12px;
 }
 .main{
-	margin: 30px auto 0;
+	margin: 40px auto 0;
 }
 .col-md-9{
     padding-right: 0;
@@ -257,10 +257,10 @@ textarea.form-control{
     padding: 10px;
 }
 .header{
-	height: 50px;
+    height: 75px;
 }
 .header .avatar{
-	margin: -15px 24px 0 0;
+    margin: -15px 24px 0 0;
     float: left;
 }
 .avatar-mini{
@@ -283,11 +283,22 @@ textarea.form-control{
 }
 
 .navbar-default{
-	background: #26292e;
+    /*background: #26292e;*/
     /*background: #46485f;*/
+    background: url("/images/navbg.gif") repeat-x;
+    height: 75px;
+    margin-bottom: 0;
 }
 .navbar-default .navbar-nav > li > a{
-	color: #fff;
+    /*color: #fff;*/
+    color: #181818;
+    font-size: 16px;
+}
+.navbar-header{
+    margin-top: -7px;
+}
+.navbar-default .navbar-collapse{
+    margin-top: 17px;
 }
 .navbar-default .navbar-collapse ul.navbar-right > li > a.nav-more{
     text-indent: -9999px;
@@ -299,18 +310,22 @@ textarea.form-control{
 }
 .navbar-default .navbar-collapse ul.navbar-right > li > a.nav-more:hover{
     background-position: -90px -50px;
-    background-color: #3a3f46;
+    background-color: #dedede;
 }
 .navbar-default .navbar-nav > .active > a, 
 .navbar-default .navbar-nav > .active > a:hover, 
 .navbar-default .navbar-nav > .active > a:focus{
-	background: #3a3f46;
-	color: #f78927;
+    /*background: #3a3f46;
+    color: #f78927;*/
+    background: #DEDEDE;
+    color: #f78927;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #f78927;
-  background: #3a3f46;
+    /*color: #f78927;
+    background: #3a3f46;*/
+    background: #DEDEDE;
+    color: #f78927;
 }
 .navbar-default .navbar-nav > li > a.btn-warning:hover,
 .navbar-default .navbar-nav > li > a.btn-warning:focus {

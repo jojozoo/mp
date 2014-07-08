@@ -1,7 +1,7 @@
 class Admin::TuisController < Admin::ApplicationController
 
   def index
-    @tuis = Tui.where(p).paginate(:page => params[:page], per_page: 20).order('id desc')
+    @tuis = Tui.where(editor: 1).paginate(:page => params[:page], per_page: 20).order('id desc')
   end
 
   def new

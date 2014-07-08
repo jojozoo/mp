@@ -135,7 +135,7 @@ class Photo < ActiveRecord::Base
       'choi'  => ['choice_at desc','time', '精选作品'],
       'radm'  => ['randomhex desc','random', '随机浏览'],
       'vist'  => ['visit_count desc', '', '人气最高'],
-      'myse'  => ['visit_count desc','', '只看自己']
+      'myse'  => ['visit_count desc','', '我的漫拍']
   }
 
   # ['like', 'store', 'recom'].each do |item|

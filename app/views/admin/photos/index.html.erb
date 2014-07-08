@@ -53,7 +53,7 @@ this.title_two = '<a class="btn btn-info btn-xs jp" href="/admin/push/推荐精�
                     推荐摄影师 \
                   </a> \
                   ';
-            // this.title_two = '前台管理';
+            this.title_two = '前台管理';
             // request
             $.get("/admin/photos/" + obj.jsid + "/basic", function(data){
                 $(".fancybox-title-over-wrap").html(data);
@@ -137,6 +137,18 @@ this.title_two = '<a class="btn btn-info btn-xs jp" href="/admin/push/推荐精�
                     <i class="icon-random"></i>
                     随机浏览
                 <% end %>
+            </small>
+            /
+            <small>
+                <% if params[:order].eql?('recommend') %>
+                    <%= link_to '今日精选', admin_photos_path, style: 'color:#999;' %>
+                <% else %>
+                    <%= link_to '今日精选', admin_photos_path(order: 'recommend') %>
+                <% end %>
+            </small>
+            /
+            <small>
+                <%= link_to '今日封面', all_admin_photos_path %>
             </small>
         </h3>
         <div class="row admin">

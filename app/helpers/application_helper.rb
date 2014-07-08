@@ -192,7 +192,7 @@ module ApplicationHelper
 
   def link_to_photo photo
     url = (photo.isgroup and photo.parent_id.nil?) ? photo_path(photo, sid: photo.id, sn: 'group') : photo_path(photo, sid: photo.user_id)
-    link_to image_tag(photo.picture(:thumb)), url, target: '_blank', class: 'thumb'
+    link_to image_tag(photo.picture(:cover)), url, target: '_blank', class: 'thumb'
   end
 
 end
