@@ -439,6 +439,7 @@
 
 .item-line p.mp-picture-text-center{
 	text-align: center;
+	background: #dedede;
 }
 .item-line p a img{
 	max-height: 700px;
