@@ -3,7 +3,7 @@
 		<%= link_to photo.user.username, user_path(photo.user_id) %> 上传于 <%= photo.created_at.to_s(:db) %>  查看 (<%= photo.visit_count %>)   评论 (<%= photo.coms_count %>)   喜欢(<%= photo.liks_count %>)   收藏(<%= photo.stos_count %>)
 		<% if current_user.try(:id).eql?(photo.user_id) %>
 		<span class="pull-right editor_opt">
-			<a class="opt" href="javascript:void(0);">作品修改</a>
+			<%= link_to '作品修改', edit_photo_path(photo), class: 'opt' %>
 			<a class="opt" href="javascript:void(0);">继续上传</a>
 		</span>
 		<% end %>

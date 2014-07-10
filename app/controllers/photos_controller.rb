@@ -50,7 +50,8 @@ class PhotosController < ApplicationController
             Photo.where(user_id: params[:sid], recommend: true)
         else # 个人作品
             Photo.where(user_id: params[:sid]).order("id desc")
-        end.limit(10)
+        end.paginate(:page => params[:page], per_page: 10)
+        # @photo_pages = @photos.paginate(:page => params[:page], per_page: 1)
         @photo.visits.create(user_id: current_user.try(:id))
     end
 

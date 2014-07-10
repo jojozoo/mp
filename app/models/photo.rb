@@ -48,6 +48,7 @@ class Photo < ActiveRecord::Base
   attr_accessible :user_id, 
   :event_id, 
   :work_id, 
+  :gl_id,
   :album_id, 
   :isgroup,
   :parent_id, 
@@ -161,19 +162,21 @@ class Photo < ActiveRecord::Base
     recs.exists?(editor_id: obj.id)
   end
 
-  def prev(offset = 0)
-    self.class.first(:conditions => ['user_id = ? and id < ?', self.user_id, self.id], :limit => 1, :offset => offset, :order => "id DESC")
-  end
+  # def prev(offset = 0)
+  #   self.class.first(:conditions => ['user_id = ? and id < ?', self.user_id, self.id], :limit => 1, :offset => offset, :order => "id DESC")
+  # end
 
-  def next(offset = 0)
-    self.class.first(:conditions => ['user_id = ? and id > ?', self.user_id, self.id], :limit => 1, :offset => offset, :order => "id ASC")
-  end
+  # def next(offset = 0)
+  #   self.class.first(:conditions => ['user_id = ? and id > ?', self.user_id, self.id], :limit => 1, :offset => offset, :order => "id ASC")
+  # end
 
   def self.create_items items, uid, parent = nil
     tpid = nil
     pattr = {user_id: uid, state: true}.merge(parent ? {isgroup: true, parent_id: parent.id} : {})
+    lastitem = nil
     items.each do |item|
       photo = Photo.create(item.merge(pattr))
+      lastitem = photo
       move_picture(photo)
       # 为更新parent的图
       tpid = photo.tpid
@@ -190,8 +193,8 @@ class Photo < ActiveRecord::Base
     end
     # TODO
     if parent
-      last = items.last
-      parent.update_attributes({event_id: last['event_id'], state: true, warrant: last['warrant']})
+      last = lastitem
+      parent.update_attributes({event_id: last.event_id, state: true, warrant: last.warrant, gl_id: last.id})
       move_picture(parent, tpid)
     end
   end
