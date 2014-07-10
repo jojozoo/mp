@@ -14,17 +14,18 @@
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #
-
+require 'paperclip_processors/watermark'
 class Tp < ActiveRecord::Base
   attr_accessible :picture, :user_id
   
   has_attached_file :picture,
+    processors: [:watermark],
     styles: {
-      large: { quality: :better, geometry: 'x700>' },
-      thumb: { quality: :better, geometry: 'x100>' },
-      plarge: { quality: :better, geometry: '1140x700>' },
-      pthumb: { quality: :better, geometry: '280x280>' },
-      pcover: { quality: :better, geometry: '280x280#'},
+      large: { quality: :better, geometry: 'x700>'},
+      thumb: { quality: :better, geometry: 'x100>'},
+      plarge: { quality: :better, geometry: '1140x700>', water_path: "#{Rails.root.to_s}/public/images/water/large.png" },
+      pthumb: { quality: :better, geometry: '280x280>', water_path: "#{Rails.root.to_s}/public/images/water/thumb.png" },
+      pcover: { quality: :better, geometry: '280x280#', water_path: "#{Rails.root.to_s}/public/images/water/cover.png"},
       psmall: { quality: :better, geometry: '100x100#'}
     },
     url: "/system/:class/:id/:id_partition/:style/:random.:extension",
