@@ -84,9 +84,9 @@ Mpupload.initQueue = function(data){
         lw = parseFloat(data.exif.large_width),
         rw = lw,
         rh = parseFloat(data.exif.large_height);
-    if(lw > 1070){
-        rw = 1070;
-        rh = 700 * (1070 / lw);
+    if(lw > 1140){
+        rw = 1140;
+        rh = 700 * (1140 / lw);
     }
     Mpupload.queue[data.id] = {
         tpid: data.id,
@@ -103,12 +103,20 @@ Mpupload.initQueue = function(data){
         gdMark: null,
         jcrop: null,
         cropAttr: {
-            oscale: ow / (lw > 1070 ? 1070 : lw),
+            oscale: ow / (lw > 1140 ? 1140 : lw),
             oh: parseFloat(data.exif.original_height),
             rw: rw,
             rh: rh
         },
         crop: {
+            oscale: ow / (lw > 1140 ? 1140 : lw),
+            oh: parseFloat(data.exif.original_height),
+            rw: rw,
+            rh: rh,
+            cw: 0,
+            ch: 0,
+            cx: 0,
+            cy: 0,
             w: 0,
             h: 0,
             x: 0,
@@ -132,6 +140,10 @@ Mpupload.initCrop = function(id){
             h = cood.h * attr.oscale,
             x = cood.x * attr.oscale,
             y = cood.y * attr.oscale;
+        Mpupload.queue[id].crop.cw = cood.w;
+        Mpupload.queue[id].crop.ch = cood.h;
+        Mpupload.queue[id].crop.cx = cood.x;
+        Mpupload.queue[id].crop.cy = cood.y;
         Mpupload.queue[id].crop.w = h > attr.oh ? attr.oh : w;
         Mpupload.queue[id].crop.h = h > attr.oh ? attr.oh : h;
         Mpupload.queue[id].crop.x = x; // xy坐标暂时没测出什么问题

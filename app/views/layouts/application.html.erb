@@ -1,78 +1,53 @@
 <!DOCTYPE html>
-<% if is_mobile? %>
-	<html>
-	<head>
-		<meta charset="utf-8">
-		<title><%= @title %></title>
-		<meta name="keywords" content="<%= @keywords %>">
-		<meta name="description" content="<%= @description %>">
-		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-		<meta content="yes" name="apple-mobile-web-app-capable">
-		<meta content="black" name="apple-mobile-web-app-status-bar-style">
-		<meta content="telephone=no" name="format-detection">
-		<!-- 移动webkit版本的input有一个属性：autocapitalize 设置off来关闭 -->
-		<%= stylesheet_link_tag "mobile", :media => "all" %>
-		<%= javascript_include_tag "mobile" %>
-		<%= csrf_meta_tags %>
-		<link href="/favicon.ico?v=1" type="image/x-icon" rel="icon">
-		<link href="/favicon.ico?v=1" type="image/x-icon" rel="shortcut icon">
-		<%= render 'shared/tongji' %>
-	</head>
-	<body>
-		<%= yield %>
-	</body>
-	</html>
-<% else %>
-	<html>
-	<head>
-		<meta charset="utf-8">
-		<title><%= @title %></title>
-		<meta name="keywords" content="<%= @keywords %>">
-		<meta name="description" content="<%= @description %>">
-		<%= stylesheet_link_tag "application", :media => "all" %>
-		<%= javascript_include_tag "application" %>
-		<%= csrf_meta_tags %>
-		<link href="/favicon.ico?v=1" type="image/x-icon" rel="icon">
-		<link href="/favicon.ico?v=1" type="image/x-icon" rel="shortcut icon">
-		<!--[if lte IE 8]>
-		<link rel="stylesheet" href="/ie/ie.css" />
-		<![endif]-->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= @title %></title>
+	<meta name="keywords" content="<%= @keywords %>">
+	<meta name="description" content="<%= @description %>">
+	<%= stylesheet_link_tag "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<link href="/favicon.ico?v=1" type="image/x-icon" rel="icon">
+	<link href="/favicon.ico?v=1" type="image/x-icon" rel="shortcut icon">
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="/ie/ie.css" />
+	<![endif]-->
 
-		<!--[if lt IE 9]>
-		<script src="/ie/html5shiv.min.js"></script>
-		<script src="/ie/respond.min.js"></script>
-		<![endif]-->
-		<%= render 'shared/tongji' %>
-	</head>
-	<body>
-		<div id="msgbox" class="msg-success">
-			<p>关注/取消关注成功！</p><div class="closeb"></div>
-		</div>
-		<%= render 'shared/nav' %>
-		<div class="container main">
-			<div class="row main-tip">
-				<div class="col-md-12">
-					<!-- <div class="alert alert-info">
-						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-						<strong>通知:</strong>
-						漫拍网第二版即将发布，敬请期待！！！
-						<br>
-					</div> -->
-				</div>
+	<!--[if lt IE 9]>
+	<script src="/ie/html5shiv.min.js"></script>
+	<script src="/ie/respond.min.js"></script>
+	<![endif]-->
+	<%= render 'shared/tongji' %>
+</head>
+<body>
+	<div id="msgbox" class="msg-success">
+		<p>关注/取消关注成功！</p><div class="closeb"></div>
+	</div>
+	<%= render 'shared/nav' %>
+	<div class="container main">
+		<div class="row main-tip">
+			<div class="col-md-12">
+				<!-- <div class="alert alert-info">
+					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+					<strong>通知:</strong>
+					漫拍网第二版即将发布，敬请期待！！！
+					<br>
+				</div> -->
 			</div>
-			
-			<%= yield %>
 		</div>
-		<%= render 'shared/footer' %>
+		
+		<%= yield %>
+	</div>
+	<%= render 'shared/footer' %>
 
-		<% if flash[:notice].present? or flash[:error].present? %>
-			<script type="text/javascript">
-				var _type = '<%= flash[:notice].present? ? "success" : "error" %>',
-					_str    = '<%= flash[:notice] || flash[:error] %>';
-				MPMSG(_type, _str);
-			</script>
-		<% end %>
+	<% if flash[:notice].present? or flash[:error].present? %>
+		<script type="text/javascript">
+			var _type = '<%= flash[:notice].present? ? "success" : "error" %>',
+				_str    = '<%= flash[:notice] || flash[:error] %>';
+			MPMSG(_type, _str);
+		</script>
+	<% end %>
 
-	</body>
-	</html>
-<% end %>
+</body>
+</html>

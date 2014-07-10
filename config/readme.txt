@@ -72,3 +72,38 @@ resque-web -p 8282
 
 
 标签搜索 组图浏览 继续上传
+
+
+apt-get install pptpd
+sudo vim /etc/pptpd.conf
+localip 192.168.0.1
+remoteip 192.168.0.234-238,192.168.0.245
+sudo vim /etc/ppp/pptpd-options
+找到带#ms-dns地方添加：
+ms-dns 8.8.8.8 
+ms-dns 8.8.4.4
+sudo vim  /etc/ppp/chap-secrets
+username    *   password    *
+sudo vim /etc/sysctl.conf
+net.ipv4.ip_forward=1
+sudo sysctl -p
+
+
+sudo iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -o eth0 -j MASQUERADE
+or
+sudo iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j SNAT --to-source [你的服务器ip128.199.148.102]
+apt-get install iptables
+iptables -t nat -I POSTROUTING -j MASQUERADE
+后面这句话作用是：立刻让LINUX支持NAT(platinum)
+
+　iptables -I FORWARD -p tcp --syn -i ppp+ -j TCPMSS --set-mss 1356
+
+假如有部分网站访问不正确，则加入这句，将MTU值调小，这句将MTU值设置为1356。
+
+　但是，只是这样，iptables 的规则会在下次重启时被清除，所以我们还需要把它保存下来，方法是使用 iptables-save 命令：
+   iptables-save > /etc/iptables-rules
+然后修改 /etc/network/interfaces 文件，找到 eth0 那一节，在对 eth0 的设置最末尾加上下面这句：
+    pre-up iptables-restore < /etc/iptables-rules
+这样当网卡 eth0 被加载的时候就会自动载入我们预先用 iptables-save 保存下的配置。
+
+sudo /etc/init.d/pptpd restart

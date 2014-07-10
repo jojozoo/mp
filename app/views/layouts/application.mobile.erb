@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= @title %></title>
+	<meta name="keywords" content="<%= @keywords %>">
+	<meta name="description" content="<%= @description %>">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<!-- 移动webkit版本的input有一个属性：autocapitalize 设置off来关闭 -->
+	<%= stylesheet_link_tag "mobile", :media => "all" %>
+	<%= javascript_include_tag "mobile" %>
+	<%= csrf_meta_tags %>
+	<link href="/favicon.ico?v=1" type="image/x-icon" rel="icon">
+	<link href="/favicon.ico?v=1" type="image/x-icon" rel="shortcut icon">
+</head>
+<body>
+	<%= yield %>
+</body>
+</html>

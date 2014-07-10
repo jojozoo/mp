@@ -70,6 +70,19 @@ class PhotosController < ApplicationController
         @album  = current_user.albums.find_by_id(params[:album_id]) if params[:album_id].present?
     end
 
+    def edit
+        photo = Photo.find(params[:id])
+        
+        if photo.isgroup
+            pid = photo.parent_id.blank? ? photo.id : photo.parent_id
+            @photos = Photo.where(parent_id: pid, isgroup: true)
+            @group = Photo.find(pid)
+        else
+            @photos = [photo]
+        end
+        @photo = photo.parent_id.blank? ? @photos.first : photo
+    end
+
     def uploadnew
     end
 

@@ -63,7 +63,7 @@
 .uploader .crop-tooltip{z-index:1000;display:none;opacity:0;-webkit-transition:all 0.2s ease-in;-webkit-transition-delay:0;-webkit-transition:all 0.2s ease-in 0;transition:all 0.2s ease-in 0;position:absolute;top:300px;left:460px;width:206px;height:auto;padding:18px 15px;background:#222222;-o-border-radius:3px;border-radius:3px;-webkit-box-shadow:0px 4px 15px rgba(0,0,0,0.3);box-shadow:0px 4px 15px rgba(0,0,0,0.3)}
 .uploader .crop-tooltip.display{opacity:1;display:block}
 .uploader .crop-tooltip p{font-size:14px;line-height:22px;color:#d0d0d0;font-weight:200}
-.uploader .photo-container{position:relative;width:1070px;margin:30px auto 10px auto;padding:0}
+.uploader .photo-container{position:relative;width:1140px;margin:30px 0 10px 0;padding:0}
 .uploader .photo-container:before,.uploader .photo-container:after{content:"\0020";display:block;height:0;overflow:hidden}
 .uploader .photo-container:after{clear:both}
 .uploader .photo-container .drag-info{display:table-cell;vertical-align:middle;position:relative}
@@ -91,13 +91,13 @@
 .uploader .photo-container .drag-info .service_list .service h2{display:inline-block;text-align:left;color:#aeafb0;font-size:14px;height:25px;line-height:25px;padding:0 0 0 8px}
 .uploader .photo-container .drag-info .service_list .service h2:last-child{margin:0}
 .uploader .photo-container .alternate-upload{display:none}
-.uploader .photo-container .active-photo-wrap{display:table;width:1070px;height:700px;position:relative}
+.uploader .photo-container .active-photo-wrap{display:table;width:1140px;height:300px;position:relative}
 .uploader .photo-container .active-photo-wrap .finish-progress,.uploader .photo-container .active-photo-wrap .loading-progress{display:none}
 .uploader .photo-container .active-photo-wrap .active-photo{display:table-cell;vertical-align:middle}
 .uploader .photo-container .active-photo-wrap .active-photo .photo-preview .jcrop-holder{margin:0 auto}
 .uploader .photo-container .active-photo-wrap .active-photo .photo-preview.inactive{display:none}
 .uploader .photo-container .active-photo-wrap .active-photo .photo-preview{vertical-align:middle}
-.uploader .photo-container .active-photo-wrap .active-photo .photo-preview img{display:block;max-height:700px;max-width:1070px;margin:0 auto}
+.uploader .photo-container .active-photo-wrap .active-photo .photo-preview img{display:block;max-height:700px;max-width:1140px;margin:0 auto}
 .uploader .photo-container .photo-reel{margin:26px 0 26px 0;position:relative;width:660px;height:60px;overflow:hidden;float:left}
 .uploader .photo-container .photo-reel .photos{width:10000px;overflow:hidden;position:relative;-webkit-transition:left 0.5s ease-in-out;-webkit-transition-delay:0;-webkit-transition:left 0.5s ease-in-out 0;transition:left 0.5s ease-in-out 0}
 .uploader .photo-container .photo-reel .photos .photo-reel-photo{float:left;width:50px;height:60px;margin-right:5px;cursor:pointer;position:relative;text-align:center}
@@ -369,7 +369,7 @@
 .button.action:hover,.v3button.action:hover{background:#09bdfd}
 .button.action:active,.v3button.action:active{-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15);box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15)}
 .button.delete{background:#71767a;font-weight:500;border:1px solid #65696d;-webkit-box-shadow:inset 0px 1px 1px rgba(255,255,255,0.2);box-shadow:inset 0px 1px 1px rgba(255,255,255,0.2)}
-.button.delete:hover{background:#ff4c4c;border:1px solid #f33}
+.button.delete:hover{background:#ff4c4c;border:1px solid #f33;color: #fff;text-decoration: none;}
 .button.delete:active{-webkit-box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15);box-shadow:inset 0px 1px 3px rgba(0,0,0,0.15)}
 .button.cancel{min-width:70px;color:#71767a;border:1px solid #d6d7d9;-webkit-transition:all 0.15s ease-out;-webkit-transition-delay:0s;-webkit-transition:all 0.15s ease-out 0s;transition:all 0.15s ease-out 0s;-webkit-box-shadow:inset 0px 1px 0px rgba(255,255,255,0.6);box-shadow:inset 0px 1px 0px rgba(255,255,255,0.6)}
 .button.cancel:hover{background:#d6d7d9}
