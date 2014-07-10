@@ -49,8 +49,8 @@ class PhotosController < ApplicationController
         when 'recom' # 如果是推荐 应该有个日期
             Photo.where(user_id: params[:sid], recommend: true)
         else # 个人作品
-            Photo.where(user_id: params[:sid]).order("id desc")
-        end.paginate(:page => params[:page], per_page: 10)
+            Photo.where(user_id: params[:sid])
+        end.order("id desc").paginate(:page => params[:page], per_page: 10)
         # @photo_pages = @photos.paginate(:page => params[:page], per_page: 1)
         @photo.visits.create(user_id: current_user.try(:id))
     end
