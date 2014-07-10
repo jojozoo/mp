@@ -1,0 +1,265 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta content="telephone=no" name="format-detection">
+    <title>path menu</title>
+    <script type="text/javascript" src="http://sandbox.runjs.cn/uploads/rs/419/nzlnqle2/T.js"></script>
+</head>
+<body>
+    <div class="path-menu">
+        <label id="menu-wrap" class="menu-wrap" for="menu-check">
+            <span class="menu-inner"></span>
+        </label>
+        <input id="menu-check" class="menu-check" type="checkbox" checked="true">
+        <ul class="menu-items">
+            <li class="menu-item-wrap i">
+                <a class="menu-item-inner" href="#">I</a>
+            </li>
+            <li class="menu-item-wrap ii">
+                <a class="menu-item-inner" href="#">II</a>
+            </li>
+            <li class="menu-item-wrap iii">
+                <a class="menu-item-inner" href="#">III</a>
+            </li>
+            <li class="menu-item-wrap iv">
+                <a class="menu-item-inner" href="#">IV</a>
+            </li>
+        </ul>
+    </div>
+
+    <style>body {
+    font: 15px/1.5 sans-serif;
+    background: #fff;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+.path-menu {
+position: absolute;
+bottom: 70px;
+left: 20px;
+/*width: 51px;
+height: 51px;*/
+/*z-index: 5;*/
+/*border-radius: 26px;*/
+/*-webkit-border-radius: 26px;*/
+/*-moz-border-radius: 26px;*/
+}
+.path-menu .menu-wrap {
+    display: block;
+    position: absolute;
+    z-index: 30;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #ddd;
+    padding: 6px;
+    border-radius: 40px;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#fff), to(#f4f4f4));
+    cursor: pointer;
+}
+.path-menu .menu-inner {
+    display: block;
+    width: 35px;
+    height: 35px;
+    border-radius: 40px;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#eee), to(#bbb));
+    box-shadow: 0 0 4px #b2b2b2 inset;
+}
+.path-menu .menu-check {
+    display: none;
+}
+.path-menu .menu-item-wrap {
+    display: block;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    border-radius: 30px;
+    background-image: -webkit-gradient(linear, left top, right bottom, from(#fff), to(#f4f4f4));
+    border: 1px solid #bbb;
+}
+.path-menu .menu-item-inner {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    background: #aaa;
+    box-shadow: 0 0 9px #666 inset;
+    text-decoration: none;
+    color: #fafafa;
+    font-weight: bold;
+    text-shadow: 0 1px 0 #666;
+    text-align: center;
+    line-height: 30px;
+}
+/*-----------------*/
+.path-menu .menu-check:checked ~ .menu-items .i {
+    -webkit-animation-name: "show-i";
+    -webkit-animation-duration: 360ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+}
+.path-menu .menu-check:not(:checked) ~ .menu-items .i {
+    -webkit-animation-name: "hide-i";
+    -webkit-animation-duration: 380ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+}
+.path-menu .menu-check:checked ~ .menu-items .ii {
+    -webkit-animation-name: "show-ii";
+    -webkit-animation-duration: 360ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-delay: 25ms;
+}
+.path-menu .menu-check:not(:checked) ~ .menu-items .ii {
+    -webkit-animation-name: "hide-ii";
+    -webkit-animation-duration: 380ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+}
+.path-menu .menu-check:checked ~ .menu-items .iii {
+    -webkit-animation-name: "show-iii";
+    -webkit-animation-duration: 360ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-delay: 50ms;
+}
+.path-menu .menu-check:not(:checked) ~ .menu-items .iii {
+    -webkit-animation-name: "hide-iii";
+    -webkit-animation-duration: 380ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+}
+.path-menu .menu-check:checked ~ .menu-items .iv {
+    -webkit-animation-name: "show-iv";
+    -webkit-animation-duration: 360ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-delay: 75ms;
+}
+.path-menu .menu-check:not(:checked) ~ .menu-items .iv {
+    -webkit-animation-name: "hide-iv";
+    -webkit-animation-duration: 380ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+}
+
+/*-----------------*/
+@-webkit-keyframes "show-i" {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0px) rotateZ(0deg);
+    }
+    75% {
+        -webkit-transform: translate3d(0px, -140px, 0px) rotateZ(720deg);
+    }
+    100% {
+        -webkit-transform: translate3d(0px, -120px, 0px) rotateZ(720deg);
+    }
+}
+@-webkit-keyframes "hide-i" {
+    0% {
+        -webkit-transform: translate3d(0px, -120px, 0px) rotateZ(720deg);
+    }
+    70% {
+        -webkit-transform: translate3d(0px, -140px, 0px) rotateZ(0deg);
+    }
+    100% {
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateZ(0deg);
+    }
+}
+@-webkit-keyframes "show-ii" {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0px) rotateZ(0deg);
+    }
+    75% {
+        -webkit-transform: translate3d(70px, -121px, 0px) rotateZ(720deg);
+    }
+    100% {
+        -webkit-transform: translate3d(60px, -103px, 0px) rotateZ(720deg);
+    }
+}
+@-webkit-keyframes "hide-ii" {
+    0% {
+        -webkit-transform: translate3d(60px, -103px, 0px) rotateZ(720deg);
+    }
+  70% {
+        -webkit-transform: translate3d(70px, -121px, 0px) rotateZ(0deg);
+    }
+    100% {
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateZ(0deg);
+    }
+}
+@-webkit-keyframes "show-iii" {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0px) rotateZ(0deg);
+    }
+    75% {
+        -webkit-transform: translate3d(121px, -70px, 0px) rotateZ(720deg);
+    }
+    100% {
+        -webkit-transform: translate3d(103px, -60px, 0px) rotateZ(720deg);
+    }
+}
+@-webkit-keyframes "hide-iii" {
+    0% {
+        -webkit-transform: translate3d(103px, -60px, 0px) rotateZ(720deg);
+    }
+    70% {
+        -webkit-transform: translate3d(121px, -70px, 0px) rotateZ(0deg);
+    }
+    100% {
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateZ(0deg);
+    }
+}
+@-webkit-keyframes "show-iv" {
+    0% {
+        -webkit-transform: translate3d(0, 0, 0px) rotateZ(0deg);
+    }
+    75% {
+        -webkit-transform: translate3d(140px, 0px, 0px) rotateZ(720deg);
+    }
+    100% {
+        -webkit-transform: translate3d(120px, 0px, 0px) rotateZ(720deg);
+    }
+}
+@-webkit-keyframes "hide-iv" {
+    0% {
+        -webkit-transform: translate3d(120px, 0px, 0px) rotateZ(720deg);
+    }
+    70% {
+        -webkit-transform: translate3d(140px, 0px, 0px) rotateZ(0deg);
+    }
+    100% {
+        -webkit-transform: translate3d(0px, 0px, 0px) rotateZ(0deg);
+    }
+}</style>
+    <script>T.ready(function() {
+    new Menu();
+});
+function Menu () {
+    var init = function() {
+        T.addEvent(T.$('menu-wrap'), 'click', addMenuCheck);
+    };
+
+    var addMenuCheck = function(e) {
+        e.preventDefault();
+        T.insertAfter(T.new('<input id="menu-check" class="menu-check" type="checkbox" checked="true">'), T.$('menu-wrap'));
+        T.removeEvent(T.$('menu-wrap'), 'click', addMenuCheck);
+    };
+
+    return init();
+}
+</script>
+
+    <!-- Generated by RunJS (Thu Jul 10 22:13:24 CST 2014) 1ms -->
+</body>
+</html>
