@@ -95,6 +95,15 @@ class AjaxController < ApplicationController
     # ajax_del_path
     def del
         if photo = current_user.photos.find_by_id(params[:id])
+            if photo.isgroup
+                if photo.parent_id.blank?
+                    Photo.update_all({del: true}, {parent_id: photo.id})
+                end
+                if pgl = Photo.find_by_id_and_gl_id_and_parent_id_and_isgroup(photo.parent_id, photo.id, nil, true)
+                    ugl = Photo.where(parent_id: pgl.id, isgroup: true).last
+                    pgl.update_attributes(gl_id: ugl.id)
+                end
+            end
             photo.update_attributes(del: true)
             render json: {text: "删除成功", type: 'success'}.to_json
         else

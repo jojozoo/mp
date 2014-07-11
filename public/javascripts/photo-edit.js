@@ -77,6 +77,10 @@ $(function(){
 			var pid = _this.data("pid");
 			if(confirm("确定删除本张?\n此操作不可恢复!")){
 				$("div[data-pid="+pid+"]").remove();
+				// 删除本张
+				$.post('/ajax/del/photo/' + pid, '', function(result){
+					MPMSG(result.type, result.text);
+				});
 				// delete Mpupload.queue[pid];
 				if(_this.next() > 0){
 					_this.next().click();

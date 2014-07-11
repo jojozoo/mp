@@ -51,6 +51,6 @@ class Admin::MpSetsController < Admin::ApplicationController
   def destroy
     @mpset = MpSet.find(params[:id])
     @mpset.update_attributes(del: true)
-    redirect_to admin_mpsets_path
+    redirect_to admin_mp_sets_path
   end
 end

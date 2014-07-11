@@ -195,12 +195,12 @@ class Photo < ActiveRecord::Base
     if parent
       last = lastitem
       parent.update_attributes({event_id: last.event_id, state: true, warrant: last.warrant, gl_id: last.id})
-      move_picture(parent, tpid)
     end
   end
 
-  def self.move_picture photo, tpid = nil
-    tp = Tp.find(tpid || photo.tpid)
+  def self.move_picture photo
+    tp = Tp.find(photo.tpid)
+    # 改为一条更新
     ['file_name', 'content_type', 'file_size', 'updated_at'].each do |atr|
       photo.update_attribute("picture_#{atr}", tp.try("picture_#{atr}".to_sym))
     end
