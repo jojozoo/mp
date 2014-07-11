@@ -107,3 +107,4 @@ iptables -t nat -I POSTROUTING -j MASQUERADE
 这样当网卡 eth0 被加载的时候就会自动载入我们预先用 iptables-save 保存下的配置。
 
 sudo /etc/init.d/pptpd restart
+mac 启动redis redis-server /usr/local/etc/redis.conf
