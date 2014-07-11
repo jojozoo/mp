@@ -113,10 +113,35 @@ $(function(){
 		return false;
 	});
 	
+	// 删除
+	$(document).on("click", ".mp-ajax-del", function(){
+		var _this = this,
+			_url = $(_this).attr("href"),
+			_state = $(_this).attr("state");
+		
+		if(_state === "loading"){
+			return false;
+		}
+		$.ajax({
+			type: "post",
+			url: _url,
+			beforeSend: function(){
+				$(_this).attr("state", "loading");
+			},
+			success: function(result) {
+				MPMSG(result.type, result.text);
+				$(_this).removeAttr("state").parents(".item-line").fadeOut(function(){
+					$(this).remove();
+				});
+			}
+		});
+		return false;
+	})
+	
 	// 喜欢
 	// 收藏
 	// 查看原图
-	// 删除
+	
 
 
 	// 选为封面

@@ -72,8 +72,7 @@ class PhotosController < ApplicationController
     end
 
     def edit
-        photo = Photo.find(params[:id])
-        
+        photo = current_user.photos.find(params[:id])
         if photo.isgroup
             pid = photo.parent_id.blank? ? photo.id : photo.parent_id
             @photos = Photo.where(parent_id: pid, isgroup: true)

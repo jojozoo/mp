@@ -11,7 +11,12 @@ class ChoiceResque
 			choice = choices.last
 			title = Date.today.strftime("%Y年%m月%d日") + " 精选照片"
 			unless MpSet.find_by_title(title)
-				MpSet.create(title: title, link: 'http://mpwang.cn/choices/' + Date.today.to_s(:number), src: choice.picture.url(:thumb), cate: 1, cate_id: 0)
+				src = if choice.gl_id and choice.isgroup and choice.parent_id.blank?
+					Photo.find_by_id(choice.gl_id).picture.url(:thumb) rescue choice.picture.url(:thumb)
+				else
+					choice.picture.url(:thumb)
+				end
+				MpSet.create(title: title, link: 'http://mpwang.cn/choices/' + Date.today.to_s(:number), src: src, cate: 1, cate_id: 0)
 			end
 		end
 	end

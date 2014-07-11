@@ -9,7 +9,7 @@
 		<% end %>
 	</p>
 	<p class="mp-picture-text-center">
-		<%= link_to image_tag(photo.picture.url(:large)), photo_path(photo, sid: photo.user_id), title: '点击查看详细内容' %>
+		<%= link_to_large photo %>
 	</p>
 	<p>
 		<%= photo.title.blank? ? '未填写标题' : photo.title %>
@@ -49,9 +49,9 @@
 			</a>
 			<% if current_user and (current_user.admin or current_user.id.eql?(photo.user_id)) %>
 			<%= link_to '查看原图', photo.picture.url, target: '_blank' %>
-			<a href="javascript:void(0);">
-				删除
-			</a>
+				<% if current_user.id.eql?(photo.user_id)%>
+				<%= link_to '删除', "/ajax/del/photo/#{photo.id}", class: 'mp-ajax-del' %>
+				<% end %>
 			<% end %>
 		</span>
 	</p>

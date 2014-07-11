@@ -190,6 +190,14 @@ module ApplicationHelper
     de + sx + "【星期#{zj}】"
   end
 
+  def link_to_large photo
+    if photo.isgroup and photo.parent_id.blank? and gl = Photo.find_by_id(photo.gl_id)
+      link_to image_tag(gl.picture(:large)), photo_path(gl.id, sid: photo.id, sn: 'group'), target: '_blank', title: '点击查看详细内容'
+    else
+      link_to image_tag(photo.picture(:large)), photo_path(photo.id, sid: photo.user_id, sn: 'user'), target: '_blank', title: '点击查看详细内容'
+    end
+  end
+
   def link_to_photo photo
     if photo.isgroup and photo.parent_id.blank? and gl = Photo.find_by_id(photo.gl_id)
       link_to image_tag(gl.picture(:cover)), photo_path(gl.id, sid: photo.id, sn: 'group'), target: '_blank', class: 'thumb'
