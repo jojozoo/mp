@@ -76,21 +76,22 @@ $(function(){
 		if(_this.length > 0){
 			var pid = _this.data("pid");
 			if(confirm("确定删除本张?\n此操作不可恢复!")){
-				$("div[data-pid="+pid+"]").remove();
 				// 删除本张
 				$.post('/ajax/del/photo/' + pid, '', function(result){
 					MPMSG(result.type, result.text);
 				});
 				// delete Mpupload.queue[pid];
-				if(_this.next() > 0){
+				_this.prev().click();
+				if(_this.next()){
 					_this.next().click();
-				} else if(_this.prev() > 0){
+				} else if(_this.prev()){
 					_this.prev().click();
 				} else if($(".photo-reel-photo").length > 0){
 					$(".photo-reel-photo:last").click();
 				} else {
 					$(".photo-details.disabled").addClass("active");
 				}
+				$("div[data-pid="+pid+"]").remove();
 			}
 			return;
 		}

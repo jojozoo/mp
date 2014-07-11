@@ -80,7 +80,9 @@
 		</li>
 	</ul>
 </div>
-<script src="/pm/assets/main.js?body=1" type="text/javascript"></script>
+<script type="text/javascript">
+(function(){$(".flyout-btn").click(function(){return $(".flyout-btn").toggleClass("btn-rotate"),$(".flyout").find("a").removeClass(),$(".flyout").removeClass("flyout-init fade").toggleClass("expand")}),$(".flyout").find("a").click(function(){return $(".flyout-btn").toggleClass("btn-rotate"),$(".flyout").removeClass("expand").addClass("fade"),$(this).addClass("clicked")})}).call(this);
+</script>
 <!-- app下载提示浮层 -->
 <!-- <div class="app_tip" id="app">
 	<div class="app_del left">

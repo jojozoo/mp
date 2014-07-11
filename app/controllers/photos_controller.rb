@@ -81,6 +81,7 @@ class PhotosController < ApplicationController
         else
             @photos = [photo]
         end
+        photo = Photo.find_by_id(params[:up_id]) || photo if params[:up_id].present?
         @photo = photo.parent_id.blank? ? @photos.first : photo
     end
 

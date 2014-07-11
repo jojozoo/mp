@@ -198,4 +198,16 @@ module ApplicationHelper
     end
   end
 
+  def link_to_edit photo
+    if photo.isgroup
+      if photo.parent_id.blank?
+        link_to '作品修改', edit_photo_path(photo.id, up_id: photo.gl_id), class: 'opt'
+      else
+        link_to '作品修改', edit_photo_path(photo.parent_id, up_id: photo.id), class: 'opt'
+      end
+    else
+      link_to '作品修改', edit_photo_path(photo), class: 'opt'
+    end
+  end
+
 end
