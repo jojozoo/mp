@@ -15,6 +15,17 @@
 	<%= csrf_meta_tags %>
 	<link href="/favicon.ico?v=1" type="image/x-icon" rel="icon">
 	<link href="/favicon.ico?v=1" type="image/x-icon" rel="shortcut icon">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://m0.ihaveu.net/mobile/logo_57x57.png?201407101751">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://m0.ihaveu.net/mobile/logo_114x114.png?201407101751">
+	<link rel="apple-touch-startup-image" media="(device-width: 320px) and not (-webkit-min-device-pixel-ratio: 2) and (device-height: 480px)" href="http://m0.ihaveu.net/mobile/startup_320x460.jpg?201407101751">	
+	<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) and (device-height: 480px)" href="http://m0.ihaveu.net/mobile/startup_640x920.jpg?201407101751">
+	<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) and (device-height: 568px)" href="http://m0.ihaveu.net/mobile/startup_640x1096.jpg?201407101751">
+	<script type="text/javascript">
+		// 解决js异步请求rails session重置问题
+		var ajax_before_send = function(xhr){
+			xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+		}
+	</script>
 </head>
 <body>
 	<%= yield %>
