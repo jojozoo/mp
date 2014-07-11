@@ -100,7 +100,7 @@ class AjaxController < ApplicationController
                     Photo.update_all({del: true}, {parent_id: photo.id})
                 end
                 if pgl = Photo.find_by_id_and_gl_id_and_parent_id_and_isgroup(photo.parent_id, photo.id, nil, true)
-                    ugl = Photo.where(parent_id: pgl.id, isgroup: true).last
+                    ugl = Photo.where(['parent_id = ? and isgroup = ? and id != ?', pgl.id, true, photo.id]).last
                     pgl.update_attributes(gl_id: ugl.id)
                 end
             end
