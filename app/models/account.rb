@@ -29,6 +29,8 @@ class Account < ActiveRecord::Base
   :other,
   :del
 
+  store :other
+
   belongs_to :user
   
 end

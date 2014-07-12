@@ -28,7 +28,7 @@ class Oauth::QzoneController < Oauth::ApplicationController
         account.refresh_token = token.refresh_token
         account.expires_in    = token.expires_in
         account.expires_at    = token.expires_at
-        account.other         = other.to_json
+        account.other         = other
         account.save!
         redirect_to oauth_sign_in_path(id: account.id)
     # rescue => e

@@ -9,7 +9,7 @@
 		</h3>
 	</div>
 	<% 
-		other = JSON.parse(@account.other)
+		other = @account.other
 		name  = other.delete('name')
 		@user = User.new(username: name)
 	%>
