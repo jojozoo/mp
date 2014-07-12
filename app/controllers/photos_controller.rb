@@ -44,6 +44,8 @@ class PhotosController < ApplicationController
         if @photo.isgroup
             params[:sid] ||= @photo.parent_id || @photo.id
             params[:sn] ||= "group"
+        else
+            params[:sid] ||= @photo.user_id
         end
         @photos = case params[:sn]
         when 'group' # 组 应该有个组id
