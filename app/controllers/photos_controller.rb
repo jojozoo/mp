@@ -91,7 +91,11 @@ class PhotosController < ApplicationController
     def update
         ps = params[:arr].values.map do|photo| 
             r = photo.slice(*['id', 'title', 'desc', 'event_id', 'album_id', 'warrant', 'exif', 'crop', 'tags', 'tpid'])
-            p = current_user.photos.find_by_id(r['id'])
+            p = if current_user.admin
+                Photo.find_by_id(r['id'])
+            else
+                current_user.photos.find_by_id(r['id'])
+            end
             next unless p
             p.update_attributes(r)
         end
