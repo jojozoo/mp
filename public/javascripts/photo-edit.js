@@ -78,9 +78,9 @@ $(function(){
 			if(confirm("确定删除本张?\n此操作不可恢复!")){
 				// 删除本张
 				$.post('/ajax/del/photo/' + pid, '', function(result){
+					delete Mpupload.queue[pid];
 					MPMSG(result.type, result.text);
 				});
-				// delete Mpupload.queue[pid];
 				_this.prev().click();
 				if(_this.next()){
 					_this.next().click();
@@ -98,6 +98,60 @@ $(function(){
 
 	});
 	// 删除本张 end
+	
+	// 保存修改
+	$(document).on("click", "input.save-update", function(){
+		if($(this).attr("state") == "loading"){
+			return false;
+		}
+		var items = [];
+		for(var index_id in Mpupload.queue){
+			var details = $(".photo-details[data-pid="+index_id+"]");
+			details.find(".metadata input:text").each(function(index, item){
+				var _key = this.id.replace("photo-"+index_id+"-exif-", ""),
+					_val = this.value;
+				Mpupload.queue[index_id].exif[_key] = _val;
+			});
+			var title = $("#photo-"+index_id+"-title").val(), 
+				desc = $("#photo-"+index_id+"-desc").val(), 
+				request_id = $("#photo-"+index_id+"-request_id").val(), 
+				album_id = $("#photo-"+index_id+"-album_id").val(),
+				warrant = $("input[name='photo["+index_id+"][warrant]']:checked").val(),
+				tags = details.find(".tag .name").map(function(){return this.textContent}).get().join(',');
+			Mpupload.queue[index_id].title = title;
+			Mpupload.queue[index_id].desc = desc;
+			Mpupload.queue[index_id].event_id = request_id;
+			Mpupload.queue[index_id].album_id = album_id;
+			Mpupload.queue[index_id].warrant = warrant;
+			Mpupload.queue[index_id].tags = tags;
+			items.push(Mpupload.queue[index_id]);
+		}
+		if($("#photo_group_id").length > 0){
+			items.push({
+				id: $("#photo_group_id").val(),
+				title: $("#photo_group_title").val(),
+				desc: $("#photo_group_desc").val()
+			})
+		}
+		$.ajax({
+			type: "put",
+			url: "/photos/" + $("#update_id").val(),
+			data: {arr: items},
+			beforeSend: function(){
+				// $(".uploader").addClass("finishing");
+				// $(".button.finish").addClass('disabled');
+				$(this).attr("state", "loading");
+			},
+			success: function(result) {
+				// Mpupload.queue = {};
+				// $(".photos").html('');
+				// $(".active-photo").html('');
+				// $(".photo-details.disabled").siblings().remove();
+				window.location.href = "/photos/" + $("#update_id").val();
+			}
+		});
+	})
+	// 保存修改 end
 
 	// 选择标签
 	$(document).on("keydown", ".tag_field input", function(e){
@@ -198,7 +252,8 @@ $(function(){
 			Mpupload.queue[id].crop.cy = cood.y;
 			Mpupload.queue[id].crop.w = h > attr.oh ? attr.oh : w;
 			Mpupload.queue[id].crop.h = h > attr.oh ? attr.oh : h;
-			Mpupload.queue[id].crop.x = x; // xy坐标暂时没测出什么问题
+			//  xy坐标暂时没测出什么问题
+			Mpupload.queue[id].crop.x = x;
 			Mpupload.queue[id].crop.y = y;
 
 			var rx = 50 / cood.w,

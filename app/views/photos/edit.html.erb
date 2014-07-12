@@ -2,8 +2,6 @@
 <script type="text/javascript">
 	var photos = <%= @photos.map do|p| 
 				atrs = p.attributes
-				atrs['crop'] = JSON.parse(atrs['crop']) rescue {}
-				atrs['exif'] = JSON.parse(atrs['exif']) rescue {}
 				atrs['tags'] = atrs['tags'].split(",") rescue []
 				atrs.slice(*['id','title', 'desc', 'exif', 'crop', 'album_id', 'event_id', 'tags', 'warrant'])
 			end.to_json.html_safe
@@ -40,8 +38,10 @@
 			<input class="button action save-update" type="submit" value="保存修改" style="margin: 0 0 0 20px;">
 		</div>
 	</div>
+	<input id="update_id" name="photo[group][id]" type="hidden" value="<%= params[:id] %>">
 	<% if @group %>
 	<div class="group-upload-photo" data-gid="<%= @group.id %>" style="display:block;">
+		<input id="photo_group_id" name="photo[group][id]" type="hidden" value="<%= @group.id %>">
 		<div class="row group-photo">
 			<div class="col-md-6">
 				<div class="form-group string optional photo_group_title">

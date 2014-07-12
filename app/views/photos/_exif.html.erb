@@ -20,14 +20,14 @@
 	<h4>EXIF信息</h4>
 	<div class="exif_wrap">
 		<ul class="list-unstyled">
-			<% exif_hash = JSON.parse(@photo.exif) rescue {} %>
+			<% exif_hash = @photo.exif %>
 			<% Photo::EXIF.each do |key, val| %>
 			<li class="exif_<%= key %>">
 				<div>
 					<%= val %>
 				</div>
 				<span>
-					<%= exif_hash[key] || '--' %>
+					<%= exif_hash[key].blank? ? '--' : exif_hash[key] %>
 				</span>
 			</li>	
 			<% end %>

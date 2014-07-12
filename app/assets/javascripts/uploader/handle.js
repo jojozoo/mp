@@ -175,8 +175,8 @@ Mpupload.details = function(id){
 
 Mpupload.getValues = function(id, finish){
     var details = $(".photo-details[data-pid="+id+"]");
-    details.find("input:text[name^=photo-exif]").each(function(index, item){
-        var _key = this.id.replace("photo-"+id+"-exif", ""),
+    details.find(".metadata input:text").each(function(index, item){
+        var _key = this.id.replace("photo-"+id+"-exif-", ""),
             _val = this.value;
         Mpupload.queue[id].exif[_key] = _val;
     });

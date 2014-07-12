@@ -41,6 +41,10 @@ class PhotosController < ApplicationController
     def show
         # 有几种组的方式 默认以人为单位 其次是某天 其次是推荐 其次是精选 其次是某一集合
         @photo  = Photo.find(params[:id])
+        if @photo.isgroup
+            params[:sid] ||= @photo.parent_id || @photo.id
+            params[:sn] ||= "group"
+        end
         @photos = case params[:sn]
         when 'group' # 组 应该有个组id
             Photo.where(parent_id: params[:sid])
@@ -84,6 +88,16 @@ class PhotosController < ApplicationController
         @photo = photo.parent_id.blank? ? @photos.first : photo
     end
 
+    def update
+        ps = params[:arr].values.map do|photo| 
+            r = photo.slice(*['id', 'title', 'desc', 'event_id', 'album_id', 'warrant', 'exif', 'crop', 'tags', 'tpid'])
+            p = current_user.photos.find_by_id(r['id'])
+            next unless p
+            p.update_attributes(r)
+        end
+        render text: 'success'
+    end
+
     def uploadnew
     end
 
@@ -96,8 +110,6 @@ class PhotosController < ApplicationController
             Photo.create(params[:group].merge(user_id: current_user.id, isgroup: true))
         end
         items = params['items'].values.map{|r| r.slice(*['title', 'desc', 'event_id', 'album_id', 'warrant', 'exif', 'crop', 'tags', 'tpid'])}
-        # TODO
-        items.map{|r| r['exif'] = r['exif'].to_json;r['crop'] = r['crop'].to_json;r }
 
         Photo.create_items(items, current_user.id, parent)
         render text: 'success'

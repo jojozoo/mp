@@ -33,7 +33,7 @@
 #  randomstr            :string(255)
 #  exif                 :text
 #  tags                 :string(255)
-#  crop                 :string(255)
+#  crop                 :text
 #  tpid                 :integer
 #  wh                   :string(255)
 #  del                  :boolean          default(FALSE)
@@ -86,7 +86,8 @@ class Photo < ActiveRecord::Base
   # 左下角和右下角暂时标题和用户名
   # 管理员需要的操作就显示分享的下面
   # state 精华 推荐 普通
-
+  store :exif
+  store :crop
   # 必须要在 public/images/water/目录存在相对应key的水印图
   Water = {
     large: "1140x>", # 根据bootstrap最宽
