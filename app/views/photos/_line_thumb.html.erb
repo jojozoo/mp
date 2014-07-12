@@ -4,7 +4,7 @@
 		<% if current_user.try(:id).eql?(photo.user_id) %>
 		<span class="pull-right editor_opt">
 			<%= link_to_edit photo %>
-			<a class="opt" href="javascript:void(0);">继续上传</a>
+			<%= link_to_goon photo %>
 		</span>
 		<% end %>
 	</p>

@@ -197,6 +197,7 @@ class Photo < ActiveRecord::Base
       last = lastitem
       parent.update_attributes({event_id: last.event_id, state: true, warrant: last.warrant, gl_id: last.id})
     end
+    parent || lastitem
   end
 
   def self.move_picture photo

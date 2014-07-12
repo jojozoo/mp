@@ -130,7 +130,8 @@ $(function(){
 			items.push({
 				id: $("#photo_group_id").val(),
 				title: $("#photo_group_title").val(),
-				desc: $("#photo_group_desc").val()
+				desc: $("#photo_group_desc").val(),
+				event_id: items[0].event_id
 			})
 		}
 		$.ajax({

@@ -217,5 +217,13 @@ module ApplicationHelper
       link_to '作品修改', edit_photo_path(photo), class: 'opt'
     end
   end
+  # 继续上传
+  def link_to_goon photo
+    if photo.isgroup and !photo.parent_id.blank?
+        link_to '继续上传', new_photo_path(go_id: photo.parent_id, request_id: photo.event_id), class: 'opt'
+    else
+        link_to '继续上传', new_photo_path(go_id: photo.id, request_id: photo.event_id), class: 'opt'
+    end
+  end
 
 end

@@ -10,7 +10,7 @@ Mpupload = {
     queue: {},
     tipCutInfo: false,
     requestName: null,
-    groupUpload: false,
+    groupUpload: !!GoId || false,
     groupTitle: null,
     groupDesc: null,
     largeContainer: ".active-photo",
@@ -348,8 +348,11 @@ $(function(){
             })
         }
         var data = {'items': arr};
+        if(!!GoId){
+           $.extend(data, {go_id: GoId});
+        }
         if(Mpupload.groupUpload){
-            $.extend(data, {group: {title: Mpupload.groupTitle, desc: Mpupload.groupDesc}})
+            $.extend(data, {group: {title: Mpupload.groupTitle, desc: Mpupload.groupDesc}});
         }
         $.ajax({
             type: "post",
@@ -360,11 +363,12 @@ $(function(){
                 $(".button.finish").addClass('disabled');
             },
             success: function(result) {
+
                 Mpupload.queue = {};
                 $(".photos").html('');
                 $(".active-photo").html('');
                 $(".photo-details.disabled").siblings().remove();
-                window.location.href = "/photos?order=news";
+                window.location.href = result;
             }
         });
     });

@@ -1,5 +1,7 @@
 <script type="text/javascript">
-	var cookieSK = "<%= cookies['_mp_session'] %>";
+	var cookieSK = "<%= cookies['_mp_session'] %>",
+		GoId = "<%= @group.try(:id) %>";
+		
 </script>
 <%= javascript_include_tag "uploader" %>
 <script language="javascript" src="http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821"></script>
@@ -64,12 +66,39 @@
 			<div class="remaining-photos">
 				<p>还可以再上传20张照片</p>
 			</div>
-			<input class="button group" type="submit" value="组图上传">
+			<% unless @group %>
+				<input class="button group" type="submit" value="组图上传">
+			<% end %>
 			<input class="button remove" type="submit" value="删除本张">
 			<input class="button submit" type="submit" value="继续上传">
 			<input class="button action finish" type="submit" value="完成上传"></div>
 	</div>
+	<%#= render 'group' %>
+	<% if @group and !@group.isgroup %>
+	<div class="group-upload-photo" style="display:block;">
+		<div class="row group-photo">
+			<div class="col-md-6">
+				<div class="form-group string optional photo_group_title">
+					<label class="string optional col-sm-3 control-label" for="photo_group_title">组图标题(必填)</label>
+					<div class="col-sm-9 input-text-add">
+						<input class="string optional form-control" id="photo_group_title" name="photo[group][title]" size="50" type="text">
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group text optional photo_group_desc">
+					<label class="text optional col-sm-3 control-label" for="photo_group_desc">组图描述(必填)</label>
+					<div class="col-sm-9 input-text-add">
+						<textarea class="text optional form-control" cols="40" id="photo_group_desc" name="photo[group][desc]" rows="3"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+	<% else %>
 	<%= render 'group' %>
+	<% end %>
 	<div class="edit-container">
 		<%= render 'details' %>
 	</div>

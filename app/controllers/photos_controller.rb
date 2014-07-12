@@ -42,6 +42,9 @@ class PhotosController < ApplicationController
         # 有几种组的方式 默认以人为单位 其次是某天 其次是推荐 其次是精选 其次是某一集合
         @photo  = Photo.find(params[:id])
         if @photo.isgroup
+            if @photo.parent_id.blank?
+                @photo = Photo.find_by_id(@photo.gl_id) || @photo
+            end
             params[:sid] ||= @photo.parent_id || @photo.id
             params[:sn] ||= "group"
         else
@@ -73,8 +76,14 @@ class PhotosController < ApplicationController
     
     def new
         # TODO 应该加上event_id 或者 album_id 索引条件
-        @event  = Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
-        @album  = current_user.albums.find_by_id(params[:album_id]) if params[:album_id].present?
+        
+        if params[:go_id].present?
+            @group = current_user.photos.find_by_id(params[:go_id])
+            @event = @group.event
+            @album = @group.album
+        end
+        @event  ||= Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
+        @album  ||= current_user.albums.find_by_id(params[:album_id]) if params[:album_id].present?
     end
 
     def edit
@@ -112,13 +121,25 @@ class PhotosController < ApplicationController
     end
 
     def create
-        parent = if params[:group].present? and params[:group][:title].present? and params[:group][:desc].present?
-            Photo.create(params[:group].merge(user_id: current_user.id, isgroup: true))
+        isgroup = params[:group] and params[:group][:title] and params[:group][:desc]
+        parent = if params[:go_id].present? and tp = current_user.photos.find_by_id(params[:go_id])
+            if tp.isgroup
+                if tp.parent_id.blank?
+                    tp
+                else
+                    Photo.find_by_id(tp.parent_id)
+                end
+            else
+                tpar = Photo.create(params[:group].merge(user_id: current_user.id, isgroup: true))
+                tp.update_attributes(isgroup: true, parent_id: tpar.id)
+                tpar
+            end
         end
+        parent ||= Photo.create(params[:group].merge(user_id: current_user.id, isgroup: true)) if isgroup
+        
         items = params['items'].values.map{|r| r.slice(*['title', 'desc', 'event_id', 'album_id', 'warrant', 'exif', 'crop', 'tags', 'tpid'])}
-
-        Photo.create_items(items, current_user.id, parent)
-        render text: 'success'
+        res = Photo.create_items(items, current_user.id, parent)
+        render text: photo_path(res.id)
     end
 
     def destroy

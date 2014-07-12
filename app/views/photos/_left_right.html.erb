@@ -4,7 +4,8 @@
 		<ul style="width: <%= 75 * @photos.length %>px; left: 0px;">
 			<% @photos.each do |p| %>
 			<li class="browser <%= 'active' if @photo.id.eql?(p.id) %>">
-				<%= link_to image_tag(p.picture(:small), size: '70x70'), photo_path(p, request.query_parameters) %>
+				<%#= link_to image_tag(p.picture(:small), size: '70x70'), photo_path(p, request.query_parameters) %>
+				<%= link_to image_tag(p.picture(:small), size: '70x70'), photo_path(p, sid: params[:sid], sn: params[:sn]) %>
 			</li>
 			<% end %>
 			<!-- <li class="browser no-photo">
