@@ -24,7 +24,7 @@
 </head>
 <!--缺少跳转landingpage-->
 <body class="session">
-	<div class="container mp-session-sign">
+	<div class="container mp-session-sign" style="display:none">
 		<div class="toolbar">
 			<%= link_to image_tag('/images/logo.png?v=3'), home_path %>
 			<% if action_name.eql?('index') %>
@@ -42,7 +42,7 @@
 			<tbody>
 				<tr>
 					<td></td>
-					<td class="sess-tip">
+					<td class="sess-tip" style="display:none">
 						<h1>获取灵感 发现精彩</h1>
 						<h3>加入中国最出色的摄影社区</h3>
 						<a class="button submit large mp-sign" href="/photos/new">上传您的第一张照片</a>
@@ -84,6 +84,11 @@
 				var _t = _h - window.screen.height;
 				$(".background img").css({top: _t, opacity: 1});
 			});
+			setTimeout(function(){
+				$(".mp-session-sign").fadeIn();
+				$(".sess-tip").fadeIn();
+			}, 1000);
+			
 		})
 		</script>
 	</div>
