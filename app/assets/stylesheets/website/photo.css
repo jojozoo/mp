@@ -442,9 +442,8 @@
 	background: #dedede;
 }
 .item-line p a img{
-	max-height: 700px;
+	max-width: 1140px;
 	min-height: 600px;
-	max-width: 700px;
 	min-width: 600px;
 }
 /*.editor_opt {

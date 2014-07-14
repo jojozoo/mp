@@ -98,7 +98,7 @@ class Photo < ActiveRecord::Base
 
   has_attached_file :picture,
     styles: Hash[Water.map{|k,v| [k, {geometry: v, quality: :better}]}],
-    url: "http://#{Rails.env.eql?('development') ? 'localhost:3000' : 'mpwang.cn'}/system/:class/:id/:style/:randomp.:extension",
+    url: "http://#{Rails.env.eql?('development') ? '192.168.1.100:3000' : 'mpwang.cn'}/system/:class/:id/:style/:randomp.:extension",
     path: ":rails_root/public/system/:class/:id/:style/:randomp.:extension"
   # has_attached_file :picture,
   #   processors: [:watermark],

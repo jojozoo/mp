@@ -38,7 +38,17 @@
 			<td class="last"><a href="#" class="signin">登录</a></td>
 		</tr>
 	</table>
+	<div class="page_layer appear hide" id="login_register_layer">
+		<%= render '/mobile/signin' %>
+		<style type="text/css">
+		
+		</style>
+		<%= render '/mobile/signup' %>
+	</div>
 	<%= yield %>
+
+
+
 	<style type="text/css">
 	.tablebottom{
 		width: 100%;
@@ -124,15 +134,20 @@
 	</style>
 	<script type="text/javascript">
 	$(function(){
-		$("body").css('height', $(window).height());
+		$("body, #login_register_layer").css('height', $(window).height());
 		$(document).on("click", ".signin", function(){
-			alert("signin");
+			$("#login_register_layer, #login_layer").removeClass("hide");
+			$("#register_layer").addClass("hide");
 			return false;
 		});
 		$(document).on("click", ".signup", function(){
-			alert("signup");
+			$("#login_register_layer, #register_layer").removeClass("hide");
+			$("#login_layer").addClass("hide");
 			return false;
 		});
+		$(document).on("click", ".turnoff_ico", function(){
+			$(this).parent().parent().addClass('hide').parent().addClass('hide');
+		})
 	})
 	</script>
 </body>

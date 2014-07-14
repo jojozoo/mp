@@ -71,6 +71,7 @@
 		<a href="">举报</a>
 	</div>
 </div>
+<% exif_hash = @photo.exif %>
 <% lat, lon = exif_hash['lat'], exif_hash['lon'] %>
 <% if lat.present? and lon.present? %>
 	<script type="text/javascript">
