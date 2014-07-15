@@ -163,13 +163,13 @@ class Photo < ActiveRecord::Base
     recs.exists?(editor_id: obj.id)
   end
 
-  # def prev(offset = 0)
-  #   self.class.first(:conditions => ['user_id = ? and id < ?', self.user_id, self.id], :limit => 1, :offset => offset, :order => "id DESC")
-  # end
+  def prev
+    self.class.first(:conditions => ['user_id = ? and id < ? and parent_id = ?', self.user_id, self.id, self.parent_id], :limit => 1, :order => "id DESC")
+  end
 
-  # def next(offset = 0)
-  #   self.class.first(:conditions => ['user_id = ? and id > ?', self.user_id, self.id], :limit => 1, :offset => offset, :order => "id ASC")
-  # end
+  def next
+    self.class.first(:conditions => ['user_id = ? and id > ? and parent_id = ?', self.user_id, self.id, self.parent_id], :limit => 1, :order => "id DESC")
+  end
 
   def self.create_items items, uid, parent = nil
     tpid = nil

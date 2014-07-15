@@ -30,7 +30,7 @@
 				</div>
 			</div>
 			<div class="event-content gray-desc">
-				<%= sanitize @event.desc %>
+				<%= markdown(@event.desc) %>
 			</div>
 		</div>
 		<ul class="breadcrumb">

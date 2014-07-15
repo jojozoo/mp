@@ -23,7 +23,8 @@ gem 'exifr'
 # oauth
 gem 'oauth2'
 # gem 'oauth_china', path: 'vendor/oauth_china'
-
+gem 'redcarpet'
+gem 'coderay'
 # mailer Sidekiq
 gem 'redis'
 gem 'resque'

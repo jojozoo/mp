@@ -249,7 +249,7 @@ textarea.form-control{
 .gray-desc{
     background-color: #f5f5f5;
     font-size: 12px;
-    color: #A7A7A7;
+    /*color: #A7A7A7;*/
     margin-top: 10px;
     border: 0;
     border-radius:4px;

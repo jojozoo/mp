@@ -27,7 +27,7 @@
 						</li>
 						<li>
 							<span class="item-key">活动描述</span>
-							<div class="vcard-item"><%= @event.desc %></div>
+							<div class="vcard-item"><%= markdown(@event.desc) %></div>
 						</li>
 						<li>
 							<span class="item-key">活动类型</span>

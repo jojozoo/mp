@@ -7,7 +7,7 @@ task :kpkpwfile => :environment do
 	end
 end
 task :kpkpw => :environment do
-	(379278..379411).each do |id|
+	(380243..381826).each do |id|
 		get(id)
 	end
 end

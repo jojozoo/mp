@@ -60,11 +60,11 @@
 	<div class="col-md-12">
 		<div class="mp-large-picture">
 			<%= link_to image_tag(@photo.picture(:large)), 'javascript:void(0);', class: 'mp-large-link' %>
-			<% if @photos.previous_page %>
-				<!-- <a href="<%= photo_path(1) %>" class="pn-photo prev-photo"><span></span></a> -->
+			<% if nextp = @photo.next %>
+				<a href="<%= photo_path(nextp, sid: params[:sid], sn: params[:sn]) %>" class="pn-photo prev-photo"><span></span></a>
 			<% end %>
-			<% if @photos.next_page %>
-				<!-- <a href="<%= photo_path(1) %>" class="pn-photo next-photo"><span></span></a> -->
+			<% if prev = @photo.prev %>
+				<a href="<%= photo_path(prev, sid: params[:sid], sn: params[:sn]) %>" class="pn-photo next-photo"><span></span></a>
 			<% end %>
 		</div>
 		<% if current_user %>
