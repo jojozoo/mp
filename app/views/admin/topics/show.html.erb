@@ -17,7 +17,7 @@
 							<span class="item-key">所属活动</span>
 							<div class="vcard-item">
 								<% if obj = MpSet.find_by_cate_id(@topic.id) %>
-								<% event = Event.find_by_id(topic.id) %>
+								<% event = Event.find_by_id(@topic.id) %>
 								<%= link_to event.name, admin_event_path(event.id), target: '_blank' %>
 								<% else %>
 								未关联
