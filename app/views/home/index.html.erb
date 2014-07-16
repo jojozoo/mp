@@ -11,7 +11,7 @@
 		</div>
 		<h4>风光后期揭秘 自制丁达尔效应</h4>
 		<ul>
-			<% MpSet.where(cate_id: 0, cate: 5).limit(17).each do |em| %>
+			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(17).each do |em| %>
 			<li>
 				<%= link_to em.title, em.link, target: '_blank' %>
 			</li>
