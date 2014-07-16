@@ -2,8 +2,8 @@
 <%= simple_form_for @topic, validate: true do |f| %>
     <%= f.input :title %>
     <%= f.input :cate_id, collection: Tag.where(channel: '文章').select('id,name'), include_blank: false %>
-    <div id="topic_content"></div>
-    <%#= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
+    <%= f.text_area :content, style: 'display:none;' %>
+    <script id="ueditorID" name="content"><%= @topic.content.html_safe %></script>
     
     
     <div class="form-group select required topic_tags">

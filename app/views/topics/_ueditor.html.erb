@@ -5,11 +5,22 @@
 <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
 <!-- 实例化编辑器 -->
 <script type="text/javascript">
-	var ue = UE.getEditor('topic_content', {initialFrameWidth:'100%', initialFrameHeight: 500});
+	var ue = UE.getEditor('ueditorID', {initialFrameWidth:'100%', initialFrameHeight: 500});
+	$(function(){
+		$("input[type=submit]").click(function(){
+			if(ue.hasContents()){
+				$("#topic_content").text(ue.getContent());
+			} else {
+				MPMSG('error', '内容不能为空');
+				$(this).blur();
+				return false;
+			}
+		})
+	})
 </script>
 
 <style type="text/css">
-#topic_content{
+#ueditorID{
 	margin-bottom: 20px;
 	height: 100%;
 }
