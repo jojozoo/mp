@@ -1,5 +1,9 @@
 .kindeditor{
     min-height: 500px;
+
+}
+.kindeditor img{
+    max-width: 100%;
 }
 #msgbox {
     width: 600px;
