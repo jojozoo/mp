@@ -19,6 +19,7 @@ gem 'paperclip', '~> 3.0'
 # 获取EXIF信息
 gem 'exifr'
 # gem 'rails_kindeditor', :path => 'vendor/gems/rails_kindeditor-0.4.5'
+# gem 'ueditor_rails', :path => 'vendor/ueditor_rails'
 
 # oauth
 gem 'oauth2'

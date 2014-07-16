@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140626084057) do
+ActiveRecord::Schema.define(:version => 20140716090537) do
 
   create_table "accounts", :force => true do |t|
     t.string   "uid"
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(:version => 20140626084057) do
     t.boolean  "del",                  :default => false
     t.datetime "created_at",                                              :null => false
     t.datetime "updated_at",                                              :null => false
+  end
+
+  create_table "colls", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "desc"
+    t.integer  "state",      :default => 1
+    t.boolean  "publish",    :default => false
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -201,7 +212,7 @@ ActiveRecord::Schema.define(:version => 20140626084057) do
     t.string   "randomstr"
     t.text     "exif"
     t.string   "tags"
-    t.string   "crop"
+    t.text     "crop"
     t.integer  "tpid"
     t.string   "wh"
     t.boolean  "del",                  :default => false
@@ -272,6 +283,16 @@ ActiveRecord::Schema.define(:version => 20140626084057) do
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "ueditors", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "users", :force => true do |t|

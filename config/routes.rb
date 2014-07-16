@@ -30,6 +30,7 @@ Mp::Application.routes.draw do
   match '/ajax/fol/:source/:id'       => 'ajax#fol', via: :post, as: :ajax_fol # 关注 # 取消关注
   match '/ajax/msg/:source/:id'      => 'ajax#msg', via: :get , as: :ajax_msg # 发送消息
   
+  resources :ueditors
   resources :tps, only: [:create, :show]
   # gallery
   resources :photos do

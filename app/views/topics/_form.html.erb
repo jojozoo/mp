@@ -1,7 +1,9 @@
+<%= render 'ueditor' %>
 <%= simple_form_for @topic, validate: true do |f| %>
     <%= f.input :title %>
-    <%= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
     <%= f.input :cate_id, collection: Tag.where(channel: '文章').select('id,name'), include_blank: false %>
+    <div id="topic_content"></div>
+    <%#= f.input :content, as: :text, input_html: {style: 'height:200px;'} %>
     
     
     <div class="form-group select required topic_tags">
@@ -34,7 +36,7 @@
     </div>
     <%= f.input :original, :collection => [['原创', true], ['转载', false]], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
     <div class="form-group string optional">
-        <label class="string optional col-sm-2 control-label"></label>
+        <label class="string optional col-sm-2 control-label" style="text-align:left;"></label>
         <div class="col-sm-6 input-text-add">
             <span class="checkbox">
                 <input id="form_agreement" name="form_agreement" type="checkbox">
@@ -49,8 +51,11 @@
         </div>
     </div>
 
-    <div class="form-group">
-        <input class="btn btn-info col-sm-offset-2 col-md-offset-2" name="commit" type="submit" value="发布话题">
+    <div class="form-group string">
+        <label class="string optional col-sm-2 control-label"></label>
+        <div class="col-sm-6 input-text-add">
+            <input class="btn btn-info" name="commit" type="submit" value="发布话题">
+        </div>
     </div>
 <% end %>
 
