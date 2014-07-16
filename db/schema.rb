@@ -87,6 +87,15 @@ ActiveRecord::Schema.define(:version => 20140716090537) do
     t.datetime "updated_at",                    :null => false
   end
 
+  create_table "emphases", :force => true do |t|
+    t.string   "title"
+    t.string   "link"
+    t.integer  "cate",       :default => 0
+    t.boolean  "del",        :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "events", :force => true do |t|
     t.string   "name"
     t.string   "title"
