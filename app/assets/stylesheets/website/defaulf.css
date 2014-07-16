@@ -1,10 +1,21 @@
 .kindeditor{
     min-height: 500px;
-
 }
 .kindeditor img{
     max-width: 100%;
 }
+.kindeditor h1, .kindeditor h2, .kindeditor h3, .kindeditor h4, .kindeditor h5, .kindeditor h6{
+    font-weight: 700;
+}
+.kindeditor h1 small, .kindeditor h2 small, .kindeditor h3 small, .kindeditor h4 small, .kindeditor h5 small, .kindeditor h6 small{font-weight:400;color:#999}
+.kindeditor h1{font-size:30px;line-height:36px}
+.kindeditor h2{font-size:24px;line-height:36px}
+.kindeditor h3{font-size:18px;line-height:27px}
+.kindeditor h4,.kindeditor h5,.kindeditor h6{line-height:18px}
+.kindeditor h6{font-size:11px;color:#999;text-transform:uppercase}
+.kindeditor h1 small,.kindeditor h2 small{font-size:18px}
+.kindeditor h3 small,.kindeditor h4{font-size:14px}
+.kindeditor h4 small,.kindeditor h5{font-size:12px}
 #msgbox {
     width: 600px;
     position: fixed;
