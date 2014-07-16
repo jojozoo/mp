@@ -17,6 +17,7 @@
 	margin-top: 0;
 }
 .photo-show .photo-header .photo-header-left h4 small{
+	color: red;
 	margin-left: 20px;
 }
 .photo-show .photo-header .photo-header-left .photo-header-author-link{

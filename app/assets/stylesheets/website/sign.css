@@ -16,7 +16,7 @@
     display: inline-block;
 }
 .mp-session-sign .toolbar > a > img{
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 }
 .mp-session-sign .toolbar > .btn {
     display: inline-block;

@@ -39,10 +39,8 @@
                 <%= raw(@topic.content) %>
                 <!-- <div class="clearfix hihihi"></div> -->
             </div>
-            <% if current_user %>
             <hr>
             <%= render "shared/respond", url: ajax_com_path('topic', @topic.id) %>
-            <% end %>
             <hr>
             <div class="comments">
                 <h5>所有回应</h5>

@@ -91,7 +91,7 @@
 .uploader .photo-container .drag-info .service_list .service h2{display:inline-block;text-align:left;color:#aeafb0;font-size:14px;height:25px;line-height:25px;padding:0 0 0 8px}
 .uploader .photo-container .drag-info .service_list .service h2:last-child{margin:0}
 .uploader .photo-container .alternate-upload{display:none}
-.uploader .photo-container .active-photo-wrap{display:table;width:1140px;height:300px;position:relative}
+.uploader .photo-container .active-photo-wrap{display:table;width:1140px;height:120px;position:relative}
 .uploader .photo-container .active-photo-wrap .finish-progress,.uploader .photo-container .active-photo-wrap .loading-progress{display:none}
 .uploader .photo-container .active-photo-wrap .active-photo{display:table-cell;vertical-align:middle}
 .uploader .photo-container .active-photo-wrap .active-photo .photo-preview .jcrop-holder{margin:0 auto}

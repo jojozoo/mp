@@ -150,8 +150,7 @@
 <hr>
 <div class="row photo-show-bottom">
 	<div class="col-md-7">
-		<%= render "shared/respond", url: ajax_com_path('photo', @photo.id) if current_user %>
-		<!-- <hr> -->
+		<%= render "shared/respond", url: ajax_com_path('photo', @photo.id) %>
 		<div class="comments">
 			<h5>所有回应(<%= @photo.coms_count %>)</h5>
 			<ul class="media-list">

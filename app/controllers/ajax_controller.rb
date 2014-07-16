@@ -84,7 +84,7 @@ class AjaxController < ApplicationController
             Topic.find(params[:id])
         when 'work'
             Work.find(params[:id])
-        when 'collection'
+        when 'coll'
             Collection.find(params[:id])
         end
         @comment = obj.comments.create!(params[:comment].merge(user_id: current_user.id))
@@ -117,14 +117,20 @@ class AjaxController < ApplicationController
         # 一个patial 弹出登录框
         unless sign_in?
             if request.xhr?
-                render json: {text: "请先登录", type: 'error'}.to_json
+                render json: {text: "请先登录", type: 'error'}.to_json and return
             else
-                flash[:notice] = "请先登录"
+                flash[:error] = "请先登录"
+                redirect_to :back and return
+            end
+        end
+        if params[:source].eql?('photo') and (@photo = Photo.find_by_id(params[:id])).nil?
+            if request.xhr?
+                render json: {text: "资源错误", type: 'error'}.to_json
+            else
+                flash[:error] = "资源错误"
+                redirect_to :back and return
             end and return
         end
-        unless @photo = Photo.find_by_id(params[:id])
-            render json: {text: "资源错误", type: 'error'}.to_json
-        end and return
     end
 	
 end

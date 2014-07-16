@@ -10,9 +10,7 @@
 					<%= link_to reply.username, user_path(reply.id) %>
 				<% end %>
 			<span class="date"><%= humanize comment.created_at %></span>
-			<% if current_user %>
-			<a class="reply-link pull-right" href="javascript:void(0);" data-id="<%= comment.user_id %>" data-name="<%= comment.user.username %>">回应TA</a>
-			<% end %>
+			<a class="reply-link pull-right mp-sign" href="javascript:void(0);" data-id="<%= comment.user_id %>" data-name="<%= comment.user.username %>">回应TA</a>
 		</div>
 		<p class="reply-content"><%= comment.content %></p>
 	</div>
