@@ -28,6 +28,7 @@ class Admin::MpSetsController < Admin::ApplicationController
     @mpset = MpSet.new(params[:mp_set])
 
     if @mpset.save
+      flash[:notice] = "创建成功"
       redirect_to action: :index
     else
       render action: "new"
@@ -40,6 +41,7 @@ class Admin::MpSetsController < Admin::ApplicationController
     @mpset = MpSet.find(params[:id])
 
     if @mpset.update_attributes(params[:mp_set])
+      flash[:notice] = "更新成功"
       redirect_to action: :show, id: @mpset
     else
       render action: "edit"

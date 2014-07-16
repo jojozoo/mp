@@ -42,7 +42,7 @@ class Admin::TagsController < Admin::ApplicationController
 
     if @tag.update_attributes(params[:tag])
       flash[:notice] = "更新成功"
-      redirect_to action: :show, id: @tag
+      redirect_to action: :edit, id: @tag.id
     else
       render action: "edit"
     end

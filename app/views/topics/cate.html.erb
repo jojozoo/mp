@@ -10,7 +10,7 @@
                     <div class="clearfix"></div>
                 </div> 
                 <div class="gray-desc">
-                    <%= @cate.desc %>
+                    <%= markdown(@cate.desc) %>
                 </div>
                 <div class="col-md-12">
                     <% if @topics.blank? %>
