@@ -244,8 +244,15 @@
 	filter: alpha(opacity=100);
 }
 /* left right */
-
+.modify-tip{
+	cursor: pointer;
+	font-size: 12px;
+	color:#f05d18;
+}
 /*box*/
+.photo-show-bottom{
+	margin-top: 30px;
+}
 .photo-show-bottom .photo-box h4{
 	margin-top: 30px;
 }
@@ -260,46 +267,52 @@
 .photo-show-bottom .photo-box .photo-show-tag a:hover{
 	color:#02adea;
 }
-.photo-show-bottom .photo-box .exif_wrap li{
-	background: url(/images/exif.png) no-repeat -4px 0;
+/*.photo-box{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 10;
+}*/
+.photo-box .exif_wrap li{
+	background: #fff url(/images/exif.png) no-repeat -4px 0;
 	font-size: 12px;
 	padding: 0px 15px 0 20px;
 	margin: 0;
 	line-height: 22px;
-	color: #9F9F9F;
+	color: #9f9f9f;
 }
-.photo-show-bottom .photo-box .exif_wrap li div{
+.photo-box .exif_wrap li div{
 	float: left;
 	width: 200px;
 }
-.photo-show-bottom .photo-box .exif_wrap li span{
+.photo-box .exif_wrap li span{
 	display: inline-block;
 }
-.photo-show-bottom .photo-box li.exif_camera{
+.photo-box .exif_wrap li.exif_camera{
 	background-position: -4px -20px;
 }
-.photo-show-bottom .photo-box li.exif_lens{
+.photo-box .exif_wrap li.exif_lens{
 	background-position: -4px -166px;
 }
-.photo-show-bottom .photo-box li.exif_focal_length{
+.photo-box .exif_wrap li.exif_focal_length{
 	background-position: -4px -40px;
 }
-.photo-show-bottom .photo-box li.exif_shutter_speed{
+.photo-box .exif_wrap li.exif_shutter_speed{
 	background-position: -4px -83px;
 }
-.photo-show-bottom .photo-box li.exif_aperture{
+.photo-box .exif_wrap li.exif_aperture{
 	background-position: -4px -62px;
 }
-.photo-show-bottom .photo-box li.exif_iso{
+.photo-box .exif_wrap li.exif_iso{
 	background-position: -4px -103px;
 }
-.photo-show-bottom .photo-box li.exif_taken_at{
+.photo-box .exif_wrap li.exif_taken_at{
 	background-position: -4px -145px;
 }
-.photo-show-bottom .photo-box .map_wrap img.hidemap{
+.photo-box .map_wrap img.hidemap{
 	width: 456px;
 }
-
+/* 关键字 */
 .photo-show-bottom .photo-box .shortcuts_wrap{
 	padding: 31px 0px 0px 0px;
 	color: #71767a;
@@ -359,9 +372,19 @@
 
 
 
+.hr-0{
+	margin: 0px auto;
+}
+.hr-10{
+	margin: 10px auto;
+}
+.hr-30{
+	margin: 30px auto;
+}
 
-
-
+.mp-large-pitem{
+	margin-top: 70px;
+}
 .mp-large-picture{
     width: 100%;
     height: 100%;
@@ -370,15 +393,16 @@
     position: relative;
 }
 .mp-large-picture .mp-large-link{
-    display: block;
+	display: block;
 	text-align: center;
 }
 .mp-large-picture .mp-large-link img{
 	max-width: 1140px;
-	max-height: 500px;
+	max-height: 700px;
+	min-height: 450px;
 }
 .mp-large-picture .pn-photo{
-    position: absolute;
+	position: absolute;
 	top: 0;
 	bottom: 0;
 	height: 100%;
@@ -416,12 +440,81 @@
 	right: -65px;
 	background-image: url(/images/photo-browse-next.png);
 }
+.mp-large-picture-top{
+	height: 30px;
+}
 .mp-large-picture-bottom {
-	/*margin-top:10px;*/
+	margin-top: 10px;
+}
+.mp-tb-item.lastright{
 	text-align: right;
 }
-.mp-large-picture-bottom a{
-	margin-top: 10px;
+.mp-tb-item{
+	width: 50%;
+	min-height: 30px;
+	float: left;
+}
+.mp-large-picture:hover .mp-large-info{
+	display: block;
+}
+.mp-large-info{
+	list-style: none;
+	padding: 10px;
+	margin: 0;
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	display: none;
+}
+.mp-large-info .hover-icon{
+	color: #fff;
+	cursor: pointer;
+}
+.mp-large-info .hover-icon .hovershow{
+	z-index: 30;
+	position: relative;
+}
+.mp-large-info .hover-icon:hover .phbg{
+	display: block;
+}
+.mp-large-info .hover-icon .phbg{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background: #000;
+	opacity: 0.6;
+	width: 200px;
+	height: 300px;
+	display: none;
+}
+.mp-large-info .hover-icon .phin{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 10;
+	text-align: left;
+	display: none;
+}
+.mp-large-info .hover-icon .phin .exthumb{
+	background: #fff url(/images/exif.png) no-repeat -4px 0;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+}
+.mp-large-info>li:hover{
+	background: #666;
+}
+.mp-large-info>li {
+	margin-right: 15px;
+	background: #000;
+	padding: 3px;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	text-align: center;
+	border-radius: 5px;
+
 }
 
 .mp-request-show .breadcrumb {margin-bottom: 10px;}
@@ -447,10 +540,6 @@
 	min-height: 500px;
 	min-width: 500px;
 }
-/*.editor_opt {
-	margin-top: 10px;
-	text-align: right;
-}*/
 .editor_opt a{
 	font-size: 12px;
 	background: #f3f3f3;

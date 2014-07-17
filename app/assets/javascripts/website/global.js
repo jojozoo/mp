@@ -130,7 +130,7 @@ $(function(){
 			},
 			success: function(result) {
 				MPMSG(result.type, result.text);
-				$(_this).removeAttr("state").parents(".item-line").fadeOut(function(){
+				$(_this).removeAttr("state").parents(".item-line, .mp-large-pitem").fadeOut(function(){
 					$(this).remove();
 				});
 			}

@@ -1,4 +1,4 @@
-<div class="photo-show simple">
+<div class="photo-show">
 	<div class="photo-header">
 		<div class="photo-header-left">
 			<%= link_to image_tag(@photo.user.avatar(:s50), class: 'avatar'), user_path(@photo.user_id), class: 'author' %>
@@ -54,7 +54,7 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
-<hr class="hr-10">
+<hr>
 
 <div class="row">
 	<div class="col-md-12">

@@ -101,7 +101,12 @@ class AjaxController < ApplicationController
                 end
                 if pgl = Photo.find_by_id_and_gl_id_and_parent_id_and_isgroup(photo.parent_id, photo.id, nil, true)
                     ugl = Photo.where(['parent_id = ? and isgroup = ? and id != ?', pgl.id, true, photo.id]).last
-                    pgl.update_attributes(gl_id: ugl.id)
+                    if ugl
+                        pgl.update_attributes(gl_id: ugl.id)
+                    else
+                        pgl.update_attributes(del: true)
+                        # 删除整个组
+                    end
                 end
             end
             photo.update_attributes(del: true)

@@ -1,0 +1,25 @@
+<% exif_hash = photo.exif %>
+<ul class="mp-large-info">
+	<li>
+		<div class="hover-icon">
+			<div class="phin">
+				<h4>EXIF信息</h4>
+				<div class="ex_wrap">
+					<% Photo::EXIF.each do |key, val| %>
+					<div>
+						<span class="exthumb exif_<%= key %>"></span>
+						<span class="exkey"><%= val %></span>
+						<span class="exval">
+							<%= exif_hash[key].blank? ? '--' : exif_hash[key] %>
+						</span>
+					</div>
+					<% end %>
+				</div>
+			</div>
+			<div class="phbg"></div>
+			<span class="hovershow icon-info-sign"></span>
+		</div>
+	</li>
+	<li><div class="hover-icon"><span class="hovershow icon-external-link"></span></div></li>
+	<li><div class="hover-icon"><span class="hovershow icon-map-marker"></span></div></li>
+</ul>

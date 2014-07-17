@@ -219,9 +219,9 @@ module ApplicationHelper
 
   def link_to_photo photo
     if photo.isgroup and photo.parent_id.blank? and gl = Photo.find_by_id(photo.gl_id)
-      link_to image_tag(gl.picture(:cover)), photo_path(gl.id, sid: photo.id, sn: 'group'), target: '_blank', class: 'thumb'
+      link_to image_tag(gl.picture(:cover)), photo_path(photo.id), target: '_blank', class: 'thumb'
     else
-      link_to image_tag(photo.picture(:cover)), photo_path(photo.id, sid: photo.user_id, sn: 'user'), target: '_blank', class: 'thumb'
+      link_to image_tag(photo.picture(:cover)), photo_path(photo.id), target: '_blank', class: 'thumb'
     end
   end
 

@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-    before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create]
+    before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update]
     def index
         params[:q] ||= {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}
         params[:q][:s] = 'cols'
@@ -39,31 +39,14 @@ class PhotosController < ApplicationController
     end
 
     def show
-        # 有几种组的方式 默认以人为单位 其次是某天 其次是推荐 其次是精选 其次是某一集合
         @photo  = Photo.find(params[:id])
-        if @photo.isgroup
-            if @photo.parent_id.blank?
-                @photo = Photo.find_by_id(@photo.gl_id) || @photo
-            end
-            params[:sid] ||= @photo.parent_id || @photo.id
-            params[:sn] ||= "group"
-        else
-            params[:sid] ||= @photo.user_id
-        end
-        @photos = case params[:sn]
-        when 'group' # 组 应该有个组id
-            Photo.where(parent_id: params[:sid])
-        when 'choice' # 如果是精选 应该有个日期
-            Photo.where(user_id: params[:sid], choice: true)
-        when 'recom' # 如果是推荐 应该有个日期
-            Photo.where(user_id: params[:sid], recommend: true)
-        else # 个人作品
-            Photo.where(user_id: params[:sid])
-        end.order("id desc").paginate(:page => params[:page], per_page: 10)
-        # @photo_pages = @photos.paginate(:page => params[:page], per_page: 1)
-        # @photos.next_thumb(@photo)
-        # @photos.prev_thumb(@photo)
         @photo.visits.create(user_id: current_user.try(:id))
+        if @photo.isgroup and @photo.parent_id.blank?
+            @photos = @photo.childrens
+            render 'group_show'
+        else
+            @photos = [@photo]
+        end
     end
 
     # 图片访问权限控制
