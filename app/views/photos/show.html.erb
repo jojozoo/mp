@@ -1,52 +1,4 @@
 <div class="photo-show">
-	<div class="row" style="height:180px;margin-bottom:20px;border-bottom: 1px solid #eeeeee;">
-		<div class="col-md-8" style="border-right: 1px solid #F8F8F8;">
-			<h4>
-				标题未填写
-				<small>组图照片</small>
-			</h4>
-			<div class="gray-desc" style="font-size:12px;">图片描述或者组图描述</div>
-			<p>
-				标签:
-				<a href="">摄影</a>
-				<a href="">Iphone</a>
-			</p>
-		</div>
-		<div class="col-md-4" style="margin-top:10px;">
-			<div class="basic-info">
-				<a href="/u/1" style="float:left;margin-right:10px;">
-					<img alt="C4ca4238a0" src="/system/users/1/s50/c4ca4238a0.jpg?1405525926"></a>
-				<div>
-					<a href="/u/1">zhuxaiowu</a>
-				</div>
-				<div class="basic-tui" style="margin-top:8px;">
-					<%= link_to_fol @photo.user_id %>
-				</div>
-			</div>
-			<div class="status" style="margin-top: 20px;">
-				<span class="status-tip">
-					浏览:
-				</span>
-				<span class="status-count">
-					<%= @photo.visit_count %>
-				</span>
-				<span class="status-tip">
-					喜欢:
-				</span>
-				<span class="status-count">
-					<%= @photo.liks_count %>
-				</span>
-				<span class="status-tip">
-					收藏:
-				</span>
-				<span>
-					<%= @photo.stos_count %>
-				</span>
-			</div>
-		</div>
-	</div>
-
-
 	<div class="photo-header">
 		<div class="photo-header-left">
 			<%= link_to image_tag(@photo.user.avatar(:s50), class: 'avatar'), user_path(@photo.user_id), class: 'author' %>
@@ -153,48 +105,6 @@
 		<% end %>
 	</div>
 </div>
-<!-- <div class="row photo-show-bottom">
-	<div class="col-md-6">
-		<div class="photo-box">
-			<h4>作品描述</h4>
-			<div class="description_text_wrap">
-				<div class="description" style="font-size:12px;"><%= @photo.desc.blank? ? '描述未填写' : @photo.desc %></div>
-				<div class="photo-show-tags">
-					<% @photo.tags.to_s.split(",").each do |tag| %>
-					<span class="photo-show-tag">
-						<a href="javascript:void(0);" target="_blank">#<%= tag %></a>
-					</span>
-					<% end %>
-					<% if event = @photo.event %>
-					<span class="photo-show-tag">
-						<%= link_to '#' + event.name, event_path(event.id), target: '_blank' %>
-					</span>
-					<% end %>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-6">
-		<div class="photo-box">
-			<h4>EXIF信息</h4>
-			<div class="exif_wrap">
-				<ul class="list-unstyled">
-					<% exif_hash = @photo.exif %>
-					<% Photo::EXIF.each do |key, val| %>
-					<li class="exif_<%= key %>">
-						<div>
-							<%= val %>
-						</div>
-						<span>
-							<%= exif_hash[key].blank? ? '--' : exif_hash[key] %>
-						</span>
-					</li>	
-					<% end %>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div> -->
 <hr>
 <div class="row photo-show-bottom">
 	<div class="col-md-7">

@@ -1,5 +1,5 @@
 .mp-ul-nav{
-	margin: 20px auto 0;
+	margin: 40px auto 0;
 }
 .mp-ul-nav a{
 	text-decoration: none;
@@ -14,7 +14,7 @@
 
 
 .mp-home-top{
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 .mp-home-top .col-md-8{
     /*width: 870px;*/
@@ -204,6 +204,7 @@
 }
 .cl .item hr{
     border-color: #dedede;
+    margin: 10px auto;
 }
 .cl a.thua{
     width: 252px;
