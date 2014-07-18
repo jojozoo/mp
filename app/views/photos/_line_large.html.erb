@@ -4,7 +4,7 @@
 	</div>
 	<div class="mp-large-picture">
 		<%= link_to image_tag(photo.picture(:large)), photo_path(photo), class: 'mp-large-link' %>
-		<%= render 'exif_n', photo: photo %>
+		<%= render 'photos/exif_n', photo: photo %>
 	</div>
 	<div class="mp-large-picture-bottom">
 		<div class="mp-tb-item">
