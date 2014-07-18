@@ -165,23 +165,11 @@ class Photo < ActiveRecord::Base
   end
 
   def prev
-    str = 'user_id = ? and id < ?'
-    if self.parent_id
-      str += ' and parent_id = ?'
-    else
-      str += ' and parent_id is ?'
-    end
-    self.class.first(:conditions => [str, self.user_id, self.id, self.parent_id], :limit => 1, :order => "id DESC")
+    self.class.first(:conditions => ['user_id = ? and id < ? and parent_id is null', self.user_id, self.id], :limit => 1, :order => "id DESC")
   end
 
   def next
-    str = 'user_id = ? and id > ?'
-    if self.parent_id
-      str += ' and parent_id = ?'
-    else
-      str += ' and parent_id is ?'
-    end
-    self.class.first(:conditions => [str, self.user_id, self.id, self.parent_id], :limit => 1, :order => "id DESC")
+    self.class.first(:conditions => ['user_id = ? and id > ? and parent_id is null', self.user_id, self.id], :limit => 1, :order => "id DESC")
   end
 
   def self.create_items items, uid, parent = nil
