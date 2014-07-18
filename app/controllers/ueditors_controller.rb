@@ -47,7 +47,6 @@ class UeditorsController < ApplicationController
 	end
 
 	def create
-		ap params
 		ue = Ueditor.create(picture: params[:upfile], user_id: current_user.id)
 		res = {
 			state: "SUCCESS",
