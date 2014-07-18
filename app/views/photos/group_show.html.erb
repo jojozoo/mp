@@ -1,7 +1,7 @@
 <div class="photo-show">
 	<div class="photo-header">
 		<div class="photo-header-left">
-			<%= link_to image_tag(@photo.user.avatar(:s100), class: 'avatar'), user_path(@photo.user_id), class: 'author' %>
+			<%= link_to image_tag(@photo.user.avatar(:s50), class: 'avatar'), user_path(@photo.user_id), class: 'author' %>
 			<h4>
 				<%= @photo.title.blank? ? '标题未填写' : @photo.title %>
 				<% if @photo.isgroup %>
