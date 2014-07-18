@@ -115,6 +115,7 @@ class Photo < ActiveRecord::Base
   has_many   :liks, class_name: 'Tui', conditions: {channel: 'liks'}, as: :obj
   has_many   :stos, class_name: 'Tui', conditions: {channel: 'stos'}, as: :obj
   has_many   :recs, class_name: 'Tui', conditions: {channel: 'recs'}, as: :obj
+  has_many   :childrens, class_name: 'Photo', foreign_key: :parent_id
   # has_many   :tuis, as: :obj, conditions: {editor: true}
 
   scope :choice,    -> { where(choice: true)}

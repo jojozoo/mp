@@ -12,6 +12,7 @@
 		<a href="javascript:void(0);" class="pull-right" id="link-remove"> <i class="icon-remove"></i>
 		</a>
 	</h5>
+	<% if sign_in? %>
 	<%= simple_form_for Comment.new, url: url, validate: true do |f| %>
 		<input class="hidden" id="comment_reply_id" name="comment[reply_id]" type="hidden">
 		<div class="form-group text comment_content">
@@ -22,6 +23,11 @@
 		<input style="width: 100px;" class="btn btn-primary pull-right btn-sm" name="commit" type="submit" value="回应">
 	<% end %>
 	<div class="clearfix"></div>
+	<% else %>
+		<div style="padding: 20px;text-align: center;background: #fefadf;">
+			需要登录后发表评论，请先<a href="javascript:void(0);" class="mp-sign">登录 ››</a>
+		</div>
+	<% end %>
 </div>
 <style type="text/css">
 .new_comment{

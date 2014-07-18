@@ -1,9 +1,12 @@
-<div class="photo-show simple">
+<div class="photo-show">
 	<div class="photo-header">
 		<div class="photo-header-left">
-			<%= link_to image_tag(@photo.user.avatar(:s50), class: 'avatar'), user_path(@photo.user_id), class: 'author' %>
+			<%= link_to image_tag(@photo.user.avatar(:s100), class: 'avatar'), user_path(@photo.user_id), class: 'author' %>
 			<h4>
 				<%= @photo.title.blank? ? '标题未填写' : @photo.title %>
+				<% if @photo.isgroup %>
+				<small>组图 [<%= @photos.length %>] 张</small>
+				<% end %>
 			</h4>
 			<div class="photo-header-author-link">
 				<%= link_to @photo.user.username, user_path(@photo.user_id) %>
@@ -53,58 +56,31 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
-<hr class="hr-10">
-
-<div class="row">
-	<div class="col-md-12">
-		<div class="mp-large-picture">
-			<%= link_to image_tag(@photo.picture(:large)), 'javascript:void(0);', class: 'mp-large-link' %>
-			<% if nextp = @photo.next %>
-				<a href="<%= photo_path(nextp, sid: params[:sid], sn: params[:sn]) %>" class="pn-photo prev-photo"><span></span></a>
-			<% end %>
-			<% if prev = @photo.prev %>
-				<a href="<%= photo_path(prev, sid: params[:sid], sn: params[:sn]) %>" class="pn-photo next-photo"><span></span></a>
-			<% end %>
-		</div>
-		<% if current_user %>
-		<div class="editor_opt mp-large-picture-bottom" style="text-align:right;">
-			<% if current_user.id.eql?(@photo.user_id) %>
-			<%= link_to_edit @photo %>
-			<%= link_to_goon @photo %>
-			<% end %>
-			<% if current_user.admin or Editor.exists?(event_id: @photo.event_id, editor_id: current_user.id) %>
-				<% if @photo.recommend %>
-				<a href="/ajax/rec/photo/<%= @photo.id %>" class="mp-ajax-tui active" data-type="rec">
-					取消精选
-				</a>
-				<% else %>
-				<a href="/ajax/rec/photo/<%= @photo.id %>" class="mp-ajax-tui" data-type="rec">
-					推荐精选
-				</a>
-				<% end %>
-			<% end %>
-			<% if current_user.admin %>
-				<% if @photo.choice %>
-				<a href="/ajax/cho/photo/<%= @photo.id %>" class="mp-ajax-tui active" data-type="cho">
-					取消每日一图
-				</a>
-				<% else %>
-				<a href="/ajax/cho/photo/<%= @photo.id %>" class="mp-ajax-tui" data-type="cho">
-					每日一图
-				</a>
-				<% end %>
-			<% end %>
-			<% if current_user.admin || current_user.id.eql?(@photo.user_id) %>
-				<%= link_to '查看原图', @photo.picture.url, target: '_blank' %>
-			<!-- <a href="javascript:void(0);">
-				删除后跳转到哪里
-			</a> -->
-			<% end %>
-		</div>
+<div class="photo-show-desc gray-desc">
+	<%= @photo.desc %>
+	<% if sign_in? and current_user.id.eql?(@photo.user_id) %>
+	<%= link_to '[作品修改]', edit_photo_path(@photo.id, up_id: @photo.gl_id), class: 'modify-tip' %>
+	<%= link_to '[继续上传]', new_photo_path(go_id: @photo.id), class: 'modify-tip' %>
+	<% end %>
+	<div class="mp-photo-tags">
+		<% @photo.tags.to_s.split(",").each do |tag| %>
+		<span class="mp-photo-tag">
+			<a href="javascript:void(0);" target="_blank">#<%= tag %></a>
+		</span>
+		<% end %>
+		<% if event = @photo.event %>
+		<span class="mp-photo-tag">
+			<%= link_to '#' + event.name, event_path(event.id), target: '_blank' %>
+		</span>
 		<% end %>
 	</div>
 </div>
-<hr class="hr-10">
+<hr class="hr-0">
+<div class="row">
+	<div class="col-md-12">
+		<%= render partial: 'photos/line_large', collection: @photos, as: :photo %>
+	</div>
+</div>
 <div class="row photo-show-bottom">
 	<div class="col-md-7">
 		<%= render "shared/respond", url: ajax_com_path('photo', @photo.id) %>
@@ -115,7 +91,5 @@
 			</ul>
 		</div>
 	</div>
-	<div class="col-md-5">
-		<%= render 'exif' %>
-	</div>
 </div>
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821"></script>

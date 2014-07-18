@@ -1,9 +1,10 @@
-<div class="photo-show simple">
+<div class="photo-show">
 	<div class="photo-header">
 		<div class="photo-header-left">
 			<%= link_to image_tag(@photo.user.avatar(:s50), class: 'avatar'), user_path(@photo.user_id), class: 'author' %>
 			<h4>
 				<%= @photo.title.blank? ? '标题未填写' : @photo.title %>
+				<small>组图照片</small>
 			</h4>
 			<div class="photo-header-author-link">
 				<%= link_to @photo.user.username, user_path(@photo.user_id) %>
@@ -53,7 +54,7 @@
 		<div class="clearfix"></div>
 	</div>
 </div>
-<hr class="hr-10">
+<hr>
 
 <div class="row">
 	<div class="col-md-12">
@@ -67,7 +68,7 @@
 			<% end %>
 		</div>
 		<% if current_user %>
-		<div class="editor_opt mp-large-picture-bottom" style="text-align:right;">
+		<div class="editor_opt mp-large-picture-bottom">
 			<% if current_user.id.eql?(@photo.user_id) %>
 			<%= link_to_edit @photo %>
 			<%= link_to_goon @photo %>
@@ -104,7 +105,7 @@
 		<% end %>
 	</div>
 </div>
-<hr class="hr-10">
+<hr>
 <div class="row photo-show-bottom">
 	<div class="col-md-7">
 		<%= render "shared/respond", url: ajax_com_path('photo', @photo.id) %>
@@ -116,6 +117,7 @@
 		</div>
 	</div>
 	<div class="col-md-5">
+		<%= render 'left_right' %>
 		<%= render 'exif' %>
 	</div>
 </div>
