@@ -482,7 +482,7 @@
 	cursor: pointer;
 	z-index: 30;
 	position: relative;
-	background: #000;
+	background: #6c6e6a;
 	padding: 3px;
 	width: 24px;
 	height: 24px;
@@ -493,7 +493,7 @@
 	display: block;
 }
 .mp-large-info .ml-li-item:hover .ml-hover-icon{
-	background: #6c6e6a;
+	background: #000;
 }
 .mp-large-info .ml-hover-bg, .mp-large-info .ml-hover-data{
 	position: absolute;
@@ -520,17 +520,13 @@
 .mp-large-info .ml-hover-data{
 	text-align: left;
 	padding: 10px 10px 50px 10px;
-	color: #ccc;
-	/*filter: alpha(opacity=80);
-	-moz-opacity: .8;
-	-khtml-opacity: .8;
-	opacity: .8;*/
-	background: #000;
+	color: #333;
+	background: #fff;
 	min-width: 300px;
-	/*min-height: 300px;*/
+	border: 1px dashed #999;
 }
 .mp-large-info .ml-hover-data.photo-box .exif_wrap li{
-	color: #ccc;
+	color: #777;
 }
 .mp-large-info .ml-hover-data.photo-box .exif_wrap li div{
 	width: 100px;
