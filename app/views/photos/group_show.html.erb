@@ -5,7 +5,7 @@
 			<h4>
 				<%= @photo.title.blank? ? '标题未填写' : @photo.title %>
 				<% if @photo.isgroup %>
-				<small>组图照片[<%= @photos.length %>]张</small>
+				<small>组图 [<%= @photos.length %>] 张</small>
 				<% end %>
 			</h4>
 			<div class="photo-header-author-link">
@@ -57,7 +57,23 @@
 	</div>
 </div>
 <div class="photo-show-desc gray-desc">
-	<%= @photo.desc %><% if sign_in? and current_user.id.eql?(@photo.user_id) %><b class="modify-tip">[编辑]</b><% end %>
+	<%= @photo.desc %>
+	<% if sign_in? and current_user.id.eql?(@photo.user_id) %>
+	<%= link_to '[作品修改]', edit_photo_path(@photo.id, up_id: @photo.gl_id), class: 'modify-tip' %>
+	<%= link_to '[继续上传]', new_photo_path(go_id: @photo.id), class: 'modify-tip' %>
+	<% end %>
+	<div class="mp-photo-tags">
+		<% @photo.tags.to_s.split(",").each do |tag| %>
+		<span class="mp-photo-tag">
+			<a href="javascript:void(0);" target="_blank">#<%= tag %></a>
+		</span>
+		<% end %>
+		<% if event = @photo.event %>
+		<span class="mp-photo-tag">
+			<%= link_to '#' + event.name, event_path(event.id), target: '_blank' %>
+		</span>
+		<% end %>
+	</div>
 </div>
 <hr class="hr-0">
 <div class="row">
@@ -76,3 +92,4 @@
 		</div>
 	</div>
 </div>
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821"></script>

@@ -1,25 +1,55 @@
 <% exif_hash = photo.exif %>
 <ul class="mp-large-info">
-	<li>
-		<div class="hover-icon">
-			<div class="phin">
-				<h4>EXIF信息</h4>
-				<div class="ex_wrap">
+	<li class="ml-li-item">
+		<div class="ml-hover-data photo-box">
+			<h4>EXIF信息</h4>
+			<div class="exif_wrap">
+				<ul class="list-unstyled">
 					<% Photo::EXIF.each do |key, val| %>
-					<div>
-						<span class="exthumb exif_<%= key %>"></span>
-						<span class="exkey"><%= val %></span>
-						<span class="exval">
+					<li class="exif_<%= key %>">
+						<div>
+							<%= val %>
+						</div>
+						<span>
 							<%= exif_hash[key].blank? ? '--' : exif_hash[key] %>
 						</span>
-					</div>
+					</li>	
 					<% end %>
-				</div>
+				</ul>
 			</div>
-			<div class="phbg"></div>
-			<span class="hovershow icon-info-sign"></span>
+		</div>
+		<div class="ml-hover-bg"></div>
+		<div class="ml-hover-icon">
+			<span class="icon-info-sign" title="EXIF信息"></span>
 		</div>
 	</li>
-	<li><div class="hover-icon"><span class="hovershow icon-external-link"></span></div></li>
-	<li><div class="hover-icon"><span class="hovershow icon-map-marker"></span></div></li>
+	<li class="ml-li-item">
+		<div class="ml-hover-data">
+			<div class="sharelizers">
+				<div class="share-group">
+					<a href="<%= link_to_share 'weibo', photo %>" class="share weibo" target="_blank"></a>
+					<a href="<%= link_to_share 'qzone', photo %>" class="share qzone" target="_blank"></a>
+					<a href="<%= link_to_share 'renren', photo %>" class="share renren" target="_blank"></a>
+					<a href="<%= link_to_share 'douban', photo %>" class="share douban" target="_blank"></a>
+					<a href="javascript:void(0);" class="share email"></a>
+				</div>
+			</div>
+		</div>
+		<div class="ml-hover-bg"></div>
+		<div class="ml-hover-icon">
+			<span class="icon-external-link" title="分享该作品"></span>
+		</div>
+	</li>
+	<li class="ml-li-item">
+		<div class="ml-hover-data photo-box">
+			<h4>拍摄地点</h4>
+			<div class="map_wrap" id="map-<%= photo.id %>">
+				<img src="/images/disabled_map.jpg" class="hidemap">
+			</div>
+		</div>
+		<div class="ml-hover-bg"></div>
+		<div class="ml-hover-icon getMap" pid="<%= photo.id %>" lat="<%= exif_hash['lat'] %>" lon="<%= exif_hash['lon'] %>">
+			<span class="icon-map-marker" title="坐标信息"></span>
+		</div>
+	</li>
 </ul>

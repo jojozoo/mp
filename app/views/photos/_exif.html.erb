@@ -1,15 +1,15 @@
 <div class="photo-box">
-	<h4>作品描述</h4>
+	<h4 style="margin-top:0;">作品描述</h4>
 	<div class="description_text_wrap">
 		<div class="description" style="font-size:12px;"><%= @photo.desc.blank? ? '描述未填写' : @photo.desc %></div>
-		<div class="photo-show-tags">
+		<div class="mp-photo-tags">
 			<% @photo.tags.to_s.split(",").each do |tag| %>
-			<span class="photo-show-tag">
+			<span class="mp-photo-tag">
 				<a href="javascript:void(0);" target="_blank">#<%= tag %></a>
 			</span>
 			<% end %>
 			<% if event = @photo.event %>
-			<span class="photo-show-tag">
+			<span class="mp-photo-tag">
 				<%= link_to '#' + event.name, event_path(event.id), target: '_blank' %>
 			</span>
 			<% end %>

@@ -141,6 +141,29 @@ $(function(){
 	// 喜欢
 	// 收藏
 	// 查看原图
+	$(".getMap").hover(function(){
+		var pid = $(this).attr("pid");
+		if($(this).parents(".ml-li-item").find("#map-"+pid).hasClass("amap-container")){
+		} else {
+			var lat = $(this).attr("lat"),
+				lon = $(this).attr("lon");
+			if(lat && lon){
+				mapObj = new AMap.Map("map-" + pid, {
+					center: new AMap.LngLat(lon, lat),
+					level: 9
+				});
+				var marker = new AMap.Marker({
+					position: mapObj.getCenter(),
+					draggable: false,
+					cursor: 'move',
+				});
+				marker.setMap(mapObj);
+			} else {
+				$(this).parents(".ml-li-item").find("#map-"+pid).addClass("amap-container");
+			}
+		};
+	}, function(){
+	});
 	
 
 

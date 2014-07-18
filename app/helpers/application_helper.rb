@@ -100,28 +100,15 @@ module ApplicationHelper
     end
   end
 
-  def link_to_like
-  end
-
-  def link_to_store
-  end
-
-  def link_to_recommend
-  end
-
-  def link_to_choice
-  end
-
-  def link_to_original
-  end
-
-  def link_to_destroy
-  end
-
   def link_to_share type, photo
     title = photo.title.to_s + ' - mpwang.cn（漫拍网摄影作品分享）'
     desc = photo.desc
     url = photo_url(photo, sf: type)
+    images = if photo.isgroup and photo.parent_id.nil? and gl = Photo.find_by_id(photo.gl_id)
+      gl.picture.url(:large)
+    else
+      photo.picture.url(:large)
+    end
     case type
     when 'qq'
     when 'weibo'
@@ -131,7 +118,7 @@ module ApplicationHelper
         title: title,
         source: '',
         sourceUrl: '',
-        pic: photo.picture.url(:large),
+        pic: images,
         content: 'utf-8'
       }.to_param
       "http://service.weibo.com/share/share.php?#{p}".html_safe
@@ -143,7 +130,7 @@ module ApplicationHelper
         summary: desc,
         title: title,
         site: 'mpwang.cn',
-        pics: photo.picture.url(:large)
+        pics: images
       }.to_param
       "http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?#{p}".html_safe
     when 'tx'
@@ -154,14 +141,14 @@ module ApplicationHelper
     p = {
       resourceUrl: url, #分享的资源Url
       # srcUrl: url,  # 分享的资源来源Url,默认为header中的Referer,如果分享失败可以调整此值为resourceUrl试试
-      pic: photo.picture.url(:large),   # 分享的主题图片Url
+      pic: images,   # 分享的主题图片Url
       title: title,                   # 分享的标题
       description: desc  # 分享的详细描述
     }.to_param
     "http://widget.renren.com/dialog/share?#{p}".html_safe
     when 'douban'
       p = {
-        image: photo.picture.url(:large),
+        image: images,
         name: title,
         text: desc,
         href: url

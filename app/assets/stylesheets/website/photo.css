@@ -39,10 +39,10 @@
 .photo-show .photo-header .photo-header-right a{
 	text-decoration: none;
 }
-.photo-show .photo-header .photo-header-right .sharelizers {
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers {
 	display: inline-block;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .share{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .share{
 	display: inline-block;
 	width: 32px;
 	height: 26px;
@@ -54,40 +54,40 @@
 	cursor: pointer;
 	box-shadow: 0px 1px 0px rgba(255,255,255,0.2) inset;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .weibo{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .weibo{
 	background-color: #de473c;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .weibo:hover{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .weibo:hover{
 	background-color: #ee574c;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .qzone{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .qzone{
 	background-position: 6px -57px;
 	background-color: #00aced;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .qzone:hover{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .qzone:hover{
 	background-color: #6ed0f5;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .renren{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .renren{
 	background-position: 6px -87px;
 	background-color: #3b5998;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .renren:hover{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .renren:hover{
 	background-color: #4f92d8;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .douban{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .douban{
 	background-position: 6px -117px;
 	background-color: #072;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .douban:hover{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .douban:hover{
 	background-color: #008940;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .email{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .email{
 	background-image: url(/images/mail.png);
 	background-position: 0 3px;
 	background-repeat: no-repeat;
 	background-color: #7f7f7f;
 }
-.photo-show .photo-header .photo-header-right .sharelizers .share-group .email:hover{
+/*.photo-show .photo-header .photo-header-right*/ .sharelizers .share-group .email:hover{
 	/*background-color: #de473c;*/
 }
 
@@ -249,6 +249,9 @@
 	font-size: 12px;
 	color:#f05d18;
 }
+.modify-tip:hover{
+	text-decoration: none;
+}
 /*box*/
 .photo-show-bottom{
 	margin-top: 30px;
@@ -260,11 +263,15 @@
 	text-decoration: none;
 	cursor: pointer;
 }
-.photo-show-bottom .photo-box .photo-show-tag a{
+.mp-photo-tags{
+	margin-top: 10px;
+}
+.mp-photo-tag a{
 	font-size: 12px;
 	color: #0099e5;
+	text-decoration: none;
 }
-.photo-show-bottom .photo-box .photo-show-tag a:hover{
+.mp-photo-tag a:hover{
 	color:#02adea;
 }
 /*.photo-box{
@@ -274,7 +281,7 @@
 	z-index: 10;
 }*/
 .photo-box .exif_wrap li{
-	background: #fff url(/images/exif.png) no-repeat -4px 0;
+	background: url(/images/exif.png) no-repeat -4px 0;
 	font-size: 12px;
 	padding: 0px 15px 0 20px;
 	margin: 0;
@@ -309,7 +316,7 @@
 .photo-box .exif_wrap li.exif_taken_at{
 	background-position: -4px -145px;
 }
-.photo-box .map_wrap img.hidemap{
+.photo-show-bottom .photo-box .map_wrap img.hidemap{
 	width: 456px;
 }
 /* 关键字 */
@@ -401,20 +408,20 @@
 	max-height: 700px;
 	min-height: 450px;
 }
-.mp-large-picture .pn-photo{
+.pn-photo{
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	height: 100%;
-	width: 15%;
+	height: 50px;
+	width: 60px;
 }
-.mp-large-picture .prev-photo{
+.prev-photo{
     left: 10px;
 }
-.mp-large-picture .next-photo{
+.next-photo{
     right: 10px;
 }
-.mp-large-picture .pn-photo span{
+.pn-photo span{
 	top: 50%;
 	position: absolute;
 	opacity: 0.4;
@@ -453,6 +460,7 @@
 	width: 50%;
 	min-height: 30px;
 	float: left;
+	font-size: 12px;
 }
 .mp-large-picture:hover .mp-large-info{
 	display: block;
@@ -467,55 +475,70 @@
 	left: 0;
 	display: none;
 }
-.mp-large-info .hover-icon{
+/* hover */
+.mp-large-info .ml-hover-icon{
 	color: #fff;
 	cursor: pointer;
-}
-.mp-large-info .hover-icon .hovershow{
 	z-index: 30;
 	position: relative;
-}
-.mp-large-info .hover-icon:hover .phbg{
-	display: block;
-}
-.mp-large-info .hover-icon .phbg{
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	background: #000;
-	opacity: 0.6;
-	width: 200px;
-	height: 300px;
-	display: none;
-}
-.mp-large-info .hover-icon .phin{
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	z-index: 10;
-	text-align: left;
-	display: none;
-}
-.mp-large-info .hover-icon .phin .exthumb{
-	background: #fff url(/images/exif.png) no-repeat -4px 0;
-	width: 20px;
-	height: 20px;
-	display: inline-block;
-}
-.mp-large-info>li:hover{
-	background: #666;
-}
-.mp-large-info>li {
-	margin-right: 15px;
 	background: #000;
 	padding: 3px;
-	display: inline-block;
 	width: 24px;
 	height: 24px;
 	text-align: center;
 	border-radius: 5px;
-
 }
+.mp-large-info .ml-li-item:hover .ml-hover-bg,.mp-large-info .ml-li-item:hover .ml-hover-data{
+	display: block;
+}
+.mp-large-info .ml-li-item:hover .ml-hover-icon{
+	background: #6c6e6a;
+}
+.mp-large-info .ml-hover-bg, .mp-large-info .ml-hover-data{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	display: none;
+	z-index: 10;
+}
+/*.mp-large-info .ml-hover-bg{
+	width: 240px;
+	height: 300px;
+	background-color: #000;
+	filter: alpha(opacity=80);
+	-moz-opacity: .8;
+	-khtml-opacity: .8;
+	opacity: .8;
+}*/
+/*.mp-large-info .ml-hover-data{
+	z-index: 2;
+	text-align: left;
+	margin: 10px 10px 40px 10px;
+	color: #ccc;
+}*/
+.mp-large-info .ml-hover-data{
+	text-align: left;
+	padding: 10px 10px 50px 10px;
+	color: #ccc;
+	/*filter: alpha(opacity=80);
+	-moz-opacity: .8;
+	-khtml-opacity: .8;
+	opacity: .8;*/
+	background: #000;
+	min-width: 300px;
+	/*min-height: 300px;*/
+}
+.mp-large-info .ml-hover-data.photo-box .exif_wrap li{
+	color: #ccc;
+}
+.mp-large-info .ml-hover-data.photo-box .exif_wrap li div{
+	width: 100px;
+}
+.mp-large-info .ml-li-item {
+	margin-right: 15px;
+	display: inline-block;
+}
+/* hover */
 
 .mp-request-show .breadcrumb {margin-bottom: 10px;}
 .mp-request-show .breadcrumb a{
