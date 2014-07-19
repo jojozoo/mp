@@ -77,8 +77,14 @@
 </div>
 <hr class="hr-0">
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-12 groupHeight">
 		<%= render partial: 'photos/line_large', collection: @photos, as: :photo %>
+		<% if prev = @photo.prev %>
+			<a href="<%= photo_path(prev) %>" class="pn-photo prev-photo ingroup"><span></span></a>
+		<% end %>
+		<% if nextp = @photo.next %>
+			<a href="<%= photo_path(nextp) %>" class="pn-photo next-photo ingroup"><span></span></a>
+		<% end %>
 	</div>
 </div>
 <div class="row photo-show-bottom">
@@ -93,3 +99,28 @@
 	</div>
 </div>
 <script language="javascript" src="http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821"></script>
+<script type="text/javascript">
+	var mpc_time;
+	window.onload = function(){
+		var totalHeight = $(".groupHeight").height();
+		movePageChange(totalHeight);
+
+		$(window).bind("scroll", function(){
+			clearTimeout(mpc_time);
+			mpc_time = setTimeout(function(){
+				movePageChange(totalHeight);
+			},500);
+		});
+	}
+	function movePageChange(theight){
+		if($(document).scrollTop() < 160){
+			value = ($(window).height() - (160 - $(document).scrollTop()) ) / 2;
+		}else{
+			value = $(window).height()/2 + $(document).scrollTop() - 160;
+		}
+		value = value / theight * 100;
+
+		if(value > 100)return;
+		$(".ingroup span").animate({"top":value + "%"});
+	}
+</script>

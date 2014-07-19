@@ -1,3 +1,74 @@
+.up-btn-li:hover .arrow, .up-btn-li:hover .up-btn-div{
+    display: block;
+}
+.arrow {
+    position: absolute;
+    width: 80px;
+    height: 20px;
+    top: 34px;
+    z-index: 11;
+    zoom: 1;
+    display: none;
+}
+.arrow-out {
+    border-color: transparent transparent #ccc;
+    border-style: dashed dashed solid;
+    border-width: 10px;
+    font-size: 0;
+    height: 0;
+    left: 25px;
+    line-height: 0;
+    top: 0;
+    width: 0;
+    position: absolute;
+    z-index: 998;
+}
+.arrow-in {
+    position: absolute;
+    border-color: transparent transparent #FFF;
+    border-style: dashed dashed solid;
+    border-width: 10px;
+    font-size: 0;
+    height: 0;
+    left: -10px;
+    line-height: 0;
+    top: -9px;
+    width: 0;
+    z-index: 999;
+}
+.up-btn-div {
+    background-color: #fff;
+    border-radius: 5px 5px 5px 5px;
+    padding: 18px;
+    letter-spacing: -4px;
+    width: 180px;
+    position: absolute;
+    left: 0;
+    top: 54px;
+    border: 1px solid #ccc;
+    display: none;
+}
+.up-btn-div a {
+    color: #FFF;
+    display: inline-block;
+    line-height: 26px;
+    background-color: #666;
+    text-decoration: none;
+    vertical-align: middle;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0 10px;
+    letter-spacing: 0;
+}
+.up-btn-div .mlast-g{
+    margin-left: 15px;
+}
+.up-btn-div a:hover {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #3EB1F0;
+}
 .kindeditor{
     min-height: 500px;
 }
@@ -347,8 +418,10 @@ textarea.form-control{
 .navbar-default .navbar-nav > li > a.btn-warning:hover,
 .navbar-default .navbar-nav > li > a.btn-warning:focus {
   color: #ffffff;
-  background-color: #ed9c28;
-  border-color: #d58512;
+  /*background-color: #ed9c28;
+  border-color: #d58512;*/
+  background-color: #3EB1F0;
+  border-color: #3EB1F0;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 	background: #3a3f46;
