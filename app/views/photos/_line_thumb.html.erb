@@ -47,6 +47,11 @@
 			<a href="/ajax/sto/photo/<%= photo.id %>", class="mp-ajax-tui <%= 'active' if current_user and photo.stos?(current_user) %>", data-type="sto">
 				收藏(<span class="count"><%= photo.stos_count %></span>)
 			</a>
+			<% if sign_in? %>
+				<%= link_to "评论(#{photo.coms_count})", 'javascript:void(0);', class: 'gocomment' %>
+			<% else %>
+				<%= link_to "评论(#{photo.coms_count})", 'javascript:void(0);', class: 'mp-sign' %>
+			<% end %>
 			<% if current_user and (current_user.admin or current_user.id.eql?(photo.user_id)) %>
 			<%= link_to '查看原图', photo.picture.url, target: '_blank' %>
 				<% if current_user.id.eql?(photo.user_id)%>
