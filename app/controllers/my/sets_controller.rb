@@ -30,7 +30,7 @@ class My::SetsController < My::ApplicationController
     end
 
     def update
-        p = params[:user].slice(:mobile, :realname, :province, :city, :gender, :site, :domain, :profession, :duty, :warrant, :resume)
+        p = params[:user].slice(:mobile, :realname, :province, :city, :gender, :site, :domain, :profession, :duty, :warrant, :resume, :nickname)
         current_user.update_attributes(p)
         redirect_to action: :basic
     end
