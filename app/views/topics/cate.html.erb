@@ -15,7 +15,7 @@
                 <div class="col-md-12">
                     <% if @topics.blank? %>
                     <div class="text-center topics-no">
-                        暂时没有话题 <%= link_to '发布话题', new_topic_path(cate: @cate.name), class: 'mp-sign' %>
+                        暂时没有话题 <%= link_to '发布话题', new_topic_path(tid: @cate.id), class: 'mp-sign' %>
                     </div>
                     <% else %>
                         <div class="topics">
@@ -33,7 +33,7 @@
                 <span class="title light">发布</span>
             </div>
             <div class="box_con text-center">
-                <%= link_to '发布', new_topic_path(cate: @cate.name), class: 'mp-sign btn btn-success btn-block' %>
+                <%= link_to '发布', new_topic_path(tid: @cate.id), class: 'mp-sign btn btn-success btn-block' %>
             </div>
         </div>
     </div>

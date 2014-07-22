@@ -19,10 +19,10 @@ class TopicsController < ApplicationController
     end
 
     def new
-        if params[:cate].present?
-            @cate  = Tag.find_by_name(params[:cate])
+        if params[:tid].present?
+            @cate  = Tag.find_by_id(params[:tid])
         end
-        @topic = Topic.new
+        @topic = Topic.new(cate_id: @cate.try(:id))
     end
 
     def create
