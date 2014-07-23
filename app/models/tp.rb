@@ -21,8 +21,8 @@ class Tp < ActiveRecord::Base
   has_attached_file :picture,
     processors: [:watermark],
     styles: {
-      large: { quality: :better, geometry: 'x700>'},
-      thumb: { quality: :better, geometry: 'x100>'},
+      large: { quality: :better, geometry: '1140x700>'},
+      thumb: { quality: :better, geometry: '100x100>'},
       plarge: { quality: :better, geometry: '1140x700>', water_path: "#{Rails.root.to_s}/public/images/water/large.png" },
       pthumb: { quality: :better, geometry: '280x280>', water_path: "#{Rails.root.to_s}/public/images/water/thumb.png" },
       pcover: { quality: :better, geometry: '280x280#', water_path: "#{Rails.root.to_s}/public/images/water/cover.png"},
