@@ -11,9 +11,11 @@
 <div class="main" id="main" style="height: 592px;">
 	<div class="ellipsis pro_prefix single"></div>
 	<!-- 商品主体 -->
+	<% @photos.each do |p| %>
 	<div class="product_img clear_fix">
-		<%= image_tag @photo.picture.url(:thumb) %>
+		<%= image_tag p.picture.url(:thumb) %>
 	</div>
+	<% end %>
 	<!--  商品详情页  -->
 	<div class="product_info clear_fix">
 		<div class="collect_success"></div>
@@ -23,10 +25,6 @@
 		</div>
 		<h1 class="first">描述</h1>
 		<p><%= @photo.desc %></p>
-		<h1>坐标</h1>
-		<div id="map" class="map_wrap">
-			<img class="hidemap" src="/images/disabled_map.jpg">
-		</div>
 		<div style="height:500px;"></div>
 	</div>
 </div>
