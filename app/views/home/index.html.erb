@@ -9,9 +9,8 @@
 		<div class="em-title">
 			每日重点
 		</div>
-		<h4>风光后期揭秘 自制丁达尔效应</h4>
 		<ul>
-			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(17).each do |em| %>
+			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(14).each do |em| %>
 			<li>
 				<%= link_to em.title, em.link, target: '_blank' %>
 			</li>
@@ -70,9 +69,16 @@
 		<% end %>
 	</li>
 </ul>
-<div class="row mp-photos">
-	<%= render partial: 'photos/thumb', collection: Photo.where(parent_id: nil).limit(8).order('id desc'), as: :photo %>
+<div class="row" style="margin-top:20px;">
+	<% Photo.where(parent_id: nil).limit(30).order('id desc').each do |p| %>
+	<div class="col-md-2 col-xs-6">
+		<%= link_to_photo p, 'thumbnail' %>
+	</div>
+	<% end %>
 </div>
+<!-- <div class="row mp-photos">
+	<%#= render partial: 'photos/thumb', collection: Photo.where(parent_id: nil).limit(8).order('id desc'), as: :photo %>
+</div> -->
 
 <!-- <ul class="breadcrumb mp-ul-nav">
 	<li>

@@ -204,11 +204,11 @@ module ApplicationHelper
     end
   end
 
-  def link_to_photo photo
+  def link_to_photo photo, glass = 'thumb'
     if photo.isgroup and photo.parent_id.blank? and gl = Photo.find_by_id(photo.gl_id)
-      link_to image_tag(gl.picture(:cover)), photo_path(photo.id), target: '_blank', class: 'thumb'
+      link_to image_tag(gl.picture(:cover)), photo_path(photo.id), target: '_blank', class: glass
     else
-      link_to image_tag(photo.picture(:cover)), photo_path(photo.id), target: '_blank', class: 'thumb'
+      link_to image_tag(photo.picture(:cover)), photo_path(photo.id), target: '_blank', class: glass
     end
   end
 
