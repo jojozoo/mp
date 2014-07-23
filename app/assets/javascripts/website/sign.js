@@ -284,6 +284,7 @@ $(function() {
             url: '/validations/is_sign_in',
             success: function(data) {
                 if(data == 'true') {
+                    // TODO 如果登录时不想跳转，不要写javascript:void(0); 要判断不加mp-sign
                     window.location.href = POPBox.redirectUrl;
                 } else {
                     POPBox.mppopupBox();

@@ -5,13 +5,26 @@
 		display: none;
 		padding: 10px 5px;
 	}
+	.new_comment{
+		margin: 0 5px;
+	}
+	.form-error-tip{
+		position: absolute;
+	}
+	#comment_content{
+		width: 97%;
+		margin: 0 auto;
+	}
+	.form-group.comment_content{
+		margin-bottom: 20px;
+	}
 	</style>
-	<h5 id="replywho" class="replywho">
+	<div id="replywho" class="replywho">
 		回应:
 		<small></small>
 		<a href="javascript:void(0);" class="pull-right" id="link-remove"> <i class="icon-remove"></i>
 		</a>
-	</h5>
+	</div>
 	<% if sign_in? %>
 	<%= simple_form_for Comment.new, url: url, validate: true do |f| %>
 		<input class="hidden" id="comment_reply_id" name="comment[reply_id]" type="hidden">
@@ -29,18 +42,3 @@
 		</div>
 	<% end %>
 </div>
-<style type="text/css">
-.new_comment{
-	margin: 0 5px;
-}
-.form-error-tip{
-	position: absolute;
-}
-#comment_content{
-	width: 97%;
-	margin: 0 auto;
-}
-.form-group.comment_content{
-	margin-bottom: 20px;
-}
-</style>
