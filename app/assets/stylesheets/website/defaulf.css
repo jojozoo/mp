@@ -607,8 +607,8 @@ textarea.form-control{
     border-color: #ccc;
 }
 .mp-resuests .thumbnail > a > img{
-    width: 264px;
-    height: 176px;
+    /*width: 264px;*/
+    /*height: 176px;*/
 }
 .thumbnail > a > img{
     width: 100%;

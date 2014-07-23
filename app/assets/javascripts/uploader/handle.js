@@ -412,8 +412,8 @@ $(function(){
         if(e.keyCode == 9 || e.keyCode == 13){
             if(val.length > 10){
                 alert("最长10个字符");
-                event.returnValue = false;
-                event.cancel = true;
+                e.returnValue = false;
+                e.cancel = true;
                 return;
             }
             var str = '<div class="tag"><div class="name">'+ val +'</div><div class="remove">×</div></div>';
@@ -421,8 +421,8 @@ $(function(){
                 _jk    = $(this).parent().before(str).prev().width(),
                 _rw    = (_width - _jk) < 170 ? 170 : (_width - _jk);
             $(this).val('').css({width: _rw});
-            event.returnValue = false;
-            event.cancel = true;
+            e.returnValue = false;
+            e.cancel = true;
         }
     });
 
