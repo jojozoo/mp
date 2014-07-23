@@ -31,6 +31,6 @@ class Comment < ActiveRecord::Base
                             :message => '不能为空'
 
   validates_length_of       :content,
-                            :within => 5..200,
-                            :message => '长度5..200字'
+                            :within => 1..200,
+                            :message => '长度1..200字'
 end

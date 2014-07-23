@@ -93,8 +93,9 @@
 		<div class="comments">
 			<h5>所有回应(<%= @photo.coms_count %>)</h5>
 			<ul class="media-list">
-				<%= render partial: 'shared/comment', collection: @photo.comments %>
+				<%= render partial: 'shared/comment', collection: @comments %>
 			</ul>
+			<%= will_paginate @comments %>
 		</div>
 	</div>
 </div>

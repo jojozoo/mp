@@ -43,9 +43,11 @@ class PhotosController < ApplicationController
         @photo.visits.create(user_id: current_user.try(:id))
         if @photo.isgroup and @photo.parent_id.blank?
             @photos = @photo.childrens
+            @comments = Comment.where(obj_type: 'Photo', obj_id: @photos.map(&:id) + [@photo.id]).paginate(:page => params[:page], per_page: 20).order('id desc')
             render 'group_show'
         else
             @photos = [@photo]
+            @comments = @photo.comments.paginate(:page => params[:page], per_page: 20).order('id desc')
         end
     end
 
