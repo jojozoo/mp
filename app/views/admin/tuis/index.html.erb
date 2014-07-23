@@ -28,8 +28,8 @@
                 <td><%= hash[tui.obj_type] %></td>
                 <td><%= tui.obj_id %></td>
                 <td><%= Tui::RECOMMENDEDTYPE[tui.channel]  %></td>
-                <td><%= tui.user_id %></td>
-                <td><%= tui.editor_id %></td>
+                <td><%= User.find_by_id(tui.user_id).try(:username) %></td>
+                <td><%= User.find_by_id(tui.editor_id).try(:username) %></td>
                 <td><%= tui.mark %></td>
                 <td><%= tui.updated_at.to_s(:db) %></td>
                 <td>
