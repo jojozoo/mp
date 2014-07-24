@@ -1,0 +1,13 @@
+<li class="list_cont">
+	<div class="list_avatar">
+		<%= link_to image_tag(comment.user.avatar.url(:s50), size: '30x30'), user_path(comment.user_id), target: '_blank', class: 'avatar' %>
+	</div>
+	<div class="list_txt">
+		<p class="details">
+			<%= link_to comment.user.username, user_path(comment.user), target: '_blank', class: 'avatar' %>
+			：
+			<span title="<%= comment.content %>"><%= comment.content %></span>
+		</p>
+		<p class="time"><%= humanize comment.created_at %></p>
+	</div>
+</li>

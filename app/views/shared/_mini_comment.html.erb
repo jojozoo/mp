@@ -1,0 +1,20 @@
+<div class="mini-comments" id="mc-id-<%= photo.id %>">
+	<div class="mini-comment-op">
+		<%= link_to image_tag(current_user.avatar.url(:s50), size: '30x30'), user_path(current_user.id), class: 'min-avat', target: "_blank" %>
+		<div class="comments_input">
+			<textarea placeholder="写点什么吧"></textarea>
+			<a href="javascript:void(0);" class="minibtn_submit" pid="<%= photo.id %>">发表</a>
+		</div>
+	</div>
+	<% comments = photo.comments %>
+	<div class="comments_list" style="display: <%= comments.length.zero? ? 'none' : 'block' %>;">
+		<ul class="list_group">
+			<%= render partial: 'shared/mini_com_row', collection: comments, as: :comment %>
+		</ul>
+	</div>
+	<div class="arrow">
+		<span class="arrow-out">
+			<span class="arrow-in"></span>
+		</span>
+	</div>
+</div>

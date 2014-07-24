@@ -40,7 +40,10 @@
 				收藏(<span class="count"><%= photo.stos_count %></span>)
 			</a>
 			<% if sign_in? %>
-				<%= link_to "评论(#{photo.coms_count})", 'javascript:void(0);', class: 'gocomment' %>
+				<div class="minicomment editor_opt" style="display: inline-block;position: relative;">
+					<%= link_to "评论(#{photo.coms_count})", 'javascript:void(0);', class: 'gocomment' %>
+					<%= render "shared/mini_comment", photo: photo %>
+				</div>
 			<% else %>
 				<%= link_to "评论(#{photo.coms_count})", 'javascript:void(0);', class: 'mp-sign' %>
 			<% end %>

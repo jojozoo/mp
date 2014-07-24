@@ -24,6 +24,48 @@ $(function(){
 	// 	$(this).find('.fade-row').hide();
 	// });
 
+	$(document).on("click", ".gocomment", function(){
+		if($(this).next().is(":hidden")){
+			$(this).next().show();
+		} else {
+			$(this).next().hide();
+		}
+	});
+
+	// mini 回应
+	$(document).on("click", ".minibtn_submit", function(){
+		var _val = $(this).prev().val();
+		if(_val == ""){
+			MPMSG("error", "不能为空");
+			$(this).prev().css("border-color", "red");
+		} else {
+			var _pid = $(this).attr("pid"),
+				_state = $(this).attr("state");
+
+			if(_state === "loading"){
+				return false;
+			}
+			$(this).attr("state", "loading");
+			$.post("/ajax/com/photo/" + _pid, {comment: {content: _val}}, "", "script");
+			// $.ajax({
+			// 	type: "post",
+			// 	url: "/ajax/com/photo/" + _pid,
+			// 	data: {comment: {content: _val}},
+			// 	beforeSend: function(){
+			// 		$(_this).attr("state", "loading");
+			// 	},
+			// 	success: function(result) {
+			// 		$(_this).removeAttr("state");
+			// 		MPMSG(result.type, result.text);
+			// 		if(result.type === 'error'){
+			// 			return false;
+			// 		}
+			// 		$(_this).prev().val('');
+			// 	}
+			// });
+		}
+	});
+
 	// 回应 评论
 	$(document).on("click", ".reply-link", function(){
 		var _id   = $(this).data("id"),

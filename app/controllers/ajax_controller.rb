@@ -77,7 +77,7 @@ class AjaxController < ApplicationController
 
     # comment
     def com
-        obj = case params[:source]
+        @obj = case params[:source]
         when 'photo'
             Photo.find(params[:id])
         when 'topic'
@@ -87,9 +87,18 @@ class AjaxController < ApplicationController
         when 'coll'
             Collection.find(params[:id])
         end
-        @comment = obj.comments.create!(params[:comment].merge(user_id: current_user.id))
-        obj.update_attributes(last_user_id: current_user.id, last_updated_at: Time.now) if params[:obj].eql?('topic')
-        redirect_to :back
+        @comment = @obj.comments.create!(params[:comment].merge(user_id: current_user.id))
+        @obj.update_attributes(last_user_id: current_user.id, last_updated_at: Time.now) if params[:obj].eql?('topic')
+        respond_to do |f|
+            f.js{}
+            f.html{ redirect_to :back}
+            f.json{}
+        end
+        # if request.xhr?
+        #     render json: {text: "评论成功", type: 'success'}.to_json
+        # else
+        #     redirect_to :back
+        # end
     end
 
     # ajax_del_path
@@ -130,11 +139,11 @@ class AjaxController < ApplicationController
         end
         if params[:source].eql?('photo') and (@photo = Photo.find_by_id(params[:id])).nil?
             if request.xhr?
-                render json: {text: "资源错误", type: 'error'}.to_json
+                render json: {text: "资源错误", type: 'error'}.to_json and return
             else
                 flash[:error] = "资源错误"
                 redirect_to :back and return
-            end and return
+            end
         end
     end
 	
