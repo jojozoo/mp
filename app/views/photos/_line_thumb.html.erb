@@ -11,7 +11,7 @@
 	<p class="mp-picture-text-center">
 		<%= link_to_large photo %>
 	</p>
-	<p>
+	<div>
 		<%= photo.title.blank? ? '未填写标题' : photo.title %>
 		<% if photo.isgroup %>
 		<span style="color:red;">组图</span>
@@ -48,7 +48,10 @@
 				收藏(<span class="count"><%= photo.stos_count %></span>)
 			</a>
 			<% if sign_in? %>
-				<%= link_to "评论(#{photo.coms_count})", 'javascript:void(0);', class: 'gocomment' %>
+				<div class="minicomment editor_opt" style="display: inline-block;position: relative;">
+					<%= link_to "评论(#{photo.coms_count})", 'javascript:void(0);', class: 'gocomment' %>
+					<%= render "shared/mini_comment", photo: photo %>
+				</div>
 			<% else %>
 				<%= link_to "评论(#{photo.coms_count})", 'javascript:void(0);', class: 'mp-sign' %>
 			<% end %>
@@ -59,7 +62,7 @@
 				<% end %>
 			<% end %>
 		</span>
-	</p>
-	<div class="clearfix"></div>
+	</div>
+	<!-- <div class="clearfix"></div> -->
 	<hr>
 </div>
