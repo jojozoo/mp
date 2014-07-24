@@ -1,4 +1,4 @@
-$("<%= j render 'shared/mini_com_row', comment: @comment %>").prependTo("#mc-id-<%= @obj.id %> ul.list_group");
+$("#mc-id-<%= @obj.id %> ul.list_group").prepend("<%= j render 'shared/mini_com_row', comment: @comment %>").parent().show();
 $("#mc-id-<%= @obj.id %> textarea").val("");
 $("#mc-id-<%= @obj.id %> .minibtn_submit").removeAttr("state");
 MPMSG("success", "评论成功");
