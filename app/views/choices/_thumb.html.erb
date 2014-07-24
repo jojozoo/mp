@@ -5,7 +5,7 @@
 	<p class="mp-picture-text-center">
 		<%= link_to image_tag(photo.picture.url(:large)), photo_path(photo), title: '点击查看详细内容' %>
 	</p>
-	<p>
+	<div>
 		<%= photo.title.blank? ? '未填写标题' : photo.title %>
 		<% if photo.isgroup %>
 		<span style="color:red;">组图</span>
@@ -48,7 +48,7 @@
 			</a>
 			<% end %>
 		</span>
-	</p>
-	<div class="clearfix"></div>
+	</div>
+	<!-- <div class="clearfix"></div> -->
 	<hr>
 </div>
