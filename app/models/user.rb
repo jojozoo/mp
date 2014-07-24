@@ -107,17 +107,20 @@ class User < ActiveRecord::Base
     like_mail:      true, 
     msg_mail:       true, 
     recom_mail:     true, 
+    choice_mail:     true, 
     store_mail:     true, 
     comment_notice: true, 
     followd_notice: true, 
     like_notice:    true, 
     msg_notice:     true, 
     recom_notice:   true, 
+    choice_notice:   true, 
     store_notice:   true
   }
   ACCEPTTIP = {
     followd: '被关注',
     recom:   '被推荐',
+    choice: '被选为每日一图',
     like:    '被喜欢',
     store:   '被收藏',
     comment: '被回应',

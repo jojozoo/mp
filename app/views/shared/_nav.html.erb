@@ -54,13 +54,16 @@
 								</div>
 							</a>
 						</li>
-						<!-- <li>
+						<li>
 							<a href="/my/msgs/notices">
 								<i class="icon-bullhorn"></i>
 								通知
+								<div class="pull-right">
+									<span class="label label-primary"><%= current_user.notices.where(read: 0).count %></span>
+								</div>
 							</a>
 						</li>
-						<li class="disabled">
+						<!-- <li class="disabled">
 							<a href="javascript:void(0);">
 								<i class="icon-truck"></i>
 								积分(暂未开通)

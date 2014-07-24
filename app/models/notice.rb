@@ -7,7 +7,7 @@
 #  send_id    :integer
 #  title      :string(255)
 #  content    :text
-#  read       :boolean
+#  read       :boolean          default(FALSE)
 #  del        :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -64,13 +64,6 @@ class AjaxController < ApplicationController
         @user = User.find(params[:id])
     end
 
-
-    # def tui
-    #     @obj = params[:source].classify.constantize.find(params[:id])
-    #     @obj.send('tui' + params[:push].pluralize).create(user_id: current_user.id)
-    #     @count = @obj.send(params[:push].pluralize + '_count')
-    # end
-
     def tag
         render json: {availableTags: Tag.limit(10).map(&:name), assignedTags: []}.to_json
     end
