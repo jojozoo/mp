@@ -6,6 +6,7 @@
 #  user_id              :integer
 #  event_id             :integer
 #  work_id              :integer
+#  gl_id                :integer
 #  album_id             :integer
 #  isgroup              :boolean          default(FALSE)
 #  parent_id            :integer
