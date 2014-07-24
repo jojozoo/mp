@@ -20,7 +20,7 @@ albums:
   icons: {}
   smalls: {}
 msgs:
-  name: 私信&通知
+  name: 私信
   icon: envelope
   small:
   navs:
@@ -31,8 +31,17 @@ msgs:
     #   /my/msgs/unread: 未读私信
     #   /my/msgs/trash: 垃圾私信
     /my/msgs/new: 给关注的人写信
-    /my/msgs/notices: 网站通知
+    # /my/msgs/notices: 网站通知
   icons: 
     new: edit
-    notices: bullhorn
+    # notices: bullhorn
+  smalls: {}
+notices:
+  name: 通知
+  icon: bullhorn
+  small:
+  navs:
+    /my/notices: 网站通知
+  icons: 
+    index: bullhorn
   smalls: {}

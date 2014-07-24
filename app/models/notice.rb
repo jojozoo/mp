@@ -16,4 +16,6 @@
 class Notice < ActiveRecord::Base
   # 通知的发送者只能是系统, 所以send_id没有用处
   attr_accessible :user_id, :send_id, :title, :content, :read, :del
+
+  belongs_to :sender, class_name: 'User', foreign_key: :send_id
 end

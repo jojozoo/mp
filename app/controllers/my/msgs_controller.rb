@@ -5,9 +5,7 @@ class My::MsgsController < My::ApplicationController
     end
 
     def new
-        # follows 的 id
         @writers = current_user.fols
-        @writers = User.where(['id != ?', current_user.id])
     end
 
     def write
@@ -33,10 +31,6 @@ class My::MsgsController < My::ApplicationController
         @msgs = current_user.iboxs(@user).paginate(:page => params[:page], per_page: 5).order('id desc')
         @msgs.each{|m| m.update_attributes(state: 1)}
         # current_user.update_attributes(messages_count: current_user.unreads(:refresh).size)
-    end
-
-    def notices
-        
     end
 
     def destroy

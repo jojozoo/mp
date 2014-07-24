@@ -111,9 +111,10 @@ Mp::Application.routes.draw do
     resources :msgs do
       collection do
         match 'write/:user_id' => "msgs#write", via: :get, as: :write
-        get 'notices'
+        # get 'notices'
       end
     end
+    resources :notices, only: [:index, :show, :destroy]
     resources :albums do
       # collection do
       #   match :upload, via: [:get, :post], as: :upload

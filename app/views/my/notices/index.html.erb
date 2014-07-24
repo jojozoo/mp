@@ -1,0 +1,29 @@
+<style type="text/css">
+a.link{
+	font-size: 12px;
+	color: #999;
+	text-decoration: none;
+}
+a.link:hover{
+	color: #777;
+}
+</style>
+
+<div class="list-group messages">
+	<% @notices.each do |notice| %>
+	<div class="list-group-item <%= 'unread' unless notice.read %>">
+		<h5 class="list-group-item-heading">
+			<%= link_to notice.sender.username, user_path(notice.send_id), target: '_blank' %>
+			给你发送了私信
+			<span class="date"><%= humanize notice.created_at %></span>
+			<%= link_to '详细', my_notice_path(notice), class: 'link'  %>
+			/
+			<%= link_to '删除', my_notice_path(notice), method: :delete, class: 'link del'  %>
+		</h5>
+		<p class="list-group-item-text">
+			<%= notice.content %>
+		</p>
+	</div>
+	<% end %>
+	<%= will_paginate @notices %>
+</div>
