@@ -1,0 +1,7 @@
+<%= link_to @notice.sender.username, user_path(@notice.send_id), target: '_blank' %>
+给你发送了私信
+<span class="date"><%= humanize @notice.created_at %></span>
+<%= link_to '删除', my_notice_path(@notice), method: :delete, class: 'link del'  %>
+<p>
+	<%= @notice.content %>
+</p>

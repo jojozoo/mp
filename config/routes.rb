@@ -114,7 +114,7 @@ Mp::Application.routes.draw do
         # get 'notices'
       end
     end
-    resources :notices, only: [:index, :show, :destroy]
+    resources :notices, only: [:index, :show, :destroy, :edit]
     resources :albums do
       # collection do
       #   match :upload, via: [:get, :post], as: :upload
