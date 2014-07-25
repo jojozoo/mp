@@ -38,7 +38,7 @@ class AjaxController < ApplicationController
                 {text: "取消成功", type: 'success'}
             else
                 current_user.folships.create(user_id: user.id)
-                Notice.add_once('fol', user.id, current_user.id, user.id, 'User')
+                Notice.add_once('fol', user.id, current_user.id, user.id, 'User') if current_user.id != user.id
                 {text: "关注成功", type: 'success'}
             end
         else

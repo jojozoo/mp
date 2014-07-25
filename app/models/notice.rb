@@ -30,9 +30,10 @@ class Notice < ActiveRecord::Base
     'fol' => '关注'
   }
   belongs_to :obj, polymorphic: true
+  belongs_to :user
   belongs_to :sender, class_name: 'User', foreign_key: :send_id
 
-	def self.add_once cate, user_id, sender_id = 0, obj_id, obj_type
-		self.create(obj_id: obj_id, obj_type: obj_type, user_id: user_id, send_id: sender_id, cate: cate)
-	end
+  def self.add_once cate, user_id, sender_id = 0, obj_id, obj_type
+    self.create(obj_id: obj_id, obj_type: obj_type, user_id: user_id, send_id: sender_id, cate: cate) unless user_id == sender_id # 非用户自己对自己的操作
+  end
 end

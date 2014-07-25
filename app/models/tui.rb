@@ -68,7 +68,7 @@ class Tui < ActiveRecord::Base
   after_create :create_notice
   def create_notice
     cate = {"recommend"=>"recommend", "choice"=>"choice", "liks"=>"like", "stos"=>"store", "coms"=>"comment", "fols"=>"fol"}[self.channel]
-    Notice.add_once cate, self.user_id, self.editor_id, self.obj_id, self.obj_type if cate
+    Notice.add_once cate, self.user_id, self.editor_id, self.obj_id, self.obj_type if cate and self.user_id != self.editor_id
   end
 
   # 推荐 精选 喜欢 收藏

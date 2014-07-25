@@ -36,10 +36,13 @@ class Comment < ActiveRecord::Base
 
   after_create :create_notice
   def create_notice 
-    if self.reply_id.present? and self.reply_id != self.user_id
+    return if self.reply_id == self.user_id
+    if self.reply_id.present?
       Notice.add_once 'reply', self.reply_id, self.user_id, self.obj_id, self.obj_type
     else
-      Notice.add_once 'comment', self.obj.user_id, self.user_id, self.obj_id, self.obj_type if self.obj.user_id != self.user_id
+      # 非系统自动回复的发通知
+      # 应该加个字段来标识是否系统产生，来达到是否要发送通知
+      Notice.add_once 'comment', self.obj.user_id, self.user_id, self.obj_id, self.obj_type unless ['将此作品推荐为精选', '将此作品推荐为每日一图', '收藏了此作品', '喜欢了此作品'].member?(self.content)
     end
   end
 
