@@ -29,7 +29,9 @@ a.link:hover{
 		<span class="logo">
 			<%= image_tag notice.sender.avatar(:s50) %>
 		</span>
-		<span class="txt"><%= link_to notice.sender.username, user_path(notice.send_id) %> <%= notice.content %></span>
+		<span class="txt">
+			<%= render notice.cate, notice: notice %>
+		</span>
 		<span class="time"><%= humanize notice.created_at %></span>
 	</div>
 	<% end %>

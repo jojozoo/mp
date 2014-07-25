@@ -1,0 +1,5 @@
+您的 <% if notice.obj_type.eql?('Photo') %>
+	<%= link_to '作品', photo_path(notice.obj_id) %>
+<% else %>
+	<%= link_to '话题', topic_path(notice.obj_id) %>
+<% end %> 被 <%= link_to notice.sender.username, user_path(notice.send_id) %> 回应

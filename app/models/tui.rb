@@ -65,6 +65,12 @@ class Tui < ActiveRecord::Base
     scope key, -> {where(channel: key)}
   end
 
+  after_create :create_notice
+  def create_notice
+    cate = {"recommend"=>"recommend", "choice"=>"choice", "liks"=>"like", "stos"=>"store", "coms"=>"comment", "fols"=>"fol"}[self.channel]
+    Notice.add_once cate, self.user_id, self.editor_id, self.obj_id, self.obj_type if cate
+  end
+
   # 推荐 精选 喜欢 收藏
   def self.cho_or_rec cate, photo, editer, iseditor = false
     attrs = {obj_id: photo.id, obj_type: 'Photo', channel: cate, editor: iseditor }

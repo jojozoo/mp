@@ -102,29 +102,26 @@ class User < ActiveRecord::Base
   has_many :topics
   # 个人推送设置
   ACCEPT = {
-    comment_mail:   true, 
-    followd_mail:   true, 
-    like_mail:      true, 
-    msg_mail:       true, 
-    recom_mail:     true, 
-    choice_mail:     true, 
-    store_mail:     true, 
-    comment_notice: true, 
-    followd_notice: true, 
-    like_notice:    true, 
-    msg_notice:     true, 
-    recom_notice:   true, 
-    choice_notice:   true, 
-    store_notice:   true
+    fol_mail: true, 
+    recommend_mail: true, 
+    choice_mail: true, 
+    like_mail: true,  
+    store_mail: true, 
+    comment_mail: true, 
+    fol_notice: true,
+    recommend_notice: true, 
+    choice_notice: true,
+    like_notice: true, 
+    store_notice: true,
+    comment_notice: true
   }
   ACCEPTTIP = {
-    followd: '被关注',
-    recom:   '被推荐',
+    fol: '被关注',
+    recommend: '被推荐',
     choice: '被选为每日一图',
-    like:    '被喜欢',
-    store:   '被收藏',
-    comment: '被回应',
-    msg:     '收到私信'
+    like: '被喜欢',
+    store: '被收藏',
+    comment: '被回应'
   }
   # 收件箱
   # has_many :iboxs,   class_name: 'Message', foreign_key: :user_id, conditions: {state: [0, 1]}
