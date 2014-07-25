@@ -28,9 +28,11 @@ class Notifier < ActionMailer::Base
     mail(to: mails, subject: Date.today.to_s + "没有精选照片")
   end
 
-  def notice
-    @notice
-    mail(to: mail, subject: '漫拍网通知')
+  def notice notice
+    @notice = notice
+    @user = @notice.user
+    @sender = @notice.sender
+    mail(to: @user.email, subject: '漫拍网通知')
   end
 
 end
