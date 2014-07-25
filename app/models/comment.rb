@@ -39,6 +39,7 @@ class Comment < ActiveRecord::Base
     return if self.reply_id == self.user_id
     if self.reply_id.present?
       Notice.add_once 'reply', self.reply_id, self.user_id, self.obj_id, self.obj_type
+      Notice.add_once 'content', self.obj.user_id, self.reply_id, self.obj_id, self.obj_type if self.obj.user_id != self.user_id and self.obj.user_id != self.reply_id
     else
       # 非系统自动回复的发通知
       # 应该加个字段来标识是否系统产生，来达到是否要发送通知
