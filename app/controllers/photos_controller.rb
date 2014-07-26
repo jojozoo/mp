@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-    before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update]
+    before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update, :simple, :complex]
     def index
         params[:q] ||= {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}
         params[:q][:s] = 'cols'
@@ -71,6 +71,21 @@ class PhotosController < ApplicationController
         end
         @event  ||= Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
         @album  ||= current_user.albums.find_by_id(params[:album_id]) if params[:album_id].present?
+    end
+
+    def simple
+        render layout: 'complex'
+    end
+
+    def complex
+        if params[:go_id].present?
+            @group = current_user.photos.find_by_id(params[:go_id])
+            @event = @group.event
+            @album = @group.album
+        end
+        @event  ||= Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
+        @album  ||= current_user.albums.find_by_id(params[:album_id]) if params[:album_id].present?
+        render layout: 'complex'
     end
 
     def edit

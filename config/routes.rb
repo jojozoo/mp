@@ -40,6 +40,8 @@ Mp::Application.routes.draw do
       post :upload
       get :uploadnew
       get :uploadswf
+      get :simple
+      get :complex
     end
   end
 

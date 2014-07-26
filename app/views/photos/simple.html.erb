@@ -1,0 +1,87 @@
+<script type="text/javascript">
+	var cookieSK = "<%= cookies['_mp_session'] %>",
+		GoId = "<%= @group.try(:id) %>";
+		
+</script>
+<%= javascript_include_tag "uploader" %>
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821"></script>
+<div class="uploader" style="margin-bottom:50px;">
+	<div class="photo-container" style="margin: 30px auto 10px auto;">
+		<div class="crop-tooltip">
+			<p>可裁剪照片做缩略图</p>
+		</div>
+		<div class="active-photo-wrap">
+			<div class="loading-progress">
+				<div class="progress-bar-wrap">
+					<div class="wheels-bar">
+						<img src="/images/loading.gif">
+						<span class="wheel-bar-filename"></span>
+						<span>
+							<strong class="curr-wheel">1</strong>
+							/
+							<strong class="total-wheel"></strong>
+						</span>
+					</div>
+					<div class="ui progress-bar">
+						<span class="area green"></span>
+						<span class="label"></span>
+						<span class="percentage">
+							<span class="value">0</span>
+							<small>%</small>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="finish-progress">
+				<div class="progress-bar-wrap">
+					<div class="ui progress-bar">
+						<span class="area" style="width: 100%;"></span>
+						<span class="label"></span>
+						<span class="percentage">
+							<span class="value">0</span>
+							<small>%</small>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="drag-info">
+				<!-- <h1>高级 <a href="/sites/browse.html">浏览器</a> 将支持拖拽上传</h1> -->
+				<h1>尽量填写标题、描述、标签等信息,以助于您的作品更容易被关注.</h1>
+				<p class="browser-not-supported"></p>
+				<div class="action_buttons">
+					<a class="button browse_files action" href="javascript:void(0);">上传照片</a>
+				</div>
+			</div>
+			<div class="active-photo"></div>
+		</div>
+		<div class="photo-reel">
+			<div class="photos"></div>
+			<div class="previous-button"></div>
+			<div class="next-button"></div>
+		</div>
+		<div class="photo-actions">
+			<div class="remaining-photos">
+				<p>还可以再上传20张照片</p>
+			</div>
+			<input class="button remove" type="submit" value="删除本张">
+			<input class="button submit" type="submit" value="继续上传">
+			<input class="button action finish" type="submit" value="完成上传"></div>
+	</div>
+	<div class="edit-container">
+		<%= render 'details' %>
+	</div>
+</div>
+<div class="modal fade" id="custom-modal" style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">信息较少</h4>
+			</div>
+			<div class="modal-body">给您每张照片一个标题，描述，3个标签，以便用户更容易发现，照片更容易被推荐</div>
+			<div class="modal-footer">
+				<a href="javascript:void(0);" class="btn btn-default confirm_close">返回修改</a>
+				<a href="javascript:void(0);" class="btn btn-primary confirm_finish">就这样吧</a>
+			</div>
+		</div>
+	</div>
+</div>

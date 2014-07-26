@@ -21,15 +21,15 @@
 						<i class="icon-camera"></i>
 							上传作品
 					<% end %>
-					<!-- <div class="arrow">
+					<div class="arrow">
 						<span class="arrow-out">
 							<span class="arrow-in"></span>
 						</span>
 					</div>
 					<div class="up-btn-div">
-						<a href="#">传单图</a>
-						<a href="#" class="mlast-g">传组图</a>
-					</div> -->
+						<%= link_to '传单图', simple_photos_path, class: 'mp-sign' %>
+						<%= link_to '传组图', complex_photos_path, class: 'mlast-g mp-sign' %>
+					</div>
 				</li>
 				<% if sign_in? %>
 				<li class="dropdown">

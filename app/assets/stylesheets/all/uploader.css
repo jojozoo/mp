@@ -154,9 +154,18 @@
 .photo-details .ui.has-error{border: 1px solid red}
 .photo-details.active{display:block}
 .photo-details.active h4{color:#0099e5;font-size:14px;font-weight:bold;text-transform:uppercase}
-.photo-details.active .select{width:236px}
-.photo-details.active .wrapper{width:1070px;height:auto;margin:0 auto;padding:30px 0 0 0}
-.photo-details.active .wrapper .exif{float:left;overflow:visible;width:236px;margin-right:22px}
+.photo-details.active .select{
+	/*width:236px*/
+	width: 306px;
+}
+.photo-details.active .wrapper{
+	/*width:1070px;*/
+	width: 1140px;
+	height:auto;margin:0 auto;padding:30px 0 0 0}
+.photo-details.active .wrapper .exif{float:left;overflow:visible;
+	/*width:236px;*/
+	width: 306px;
+	margin-right:22px}
 .photo-details.active .wrapper .exif h4{float:left}
 .photo-details.active .wrapper .exif .small-badge{float:left;margin:0px 0 0 10px}
 .photo-details.active .wrapper .exif .photo-title{width:400px}

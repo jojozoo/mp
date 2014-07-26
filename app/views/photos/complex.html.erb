@@ -1,0 +1,191 @@
+<style type="text/css">
+.cm-bg{
+	padding-bottom: 20px;
+	width: 100%;
+	letter-spacing: 0;
+	background-color: #efefef;
+}
+.container{
+
+}
+.uploadcom{
+	min-height: 260px;
+	background: #fff;
+	margin: auto 0;
+	border: 1px dashed #d3d3d3;
+	padding: 20px;
+}
+.uploadcom .col-md-12{
+	background: #f9f9f9;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+.uploadcom .upcm2{
+	background: #f9f9f9;
+	height: 140px;
+	text-align: center;
+	margin-bottom: 0;
+	padding: 0px;
+}
+a.clickupload{
+	text-decoration: none;
+	margin-top: 50px;
+	border-bottom: 1px solid #1fabe7;
+	color: #fff;
+	background-color: #3eb1f0;
+	display: inline-block;
+	padding: 0 24px;
+	height: 32px;
+	line-height: 32px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	vertical-align: middle;
+	cursor: pointer;
+	letter-spacing: 0;
+}
+a.clickupload:hover{
+	background-color: #1687cb;
+}
+form{
+	margin: 35px auto;
+}
+.form-group .control-label{
+	width: 45px;
+	overflow: hidden;display: inline-block;vertical-align: top;
+}
+label.ftip, label.control-label{
+	color: #666;
+}
+.form-group .form-control-div{
+	display: inline-block;
+}
+.form-group input, .form-group textarea{
+	width: 400px;
+	display: inline-block;
+}
+.fm-item{
+	font-size: 12px;
+	margin-bottom: 30px;
+}
+.startipspan{
+	overflow: hidden;display: inline-block;vertical-align: top;
+}
+.ftip{
+	width: 70px;
+	text-align: right;
+}
+.ftip i{
+	float: left;
+	width: 15px !important;
+	height: 15px !important;
+	text-align: center;
+}
+.ftip i.icon-warrant{
+	
+	background: url("/images/icons.png") -2px -9px no-repeat;
+}
+input.submit{
+	border-bottom: 1px solid #e1e1e1;
+	color: #ccc;
+	background-color: #eee;
+	height: 44px;
+	line-height: 44px;
+	font-size: 22px;
+	display: inline-block;
+	text-align: center;
+	width: 110px;
+	cursor: pointer;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border-bottom: 1px solid #1fabe7;
+	color: #fff;
+	background-color: #3eb1f0;
+}
+input.submit:hover{
+	background-color: #1687cb;
+}
+</style>
+<div class="cm-bg">
+	<div class="container">
+		<div class="cm-title">
+			<h2>上传组图</h2>
+		</div>
+		<div class="row uploadcom">
+			<div class="col-md-12">
+				<img src="http://imgsize.ph.126.net?imgurl=http://img1.ph.126.net/s3_QUWfacd-2Zyr-QiluHw==/6599334760610920339.jpg_140x140x1.jpg" width="140" height="140" alt="" class="edit-pic z-tag" data-originalsrc="http://img1.ph.126.net/s3_QUWfacd-2Zyr-QiluHw==/6599334760610920339.jpg" data-photoid="9222374">
+			</div>
+			<div class="col-md-12 upcm2">
+				<a href="javascript:void(0);" class="clickupload">点击上传</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="cm-cont">
+	<div class="container">
+		<form>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="form-group" style="min-height: 45px;height: 45px;">
+						<label class="control-label" for="photo_event_id">活动:</label>
+						<div class="form-control-div">
+							<a href="javascript:void(0);">[选择活动]</a>
+							<span class="startipspan">*</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="photo_event_id">标题:</label>
+						<div class="form-control-div">
+							<input class="form-control" id="photo_event_id" name="photo[event_id]" type="text">
+							<span class="startipspan">*</span>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="photo_event_id">内容:</label>
+						<div class="form-control-div">
+							<textarea class="form-control"></textarea>
+							<span class="startipspan">*</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="fm-item">
+						<label class="ftip">
+							<i class="icon-camera-retro"></i>
+							EXIF:
+						</label>
+						<a href="javascript:void(0);">[选择相机]</a>
+					</div>
+					<div class="fm-item">
+						<label class="ftip">
+							<i class="icon-map-marker"></i>
+							地 点:
+						</label>
+						<a href="javascript:void(0);">[选择地点]</a>
+					</div>
+					<div class="fm-item">
+						<label class="ftip">
+							<i class="icon-tags"></i>
+							标 签:
+						</label>
+						<a href="javascript:void(0);">[选择标签]</a>
+						
+					</div>
+					<div class="fm-item">
+						<label class="ftip">
+							<i class="icon-warrant"></i>
+							许 可:
+						</label>
+						<a href="javascript:void(0);">[选择许可]</a>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="margin-top:30px;">
+				<div class="col-md-12">
+					<input class="submit submitok" type="submit" value="发 布" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
