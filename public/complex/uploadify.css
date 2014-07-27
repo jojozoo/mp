@@ -1,0 +1,210 @@
+/*
+Uploadify
+Copyright (c) 2012 Reactive Apps, Ronnie Garcia
+Released under the MIT License <http://www.opensource.org/licenses/mit-license.php> 
+*/
+.swfupload{
+	left: 0;
+}
+.uploadify {
+	position: relative;
+}
+.uploadify-button {
+	background-color: #505050;
+	color: #FFF;
+	text-align: center;
+}
+.uploadify:hover .uploadify-button {
+	background-color: #606060;
+	background-image: linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -o-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -moz-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -webkit-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -ms-linear-gradient(top, #606060 0%, #808080 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #606060),
+		color-stop(1, #808080)
+	);
+	background-position: center bottom;
+}
+.uploadify-button.disabled {
+	background-color: #D0D0D0;
+	color: #808080;
+}
+.uploadify-queue-item {
+	z-index: 2;
+	width: 100%;
+	padding: 10px;
+	position: absolute;
+	top: 0;
+	font-size: 12px;
+	background-color: #f5f5f5;
+	height: 164px;
+}
+.uploadify-error {
+	background-color: #FDE5DD !important;
+}
+.uploadify-queue-item .cancel a {
+	background: url('/images/mp-sign-close.jpg') 0 0 no-repeat;
+	float: right;
+	height:	16px;
+	text-indent: -9999px;
+	width: 16px;
+}
+.uploadify-queue-item.completed {
+	background-color: #E5E5E5;
+}
+.uploadify-progress {
+	/*margin-top: 10px;
+	width: 100%;*/
+	background-color: #E5E5E5;
+	width: 100px;
+	position: absolute;
+	bottom: 1px;
+
+}
+.uploadify-progress-bar {
+	background-color: #0099FF;
+	height: 3px;
+	width: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.photoopt a{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	height: 28px;
+	text-decoration: none;
+}
+.cm-bg{
+	padding-bottom: 20px;
+	width: 100%;
+	letter-spacing: 0;
+	background-color: #efefef;
+}
+.cm-bg .clickupload, a.submit{
+	text-decoration: none;
+	border-bottom: 1px solid #1fabe7;
+	color: #fff;
+	background-color: #3eb1f0;
+	display: inline-block;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.cm-bg .clickupload:hover, .submit:hover{
+	background-color: #1687cb;
+}
+a.clickupload{
+	margin-top: 50px;
+	padding: 0 24px;
+	height: 32px;
+	line-height: 32px;
+}
+a.submit{
+	height: 44px;
+	line-height: 44px;
+	font-size: 22px;
+	margin-top: 30px;
+	padding: 0 35px;
+}
+.container{
+	margin: 35px auto;
+}
+.uploadcom{
+	min-height: 260px;
+	background: #fff;
+	margin: auto 0;
+	border: 1px dashed #d3d3d3;
+	padding: 20px;
+}
+.uploadcom .col-md-12{
+	background: #f9f9f9;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+.uploadcom .upcm2{
+	background: #f9f9f9;
+	height: 140px;
+	text-align: center;
+	margin-bottom: 0;
+	/*padding: 0px;*/
+	padding: 50px;
+}
+.form-group .control-label{
+	width: 45px;
+	overflow: hidden;display: inline-block;vertical-align: top;
+}
+label.ftip, label.control-label{
+	color: #666;
+}
+.form-group .form-control-div{
+	display: inline-block;
+}
+.form-group input, .form-group textarea{
+	width: 400px;
+	display: inline-block;
+}
+.fm-item{
+	font-size: 12px;
+	margin-bottom: 30px;
+}
+.startipspan{
+	overflow: hidden;display: inline-block;vertical-align: top;
+}
+.ftip{
+	width: 70px;
+	text-align: right;
+}
+.ftip i{
+	float: left;
+	width: 15px !important;
+	height: 15px !important;
+	text-align: center;
+}
+.ftip i.icon-warrant{
+	
+	background: url("/images/icons.png") -2px -9px no-repeat;
+}
+.framebox{
+	border: 1px solid #ccc;
+	padding: 5px;
+	float: left;
+	position: relative;
+}
+.photoopt{
+	padding:0 10px;width:60px;float:left;
+}
+.framebox .fileName, .framebox .data{
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+}
+.framebox .fileName{
+	bottom: 30px;
+}
+.setcover{
+	position: absolute;
+	top: -1px;
+	left: -6px;
+	width: 53px;
+	height: 25px;
+	background: url(/images/bg_cover.png) no-repeat 0 0 scroll;
+	display: none;
+}

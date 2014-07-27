@@ -7,7 +7,8 @@ class TpsController < ApplicationController
             id: tp.id, 
             exif: JSON.parse(tp.exif),
             large: tp.picture(:large), 
-            thumb: tp.picture(:thumb)
+            thumb: tp.picture(:thumb),
+            psmall: tp.picture(:psmall)
         }
         render json: data.to_json
     end

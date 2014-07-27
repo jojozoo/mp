@@ -302,12 +302,12 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			// 添加处理
 			if(this.queueData.filesQueued > 0){
 				// 更新总量
-                $(".drag-info").hide().parents(".uploader").addClass("loading")
-                $(".wheels-bar .total-wheel").text(this.queueData.filesQueued);
-                $(".wheels-bar .curr-wheel").text(1);
-                // 移除上传文件的onmouse事件 添加继续上传的onmouse时间
-                $(".button.submit").on("mouseover", Mpupload.flashMoveButton); // 或者放在onUploadComplete
-                $(".button.browse_files.action").off("mouseover", Mpupload.flashMoveButton);
+				$(".drag-info").hide().parents(".uploader").addClass("loading")
+				$(".wheels-bar .total-wheel").text(this.queueData.filesQueued);
+				$(".wheels-bar .curr-wheel").text(1);
+				// 移除上传文件的onmouse事件 添加继续上传的onmouse时间
+				$(".button.submit").on("mouseover", Mpupload.flashMoveButton); // 或者放在onUploadComplete
+				$(".button.browse_files.action").off("mouseover", Mpupload.flashMoveButton);
 			};
 			// 添加处理 end
 
@@ -351,7 +351,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 				switch(errorCode) {
 					case SWFUpload.QUEUE_ERROR.QUEUE_LIMIT_EXCEEDED:
 						if (settings.queueSizeLimit > errorMsg) {
-                            // 一次允许settings.limit张，但您选择settings.limit + errorMsg张
+							// 一次允许settings.limit张，但您选择settings.limit + errorMsg张
 							this.queueData.errorMsg += '\nThe number of files selected exceeds the remaining upload limit (' + errorMsg + ').';
 						} else {
 							this.queueData.errorMsg += '\n一次最多上传' + settings.queueSizeLimit + '张.';
