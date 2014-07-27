@@ -29,11 +29,19 @@ $(function(){
 
 	// 向上移动
 	$(document).on("click", ".gototop", function(){
-
+		var _this = $(this).parents(".col-md-12"),
+			_col12 = _this.prev();
+		if(_col12){
+			_col12.before(_this);
+		}
 	});
 	// 向下移动
 	$(document).on("click", ".gotobottom", function(){
-		
+		var _this = $(this).parents(".col-md-12"),
+			_col12 = _this.next();
+		if(_col12){
+			_col12.after(_this);
+		}
 	});
 	// 封面
 	$(document).on("click", ".gotocover", function(){
