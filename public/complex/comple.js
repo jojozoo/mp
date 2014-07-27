@@ -39,7 +39,7 @@ $(function(){
 	$(document).on("click", ".gotobottom", function(){
 		var _this = $(this).parents(".col-md-12"),
 			_col12 = _this.next();
-		if(_col12){
+		if(_col12 && !_col12.hasClass("upcm2")){
 			_col12.after(_this);
 		}
 	});

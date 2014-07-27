@@ -128,7 +128,6 @@ a.submit{
 	margin: 35px auto;
 }
 .uploadcom{
-	min-height: 260px;
 	background: #fff;
 	margin: auto 0;
 	border: 1px dashed #d3d3d3;
@@ -207,4 +206,7 @@ label.ftip, label.control-label{
 	height: 25px;
 	background: url(/images/bg_cover.png) no-repeat 0 0 scroll;
 	display: none;
+}
+.gotocover, .gotodel{
+	font-size: 12px;
 }
