@@ -42,10 +42,14 @@ Mp::Application.routes.draw do
       get :uploadswf
       get :simple
       get :complex
+      post :simple_create
+      post :complex_create
     end
     member do
       get :simple_edit
       get :complex_edit
+      put :simple_update
+      put :complex_update
     end
   end
 

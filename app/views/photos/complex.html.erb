@@ -5,6 +5,9 @@
 <script type="text/javascript" src="/complex/swfupload.js?v=<%= Time.now.to_i %>"></script>
 <script type="text/javascript" src="/complex/uploadify.js?v=<%= Time.now.to_i %>"></script>
 <script type="text/javascript" src="/complex/comple.js?v=<%= Time.now.to_i %>"></script>
+<form accept-charset="UTF-8" action="/photos/complex_create" method="post">
+<input name="utf8" type="hidden" value="✓">
+<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 <div class="cm-bg">
 	<div class="container">
 		<div class="cm-title">
@@ -27,12 +30,12 @@
 			<input type="hidden" name="photo[exif][location]" id="photo_location">
 			<input type="hidden" name="photo[exif][equ]" id="photo_equ">
 			<input type="hidden" name="photo[tags]" id="photo_tags">
-			<input type="hidden" name="photo[warrant]" id="photo_warrant" value="<%= current_user.warrant || 0 %>">
+			<input type="hidden" name="photo[warrant]" id="photo_warrant" value="<%= current_user.warrant || 5 %>">
 			<div class="form-group" style="min-height: 45px;height: 45px;" id="event_div">
 				<label class="control-label" for="photo_event_id">活动:</label>
 				<div class="form-control-div">
 					<input id="photo_event_id" name="photo[event_id]" type="hidden">
-					<a href="javascript:void(0);">[选择活动]</a>
+					<a href="javascript:void(0);" class="custom-modal">[选择活动]</a>
 					<span class="startipspan">*</span>
 				</div>
 			</div>
@@ -57,7 +60,7 @@
 					<i class="icon-camera-retro"></i>
 					器 材:
 				</label>
-				<a href="javascript:void(0);" class="gotoshow">[选择相机]</a>
+				<a href="javascript:void(0);" class="gotoshow">[自动获取]</a>
 				<span class="exischo equval" id="equ"></span>
 			</div>
 			<div class="fm-item">
@@ -103,7 +106,7 @@
 				</label>
 				<a href="javascript:void(0);" class="gotoshow">[选择许可]</a>
 				<span class="exischo warrantval">
-					<b>[<i class="ils_<%= current_user.warrant || 0 %>"></i><a class="oterdel" tar="photo_warrant" href="javascript:void(0);">x</a>]</b>
+					<b>[<i class="ils_<%= current_user.warrant || 5 %>"></i><a class="oterdel" tar="photo_warrant" href="javascript:void(0);">x</a>]</b>
 				</span>
 				<div class="fm-item-s-div">
 					<% $warrant.each do |k, v| %>
@@ -122,4 +125,20 @@
 		</div>
 	</div>
 	<a href="javascript:void(0);" class="submit">发 布</a>
+	<input type="submit" class="finish" val="fabu" style="display:none;">
 </div>
+<div class="modal fade" id="custom-modal" style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">选择活动</h4>
+			</div>
+			<div class="modal-body">
+				<% Event.ongoing.each do |e| %>
+					<a href="javascript:void(0);" class="chooseevent" eid="<%= e.id %>"><%= e.name %></a>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+</form>

@@ -620,7 +620,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 									<i class="setcover"></i>\
 									<span class="fileName">(${fileSize})</span><span class="data"></span>\
 									<div class="uploadify-progress">\
-										<div class="uploadify-progress-bar"><!--Progress Bar--></div>\
+										<div class="uploadify-progress-bar"></div>\
 									</div>\
 								</div>\
 								<div class="photoopt">\
@@ -948,7 +948,10 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			// Call the default event handler
 			if ($.inArray('onUploadSuccess', settings.overrideEvents) < 0) {
 				$('#' + file.id).find('.data').html('上传成功');
-				$('#' + file.id).find('textarea').html(file.name);
+				$('#' + file.id).find('textarea').html(file.name).attr({
+					name: 'tp['+data.id+'][desc]',
+					id: 'tp_'+data.id+'_desc'
+				});
 				$('#' + file.id).find('img').attr("src", data.psmall);
 				$('#' + file.id).attr("data-tpid", data.id);
 				if(data.exif.model){

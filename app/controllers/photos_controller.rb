@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-    before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update, :simple, :complex]
+    before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update, :simple, :simple_edit, :simple_create, :complex, :complex_edit, :complex_create]
     layout 'complex', only: [:simple, :complex, :simple_edit, :complex_edit]
     def index
         params[:q] ||= {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}
@@ -84,6 +84,47 @@ class PhotosController < ApplicationController
         @photo = current_user.photos.find(params[:id])
         redirect_to action: :simple_edit, id: @photo.id unless @photo.isgroup and @photo.parent_id.blank?
         @photos = Photo.where(parent_id: @photo.id, isgroup: true)
+    end
+
+    def complex_create
+        parent = Photo.create({
+            exif: params[:photo][:exif],
+            tags: params[:photo][:tags].split(",").uniq.join(","),
+            event_id: params[:photo][:event_id],
+            warrant: params[:photo][:warrant],
+            title: params[:photo][:title],
+            desc: params[:photo][:desc],
+            isgroup: true,
+            user_id: current_user.id
+            })
+
+        tps = params[:tp].map do |key, val|
+            tp = Tp.find(key)
+            next unless tp
+            exif = {}
+            texif = JSON.parse(tp.exif) rescue {}
+            exifHash = {
+                'model'               => 'camera',
+                'les'                 => 'les',
+                'focal_length'        => 'focal_length',
+                'date_time'           => 'taken_at',
+                'aperture_value'      => 'aperture',
+                'iso_speed_ratings'   => 'iso',
+                'shutter_speed_value' => 'shutter_speed',
+                'gps_latitude'        => 'lat',
+                'gps_longitude'       => 'lon'
+            }.each do |k,v|
+                exif[v] = texif[k]
+            end
+            tp = {desc: val[:desc]}.merge(tpid: tp.id, exif: exif, event_id: params[:photo][:event_id], warrant: params[:photo][:warrant], isgroup: true, user_id: current_user.id, parent_id: parent.id)
+            p = Photo.create(tp)
+            Photo.move_picture(p)
+            [key, p]
+        end.compact
+        last = Hash[tps][params[:photo][:gl_id]].id rescue nil
+        glid = last|| tps.last.last.id
+        parent.update_attributes(gl_id: glid)
+        redirect_to action: :show, id: parent.id
     end
 
     def new

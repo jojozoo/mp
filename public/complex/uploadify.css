@@ -288,3 +288,9 @@ label.ftip, label.control-label{
 .tagsval b{
 	margin-right: 10px;
 }
+.chooseevent{
+	display: inline-block;
+	width: 88px;
+	text-align: left;
+	margin-bottom: 4px;
+}

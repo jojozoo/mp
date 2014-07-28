@@ -1,10 +1,4 @@
 // onbeforeunload 刷新页面重新加载的确认弹框
-// 创建menu
-var linkFlashMenu = document.createElement("a");
-linkFlashMenu.src = "javascript:void(0);";
-linkFlashMenu.id  = "flashMenu";
-document.body.appendChild(linkFlashMenu);
-
 Mpupload = {
     totalLength: 0,
     queue: {},
@@ -243,7 +237,11 @@ $(function(){
         tmpDetails.find("select.mpchoosealbum").attr("disabled", "disabled");
     }
     Mpupload.photo_details = tmpDetails.html();
-    
+    // 创建menu
+    var linkFlashMenu = document.createElement("a");
+    linkFlashMenu.src = "javascript:void(0);";
+    linkFlashMenu.id  = "flashMenu";
+    document.body.appendChild(linkFlashMenu);
     // 配置uploadify
     $('#flashMenu').uploadify();
 

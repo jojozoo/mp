@@ -57,6 +57,18 @@
 	</div>
 </div>
 <div class="photo-show-desc gray-desc">
+	<% gexif = @photo.exif %>
+	<p>
+		拍摄器材：<%= gexif['equ'] %>
+		<br>
+		拍摄地点：<%= gexif['location'] %>
+		<br>
+		发布时间：<%= @photo.created_at.to_date %>
+		<br>
+		共享许可：<label class="icons-licenses_<%= @photo.warrant %>"></label>
+		<br>
+		<span class="w-separatrix">- - - - - - - -</span>
+	</p>
 	<%= @photo.desc %>
 	<% if sign_in? and current_user.id.eql?(@photo.user_id) %>
 	<%= link_to '[作品修改]', complex_edit_photo_path(@photo.id), class: 'modify-tip' %>

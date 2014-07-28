@@ -57,6 +57,7 @@ $(function(){
 			MPMSG("error", "内容不能为空");
 			return false;
 		}
+		$("input.finish").click();
 	});
 
 	// 向上移动
@@ -158,5 +159,12 @@ $(function(){
 		var _tar = $(this).attr("tar");
 		$(this).parents("b").remove();
 		$('#' + _tar).removeAttr('value');
+	});
+	// 选择活动
+	$(document).on("click", ".chooseevent", function(){
+		var _val = $(this).text(),
+			_eid = $(this).attr("eid");
+		$("#photo_event_id").val(_eid).next().text(_val);
+		$('#custom-modal').modal('hide');
 	});
 });
