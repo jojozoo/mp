@@ -70,8 +70,8 @@
 		<% if current_user %>
 		<div class="editor_opt mp-large-picture-bottom">
 			<% if current_user.id.eql?(@photo.user_id) %>
-			<%= link_to_edit @photo %>
-			<%= link_to_goon @photo %>
+			<%= link_to '作品修改', simple_edit_photo_path(@photo), class: 'opt' %>
+			<%= link_to '继续上传', complex_photos_path(go_id: @photo.id), class: 'opt' %>
 			<% end %>
 			<% if current_user.admin or Editor.exists?(event_id: @photo.event_id, editor_id: current_user.id) %>
 				<% if @photo.recommend %>

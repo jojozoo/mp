@@ -124,8 +124,8 @@ a.submit{
 	margin-top: 30px;
 	padding: 0 35px;
 }
-.container{
-	margin: 35px auto;
+.cm-cont{
+	margin: 35px auto 200px;
 }
 .uploadcom{
 	background: #fff;
@@ -161,8 +161,10 @@ label.ftip, label.control-label{
 	display: inline-block;
 }
 .fm-item{
+	position: relative;
 	font-size: 12px;
 	margin-bottom: 30px;
+	padding-left: 70px;
 }
 .startipspan{
 	overflow: hidden;display: inline-block;vertical-align: top;
@@ -170,6 +172,7 @@ label.ftip, label.control-label{
 .ftip{
 	width: 70px;
 	text-align: right;
+	margin-left: -70px;
 }
 .ftip i{
 	float: left;
@@ -209,4 +212,79 @@ label.ftip, label.control-label{
 }
 .gotocover, .gotodel{
 	font-size: 12px;
+}
+.fm-item-s-div{
+	position: absolute;
+	left: 126px;
+	border: 1px solid #74c7f3;
+	padding: 10px 0;
+	background: #F7F8FA;
+	top: 18px;
+	min-width: 280px;
+	z-index: 10;
+	display:none;
+}
+.fm-item-s-div .warrant-row{
+	padding: 0 10px;
+}
+.fm-item-s-div .warrant-row label{
+	cursor: pointer;
+}
+.fm-item-s-div .warrant-row:hover{
+	background-color: #74c7f3;
+	color: #fff;
+}
+.tags_field_wrap{margin:0 10px 10px;-o-border-radius:3px;border-radius:3px;border:1px solid #aeafb0;line-height: 1}
+.tags_field_wrap .tag .name{max-width:358px}
+.tags_field_wrap.focused{background:white}
+.tags_field_wrap.ac_attached{border-radius:2px 2px 0 0}
+.tags_field_wrap .tags_input_wrap{margin:2px 0 0 5px}
+.tags_field_wrap .tags_input_wrap .tag{float:left;margin:4px 5px 0 0;background:#bae7f7;color:#004d69;-o-border-radius:3px;border-radius:3px;color:#004d69;}
+.tags_field_wrap .tags_input_wrap .tag.selected{background:#02adea;color:white}
+.tags_field_wrap .tags_input_wrap .tag .name,
+.tags_field_wrap .tags_input_wrap .tag .prefix{padding:5px;float:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px}
+.tags_field_wrap .tags_input_wrap .tag .remove{float:left;padding:4px 5px 0 0;font-size:12px;font-weight:bold;cursor:pointer}
+.tags_field_wrap .tags_input_wrap .tag .remove:hover{color:white}
+.tags_field_wrap .tags_input_wrap .tag_field{float:left}
+.tags_field_wrap .tags_input_wrap .tag_field input{padding:0;text-overflow:ellipsis;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;-o-appearance:none;appearance:none;outline:none;border:none;background:none;font-size:12px;line-height:12px;font-weight:400;height:32px;color:#666666;width:100%}
+.tags_field_wrap .tags_input_wrap .tag_field input[disabled]{width:300px}
+.tags_field_wrap .tags_input_wrap .tag_field input:focus{background:white}
+.tag-cy{margin: 0 10px}
+.tag-cy a{text-decoration: none;padding: 5px 5px 5px 0;display: inline-block;font-size: 12px}
+.tag-cy a.disabled{color: #8f8f8f}
+.exischo{
+	display: inline-block;
+	line-height: 15px;
+	max-width: 420px;
+}
+.exischo i{
+	background-image: url("/images/icons.png");
+	background-repeat: no-repeat;
+	line-height: 15px;
+}
+.exischo b{
+	font-weight: normal;
+}
+.exischo a:hover{
+	color: orange;
+}
+.exischo a{
+	line-height: 15px;
+	font-size: 15px;
+	color: #333;
+	text-decoration: none;
+	margin: 0 0 0 6px;
+}
+.ils_0{padding-left:47px;height:15px;background-position: -37px -9px}
+.ils_1{padding-left:47px;height:15px;background-position: -88px -9px}
+.ils_2{padding-left:31px;height:15px;background-position: -2px -9px}
+.ils_3{padding-left:31px;height:15px;background-position: -158px -9px}
+.ils_4{padding-left:31px;height:15px;background-position: -193px -9px}
+.ils_5{padding-left:15px;height:15px;background-position: -139px -9px}
+.ils_6{padding-left:31px;height:15px;background-position: -544px -9px}
+.cityitem{
+	margin-right: 10px;
+}
+.tagsval b{
+	margin-right: 10px;
 }

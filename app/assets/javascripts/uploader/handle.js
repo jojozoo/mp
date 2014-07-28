@@ -414,7 +414,7 @@ $(function(){
                 alert("最长10个字符");
                 e.returnValue = false;
                 e.cancel = true;
-                return;
+                return false;
             }
             var str = '<div class="tag"><div class="name">'+ val +'</div><div class="remove">×</div></div>';
             var _width = $(this).width(),
@@ -423,6 +423,7 @@ $(function(){
             $(this).val('').css({width: _rw});
             e.returnValue = false;
             e.cancel = true;
+            return false;
         }
     });
 

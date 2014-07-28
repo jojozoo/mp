@@ -43,6 +43,10 @@ Mp::Application.routes.draw do
       get :simple
       get :complex
     end
+    member do
+      get :simple_edit
+      get :complex_edit
+    end
   end
 
   resources :topics do

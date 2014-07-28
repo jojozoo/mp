@@ -59,8 +59,8 @@
 <div class="photo-show-desc gray-desc">
 	<%= @photo.desc %>
 	<% if sign_in? and current_user.id.eql?(@photo.user_id) %>
-	<%= link_to '[作品修改]', edit_photo_path(@photo.id, up_id: @photo.gl_id), class: 'modify-tip' %>
-	<%= link_to '[继续上传]', new_photo_path(go_id: @photo.id), class: 'modify-tip' %>
+	<%= link_to '[作品修改]', complex_edit_photo_path(@photo.id), class: 'modify-tip' %>
+	<%= link_to '[继续上传]', complex_photos_path(go_id: @photo.id), class: 'modify-tip' %>
 	<% end %>
 	<div class="mp-photo-tags">
 		<% @photo.tags.to_s.split(",").each do |tag| %>

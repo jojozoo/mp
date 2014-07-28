@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
     before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update, :simple, :complex]
+    layout 'complex', only: [:simple, :complex, :simple_edit, :complex_edit]
     def index
         params[:q] ||= {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}
         params[:q][:s] = 'cols'
@@ -60,24 +61,33 @@ class PhotosController < ApplicationController
             render text: request.path + 'not found', status: 404
         end
     end
-    
-    def new
-        # TODO 应该加上event_id 或者 album_id 索引条件
-        
-        if params[:go_id].present?
-            @group = current_user.photos.find_by_id(params[:go_id])
-            @event = @group.event
-            @album = @group.album
-        end
-        @event  ||= Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
-        @album  ||= current_user.albums.find_by_id(params[:album_id]) if params[:album_id].present?
-    end
 
     def simple
-        render layout: 'complex'
+
+    end
+
+    def simple_edit
+        @photo = current_user.photos.find(params[:id])
+        redirect_to action: :complex_edit, id: @photo.id if @photo.isgroup and @photo.parent_id.blank?
     end
 
     def complex
+        # 继续上传id
+        if params[:go_id].present?
+            @goon = current_user.photos.find_by_id(params[:go_id])
+            @event = @goon.event
+        end
+        @event  ||= Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
+    end
+
+    def complex_edit
+        @photo = current_user.photos.find(params[:id])
+        redirect_to action: :simple_edit, id: @photo.id unless @photo.isgroup and @photo.parent_id.blank?
+        @photos = Photo.where(parent_id: @photo.id, isgroup: true)
+    end
+
+    def new
+        # TODO 应该加上event_id 或者 album_id 索引条件
         if params[:go_id].present?
             @group = current_user.photos.find_by_id(params[:go_id])
             @event = @group.event
@@ -85,20 +95,24 @@ class PhotosController < ApplicationController
         end
         @event  ||= Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
         @album  ||= current_user.albums.find_by_id(params[:album_id]) if params[:album_id].present?
-        render layout: 'complex'
     end
-
+    
     def edit
         photo = current_user.photos.find(params[:id])
-        if photo.isgroup
-            pid = photo.parent_id.blank? ? photo.id : photo.parent_id
-            @photos = Photo.where(parent_id: pid, isgroup: true)
-            @group = Photo.find(pid)
+        if photo.isgroup and photo.parent_id.blank?
+            redirect_to action: :complex_edit, id: photo.id
         else
-            @photos = [photo]
-        end
-        photo = Photo.find_by_id(params[:up_id]) || photo if params[:up_id].present?
-        @photo = photo.parent_id.blank? ? @photos.first : photo
+            redirect_to action: :simple_edit, id: photo.id
+        end and return
+        # if photo.isgroup
+        #     pid = photo.parent_id.blank? ? photo.id : photo.parent_id
+        #     @photos = Photo.where(parent_id: pid, isgroup: true)
+        #     @group = Photo.find(pid)
+        # else
+        #     @photos = [photo]
+        # end
+        # photo = Photo.find_by_id(params[:up_id]) || photo if params[:up_id].present?
+        # @photo = photo.parent_id.blank? ? @photos.first : photo
     end
 
     def update
@@ -119,7 +133,6 @@ class PhotosController < ApplicationController
     end
 
     def uploadswf
-        
     end
 
     def create

@@ -312,11 +312,11 @@
 /*.photo-details.active .wrapper .map .tag-textfield{margin:25px 0 0 0}*/
 .photo-details.active .wrapper .map .tag-textfield .tag-tip{position:relative;float:left;top:-13px;left:35px;font-size:11px;color:#aeafb0}
 .photo-details.active .wrapper .map .tag-textfield .tag-count{position:relative;float:right;top:-13px;font-size:11px;color:#747a8b}
-.photo-details.active .wrapper .map .tag-textfield .tags_field_wrap{margin:20px 0 0 0;-o-border-radius:3px;border-radius:3px;border:1px solid #aeafb0}
-.photo-details.active .wrapper .map .tag-textfield .tags_field_wrap .tag .name{max-width:358px}
 .photo-details.active .wrapper .map .tag-textfield .tag-changyong{margin: 10px 0 0 0}
 .photo-details.active .wrapper .map .tag-textfield .tag-changyong a{text-decoration: none;padding: 5px 5px 5px 0;display: inline-block;font-size: 12px}
 .photo-details.active .wrapper .map .tag-textfield .tag-changyong a.disabled{color: #8f8f8f}
+.photo-details.active .wrapper .map .tag-textfield .tags_field_wrap{margin:20px 0 0 0;-o-border-radius:3px;border-radius:3px;border:1px solid #aeafb0}
+.photo-details.active .wrapper .map .tag-textfield .tags_field_wrap .tag .name{max-width:358px}
 .photo-details.active .wrapper .map .tag-textfield .tags_field_wrap.focused{background:white}
 .photo-details.active .wrapper .map .tag-textfield .tags_field_wrap.ac_attached{border-radius:2px 2px 0 0}
 .photo-details.active .wrapper .map .tag-textfield .tags_field_wrap .tags_input_wrap{margin:2px 0 0 5px}
@@ -387,22 +387,22 @@
 .button:active{-webkit-box-shadow:inset 0px 1px 0px rgba(0,0,0,0.3);box-shadow:inset 0px 1px 0px rgba(0,0,0,0.3)}
 .button:hover{background:#7d8387}
 .photo-details.active .wrapper .description .license-icon{float:right}
-.icons-licenses_0{width:15px !important;height:15px !important;background:url("/images/icons.png") -2px -9px no-repeat}
+.icons-licenses_0{width:47px !important;height:15px !important;background:url("/images/icons.png") -37px -9px no-repeat}
 /*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_0{background:url("/images/icons@2x.png") -321px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_1{width:31px !important;height:15px !important;background:url("/images/icons.png") -353px -9px no-repeat}
+.icons-licenses_1{width:47px !important;height:15px !important;background:url("/images/icons.png") -88px -9px no-repeat}
 /*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_1{background:url("/images/icons@2x.png") -338px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_2{width:47px !important;height:15px !important;background:url("/images/icons.png") -388px -9px no-repeat}
+.icons-licenses_2{width:31px !important;height:15px !important;background:url("/images/icons.png") -2px -9px no-repeat}
 /*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_2{background:url("/images/icons@2x.png") -371px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_3{width:47px !important;height:15px !important;background:url("/images/icons.png") -439px -9px no-repeat}
+.icons-licenses_3{width:31px !important;height:15px !important;background:url("/images/icons.png") -158px -9px no-repeat}
 /*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_3{background:url("/images/icons@2x.png") -420px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_4{width:15px !important;height:15px !important;background:url("/images/icons.png") -490px -9px no-repeat}
+.icons-licenses_4{width:31px !important;height:15px !important;background:url("/images/icons.png") -193px -9px no-repeat}
 /*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_4{background:url("/images/icons@2x.png") -469px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
-.icons-licenses_5{width:31px !important;height:15px !important;background:url("/images/icons.png") -509px -9px no-repeat}
+.icons-licenses_5{width:15px !important;height:15px !important;background:url("/images/icons.png") -139px -9px no-repeat}
 /*@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi){.icons-licenses_5{background:url("/images/icons@2x.png") -486px -8px no-repeat;-webkit-background-size:767px 32px;background-size:767px 32px}
 }*/
 .icons-licenses_6{width:31px !important;height:15px !important;background:url("/images/icons.png") -544px -9px no-repeat}

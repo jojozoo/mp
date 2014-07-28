@@ -55,11 +55,11 @@
 			<div class="next-button"></div>
 		</div>
 		<div class="photo-actions">
-			<div class="remaining-photos">
+			<!-- <div class="remaining-photos">
 				<p>
 					还可以再上传20张照片
 				</p>
-			</div>
+			</div> -->
 			<input class="button remove" type="submit" value="删除本张">
 			<input class="button submit" type="submit" value="继续上传">
 			<input class="button action finish" type="submit" value="完成上传"></div>
@@ -150,64 +150,21 @@
 					<div class="license-select">
 						<div>
 							<h4 class="disabled">授权声明</h4>
-							<div class="license-icon icons-licenses_0"></div>
+							<div class="license-icon icons-licenses_5"></div>
 							<div class="clear"></div>
 						</div>
 						<div>
+							<% $warrant.each do |k, v| %>
 							<div class="warrant-row">
-								<input type="radio" id="warrant0" name="user[warrant]" value="0" disabled="disabled">
-								<label for="warrant0">
-									<span class="cc-1"></span>
-									<span class="cc-2"></span>
-									<span class="cc-3"></span>
-									<span class="cc-h">署名-非商业使用-禁止演绎</span>
+								<input type="radio" id="photo-{{id}}-warrant<%= k %>" name="photo[{{id}}][warrant]" value="<%= k %>" disabled="disabled" <%= 'checked=""' if current_user.warrant.eql?(k) %>>
+								<label for="photo-{{id}}-warrant<%= k %>">
+									<% v[:style].each do |row| %>
+									<span class="cc-<%= row %>"></span>
+									<% end %>
+									<span class="cc-h"><%= v[:name] %></span>
 								</label>
 							</div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant1" name="user[warrant]" value="1" disabled="disabled">
-								<label for="warrant1">
-									<span class="cc-1"></span>
-									<span class="cc-2"></span>
-									<span class="cc-4"></span>
-									<span class="cc-h">署名-非商业使用-相同方式共享</span>
-								</label>
-							</div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant2" name="user[warrant]" value="2" disabled="disabled">
-								<label for="warrant2">
-									<span class="cc-1"></span>
-									<span class="cc-2"></span>
-									<span class="cc-5"></span>
-									<span class="cc-h">署名-非商业使用</span>
-								</label>
-							</div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant3" name="user[warrant]" value="3" disabled="disabled">
-								<label for="warrant3">
-									<span class="cc-1"></span>
-									<span class="cc-3"></span>
-									<span class="cc-5"></span>
-									<span class="cc-h">署名-禁止演绎</span>
-								</label>
-							</div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant4" name="user[warrant]" value="4" disabled="disabled">
-								<label for="warrant4">
-									<span class="cc-1"></span>
-									<span class="cc-4"></span>
-									<span class="cc-5"></span>
-									<span class="cc-h">署名-相同方式共享</span>
-								</label>
-							</div>
-							<div class="warrant-row">
-								<input type="radio" id="warrant5" name="user[warrant]" value="5" checked="checked" disabled="disabled">
-								<label for="warrant5">
-									<span class="cc-1"></span>
-									<span class="cc-5"></span>
-									<span class="cc-5"></span>
-									<span class="cc-h">署名</span>
-								</label>
-							</div>
+							<% end %>
 						</div>
 					</div>
 				</div>

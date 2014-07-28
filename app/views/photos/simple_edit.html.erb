@@ -1,0 +1,40 @@
+<script language="javascript" src="http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821"></script>
+<script type="text/javascript">
+	var photos = [<%= 
+			atrs = @photo.attributes
+			atrs['tags'] = atrs['tags'].split(",") rescue []
+			atrs.slice(*['id','title', 'desc', 'exif', 'crop', 'album_id', 'event_id', 'tags', 'warrant']).to_json.html_safe
+			%>];
+</script>
+<%= javascript_include_tag "/javascripts/photo-edit.js" %>
+<div class="uploader" style="margin-bottom:50px;">
+	<div class="photo-container" style="margin: 30px auto 10px auto;">
+		<div class="active-photo-wrap">
+			<div class="active-photo">
+				<div class='photo-preview  inactive' data-pid='<%= @photo.id %>'><img src='<%= @photo.picture.url(:large) %>'></div>
+			</div>
+		</div>
+		<div class="photo-reel">
+			<div class="photos">
+				<div class="photo-reel-photo selected" data-pid="<%= @photo.id %>">
+					<span class="img-canvas">
+						<%= image_tag @photo.picture.url(:small) %>
+					</span>
+				</div>
+			</div>
+			<div class="previous-button"></div>
+			<div class="next-button"></div>
+		</div>
+		<div class="photo-actions">
+			<!-- <div class="remaining-photos">
+				<p>如果修改作品，将会被编辑再次审核</p>
+			</div> -->
+			<a href="javascript:void(0);" class="secondary delete button" style="margin: 0 0 0 20px;">删除作品</a>
+			<input class="button action save-update" type="submit" value="保存修改" style="margin: 0 0 0 20px;">
+		</div>
+	</div>
+	<input id="update_id" name="photo[group][id]" type="hidden" value="<%= params[:id] %>">
+	<div class="edit-container">
+		<%= render 'details' %>
+	</div>
+</div>

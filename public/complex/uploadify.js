@@ -951,6 +951,10 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 				$('#' + file.id).find('textarea').html(file.name);
 				$('#' + file.id).find('img').attr("src", data.psmall);
 				$('#' + file.id).attr("data-tpid", data.id);
+				if(data.exif.model){
+					$('#equ').html('<b>['+ data.exif.model +'<a class="oterdel" tar="photo_equ" href="javascript:void(0);">x</a>]</b>');
+					$("#photo_equ").val(data.exif.model);
+				}
 			}
 
 			// Call the user-defined event handler

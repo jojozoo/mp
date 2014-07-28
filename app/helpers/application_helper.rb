@@ -21,17 +21,6 @@ module ApplicationHelper
 
   # 转换时间为友好格式
   def humanize(from_time)
-    # def distance_of_time_in_words(from_time, to_time = 0, include_seconds = false)
-    # from_time = from_time.to_time if from_time.respond_to?(:to_time)
-    # to_time = to_time.to_time if to_time.respond_to?(:to_time)
-    # p = Time.now - date
-    # return case
-    # when p <= 2.minutes then '刚刚'
-    # when p > 2.minutes && p <= 1.hour then "#{p.to_i / 60} 分钟前"
-    # when p > 1.hour && date.today? then "今天 #{date.strftime("%H:%M")}"
-    # when p > 1.hour && date.to_date == Date.yesterday then "昨天 #{date.strftime("%H:%M")}"
-    # when p > 1.hour && date.to_date < Date.yesterday then date.strftime("%m-%d %H:%M")
-    # end
     from_time = from_time || Time.now
     to_time = Time.now
     distance_in_minutes = (((to_time - from_time).abs) / 60).round
@@ -49,10 +38,6 @@ module ApplicationHelper
     when 2..59           then "#{distance_in_minutes} 分钟前"
     when 60..1439        then "今天 #{from_time.strftime("%H:%M")}" # "大约 #{(distance_in_minutes.to_f / 60.0).round} 小时"
     when 1440..2879      then "昨天 #{from_time.strftime("%H:%M")}"
-    # when 2880..43199     then "#{(distance_in_minutes / 1440).round} days"
-    # when 43200..86399    then 'about 1 month'
-    # when 86400..525599   then "#{(distance_in_minutes / 43200).round} months"
-    # when 525600..1051199 then 'about 1 year'
     else                     from_time.strftime("%m-%d %H:%M")
     end
   end
@@ -209,26 +194,6 @@ module ApplicationHelper
       link_to image_tag(gl.picture(:cover)), photo_path(photo.id), target: '_blank', class: glass
     else
       link_to image_tag(photo.picture(:cover)), photo_path(photo.id), target: '_blank', class: glass
-    end
-  end
-
-  def link_to_edit photo
-    if photo.isgroup
-      if photo.parent_id.blank?
-        link_to '作品修改', edit_photo_path(photo.id, up_id: photo.gl_id), class: 'opt'
-      else
-        link_to '作品修改', edit_photo_path(photo.parent_id, up_id: photo.id), class: 'opt'
-      end
-    else
-      link_to '作品修改', edit_photo_path(photo), class: 'opt'
-    end
-  end
-  # 继续上传
-  def link_to_goon photo
-    if photo.isgroup and !photo.parent_id.blank?
-        link_to '继续上传', new_photo_path(go_id: photo.parent_id, request_id: photo.event_id), class: 'opt'
-    else
-        link_to '继续上传', new_photo_path(go_id: photo.id, request_id: photo.event_id), class: 'opt'
     end
   end
 
