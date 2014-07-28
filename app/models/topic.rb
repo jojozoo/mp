@@ -11,13 +11,14 @@
 #  title           :string(255)
 #  content         :text
 #  coms_count      :integer          default(0)
+#  visit_count     :integer          default(0)
 #  del             :boolean          default(FALSE)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
 class Topic < ActiveRecord::Base
-  attr_accessible :user_id, :cate_id, :last_user_id, :last_updated_at, :original, :title, :content, :coms_count, :del
+  attr_accessible :user_id, :cate_id, :last_user_id, :last_updated_at, :original, :title, :content, :coms_count, :visit_count, :del
   
   has_many :comments, as: :obj
   has_many :tagships, as: :obj

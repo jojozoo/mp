@@ -16,6 +16,7 @@ class TopicsController < ApplicationController
 
     def show
         @topic = Topic.find(params[:id])
+        @topic.visits.create(user_id: current_user.try(:id))
         @comments = @topic.comments.paginate(:page => params[:page], per_page: 20).order('id desc')
     end
 

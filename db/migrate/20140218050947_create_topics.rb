@@ -9,6 +9,7 @@ class CreateTopics < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.integer :coms_count, default: 0
+      t.integer :visit_count, default: 0
       t.boolean :del, default: false
 
       t.timestamps
