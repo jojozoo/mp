@@ -64,6 +64,7 @@ class PhotosController < ApplicationController
 
     def simple
         @event  = Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
+        @album  = current_user.albums.find_by_id(params[:album_id]) if params[:album_id].present?
     end
 
     def simple_edit

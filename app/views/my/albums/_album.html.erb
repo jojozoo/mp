@@ -7,7 +7,7 @@
             <p><%= album.desc %></p>
             <span>共<%= album.photos.count %>张</span>
             <span class="pull-right hide-cap">
-                <%= link_to '上传', new_photo_path(album_id: album.id) %>
+                <%= link_to '上传', simple_photos_path(album_id: album.id) %>
                 <%= link_to '移动', move_modal_my_album_path(album.id), method: :post, remote: true %>
                 <%= link_to '编辑', edit_my_album_path(album.id), remote: true %>
                 <%= link_to '删除', my_album_path(album.id), method: :delete, data: {confirm: "确定删除？不可恢复操作!\n\n相册内图片也将删除\n可以先把图片移动到其他相册" } %>

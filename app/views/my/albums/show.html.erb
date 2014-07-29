@@ -2,7 +2,7 @@
 	<%= link_to '返回相册', my_albums_path %>
 	共<%= @album.photos.count %>张图片
 
-	<%= link_to '上传到相册', new_photo_path(album_id: @album.id), class: 'btn-primary btn btn-xs' %>
+	<%= link_to '上传到相册', simple_photos_path(album_id: @album.id), class: 'btn-primary btn btn-xs' %>
 
 	<a class="btn-warning btn btn-xs" href='javascript:void(0);' id="album">批量管理</a>
 
@@ -21,7 +21,7 @@
 	<% if @photos.total_entries < 1 %>
 	<div class="col-md-12">
 		<div class="text-center" style="height: 300px; padding-top: 140px;">
-			还没有照片， 快去上传吧。 <%= link_to '上传图片', new_photo_path(album_id: @album.id) %>
+			还没有照片， 快去上传吧。 <%= link_to '上传图片', simple_photos_path(album_id: @album.id) %>
 		</div>
 	</div>
 	<% else %>
