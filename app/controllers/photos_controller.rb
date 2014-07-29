@@ -83,8 +83,9 @@ class PhotosController < ApplicationController
 
     def complex_edit
         @photo = current_user.photos.find(params[:id])
+        @event = @photo.event
         redirect_to action: :simple_edit, id: @photo.id unless @photo.isgroup and @photo.parent_id.blank?
-        @photos = Photo.where(parent_id: @photo.id, isgroup: true)
+        @photos = @photo.childrens
     end
 
     def complex_create
@@ -131,6 +132,18 @@ class PhotosController < ApplicationController
         glid = last|| parent.gl_id || tps.last.last.id
         parent.update_attributes(gl_id: glid)
         redirect_to action: :show, id: parent.id
+    end
+
+    def complex_update
+        params[:tp].each do |id, upatr|
+            tp = current_user.photos.find_by_id(id)
+            next unless tp
+            tp.update_attributes(upatr)
+        end
+        if photo = current_user.photos.find_by_id(params[:id])
+            photo.update_attributes(params[:photo])
+        end
+        redirect_to action: :show, id: params[:id]
     end
 
     def new

@@ -30,8 +30,9 @@ $(function(){
 	}
 	// 
 	$(document).on('click', '.cityitem', cityitem);
-
-	$('#clickupload').uploadify();
+	if($('#clickupload').length > 0){
+		$('#clickupload').uploadify();
+	}
 
 	// 单击上传
 	$(document).on("click", "a.submit", function(){

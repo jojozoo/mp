@@ -1,1 +1,175 @@
-coding
+<script type="text/javascript">
+	var cookieSK = "<%= cookies['_mp_session'] %>";
+</script>
+<link rel="stylesheet" type="text/css" href="/complex/uploadify.css?v=<%= Time.now.to_i %>">
+<script type="text/javascript" src="/complex/complex.js?v=<%= Time.now.to_i %>"></script>
+<form accept-charset="UTF-8" action="/photos/<%= @photo.id %>/complex_update" method="post">
+<input name="utf8" type="hidden" value="✓">
+<input name="_method" type="hidden" value="put">
+<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+<div class="cm-bg">
+	<div class="container">
+		<div class="cm-title">
+			<h2>组图编辑</h2>
+		</div>
+		<div class="row uploadcom">
+			<% @photos.each do |photo| %>
+			<div class="col-md-12" data-tpid="<%= photo.id %>">
+				<div class="framebox">
+					<%= image_tag photo.picture(:small) %>
+					<i class="setcover" style="display: <%= @photo.gl_id.eql?(photo.id) ? 'inline' : 'none' %>"></i>
+				</div>
+				<div class="photoopt">
+					<!-- <a href="javascript:void(0);" class="gototop">
+						<span><i class="icon-chevron-up"></i></span>
+					</a> -->
+					<a href="javascript:void(0);" class="gotocover">封面</a>
+					<a href="javascript:void(0);" class="gotodel">删除</a>
+					<!-- <a href="javascript:void(0);" class="gotobottom">
+						<span><i class="icon-chevron-down"></i></span>
+					</a> -->
+				</div>
+				<textarea style="width:900px;height:112px;float:left;" name="tp[<%= photo.id %>][desc]" id="tp_<%= photo.id %>_desc"><%= photo.desc %></textarea>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="container cm-cont">
+	<div class="row">
+		<div class="col-md-6">
+			<input type="hidden" name="photo[gl_id]" id="photo_gl_id" value="<%= @photo.gl_id %>">
+			<input type="hidden" name="photo[exif][location]" id="photo_location" value="<%= @photo.exif['location'] rescue nil %>">
+			<input type="hidden" name="photo[exif][equ]" id="photo_equ" value="<%= @photo.exif['equ'] rescue nil %>">
+			<input type="hidden" name="photo[tags]" id="photo_tags" value="<%= @photo.tags %>">
+			<input type="hidden" name="photo[warrant]" id="photo_warrant" value="<%= current_user.warrant || 5 %>">
+			<div class="form-group" style="min-height: 45px;height: 45px;" id="event_div">
+				<label class="control-label" for="photo_event_id">活动:</label>
+				<div class="form-control-div">
+					<% if @event %>
+					<input id="photo_event_id" name="photo[event_id]" type="hidden" value="<%= @event.id %>">
+					<a href="javascript:void(0);"><%= @event.name %></a>
+					<% else %>
+					<input id="photo_event_id" name="photo[event_id]" type="hidden">
+					<a href="javascript:void(0);" class="custom-modal">[选择活动]</a>
+					<% end %>
+					<span class="startipspan">*</span>
+				</div>
+			</div>
+			<div class="form-group"  id="title_div">
+				<label class="control-label" for="photo_event_id">标题:</label>
+				<div class="form-control-div">
+					<input class="form-control" id="photo_title" name="photo[title]" type="text" value="<%= @photo.title %>">
+					<span class="startipspan">*</span>
+				</div>
+			</div>
+			<div class="form-group" id="desc_div">
+				<label class="control-label" for="photo_desc">内容:</label>
+				<div class="form-control-div">
+					<textarea class="form-control" name="photo[desc]"><%= @photo.desc %></textarea>
+					<span class="startipspan">*</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="fm-item">
+				<label class="ftip">
+					<i class="icon-camera-retro"></i>
+					器 材:
+				</label>
+				<a href="javascript:void(0);" class="gotoshow">[自动获取]</a>
+				<span class="exischo equval" id="equ">
+					<% if @photo and @photo.exif['equ'].present? %>
+					<b>[<%= @photo.exif['equ'] %><a class="oterdel" tar="photo_equ" href="javascript:void(0);">x</a>]</b>
+					<% end %>
+				</span>
+			</div>
+			<div class="fm-item">
+				<label class="ftip">
+					<i class="icon-map-marker"></i>
+					地 点:
+				</label>
+				<a href="javascript:void(0);" class="gotoshow">[选择地点]</a>
+				<span class="exischo locationval">
+					<% if @photo and @photo.exif['location'].present? %>
+					<b>[<%= @photo.exif['location'] %><a href="javascript:void(0);" tar="photo_location" class="oterdel">x</a>]</b>
+					<% end %>
+				</span>
+				<div class="fm-item-s-div" style="padding: 10px;">
+					<div class="psal"></div>
+					<hr class="hr-10" style="border-color:#ccc;">
+					<div class="csal"></div>
+				</div>
+			</div>
+			<div class="fm-item">
+				<label class="ftip" style="vertical-align: top;">
+					<i class="icon-tags"></i>
+					标 签:
+				</label>
+				<a href="javascript:void(0);" class="gotoshow" style="vertical-align: top;">[选择标签]</a>
+				<span class="exischo tagsval">
+					<% if @photo and @photo.tags.present? %>
+					<% @photo.tags.split(",").each do |tag| %>
+					<b class="tag" v="<%= tag %>">[<%= tag %><a href="javascript:void(0);" class="remove">x</a>]</b>
+					<% end %>
+					<% end %>
+				</span>
+				<div class="fm-item-s-div">
+					<div class="tags_field_wrap">
+						<div class="tags_input_wrap">
+							<div class="tag_field">
+								<input placeholder="添加标签让照片更容易找到..." type="text" autocomplete="off" style="width:150px;">
+							</div>
+						</div>
+						<div class="cf"></div>
+					</div>
+					<div class="tag-cy">
+						<% Tag.order('sum desc').limit(40).each do |tag| %>
+							<%= link_to tag.name, "javascript:void(0);" %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="fm-item">
+				<label class="ftip">
+					<i class="icon-warrant"></i>
+					许 可:
+				</label>
+				<a href="javascript:void(0);" class="gotoshow">[选择许可]</a>
+				<span class="exischo warrantval">
+					<b>[<i class="ils_<%= @photo.warrant || current_user.warrant || 5 %>"></i><a class="oterdel" tar="photo_warrant" href="javascript:void(0);">x</a>]</b>
+				</span>
+				<div class="fm-item-s-div">
+					<% $warrant.each do |k, v| %>
+					<div class="warrant-row">
+						<input type="radio" id="photo-warrant<%= k %>" name="photo[warrant]" value="<%= k %>" <%= 'checked=""' if @photo.warrant.eql?(k) %>>
+						<label for="photo-warrant<%= k %>">
+							<% v[:style].each do |row| %>
+							<span class="cc-<%= row %>"></span>
+							<% end %>
+							<span class="cc-h"><%= v[:name] %></span>
+						</label>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a href="javascript:void(0);" class="submit">发 布</a>
+	<input type="submit" class="finish" val="fabu" style="display:none;">
+</div>
+<div class="modal fade" id="custom-modal" style="display: none;">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">选择活动</h4>
+			</div>
+			<div class="modal-body">
+				<% Event.ongoing.each do |e| %>
+					<a href="javascript:void(0);" class="chooseevent" eid="<%= e.id %>"><%= e.name %></a>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+</form>

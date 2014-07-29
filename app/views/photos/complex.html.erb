@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="/complex/uploadify.css?v=<%= Time.now.to_i %>">
 <script type="text/javascript" src="/complex/swfupload.js?v=<%= Time.now.to_i %>"></script>
 <script type="text/javascript" src="/complex/uploadify.js?v=<%= Time.now.to_i %>"></script>
-<script type="text/javascript" src="/complex/comple.js?v=<%= Time.now.to_i %>"></script>
+<script type="text/javascript" src="/complex/complex.js?v=<%= Time.now.to_i %>"></script>
 <form accept-charset="UTF-8" action="/photos/complex_create" method="post">
 <input name="utf8" type="hidden" value="✓">
 <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -27,9 +27,17 @@
 			<input type="hidden" name="go_id" id="goon_id" value="<%= @goon.id %>">
 			<% end %>
 			<input type="hidden" name="photo[gl_id]" id="photo_gl_id">
+			<% if @goon and @goon.exif['location'].present? %>
+			<input type="hidden" name="photo[exif][location]" id="photo_location" value="<%= @goon.exif['location'] %>">
+			<% else %>
 			<input type="hidden" name="photo[exif][location]" id="photo_location">
+			<% end %>
+			<% if @goon and @goon.exif['equ'].present? %>
+			<input type="hidden" name="photo[exif][equ]" id="photo_equ" value="<%= @goon.exif['equ'] %>">
+			<% else %>
 			<input type="hidden" name="photo[exif][equ]" id="photo_equ">
-			<input type="hidden" name="photo[tags]" id="photo_tags">
+			<% end %>
+			<input type="hidden" name="photo[tags]" id="photo_tags" value="<%= @goon.try(:tags) %>">
 			<input type="hidden" name="photo[warrant]" id="photo_warrant" value="<%= current_user.warrant || 5 %>">
 			<div class="form-group" style="min-height: 45px;height: 45px;" id="event_div">
 				<label class="control-label" for="photo_event_id">活动:</label>
@@ -105,6 +113,11 @@
 				<div class="fm-item-s-div">
 					<div class="tags_field_wrap">
 						<div class="tags_input_wrap">
+							<% if @goon and @goon.tags.present? %>
+							<% @goon.tags.split(",").each do |tag| %>
+							<div class="tag" v="<%= tag %>"><div class="name"><%= tag %></div><div class="remove">×</div></div>
+							<% end %>
+							<% end %>
 							<div class="tag_field">
 								<input placeholder="添加标签让照片更容易找到..." type="text" autocomplete="off" style="width:150px;">
 							</div>
@@ -130,7 +143,7 @@
 				<div class="fm-item-s-div">
 					<% $warrant.each do |k, v| %>
 					<div class="warrant-row">
-						<input type="radio" id="photo-warrant<%= k %>" name="photo[warrant]" value="<%= k %>" <%= 'checked=""' if current_user.warrant.eql?(k) %>>
+						<input type="radio" id="photo-warrant<%= k %>" name="photo[warrant]" value="<%= k %>" <%= 'checked=""' if (@goon.try(:warrant) || current_user.warrant || 5).eql?(k) %>>
 						<label for="photo-warrant<%= k %>">
 							<% v[:style].each do |row| %>
 							<span class="cc-<%= row %>"></span>
