@@ -197,4 +197,12 @@ module ApplicationHelper
     end
   end
 
+  def link_to_goon photo
+    if photo.isgroup and photo.parent_id.present?
+      link_to '继续上传', complex_photos_path(go_id: photo.parent_id), class: 'opt'
+    else
+      link_to '继续上传', complex_photos_path(go_id: photo.id), class: 'opt'
+    end
+  end
+
 end

@@ -7,7 +7,8 @@
 					<a class="text-success"><%= @event.photos_count %></a>张图片&nbsp;&nbsp;
 					<a class="text-success"><%= @event.members_count %></a>人参加
 				</small>
-				<%= link_to '上传到本活动', new_photo_path(request_id: @event.id), class: 'btn btn-success btn-sm pull-right mp-sign', style: 'margin-top:-4px;' %>
+				<!-- 根据活动类型要求是单图还是组图 -->
+				<%= link_to '上传到本活动', complex_photos_path(request_id: @event.id), class: 'btn btn-success btn-sm pull-right mp-sign', style: 'margin-top:-4px;' %>
 			</h4>
 		</div>
 		<div class="mp-page">

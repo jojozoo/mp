@@ -43,7 +43,7 @@ class PhotosController < ApplicationController
         @photo  = Photo.find(params[:id])
         @photo.visits.create(user_id: current_user.try(:id))
         if @photo.isgroup and @photo.parent_id.blank?
-            @photos = @photo.childrens
+            @photos = @photo.childrens.order("id desc")
             @comments = Comment.where(obj_type: 'Photo', obj_id: @photos.map(&:id) + [@photo.id]).paginate(:page => params[:page], per_page: 20).order('id desc')
             render 'group_show'
         else
@@ -63,7 +63,7 @@ class PhotosController < ApplicationController
     end
 
     def simple
-
+        @event  = Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
     end
 
     def simple_edit
@@ -75,6 +75,7 @@ class PhotosController < ApplicationController
         # 继续上传id
         if params[:go_id].present?
             @goon = current_user.photos.find_by_id(params[:go_id])
+            redirect_to action: :complex, go_id: @goon.parent_id and return if @goon.isgroup and @goon.parent_id.present?
             @event = @goon.event
         end
         @event  ||= Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
@@ -87,22 +88,27 @@ class PhotosController < ApplicationController
     end
 
     def complex_create
-        parent = Photo.create({
-            exif: params[:photo][:exif],
-            tags: params[:photo][:tags].split(",").uniq.join(","),
-            event_id: params[:photo][:event_id],
-            warrant: params[:photo][:warrant],
-            title: params[:photo][:title],
-            desc: params[:photo][:desc],
-            isgroup: true,
-            user_id: current_user.id
-            })
-
+        params[:photo][:tags] = params[:photo][:tags].split(",").uniq.join(",")
+        create_hash = params[:photo].slice(*[:exif, :tags, :event_id, :warrant, :title, :desc]).merge(isgroup: true, user_id: current_user.id)
+        goon = current_user.photos.find_by_id(params[:go_id])
+        parent = if goon and goon.isgroup
+            exis_goon = if goon.parent_id.blank?
+                goon
+            else
+                Photo.find_by_id(goon.parent_id)
+            end
+            exis_goon.update_attributes(create_hash)
+            exis_goon
+        else
+            createparent = Photo.create(create_hash)
+            goon.update_attributes(isgroup: true, parent_id: createparent.id) if goon
+            createparent
+        end
         tps = params[:tp].map do |key, val|
-            tp = Tp.find(key)
+            tp = Tp.find_by_id(key)
             next unless tp
             exif = {}
-            texif = JSON.parse(tp.exif) rescue {}
+            tp_exif = JSON.parse(tp.exif) rescue {}
             exifHash = {
                 'model'               => 'camera',
                 'les'                 => 'les',
@@ -114,15 +120,15 @@ class PhotosController < ApplicationController
                 'gps_latitude'        => 'lat',
                 'gps_longitude'       => 'lon'
             }.each do |k,v|
-                exif[v] = texif[k]
+                exif[v] = tp_exif[k]
             end
-            tp = {desc: val[:desc]}.merge(tpid: tp.id, exif: exif, event_id: params[:photo][:event_id], warrant: params[:photo][:warrant], isgroup: true, user_id: current_user.id, parent_id: parent.id)
+            tp = {desc: val[:desc]}.merge(tpid: tp.id, exif: exif, event_id: create_hash[:event_id], warrant: create_hash[:warrant], isgroup: true, user_id: current_user.id, parent_id: parent.id)
             p = Photo.create(tp)
             Photo.move_picture(p)
             [key, p]
         end.compact
         last = Hash[tps][params[:photo][:gl_id]].id rescue nil
-        glid = last|| tps.last.last.id
+        glid = last|| parent.gl_id || tps.last.last.id
         parent.update_attributes(gl_id: glid)
         redirect_to action: :show, id: parent.id
     end

@@ -24,7 +24,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<% if @goon %>
-			<input type="hidden" name="goon_id" id="goon_id" value="<%= @goon.id %>">
+			<input type="hidden" name="go_id" id="goon_id" value="<%= @goon.id %>">
 			<% end %>
 			<input type="hidden" name="photo[gl_id]" id="photo_gl_id">
 			<input type="hidden" name="photo[exif][location]" id="photo_location">
@@ -34,22 +34,27 @@
 			<div class="form-group" style="min-height: 45px;height: 45px;" id="event_div">
 				<label class="control-label" for="photo_event_id">活动:</label>
 				<div class="form-control-div">
+					<% if @event %>
+					<input id="photo_event_id" name="photo[event_id]" type="hidden" value="<%= @event.id %>">
+					<a href="javascript:void(0);"><%= @event.name %></a>
+					<% else %>
 					<input id="photo_event_id" name="photo[event_id]" type="hidden">
 					<a href="javascript:void(0);" class="custom-modal">[选择活动]</a>
+					<% end %>
 					<span class="startipspan">*</span>
 				</div>
 			</div>
 			<div class="form-group"  id="title_div">
 				<label class="control-label" for="photo_event_id">标题:</label>
 				<div class="form-control-div">
-					<input class="form-control" id="photo_title" name="photo[title]" type="text">
+					<input class="form-control" id="photo_title" name="photo[title]" type="text" value="<%= @goon.try(:title) %>">
 					<span class="startipspan">*</span>
 				</div>
 			</div>
 			<div class="form-group" id="desc_div">
 				<label class="control-label" for="photo_desc">内容:</label>
 				<div class="form-control-div">
-					<textarea class="form-control" name="photo[desc]"></textarea>
+					<textarea class="form-control" name="photo[desc]"><%= @goon.try(:desc) %></textarea>
 					<span class="startipspan">*</span>
 				</div>
 			</div>
@@ -61,7 +66,11 @@
 					器 材:
 				</label>
 				<a href="javascript:void(0);" class="gotoshow">[自动获取]</a>
-				<span class="exischo equval" id="equ"></span>
+				<span class="exischo equval" id="equ">
+					<% if @goon and @goon.exif['equ'].present? %>
+					<b>[<%= @goon.exif['equ'] %><a class="oterdel" tar="photo_equ" href="javascript:void(0);">x</a>]</b>
+					<% end %>
+				</span>
 			</div>
 			<div class="fm-item">
 				<label class="ftip">
@@ -69,7 +78,11 @@
 					地 点:
 				</label>
 				<a href="javascript:void(0);" class="gotoshow">[选择地点]</a>
-				<span class="exischo locationval"></span>
+				<span class="exischo locationval">
+					<% if @goon and @goon.exif['location'].present? %>
+					<b>[<%= @goon.exif['location'] %><a href="javascript:void(0);" tar="photo_location" class="oterdel">x</a>]</b>
+					<% end %>
+				</span>
 				<div class="fm-item-s-div" style="padding: 10px;">
 					<div class="psal"></div>
 					<hr class="hr-10" style="border-color:#ccc;">
@@ -82,7 +95,13 @@
 					标 签:
 				</label>
 				<a href="javascript:void(0);" class="gotoshow" style="vertical-align: top;">[选择标签]</a>
-				<span class="exischo tagsval"></span>
+				<span class="exischo tagsval">
+					<% if @goon and @goon.tags.present? %>
+					<% @goon.tags.split(",").each do |tag| %>
+					<b class="tag" v="<%= tag %>">[<%= tag %><a href="javascript:void(0);" class="remove">x</a>]</b>
+					<% end %>
+					<% end %>
+				</span>
 				<div class="fm-item-s-div">
 					<div class="tags_field_wrap">
 						<div class="tags_input_wrap">
@@ -106,7 +125,7 @@
 				</label>
 				<a href="javascript:void(0);" class="gotoshow">[选择许可]</a>
 				<span class="exischo warrantval">
-					<b>[<i class="ils_<%= current_user.warrant || 5 %>"></i><a class="oterdel" tar="photo_warrant" href="javascript:void(0);">x</a>]</b>
+					<b>[<i class="ils_<%= @goon.try(:warrant) || current_user.warrant || 5 %>"></i><a class="oterdel" tar="photo_warrant" href="javascript:void(0);">x</a>]</b>
 				</span>
 				<div class="fm-item-s-div">
 					<% $warrant.each do |k, v| %>
