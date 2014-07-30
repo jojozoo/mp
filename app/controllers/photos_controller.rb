@@ -72,6 +72,12 @@ class PhotosController < ApplicationController
         redirect_to action: :complex_edit, id: @photo.id if @photo.isgroup and @photo.parent_id.blank?
     end
 
+    def simple_update
+        photo = current_user.photos.find(params[:id])
+        photo.update_attributes(params[:photo])
+        redirect_to action: :show, id: params[:id]
+    end
+
     def complex
         # 继续上传id
         if params[:go_id].present?

@@ -1,41 +1,191 @@
-<script language="javascript" src="http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821"></script>
-<script type="text/javascript">
-	var photos = [<%= 
-			atrs = @photo.attributes
-			atrs['tags'] = atrs['tags'].split(",") rescue []
-			atrs.slice(*['id','title', 'desc', 'exif', 'crop', 'album_id', 'event_id', 'tags', 'warrant']).to_json.html_safe
-			%>];
-</script>
-<%= javascript_include_tag "/javascripts/photo-edit.js" %>
+<%= javascript_include_tag "/complex/simple.js" %>
+<% exif_hash = @photo.exif %>
+<form accept-charset="UTF-8" action="/photos/<%= @photo.id %>/simple_update" method="post">
+<input name="utf8" type="hidden" value="✓">
+<input name="_method" type="hidden" value="put">
+<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+<input type="hidden" name="photo[tags]" value="<%= @photo.tags %>" id="photo-tags">
+<input type="hidden" name="photo[exif][lat]" value="<%= exif_hash['lat'] %>" id="photo-exif-lat">
+<input type="hidden" name="photo[exif][lon]" value="<%= exif_hash['lon'] %>" id="photo-exif-lon">
 <div class="uploader" style="margin-bottom:50px;">
 	<div class="photo-container" style="margin: 30px auto 10px auto;">
 		<div class="active-photo-wrap">
 			<div class="active-photo">
-				<div class='photo-preview  inactive' data-pid='<%= @photo.id %>'><img src='<%= @photo.picture.url(:large) %>'></div>
+				<div class='photo-preview'><img src='<%= @photo.picture.url(:large) %>'></div>
 			</div>
 		</div>
 		<div class="photo-reel">
 			<div class="photos">
-				<div class="photo-reel-photo selected" data-pid="<%= @photo.id %>">
+				<div class="photo-reel-photo selected">
 					<span class="img-canvas">
 						<%= image_tag @photo.picture.url(:small) %>
 					</span>
 				</div>
 			</div>
-			<div class="previous-button"></div>
-			<div class="next-button"></div>
 		</div>
 		<div class="photo-actions">
-			<!-- <div class="remaining-photos">
-				<p>如果修改作品，将会被编辑再次审核</p>
-			</div>
-			<a href="javascript:void(0);" class="secondary delete button" style="margin: 0 0 0 20px;">删除作品</a>
-			 -->
 			<input class="button action save-update" type="submit" value="保存修改" style="margin: 0 0 0 20px;">
 		</div>
 	</div>
-	<input id="update_id" name="photo[group][id]" type="hidden" value="<%= params[:id] %>">
 	<div class="edit-container">
-		<%= render 'details' %>
+		<div class="photo-details active">
+			<div class="wrapper clearfix">
+				<div class="exif">
+					<h4>标题</h4>
+					<label class="ui small-badge" for="photo-title">编辑</label>
+					<div class="photo-title">
+						<input class="ui large-textfield" id="photo-title" name="photo[title]" placeholder="请输入标题" type="text" value="<%= @photo.title %>">
+					</div>
+					<div class="photo-request">
+						<h4>活动</h4>
+						<label class="ui select-label">
+							<select class="ui select" id="photo-event_id" name="photo[event_id]">
+								<option value="">选择活动</option>
+								<%= options_for_select(Event.ongoing.select('id, name').map{|r| [r.name, r.id]}, @photo.event_id) %>
+							</select>
+							<span class="ui select-arrow"></span>
+						</label>
+					</div>
+					<div class="place-photo">
+						<h4>相册</h4>
+						<div class="create_new_set_wrap">
+							<label class="ui small-badge create-new-set disabled" for="photo-create_new_set">创建相册</label>
+						</div>
+						<div class="confirm_new_set_wrap">
+							<label class="ui small-badge confirm-new-set active" for="photo-confirm_new_set">创建</label>
+							<label class="ui small-badge next-badge cancel-new-set" for="photo-cancel_new_set">取消</label>
+						</div>
+						<div class="place_selection_creation_wrap">
+							<div class="place_selection_wrap">
+								<label class="ui select-label">
+									<select class="ui select" id="photo-album_id" name="photo[album_id]">
+										<option value="">选择相册</option>
+										<%= options_for_select(current_user.albums.select('id, name').map{|r| [r.name, r.id]}, @photo.album_id) %>
+									</select>
+									<span class="ui select-arrow"></span>
+								</label>
+							</div>
+							<div class="set_name_field_wrap">
+								<div class="set_name_field">
+									<div class="error_wrap"></div>
+									<input placeholder="相册名称..." type="text"></div>
+								<div class="cf"></div>
+							</div>
+						</div>
+					</div>
+					<div class="photo-exif">
+						<h4>
+							<span class="translation_missing" title="照片Exif信息">Exif</span>
+						</h4>
+						<div class="metadata">
+							<div class="labels">
+								<% Photo::EXIF.each do |key, val| %>
+								<label>
+									<%= val %>
+									<input class="ui small-invisible-textfield" id="photo-exif-<%= key %>" name="photo[exif][<%= key %>]" placeholder="Set <%= key.titleize %>" type="text" value="<%= exif_hash[key] %>"></label>
+								<label>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="description">
+					<div class="description-field">
+						<h4>描述</h4>
+						<textarea class="ui textarea" cols="70" id="photo-desc" name="photo[desc]" placeholder="照片描述"><%= @photo.desc %></textarea>
+					</div>
+					<div class="license-select">
+						<div>
+							<h4>授权声明</h4>
+							<div class="license-icon icons-licenses_5"></div>
+							<div class="clearfix"></div>
+						</div>
+						<div>
+							<% $warrant.each do |k, v| %>
+							<div class="warrant-row">
+								<input type="radio" id="photo-warrant<%= k %>" name="photo[warrant]" value="<%= k %>" <%= 'checked=""' if @photo.warrant.eql?(k) %>>
+								<label for="photo-warrant<%= k %>">
+									<% v[:style].each do |row| %>
+									<span class="cc-<%= row %>"></span>
+									<% end %>
+									<span class="cc-h"><%= v[:name] %></span>
+								</label>
+							</div>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="map">
+					<div class="tag-textfield">
+						<h4>标签</h4>
+						<div class="tag-tip">
+							标签作为关键词可以被搜索到
+						</div>
+						<div class="tags_field_wrap">
+							<div class="tags_input_wrap">
+								<% (@photo.tags.split(',') rescue []).each do |tag| %>
+								<div class="tag"><div class="name"><%= tag %></div><div class="remove">×</div></div>
+								<% end %>
+								<div class="tag_field">
+									<input placeholder="添加标签让照片更容易找到..." type="text" autocomplete="off" style="width:370px;">
+								</div>
+							</div>
+							<div class="cf"></div>
+						</div>
+						<div class="tag-changyong">
+							<% Tag.order('sum desc').limit(40).each do |tag| %>
+								<%= link_to tag.name, "javascript:void(0);" %>
+							<% end %>
+						</div>
+					</div>
+					<div class="geotagging">
+						<h4>坐标</h4>
+						<div class="map-wrapper">
+							<div class="maplet hidden_map_image" id="GDMAP"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
+<form>
+
+<script type="text/javascript">
+// 初始化地图 这里的地图不居中
+function initMap(lat, lon){
+	// 应该点击移动到点击位置
+	var mapObj,
+		param = {};
+	<% lat, lon = exif_hash['lat'], exif_hash['lon'] %>
+	<% if lat.present? and lon.present? %>
+	param = {center: new AMap.LngLat(<%= lon %>, <%= lat %>), level: 8};
+	<% end %>
+	mapObj = new AMap.Map("GDMAP", param);
+	var marker = new AMap.Marker({
+		position: mapObj.getCenter(),
+		draggable:true,
+		cursor:'move',
+		raiseOnDrag:true,
+		title: '坐标不正确?可自行拖拽到正确的拍摄地点.'
+	});
+	// 移动光标获取坐标事件
+	AMap.event.addListener(marker, 'dragend', function(e){
+		$("#photo-exif-lat").val(e.lnglat.lat);
+		$("#photo-exif-lon").val(e.lnglat.lng);
+	});
+	// 点击地图某一点,icon移动并获取坐标事件
+	AMap.event.addListener(mapObj,'click',function(e){
+		var newPo = {j: e.lnglat.getLat(), l: e.lnglat.getLng()};
+		marker.setPosition(newPo);
+		$("#photo-exif-lat").val(newPo.j);
+		$("#photo-exif-lon").val(newPo.l);
+	});
+	marker.setMap(mapObj);
+};
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.src = "http://webapi.amap.com/maps?v=1.2&key=10d1d60d190ea6522adeca60343e5821&callback=initMap";
+document.body.appendChild(script);
+// 初始化地图 end
+</script>
