@@ -16,7 +16,6 @@ class PhotosController < ApplicationController
         }
         hash = {
             'news'  => ['id desc', {}],
-            'choi'  => ['choice_at desc', {}],
             'liks'  => ['liks_count desc', {}],
             'coms'  => ['coms_count desc', {}],
             'recs'  => ['recommend_at desc', { recommend: true }],
@@ -35,7 +34,7 @@ class PhotosController < ApplicationController
         w.merge!(user_id: user_id) if user_id.present?
         w.merge!(user_id: current_user.try(:id)) if params[:q][:n].eql?('myse')
         # w.merge!(tag_id: tag_id) if tag_id.present?
-        @photos = Photo.where(w.merge(parent_id: nil)).paginate(:page => params[:page], per_page: 16).order(o)
+        @photos = Photo.where(w).paginate(:page => params[:page], per_page: 16).order(o)
         render 'waterfall', layout: false
     end
 
