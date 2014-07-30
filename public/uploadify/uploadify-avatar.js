@@ -1,10 +1,12 @@
 $(function(){
     var $field = $("#upload-file");
-    var uploadify_form_data = {};
-    var csrf_token = $('meta[name=csrf-token]').attr('content');
-    var csrf_param = $('meta[name=csrf-param]').attr('content');
+    var uploadify_form_data = {}, csrf_token, csrf_param;
+    csrf_token = $('meta[name=csrf-token]').attr('content');
+    csrf_param = $('meta[name=csrf-param]').attr('content');
     uploadify_form_data[csrf_param] = encodeURI(csrf_token);
+    uploadify_form_data['_mp_session'] = cookieSK;
     uploadify_form_data['timestamp'] = Math.random();
+
     $field.uploadify({//配置uploadify
         'formData'        : uploadify_form_data,
         'buttonText'      : '上传头像',                              //选择按钮显示的字符

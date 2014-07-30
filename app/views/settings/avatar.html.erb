@@ -1,9 +1,11 @@
+<script type="text/javascript">
+	var cookieSK = "<%= cookies['_mp_session'] %>";
+</script>
 <link rel="stylesheet" type="text/css" href="/uploadify/uploadify.css?v=1">
 <link rel="stylesheet" type="text/css" href="/uploadify/jquery.imgareaselect.css" />
 <script type="text/javascript" src="/uploadify/jquery.uploadify.js"></script>
 <script type="text/javascript" src="/uploadify/jquery.imgareaselect.js"></script>
 <script type="text/javascript" src="/uploadify/uploadify-avatar.js"></script>
-
 <div class="row">
 	<div class="col-md-5 gkimg">
 		<%= image_tag current_user.avatar.url, id: 'cut-area', class: 's300' %>
