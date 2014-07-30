@@ -185,7 +185,7 @@ class Photo < ActiveRecord::Base
       tpid = photo.tpid
 
       if event = Event.find_by_id(item['event_id'])
-        image_count = Photo.where(event_id: event.id).count
+        image_count = Photo.where(["event_id = ? and (isgroup = ? and parent_id is not null or isgroup = ? and parent_id is null)", event.id, true, false]).count
         membe_count = Photo.uniq.where(event_id: event.id).pluck(:user_id).length
         event.update_attributes(photos_count: image_count, members_count: membe_count)
         if item['album_id'].blank?

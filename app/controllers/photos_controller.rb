@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-    before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update, :simple, :simple_edit, :simple_create, :complex, :complex_edit, :complex_create]
+    before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update, :destroy, :simple, :simple_edit, :simple_create, :complex, :complex_edit, :complex_create]
     layout 'complex', only: [:simple, :complex, :simple_edit, :complex_edit]
     def index
         params[:q] ||= {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}
@@ -91,7 +91,14 @@ class PhotosController < ApplicationController
 
     def complex_create
         params[:photo][:tags] = params[:photo][:tags].split(",").uniq.join(",")
+        
         create_hash = params[:photo].slice(*[:exif, :tags, :event_id, :warrant, :title, :desc]).merge(isgroup: true, user_id: current_user.id)
+        
+        if event = Event.find_by_id(create_hash[:event_id])
+            album = Album.find_or_create_by_user_id_and_name(current_user.id, event.name)
+            create_hash[:album_id] = album.id
+        end
+
         goon = current_user.photos.find_by_id(params[:go_id])
         parent = if goon and goon.isgroup
             exis_goon = if goon.parent_id.blank?
@@ -132,6 +139,11 @@ class PhotosController < ApplicationController
         last = Hash[tps][params[:photo][:gl_id]].id rescue nil
         glid = last|| parent.gl_id || tps.last.last.id
         parent.update_attributes(gl_id: glid)
+        if event
+            image_count = Photo.where(["event_id = ? and (isgroup = ? and parent_id is not null or isgroup = ? and parent_id is null)", event.id, true, false]).count
+            membe_count = Photo.uniq.where(event_id: event.id).pluck(:user_id).length
+            event.update_attributes(photos_count: image_count, members_count: membe_count)
+        end
         redirect_to action: :show, id: parent.id
     end
 
@@ -219,6 +231,11 @@ class PhotosController < ApplicationController
     end
 
     def destroy
-
+        photo = current_user.photos.find_by_id(params[:id])
+        if photo
+            Photo.update_all({del: true}, {parent_id: photo.id}) if photo.isgroup and photo.parent_id.blank?
+            photo.update_attributes(del: true)
+        end
+        redirect_to user_path(current_user.id)
     end
 end

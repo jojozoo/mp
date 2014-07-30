@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
   def sign_up
     # 为oauth 登录添加部分
     # , :password_confirmation
-    param = params[:user].slice(:username, :email, :password, :province, :city, :resume, :domain, :gender, :site, :duty)
+    param = params[:user].slice(:username, :email, :password, :province, :city, :resume, :domain, :gender, :site, :duty, :mobile)
     @user = User.new(param)
     # @user.avatar = begin if params[:avatar].present?
     #     open(URI.parse(params[:avatar])) rescue nil

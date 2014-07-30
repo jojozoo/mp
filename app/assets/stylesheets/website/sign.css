@@ -184,7 +184,8 @@ body.session .sess-tip .discover:hover{
 
 .mppopup-box, .mppopup-box-outerboder{
     width:640px;
-    height:336px;
+    /*height:336px;*/
+    height: 398px;
     position:fixed;
     background:#fff;
     left:50%;
@@ -198,7 +199,8 @@ body.session .sess-tip .discover:hover{
 }
 .mppopup-box-outerboder{
     width:650px;
-    height:346px;
+    /*height:346px;*/
+    height: 408px;
     border-radius:5px;
     background:#000;
     opacity:0.3;

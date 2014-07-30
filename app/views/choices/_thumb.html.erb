@@ -43,9 +43,9 @@
 			</a>
 			<% if current_user and (current_user.admin or current_user.id.eql?(photo.user_id)) %>
 			<%= link_to '查看原图', photo.picture.url, target: '_blank' %>
-			<a href="javascript:void(0);">
-				删除
-			</a>
+				<% if current_user.id.eql?(photo.user_id)%>
+				<%= link_to '删除', "/ajax/del/photo/#{photo.id}", class: 'mp-ajax-del' %>
+				<% end %>
 			<% end %>
 		</span>
 	</div>

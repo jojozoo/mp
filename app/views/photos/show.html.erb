@@ -96,6 +96,9 @@
 			<% end %>
 			<% if current_user.admin || current_user.id.eql?(@photo.user_id) %>
 				<%= link_to '查看原图', @photo.picture.url, target: '_blank' %>
+				<% if current_user.id.eql?(@photo.user_id) %>
+				<%= link_to '删除', photo_path(@photo.id), method: :delete, data: {confirm: '确定删除？不可恢复操作!' } %>
+				<% end %>
 			<% end %>
 		</div>
 		<% end %>

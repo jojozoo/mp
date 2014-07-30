@@ -21,67 +21,71 @@ $(function() {
         if ($('.mppopup-box').length != 0) {
             POPBox.mppopupBoxShow();
         } else {
-            box = '<div class="mppopup-box" id="mppopup-box">' +
-                        '<div class="mppopup-box-left mppopup-box-item">' +
-                            '<form method="post" action="/sign_in" class="mp-sign-form mp-sign-form-sign_in" style="display: '+ (POPBox.isInitSignIn ? 'block' : 'none') +'">' +
-                                '<h3>立即登录</h3>' +
-                                '<div class="mp-sign-form-div">' +
-                                    '<span class="sign-placeholder">输入帐号/邮箱/手机</span>' +
-                                    '<input type="text" place-holder="正确帐号邮箱或手机" name="user[username]" class="mp-sign-blur form-control" tabindex="100" />' +
-                                '</div>' +
-                                '<div class="mp-sign-form-div">' +
-                                    '<span class="sign-placeholder">输入登录密码</span>' +
-                                    '<input type="password" place-holder="密码" name="user[password]" class="mp-sign-blur form-control" maxlength="16" tabindex="101" />' +
-                                '</div>' +
-                                '<div class="mp-sign-form-div">' +
-                                    '<input name="authenticity_token" type="hidden" value="'+ $('meta[name=csrf-token]').attr('content') +'">' +
-                                    '<input type="hidden" name="remember" value="on" />' +
-                                    '<input type="hidden" name="redirect" value="' + POPBox.redirectUrl + '" />' +
-                                    '<label class="pboxtb checked">保持登录状态</label>' +
-                                    '<a href="/forgot" class="get-back-password" target="_blank" title="找回密码">找回密码</a>' +
-                                '</div>' +
-                                '<div class="mp-sign-form-div">' +
-                                    '<input type="button" id="sign-form-submit-sign_in-btn" class="pboxtb sing-form-submit-btn" value="" tabindex="102" />' +
-                                    '<a href="javascript:void(0);" class="left40_blue fblue sign-up_now" target="_blank">没有帐号，立即注册</a>' +
-                                '</div>' +
-                            '</form>' +
-                            '<form method="post" action="/sign_up" class="mp-sign-form mp-sign-form-sign_up" style="display: '+ (POPBox.isInitSignIn ? 'none' : 'block') +'">' +
-                                '<h3>快速注册漫拍网</h3>' +
-                                '<input name="authenticity_token" type="hidden" value="'+ $('meta[name=csrf-token]').attr('content') +'">' + 
-                                '<div class="mp-sign-form-div">' +
-                                    '<span class="sign-placeholder">帐号</span>' +
-                                    '<input type="text" place-holder="帐号" name="user[username]" class="mp-sign-blur form-control" tabindex="200" />' +
-                                '</div>' +
-                                '<div class="mp-sign-form-div">' +
-                                    '<span class="sign-placeholder">邮箱</span>' +
-                                    '<input type="text" place-holder="邮箱" name="user[email]" class="mp-sign-blur form-control" tabindex="201" />' +
-                                '</div>' +
-                                '<div class="mp-sign-form-div">' +
-                                    '<span class="sign-placeholder">密码</span>' +
-                                    '<input type="password" place-holder="密码" name="user[password]" class="mp-sign-blur form-control" maxlength="16" tabindex="202" />' +
-                                '</div>' +
-                                '<div class="mp-sign-form-div">' +
-                                    '<input type="button" id="sign-form-submit-sign_up-btn" class="pboxtb sing-form-submit-btn" value="" tabindex="203" />' +
-                                    '<a href="javascript:void(0);" class="left40_blue fblue sign-in_now" target="_blank">已有帐号，直接登录</a>' +
-                                '</div>' +
-                                '<input type="hidden" name="redirect" />' +
-                            '</form>' +
-                        '</div>' +
-                        '<div class="mppopup-box-right mppopup-box-item">' +
-                            '<div class="socials">' +
-                                '<p>使用社交帐号登录</p>' +
-                                '<a href="/oauth/qzone" class="boxsocials-qzone" title="用QQ帐号登录">用QQ帐号登录</a>' +
-                                '<a href="/oauth/weibo" class="boxsocials-weibo" title="用新浪微博登录">用新浪微博登录</a>' +
-                                '<a href="/oauth/renren" class="boxsocials-renren" title="用人人帐号登录">用人人帐号登录</a>' +
-                                '<a href="/oauth/douban" class="boxsocials-douban" title="用豆瓣帐号登录">用豆瓣帐号登录</a>' +
-                            '</div>' +
-                        '</div>' +
-                        '<b class="pboxtb close" title="关闭"></b>' +
-                    '</div>' +
-                    '<div class="mppopup-box-outerboder" id="mppopup-box-outer-shade"></div>' +
-                    '<div class="mppopup-box-background" id="mppopup-box-shade">' +
-                        '<iframe src="about:blank" border="0" frameborder="0" scrolling="no" style="width:100%;height:' + $(document).height() + 'px;background:transparent;"></iframe>' +
-                    '</div>'
+            box = '<div class="mppopup-box" id="mppopup-box">\
+                        <div class="mppopup-box-left mppopup-box-item">\
+                            <form method="post" action="/sign_in" class="mp-sign-form mp-sign-form-sign_in" style="display: '+ (POPBox.isInitSignIn ? 'block' : 'none') +'">\
+                                <h3>立即登录</h3>\
+                                <div class="mp-sign-form-div">\
+                                    <span class="sign-placeholder">输入帐号/邮箱/手机</span>\
+                                    <input type="text" place-holder="正确帐号邮箱或手机" name="user[username]" class="mp-sign-blur form-control" tabindex="100" />\
+                                </div>\
+                                <div class="mp-sign-form-div">\
+                                    <span class="sign-placeholder">输入登录密码</span>\
+                                    <input type="password" place-holder="密码" name="user[password]" class="mp-sign-blur form-control" maxlength="16" tabindex="101" />\
+                                </div>\
+                                <div class="mp-sign-form-div" style="margin-top: 62px;">\
+                                    <input name="authenticity_token" type="hidden" value="'+ $('meta[name=csrf-token]').attr('content') +'">\
+                                    <input type="hidden" name="remember" value="on" />\
+                                    <input type="hidden" name="redirect" value="'+ POPBox.redirectUrl +'" />\
+                                    <label class="pboxtb checked">保持登录状态</label>\
+                                    <a href="/forgot" class="get-back-password" target="_blank" title="找回密码">找回密码</a>\
+                                </div>\
+                                <div class="mp-sign-form-div">\
+                                    <input type="button" id="sign-form-submit-sign_in-btn" class="pboxtb sing-form-submit-btn" value="" tabindex="102" />\
+                                    <a href="javascript:void(0);" class="left40_blue fblue sign-up_now" target="_blank">没有帐号，立即注册</a>\
+                                </div>\
+                            </form>\
+                            <form method="post" action="/sign_up" class="mp-sign-form mp-sign-form-sign_up" style="display: '+ (POPBox.isInitSignIn ? 'none' : 'block') +'">\
+                                <h3>快速注册漫拍网</h3>\
+                                <input name="authenticity_token" type="hidden" value="'+ $("meta[name=csrf-token]").attr("content") +'">\
+                                <div class="mp-sign-form-div">\
+                                    <span class="sign-placeholder">帐号</span>\
+                                    <input type="text" place-holder="帐号" name="user[username]" class="mp-sign-blur form-control" tabindex="200" />\
+                                </div>\
+                                <div class="mp-sign-form-div">\
+                                    <span class="sign-placeholder">邮箱</span>\
+                                    <input type="text" place-holder="邮箱" name="user[email]" class="mp-sign-blur form-control" tabindex="201" />\
+                                </div>\
+                                <div class="mp-sign-form-div">\
+                                    <span class="sign-placeholder">手机</span>\
+                                    <input type="text" place-holder="手机" name="user[mobile]" class="mp-sign-blur form-control" tabindex="201" />\
+                                </div>\
+                                <div class="mp-sign-form-div">\
+                                    <span class="sign-placeholder">密码</span>\
+                                    <input type="password" place-holder="密码" name="user[password]" class="mp-sign-blur form-control" maxlength="16" tabindex="202" />\
+                                </div>\
+                                <div class="mp-sign-form-div">\
+                                    <input type="button" id="sign-form-submit-sign_up-btn" class="pboxtb sing-form-submit-btn" value="" tabindex="203" />\
+                                    <a href="javascript:void(0);" class="left40_blue fblue sign-in_now" target="_blank">已有帐号，直接登录</a>\
+                                </div>\
+                                <input type="hidden" name="redirect" />\
+                            </form>\
+                        </div>\
+                        <div class="mppopup-box-right mppopup-box-item">\
+                            <div class="socials">\
+                                <p>使用社交帐号登录</p>\
+                                <a href="/oauth/qzone" class="boxsocials-qzone" title="用QQ帐号登录">用QQ帐号登录</a>\
+                                <a href="/oauth/weibo" class="boxsocials-weibo" title="用新浪微博登录">用新浪微博登录</a>\
+                                <a href="/oauth/renren" class="boxsocials-renren" title="用人人帐号登录">用人人帐号登录</a>\
+                                <a href="/oauth/douban" class="boxsocials-douban" title="用豆瓣帐号登录">用豆瓣帐号登录</a>\
+                            </div>\
+                        </div>\
+                        <b class="pboxtb close" title="关闭"></b>\
+                    </div>\
+                    <div class="mppopup-box-outerboder" id="mppopup-box-outer-shade"></div>\
+                    <div class="mppopup-box-background" id="mppopup-box-shade">\
+                        <iframe src="about:blank" border="0" frameborder="0" scrolling="no" style="width:100%;height:'+ $(document).height() +'px;background:transparent;"></iframe>\
+                    </div>'
 
             
             $('body').append(box);
@@ -164,6 +168,17 @@ $(function() {
             $(this).addClass('mp-sign-error').after('<div class="help-block-error">请设置6-16位英文字母，数字，符号密码</div>');
         }
     });
+    // 注册手机号
+    $(document).on('blur', '.mp-sign-form-sign_up input[name="user[mobile]"]', function(){
+        var _val = $.trim($(this).val());
+        var _tip = $(this).attr('place-holder');
+        $(this).removeClass('mp-sign-error').nextAll('div.help-block-error').remove();
+        if(_val !== '' && !(/^1[3|4|5|8][0-9]\d{4,8}$/.test(_val))){
+            $(this).addClass('mp-sign-error').after('<div class="help-block-error">请输入正确手机号</div>');
+            $(this).focus();
+        }
+    })
+    
 
     // // 手机、邮箱
     // $(document).on('blur', '.mp-sign-form input.mp-sign-blur', function() {
@@ -377,7 +392,7 @@ $(function() {
     
 
     // 检测帐号是否存在
-    $(document).on('blur', 'input[name="user[username]"], input[name="user[email]"]', function() {
+    $(document).on('blur', 'input[name="user[username]"], input[name="user[email]"], input[name="user[mobile]"]', function() {
         var _this     = $(this),
             _val      = $.trim($(this).val()),
             _isSignIn = $(this).parents("form").hasClass('mp-sign-form-sign_in'),
@@ -410,9 +425,12 @@ $(function() {
                         if(_isEmail){
                             _this.nextAll('div.help-block-error').remove();
                             _this.after('<div class="help-block-error">该邮箱已存在，请更换邮箱或 <a href="javascript:void(0);" class="fblue sign-in_now">登录</a></div>');
-                        } else {
+                        } else if(_name === 'user[username]'){
                             _this.nextAll('div.help-block-error').remove();
                             _this.after('<div class="help-block-error">该帐号已存在，请更换帐号或 <a href="javascript:void(0);" class="fblue sign-in_now">登录</a></div>');
+                        } else {
+                            _this.nextAll('div.help-block-error').remove();
+                            _this.after('<div class="help-block-error">该手机号已存在，请更换手机号或 <a href="javascript:void(0);" class="fblue sign-in_now">登录</a></div>');
                         }
                         // end
                     }
