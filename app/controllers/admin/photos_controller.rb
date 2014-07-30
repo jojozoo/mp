@@ -6,6 +6,8 @@ class Admin::PhotosController < Admin::ApplicationController
 		s_dt, e_dt = datetime_merge(params[:date], params[:time])
 		@photos = if params[:order].eql?('recommend')
 			Photo.where(['recommend = ? and created_at >= ? and created_at <= ?', true, s_dt, e_dt]).paginate(:page => params[:page], per_page: 24).order("recommend_at desc")
+		elsif params[:order].eql?('choice')
+			Photo.where(['choice = ? and choice_at >= ? and choice_at <= ?', true, s_dt, e_dt]).paginate(:page => params[:page], per_page: 24).order("choice_at desc")
 		else
 			Photo.where(['created_at >= ? and created_at <= ?', s_dt, e_dt]).paginate(:page => params[:page], per_page: 24).order("id desc")
 		end
