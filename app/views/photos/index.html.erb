@@ -1,3 +1,11 @@
+<style type="text/css">
+@media only screen and (max-width: 1919px) and (min-width: 1680px){
+	.container{
+		width: 1500px;
+	}
+}
+</style>
+
 <div class="row mp-photos" id="mp-photos">
 	<%= render 'sidenav' %>
 	<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(q: params[:q]) %>">
