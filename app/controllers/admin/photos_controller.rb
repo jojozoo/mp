@@ -9,7 +9,8 @@ class Admin::PhotosController < Admin::ApplicationController
 		elsif params[:order].eql?('choice')
 			Photo.where(['choice = ? and choice_at >= ? and choice_at <= ?', true, s_dt, e_dt]).paginate(:page => params[:page], per_page: 24).order("choice_at desc")
 		else
-			Photo.where(['created_at >= ? and created_at <= ?', s_dt, e_dt]).paginate(:page => params[:page], per_page: 24).order("id desc")
+			# Photo.where(['created_at >= ? and created_at <= ?', s_dt, e_dt]).paginate(:page => params[:page], per_page: 24).order("id desc")
+			Photo.where(['(isgroup = ? and parent_id is not null or isgroup = ? and parent_id is null) and created_at >= ? and created_at <= ?', true,  false, s_dt, e_dt]).paginate(:page => params[:page], per_page: 24).order("id desc")
 		end
 	end
 
