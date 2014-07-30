@@ -15,12 +15,12 @@ class PhotosController < ApplicationController
             w: params[:q][:w] || {},
         }
         hash = {
-            'news'  => ['id desc', {}],
+            'news'  => ['id desc', {parent_id: nil}],
             'liks'  => ['liks_count desc', {}],
             'coms'  => ['coms_count desc', {}],
             'recs'  => ['recommend_at desc', { recommend: true }],
             'choi'  => ['choice_at desc', { choice: true}],
-            'radm'  => ['randomhex desc', {}],
+            'radm'  => ['randomhex desc', {parent_id: nil}],
             'vist'  => ['visit_count desc', {}],
             'myse'  => ['visit_count desc', {}]
         }
