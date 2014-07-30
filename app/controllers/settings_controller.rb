@@ -1,6 +1,6 @@
 class SettingsController < ApplicationController
     before_filter :must_login
-
+    skip_before_filter :verify_authenticity_token, :only => [:avatar]
     def index
         redirect_to action: :information
     end
