@@ -1,3 +1,1 @@
-
-update infos set tag=REPLACE(domain, 'http://www.hi.com/?', '');
-create table mail_invites (select tag as uid, email, nickname as username from infos where email != '');
+评论增加删除 增加用户浏览 参考500px 增加弹出的大图在首页
