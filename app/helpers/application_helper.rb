@@ -183,9 +183,9 @@ module ApplicationHelper
 
   def link_to_large photo
     if photo.isgroup and photo.parent_id.blank? and gl = Photo.find_by_id(photo.gl_id)
-      link_to image_tag(gl.picture(:large)), photo_path(photo.id), target: '_blank', title: '点击查看详细内容'
+      link_to image_tag('/images/default_load_photo.gif', 'data-original' => gl.picture.url(:large), class: 'lazy'), photo_path(photo.id), target: '_blank', title: '点击查看详细内容'
     else
-      link_to image_tag(photo.picture(:large)), photo_path(photo.id), target: '_blank', title: '点击查看详细内容'
+      link_to image_tag('/images/default_load_photo.gif', 'data-original' => photo.picture.url(:large), class: 'lazy'), photo_path(photo.id), target: '_blank', title: '点击查看详细内容'
     end
   end
 

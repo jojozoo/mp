@@ -37,7 +37,9 @@ $(function(){
 						eleLoad.attr("page", nextPage);
 					}
 					// 插入数据
-					$('#mp-photos').append($(data).html());
+					$($(data).html()).appendTo('#mp-photos').find("img.lazy").lazyload({ 
+									effect: "fadeIn"
+									}).removeClass("lazy");
 				},
 				complete: function(){
 					// 隐藏正在加载模块

@@ -7,6 +7,7 @@ function MPMSG(glass, msg){
     }, 3000);
 }
 $(function(){
+	$("img[data-original]").lazyload();
 	// bgdown ondown fade-row fadedown choose-ok
 	// 以上class 都是 移动显示，移出隐藏 需要整合
 	// /p/1
