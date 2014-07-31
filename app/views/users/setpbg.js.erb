@@ -1,0 +1,26 @@
+$("<%= j render 'setpbg' %>").appendTo("body").modal('show').on('shown.bs.modal', function(){
+	$(this).find(".tcover_list a").click(function(){
+		$(".tcover_list img").removeClass("thisfocus");
+		$(this).find("img").addClass("thisfocus");
+		var _src = $($(this).find("img")).attr("src");
+		$(".change_bg img").attr("src", _src);
+	});
+	var _this = this;
+	$(this).find("a.btn-primary").click(function(){
+		var _url = $(".tcover_list img.thisfocus").attr("src");
+		if(!_url){
+			MPMSG('error', "还没有选择背景模板");
+			return false;
+		}
+		$.get("/accounts/setpbg?url=" + encodeURI(_url), function(r){
+			$(".modal-header .close").click();
+			MPMSG('success', "背景模板更新成功");
+		})
+		return false;
+	});
+	$(this).find(".btn-default").click(function(){
+		$(".modal-header .close").click();
+	});
+}).on('hidden.bs.modal', function(){
+	$(this).off().remove();
+});

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_filter :get_user
+	before_filter :get_user, except: [:setpbg]
 
 	def show
 		@user = User.find(params[:id])
@@ -47,6 +47,13 @@ class UsersController < ApplicationController
 
 	def notices
 
+	end
+
+	def setpbg
+		if sign_in? and params[:url].present?
+			current_user.update_attributes(bgurl: params[:url])
+			render text: 'ok' and return
+		end
 	end
 
 	private

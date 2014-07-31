@@ -63,6 +63,9 @@ Mp::Application.routes.draw do
   resources :events, path: 'requests', only: [:index, :show]
   
   resources :users, path: 'accounts' do
+    collection do
+      get :setpbg
+    end
     member do
       get :fans
       get :fols

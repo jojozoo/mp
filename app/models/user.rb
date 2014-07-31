@@ -35,6 +35,7 @@
 #  liks_count          :integer          default(0)
 #  stos_count          :integer          default(0)
 #  visit_count         :integer          default(0)
+#  bgurl               :string(255)      default("/images/pbg/00049.jpg")
 #  del                 :boolean          default(FALSE)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
@@ -72,6 +73,7 @@ class User < ActiveRecord::Base
   :liks_count,
   :stos_count,
   :visit_count,
+  :bgurl,
   :del
 
   StyleRow = {

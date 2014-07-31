@@ -1,0 +1,22 @@
+<div class="modal fade">
+	<div class="modal-dialog" style="margin:400px auto 0">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title">背景设置</h4>
+			</div>
+			<div class="modal-body">
+				<div class="tcover_list">
+				<% [9, 13,16, 46, 47, 49, 62, 84].each_with_index do |item, index| %>
+					<%= link_to image_tag("/images/pbg/000#{item}.jpg"), "javascript:void(0);", class: "#{'last' unless (index % 2).zero?}" %>
+				<% end %>
+				<div class="clearfix"></div>
+				</div>
+			</div>
+			<div class="modal-footer" style="margin-top:0;">
+				<a href="javascript:void(0);" class="btn btn-primary btn-sm" style="width:120px;">保存</a>
+				<a href="javascript:void(0);" class="btn btn-default btn-sm" style="width:120px;">取消</a>
+			</div>
+		</div>
+	</div>
+</div>

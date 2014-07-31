@@ -73,7 +73,7 @@
         z-index:999;
         padding:0 8px 0 30px;
         background:url(/images/change_bg.png) no-repeat 2px 0;
-        background-color:rgba(255, 255, 255, 0.1);
+        background-color:rgba(0, 0, 0, 0.1);
         border-radius:3px;
         line-height:24px;
         color:#fff;
@@ -81,12 +81,33 @@
         right: 25px;
         text-decoration: none;
     }
-    .change_bg a:hover {background-color:rgba(255, 255, 255, 0.2);}
+    .change_bg a:hover {background-color:rgba(0, 0, 0, 0.4);}
+    .tcover_list{
+
+    }
+    .tcover_list a.last{
+        margin-right: 0;
+    }
+    .tcover_list a{
+        width: 270px;
+        display: inline-block;
+        float: left;
+        margin: 0 14px 10px 0;
+    }
+    .tcover_list a img.thisfocus{
+        border-color: #ffb941;
+    }
+    .tcover_list a img{
+        width: 100%;
+        border: 2px solid #e6e6e6;
+    }
 </style>
 <div class="row">
     <div class="col-md-12 change_bg">
-        <a id="change_ubg_button" href="javascript:void(0);" class="ajaxpage" title="背景设置">背景设置</a>
-        <img src="/images/profile.jpg" style="width:100%;">
+        <% if sign_in? and current_user.id.eql?(@user.id) %>
+        <%= link_to '背景设置', setpbg_users_path, remote: true, title: '背景设置' %>
+        <% end %>
+        <%= image_tag @user.bgurl, style: "width:100%;" %>
     </div>
 </div>
 <div class="row">
