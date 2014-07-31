@@ -68,9 +68,24 @@
     .pf_resume{
         color: #808080;
     }
+    .change_bg a {
+        position: absolute;
+        z-index:999;
+        padding:0 8px 0 30px;
+        background:url(/images/change_bg.png) no-repeat 2px 0;
+        background-color:rgba(255, 255, 255, 0.1);
+        border-radius:3px;
+        line-height:24px;
+        color:#fff;
+        top: 10px;
+        right: 25px;
+        text-decoration: none;
+    }
+    .change_bg a:hover {background-color:rgba(255, 255, 255, 0.2);}
 </style>
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 change_bg">
+        <a id="change_ubg_button" href="javascript:void(0);" class="ajaxpage" title="背景设置">背景设置</a>
         <img src="/images/profile.jpg" style="width:100%;">
     </div>
 </div>
