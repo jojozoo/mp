@@ -10,7 +10,10 @@ class ApplicationController < ActionController::Base
   end
 
   def is_mobile?
-    # request.user_agent =~ /Mobile|webOS/ || params[:mobile].eql?('1')
+    # ap request.url
+    # ap request.url.gsub(/mpwang/, "touch.mpwang")
+    # ap request.url.gsub(/localhost/, "touch.localhost")
+    request.user_agent =~ /Mobile|webOS/ || params[:mobile].eql?('1')
   end
 
   def site_config
