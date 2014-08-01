@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= @title %></title>
+	<meta name="keywords" content="<%= @keywords %>">
+	<meta name="description" content="<%= @description %>">
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<!-- 移动webkit版本的input有一个属性：autocapitalize 设置off来关闭 -->
+	<%= stylesheet_link_tag "mobile", :media => "all" %>
+	<%#= javascript_include_tag "mobile" %>
+	<%= csrf_meta_tags %>
+	<link href="/favicon.ico?v=1" type="image/x-icon" rel="icon">
+	<link href="/favicon.ico?v=1" type="image/x-icon" rel="shortcut icon">
+	<link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://m0.ihaveu.net/mobile/logo_57x57.png?201407101751">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://m0.ihaveu.net/mobile/logo_114x114.png?201407101751">
+	<link rel="apple-touch-startup-image" media="(device-width: 320px) and not (-webkit-min-device-pixel-ratio: 2) and (device-height: 480px)" href="http://m0.ihaveu.net/mobile/startup_320x460.jpg?201407101751">	
+	<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) and (device-height: 480px)" href="http://m0.ihaveu.net/mobile/startup_640x920.jpg?201407101751">
+	<link rel="apple-touch-startup-image" media="(device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) and (device-height: 568px)" href="http://m0.ihaveu.net/mobile/startup_640x1096.jpg?201407101751">
+</head>
+<body>
+	<%= yield %>
+</body>
+</html>

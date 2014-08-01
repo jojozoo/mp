@@ -1,19 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :site_config, :current_user, :prepare_for_mobile
+  before_filter :site_config, :current_user, :mobile_filter, :subdomain_filter
 
-  helper_method :current_user, :sign_in?, :is_mobile?
+  helper_method :current_user, :sign_in?
 
-  def prepare_for_mobile
-    request.format = :mobile if is_mobile?
+  def mobile_filter
+    if !request.subdomain.eql?('touch') and (request.user_agent =~ /Mobile|webOS/ || params[:mobile].eql?('1'))
+      redirect_to request.url.gsub(/mpwang/, "touch.mpwang") and return
+    end
   end
 
-  def is_mobile?
-    # ap request.url
-    # ap request.url.gsub(/mpwang/, "touch.mpwang")
-    # ap request.url.gsub(/localhost/, "touch.localhost")
-    request.user_agent =~ /Mobile|webOS/ || params[:mobile].eql?('1')
+  def subdomain_filter
+
   end
 
   def site_config

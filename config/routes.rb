@@ -176,6 +176,15 @@ Mp::Application.routes.draw do
       get :talk, on: :member
     end
   end
+
+
+
+
+  constraints(subdomain: 'touch') do
+    scope '', module: 'mobile' do
+      resources :photos
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
