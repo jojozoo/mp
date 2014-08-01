@@ -1,4 +1,11 @@
 Mp::Application.routes.draw do
+  constraints(subdomain: 'touch') do
+    # scope module: 'mobile', as: :touch do
+    # as new_touch_photo 不as new_photo
+    scope module: 'mobile' do
+      resources :photos
+    end
+  end
   get    '/home'          => 'home#index', as: :home
   post   '/sign_in'       => 'sessions#create'
   post   '/sign_up'       => 'sessions#sign_up'
@@ -174,15 +181,6 @@ Mp::Application.routes.draw do
     
     resources :messages, only: [:index, :show, :destroy] do
       get :talk, on: :member
-    end
-  end
-
-
-
-
-  constraints(subdomain: 'touch') do
-    scope '/touch', module: 'mobile' do
-      resources :photos
     end
   end
   # The priority is based upon order of creation:
