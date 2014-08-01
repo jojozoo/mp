@@ -1,7 +1,7 @@
 # Be sure to restart your server when you modify this file.
 
 # Mp::Application.config.session_store :cookie_store, key: '_mp_session', domain: '.mpwang.cn'
-Mp::Application.config.session_store :cookie_store, key: '_mp_session', :expire_after => 1.days
+Mp::Application.config.session_store :cookie_store, key: '_mp_session', :expire_after => 1.days, domain: '.mpwang.cn'
 Rails.application.config.middleware.insert_before(
   ActionDispatch::Session::CookieStore,
   FlashSessionCookieMiddleware,
