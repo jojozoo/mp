@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_mobile?
-    request.user_agent =~ /Mobile|webOS/ || params[:mobile].eql?('1')
+    # request.user_agent =~ /Mobile|webOS/ || params[:mobile].eql?('1')
   end
 
   def site_config
