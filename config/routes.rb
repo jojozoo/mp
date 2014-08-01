@@ -181,7 +181,7 @@ Mp::Application.routes.draw do
 
 
   constraints(subdomain: 'touch') do
-    scope '', module: 'mobile' do
+    scope '/touch', module: 'mobile' do
       resources :photos
     end
   end
