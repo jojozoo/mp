@@ -29,13 +29,15 @@ class TopicsController < ApplicationController
 
     def create
         if @topic = Topic.create!(params[:topic].slice(:title, :content, :cate_id, :original).merge(user_id: current_user.id))
-            if params[:gohome].eql?('on')
-                MpSet.create(title: @topic.title, link: topic_url(@topic.id), cate: 5, cate_id: 0, user_id: current_user.id)
-            end
-            if params[:goevent].eql?('on')
-                if ecate = Tag.find_by_id(@topic.cate_id)
-                    if event = Event.find_by_name(ecate.name)
-                        MpSet.create(title: @topic.title, link: topic_url(@topic.id), cate: 6, cate_id: event.id, user_id: current_user.id)
+            if current_user.admin
+                if params[:gohome].eql?('on')
+                    MpSet.create(title: @topic.title, link: topic_url(@topic.id), cate: 5, cate_id: 0, user_id: current_user.id)
+                end
+                if params[:goevent].eql?('on')
+                    if ecate = Tag.find_by_id(@topic.cate_id)
+                        if event = Event.find_by_name(ecate.name)
+                            MpSet.create(title: @topic.title, link: topic_url(@topic.id), cate: 6, cate_id: event.id, user_id: current_user.id)
+                        end
                     end
                 end
             end
