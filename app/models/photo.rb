@@ -166,11 +166,11 @@ class Photo < ActiveRecord::Base
   end
 
   def prev
-    self.class.first(:conditions => ['user_id = ? and id < ? and parent_id is null', self.user_id, self.id], :limit => 1, order: 'id desc')
+    self.class.first(:conditions => ['user_id = ? and id > ? and parent_id is null', self.user_id, self.id], :limit => 1, order: 'id asc')
   end
 
   def next
-    self.class.first(:conditions => ['user_id = ? and id > ? and parent_id is null', self.user_id, self.id], :limit => 1, order: 'id asc')
+    self.class.first(:conditions => ['user_id = ? and id < ? and parent_id is null', self.user_id, self.id], :limit => 1, order: 'id desc')
   end
 
   def self.create_items items, uid, parent = nil
