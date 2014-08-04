@@ -6,7 +6,7 @@
 		</div>
 	</div>
 </div>
-<div class="row cz-home-all events-all">
+<div class="row cz-home-all top-all">
 	<div class="col-md-9">
 		<%= render 'flexslider' %>
 	</div>
@@ -24,14 +24,14 @@
 	</div>
 </div>
 <div class="row cz-home-all events-all">
-	<% Event.limit(8).each do |e| %>
+	<% Event.totop.limit(8).each do |e| %>
 	<div class="col-md-3">
 		<%= link_to event_path(e) do %>
 			<%= image_tag(e.logo.url(:thumb)) %>
 			<div class="mp-overlay"></div>
 			<div class="mp-gradient">
 				<div class="nametxt"><%= e.name %></div>
-				<div class="nametxt namedesc"><%= e.desc %></div>
+				<div class="nametxt namedesc">人数/图片: <%= e.members_count %>/<%= e.photos_count %></div>
 			</div>
 		<% end %>
 	</div>
@@ -42,23 +42,53 @@
 <div class="row cz-home-all recommends-all">
 	<div class="col-md-6">
 		<% day = MpSet.where(cate: 1).last %>
-		<%= link_to image_tag('http://mpwang.cn/system/photos/541/cover/2a5fac93a38aeee194e043bd2c4677ce.JPG?1406907196'), day.link, class: 'thua', target: '_blank' %>
+		<%= link_to day.link, class: 'thua', target: '_blank' do %>
+			<%= image_tag(day.src) %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= day.title %></div>
+			</div>
+		<% end %>
 	</div>
 	<div class="col-md-3">
 		<% zhou = MpSet.where(cate: 2).last %>
-		<%= link_to image_tag(zhou.src), zhou.link, class: 'thua', target: '_blank' %>
+		<%= link_to zhou.link, class: 'thua', target: '_blank' do %>
+			<%= image_tag(zhou.src) %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= zhou.title %></div>
+			</div>
+		<% end %>
 	</div>
 	<div class="col-md-3">
-		<% zhou = MpSet.where(cate: 2).last %>
-		<%= link_to image_tag(zhou.src), zhou.link, class: 'thua', target: '_blank' %>
+		<% zhou = MpSet.where(cate: 3).last %>
+		<%= link_to zhou.link, class: 'thua', target: '_blank' do %>
+			<%= image_tag(zhou.src) %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= zhou.title %></div>
+			</div>
+		<% end %>
 	</div>
 	<div class="col-md-3">
-		<% topic = MpSet.where(cate: 3).last %>
-		<%= link_to image_tag(topic.src), topic.link, class: 'thua', target: '_blank' %>
+		<% topic = MpSet.where(cate: 4).last %>
+		<%= link_to topic.link, class: 'thua', target: '_blank' do %>
+			<%= image_tag(topic.src) %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= topic.title %></div>
+			</div>
+		<% end %>
 	</div>
 	<div class="col-md-3">
-		<% request = MpSet.where(cate: 4).last %>
-		<%= link_to image_tag(request.src), request.link, class: 'thua', target: '_blank' %>
+		<% request = MpSet.where(cate: 7).last %>
+		<%= link_to request.link, class: 'thua', target: '_blank' do %>
+			<%= image_tag(request.src) %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= request.title %></div>
+			</div>
+		<% end %>
 	</div>
 </div>
 <script type="text/javascript">

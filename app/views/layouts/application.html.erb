@@ -25,10 +25,10 @@
 		<p>关注/取消关注成功！</p><div class="closeb"></div>
 	</div>
 	<%= render 'shared/nav' %>
-	<% if controller_name.eql?('home') and action_name.eql?('index') %>
+	<% if controller_name.eql?('home') and action_name.eql?('index') and hchoice = Photo.choice.last and huser = hchoice.user %>
 	<div class="cz-home-top">
 		<div class="background">
-			<%= link_to image_tag('http://mpwang.cn/system/photos/521/large/e71d4d95480ca25c23b372c32aba4ba4.JPG?1406906761'), home_path, title: '点击查看' %>
+			<%= link_to image_tag(hchoice.picture(:large), title: hchoice.title), photo_path(hchoice), title: hchoice.title %>
 		</div>
 		<div class="cz-home-content session">
 			<div class="beian" style="text-align: center;">
@@ -44,9 +44,9 @@
 					<tbody>
 						<tr>
 							<td class="author-avatar">
-								<%= link_to image_tag(User.first.avatar.url(:small)), user_path(User.first), style: 'display:inline-block;float:left' %>
+								<%= link_to image_tag(huser.avatar.url(:small)), user_path(hchoice.user_id), style: 'display:inline-block;float:left' %>
 								<div style="margin-left:10px;float:left;height:70px;padding-top: 30px;">
-									© 2014 来自摄影师 By <%= link_to User.first.username, user_path(User.first), class: 'usernamefix' %>
+									© 2014 来自摄影师 <%= link_to huser.username, user_path(hchoice.user_id), class: 'usernamefix' %>
 								</div>
 								
 							</td>
