@@ -1,59 +1,75 @@
-<form action="/sign_in" class="mp-sign-form mp-sign-form-sign_in <%= 'falde-out-form' if params[:m].eql?('sign_in') %>" method="post">
-	<h4>登录漫拍网，看精致图片</h4>
-	<hr>
-	<div class="mp-sign-form-div">
-		<span class="sign-placeholder">输入帐号/邮箱/手机</span>
-		<input type="text" name="user[username]" class="mp-sign-blur form-control" place-holder="正确帐号邮箱或手机">
-	</div>
-	<div class="mp-sign-form-div">
-		<span class="sign-placeholder">输入登录密码</span>
-		<input type="password" name="user[password]" class="mp-sign-blur form-control" place-holder="密码">
-	</div>
-	<div style="width: 280px; *width: 300px; _width: 300px; height: 34px;">
-		<input type="submit" id="sign-form-submit-sign_in-btn" value="登录漫拍" class="pull-left btn btn-info sing-form-submit-btn">
-		<a class="sign-up_now pull-right" href="javascript:void(0);">去注册</a>
-	</div>
-	<hr style="margin: 2px auto 10px auto;">
-	<div class="mp-sign-form-div-session">
-		<input name="authenticity_token" type="hidden" value="">
-		<input type="hidden" name="remember" value="on" />
-		<% if params[:redirect].present? %>
-			<input type="hidden" name="redirect" value="<%= params[:redirect] %>"/>
-		<% end %>
-		<label class="remember_me checked">保持登录状态</label>
-		<a href="/forgot">忘记密码</a>
-	</div>
-	<hr>
-	<h5>快捷登录，无需注册</h5>
-	<%= render "oauth" %>
-</form>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title><%= @title %></title>
+	<meta name="keywords" content="<%= @keywords %>">
+	<meta name="description" content="<%= @description %>">
+	<meta property="qc:admins" content="5510712337167636" />
+	<meta property="wb:webmaster" content="e5a2ccc22427e5c6" />
+	<%= stylesheet_link_tag "application", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<link href="/favicon.ico?v=2" type="image/x-icon" rel="icon">
+	<link href="/favicon.ico?v=2" type="image/x-icon" rel="shortcut icon">
+	<!--[if lte IE 8]>
+	<link rel="stylesheet" href="/ie/ie.css" />
+	<![endif]-->
 
-<form action="/sign_up" class="mp-sign-form mp-sign-form-sign_up <%= 'falde-out-form' if params[:m].eql?('sign_up') %>" method="post">
-	<input name="authenticity_token" type="hidden" value="">
-	<input type="hidden" name="redirect" />
-	<h4>注册漫拍网，分享精致图片</h4>
-	<hr>
-	<div class="mp-sign-form-div">
-		<span class="sign-placeholder">帐号</span>
-		<input type="text" place-holder="帐号" name="user[username]" class="mp-sign-blur form-control" tabindex="200">
+	<!--[if lt IE 9]>
+	<script src="/ie/html5shiv.min.js"></script>
+	<script src="/ie/respond.min.js"></script>
+	<![endif]-->
+	<%= render 'shared/tongji' %>
+	<link href="/stylesheets/sq-session-index.css?body=1" media="all" rel="stylesheet" type="text/css">
+</head>
+<!--缺少跳转landingpage-->
+<body>
+	<div class="session window-screen">
+		<div class="container mp-session-sign fadeInitem">
+			<div class="sq-header">
+				<%= link_to image_tag('/images/logo/logo@_h_50.png?v=3'), home_path %>
+				<a href="/sign_up" class="to-signup wf">注册</a>
+				<a href="/sign_in" class="to-signin wf">登录</a>
+			</div>
+		</div>
+		<div class="sq-beian sq-content fadeInitem">
+			<h1>获取灵感 发现精彩</h1>
+			<h3>加入中国最出色的摄影社区</h3>
+			<a class="button submit large" href="/photos/simple">上传您的第一张照片</a>
+			<a class="discover" href="/photos?&q%5Bn%5D=recs&q%5Bo%5D=recommend_at+desc&q%5Bs%5D=cols">或看看精彩照片</a>
+		</div>
+		<div class="sq-beian sq-footer">
+			<table>
+				<tr>
+					<td>
+
+					</td>
+					<td>
+						Copyright © 2014-2015　山东漫拍文化发展有限公司
+						<br>
+						鲁ICP备14011722号
+					</td>
+					<td>
+						© 2014 <%= link_to 'Photography By ' + 'zhuxiaowu', user_path(1) %>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="sq-background window-screen">
+			<%= image_tag sessionbackgrounds %>
+			<%#= link_to image_tag(sessionbackgrounds), home_path, title: '点击进入首页' %>
+		</div>
 	</div>
-	<div class="mp-sign-form-div">
-		<span class="sign-placeholder">邮箱</span>
-		<input type="text" place-holder="邮箱" name="user[email]" class="mp-sign-blur form-control" tabindex="201">
-	</div>
-	<div class="mp-sign-form-div">
-		<span class="sign-placeholder">手机</span>
-		<input type="text" place-holder="手机" name="user[mobile]" class="mp-sign-blur form-control" tabindex="201">
-	</div>
-	<div class="mp-sign-form-div">
-		<span class="sign-placeholder">密码</span>
-		<input type="password" place-holder="密码" name="user[password]" class="mp-sign-blur form-control" maxlength="16" tabindex="202">
-	</div>
-	<div style="width: 280px; *width: 300px; _width: 300px; height: 34px;">
-		<input type="submit" value="注册帐户" id="sign-form-submit-sign_up-btn" class="pull-left btn btn-info sing-form-submit-btn">
-		<a class="sign-in_now pull-right" href="javascript:void(0);">去登录</a>
-	</div>
-	<hr style="margin: 2px auto 10px auto;">
-	<h5>快捷登录，无需注册</h5>
-	<%= render "oauth" %>
-</form>
+	
+</body>
+</html>
+<script type="text/javascript">
+$(function(){
+	$(".window-screen").css({height: $(window).height()});
+	setTimeout(function(){
+		$(".fadeInitem").fadeIn();
+	}, 1000);
+	
+})
+</script>

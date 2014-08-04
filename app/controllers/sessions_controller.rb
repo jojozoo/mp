@@ -4,7 +4,15 @@ class SessionsController < ApplicationController
   # 其中 new 和 sign_up 的get请求去掉 路由也去掉 只有首页
   # TODO 有些bug 如登录不成功 或者注册时的验证
   def index
-    redirect_to home_path if sign_in?
+    # render layout: false
+    redirect_to home_path
+  end
+
+  def sign_in
+  end
+
+  def sign_up
+    
   end
 
   # POST /sign_in 登录
@@ -12,33 +20,21 @@ class SessionsController < ApplicationController
     username = params[:user][:username]
     @user = User.where(["username = ? or email = ? or mobile = ?", username, username, username]).first
     if @user.blank?
-      redirect_to root_path(m: 'sign_in') and return
+      redirect_to sign_in_path and return
     end
     unless @user.valid_password?(params[:user][:password])
-      redirect_to root_path(m: 'sign_in') and return
+      redirect_to sign_in_path and return
     end
     set_sign_in_flag(@user.id)
     redirect_to params[:redirect] || home_path
   end
 
-  # GET /sign_up 注册
-  def sign_up
+  # POST /sign_up_p 注册
+  def sign_up_p
     # 为oauth 登录添加部分
     # , :password_confirmation
     param = params[:user].slice(:username, :email, :password, :province, :city, :resume, :domain, :gender, :site, :duty, :mobile)
     @user = User.new(param)
-    # @user.avatar = begin if params[:avatar].present?
-    #     open(URI.parse(params[:avatar])) rescue nil
-    #   else
-    #     avatar_path = "/tmp/#{SecureRandom.hex(20)}.jpg"
-    #     avatar_name = params[:user][:username].last
-    #     system("convert -size 300x300 -background '#269abc' -fill '#fff' -font public/fonts/zh.ttf -pointsize 300 -gravity center label:'#{avatar_name}' #{avatar_path}")
-    #     File.open(avatar_path)
-    #   end
-    # rescue => e
-    #   logger.info("user create avatar error: #{e.to_s}")
-    #   nil
-    # end
 
     if @user.save!
       # set_sign_in_flag(@user.id)
@@ -90,7 +86,7 @@ class SessionsController < ApplicationController
   # DELETE /sign_out 退出
   def destroy
     sign_out_keeping_session
-    redirect_to root_path(m: 'sign_in')
+    redirect_to sign_in_path
   end
 
   private

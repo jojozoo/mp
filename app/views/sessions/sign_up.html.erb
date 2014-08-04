@@ -1,0 +1,58 @@
+<form action="/sign_in" class="mp-sign-form mp-sign-form-sign_in" method="post">
+	<h4>登录漫拍网，看精致图片</h4>
+	<hr>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">输入帐号/邮箱/手机</span>
+		<input type="text" name="user[username]" class="mp-sign-blur form-control" place-holder="正确帐号邮箱或手机">
+	</div>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">输入登录密码</span>
+		<input type="password" name="user[password]" class="mp-sign-blur form-control" place-holder="密码">
+	</div>
+	<div style="width: 280px; *width: 300px; _width: 300px; height: 34px;">
+		<input type="submit" id="sign-form-submit-sign_in-btn" value="登录漫拍" class="pull-left btn btn-info sing-form-submit-btn">
+		<a class="pull-right" href="/sign_up">去注册</a>
+	</div>
+	<hr style="margin: 2px auto 10px auto;">
+	<div class="mp-sign-form-div-session">
+		<input name="authenticity_token" type="hidden" value="">
+		<input type="hidden" name="remember" value="on" />
+		<% if params[:redirect].present? %>
+			<input type="hidden" name="redirect" value="<%= params[:redirect] %>"/>
+		<% end %>
+		<label class="remember_me checked">保持登录状态</label>
+		<a href="/forgot">忘记密码</a>
+	</div>
+	<hr>
+	<h5>快捷登录，无需注册</h5>
+	<%= render "oauth" %>
+</form>
+<form action="/sign_up" class="mp-sign-form mp-sign-form-sign_up falde-out-form" method="post">
+	<input name="authenticity_token" type="hidden" value="">
+	<input type="hidden" name="redirect" />
+	<h4>注册漫拍网，分享精致图片</h4>
+	<hr>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">帐号</span>
+		<input type="text" place-holder="帐号" name="user[username]" class="mp-sign-blur form-control" tabindex="200">
+	</div>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">邮箱</span>
+		<input type="text" place-holder="邮箱" name="user[email]" class="mp-sign-blur form-control" tabindex="201">
+	</div>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">手机</span>
+		<input type="text" place-holder="手机" name="user[mobile]" class="mp-sign-blur form-control" tabindex="201">
+	</div>
+	<div class="mp-sign-form-div">
+		<span class="sign-placeholder">密码</span>
+		<input type="password" place-holder="密码" name="user[password]" class="mp-sign-blur form-control" maxlength="16" tabindex="202">
+	</div>
+	<div style="width: 280px; *width: 300px; _width: 300px; height: 34px;">
+		<input type="submit" value="注册帐户" id="sign-form-submit-sign_up-btn" class="pull-left btn btn-info sing-form-submit-btn">
+		<a class="pull-right" href="/sign_in">去登录</a>
+	</div>
+	<hr style="margin: 2px auto 10px auto;">
+	<h5>快捷登录，无需注册</h5>
+	<%= render "oauth" %>
+</form>

@@ -3,7 +3,7 @@
 }
 .arrow {
     position: absolute;
-    width: 80px;
+    width: 170px;
     height: 20px;
     top: 34px;
     z-index: 11;
@@ -41,7 +41,7 @@
     border-radius: 5px 5px 5px 5px;
     padding: 18px;
     letter-spacing: -4px;
-    width: 180px;
+    width: 170px;
     position: absolute;
     left: 0;
     top: 54px;
@@ -51,7 +51,7 @@
 .up-btn-div a {
     color: #FFF;
     display: inline-block;
-    line-height: 26px;
+    line-height: 23px;
     background-color: #666;
     text-decoration: none;
     vertical-align: middle;
@@ -60,6 +60,7 @@
     border-radius: 3px;
     padding: 0 10px;
     letter-spacing: 0;
+    font-size: 12px;
 }
 .up-btn-div .mlast-g{
     margin-left: 15px;
@@ -342,7 +343,7 @@ textarea.form-control{
     padding: 10px;
 }
 .header{
-    height: 75px;
+    height: 70px;
 }
 .header .avatar{
     margin: -15px 24px 0 0;
@@ -364,20 +365,22 @@ textarea.form-control{
     font-size: 10px;
 }
 .header > .navbar{
-	padding: 0 20px;
+	padding: 0 60px;
 }
 
 .navbar-default{
     /*background: #26292e;*/
-    /*background: #46485f;*/
-    background: url("/images/navbg.gif") repeat-x;
-    height: 75px;
+    background: #EFEFEF;
+    /*background: url("/images/navbg.gif") repeat-x;*/
+    height: 70px;
     margin-bottom: 0;
+    border-bottom: 2px solid #484848;
 }
 .navbar-default .navbar-nav > li > a{
     /*color: #fff;*/
     color: #181818;
-    font-size: 16px;
+    /*font-size: 16px;*/
+    font-size: 14px;
 }
 .navbar-header{
     margin-top: -7px;
@@ -402,14 +405,14 @@ textarea.form-control{
 .navbar-default .navbar-nav > .active > a:focus{
     /*background: #3a3f46;
     color: #f78927;*/
-    background: #DEDEDE;
+    background: #efefef;
     color: #f78927;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
     /*color: #f78927;
     background: #3a3f46;*/
-    background: #DEDEDE;
+    background: #efefef;
     color: #f78927;
 }
 .navbar-default .navbar-nav > li > a.btn-warning:hover,

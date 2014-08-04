@@ -7,8 +7,10 @@ Mp::Application.routes.draw do
     end
   end
   get    '/home'          => 'home#index', as: :home
+  get   '/sign_in'       => 'sessions#sign_in'
+  get   '/sign_up'       => 'sessions#sign_up'
   post   '/sign_in'       => 'sessions#create'
-  post   '/sign_up'       => 'sessions#sign_up'
+  post   '/sign_up'       => 'sessions#sign_up_p'
   get    '/sign_out'      => 'sessions#destroy'
   get    '/forgot'        => 'sessions#forgot'
   post   '/forgot'        => 'sessions#forgot'

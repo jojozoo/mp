@@ -10,8 +10,8 @@
 	<%= stylesheet_link_tag "application", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
-	<link href="/favicon.ico?v=1" type="image/x-icon" rel="icon">
-	<link href="/favicon.ico?v=1" type="image/x-icon" rel="shortcut icon">
+	<link href="/favicon.ico?v=2" type="image/x-icon" rel="icon">
+	<link href="/favicon.ico?v=2" type="image/x-icon" rel="shortcut icon">
 	<!--[if lte IE 8]>
 	<link rel="stylesheet" href="/ie/ie.css" />
 	<![endif]-->
@@ -22,75 +22,28 @@
 	<![endif]-->
 	<%= render 'shared/tongji' %>
 </head>
-<!--缺少跳转landingpage-->
-<body class="session">
-	<div class="container mp-session-sign" style="display:none">
-		<div class="toolbar">
-			<%= link_to image_tag('/images/logo.png?v=3'), home_path %>
-			<% if action_name.eql?('index') %>
-			<a href="javascript:void(0);" class="sign-up_now btn btn-sm btn-success">注册</a>
-			<a href="javascript:void(0);" class="sign-in_now btn btn-sm btn-primary">登录</a>
-			<% else %>
-			<a href="/?m=sign_up" class="btn btn-sm btn-success">注册</a>
-			<a href="/?m=sign_in" class="btn btn-sm btn-primary">登录</a>
-			<% end %>
+<body style="background:#ccc">
+	<style type="text/css">
+	.logo{
+		text-align: center;
+		border-bottom: 1px solid #666;
+		padding-bottom: 10px;
+	}
+	.content{
+		/*max-width:960px;min-width:340px;*/
+		width: 340px;
+		margin:100px auto 0 auto;background:#fff;padding:20px;border-radius:5px;
+	}
+	.content.mp-session-sign .mp-sign-form{
+		position: static;
+		margin: 0;
+	}
+	</style>
+	<div class="content mp-session-sign">
+		<div class="logo">
+			<%= link_to image_tag("/images/logo/logo@_h_50.png"), root_path, class: '', style: 'padding: 0; display: inline-block;' %>
 		</div>
 		<%= yield %>
-	</div>
-	<div class="beian" style="bottom:48%">
-		<table>
-			<tbody>
-				<tr>
-					<td></td>
-					<td class="sess-tip" style="display:none">
-						<h1>获取灵感 发现精彩</h1>
-						<h3>加入中国最出色的摄影社区</h3>
-						<a class="button submit large mp-sign" href="/photos/simple">上传您的第一张照片</a>
-						<a class="discover" href="/photos?&q%5Bn%5D=recs&q%5Bo%5D=recommend_at+desc&q%5Bs%5D=cols">或看看精彩照片</a>
-					</td>
-					<td></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	<div class="beian">
-		<table>
-			<tr>
-				<td>
-
-				</td>
-				<td>
-					Copyright © 2014-2015　山东漫拍文化发展有限公司
-					<br>
-					鲁ICP备14011722号
-				</td>
-				<td>
-					© 2014 <%= link_to 'Photography By ' + 'zhuxiaowu', user_path(1) %>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<div class="background">
-		<%= link_to image_tag(sessionbackgrounds), home_path, title: '点击进入首页' %>
-		<script type="text/javascript">
-		$(function(){
-			$(".background").css({width: window.screen.width, height: window.screen.height});
-			$(".background img").css({width: window.screen.width, height: window.outerHeight, opacity: 1});
-			$(window).resize(function(){
-				var _b = $(".beian").width();
-				var _l = window.screen.width / 2 - _b / 2 - 40;
-				var _h = $(window).height();
-				$(".background").css({width: window.screen.width, height: _h});
-				var _t = _h - window.screen.height;
-				$(".background img").css({top: _t, opacity: 1});
-			});
-			setTimeout(function(){
-				$(".mp-session-sign").fadeIn();
-				$(".sess-tip").fadeIn();
-			}, 1000);
-			
-		})
-		</script>
 	</div>
 </body>
 </html>

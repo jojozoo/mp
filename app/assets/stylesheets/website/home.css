@@ -5,9 +5,6 @@
 	text-decoration: none;
 	color: #2a6496;
 }
-.ad {
-	margin-bottom: 10px;
-}
 .ad img{
 	width: 100%;
 }
@@ -97,8 +94,8 @@
     background-size:100%
 }
 .category_thumbs .row .category:hover .overlay{
-    opacity:0.5;
-    filter:alpha(opacity=50);
+    opacity:0.6;
+    filter:alpha(opacity=60);
 }
 .category_thumbs .row .category.checked .overlay{
     /*opacity:0.8;*/
@@ -173,13 +170,14 @@
     margin: 5px 0;
 }
 .navbar-default .navbar-nav > li > a.btn-upload{
-    padding-top: 5px;
-    padding-bottom: 5px;
     color: #fff;
     background: #666;
     border-color: #666;
     border-radius: 4px;
     margin-top: 10px;
+    font-size: 12px;
+    line-height: 14px;
+    padding: 5px 10px;
 }
 .cl.line-one{
     margin-bottom: 10px;

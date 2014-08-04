@@ -1,40 +1,11 @@
 <div class="header">
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
-	<div style="width:1140px;margin: auto;">
-		<div class="navbar-header">
-			<%= link_to image_tag("/images/logo.png"), root_path, class: 'navbar-brand', style: 'padding: 0; display: inline-block;' %></div>
-		<div class="collapse navbar-collapse">
-			<%= render "shared/left_nav" %>
-			<!-- <form class="navbar-form navbar-left" style="width:300px">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="动态/图库/用户">
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-default">
-							<i class="icon-search"></i>
-						</button>
-					</span>
-				</div>
-			</form> -->
-			<ul class="nav navbar-nav navbar-right">
-				<li class="up-btn-li">
-					<%= link_to 'javascript:void(0);', class: 'btn btn-warning btn-upload' do %>
-						<i class="icon-camera"></i>
-							上传作品
-					<% end %>
-					<div class="arrow">
-						<span class="arrow-out">
-							<span class="arrow-in"></span>
-						</span>
-					</div>
-					<div class="up-btn-div">
-						<%= link_to '传单图', simple_photos_path, class: 'mp-sign' %>
-						<%= link_to '传组图', complex_photos_path, class: 'mlast-g mp-sign' %>
-					</div>
-				</li>
+		<div class="collapse navbar-collapse" style="position: relative;">
+			<ul class="nav navbar-nav navbar-left" style="width:40%;">
 				<% if sign_in? %>
 				<li class="dropdown">
 					<%= link_to user_path(current_user) do %>
-						<%= image_tag(current_user.avatar(:small), class: 'avatar img-circle') %>
+						<%= image_tag(current_user.avatar(:small), class: 'avatar img-rounded', style: "margin: -12px 24px 0 0;width:40px;height:40px;") %>
 						<%= current_user.username %>
 						<b class="caret"></b>
 					<% end %>
@@ -63,12 +34,6 @@
 								</div>
 							</a>
 						</li>
-						<!-- <li class="disabled">
-							<a href="javascript:void(0);">
-								<i class="icon-truck"></i>
-								积分(暂未开通)
-							</a>
-						</li> -->
 						<li class="divider"></li>
 						<li>
 							<% if !!current_user.admin %>
@@ -87,19 +52,63 @@
 					</ul>
 				</li>
 				<% else %>
-				<li>
-					<%= link_to '登录', root_path(m: 'sign_in') %>
-				</li>
-				<li>
-					<%= link_to '注册', 'javascript:void(0);', class: 'mp-sign', 'data-init' => 'sign_up' %>
+				<li style="padding-top: 14px;">
+					<%= link_to '登录', sign_in_path, style: "display:inline;padding-right: 5px;" %>
+					<span style="">|</span>
+					<%= link_to '注册', 'javascript:void(0);', class: 'mp-sign', 'data-init' => 'sign_up', style:"display:inline;padding-left: 5px;" %>
 				</li>
 				<% end %>
+				<li class="up-btn-li">
+					<%= link_to 'javascript:void(0);', class: 'btn btn-warning btn-upload' do %>
+						<i class="icon-camera"></i>
+							上传作品
+					<% end %>
+					<div class="arrow">
+						<span class="arrow-out">
+							<span class="arrow-in"></span>
+						</span>
+					</div>
+					<div class="up-btn-div">
+						<%= link_to '传单图', simple_photos_path, class: 'mp-sign' %>
+						<%= link_to '传组图', complex_photos_path, class: 'mlast-g mp-sign' %>
+					</div>
+				</li>
+			</ul>
+			
+			<!-- <form class="navbar-form navbar-left" style="width:200px;padding-top: 2px;">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="动态/图库/用户" style="height: 26px;padding: 2px 10px;font-size: 12px;line-height:1">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default" style="padding:2px 6px;">
+							<i class="icon-search"></i>
+						</button>
+					</span>
+				</div>
+			</form> -->
+			<div class="navbar-header" style="width:10%;min-width:150px;text-align:center;">
+				<%= link_to image_tag("/images/logo/logo@_h_50.png"), root_path, class: '', style: 'padding: 0; display: inline-block;' %>
+			</div>
+			<ul class="nav navbar-nav navbar-right js-nav">
+				<li id="js-nav-home">
+					<%= link_to '首页', home_path %></li>
+				<li id="js-nav-photos">
+					<%= link_to '作品', photos_path %></li>
+				<li id="js-nav-events">
+					<%= link_to '活动', events_path %></li>
+				<li id="js-nav-choices">
+					<%= link_to '精选', choices_path %></li>
+				<li id="js-nav-topics">
+					<%= link_to '话题', topics_path %></li>
 				<li>
 					<%= link_to '更多', 'javascript:void(0);', class: 'nav-more' %>
 				</li>
 			</ul>
 		</div>
-	</div>
 		<!-- /.navbar-collapse -->
 	</div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        $("li#js-nav-<%= controller_name %>").addClass('active');
+    })
+</script>

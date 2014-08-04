@@ -7340,8 +7340,8 @@ body#request.intro .photo-header .header-content {
     float:left;
     width:128px;
     height:28px;
-    /*background:url(/sites/sw-logo.png) 0 0 no-repeat;*/
-    /*text-indent:-9999px*/
+    background:url(/images/logo/logo@_h_28-2.png) 0 0 no-repeat;
+    text-indent:-9999px
 }
 #sw-static-page .menu {
     float:right;

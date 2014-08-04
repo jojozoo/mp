@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
       if request.xhr?
         # 弹登录框
       else
-        redirect_to root_path(m: 'sign_in', redirect: request.url)
+        redirect_to sign_in_path(redirect: request.url)
       end and return
     end
   end

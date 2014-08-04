@@ -1,0 +1,68 @@
+.sq-header{
+	margin: 10px auto 0 auto;
+}
+.sq-header .wf{
+	color: #fff;
+	font-weight: bold;
+	text-decoration: none;
+	display: inline-block;
+	float: right;
+	margin: 30px 0 0 20px;
+	padding: 2px 10px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+}
+.sq-header .wf:hover{
+	background: rgba(0,0,0,0.5);
+}
+.sq-beian{
+	position: absolute;
+	color: #fff;
+	width: 100%;
+	text-align: center;
+}
+.sq-beian.sq-content{
+	top: 40%;
+}
+.sq-beian.sq-footer{
+	bottom: 20px;
+}
+.sq-beian.sq-footer table{
+	width: 100%;
+}
+.sq-beian.sq-footer td{
+	width: 33%;
+	text-align: center;
+}
+.sq-beian .discover {
+	font-size: 18px;
+	font-weight: 600;
+	margin-top: 20px;
+	color: white;
+	display: block;
+	text-decoration: none;
+}
+.sq-beian .discover:hover{
+	color: #fff;
+}
+.button.submit:hover{
+	text-decoration: none;
+	color: #fff;
+}
+.fadeInitem{
+	display: none;
+}
+.sq-background{
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: -1;
+	width: 100%;
+}
+.sq-background a{
+	display: inline-block;
+}
+.sq-background img{
+	width: 100%;
+}
