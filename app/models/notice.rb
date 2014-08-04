@@ -21,10 +21,10 @@ class Notice < ActiveRecord::Base
   attr_accessible :obj_id, :obj_type, :user_id, :send_id, :title, :content, :cate, :read, :del
 
   CATE = {
-    'recommend' => '推荐 ',
-    'choice' => '每日一图 ',
+    'recommend' => '推荐',
+    'choice' => '封面大图',
     'like' => '喜欢',
-    'store' => '收藏 ',
+    'store' => '收藏',
     'comment' => '回应',
     'reply' => '回复',
     'fol' => '关注'

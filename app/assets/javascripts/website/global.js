@@ -108,12 +108,12 @@ $(function(){
 		});
 		return false;
 	})
-	// 推荐精选, 每日一图
+	// 推荐精选, 封面大图
 	$(document).on("click", ".mp-ajax-tui", function(){
 		var _type = $(this).data('type');
 		res = {
 			rec: ['推荐精选', '取消精选'],
-			cho: ['每日一图', '取消每日一图'],
+			cho: ['封面大图', '取消封面大图'],
 			lik: ['喜欢', '喜欢'],
 			sto: ['收藏', '收藏']
 		}[_type];

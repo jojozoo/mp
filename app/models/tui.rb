@@ -85,7 +85,7 @@ class Tui < ActiveRecord::Base
     else
       tip = '操作成功'
       Tui.create!(attrs.merge({user_id: photo.user_id, event_id: photo.event_id, day: Date.today.to_s(:number), editor_id: editer.id}))
-      content = {'recommend' => '将此作品推荐为精选', 'choice' => '将此作品推荐为每日一图', 'stos' => '收藏了此作品', 'liks' => '喜欢了此作品'}[cate]
+      content = {'recommend' => '将此作品推荐为精选', 'choice' => '将此作品推荐为封面大图', 'stos' => '收藏了此作品', 'liks' => '喜欢了此作品'}[cate]
       Comment.create(obj_id: photo.id, obj_type: 'Photo', user_id: editer.id, content: content) if content
       res_attrs(cate, false, photo)
     end

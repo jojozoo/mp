@@ -87,11 +87,11 @@
 			<% if current_user.admin %>
 				<% if @photo.choice %>
 				<a href="/ajax/cho/photo/<%= @photo.id %>" class="mp-ajax-tui active" data-type="cho">
-					取消每日一图
+					取消封面大图
 				</a>
 				<% else %>
 				<a href="/ajax/cho/photo/<%= @photo.id %>" class="mp-ajax-tui" data-type="cho">
-					每日一图
+					封面大图
 				</a>
 				<% end %>
 			<% end %>
