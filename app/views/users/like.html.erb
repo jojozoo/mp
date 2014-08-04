@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="row mp-photos" id="mp-photos">
-            <%= render partial: 'photos/thumb', collection: @tuis.map(&:obj), as: :photo %>
+            <%= render partial: 'photos/thumb', collection: @tuis.map(&:obj).compact, as: :photo %>
         </div>
     </div>
 </div>

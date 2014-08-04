@@ -24,14 +24,13 @@
 	</div>
 </div>
 <div class="row cz-home-all events-all">
-	<% Event.totop.limit(8).each do |e| %>
+	<% { people: '人文', landscapes: '风光', architecture: '建筑', animals: '动物', riding: '骑行', hiking: '徒步', car: '自驾', trips: '旅游' }.each do |k, v| %>
 	<div class="col-md-3">
-		<%= link_to event_path(e) do %>
-			<%= image_tag(e.logo.url(:thumb)) %>
+		<%= link_to events_path(cate: v) do %>
+			<%= image_tag("/images/tags/#{k}.jpg?v=1") %>
 			<div class="mp-overlay"></div>
 			<div class="mp-gradient">
-				<div class="nametxt"><%= e.name %></div>
-				<div class="nametxt namedesc">人数/图片: <%= e.members_count %>/<%= e.photos_count %></div>
+				<div class="nametxt"><%= v %></div>
 			</div>
 		<% end %>
 	</div>
@@ -91,29 +90,7 @@
 		<% end %>
 	</div>
 </div>
-<script type="text/javascript">
-	$(function(){
-		$(".cz-home-top, .background, .cz-home-content").css({height: $(window).height() - 70});
-		// var windowHeight = $(window).height() - 70;
-		// var p = 0,
-		// 	t = 0,
-		// 	timer;
-		// $(window).bind("scroll", function(event){
-		// 	var p = $(document).scrollTop();
-		// 	clearTimeout(timer);
-		// 	if(p <= (windowHeight)){
-		// 		timer = setTimeout(function(){
-		// 				if(t < p){// 向下
-		// 					$("body, html").animate({scrollTop: windowHeight});
-		// 				} else {// 向上
-		// 					$("body, html").animate({scrollTop: 0});
-		// 				}
-		// 				t = p;
-		// 		}, 100);
-		// 	}
-		// });
-	});
-</script>
+
 <!-- 精选图片  end -->
 <!-- <div class="row mp-home-top">
 	<div class="col-md-8">
@@ -197,7 +174,7 @@
 	<%#= render partial: 'photos/thumb', collection: Photo.where(parent_id: nil).limit(8).order('id desc'), as: :photo %>
 </div> -->
 
-<ul class="breadcrumb mp-ul-nav">
+<!-- <ul class="breadcrumb mp-ul-nav">
 	<li>
 		<a href="javascript:void(0);">
 			<i class="icon-tag"></i>
@@ -209,11 +186,8 @@
 <div class="category_thumbs">
 	<div class="row">
 		<a class="category people" target="_blank" href="/photos?tag=人">
-			<div class="overlay">
-				<span>We like humans, too.</span>
-			</div>
 			<div class="gradient">
-				<span class="name">人</span>
+				<span class="name">人文</span>
 			</div>
 		</a>
 		<a class="category city-and-architecture" target="_blank" href="/photos?tag=城市建筑">
@@ -285,4 +259,27 @@
 			</div>
 		</a>
 	</div>
-</div>
+</div> -->
+<script type="text/javascript">
+	$(function(){
+		$(".cz-home-top, .background, .cz-home-content").css({height: $(window).height() - 70});
+		// var windowHeight = $(window).height() - 70;
+		// var p = 0,
+		// 	t = 0,
+		// 	timer;
+		// $(window).bind("scroll", function(event){
+		// 	var p = $(document).scrollTop();
+		// 	clearTimeout(timer);
+		// 	if(p <= (windowHeight)){
+		// 		timer = setTimeout(function(){
+		// 				if(t < p){// 向下
+		// 					$("body, html").animate({scrollTop: windowHeight});
+		// 				} else {// 向上
+		// 					$("body, html").animate({scrollTop: 0});
+		// 				}
+		// 				t = p;
+		// 		}, 100);
+		// 	}
+		// });
+	});
+</script>
