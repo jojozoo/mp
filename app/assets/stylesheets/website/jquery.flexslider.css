@@ -25,22 +25,14 @@
 
 /* FlexSlider Necessary Styles
 *********************************/
-.flexslider .slides > li {
-	display: none; 
-	-webkit-backface-visibility: hidden;
-	text-align: center;
-	height: 450px;
-}
-.flexslider .slides img{
-	max-width: 100%;
-	max-height: 100%;
-}
+.flexslider {margin: 0; padding: 0;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
 .flexslider .slides > li a{
-	display: block;
-	text-align: center;
-	height: 450px;
+       display: block;
+       text-align: center;
 }
 
+.flexslider .slides img {width: 100%; display: block;}
 .flex-pauseplay span {text-transform: capitalize;}
 
 /* Clearfix for the .slides element */
@@ -56,13 +48,9 @@ html[xmlns] .slides {display: block;}
 /* FlexSlider Default Theme
 *********************************/
 .flexslider { 
-	height: 450px;
-	overflow: hidden; 
-	margin: 0; 
-	border: 0;
+	overflow: hidden;
 	position: relative; 
 	zoom: 1; 
-	background: #f8f8f8;
 }
 /*box-shadow: 0 1px 4px rgba(0,0,0,.2);*/
 .flex-viewport {-webkit-transition: all 1s ease; -moz-transition: all 1s ease; -o-transition: all 1s ease; transition: all 1s ease; }
@@ -73,8 +61,9 @@ html[xmlns] .slides {display: block;}
 /* Direction Nav */
 .flex-direction-nav {*height: 0;}
 .flex-direction-nav a  { 
-	text-decoration: none;
-	display: block; width: 40px; height: 50px; margin: -20px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; opacity: 0; cursor: pointer; color: rgba(0,0,0,0.8); text-shadow: 1px 1px 0 rgba(255,255,255,0.3); -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; }
+       text-decoration: none;
+       display: block; width: 40px; height: 50px; margin: -20px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; opacity: 0; cursor: pointer; color: rgba(0,0,0,0.8); text-shadow: 1px 1px 
+}
 .flex-direction-nav .flex-prev { left: -50px; }
 .flex-direction-nav .flex-next { right: -50px; text-align: right; }
 .flexslider:hover .flex-prev { opacity: 0.7; left: 10px; }
