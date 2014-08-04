@@ -15,7 +15,7 @@
 			每日重点
 		</div>
 		<ul>
-			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(16).each do |em| %>
+			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(21).each do |em| %>
 			<li>
 				<%= link_to em.title, em.link, target: '_blank' %>
 			</li>
