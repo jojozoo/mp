@@ -25,7 +25,7 @@ class Notifier < ActionMailer::Base
       # "593937246@qq.com", # qiufeng
       "545362642@qq.com" #wangning
     ]
-    mail(to: mails, subject: Date.today.to_s + "没有精选照片")
+    mail(to: mails, subject: Date.today.to_s + "没有推荐照片")
   end
 
   def notice notice

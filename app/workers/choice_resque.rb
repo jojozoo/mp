@@ -9,7 +9,7 @@ class ChoiceResque
 			Notifier.choice_mail.deliver
 		else
 			choice = choices.last
-			title = Date.today.strftime("%Y年%m月%d日") + " 精选照片"
+			title = Date.today.strftime("%Y年%m月%d日") + " 编辑推荐"
 			unless MpSet.find_by_title(title)
 				src = if choice.gl_id and choice.isgroup and choice.parent_id.blank?
 					Photo.find_by_id(choice.gl_id).picture.url(:thumb) rescue choice.picture.url(:thumb)
