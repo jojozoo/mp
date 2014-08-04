@@ -57,7 +57,7 @@ class Event < ActiveRecord::Base
   has_attached_file :logo,
     styles: {
       big: '800x600>',
-      thumb: '282x188>'
+      thumb: '282x188#'
       # thumb: '282x141#'
     }
 
