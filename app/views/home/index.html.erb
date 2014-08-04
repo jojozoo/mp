@@ -94,24 +94,24 @@
 <script type="text/javascript">
 	$(function(){
 		$(".cz-home-top, .background, .cz-home-content").css({height: $(window).height() - 70});
-		var windowHeight = $(window).height() - 70;
-		var p = 0,
-			t = 0,
-			timer;
-		$(window).bind("scroll", function(event){
-			var p = $(document).scrollTop();
-			clearTimeout(timer);
-			if(p <= (windowHeight)){
-				timer = setTimeout(function(){
-						if(t < p){// 向下
-							$("body, html").animate({scrollTop: windowHeight});
-						} else {// 向上
-							$("body, html").animate({scrollTop: 0});
-						}
-						t = p;
-				}, 100);
-			}
-		});
+		// var windowHeight = $(window).height() - 70;
+		// var p = 0,
+		// 	t = 0,
+		// 	timer;
+		// $(window).bind("scroll", function(event){
+		// 	var p = $(document).scrollTop();
+		// 	clearTimeout(timer);
+		// 	if(p <= (windowHeight)){
+		// 		timer = setTimeout(function(){
+		// 				if(t < p){// 向下
+		// 					$("body, html").animate({scrollTop: windowHeight});
+		// 				} else {// 向上
+		// 					$("body, html").animate({scrollTop: 0});
+		// 				}
+		// 				t = p;
+		// 		}, 100);
+		// 	}
+		// });
 	});
 </script>
 <!-- 精选图片  end -->
