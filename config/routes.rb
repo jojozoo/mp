@@ -3,7 +3,7 @@ Mp::Application.routes.draw do
     # scope module: 'mobile', as: :touch do
     # as new_touch_photo 不as new_photo
     scope module: 'mobile' do
-      resources :photos
+      # resources :photos
     end
   end
   get    '/home'          => 'home#index', as: :home
