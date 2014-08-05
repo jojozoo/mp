@@ -27,7 +27,7 @@
 	<% { people: '人文', landscapes: '风光', architecture: '建筑', animals: '动物', riding: '骑行', hiking: '徒步', car: '自驾', trips: '旅游' }.each do |k, v| %>
 	<div class="col-md-3">
 		<%= link_to events_path(tag: v) do %>
-			<%= image_tag("/images/tags/#{k}.jpg?v=1") %>
+			<%= image_tag("/images/tags/#{k}.jpg?v=2") %>
 			<div class="mp-overlay"></div>
 			<div class="mp-gradient">
 				<div class="nametxt"><%= v %></div>
