@@ -46,7 +46,7 @@
 			</li>
 			<% end %>
 			<li>
-				<%= link_to '活动留言', comment_event_path(@event.id) %>
+				<%= link_to '活动留言', comment_event_path(@event.id), style: 'color:orange' %>
 			</li>
 			<div class="pull-right">
 				<% if params[:q][:s].eql?('cols') %>
