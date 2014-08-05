@@ -14,6 +14,7 @@ class CreateEvents < ActiveRecord::Migration
       t.boolean :totop, default: 0
       t.boolean :request, default: false # 排序使用
       t.datetime :request_at
+      t.integer :coms_count, default: 0 # 回应数量
       t.boolean :del, default: false
 
       t.timestamps

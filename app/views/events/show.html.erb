@@ -46,11 +46,7 @@
 			</li>
 			<% end %>
 			<li>
-				<% if action_name.eql?('comment') %>
-					<%= link_to '活动留言', comment_event_path(@event.id), class: 'activity' %>
-				<% else %>
-					<%= link_to '活动留言', 'javascript:void(0);' %>
-				<% end %>
+				<%= link_to '活动留言', comment_event_path(@event.id) %>
 			</li>
 			<div class="pull-right">
 				<% if params[:q][:s].eql?('cols') %>

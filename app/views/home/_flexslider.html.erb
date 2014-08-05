@@ -1,6 +1,6 @@
 <div class="flexslider">
 	<ul class="slides">
-		<% Banner.all.each do |banner| %>
+		<% Banner.order('id desc').all.each do |banner| %>
 		<li>
 			<% if banner.link.eql?('javascript:void(0);') %>
 			<%= image_tag(banner.picture.url) %>

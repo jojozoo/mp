@@ -69,7 +69,12 @@ Mp::Application.routes.draw do
       get 'cate/:cate_id', action: :cate, as: :cate
     end
   end
-  resources :events, path: 'requests', only: [:index, :show]
+  resources :events, path: 'requests', only: [:index, :show] do
+    member do
+      get :comment
+      post :join
+    end
+  end
   
   resources :users, path: 'accounts' do
     collection do

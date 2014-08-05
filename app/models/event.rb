@@ -19,6 +19,7 @@
 #  totop             :boolean          default(FALSE)
 #  request           :boolean          default(FALSE)
 #  request_at        :datetime
+#  coms_count        :integer          default(0)
 #  del               :boolean          default(FALSE)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
@@ -82,8 +83,8 @@ class Event < ActiveRecord::Base
                             :message => '不能为空'
   
   validates_length_of       :desc,
-                            :within => 10..1000,
-                            :message => '长度10..1000字'
+                            :within => 10..5000,
+                            :message => '长度10..5000字'
 
   validates_presence_of     :end_time,
                             :message => '不能为空'
@@ -104,6 +105,7 @@ class Event < ActiveRecord::Base
   has_many :photos
   # 发起活动的人 publisher
   belongs_to :user
+  has_many   :comments, as: :obj, order: 'id desc'
 
   scope :request, -> {where(request: true)}
   scope :totop, -> {where(totop: true).order('updated_at desc').limit(3)}
