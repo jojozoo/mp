@@ -119,7 +119,7 @@ class Photo < ActiveRecord::Base
   has_many   :childrens, class_name: 'Photo', foreign_key: :parent_id
   # has_many   :tuis, as: :obj, conditions: {editor: true}
 
-  scope :choice,    -> { where(choice: true)}
+  scope :choice,    -> { where(choice: true).order('choice_at')}
 
   EXIF = {
   "camera"        => "型号",
