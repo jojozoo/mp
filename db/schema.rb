@@ -334,9 +334,10 @@ ActiveRecord::Schema.define(:version => 20140716090537) do
     t.integer  "liks_count",          :default => 0
     t.integer  "stos_count",          :default => 0
     t.integer  "visit_count",         :default => 0
+    t.string   "bgurl",               :default => "/images/pbg/00049.jpg"
     t.boolean  "del",                 :default => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                               :null => false
+    t.datetime "updated_at",                                               :null => false
   end
 
   create_table "visits", :force => true do |t|

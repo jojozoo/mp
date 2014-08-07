@@ -199,7 +199,6 @@ class Photo < ActiveRecord::Base
         else
           default_album
         end
-        binding.pry
         photo.update_attributes(album_id: default_album.id)
       end
     end
