@@ -192,6 +192,15 @@ class Photo < ActiveRecord::Base
           album = Album.find_or_create_by_user_id_and_name(uid, event.name)
           photo.update_attributes(album_id: album.id)
         end
+      else
+        default_album = Album.find_or_create_by_user_id_and_name(uid, '默认相册')
+        default_album = if item['album_id'].blank?
+          Album.find_by_user_id_and_id(uid, item['album_id']) || default_album
+        else
+          default_album
+        end
+        binding.pry
+        photo.update_attributes(album_id: default_album.id)
       end
     end
     # TODO

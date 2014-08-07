@@ -35,6 +35,25 @@
 		<% end %>
 	</div>
 	<% end %>
+	<% Event.totop.limit(3).each do |request| %>
+	<div class="col-md-3">
+		<%= link_to event_path(request) do %>
+			<%= image_tag(request.logo.url(:thumb)) %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= request.name %></div>
+			</div>
+		<% end %>
+	</div>
+	<% end %>
+	<div class="col-md-3 browsemore">
+		<%= link_to events_path do %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= 'v' %></div>
+			</div>
+		<% end %>
+	</div>
 </div>
 <!-- 活动展示  end -->
 <!-- 精选图片 -->
@@ -49,46 +68,18 @@
 			</div>
 		<% end %>
 	</div>
+	<% [2, 3, 4, 7].each do |canub| %>
 	<div class="col-md-3">
-		<% zhou = MpSet.where(cate: 2).last %>
-		<%= link_to zhou.link, class: 'thua', target: '_blank' do %>
-			<%= image_tag(zhou.src) %>
+		<% obj = MpSet.where(cate: canub).last %>
+		<%= link_to obj.link, class: 'thua', target: '_blank' do %>
+			<%= image_tag(obj.src) %>
 			<div class="mp-overlay"></div>
 			<div class="mp-gradient">
-				<div class="nametxt"><%= zhou.title %></div>
+				<div class="nametxt"><%= obj.title %></div>
 			</div>
 		<% end %>
 	</div>
-	<div class="col-md-3">
-		<% zhou = MpSet.where(cate: 3).last %>
-		<%= link_to zhou.link, class: 'thua', target: '_blank' do %>
-			<%= image_tag(zhou.src) %>
-			<div class="mp-overlay"></div>
-			<div class="mp-gradient">
-				<div class="nametxt"><%= zhou.title %></div>
-			</div>
-		<% end %>
-	</div>
-	<div class="col-md-3">
-		<% topic = MpSet.where(cate: 4).last %>
-		<%= link_to topic.link, class: 'thua', target: '_blank' do %>
-			<%= image_tag(topic.src) %>
-			<div class="mp-overlay"></div>
-			<div class="mp-gradient">
-				<div class="nametxt"><%= topic.title %></div>
-			</div>
-		<% end %>
-	</div>
-	<div class="col-md-3">
-		<% request = MpSet.where(cate: 7).last %>
-		<%= link_to request.link, class: 'thua', target: '_blank' do %>
-			<%= image_tag(request.src) %>
-			<div class="mp-overlay"></div>
-			<div class="mp-gradient">
-				<div class="nametxt"><%= request.title %></div>
-			</div>
-		<% end %>
-	</div>
+	<% end %>
 </div>
 
 <!-- 精选图片  end -->

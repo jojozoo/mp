@@ -32,6 +32,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :liks_count, default: 0 # 喜欢数量
       t.integer :stos_count, default: 0 # 收藏数量
       t.integer :visit_count, default: 0 # 收藏数量
+      t.string  :bgurl,       default: "/images/pbg/00049.jpg"
       # ... 推荐数 自荐数 精选数 浏览数
       t.boolean :del, default: false
 
