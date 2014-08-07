@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20140716090537) do
     t.boolean  "totop",             :default => false
     t.boolean  "request",           :default => false
     t.datetime "request_at"
+    t.integer  "coms_count",        :default => 0
     t.boolean  "del",               :default => false
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
@@ -170,11 +171,14 @@ ActiveRecord::Schema.define(:version => 20140716090537) do
   end
 
   create_table "notices", :force => true do |t|
+    t.integer  "obj_id"
+    t.string   "obj_type"
     t.integer  "user_id"
     t.integer  "send_id"
     t.string   "title"
     t.text     "content"
-    t.boolean  "read"
+    t.integer  "cate"
+    t.boolean  "read",       :default => false
     t.boolean  "del",        :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
@@ -252,6 +256,7 @@ ActiveRecord::Schema.define(:version => 20140716090537) do
     t.string   "title"
     t.text     "content"
     t.integer  "coms_count",      :default => 0
+    t.integer  "visit_count",     :default => 0
     t.boolean  "del",             :default => false
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
