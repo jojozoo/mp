@@ -1,9 +1,9 @@
 <!-- 活动展示 -->
 <div class="row" style="margin-top:20px;">
 	<div class="col-md-12">
-		<div class="ad">
-			<%= image_tag '/images/ads/ad1.png', alt: '作品征集' %>
-		</div>
+		<!-- 广告位：首页Banner -->
+	<script type="text/javascript" >BAIDU_CLB_SLOT_ID = "956838";</script>
+	<script type="text/javascript" src="http://cbjs.baidu.com/js/o.js"></script>
 	</div>
 </div>
 <div class="row cz-home-all top-all">
@@ -48,9 +48,10 @@
 	<% end %>
 	<div class="col-md-3 browsemore">
 		<%= link_to events_path do %>
+			<%= image_tag('/images/cates/default_request.jpg') %>
 			<div class="mp-overlay"></div>
-			<div class="mp-gradient">
-				<div class="nametxt"><%= 'v' %></div>
+			<div class="mp-gradient" style="text-align: center;height:50%;">
+				<div class="nametxt" style="font-size: 30px;top: 0;font-weight: bold;">+ 查看更多</div>
 			</div>
 		<% end %>
 	</div>

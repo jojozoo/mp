@@ -36,6 +36,7 @@
 #  tags                 :string(255)
 #  crop                 :text
 #  tpid                 :integer
+#  cate                 :string(255)      default("default")
 #  wh                   :string(255)
 #  del                  :boolean          default(FALSE)
 #  created_at           :datetime         not null

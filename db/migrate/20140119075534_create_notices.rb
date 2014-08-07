@@ -6,7 +6,7 @@ class CreateNotices < ActiveRecord::Migration
       t.integer :send_id
       t.string :title
       t.text :content
-      t.integer :cate
+      t.string :cate
       t.boolean :read, default: false
       t.boolean :del, default: false
 

@@ -1,3 +1,11 @@
+.noticelink{
+    position: absolute;
+    top: -5px;
+    left: 5px;
+}
+.noticelink a{
+    color: #fff;
+}
 .up-btn-li:hover .arrow, .up-btn-li:hover .up-btn-div{
     display: block;
 }

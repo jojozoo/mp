@@ -9,7 +9,7 @@
 #  send_id    :integer
 #  title      :string(255)
 #  content    :text
-#  cate       :integer
+#  cate       :string(255)
 #  read       :boolean          default(FALSE)
 #  del        :boolean          default(FALSE)
 #  created_at :datetime         not null

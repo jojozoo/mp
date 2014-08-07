@@ -54,7 +54,7 @@
 							<td class="author-avatar">
 								<%= link_to image_tag(huser.avatar.url(:small)), user_path(hchoice.user_id), style: 'display:inline-block;float:left' %>
 								<div style="margin-left:10px;float:left;height:70px;padding-top: 30px;">
-									© 2014 来自摄影师 <%= link_to huser.username, user_path(hchoice.user_id), class: 'usernamefix' %>
+									© 2014 来自摄影师 <%= link_to huser.username, user_path(hchoice.user_id), class: 'usernamefix' %> 的作品 <%= link_to (hchoice.title.blank? ? '未标题' : hchoice.title), photo_path(hchoice), title: hchoice.title, class: 'usernamefix' %>
 								</div>
 								
 							</td>

@@ -9,6 +9,12 @@
 						<%= current_user.username %>
 						<b class="caret"></b>
 					<% end %>
+					<% noticesum = current_user.notices.where(read: 0).count %>
+					<% if noticesum > 0 %>
+					<span class="label label-primary noticelink">
+						<a href="/my/notices"><%= noticesum %></a>
+					</span>
+					<% end %>
 					<ul class="dropdown-menu">
 						<li>
 							<a href="/my/set/basic">
@@ -22,15 +28,6 @@
 								私信
 								<div class="pull-right">
 									<span class="label label-success"><%= current_user.unreads.count %></span>
-								</div>
-							</a>
-						</li>
-						<li>
-							<a href="/my/notices">
-								<i class="icon-bullhorn"></i>
-								通知
-								<div class="pull-right">
-									<span class="label label-primary"><%= current_user.notices.where(read: 0).count %></span>
 								</div>
 							</a>
 						</li>
