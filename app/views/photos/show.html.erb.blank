@@ -4,7 +4,7 @@
 			<%= link_to image_tag(@photo.user.avatar(:s50), class: 'avatar'), user_path(@photo.user_id), class: 'author' %>
 			<h4>
 				<%= @photo.title.blank? ? '标题未填写' : @photo.title %>
-				<small>组图照片</small>
+				<small>组图作品</small>
 			</h4>
 			<div class="photo-header-author-link">
 				<%= link_to @photo.user.username, user_path(@photo.user_id) %>
@@ -76,11 +76,11 @@
 			<% if current_user.admin or Editor.exists?(event_id: @photo.event_id, editor_id: current_user.id) %>
 				<% if @photo.recommend %>
 				<a href="/ajax/rec/photo/<%= @photo.id %>" class="mp-ajax-tui active" data-type="rec">
-					取消精选
+					取消编辑推荐
 				</a>
 				<% else %>
 				<a href="/ajax/rec/photo/<%= @photo.id %>" class="mp-ajax-tui" data-type="rec">
-					推荐精选
+					编辑推荐
 				</a>
 				<% end %>
 			<% end %>

@@ -510,7 +510,7 @@
 					return function(e) {
 						e.preventDefault();
 						e.stopPropagation();
-						if (window.confirm('您确定要删除这张照片？')) {
+						if (window.confirm('您确定要删除这张作品？')) {
 							return _this.removeFile(file);
 						};
 						// if (file.status === Dropzone.UPLOADING) {

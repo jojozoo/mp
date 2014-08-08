@@ -108,11 +108,11 @@ $(function(){
 		});
 		return false;
 	})
-	// 推荐精选, 封面大图
+	// 编辑推荐, 封面大图
 	$(document).on("click", ".mp-ajax-tui", function(){
 		var _type = $(this).data('type');
 		res = {
-			rec: ['推荐精选', '取消精选'],
+			rec: ['编辑推荐', '取消推荐'],
 			cho: ['封面大图', '取消封面大图'],
 			lik: ['喜欢', '喜欢'],
 			sto: ['收藏', '收藏']

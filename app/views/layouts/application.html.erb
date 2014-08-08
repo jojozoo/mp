@@ -36,38 +36,25 @@
 					<h1 style="font-size:50px;">每一个瞬间都可以变成永恒</h1>
 					<h3 style="font-size:28px;">漫拍网约你一起拍照片</h3>
 					<a class="button submit large" id="gotobottom" href="javascript:void(0);" style="margin-top: 80px;">点击查看更多</a>
-					<!-- <a class="discover" href="/photos?&amp;q%5Bn%5D=recs&amp;q%5Bo%5D=recommend_at+desc&amp;q%5Bs%5D=cols">或看看精彩照片</a> -->
+					<!-- <a class="discover" href="/photos?&amp;q%5Bn%5D=recs&amp;q%5Bo%5D=recommend_at+desc&amp;q%5Bs%5D=cols">或看看精彩作品</a> -->
 					<script type="text/javascript">
 						$(function(){
 							$("#gotobottom").click(function(){
 								var windowHeight = $(window).height() - 70;
-								$("body, html").animate({scrollTop: windowHeight});
+								$("body, html").animate({scrollTop: windowHeight}, "fast");
 							})
 						})
 					</script>
 				</div>
 			</div>
-			<div class="beian beianbottom">
-				<table>
-					<tbody>
-						<tr>
-							<td class="author-avatar">
-								<%= link_to image_tag(huser.avatar.url(:small)), user_path(hchoice.user_id), style: 'display:inline-block;float:left' %>
-								<div style="margin-left:10px;float:left;height:70px;padding-top: 30px;">
-									© 2014 来自摄影师 <%= link_to huser.username, user_path(hchoice.user_id), class: 'usernamefix' %> 的作品 <%= link_to (hchoice.title.blank? ? '未标题' : hchoice.title), photo_path(hchoice), title: hchoice.title, class: 'usernamefix' %>
-								</div>
-								
-							</td>
-							<td>
-								<!-- Copyright © 2014-2015　山东漫拍文化发展有限公司
-								<br>鲁ICP备14011722号</td> -->
-							<td>
-								<!-- © 2014
-								<a href="/accounts/1">Photography By zhuxiaowu</a> -->
-							</td>
-						</tr>
-					</tbody>
-				</table>
+			<div class="beianbottom">
+				<div class="author-avatar">
+					<%= link_to image_tag(huser.avatar.url(:small)), user_path(hchoice.user_id), class: 'linkaa' %>
+					<div class="aanamefix">
+						© 2014 来自摄影师 <%= link_to huser.username, user_path(hchoice.user_id), class: 'usernamefix' %> 的作品 <%= link_to (hchoice.title.blank? ? '未标题' : hchoice.title), photo_path(hchoice), title: hchoice.title, class: 'usernamefix' %>
+					</div>
+					<div class="clearfix"></div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -342,7 +342,7 @@
 				fallback: function() {
 					// 不支持拖拽的回调函数
 					var messageElement = document.querySelector(".browser-not-supported");
-					messageElement.innerHTML = "您的浏览器不支持拖拽上传，您可以使用我们推荐的浏览器，请点击<a target='_blank' href='javascript:void(0);'>这里</a><br>或者点击上传照片按钮进行上传";
+					messageElement.innerHTML = "您的浏览器不支持拖拽上传，您可以使用我们推荐的浏览器，请点击<a target='_blank' href='javascript:void(0);'>这里</a><br>或者点击上传作品按钮进行上传";
 					// return this.element.appendChild(this.getFallbackForm());
 				},
 				largeresize: function(file){
@@ -441,7 +441,7 @@
 					// 	return function(e) {
 					// 		e.preventDefault();
 					// 		e.stopPropagation();
-					// 		if (window.confirm('您确定要删除这张照片？')) {
+					// 		if (window.confirm('您确定要删除这张作品？')) {
 					// 			return _this.removeFile(file);
 					// 		};
 					// 	};
@@ -682,7 +682,7 @@
 			};
 			// init end
 
-			// TODO 会分为上传照片 删除本张 继续上传 完成上传 点击事件的初始化 都要在init里面去完成
+			// TODO 会分为上传作品 删除本张 继续上传 完成上传 点击事件的初始化 都要在init里面去完成
 			Dropzone.prototype.uprmjxfi = function(){
 				var droplink, _this;
 				droplink = document.getElementsByClassName('droplink')[0];

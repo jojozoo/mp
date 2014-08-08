@@ -304,7 +304,7 @@ $(function(){
             if(confirm("确定删除本张?")){
                 $("div[data-pid="+pid+"]").remove();
                 Mpupload.totalLength -= 1;
-                $(".remaining-photos p").text("还可以再上传" + (20 - Mpupload.totalLength) + "张照片");
+                $(".remaining-photos p").text("还可以再上传" + (20 - Mpupload.totalLength) + "张作品");
                 delete Mpupload.queue[pid];
                 if(_this.next() > 0){
                     _this.next().click();

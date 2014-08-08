@@ -559,7 +559,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			for (var n in this.queueData.files) {
 				queuedFile = this.queueData.files[n];
 				if (queuedFile.uploaded != true && queuedFile.name == file.name) {
-					var replaceQueueItem = confirm('照片 "' + file.name + '" 已在上传队列,您要替换嘛？');
+					var replaceQueueItem = confirm('作品 "' + file.name + '" 已在上传队列,您要替换嘛？');
 					if (!replaceQueueItem) {
 						this.cancelUpload(file.id);
 						this.queueData.filesCancelled++;

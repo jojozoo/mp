@@ -1,7 +1,7 @@
 class AjaxController < ApplicationController
     before_filter :ajax_login
     
-    # 推荐
+    # 编辑推荐
     def rec
         res = if current_user.admin
             Tui.cho_or_rec('recommend', @photo, current_user, true)
@@ -12,7 +12,7 @@ class AjaxController < ApplicationController
             if editor.sum > sum
                 Tui.cho_or_rec('recommend', @photo, current_user, true)
             else
-                {text: "您对此活动的推荐已到上限", type: 'error'}
+                {text: "您对此活动的编辑推荐已到上限", type: 'error'}
             end
         else
         {text: "您没有权限", type: 'error'}

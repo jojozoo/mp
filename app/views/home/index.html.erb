@@ -57,7 +57,7 @@
 	</div>
 </div>
 <!-- 活动展示  end -->
-<!-- 精选图片 -->
+<!-- 编辑推荐作品 -->
 <div class="row cz-home-all recommends-all">
 	<div class="col-md-6">
 		<% day = MpSet.where(cate: 1).last %>
@@ -83,7 +83,7 @@
 	<% end %>
 </div>
 
-<!-- 精选图片  end -->
+<!-- 编辑推荐作品  end -->
 <!-- <div class="row mp-home-top">
 	<div class="col-md-8">
 		<div class="ad">
@@ -120,20 +120,20 @@
 <ul class="breadcrumb mp-ul-nav">
 	<li>
 		<%= link_to photos_path(q: {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}), style: 'color:orange' do %>
-		<i class="icon-upload"></i>
+		<i class="icon-cloud-upload"></i>
 			最新上传
 		<% end %>
 	</li>
 	<li>
 		<%= link_to photos_path(q: {n: 'choi', o: 'choice_at desc', s: 'cols', w: {tag_id: []}}) do %>
-		<i class="icon-time"></i>
-			每日精选
+		<i class="icon-desktop"></i>
+			封面大图
 		<% end %>
 	</li>
 	<li>
 		<%= link_to photos_path(q: {n: 'recs', o: 'recommend_at desc', s: 'cols', w: {tag_id: []}}) do %>
-		<i class="icon-ok-circle"></i>
-			推荐精选
+		<i class="icon-thumbs-up"></i>
+			编辑推荐
 		<% end %>
 	</li>
 	<li>

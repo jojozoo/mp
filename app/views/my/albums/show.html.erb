@@ -21,7 +21,7 @@
 	<% if @photos.total_entries < 1 %>
 	<div class="col-md-12">
 		<div class="text-center" style="height: 300px; padding-top: 140px;">
-			还没有照片， 快去上传吧。 <%= link_to '上传图片', simple_photos_path(album_id: @album.id) %>
+			还没有作品， 快去上传吧。 <%= link_to '上传图片', simple_photos_path(album_id: @album.id) %>
 		</div>
 	</div>
 	<% else %>

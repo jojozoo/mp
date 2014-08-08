@@ -21,7 +21,7 @@ class Notice < ActiveRecord::Base
   attr_accessible :obj_id, :obj_type, :user_id, :send_id, :title, :content, :cate, :read, :del
 
   CATE = {
-    'recommend' => '推荐',
+    'recommend' => '编辑推荐',
     'choice' => '封面大图',
     'like' => '喜欢',
     'store' => '收藏',

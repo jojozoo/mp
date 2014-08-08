@@ -11,4 +11,4 @@ queue_everyday_choice:
   class: "ChoiceResque"
   queue: choice
   args:
-  description: "每天的每日精选"
+  description: "每天的编辑推荐"

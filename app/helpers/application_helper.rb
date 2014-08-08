@@ -36,8 +36,9 @@ module ApplicationHelper
        else             '一分钟'
      end
     when 2..59           then "#{distance_in_minutes} 分钟前"
-    when 60..1439        then "今天 #{from_time.strftime("%H:%M")}" # "大约 #{(distance_in_minutes.to_f / 60.0).round} 小时"
-    when 1440..2879      then "昨天 #{from_time.strftime("%H:%M")}"
+    # when 60..1439        then "今天 #{from_time.strftime("%H:%M")}" # "大约 #{(distance_in_minutes.to_f / 60.0).round} 小时"
+    # when 1440..2879      then "昨天 #{from_time.strftime("%H:%M")}"
+    when 60..1439  then "大约 #{(distance_in_minutes.to_f / 60.0).round} 小时前"
     else                     from_time.strftime("%m-%d %H:%M")
     end
   end

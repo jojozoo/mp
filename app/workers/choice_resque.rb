@@ -12,9 +12,9 @@ class ChoiceResque
 			title = Date.today.strftime("%Y年%m月%d日") + " 编辑推荐"
 			unless MpSet.find_by_title(title)
 				src = if choice.gl_id and choice.isgroup and choice.parent_id.blank?
-					Photo.find_by_id(choice.gl_id).picture.url(:thumb) rescue choice.picture.url(:thumb)
+					Photo.find_by_id(choice.gl_id).picture.url(:large) rescue choice.picture.url(:large)
 				else
-					choice.picture.url(:thumb)
+					choice.picture.url(:large)
 				end
 				MpSet.create(title: title, link: 'http://mpwang.cn/choices/' + Date.today.to_s(:number), src: src, cate: 1, cate_id: 0)
 			end

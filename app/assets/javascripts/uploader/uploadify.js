@@ -34,7 +34,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 				buttonClass     : '',                 // A class name to add to the browse button DOM object
 				buttonCursor    : 'hand',             // The cursor to use with the browse button
 				buttonImage     : '/images/transparent.gif',               // (String or null) The path to an image to use for the Flash browse button if not using CSS to style the button
-				buttonText      : '上传照片',     // The text to use for the browse button
+				buttonText      : '上传作品',     // The text to use for the browse button
 				checkExisting   : false,              // The path to a server-side script that checks for existing files on the server
 				debug           : false,              // Turn on swfUpload debugging mode
 				fileObjName     : 'filedata',         // The name of the file object to use in your server-side script
@@ -325,7 +325,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 			for (var n in this.queueData.files) {
 				queuedFile = this.queueData.files[n];
 				if (queuedFile.uploaded != true && queuedFile.name == file.name) {
-					var replaceQueueItem = confirm('照片 "' + file.name + '" 已在上传队列,您要替换嘛？');
+					var replaceQueueItem = confirm('作品 "' + file.name + '" 已在上传队列,您要替换嘛？');
 					if (!replaceQueueItem) {
 						this.cancelUpload(file.id);
 						this.queueData.filesCancelled++;
@@ -434,7 +434,7 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 				$(Mpupload.largeContainer).append(Mpupload.largeTemplate.replace("{{id}}", data.id).replace("{{src}}", data.large));
 				$(Mpupload.thumbContainer).append(Mpupload.thumbTemplate.replace("{{id}}", data.id).replace("{{src}}", data.thumb));
 				Mpupload.initCrop(data.id); // 初始化crop
-				$(".remaining-photos p").text("还可以再上传" + (20 - Mpupload.totalLength) + "张照片");
+				$(".remaining-photos p").text("还可以再上传" + (20 - Mpupload.totalLength) + "张作品");
 				$(".photo-reel-photo[data-pid=" + data.id + "]").click();
 				if(Mpupload.totalLength > 12){
 					$(".photo-reel").addClass("scrollable");

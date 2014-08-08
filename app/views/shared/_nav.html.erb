@@ -31,15 +31,24 @@
 								</div>
 							</a>
 						</li>
-						<li class="divider"></li>
 						<li>
-							<% if !!current_user.admin %>
+							<a href="/my/notices">
+								<i class="icon-bullhorn"></i>
+								通知
+								<div class="pull-right">
+									<span class="label label-primary"><%= noticesum %></span>
+								</div>
+							</a>
+						</li>
+						<li class="divider"></li>
+						<% if !!current_user.admin %>
+						<li>
 							<a href="/admin">
 								<i class="icon-signin"></i>
 								后台管理
 							</a>
-							<% end %>
 						</li>
+						<% end %>
 						<li>
 							<%= link_to sign_out_path do %>
 								<i class="icon-off"></i>

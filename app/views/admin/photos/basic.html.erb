@@ -8,6 +8,6 @@
 <br>
 用户：<%= link_to @photo.user.username, admin_user_path(@photo.user_id), target: '_blank' %>(<%= @photo.user.fols_count %>)
 <br>
-动态：喜欢(<%= @photo.liks_count %>) 收藏(<%= @photo.stos_count %>) 推荐(<%= @photo.recs_count %>)
+动态：喜欢(<%= @photo.liks_count %>) 收藏(<%= @photo.stos_count %>) 编辑推荐(<%= @photo.recs_count %>)
 <br>
 操作：<%#= @photo.tuis.map(&:channel).join(",") %>

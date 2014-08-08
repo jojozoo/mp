@@ -19,8 +19,8 @@ class MpSet < ActiveRecord::Base
   attr_accessible :cate, :cate_id, :desc, :link, :src, :title, :user_id, :del
 
   Cate = {
-	# 1 => '每日精选',
-	# 2 => '每周精选',
+	# 1 => '编辑推荐',
+	# 2 => '每周推荐',
 	# 3 => '文章推荐',
 	# 4 => '活动推荐',
 	1 => '首页四格一',

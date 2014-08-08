@@ -1,1 +1,1 @@
-评论增加删除 增加用户浏览 参考500px 增加弹出的大图在首页
+update comments set content=REPLACE(content, '将此作品推荐为精选', '将此作品推荐为编辑推荐');

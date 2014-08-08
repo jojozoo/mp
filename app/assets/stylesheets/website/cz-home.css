@@ -23,16 +23,25 @@
     top: 30%;
     bottom: auto;
 }
-.cz-home-top .session .beian.beianbottom{
+.cz-home-top .session .beianbottom{
     position: absolute;
     top: auto;
-    bottom: 70px;
+    bottom: 50px;
 }
-.session .beian.beianbottom td.author-avatar{
-	text-align:left;padding-left:70px;
+.beianbottom .aanamefix{
+	margin-left:10px;
+	float:left;
+	height:70px;
+	padding-top: 30px;
+	color: #fff;
 }
-.beianbottom .author-avatar a{
-
+.session .beianbottom .author-avatar .linkaa{
+	display: inline-block;
+	float: left;
+}
+.session .beianbottom .author-avatar{
+	text-align:left;
+	padding-left:50px;
 }
 .beianbottom .author-avatar a img{
 	border: 2px solid #fff;

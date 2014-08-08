@@ -119,7 +119,7 @@ class User < ActiveRecord::Base
   }
   ACCEPTTIP = {
     fol: '被关注',
-    recommend: '被推荐',
+    recommend: '被编辑推荐',
     choice: '被选为封面大图',
     like: '被喜欢',
     store: '被收藏',

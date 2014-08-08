@@ -83,11 +83,9 @@ class Photo < ActiveRecord::Base
   # 几种水印图, 原图无水印,原图水印,大图水印, 中图水印, 小图中间水印, 头像, 50x50无水印
   # cover 封面
   # 如果是图片后缀, 但不是图片, 那么图片会加载不起来, 要想办法统计到, 现在的方式是通过日志分析
-
-  # 如果是每日精品，在左上角红色显示，如果是推荐精选在右上角显示。分享为微博 Qzone 人人 豆瓣
   # 左下角和右下角暂时标题和用户名
   # 管理员需要的操作就显示分享的下面
-  # state 精华 推荐 普通
+  # state 封面大图 编辑推荐 普通
   store :exif
   store :crop
   # 必须要在 public/images/water/目录存在相对应key的水印图
@@ -132,12 +130,11 @@ class Photo < ActiveRecord::Base
   "taken_at"      => "拍摄时间"
   }
   ORDER = {
-      'news'  => ['id desc', 'upload', '最新上传'],
-      'choi'  => ['choice_at desc','choi', '精选图片'],
+      'news'  => ['id desc', 'cloud-upload', '最新上传'],
       'liks'  => ['liks_count desc','heart', '喜欢最多'],
       'coms'  => ['coms_count desc','comments', '评论最多'],
-      'recs'  => ['recommend_at desc','ok-circle', '编辑推荐'],
-      'choi'  => ['choice_at desc','time', '精选作品'],
+      'recs'  => ['recommend_at desc','thumbs-up', '编辑推荐'],
+      'choi'  => ['choice_at desc','desktop', '封面大图'],
       'radm'  => ['randomhex desc','random', '随机浏览'],
       'vist'  => ['visit_count desc', '', '人气最高'],
       'myse'  => ['visit_count desc','', '我的漫拍']

@@ -40,14 +40,14 @@ $(function(){
             var that = this;
             var obj = this.group[this.index];
             this.title = '获取中...';
-this.title_two = '<a class="btn btn-info btn-xs jp" href="/admin/push/推荐精选/' + obj.jsid + '"> \
-                    推荐精选 \
+this.title_two = '<a class="btn btn-info btn-xs jp" href="/admin/push/编辑推荐/' + obj.jsid + '"> \
+                    编辑推荐 \
                   </a> \
                   <a class="btn btn-info btn-xs jp" href="/admin/push/漫拍之星/' + obj.jsid + '"> \
                     漫拍之星 \
                   </a> \
-                  <a class="btn btn-info btn-xs jp" href="/admin/push/每日精选/' + obj.jsid + '"> \
-                    每日精选 \
+                  <a class="btn btn-info btn-xs jp" href="/admin/push/封面大图/' + obj.jsid + '"> \
+                    封面大图 \
                   </a> \
                   <a class="btn btn-info btn-xs jp" href="/admin/push/推荐摄影师/' + obj.jsid + '"> \
                     推荐摄影师 \
@@ -141,9 +141,9 @@ this.title_two = '<a class="btn btn-info btn-xs jp" href="/admin/push/推荐精�
             /
             <small>
                 <% if params[:order].eql?('recommend') %>
-                    <%= link_to '今日精选', admin_photos_path, style: 'color:#999;' %>
+                    <%= link_to '编辑推荐', admin_photos_path, style: 'color:#999;' %>
                 <% else %>
-                    <%= link_to '今日精选', admin_photos_path(order: 'recommend') %>
+                    <%= link_to '编辑推荐', admin_photos_path(order: 'recommend') %>
                 <% end %>
             </small>
             /
