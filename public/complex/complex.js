@@ -155,7 +155,13 @@ $(function(){
 		$(".tag[v="+_val+"]").remove();
 		$("#photo_tags").val($("b.tag").map(function(){return $(this).attr("v")}).get().join(","))
 	});
-
+	$(document).on("click", ".dsortspan input", function(){
+		var _val = $(this).val(),
+			_text = $(this).next().text();
+		$(".dsortval").html('<b>['+_text+']</b>');
+		$(this).parents(".fm-item-s-div").hide();
+	});
+	// 默认删除
 	$(document).on("click", ".oterdel", function(){
 		var _tar = $(this).attr("tar");
 		$(this).parents("b").remove();

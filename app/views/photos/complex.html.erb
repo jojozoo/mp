@@ -154,9 +154,30 @@
 					<% end %>
 				</div>
 			</div>
+			<div class="fm-item">
+				<label class="ftip">
+					<i class="icon-reorder"></i>
+					排 序:
+				</label>
+				<a href="javascript:void(0);" class="gotoshow">[默认排序]</a>
+				<span class="exischo dsortval">
+					<b>[<%= @goon.try(:dsort) ? '倒序排列' : '正序排列' %>]</b>
+				</span>
+				<div class="fm-item-s-div" style="padding:10px;">
+					<span class="dsortspan">
+						<input id="photo_dsort0" name="photo[dsort]" type="radio" value="0" <%= "checked='checked'" unless @goon.try(:dsort) %>>
+						<label for="photo_dsort0">正序排列</label>
+					</span>
+					<span class="dsortspan" style="margin-left:20px;">
+						<input id="photo_dsort1" name="photo[dsort]" type="radio" value="1" <%= "checked='checked'" if @goon.try(:dsort) %>>
+						<label for="photo_dsort1">倒序排列</label>
+					</span>
+				</div>
+			</div>
 		</div>
 	</div>
 	<a href="javascript:void(0);" class="submit">发 布</a>
+	<span style="margin-left: 20px;color: #999;font-size: 12px;">为助于您的作品更容易被关注，请填写填写标题、描述、标签等信息并尽量不要给图片加边框。</span>
 	<input type="submit" class="finish" val="fabu" style="display:none;">
 </div>
 <div class="modal fade" id="custom-modal" style="display: none;">

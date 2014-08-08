@@ -1,4 +1,3 @@
-<!-- 活动展示 -->
 <div class="row" style="margin-top:20px;">
 	<div class="col-md-12">
 		<!-- 广告位：首页Banner -->
@@ -6,7 +5,12 @@
 	<script type="text/javascript" src="http://cbjs.baidu.com/js/o.js"></script>
 	</div>
 </div>
-<div class="row cz-home-all top-all">
+<style type="text/css">
+.mp-ul-nav{
+	margin-bottom: -15px;
+}
+</style>
+<div class="row cz-home-all top-all" style="margin-top:30px;">
 	<div class="col-md-9">
 		<%= render 'flexslider' %>
 	</div>
@@ -15,7 +19,17 @@
 			每日重点
 		</div>
 		<ul>
-			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(21).each do |em| %>
+			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(10).each do |em| %>
+			<li>
+				<%= link_to truncate(em.title, length: 19), em.link, target: '_blank', title: em.title %>
+			</li>
+			<% end %>
+		</ul>
+		<div class="em-title" style="margin: 8px auto;">
+			摄影信息
+		</div>
+		<ul>
+			<% MpSet.where(cate_id: 0, cate: 8).order('updated_at desc').limit(9).each do |em| %>
 			<li>
 				<%= link_to truncate(em.title, length: 19), em.link, target: '_blank', title: em.title %>
 			</li>
@@ -23,41 +37,15 @@
 		</ul>
 	</div>
 </div>
-<div class="row cz-home-all events-all">
-	<% { people: '人文', landscapes: '风光', architecture: '建筑', animals: '动物', riding: '骑行', hiking: '徒步', car: '自驾', trips: '旅游' }.each do |k, v| %>
-	<div class="col-md-3">
-		<%= link_to events_path(tag: v) do %>
-			<%= image_tag("/images/cates/#{k}.jpg?v=2") %>
-			<div class="mp-overlay"></div>
-			<div class="mp-gradient">
-				<div class="nametxt"><%= v %></div>
-			</div>
-		<% end %>
-	</div>
-	<% end %>
-	<% Event.totop.limit(3).each do |request| %>
-	<div class="col-md-3">
-		<%= link_to event_path(request) do %>
-			<%= image_tag(request.logo.url(:thumb)) %>
-			<div class="mp-overlay"></div>
-			<div class="mp-gradient">
-				<div class="nametxt"><%= request.name %></div>
-			</div>
-		<% end %>
-	</div>
-	<% end %>
-	<div class="col-md-3 browsemore">
-		<%= link_to events_path do %>
-			<%= image_tag('/images/cates/default_request.jpg?v=1') %>
-			<div class="mp-overlay"></div>
-			<div class="mp-gradient" style="text-align: center;height:50%;">
-				<div class="nametxt" style="font-size: 30px;top: 0;font-weight: bold;">+ 查看更多</div>
-			</div>
-		<% end %>
-	</div>
-</div>
-<!-- 活动展示  end -->
 <!-- 编辑推荐作品 -->
+<ul class="breadcrumb mp-ul-nav">
+	<li>
+		<span>
+			<i class="icon-thumbs-up"></i>
+			编辑推荐
+		</span>
+	</li>
+</ul>
 <div class="row cz-home-all recommends-all">
 	<div class="col-md-6">
 		<% day = MpSet.where(cate: 1).last %>
@@ -82,8 +70,62 @@
 	</div>
 	<% end %>
 </div>
-
 <!-- 编辑推荐作品  end -->
+
+<!-- 活动展示 -->
+<ul class="breadcrumb mp-ul-nav">
+	<li>
+		<span>
+			<i class="icon-flag"></i>
+			漫拍活动
+		</span>
+	</li>
+	<li>
+		<%= link_to '更多...', events_path, target: '_blank' %>
+	</li>
+</ul>
+<div class="row cz-home-all events-all">
+	<% Event.totop.limit(4).each do |request| %>
+	<div class="col-md-3">
+		<%= link_to event_path(request) do %>
+			<%= image_tag(request.logo.url(:thumb)) %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= request.name %></div>
+			</div>
+		<% end %>
+	</div>
+	<% end %>
+</div>
+<!-- 活动展示  end -->
+
+<!-- 频道展示 -->
+<ul class="breadcrumb mp-ul-nav">
+	<li>
+		<span>
+			<i class="icon-flag"></i>
+			漫拍频道
+		</span>
+	</li>
+	<li>
+		<%= link_to '更多...', events_path, target: '_blank' %>
+	</li>
+</ul>
+<div class="row cz-home-all events-all">
+	<% { people: '人文', landscapes: '风光', architecture: '建筑', animals: '动物', riding: '骑行', hiking: '徒步', car: '自驾', trips: '旅游' }.each do |k, v| %>
+	<div class="col-md-3">
+		<%= link_to events_path(tag: v) do %>
+			<%= image_tag("/images/cates/#{k}.jpg?v=2") %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= v %></div>
+			</div>
+		<% end %>
+	</div>
+	<% end %>
+</div>
+<!-- 频道展示  end -->
+
 <!-- <div class="row mp-home-top">
 	<div class="col-md-8">
 		<div class="ad">
@@ -119,7 +161,7 @@
 
 <ul class="breadcrumb mp-ul-nav">
 	<li>
-		<%= link_to photos_path(q: {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}), style: 'color:orange' do %>
+		<%= link_to photos_path(q: {n: 'news', o: 'updated_at desc', s: 'cols', w: {tag_id: []}}), style: 'color:orange' do %>
 		<i class="icon-cloud-upload"></i>
 			最新上传
 		<% end %>
@@ -156,7 +198,12 @@
 	</li>
 </ul>
 <div class="row thumb-row">
-	<% Photo.where(parent_id: nil).limit(30).order('id desc').each do |p| %>
+	<!-- <%# Photo.where(parent_id: nil).limit(30).order('id desc').each do |p| %>
+	<div class="col-md-2 col-xs-6">
+		<%#= link_to_photo p, 'thumbnail' %>
+	</div>
+	<%# end %> -->
+	<% Photo.where(["isgroup = ? and parent_id is not null or isgroup = ? and parent_id is null", true, false]).limit(30).order('id desc').each do |p| %>
 	<div class="col-md-2 col-xs-6">
 		<%= link_to_photo p, 'thumbnail' %>
 	</div>

@@ -2,20 +2,20 @@ class PhotosController < ApplicationController
     before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update, :destroy, :simple, :simple_edit, :simple_create, :complex, :complex_edit, :complex_create]
     layout 'complex', only: [:simple, :complex, :simple_edit, :complex_edit]
     def index
-        params[:q] ||= {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}
+        params[:q] ||= {n: 'news', o: 'updated_at desc', s: 'cols', w: {tag_id: []}}
         params[:q][:s] = 'cols'
         # 如果含有request_id就不显示活动名称 如果含有user_id 把喜欢和收藏换成删除编辑按钮
     end
     # loading 把load_data挪到这里来
     def waterfall
         params[:q] = {
-            o: params[:q][:o] || 'id desc',
+            o: params[:q][:o] || 'updated_at desc',
             n: params[:q][:n] || 'news',
             s: params[:q][:s] || 'cols',
             w: params[:q][:w] || {},
         }
         hash = {
-            'news'  => ['id desc', {parent_id: nil}],
+            'news'  => ['updated_at desc', {parent_id: nil}],
             'liks'  => ['liks_count desc', {}],
             'coms'  => ['coms_count desc', {}],
             'recs'  => ['recommend_at desc', { recommend: true }],
@@ -24,7 +24,7 @@ class PhotosController < ApplicationController
             'vist'  => ['visit_count desc', {}],
             'myse'  => ['visit_count desc', {}]
         }
-        o = hash[params[:q][:n]][0] rescue 'id desc'
+        o = hash[params[:q][:n]][0] rescue 'updated_at desc'
         params[:q][:w].slice(*[:request_id, :user_id, :tag_id])
         request_id = params[:q][:w][:request_id]
         user_id       = params[:q][:w][:user_id]
@@ -42,8 +42,8 @@ class PhotosController < ApplicationController
         @photo  = Photo.find(params[:id])
         @photo.visits.create(user_id: current_user.try(:id))
         if @photo.isgroup and @photo.parent_id.blank?
-            @photos = @photo.childrens.order("id desc")
-            @comments = Comment.where(obj_type: 'Photo', obj_id: @photos.map(&:id) + [@photo.id]).paginate(:page => params[:page], per_page: 20).order('id desc')
+            @photos = @photo.childrens.order("id #{@photo.dsort ? 'desc' : 'asc'}")
+            @comments = Comment.where(obj_type: 'Photo', obj_id: @photos.map(&:id) + [@photo.id]).paginate(:page => params[:page], per_page: 20).order('created_at desc')
             render 'group_show'
         else
             @photos = [@photo]
@@ -97,7 +97,7 @@ class PhotosController < ApplicationController
     def complex_create
         params[:photo][:tags] = params[:photo][:tags].split(",").uniq.join(",")
         
-        create_hash = params[:photo].slice(*[:exif, :tags, :event_id, :warrant, :title, :desc]).merge(isgroup: true, user_id: current_user.id)
+        create_hash = params[:photo].slice(*[:exif, :tags, :event_id, :warrant, :title, :desc, :dsort]).merge(isgroup: true, user_id: current_user.id)
         
         if event = Event.find_by_id(create_hash[:event_id])
             album = Album.find_or_create_by_user_id_and_name(current_user.id, event.name)

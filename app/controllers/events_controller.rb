@@ -30,12 +30,12 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
-		params[:q] ||= {n: 'news', o: 'id desc', w: {request_id: @event.id}, s: 'line'}
+		params[:q] ||= {n: 'news', o: 'updated_at desc', w: {request_id: @event.id}, s: 'line'}
 	end
 
 	def comment
 		@event = Event.find(params[:id])
-		params[:q] ||= {n: 'news', o: 'id desc', w: {request_id: @event.id}, s: 'line'}
+		params[:q] ||= {n: 'news', o: 'updated_at desc', w: {request_id: @event.id}, s: 'line'}
 		@comments = @event.comments.paginate(:page => params[:page], per_page: 20).order('id desc')
 	end
 

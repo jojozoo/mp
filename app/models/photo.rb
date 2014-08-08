@@ -37,6 +37,7 @@
 #  crop                 :text
 #  tpid                 :integer
 #  cate                 :string(255)      default("default")
+#  dsort                :boolean          default(FALSE)
 #  wh                   :string(255)
 #  del                  :boolean          default(FALSE)
 #  created_at           :datetime         not null
@@ -77,6 +78,8 @@ class Photo < ActiveRecord::Base
   :tags,
   :crop,
   :tpid,
+  :cate,
+  :dsort,
   :wh,
   :del
   

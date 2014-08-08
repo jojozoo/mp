@@ -66,6 +66,24 @@
 		</ul>
 	</div>
 </div>
+<div class="row">
+	<div class="col-sm-12">
+		<h3 class="heading">
+			便捷操作
+			<small><%= Date.today %></small>
+		</h3>
+		<ul class="dshb_icoNav clearfix">
+			<li>
+				<%= link_to admin_ajax_path(action: :recommend) do %>
+				<span class="center-block">
+					<i class="icon-thumbs-up icon-2x"></i>
+				</span>
+				编辑推荐
+				<% end %>
+			</li>
+		</ul>
+	</div>
+</div>
 
 <div class="row">
 	<div class="col-sm-12">

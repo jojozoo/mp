@@ -36,6 +36,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.text :crop
       t.integer :tpid
       t.string :cate, default: 'default'
+      t.boolean :dsort, default: false
       t.string :wh
       t.boolean :del, default: false
       t.timestamps

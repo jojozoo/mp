@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		params[:q] ||= {n: 'news', o: 'id desc', s: 'cols', w: {user_id: @user.id}}
+		params[:q] ||= {n: 'news', o: 'updated_at desc', s: 'cols', w: {user_id: @user.id}}
 		params[:q][:s] = 'cols'
 		# @photos = @user.photos.where(state: true).paginate(:page => params[:page], per_page: 12).order(params[:order])
 	end

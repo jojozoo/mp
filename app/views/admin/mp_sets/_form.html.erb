@@ -1,8 +1,13 @@
+<style type="text/css">
+.woshi .col-sm-6{
+	width: 67%;
+}
+</style>
 <%= simple_form_for ['admin', @mpset], validate: true do |f| %>
 	<%= f.input :title %>
 	<%= f.input :link %>
 	<%= f.input :src %>
-	<%= f.input :cate, :collection => MpSet::Cate.invert, :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
+	<%= f.input :cate, :collection => MpSet::Cate.invert, :as => :radio_buttons, :item_wrapper_class => 'radio-inline', wrapper_html: {class: 'woshi'} %>
 	<%= f.input :cate_id, collection: Event.ongoing.map{|r| [r.name, r.id]}.unshift(['首页', 0]), include_blank: false %>
 	<%= f.input :desc, as: :text %>
 	<div class="form-group">

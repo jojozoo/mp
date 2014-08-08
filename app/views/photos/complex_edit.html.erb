@@ -150,6 +150,26 @@
 					<% end %>
 				</div>
 			</div>
+			<div class="fm-item">
+				<label class="ftip">
+					<i class="icon-reorder"></i>
+					排 序:
+				</label>
+				<a href="javascript:void(0);" class="gotoshow">[默认排序]</a>
+				<span class="exischo dsortval">
+					<b>[<%= @photo.dsort ? '倒序排列' : '正序排列' %>]</b>
+				</span>
+				<div class="fm-item-s-div" style="padding:10px;">
+					<span class="dsortspan">
+						<input id="photo_dsort0" name="photo[dsort]" type="radio" value="0" <%= "checked=checked" unless @photo.dsort %>>
+						<label for="photo_dsort0">正序排列</label>
+					</span>
+					<span class="dsortspan" style="margin-left:20px;">
+						<input id="photo_dsort1" name="photo[dsort]" type="radio" value="1" <%= "checked=checked" if @photo.dsort %>>
+						<label for="photo_dsort1">倒序排列</label>
+					</span>
+				</div>
+			</div>
 		</div>
 	</div>
 	<a href="javascript:void(0);" class="submit">发 布</a>

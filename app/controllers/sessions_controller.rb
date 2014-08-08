@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 
-  before_filter :if_sign_redirect, except: [:destroy]
+  before_filter :if_sign_redirect, except: [:destroy, :index]
   # 其中 new 和 sign_up 的get请求去掉 路由也去掉 只有首页
   # TODO 有些bug 如登录不成功 或者注册时的验证
   def index
