@@ -2,20 +2,20 @@ class PhotosController < ApplicationController
     before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update, :destroy, :simple, :simple_edit, :simple_create, :complex, :complex_edit, :complex_create]
     layout 'complex', only: [:simple, :complex, :simple_edit, :complex_edit]
     def index
-        params[:q] ||= {n: 'news', o: 'updated_at desc', s: 'cols', w: {tag_id: []}}
+        params[:q] ||= {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}
         params[:q][:s] = 'cols'
         # 如果含有request_id就不显示活动名称 如果含有user_id 把喜欢和收藏换成删除编辑按钮
     end
     # loading 把load_data挪到这里来
     def waterfall
         params[:q] = {
-            o: params[:q][:o] || 'updated_at desc',
+            o: params[:q][:o] || 'id desc',
             n: params[:q][:n] || 'news',
             s: params[:q][:s] || 'cols',
             w: params[:q][:w] || {},
         }
         hash = {
-            'news'  => ['updated_at desc', {parent_id: nil}],
+            'news'  => ['id desc', {parent_id: nil}],
             'liks'  => ['liks_count desc', {}],
             'coms'  => ['coms_count desc', {}],
             'recs'  => ['recommend_at desc', { recommend: true }],
@@ -24,7 +24,7 @@ class PhotosController < ApplicationController
             'vist'  => ['visit_count desc', {}],
             'myse'  => ['visit_count desc', {}]
         }
-        o = hash[params[:q][:n]][0] rescue 'updated_at desc'
+        o = hash[params[:q][:n]][0] rescue 'id desc'
         params[:q][:w].slice(*[:request_id, :user_id, :tag_id])
         request_id = params[:q][:w][:request_id]
         user_id       = params[:q][:w][:user_id]
