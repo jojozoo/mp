@@ -143,7 +143,7 @@
 <div class="row cz-home-all events-all">
 	<% { people: '人文', landscapes: '风光', architecture: '建筑', animals: '动物', riding: '骑行', hiking: '徒步', car: '自驾', trips: '旅游' }.each do |k, v| %>
 	<div class="col-md-3">
-		<%= link_to photos_path(q: {n: 'choi', o: 'choice_at desc', s: 'cols', w: {tag_id: [v]}}), class: 'thua', target: '_blank' do %>
+		<%= link_to photos_path(q: {n: 'news', o: 'visit_count desc', s: 'cols', w: {tag_id: [v]}}), class: 'thua', target: '_blank' do %>
 			<%= image_tag("/images/cates/#{k}.jpg?v=2") %>
 			<div class="mp-overlay"></div>
 			<div class="mp-gradient">
