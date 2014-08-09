@@ -61,23 +61,23 @@
 		<div class="btn-group btn-group-xs">
 			<% if @psort.eql?('desc') %>
 				<%= link_to photo_path(@photo.id), class: 'btn btn-default active' do %>
-					<i class="icon-hand-up"></i>
+					<i class="icon-hand-down"></i>
 					倒序
 				<% end %>
 			<% else %>
 		<%= link_to photo_path(@photo.id, psort: 'desc'), class: 'btn btn-default' do %>
-					<i class="icon-hand-up"></i>
+					<i class="icon-hand-down"></i>
 					倒序
 				<% end %>
 			<% end %>
 			<% if @psort.eql?('asc') %>
 				<%= link_to photo_path(@photo.id), class: 'btn btn-default active' do %>
-					<i class="icon-hand-down"></i>
+					<i class="icon-hand-up"></i>
 					正序
 				<% end %>
 			<% else %>
 				<%= link_to photo_path(@photo.id, psort: 'asc'), class: 'btn btn-default' do %>
-					<i class="icon-hand-down"></i>
+					<i class="icon-hand-up"></i>
 					正序
 				<% end %>
 			<% end %>
