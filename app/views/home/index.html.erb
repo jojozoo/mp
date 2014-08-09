@@ -9,6 +9,13 @@
 .mp-ul-nav{
 	margin-bottom: -15px;
 }
+.em-title a{
+	color: #000;
+}
+.em-title a:hover{
+	text-decoration: none;
+	color: #999;
+}
 </style>
 <div class="row cz-home-all top-all" style="margin-top:30px;">
 	<div class="col-md-9">
@@ -16,7 +23,7 @@
 	</div>
 	<div class="col-md-3 mp-home-emphasis">
 		<div class="em-title">
-			每日重点
+			网站重点&nbsp;&nbsp;&nbsp;
 		</div>
 		<ul>
 			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(14).each do |em| %>
@@ -26,7 +33,7 @@
 			<% end %>
 		</ul>
 		<div class="em-title" style="margin: 8px auto;">
-			<a href="/topics/cate/104" target="_blank">摄影信息</a>
+			<a href="/topics/cate/104" target="_blank">摄影信息 ...</a>
 		</div>
 		<ul>
 			<% MpSet.where(cate_id: 0, cate: 8).order('updated_at desc').limit(5).each do |em| %>
@@ -57,7 +64,7 @@
 			</div>
 		<% end %>
 	</div>
-	<% [2, 3, 4, 7].each do |canub| %>
+	<% [2, 7].each do |canub| %>
 	<div class="col-md-3">
 		<% obj = MpSet.where(cate: canub).last %>
 		<%= link_to obj.link, class: 'thua', target: '_blank' do %>
@@ -69,6 +76,28 @@
 		<% end %>
 	</div>
 	<% end %>
+	<div class="col-md-3">
+		<% obj = MpSet.where(cate: 3).last %>
+		<%= link_to obj.link, class: 'thua', target: '_blank' do %>
+			<%= image_tag(obj.src) %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= obj.title %></div>
+			</div>
+		<% end %>
+		<a href="/topics/cate/102" class="thuamore">更多...</a>
+	</div>
+	<div class="col-md-3">
+		<% obj = MpSet.where(cate: 4).last %>
+		<%= link_to obj.link, class: 'thua', target: '_blank' do %>
+			<%= image_tag(obj.src) %>
+			<div class="mp-overlay"></div>
+			<div class="mp-gradient">
+				<div class="nametxt"><%= obj.title %></div>
+			</div>
+		<% end %>
+		<a href="/topics/cate/105" class="thuamore">更多...</a>
+	</div>
 </div>
 <!-- 编辑推荐作品  end -->
 
@@ -87,7 +116,7 @@
 <div class="row cz-home-all events-all">
 	<% Event.totop.limit(4).each do |request| %>
 	<div class="col-md-3">
-		<%= link_to event_path(request) do %>
+		<%= link_to event_path(request), class: 'thua', target: '_blank' do %>
 			<%= image_tag(request.logo.url(:thumb)) %>
 			<div class="mp-overlay"></div>
 			<div class="mp-gradient">
@@ -103,18 +132,18 @@
 <ul class="breadcrumb mp-ul-nav">
 	<li>
 		<span style="color:orange">
-			<i class="icon-flag"></i>
-			漫拍频道
+			<i class="icon-tag"></i>
+			热门标签
 		</span>
 	</li>
 	<li>
-		<%= link_to '更多...', events_path, target: '_blank' %>
+		<%= link_to '更多...', photos_path, target: '_blank' %>
 	</li>
 </ul>
 <div class="row cz-home-all events-all">
 	<% { people: '人文', landscapes: '风光', architecture: '建筑', animals: '动物', riding: '骑行', hiking: '徒步', car: '自驾', trips: '旅游' }.each do |k, v| %>
 	<div class="col-md-3">
-		<%= link_to events_path(tag: v) do %>
+		<%= link_to photos_path(q: {n: 'choi', o: 'choice_at desc', s: 'cols', w: {tag_id: [v]}}), class: 'thua', target: '_blank' do %>
 			<%= image_tag("/images/cates/#{k}.jpg?v=2") %>
 			<div class="mp-overlay"></div>
 			<div class="mp-gradient">

@@ -38,7 +38,7 @@ class PhotosController < ApplicationController
             sql = w.keys.map{|r| r.eql?(:parent_id) ? "#{r} is ?" : "#{r} = ?"}.join(" and ") + " and "
             sql += tag_id.map{|r|"tags like '%#{r}%'"}.join(" or ")
             ar = [sql, w.values].flatten
-            @photos = Photo.where(ar).paginate(:page => params[:page], per_page: 16).order(o)
+            @photos = Photo.where(ar).paginate(:page => params[:page], per_page: 16).order('visit_count desc')
         else
             @photos = Photo.where(w).paginate(:page => params[:page], per_page: 16).order(o)
         end
