@@ -1,0 +1,15 @@
+<div class="col-sm-6 col-md-3">
+	<div class="thumbnail">
+		<%= link_to image_tag(channel.logo(:thumb)), channel_path(channel), target: '_blank' %>
+		<div class="caption">
+			<%= link_to channel_path(channel), target: '_blank' do %>
+				<h5>#<%= channel.name %></h5>
+			<% end %>
+			<p style="height: 34px;">
+				<%= truncate(channel.desc.gsub("<br>", "\r\n"), length: 42) %>
+			</p>
+			<span>人数/图片:<%= channel.members_count %>/<%= channel.photos_count %></span>
+			<span>结束时间:<%= channel.end_time %></span>
+		</div>
+	</div>
+</div>

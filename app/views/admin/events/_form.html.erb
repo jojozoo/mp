@@ -13,6 +13,7 @@
 		'date-startdate' => Date.today, 
 		'date-enddate' => 2.years.from_now.to_date.to_s} %>
 	<%= f.input :channel %>
+	<%= f.input :ischannel, :collection => [['活动', false], ['频道', true]], :as => :radio_buttons, :item_wrapper_class => 'radio-inline' %>
 	<%= f.input :desc, as: :text %>
 	<div class="form-group">
 		<div class="col-sm-8 col-sm-offset-2">

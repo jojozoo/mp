@@ -1,0 +1,87 @@
+<div class="row">
+	<div class="col-md-12 mp-request-show">
+		<div class="page-header">
+			<h4>
+				<%= @channel.title %>
+				<small>
+					<a class="text-success"><%= @channel.photos_count %></a>张图片&nbsp;&nbsp;
+					<a class="text-success"><%= @channel.members_count %></a>人参加
+				</small>
+				<!-- 根据频道类型要求是单图还是组图 -->
+				<%= link_to '上传到本频道', complex_photos_path(request_id: @channel.id), class: 'btn btn-success btn-sm pull-right mp-sign', style: 'margin-top:-4px;' %>
+			</h4>
+		</div>
+		<div class="mp-page">
+			<div class="media">
+				<div class="media-object pull-left">
+					<%= image_tag @channel.logo(:big) %>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading">频道公告
+						<!-- <small>频道里的推荐</small> -->
+					</h4>
+					<hr>
+					<ul>
+						<% MpSet.where(cate_id: @channel.id).each do |em| %>
+						<li>
+							<%= link_to em.title, em.link, target: '_blank' %>
+						</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<div class="event-content gray-desc">
+				<%= markdown(@channel.desc) %>
+			</div>
+		</div>
+		<ul class="breadcrumb">
+			<% ["news", "choi", "vist", "coms", "myse"].each do |name|%>
+			<% item = Photo::ORDER[name] %>
+			<li>
+				<% if params[:q][:n].eql?(name) %>
+					<%= link_to item[-1], 'javascript:void(0);', class: 'activity' %>
+				<% else %>
+					<%= link_to item[-1], channel_path(@channel.id, q: params[:q].merge(n: name, o: item[0])) %>
+				<% end %>
+			</li>
+			<% end %>
+			<li>
+				<%= link_to '频道留言', comment_channel_path(@channel.id), style: 'color:orange' %>
+			</li>
+			<div class="pull-right">
+				<% if params[:q][:s].eql?('cols') %>
+					<%= link_to channel_path(q: params[:q].merge(s: :line)) do %>
+						<span class="icon-align-justify"></span>
+					<% end %>
+					<%= link_to 'javascript:void(0);', class: 'activity' do %>
+						<span class="icon-th"></span>
+					<% end %>
+				<% else %>
+					<%= link_to 'javascript:void(0);', class: 'activity' do %>
+						<span class="icon-align-justify"></span>
+					<% end %>
+					<%= link_to channel_path(q: params[:q].merge(s: :cols)) do %>
+						<span class="icon-th"></span>
+					<% end %>
+				<% end %>
+			</div>
+		</ul>
+		<% if params[:q][:s].eql?('cols') %>
+		<div class="row mp-photos" id="mp-photos">
+			<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(q: params[:q]) %>">
+				<img src="/images/loading.gif">
+				<span>加载中...</span>
+			</div>
+		</div>
+		<% else %>
+		<div class="row line-photos">
+			<div class="col-md-12" id="mp-photos">
+				<div id="page_loading" page="1" state="static" url="<%= waterfall_photos_path(q: params[:q]) %>">
+					<img src="/images/loading.gif">
+					<span>加载中...</span>
+				</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>

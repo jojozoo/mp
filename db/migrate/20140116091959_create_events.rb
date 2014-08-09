@@ -7,6 +7,7 @@ class CreateEvents < ActiveRecord::Migration
       t.attachment :logo
       t.text :desc
       t.string :channel # 类型暂定
+      t.boolean :ischannel, default: false
       t.date :end_time
       t.integer :members_count, default: 0
       t.integer :photos_count, default: 0

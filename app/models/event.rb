@@ -12,6 +12,7 @@
 #  logo_updated_at   :datetime
 #  desc              :text
 #  channel           :string(255)
+#  ischannel         :boolean          default(FALSE)
 #  end_time          :date
 #  members_count     :integer          default(0)
 #  photos_count      :integer          default(0)
@@ -32,6 +33,7 @@ class Event < ActiveRecord::Base
    :logo, 
    :desc, 
    :channel, 
+   :ischannel,
    :end_time,
    :members_count,
    :photos_count, 

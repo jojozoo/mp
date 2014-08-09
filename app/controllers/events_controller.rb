@@ -3,12 +3,12 @@ class EventsController < ApplicationController
 	def index
 		@events = case params[:t]
 		when 'ongoing'
-			Event.ongoing
+			Event.where(ischannel: true).ongoing
 		when 'closed'
-			Event.closed
+			Event.where(ischannel: true).closed
 		else
 			con = params[:tag].present? ? {channel: params[:tag]} : {}
-			Event.where('state > 1').where(con)
+			Event.where('state > 1 and ischannel = 0').where(con)
 		end.paginate(:page => params[:page], per_page: 12).order('id desc')
 	end
 

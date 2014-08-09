@@ -1,0 +1,21 @@
+<ul class="breadcrumb second-nav">
+	<li>
+		<%= link_to '全部频道', channels_path %>
+	</li>
+	<li>
+		<%= link_to '商业频道', channels_path(tag: '商业频道') %>
+	</li>
+	<li>
+		<%= link_to '同城频道', channels_path(tag: '同城频道') %>
+	</li>
+	<li>
+		<%= link_to '正在进行的频道', channels_path(t: 'ongoing') %>
+	</li>
+	<li>
+		<%= link_to '已结束的频道', channels_path(t: 'closed') %>
+	</li>
+</ul>
+<div class="row">
+	<%= render partial: 'thumb', collection: @channels, as: :channel %>
+</div>
+<%= will_paginate @channels %>

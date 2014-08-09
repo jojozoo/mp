@@ -71,6 +71,12 @@ Mp::Application.routes.draw do
       post :join
     end
   end
+  resources :channels, only: [:index, :show] do
+    member do
+      get :comment
+      post :join
+    end
+  end
   
   resources :users, path: 'accounts' do
     collection do

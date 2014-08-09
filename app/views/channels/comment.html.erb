@@ -1,0 +1,65 @@
+<div class="row">
+	<div class="col-md-12 mp-request-show">
+		<div class="page-header">
+			<h4>
+				<%= @channel.title %>
+				<small>
+					<a class="text-success"><%= @channel.photos_count %></a>张图片&nbsp;&nbsp;
+					<a class="text-success"><%= @channel.members_count %></a>人参加
+				</small>
+				<!-- 根据频道类型要求是单图还是组图 -->
+				<%= link_to '上传到本频道', complex_photos_path(request_id: @channel.id), class: 'btn btn-success btn-sm pull-right mp-sign', style: 'margin-top:-4px;' %>
+			</h4>
+		</div>
+		<div class="mp-page">
+			<div class="media">
+				<div class="media-object pull-left">
+					<%= image_tag @channel.logo(:big) %>
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading">频道公告
+						<!-- <small>频道里的推荐</small> -->
+					</h4>
+					<hr>
+					<ul>
+						<% MpSet.where(cate_id: @channel.id).each do |em| %>
+						<li>
+							<%= link_to em.title, em.link, target: '_blank' %>
+						</li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+			<div class="event-content gray-desc">
+				<%= markdown(@channel.desc) %>
+			</div>
+		</div>
+		<ul class="breadcrumb">
+			<% ["news", "choi", "vist", "coms", "myse"].each do |name|%>
+			<% item = Photo::ORDER[name] %>
+			<li>
+				<%= link_to item[-1], channel_path(@channel.id, q: params[:q].merge(n: name, o: item[0])) %>
+			</li>
+			<% end %>
+			<li>
+				<%= link_to '频道留言', 'javascript:void(0);', class: 'activity' %>
+			</li>
+		</ul>
+		<div class="row">
+			<div class="col-md-8">
+				<%= render "shared/respond", url: ajax_com_path('request', @channel.id) %>
+				<div class="comments">
+					<h5>所有回应(<%= @channel.coms_count %>)</h5>
+					<ul class="media-list">
+						<%= render partial: 'shared/comment', collection: @comments.to_a %>
+					</ul>
+					<%= will_paginate @comments %>
+				</div>
+			</div>
+			<div class="col-md-4">
+				
+			</div>
+		</div>
+		
+	</div>
+</div>

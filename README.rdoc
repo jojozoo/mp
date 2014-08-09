@@ -1,1 +1,2 @@
 update comments set content=REPLACE(content, '将此作品推荐为精选', '将此作品推荐为编辑推荐');
+去掉字段 去掉导航 去掉路由 去掉后台管理 去掉events_controller的index修改
