@@ -57,6 +57,32 @@
 	</div>
 </div>
 <div class="photo-show-desc gray-desc">
+	<div class="photo-show-dsort">
+		<div class="btn-group btn-group-xs">
+			<% if @psort.eql?('desc') %>
+				<%= link_to photo_path(@photo.id), class: 'btn btn-default active' do %>
+					<i class="icon-hand-up"></i>
+					倒序
+				<% end %>
+			<% else %>
+		<%= link_to photo_path(@photo.id, psort: 'desc'), class: 'btn btn-default' do %>
+					<i class="icon-hand-up"></i>
+					倒序
+				<% end %>
+			<% end %>
+			<% if @psort.eql?('asc') %>
+				<%= link_to photo_path(@photo.id), class: 'btn btn-default active' do %>
+					<i class="icon-hand-down"></i>
+					正序
+				<% end %>
+			<% else %>
+				<%= link_to photo_path(@photo.id, psort: 'asc'), class: 'btn btn-default' do %>
+					<i class="icon-hand-down"></i>
+					正序
+				<% end %>
+			<% end %>
+		</div>
+	</div>
 	<% gexif = @photo.exif %>
 	<p>
 		拍摄器材：<%= gexif['equ'] %>

@@ -50,7 +50,8 @@ class PhotosController < ApplicationController
         @photo  = Photo.find(params[:id])
         @photo.visits.create(user_id: current_user.try(:id))
         if @photo.isgroup and @photo.parent_id.blank?
-            @photos = @photo.childrens.order("id #{@photo.dsort ? 'desc' : 'asc'}")
+            @psort = params[:psort] if params[:psort].present? and ['asc', 'desc'].member?(params[:psort])
+            @photos = @photo.childrens.order("id #{@psort || (@photo.dsort ? 'desc' : 'asc')}")
             @comments = Comment.where(obj_type: 'Photo', obj_id: @photos.map(&:id) + [@photo.id]).paginate(:page => params[:page], per_page: 20).order('created_at desc')
             render 'group_show'
         else
