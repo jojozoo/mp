@@ -22,15 +22,15 @@
 		<div class="mp-tags">
 			<% tts = params[:q][:w][:tag_id] rescue [] %>
 			<% Tag.limit(54).each do |tag| %>
-				<% if tts.member?(tag.id.to_s) %>
+				<% if tts.member?(tag.name.to_s) %>
 					<% 
-						t = tts - [tag.id.to_s]
+						t = tts - [tag.name.to_s]
 						query = params[:q][:w].merge(tag_id: t)
 					 %>
 					<%= link_to tag.name, photos_path(q: params[:q].merge(w: query)), style: 'color: orange;' %>
 				<% else %>
 					<%
-						t = (params[:q][:w][:tag_id] rescue []) + [tag.id]
+						t = (params[:q][:w][:tag_id] rescue []) + [tag.name]
 					 %>
 					<%= link_to tag.name, photos_path(q: params[:q].merge(w: (params[:q][:w] || {}).merge(tag_id: t)) ) %>
 				<% end %>

@@ -34,7 +34,15 @@ class PhotosController < ApplicationController
         w.merge!(user_id: user_id) if user_id.present?
         w.merge!(user_id: current_user.try(:id)) if params[:q][:n].eql?('myse')
         # w.merge!(tag_id: tag_id) if tag_id.present?
-        @photos = Photo.where(w).paginate(:page => params[:page], per_page: 16).order(o)
+        if tag_id.present?
+            sql = w.keys.map{|r| r.eql?(:parent_id) ? "#{r} is ?" : "#{r} = ?"}.join(" and ") + " and "
+            sql += tag_id.map{|r|"tags like '%#{r}%'"}.join(" or ")
+            ar = [sql, w.values].flatten
+            @photos = Photo.where(ar).paginate(:page => params[:page], per_page: 16).order(o)
+        else
+            @photos = Photo.where(w).paginate(:page => params[:page], per_page: 16).order(o)
+        end
+        # @photos = Photo.where(w).paginate(:page => params[:page], per_page: 16).order(o)
         render 'waterfall', layout: false
     end
 
