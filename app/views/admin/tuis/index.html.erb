@@ -26,7 +26,7 @@
         <% @tuis.each do |tui| %>
             <tr>
                 <td><%= hash[tui.obj_type] %></td>
-                <td><%= tui.obj_id %></td>
+                <td><%= link_to "查看资源", "/#{tui.obj_type.downcase}s/#{tui.obj_id}", target: '_blank' %></td>
                 <td><%= Tui::RECOMMENDEDTYPE[tui.channel]  %></td>
                 <td><%= User.find_by_id(tui.user_id).try(:username) %></td>
                 <td><%= User.find_by_id(tui.editor_id).try(:username) %></td>

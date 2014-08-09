@@ -19,17 +19,17 @@
 			每日重点
 		</div>
 		<ul>
-			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(10).each do |em| %>
+			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(14).each do |em| %>
 			<li>
 				<%= link_to truncate(em.title, length: 19), em.link, target: '_blank', title: em.title %>
 			</li>
 			<% end %>
 		</ul>
 		<div class="em-title" style="margin: 8px auto;">
-			摄影信息
+			<a href="/topics/cate/104" target="_blank">摄影信息</a>
 		</div>
 		<ul>
-			<% MpSet.where(cate_id: 0, cate: 8).order('updated_at desc').limit(9).each do |em| %>
+			<% MpSet.where(cate_id: 0, cate: 8).order('updated_at desc').limit(5).each do |em| %>
 			<li>
 				<%= link_to truncate(em.title, length: 19), em.link, target: '_blank', title: em.title %>
 			</li>
@@ -40,7 +40,7 @@
 <!-- 编辑推荐作品 -->
 <ul class="breadcrumb mp-ul-nav">
 	<li>
-		<span>
+		<span style="color:orange">
 			<i class="icon-thumbs-up"></i>
 			编辑推荐
 		</span>
@@ -75,7 +75,7 @@
 <!-- 活动展示 -->
 <ul class="breadcrumb mp-ul-nav">
 	<li>
-		<span>
+		<span style="color:orange">
 			<i class="icon-flag"></i>
 			漫拍活动
 		</span>
@@ -102,7 +102,7 @@
 <!-- 频道展示 -->
 <ul class="breadcrumb mp-ul-nav">
 	<li>
-		<span>
+		<span style="color:orange">
 			<i class="icon-flag"></i>
 			漫拍频道
 		</span>
