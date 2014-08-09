@@ -71,15 +71,15 @@ class Event < ActiveRecord::Base
                             :message => '名称已经被占用'
 
   validates_length_of       :name,
-                            :within => 3..10,
-                            :message => '长度3..10字'
+                            :within => 1..10,
+                            :message => '长度1..10字'
 
   validates_presence_of     :title, 
                             :message => '不能为空'
   
   validates_length_of       :title,
-                            :within => 3..20,
-                            :message => '长度3..20字'
+                            :within => 1..20,
+                            :message => '长度1..20字'
 
   validates_presence_of     :desc, 
                             :message => '不能为空'
