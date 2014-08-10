@@ -21,7 +21,7 @@ class Oauth::WeiboController < Oauth::ApplicationController
             domain:   weibo['domain'],
             gender:   weibo['gender'].eql?('m'),
             site:     weibo['url'],
-            avatar:   weibo['profile_image_url'],
+            avatar:   weibo['profile_image_url'].to_s.gsub("/50/","/180/"),
             other:    weibo
         }
 
