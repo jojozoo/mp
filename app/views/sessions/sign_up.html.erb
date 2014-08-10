@@ -23,9 +23,9 @@
 		<label class="remember_me checked">保持登录状态</label>
 		<a href="/forgot">忘记密码</a>
 	</div>
-	<hr>
+	<!-- <hr>
 	<h5>快捷登录，无需注册</h5>
-	<%= render "oauth" %>
+	<%#= render "oauth" %> -->
 </form>
 <form action="/sign_up" class="mp-sign-form mp-sign-form-sign_up falde-out-form" method="post">
 	<input name="authenticity_token" type="hidden" value="">
@@ -52,7 +52,7 @@
 		<input type="submit" value="注册帐户" id="sign-form-submit-sign_up-btn" class="pull-left btn btn-info sing-form-submit-btn">
 		<a class="pull-right" href="/sign_in">去登录</a>
 	</div>
-	<hr style="margin: 2px auto 10px auto;">
+	<!-- <hr style="margin: 2px auto 10px auto;">
 	<h5>快捷登录，无需注册</h5>
-	<%= render "oauth" %>
+	<%#= render "oauth" %> -->
 </form>
