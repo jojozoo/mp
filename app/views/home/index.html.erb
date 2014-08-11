@@ -28,7 +28,7 @@
 		<ul>
 			<% MpSet.where(cate_id: 0, cate: 5).order('updated_at desc').limit(14).each do |em| %>
 			<li>
-				<%= link_to truncate(em.title, length: 19), em.link, target: '_blank', title: em.title %>
+				<%= link_to truncate(em.title, length: 17), em.link, target: '_blank', title: em.title %>
 			</li>
 			<% end %>
 		</ul>
@@ -38,7 +38,7 @@
 		<ul>
 			<% MpSet.where(cate_id: 0, cate: 8).order('updated_at desc').limit(5).each do |em| %>
 			<li>
-				<%= link_to truncate(em.title, length: 19), em.link, target: '_blank', title: em.title %>
+				<%= link_to truncate(em.title, length: 17), em.link, target: '_blank', title: em.title %>
 			</li>
 			<% end %>
 		</ul>
