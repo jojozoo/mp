@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
   end
 
   def site_config
-    @title ||= $site_config[:title]
-    @keywords ||= $site_config[:keywords]
-    @description ||= $site_config[:description]
+    @title ||= '漫拍网 - 源自生活的影像'
+    @keywords ||= '漫拍,漫拍网,mp,mpwang,图片,摄影,摄影网,摄影师,摄影入门,人像摄影,摄影技巧,摄影论坛,摄影作品,摄影活动,深度摄影,摄影名家,商业摄影,影览,图片分享,照片,照片分享,摄影界'
+    @description ||= '漫拍网是一个倡导拍身边人,身边事,身边景的社交网站,用照片记录生活面貌,表现社会发展进程,表达内心感悟.漫即广泛、深远、悠闲,拍即呈现我们身边的影像,让我们一起分享镜头中的精彩.'
   end
 
   def sign_in?

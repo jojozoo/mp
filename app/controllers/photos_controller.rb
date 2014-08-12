@@ -2,6 +2,8 @@ class PhotosController < ApplicationController
     before_filter :must_login, only: [:browse, :new, :upload, :uploadnew, :uploadie, :create, :edit, :update, :destroy, :simple, :simple_edit, :simple_create, :complex, :complex_edit, :complex_create]
     layout 'complex', only: [:simple, :complex, :simple_edit, :complex_edit]
     def index
+        @title = '作品 - 漫拍网'
+        @keywords = '照片、摄影师、摄影作品集、在线摄影作品集、照片精选、网络摄影作品集、在线照片展廊、分享图片、专业摄影、社会摄影、上传照片、分享照片、出色的摄影作品集、摄影社区、最新摄影作品、快速创建作品集、模特和摄影师、商业摄影、建筑摄影、专业作品集管理'
         params[:q] ||= {n: 'news', o: 'id desc', s: 'cols', w: {tag_id: []}}
         params[:q][:s] = 'cols'
         # 如果含有request_id就不显示活动名称 如果含有user_id 把喜欢和收藏换成删除编辑按钮
@@ -48,6 +50,9 @@ class PhotosController < ApplicationController
 
     def show
         @photo  = Photo.find(params[:id])
+        @title = "#{@photo.title} - 作品 - 漫拍网"
+        @keywords = @photo.tags
+        @description = @photo.desc
         @photo.visits.create(user_id: current_user.try(:id))
         if @photo.isgroup and @photo.parent_id.blank?
             @psort = params[:psort] if params[:psort].present? and ['asc', 'desc'].member?(params[:psort])

@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 	before_filter :must_login, only: [:new, :create, :edit, :update]
 	def index
+		@title = "活动 - 漫拍网"
 		@events = case params[:t]
 		when 'ongoing'
 			Event.where(ischannel: true).ongoing
@@ -30,6 +31,7 @@ class EventsController < ApplicationController
 
 	def show
 		@event = Event.find(params[:id])
+		@title = "#{@event.title} - 活动 - 漫拍网"
 		params[:q] ||= {n: 'news', o: 'id desc', w: {request_id: @event.id}, s: 'line'}
 	end
 

@@ -2,6 +2,7 @@ class TopicsController < ApplicationController
     before_filter :must_login, only: [:new, :create, :edit, :update, :destroy]
 
     def index
+        @title = "话题 - 漫拍网"
         @topics = Topic.order('coms_count desc, id desc').limit(20)
     end
 
@@ -16,6 +17,7 @@ class TopicsController < ApplicationController
 
     def show
         @topic = Topic.find(params[:id])
+        @title = "#{@topic.title} - 话题 - 漫拍网"
         @topic.visits.create(user_id: current_user.try(:id))
         @comments = @topic.comments.paginate(:page => params[:page], per_page: 20).order('id desc')
     end
