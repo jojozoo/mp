@@ -76,11 +76,13 @@ class PhotosController < ApplicationController
     end
 
     def simple
+        @title = '上传单图 - 漫拍网'
         @event  = Event.ongoing.find_by_id(params[:request_id]) if params[:request_id].present?
         @album  = current_user.albums.find_by_id(params[:album_id]) if params[:album_id].present?
     end
 
     def simple_edit
+        @title = '单图修改 - 漫拍网'
         @photo = current_user.photos.find(params[:id])
         redirect_to action: :complex_edit, id: @photo.id if @photo.isgroup and @photo.parent_id.blank?
     end
@@ -92,6 +94,7 @@ class PhotosController < ApplicationController
     end
 
     def complex
+        @title = '上传组图 - 漫拍网'
         # 继续上传id
         if params[:go_id].present?
             @goon = current_user.photos.find_by_id(params[:go_id])
@@ -102,6 +105,7 @@ class PhotosController < ApplicationController
     end
 
     def complex_edit
+        @title = '组图修改 - 漫拍网'
         @photo = current_user.photos.find(params[:id])
         @event = @photo.event
         redirect_to action: :simple_edit, id: @photo.id unless @photo.isgroup and @photo.parent_id.blank?

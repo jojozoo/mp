@@ -8,11 +8,13 @@ class TopicsController < ApplicationController
 
     def cate
         @cate = Tag.find(params[:cate_id])
+        @title = "#{@cate.name} - 话题 - 漫拍网"
         @topics = Topic.where(cate_id: @cate.id).paginate(:page => params[:page], per_page: 20).order('id desc')
     end
 
     def explore
-       @topics = Topic.paginate(:page => params[:page], per_page: 20).order('id desc') 
+        @title = "优质话题 - 漫拍网"
+        @topics = Topic.paginate(:page => params[:page], per_page: 20).order('id desc') 
     end
 
     def show
@@ -23,6 +25,7 @@ class TopicsController < ApplicationController
     end
 
     def new
+        @title = "发布话题 - 漫拍网"
         if params[:tid].present?
             @cate  = Tag.find_by_id(params[:tid])
         end

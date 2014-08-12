@@ -9,10 +9,11 @@ class SessionsController < ApplicationController
   end
 
   def sign_in
+    @title = "登录漫拍 - 漫拍网"
   end
 
   def sign_up
-    
+    @title = "注册漫拍 - 漫拍网"
   end
 
   # POST /sign_in 登录

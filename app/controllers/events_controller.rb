@@ -37,6 +37,7 @@ class EventsController < ApplicationController
 
 	def comment
 		@event = Event.find(params[:id])
+		@title = "活动留言 - 活动 - 漫拍网"
 		params[:q] ||= {n: 'news', o: 'id desc', w: {request_id: @event.id}, s: 'line'}
 		@comments = @event.comments.paginate(:page => params[:page], per_page: 20).order('id desc')
 	end
