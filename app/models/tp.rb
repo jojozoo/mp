@@ -151,7 +151,7 @@ class Tp < ActiveRecord::Base
       # ap exif
       # 根据字符串转换成当地时间javascript
       exif = exif.slice(*EXIFLETH)
-      exifexif['date_time'] = exif['date_time_original']
+      exif[:date_time] = exif[:date_time_original]
       [:original, :large, :thumb].each do |item|
         w, h = Paperclip::Geometry.from_file(picture.queued_for_write[item].path).to_s.split("x") rescue ['', '']
         exif.merge!("#{item}_width".to_sym => w, "#{item}_height" => h)
