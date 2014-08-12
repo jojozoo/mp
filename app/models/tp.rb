@@ -112,7 +112,7 @@ class Tp < ActiveRecord::Base
       'gps_img_direction_ref'     => 'GPS图像方向参考',
       'gps_img_direction'         => 'GPS图像方向'
     }.symbolize_keys!
-    EXIFLETH = ['model', 'les', 'focal_length', 'shutter_speed_value', 'aperture_value', 'iso_speed_ratings', 'date_time', 'gps_latitude', 'gps_longitude'].map(&:to_sym)
+    EXIFLETH = ['model', 'les', 'focal_length', 'shutter_speed_value', 'aperture_value', 'iso_speed_ratings', 'date_time_original', 'gps_latitude', 'gps_longitude'].map(&:to_sym)
     # EXIFREVERT = {
 
     # }
@@ -151,6 +151,7 @@ class Tp < ActiveRecord::Base
       # ap exif
       # 根据字符串转换成当地时间javascript
       exif = exif.slice(*EXIFLETH)
+      exifexif['date_time'] = exif['date_time_original']
       [:original, :large, :thumb].each do |item|
         w, h = Paperclip::Geometry.from_file(picture.queued_for_write[item].path).to_s.split("x") rescue ['', '']
         exif.merge!("#{item}_width".to_sym => w, "#{item}_height" => h)
