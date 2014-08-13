@@ -162,10 +162,10 @@ $(function() {
         $(this).removeClass('mp-sign-error').nextAll('div.help-block-error').remove();
         if(_val === ''){
             $(this).prev('span.sign-placeholder').show();
-            $(this).addClass('mp-sign-error').after('<div class="help-block-error">请设置6-16位英文字母，数字，符号密码</div>');
+            $(this).addClass('mp-sign-error').after('<div class="help-block-error">请设置6-16位英文字母，数字密码</div>');
         }
         if(_val !== '' && !POPBox.passwordRegexp.test(_val)) {
-            $(this).addClass('mp-sign-error').after('<div class="help-block-error">请设置6-16位英文字母，数字，符号密码</div>');
+            $(this).addClass('mp-sign-error').after('<div class="help-block-error">请设置6-16位英文字母，数字密码</div>');
         }
     });
     // 注册手机号
@@ -200,14 +200,14 @@ $(function() {
     //             if(_isSignIn){
     //                 $(this).after('<div class="help-block-error">请输入密码</div>');
     //             } else {
-    //                 $(this).after('<div class="help-block-error">请设置6-16位英文字母，数字，符号密码</div>');
+    //                 $(this).after('<div class="help-block-error">请设置6-16位英文字母，数字密码</div>');
     //             }
     //         } else {
     //             if(!POPBox.passwordRegexp.test(_val)){
     //                 if(_isSignIn){
     //                     $(this).after('<div class="help-block-error">密码长度应该在6-16位之间</div>');
     //                 } else {
-    //                     $(this).after('<div class="help-block-error">请设置6-16位英文字母，数字，符号密码</div>');
+    //                     $(this).after('<div class="help-block-error">请设置6-16位英文字母，数字密码</div>');
     //                 }
     //             }
     //         }
