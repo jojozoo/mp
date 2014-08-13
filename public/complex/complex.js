@@ -30,6 +30,7 @@ $(function(){
 	}
 	// 
 	$(document).on('click', '.cityitem', cityitem);
+	
 	if($('#clickupload').length > 0){
 		$('#clickupload').uploadify();
 	}
@@ -39,7 +40,8 @@ $(function(){
 		var _queue = $(".uploadcom .col-md-12[data-tpid]"),
 			_event = $("#event_div input").val(),
 			_title = $("#title_div input").val(),
-			_desc = $("#desc_div textarea").val();
+			_desc = $("#desc_div textarea").val(),
+			_state = $(this).attr("state");
 
 
 		if(_queue.length < 1){
@@ -58,7 +60,13 @@ $(function(){
 			MPMSG("error", "内容不能为空");
 			return false;
 		}
-		$("input.finish").click();
+		
+		if(_state === "loading"){
+			return false;
+		} else {
+			$(this).attr("state", "loading");
+			$("input.finish").click();
+		}
 	});
 
 	// 向上移动
